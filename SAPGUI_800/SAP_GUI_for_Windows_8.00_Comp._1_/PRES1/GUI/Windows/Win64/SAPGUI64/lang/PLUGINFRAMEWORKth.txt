@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 PLUGINFRAMEWORK TH 8600 OK 
+CP_SERVICE_MENUITEM             030 "บริการ"
+MENU_ITEM_EXCEL                 030 "Excel"
+MENU_ITEM_SEARCH                030 "ค้นหา"
+MENU_ITEM_CONTEXTSEARCH         120 "ค้นหา SAP Help Portal"
+MENU_ITEM_SPELLCHECK            030 "การตรวจสอบการสะกดคำ"
+MENU_ITEM_MAIL                  020 "จดหมาย"
+MENU_ITEM_PRINT                 020 "พิมพ์"
+CP_TREE_PRINT                   060 "พิมพ์ทรี"
+CP_SPELLCHECK_COMPLETE          128 "การตรวจสอบการสะกดเสร็จสมบูรณ์"

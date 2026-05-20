@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SapSetup Context="Variables" Version="800.25" ConnectedId="{1460620D-C8BC-44c2-86ED-000000000010}">
+    <Variable Name="SapFrontEnd64Dir" Description="DscrSapFrontEnd64Dir" DisplayInSapAdmin="TRUE" Persistent="TRUE">
+      <Value>%ProgramFiles64%\SAP\FrontEnd</Value>
+    </Variable>
+    <Variable Name="SetSap64WorkDir" Description="DscrSap64WorkDir" DisplayInSapAdmin="TRUE">
+      <Value>SAP GUI 64 Default</Value>
+    </Variable>
+    <Variable Name="SetSapGui64HistoryDir" Description="DscrSapGui64HistoryDir" DisplayInSapAdmin="TRUE">
+      <Value>SAP GUI 64 Default</Value>
+    </Variable>
+	<Variable Name="SapGui64PatchLevel" Persistent="FALSE">
+		<Value></Value>
+		<Value Script="TRUE">
+			<![CDATA[
+				strGui64Patch = "0"
+				NwEngine.Context.Log.Write "SAP GUI 64 Script: Reading PatchLevel and Hotfix versions..."
+				strSapGui64SetupXML = NwEngine.Variables.ResolveString("%SapSrcDir%\Setup\SapGui64Setup.xml")
+				If NwEngine.Shell.FileExist(strSapGui64SetupXML) Then
+					NwEngine.Context.Log.Write "SAP GUI 64 Script: Reading file '" & strSapGui64SetupXML & "'."
+					Dim objXMLDoc
+					Set objXMLDoc = CreateObject("Microsoft.XMLDOM")
+					objXMLDoc.async = False
+					objXMLDoc.load(strSapGui64SetupXML)
+					If objXMLDoc.parseError.errorCode <> 0 Then
+						NwEngine.Context.Log.Write "SAP GUI 64 Script: Error reading file '" & strSapGui64SetupXML & "'! ExitCode: " & objXMLDoc.parseError.errorCode
+					Else
+						Dim Node
+						Set Node = objXMLDoc.SelectSingleNode("//SapSetupProduct")
+						
+						strPatchHotfix = Node.getAttribute("PatchLevel")
+						If strPatchHotfix <> "" Then
+							NwEngine.Context.Log.Write "SAP GUI 64 Script: PatchLevel is set to: " & strPatchHotfix
+							strGui64Patch = strPatchHotfix
+							NwEngine.Variables.AppendDefaultValue "SapGui64PatchLevel", " Patch " & strGui64Patch
+						Else
+							NwEngine.Context.Log.Write "SAP GUI 64 Script: PatchLevel attribute is not set."
+						End If
+					End If
+				Else
+					NwEngine.Context.Log.Write "SAP GUI 64 Script: File '" & strSapGui64SetupXML & "' doesn't exist!"
+				End If
+				
+				If strGui64Patch = "0" Then
+					strSapFront64DLL = NwEngine.Variables.ResolveString("%SapSrcDir%\SAPGUI64\sapfront.dll")
+					NwEngine.Context.Log.Write "SAP GUI 64 Script: Reading PatchLevel from '" & strSapFront64DLL & "'."
+					If NwEngine.Shell.FileExist(strSapFront64DLL) Then
+						strFileVersion = NwEngine.Shell.GetFileVersion(strSapFront64DLL)
+						NwEngine.Context.Log.Write "SAP GUI 64 Script: FileVersion of '" & strSapFront64DLL & "' is set to: " & strFileVersion
+						Dim versionArray
+						versionArray = Split(strFileVersion, ".")
+						If versionArray(1) = "0" Then
+							strGui64Patch = "Beta"
+						Else
+							strGui64Patch = versionArray(2)
+						End If
+						NwEngine.Context.Log.Write "SAP GUI 64 Script: SAP GUI 64 PatchLevel is set to: " & strGui64Patch
+						NwEngine.Variables.AppendDefaultValue "SapGui64PatchLevel", " Patch " & strGui64Patch
+					Else
+						NwEngine.Context.Log.Write "SAP GUI 64 Script: File '" & strSapFront64DLL & "' doesn't exist!"
+					End If
+				End If
+			]]>
+		</Value>
+	</Variable>
+	<Variable Description="DscrSapGui64.ShowShadowBorder" DisplayInSapAdmin="TRUE" Name="SapGui64.ShowShadowBorder" Persistent="FALSE">
+		<Value>1</Value>
+	</Variable>
+	<Variable Description="DscrSapGui64.SelectedTheme" DisplayInSapAdmin="TRUE" Name="SapGui64.SelectedTheme" Persistent="FALSE">
+		<Value>SAP GUI 64 Default</Value>
+	</Variable>
+	<Variable Description="DscrSapGui64.SelectedTheme" DisplayInSapAdmin="FALSE" Name="SapGui64.SelectedTheme.Internal" Persistent="TRUE">
+		<Value>SAP GUI 64 Default</Value>
+	</Variable>
+	<Variable Description="DscrSapGui64.BrandingImage" DisplayInSapAdmin="TRUE" Name="SapGui64.BrandingImage" Persistent="FALSE">
+		<Value></Value>
+	</Variable>
+	<Variable Description="DscrSapGui64.BrandingImage" DisplayInSapAdmin="FALSE" Name="SapGui64.BrandingImage.Internal" Persistent="TRUE">
+		<Value>NONE</Value>
+	</Variable>
+	<Variable Description="DscrSapGui64.UseBrandingImage" DisplayInSapAdmin="TRUE" Name="SapGui64.UseBrandingImage" Persistent="FALSE">
+		<Value></Value>
+	</Variable>
+	<Variable Description="DscrSapGui64.UseBrandingImage" DisplayInSapAdmin="FALSE" Name="SapGui64.UseBrandingImage.Internal" Persistent="TRUE">
+		<Value>0</Value>
+	</Variable>
+	<Variable Description="DscrSapGui64.Accessibility" DisplayInSapAdmin="TRUE" Name="SapGui64.Accessibility" Persistent="FALSE">
+		<Value>Off</Value>
+	</Variable>
+	<Variable Description="DscrSapGui64.Accessibility.EnhancedTabChain" DisplayInSapAdmin="TRUE" Name="SapGui64.Accessibility.EnhancedTabChain" Persistent="FALSE">
+		<Value>1</Value>
+	</Variable>
+	<Variable Description="DscrSapGui64.Accessibility.SymbolsAsLetters" DisplayInSapAdmin="TRUE" Name="SapGui64.Accessibility.SymbolsAsLetters" Persistent="FALSE">
+		<Value>1</Value>
+	</Variable>
+	<Variable Description="DscrSapGui64.LandscapeFileOnServer" DisplayInSapAdmin="TRUE" Name="SapGui64.LandscapeFileOnServer" Persistent="FALSE">
+		<Value></Value>
+	</Variable>
+	<Variable Description="DscrSapGui64.LandscapeFileOnServer" DisplayInSapAdmin="FALSE" Name="SapGui64.LandscapeFileOnServer.Internal" Persistent="TRUE">
+		<Value>NONE</Value>
+	</Variable>
+	<Variable Description="DscrSapGui64.SecurityFileOnServer" DisplayInSapAdmin="TRUE" Name="SapGui64.SecurityFileOnServer" Persistent="FALSE">
+		<Value></Value>
+	</Variable>
+	<Variable Description="DscrSapGui64.SecurityFileOnServer" DisplayInSapAdmin="FALSE" Name="SapGui64.SecurityFileOnServer.Internal" Persistent="TRUE">
+		<Value>NONE</Value>
+	</Variable>
+	<Variable Description="DscrSapGui64.BrowserControl" DisplayInSapAdmin="TRUE" Name="SapGui64.BrowserControl" Persistent="FALSE">
+		<Value>SAP GUI 64 Default</Value>
+	</Variable>
+	<Variable Description="DscrSapGui64.BrowserControl" DisplayInSapAdmin="FALSE" Name="SapGui64.BrowserControl.Internal" Persistent="TRUE">
+		<Value>SAP GUI 64 Default</Value>
+	</Variable>
+	<Variable Description="DscrSapFrontEnd64Dir" DisplayInSapAdmin="FALSE" Name="SapFrontEnd64DirCorrection" Persistent="FALSE">
+	   <Value>%ProgramFiles64%\SAP\FrontEnd</Value>
+	   <Value Script='TRUE'>
+		   <![CDATA[
+			   Option Explicit
+			   NwEngine.Shell.Use64BitHive = vbTrue
+			   Dim strSapGui64DestDir
+			   strSapGui64DestDir = "HKEY_LOCAL_MACHINE\SOFTWARE\SAP\SAP Shared\SAPDestDir"
+			   
+			   NwEngine.Context.Log.Write "SAP GUI 64 Script: Checking if registry value " & strSapGui64DestDir & " exists."
+			   If NwEngine.Shell.RegValueExist(strSapGui64DestDir) Then
+				  Dim strSapGui64DestDirValue
+				  strSapGui64DestDirValue = NwEngine.Shell.GetRegValue(strSapGui64DestDir)
+				  If strSapGui64DestDirValue <> "" Then
+					  NwEngine.Context.Log.Write "SAP GUI 64 Script: Registry value " & strSapGui64DestDir & " is set to " & strSapGui64DestDirValue & "."
+					  Dim strWkstaSapGui64DestDirValue
+					  strWkstaSapGui64DestDirValue = NwEngine.Variables.GetValue("SapFrontEnd64Dir")
+					  NwEngine.Context.Log.Write "SAP GUI 64 Script: Wksta value is set to " & strWkstaSapGui64DestDirValue & "."
+					  If strSapGui64DestDirValue <> strWkstaSapGui64DestDirValue Then
+						  NwEngine.Context.Log.Write "SAP GUI 64 Script: Wksta value and registry value are different, the registry value will be used."
+						  NwEngine.Variables.AppendDefaultValue "SapFrontEnd64Dir", strSapGui64DestDirValue
+					  Else
+						  NwEngine.Context.Log.Write "SAP GUI 64 Script: Wksta value and registry value have the same value, everything is ok."
+					  End If
+				  Else
+					  NwEngine.Context.Log.Write "SAP GUI 64 Script: Registry value " & strSapGui64DestDir & " exists, but has no value, everything ok."
+				  End If
+			   Else
+				  NwEngine.Context.Log.Write "SAP GUI 64 Script: Registry value " & strSapGui64DestDir & " doesn't exist, everything is ok."
+			   End If
+			   NwEngine.Shell.Use64BitHive = vbFalse 
+		   ]]>
+	   </Value>
+	</Variable>
+	<Variable DisplayInSapAdmin="FALSE" Name="ExistSapLogon64" Persistent="TRUE">
+		<Value>FALSE</Value>
+	</Variable>
+	<Variable Name='SapGUI64Installed' DisplayInSapAdmin='FALSE' Persistent='TRUE'>
+		<Value>FALSE</Value>
+	</Variable>
+    <Variable Name='varSapRFC64SrcDir' Persistent='FALSE' DisplayInSapAdmin='FALSE'>
+        <Value>SAPGUI64</Value>
+    </Variable>
+    <Variable Name='varSapRFC64Version' Persistent='FALSE' DisplayInSapAdmin='FALSE'>
+        <Value>8.00</Value>
+    </Variable>
+</SapSetup>

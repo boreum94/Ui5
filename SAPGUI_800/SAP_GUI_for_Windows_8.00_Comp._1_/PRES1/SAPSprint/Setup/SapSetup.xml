@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapSetupWksta.xml">
+	<!-- Product Definition for SAPsetup itself -->
+	<Product BuildTime="0xA0C1C7C092F8D801" CmdLine="SapSetup" Guid="{30553299-1C5B-4863-9352-803E830F27A1}" Name="SAP Front End Installer" ProdVersion="2378" Visible="false">
+		<Contains Guid="{F50578DC-7D16-4e16-A24F-3AF324254DB2}" Name="SapSetup Administrative Tools"/>
+		<Contains Guid="{99DCFB1F-61F0-4da0-BE94-AE3FDA5DCFFD}" Name="SapSetup Workstation Tools"/>
+		<Contains Guid="{714A5C76-F750-4218-A5DB-A822A299AAEC}" Name="SapSetup LSH and ASU"/>
+		<UI>
+			<Page Type="Welcome">
+				<WindowCaption>StrWindowCaption</WindowCaption>
+				<Description>StrWelcomeDescription</Description>
+			</Page>
+			<Page Type="Tree">
+				<WindowCaption>StrWindowCaption</WindowCaption>
+				<Description>TreePageDescription</Description>
+			</Page>
+			<Page Type="Progress">
+				<WindowCaption>StrWindowCaption</WindowCaption>
+				<Description>ProgressPageDescriptionInstall</Description>
+			</Page>
+			<Page Type="Finish">
+				<WindowCaption>StrWindowCaption</WindowCaption>
+				<Description>FinishPageDescriptionSuccess</Description>
+			</Page>
+		</UI>
+	</Product>
+	<!-- SAPsetup Files -->
+	<Component BuildTime="0xA0C1C7C092F8D801" Guid="{99DCFB1F-61F0-4DA0-BE94-AE3FDA5DCFFD}" Min_Compliant_Version="2002" Name="SapSetup Workstation Tools" SysSize="13184" Version="2378">
+		<Requires Guid="{34DF7CBB-1753-4582-815C-B21A590F06B5}"/>
+		<Action Dst="HKLM\SOFTWARE\SAP\SAP Shared" Type="Registry">
+			<RegValue Name="SAPSetupDir">%SAPSetupDir%</RegValue>
+		</Action>
+		<Action Dst="%SapSetupDir%\Setup" Persistent="true" Type="File">
+			<Src FileVersion="14.32.31332.0" Hash="SHA-256:83f935454ae8e450b6f042509ecf28cceff95edb2495c63a782b9d45c2eaf1c0" Register="false" Timestamp="0x004DAF7DF27CD801">%SapSrcDir%\Setup\msvcp140%CRTDebugPostfix%.dll</Src>
+			<Src FileVersion="14.32.31332.0" Hash="SHA-256:8598940e498271b542f2c04998626aa680f2172d0ff4f8dbd4ffec1a196540f9" Register="false" Timestamp="0x007AE07EF27CD801">%SapSrcDir%\Setup\vcruntime140%CRTDebugPostfix%.dll</Src>
+		</Action>
+		<Action Dst="%SapSetupDir%\Setup" Persistent="true" Type="File">
+			<Src FileVersion="14.32.31332.0" Hash="SHA-256:9d514f298cb82f2665c0959ef57b20d241a05497568af7aa37c92dd1ed771b69" Register="false" Timestamp="0x004DAF7DF27CD801">%SapSrcDir%\Setup\mfc140u%CRTDebugPostfix%.dll</Src>
+			<Src FileVersion="14.32.31332.0" Hash="SHA-256:d1d39ba8733181531e1d61e105500aea80d47f0ec4eb13f12c16eea0bfa4af17" Register="false" Timestamp="0x00880786F27CD801">%SapSrcDir%\Setup\mfcm140u%CRTDebugPostfix%.dll</Src>
+		</Action>
+		<Action Dst="%SAPSetupDir%\Setup" Persistent="true" Type="File">
+			<Src FileVersion="2022.0.110.0" Hash="SHA-256:975e6afd28a70b1f11145aefc054701b352a6d87fbbc04ee27c5bd0e237b833e" Register="false" Timestamp="0x0039F515C3C8D801">%SAPsrcDir%\Setup\SapRegSv.exe</Src>
+			<Src Hash="SHA-256:c0329b1c0413e2a77e75137a23ce1b1902db8ee3d3185c2558d79c3078725869" Timestamp="0x0037BEBDC2C8D801">%SAPsrcDir%\Setup\SapRegSv.exe.sdb</Src>
+		</Action>
+		<Action Dst="%SapSetupDir%\Setup" Persistent="true" Type="File">
+			<Src FileVersion="9.0.110.0" Hash="SHA-256:7eb3a2278a634f4c794957ae05e25c9ec3b4cdb9a7eeb020599e8a27974683df" Register="false" Timestamp="0x00C62D22C4C8D801">%SapSrcDir%\Setup\NwSapSetup.exe</Src>
+		</Action>
+		<Action Dst="%SapSetupDir%\Setup" Persistent="true" Type="File">
+			<Src FileVersion="9.0.110.0" Hash="SHA-256:0707eb68ed2f146ffe51e0eb2de1709aebd18482e9d4b03f019d18f43de08132" Register="false" Timestamp="0x00C9E90DC4C8D801">%SapSrcDir%\Setup\NwCheckWorkstation.exe</Src>
+			<Src FileVersion="9.0.110.0" Hash="SHA-256:011f351950d3dc0e462f5b8affb4540a43f156c2522a35ce72b74f4346880148" Register="false" Timestamp="0x00CA6EA1C3C8D801">%SapSrcDir%\Setup\NwSAPSetupOnRebootInstSvc.exe</Src>
+		</Action>
+		<Action Dst="%SAPSetupDir%\Setup" Persistent="true" Type="File">
+			<Src Hash="SHA-256:9f09208cac7209000c5074ee731c8ca7097e9d3499308fcd3515723a4f87ac6f" Timestamp="0x0037BEBDC2C8D801">%SAPSrcDir%\Setup\SapSetupError.xsl</Src>
+			<Src Hash="SHA-256:73d682418f0e783b2728836220d45828046b5f966389f5b937cc6219831c41da" Timestamp="0x0037BEBDC2C8D801">%SAPSrcDir%\Setup\SapSplash.jpg</Src>
+		</Action>
+		<Action Dst="%SAPSetupDir%\Setup" Persistent="true" Type="File">
+			<Src FileVersion="9.0.110.0" Hash="SHA-256:86a8d1ebb663f107f760b88268e17d51b46b39991711ce60cb4dc1c72f3ffc4e" Register="false" Timestamp="0x0007FE01C4C8D801">%SAPSrcDir%\Setup\NwSapSetupEngine.dll</Src>
+			<Src FileVersion="9.0.110.0" Hash="SHA-256:6771cdc753db7db04b96c32a23f7fc833400b28099515b6256465f3c91c9318a" Register="false" Timestamp="0x002D0567C3C8D801">%SAPSrcDir%\Setup\NwSapSetupAtlCommon.dll</Src>
+			<Src FileVersion="9.0.110.0" Hash="SHA-256:465a5189af832a25bae6ab0bee1e6c017787efd443fa15bbddcb4653257aeb31" Register="false" Timestamp="0x007E33A6C3C8D801">%SAPSrcDir%\Setup\NwSapSetupUI.dll</Src>
+			<Src FileVersion="9.0.110.0" Hash="SHA-256:e957246a2d10960e10d02f6fdf4e362053693a6dead5e9604b5232a5f180af27" Register="false" Timestamp="0x00F07506C3C8D801">%SAPSrcDir%\Setup\DotNetUtils40.exe</Src>
+			<Src FileVersion="9.0.110.0" Hash="SHA-256:5422a56e90150b7812d06461018f23078098dc95dd918eeb061f084fda2da015" Register="false" Timestamp="0x004AD808C3C8D801">%SAPSrcDir%\Setup\DotNetUtils20.exe</Src>
+			<Src FileVersion="9.0.110.0" Hash="SHA-256:4f423ccaa257bf88f7218dbfbff8761af6100a6250e6e5b516365ee0268ef58c" Register="false" Timestamp="0x00AFA526C3C8D801">%SAPSrcDir%\Setup\NwSapFeiLg.dll</Src>
+			<Src FileVersion="9.0.110.0" Hash="SHA-256:f25cba244365b04b7f515126d9fdbfb3fc3eeeb083094a5ba4a10b66179a738f" Register="false" Timestamp="0x00528738C3C8D801">%SAPSrcDir%\Setup\NwSapFeiUt.dll</Src>
+			<Src FileVersion="9.0.110.0" Hash="SHA-256:e88e8ea4445c964a5fcc488a2794f54449c730ae1811f6a73fc1405b3cc57d17" Register="false" Timestamp="0x0069E202C3C8D801">%SAPSrcDir%\Setup\NwSnapshot64.exe</Src>
+			<Src Hash="SHA-256:0e1848efa6dce72a4cbe1588421d6480f02c8b9d7b2f2c129a1b9599d6d8c9bc" Register="false" Timestamp="0x0037BEBDC2C8D801">%SapSrcDir%\Setup\processconfig.cfg</Src>
+		</Action>
+		<Action Condition="&quot;%SAPSetupDir%\Setup\IS\NwSapSetupIs.exe&quot;&gt;-1" Description="Allows users to maintain SAP Front-End Applications and Updates on their computers" DisplayName="SAP Front-End Software Maintenance Service" Dst="%SapSetupDir%\Setup\IS" ExeName="%SapSetupDir%\Setup\IS\NwSapSetupIs.exe" RunAt="Uninstall" ServiceName="NwSAPInstallerSvc" StartType="SERVICE_DEMAND_START" Type="NtService">
+			<Src FileVersion="9.0.110.0" Hash="SHA-256:bab600245e9f8aac0bf1a42bd81abf0e386032c5820b04dfad980fed2225cec5" Timestamp="0x00B4986AC3C8D801">%SapSrcDir%\Setup\NwSapSetupIs.exe</Src>
+		</Action>
+		<Action Dst="%SAPSetupDir%\Setup" ForceOnServer="true" Persistent="true" Type="File">
+			<Src Hash="SHA-256:1b7cfd133696224b5f1f72330475bed411b7f42eb1ae529a79e69bd6118b2884" Timestamp="0x0037BEBDC2C8D801">%SapSrcDir%\Setup\ProductCommon.dtd</Src>
+			<Src Hash="SHA-256:a5726ea8743c6ee0ee3190edafc0e256718a3773cdeadae537d95341003cd04b" Timestamp="0x0037BEBDC2C8D801">%SapSrcDir%\Setup\ProductDefinition.dtd</Src>
+			<Src Hash="SHA-256:0af0ae6aadd86ef9926920401a5113b6338ef17be92f4f6f6c40083fd34aae83" Timestamp="0x0037BEBDC2C8D801">%SapSrcDir%\Setup\ProductDefinition2.dtd</Src>
+			<Src Hash="SHA-256:c2834f1e2a8b29d87a74355168c1c34f226ba5976cf0df2754d67a7aa3b2eeb3" Timestamp="0x0037BEBDC2C8D801">%SapSrcDir%\Setup\ProductLocales.dtd</Src>
+			<Src Hash="SHA-256:d303b5c50cd5220997fe5ebd7624fb4c4f8607f7f9f1970e734b2d537f16e446" Timestamp="0x0037BEBDC2C8D801">%SapSrcDir%\Setup\ProductVars.dtd</Src>
+		</Action>
+	</Component>
+	<!-- SAPsetup Files for the Server Only -->
+	<Component BuildTime="0xA0C1C7C092F8D801" Guid="{F50578DC-7D16-4E16-A24F-3AF324254DB2}" Min_Compliant_Version="2002" Name="SapSetup Administrative Tools" Size="4264" Version="2378">
+		<Requires Guid="{99DCFB1F-61F0-4DA0-BE94-AE3FDA5DCFFD}"/>
+		<Action Dst="%SapServerDir%" Type="File">
+			<Src FileVersion="2022.0.110.0" Hash="SHA-256:6182c53bcd80a4f0f36c92605571188eea272867077caf9617bd4c3520483e6d" Timestamp="0x00CEAF20C3C8D801">%SapSrcDir%\SetupAll.exe</Src>
+		</Action>
+		<Action Dst="%SapServerDir%\Setup" ForceOnServer="true" Type="File">
+			<Src FileVersion="9.110.0.0" Hash="SHA-256:5f17e271768eaae46e9033641cd95823cfe4ae2542ae03e04b442d631fb64483" Register="false" Timestamp="0x00F79FA2C3C8D801">%SapSrcDir%\Setup\Interop.NwSapAdminEngineLib.dll</Src>
+			<Src FileVersion="9.0.110.0" Hash="SHA-256:30d92bf37872ca003401d05f090ac3f7e3eabe96ba2bc0f9043128b7cd7f6c2b" Register="false" Timestamp="0x00F9D6FAC3C8D801">%SapSrcDir%\Setup\NwSapSetupAdmin.exe</Src>
+		</Action>
+		<Action Dst="%SapServerDir%" ForceOnServer="true" Type="File">
+			<Src Hash="SHA-256:837b336ced65084c729bc546c3aaf10a947919579095bcc07db668d8cbd64327" Timestamp="0x0037BEBDC2C8D801">%SapSrcDir%\SAP Setup Guide.pdf</Src>
+		</Action>
+		<Action Dst="%SapServerDir%\Setup" Type="File">
+			<Src Hash="SHA-256:256a2f06e192e2cae110fced98d66c31db4b10adc206275075a083826b3a8b7a" Timestamp="0x0037BEBDC2C8D801">%SapSrcDir%\Setup\ScriptSamples.xml</Src>
+			<Src FileVersion="9.0.110.0" Hash="SHA-256:e4fbd85e11f0bb228b54e7aa81b142cfa5706498c6cb16740149b02265459739" Register="false" Timestamp="0x00958E70C3C8D801">%SapSrcDir%\Setup\SapSx.exe</Src>
+			<Src FileVersion="9.0.110.0" Hash="SHA-256:6d1c9caaaf5fa2d6659b18d5e87f695b3b0ff71d025449246faadda0b8ec07d7" Register="false" Timestamp="0x00CA6EA1C3C8D801">%SapSrcDir%\Setup\NwSapAdminEngine.dll</Src>
+			<Src FileVersion="9.0.110.0" Hash="SHA-256:124a7736e58a959afd5d3ccbb0c652b870a3e45940736e4dcda44abc132e6e65" Register="false" Timestamp="0x007B77BAC3C8D801">%SapSrcDir%\Setup\NwCreateInstServer.exe</Src>
+			<Src FileVersion="9.0.110.0" Hash="SHA-256:bdeddf2bca6bd7607a4a8df82d4cb014701b5b07c0a3d8ef09289f15f747d046" Register="false" Timestamp="0x00D5D9BCC3C8D801">%SapSrcDir%\Setup\NwUpdateInstServer.exe</Src>
+			<Src Hash="SHA-256:090ffb92359abbf622a47a416e1d10601dfff320046ffb2555435d80bf6f0120" Timestamp="0x0037BEBDC2C8D801">%SAPSrcDir%\Setup\SapAdminSplash.jpg</Src>
+		</Action>
+		<Action Dst="%SapServerDir%\Setup" ForceOnServer="true" Type="File">
+			<Src Hash="SHA-256:d046bb9aaa9bcf256150e5a2a0e96267804962a4c39242eff904dc46267a9e40" Timestamp="0x00D45429C4C8D801">%SapSrcDir%\Setup\SapSetup.xml</Src>
+			<Src Hash="SHA-256:b9679ea111c66f5eeedd265c68a6fc085d1530bbbc10a38a4c084a971e9592a4" Timestamp="0x0037BEBDC2C8D801">%SapSrcDir%\Setup\SapSetupLocale.xml</Src>
+			<Src Hash="SHA-256:8138beeeb2d950cfbc4a06e2b2a052a7836ded03bbea0ed82d6191d0ecd701ec" Timestamp="0x0037BEBDC2C8D801">%SapSrcDir%\Setup\SapSetupVars.xml</Src>
+		</Action>
+	</Component>
+	<Component BuildTime="0xA0C1C7C092F8D801" Guid="{714A5C76-F750-4218-A5DB-A822A299AAEC}" Min_Compliant_Version="2002" Name="SAPSetup DS" Size="1095" Version="2378">
+		<Action Dst="%SapServerDir%\Setup\DS" Type="File">
+			<Src Hash="SHA-256:07c595c8992eedcfb9e72aaab4304c0cd4fc9a66766b3bdd64ae6ba0936b15d6" Timestamp="0x0037BEBDC2C8D801">%SapSrcDir%\Setup\DS\NwSapSetupDs.cfg</Src>
+		</Action>
+		<Action Dst="%SapServerDir%\Setup" Type="File">
+			<Src FileVersion="9.0.110.0" Hash="SHA-256:bab600245e9f8aac0bf1a42bd81abf0e386032c5820b04dfad980fed2225cec5" Register="false" Timestamp="0x00B4986AC3C8D801">%SapSrcDir%\Setup\NwSapSetupIs.exe</Src>
+		</Action>
+		<Action Description="SAP Service to manage LSH and ASU" DisplayName="SAP Frontend Software Distribution Service" Dst="%SapServerDir%\Setup\DS" ExeName="%SapSrcDir%\Setup\DS\NwSapSetupDs.exe" ServiceName="NwSAPDistribSvc" Type="NtService">
+			<Src FileVersion="9.0.110.0" Hash="SHA-256:4f1ef98abc4da5a6b0a879335d4fad20e983e6faa20a2c952b394fe1340673e7" Timestamp="0x004FCB4CC3C8D801">%SapSrcDir%\Setup\DS\NwSapSetupDs.exe</Src>
+		</Action>
+	</Component>
+</SapSetup>

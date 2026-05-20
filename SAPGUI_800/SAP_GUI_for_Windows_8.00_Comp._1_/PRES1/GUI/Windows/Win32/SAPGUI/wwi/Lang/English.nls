@@ -1,0 +1,945 @@
+; WA070999: [Dialog_Error] 254
+; WA250700: [Check] 005, 006
+; MI200401: [MsgBox] 090-093, 135-137, 146-147, 149-150,
+;           [Error] 001-500
+;           [Menu]  003
+;           [Custm] 001-004
+;           [DfNNG] 001-030
+;           [PrnBV] 000-011
+;           [Templ] 001-023
+
+[MsgBox]
+001=Cannot insert a symbol into a symbol or phrase.
+002=Cannot insert into a symbol.
+003=Position the cursor within a symbol.
+004=Wrong position for F1.
+005=Enter a numerical value for the recursion depth.
+
+006=Cannot insert a phrase into a symbol or phrase.
+007=A symbol or phrase cannot be inserted into a group definition.
+008=Place the cursor in a repeating or blank compression group in order to edit it.
+009=Select a symbol or phrase to edit.
+
+010=No symbol delimiters entered in WWI.INI file.
+011=Select an input box.
+012=Do you really not want to place a phrase in front of the first symbol?
+013=Do you really want to replace the selected text?
+014=The Wizard cannot be started from within a table.
+015=Settings saved.
+
+020=Cannot insert a table here.
+021=Do not select more than one cell.
+025=Cannot insert frame here.
+
+030=Select the relevant text first.
+031=Enter an 'IF' condition.
+032=Cannot support the selected operator.
+
+040=Could not find language file ''.
+041=WWI.INI file contains no path for symbol file.
+042=Could not save color settings.
+
+050=Symbol file and value file are not synchronized.
+051=Could not find value file ''.
+060=Inconsistent symbol structure.
+070=Could not save color settings in WWI.INI.
+
+080=Enter a symbol name.
+081=Enter a phrase ID.
+082=Specify a list.
+083=Specify a type.
+084=Specify a category.
+085=Specify a method.
+086=Specify a numerical mask.
+087=Specify a processing method.
+088=Enter a library.
+
+090=File ' ' was created for another WWI version.
+091=Value file ' ' was not found.
+092=You have not yet saved the document ''. Save it now.
+093=Value file '' is already open.
+
+100=The value for the minimum font size must be smaller than or equal to the value for the maximum font size.
+101=Invalid entry in field for maximum font size.
+102=Invalid entry in field for minimum font size.
+103=Cursor is not positioned in a text box or frame.
+
+; !!! only used by MakeDisk, !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+111=Specified directory is not the WWI root directory.
+113=Insert a disk.
+114=Installation disks created successfully.
+115=Insert another empty disk.
+
+120=Could not find file ''.
+121=File '' is already open.
+122=All command names were written to WWI.INI.
+; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+130=No nesting of conditioned text.
+131=Could not process all symbols contained in text block.
+132=Processed too many conditioned text blocks.
+133=Error in structure of repeating groups.
+134=
+135=The structure of the optimization group is incorrect.
+136=Special repeating group not processed.
+137=The structure of the special repeating group is incorrect.
+138=Synchronization error: symbol names differ.
+139=Value file processed too soon.
+140=Error reading file.
+141=Wrong symbol in document.
+142=Value file not yet processed.
+143=End of conditioned text block but no start of conditioned text block.
+144=Could not find end of group.
+145=Error in group structure.
+146=No nesting of special repeating groups.
+147=End of special repeating group found, but conditioned text block is still active.
+148=Could not find end of blank compression group.
+149=Incorrect nesting of optimization groups.
+150=Could not find end of optimization group.
+151=Could not adapt text to size of frame.
+152=Height of frame must be set to 'Exactly'.
+153=System does not support bar code type ''.
+154=Cannot find symbol ''.
+
+
+160=You cannot edit this document without using EH&S.
+161=Unsupported parameter in R/3 variable ''.
+162=The style '' contains the font format "Hidden".   This is not allowed.
+
+170=Required entry not made.
+
+180=Do you want to save ''?
+181=Document '' contains errors. Save document?
+182=Document '' was not checked. Save document?
+
+185=Document contains no syntax errors.
+186=''. Document contains errors. Start correction?
+187=''. Document contains warnings. Start correction?
+188=Warning: Document contains Word styles with font attribute 'hidden'. This can cause complications. Please remove the attribute 'hidden' from following styles: @
+
+190=File read error
+
+200=Symbol type not supported.
+
+210=Changes not possible in display mode.
+211=Changes not possible in test mode.
+
+220=You are not authorized to change basic settings.
+221=The phrase search result list is empty.
+222=Specify substance value assignment type.
+223=Specify recursion depth.
+224=Specify type.
+225=Specify user exit.
+
+231=Specify control symbols for blank compression.
+232=Search result is empty.
+
+500=Function not available with EH&S version older than 2.20B.
+512=Value out of range.
+
+600=Error on RFC connection
+
+700=Enter an ID.
+701=The ID must be shorter than 31 characters.
+702=Cursor is not positioned in a text box.
+
+800=Unknown user exit macro: '@'
+801=AddIn '@' could not be loaded
+
+[Error]
+001=File name not valid.
+002=Error value file no.
+003=Value file not found.
+004=Value file not available.
+005=File is already open.
+006=Error opening value file no.
+
+100=More values in value file.
+101=Wrong WWI version.
+
+110=No nesting of conditioned text.
+111=Not all symbols in conditioned text block expanded.
+112=Too many conditioned text blocks created.
+113=Incorrect structure of NG.
+114=Incorrect structure of RG.
+115=Incorrect structure of OG.
+116=SRG not created correctly.
+117=Synchronization error: symbol names different.
+118=Too little data in value file.
+119=Error reading data.
+120=Wrong symbol in document.
+
+122=Incorrect RG structure.
+123=End CBlock without Begin CBlock.
+124=No group end found.
+125=Incorrect group structure.
+126=No nesting of (S)RGs.
+127=ESG found although CBlock active.
+128=Incorrect SRG structure.
+129=No end of group found.
+130=End of blank compression not found.
+131=Incorrect OG structure.
+132=End of OG not found.
+133=Error during font size adjustment. Check the anchor point of the frame.
+
+500=Call bar code algorithm.
+
+; Internal errors interpreting dialog description files
+[Dialog_Error]
+200=Cannot set value
+201=Cannot get value
+202=Cannot create control ''
+203=Error opening the dialog description file
+204=Parameter for section subheading not found
+205=Error in dialog layout 
+206=Error in memory allocation
+207=Cannot open file ''
+208=Cannot write to file ''
+209=Cannot close file ''
+210='' not found
+211=Cannot read file
+212=Error in line number ''
+213=$VERSION: part not found
+214=$LAYOUT: part not found
+215="Begin dialog" not found
+216=$VALUE: part not found
+217=Part not found
+219=Archive exception
+220=Cannot find resource
+221=Cannot handle this exception
+222=Select suitable object
+
+230=Select an item
+231=List box is empty
+
+232=Routine '' not found in DLL 
+    
+233='' DLL not found 	 
+234=This is the last item in list		
+235=This is the first item in list
+236=Invalid value for control ''
+237=Control '' not found in evaluation list
+238=Check value part ($VALUE)
+239=Check input part ($INPUT)
+240=Set system's font size settings to 96 or 120 dpi
+241=Cannot parse string for CONCAT rule
+242=Unequal number of right and left parentheses in text
+243=Cannot open registry key ''
+244='' key not found in language file	
+245=Control '' does not exist
+246=Cannot generate output string
+247=Cannot clear/fill control '' 
+248=Check dependency part ($DEPENDANCES)
+249=Invalid dependency rule for control ''
+250=Use slash (/) to separate section and key
+251=No FILLEDBY rule in value part for control ''  
+252=Slash (/) missing to separate start and end markers in output part
+253=Cannot be set for control ''
+254=Returned string (beginning of group) is too long. Max. '' characters.
+
+[Menu]
+001=&WWI
+002=Basic Se&ttings...
+003=Cust&omize
+004=Display &Mode
+005=Insert &Repeating Group...
+006=Insert Bl&ank Compression...
+007=Insert S&ymbol...
+008=&Wizard...
+009=Conditioned Te&xt
+010=&Save
+011=Scan Symbols
+012=Expand Symbols
+013=WWI &Version
+014=Automatic Character Si&zing...
+015=&Installation Disk
+016=&Check Layout
+017=&Back to R/3
+018=Insert &Phrase...
+019=Edit &Group...
+020=&Edit Symbol or Phrase...
+
+021=Display Mode
+022=Insert Repeating Group
+023=Insert Blank Compression
+024=Insert Symbol
+025=Wizard
+026=Conditioned Text
+027=Automatic Character Sizing
+028=Insert Phrase
+029=Edit Group
+030=Reset Text
+031=Symbol Info F1
+032=Edit Symbol or Phrase
+
+033=&Label Wizard...
+034=Insert Serial &Number...
+
+040=Bar Code...
+041=Components
+042=Save
+043=Load
+044=Delete
+045=Serialization
+046=Numeric...
+047=Numeric Version 1...
+
+050=Base label
+051=Display...
+052=Remove
+
+[Makro]
+021=DisplayMode
+022=InsertRepeatingGroup
+023=InsertBlankCompression
+024=InsertSymbol
+025=Wizard
+026=ConditionedText
+027=AutomaticCharacterSizing
+028=InsertPhrase
+029=EditGroup
+030=EditSymbolPhrase
+
+[Description]
+002=Basic settings
+003=Sets access path and language
+010=Saves file and scans symbols
+011=Searches for symbols in text
+012=Expands symbols in text
+013=Displays WWI version number
+014=Optimum adaptation of text in position frame to size of frame
+015=Creates installation disks
+016=Checks layout
+
+021=Displays or hides control characters
+022=Inserts a repeating group
+023=Inserts blank compression
+024=Inserts a symbol
+025=Inserts a template
+026=Inserts conditioned text
+
+027=Symbol selection aborted
+
+[Custm]
+001=User-Defined Settings
+002=Show Execution Time
+003=Display Expansion on Screen
+004=WWI Anchor
+
+[DfNNG]
+001=Not Empty
+002=AND
+003=OR
+
+020=Blank Compression
+021=Control Symbols
+022=Symbol
+024=Then
+025=&Add
+026=&Delete
+027=Selected Text
+028=Type of Linkage
+029=Symbol Name
+030=EHS Symbols with Prefix: 01=Symbol, 02=Parameter, 03=Phrase/Description
+
+[PrnBV]
+000=Print Report Template
+001=Select
+002=Print Field Functions
+003=Print Hidden Text
+010=Print ...
+011=Print job was canceled
+
+[Setup]
+000=WWI Settings
+001=Color Settings
+002=Color is Meta Information
+003=Phrase
+004=Symbol
+005=Graphic
+006=Conditioned Text
+007=Control Symbols
+008=&Default
+009=Global
+010=Document Only
+011=Language
+012=Display Change Marks
+013=General
+014=Table
+015=Separator
+016=Width 1
+017=Width of Separator
+018=Text Color
+019=Shade
+020=Frame Left
+021=None
+022=Single
+023=Double
+024=Transparent
+025=Mono
+026=&Activate
+
+050=Error
+051=Warning
+052=Information
+
+060=Scanning symbols
+
+
+[Check]
+000=Check
+001=Term
+002=Change
+003=Continue Check
+004=Back to Template
+005=Error
+006=Warning
+
+[InsSy]
+001=Symbol Properties
+002=Symbol Type
+003=Symbol Type
+005=Name
+006=Phrase ID
+007=Multiple &Values
+008=&All
+009=&First
+011=Expansion Mode
+012=None
+013=GPC
+014=IT
+015=NM
+016=&G (Graphics)
+017=&P (Phrase)
+018=&C (Code)
+019=&I
+020=&T
+021=&Category
+022=T&ype
+023=&List
+024=&Method
+025=&N
+026=&M
+027=Numerical Mask
+028=Processing Method
+029=&Search
+030=Bar Codes:
+031=&F (Insert File)
+032=B
+033=&Value Mandatory
+
+040=Phrase
+041=Symbol
+042=Parameter
+043=Phrase
+
+050=Library
+
+[NotNull]
+001=Blank Compression
+002=&Add
+003=&Delete
+004=Operator
+005=A&ND
+006=O&R
+007=Symbol
+008=Con&trol Symbols
+009=Symbols in &Highlighted Text	
+011=Include ELSE
+025=Cop&y >>
+026=&Modify
+
+
+[DfRGr]
+001=Repeating Group
+002=Text Mode
+003=Repeating Group
+004=Special Repeating Group
+005=Repeating Group Type
+006=&Master Group
+007=Slave &Group
+008=&Validity Area, Language
+009=&Discrete Expansion of Multiple Values
+010=So&urces
+011=Recursion Depth
+; 012, 013 are used in 2.2 and 2.5 
+012=&Alphabetical List of All Sources
+013=&Ordered by Inclusion in Text
+014=Optimize
+015=Multiple Values
+016=A&ll
+017=All E&xcept First
+018=Category
+019=Subs. Value Assignment Type
+020=&Search
+021=User Exit
+022=&Name
+023=&Parameter
+; 024, 025 are used in 2.7
+024=Alphabetical List of All Sources
+025=Ordered by Inclusion in Text
+026=Parameter &Hierarchy
+027=No Param&eters
+028=Validity Area &Category
+029=Validity A&rea
+030=Composition 
+031=Recursive Composition
+032=User-Defined Texts
+033=Usage
+034=Transport Classification
+035=Hazard Inducer
+036=L&anguage
+037=<None>
+038=&Formula
+039=Standard Formula
+040=Formula
+041=Recursive Formula
+042=Input Substance
+043=Input Material
+044=Output Substance
+045=Output Material
+046=Composition
+047=Default Material
+048=Standard Alternative
+049=Role
+050=Depth
+051=List
+052=User Exit
+053=<All>
+
+; ????????????????????????????????????????????????????????????????
+100=GCZ:GCZ;Schmelzpunkt:SchmelzPKT;SiedePunkt:SiedePkt		?????
+101=POS:POS;POSD:POSD;Frei:FREI;Verw:VERW;TranspCl:CLASS
+102=Interne Texte:INT;Externe Texte:EXT
+; ????????????????????????????????????????????????????????????????
+
+[PhSrch]
+001=Phrase Search
+002=&Phrase Library
+003=&Filter
+004=&Search
+005=Phrase Key
+006=Symbol &Name
+007=Phrase &Group
+010=(none)
+
+[WizGrp]
+001= Wizard Group Options
+002= &Filter
+003= With &Heading
+004= Substance Value Assignment Type
+005= De&lete
+006= &Up
+007= &Down
+008= S&ymbol
+009= &Phrase
+010= Separa&tor
+011= &Search
+012= H&eading
+013= Symbols (Including Phrase if Checked)
+014= Styles
+015= Heading
+016= As T&able
+020= Standard
+021= Heading 1
+022= Heading 2
+
+[WizSym]
+001= Wizard Symbol Options
+002=Symbol Type
+003=Symbol Type
+005=Name
+006=Phrase ID
+007=Multiple &Values
+008=&All
+009=&First
+011=Expansion Mode
+012=None
+013=GPC
+014=IT
+015=NM
+016=G (Graphics)
+017=P (Phrase)
+018=C (Code)
+019=I
+020=T
+021=Cat.
+022=Type
+023=List
+024=Method
+025=N
+026=M
+027=Numerical Mask
+028=Processing Method
+029=&Search
+030=Bar Codes:
+031=F (Insert File)
+
+040=Phrase
+041=Symbol
+042=Parameter
+
+130=&With Phrase
+131=Phrase
+132=&Search
+134=&Filter
+135=P&hrase
+136=Separa&tor
+137=S&ymbol
+138=Blank &Compression
+139=Styles
+
+[WizPhr]
+001= Wizard Heading Options
+002= &Filter
+004= Heading
+005= S&tyle
+006= &Search
+
+;??????????????????????
+[SymbolLabel]
+001=
+002=
+
+100=
+101=
+102=
+
+[Color]
+000=Auto
+001=Black
+002=Blue
+003=Cyan
+004=Green
+005=Magenta
+006=Red
+007=Yellow
+008=White
+009=Dark Blue
+010=Turquoise
+011=Dark Green
+012=Violet
+013=Dark Red
+014=Ochre
+015=Dark Gray
+016=Light Gray
+
+[Templ]
+001=Input Format Mask
+002=Table
+003=Interval
+004=Type
+005=Input
+006=Accuracy
+007=Lower Limit
+008=Separator
+009=Upper Limit
+010=Exponent
+011=With Blank Compression
+012=Table Type
+013=Symbol Input
+014=Phrase
+015=Separator
+016=Symbol
+017=F4
+
+020=Symbol
+021=Phrase
+022=Text
+
+023=Value
+
+[PosFr]
+001=Font Size in Frame
+002=Minimum
+003=Maximum
+004=Font Size in Points
+
+[MkDsk]
+001=Create Installation Disks
+002=WWI Directory
+003=Select Target Drive
+
+[Save]
+001=WWI - EH&S
+002=Save and Back
+003=Back Without Saving
+004=Check, Save and Back
+005='' has not been checked since the last changes.
+006='' contains errors.
+007='' contains warnings.
+
+[RTFError]
+2=Error reading file '@'
+5=Error opening file '@'
+6=Out of memory
+7=Graphic file '@' not found
+8=Error writing to file '@'
+12=Incorrect version number '@' in value file
+13=End of group ('@') does not match beginning of group
+14=Begin of group ( '@') and end of group are in different table columns and do not span the entire row.
+15=Brackets for conditioned text in repeating group '@' do not match.
+
+20=Graphic '@' could not be inserted
+21=File '@' could not be inserted
+30=Include '@' could not be resolved
+50=End of group for '@' missing
+51=Unknown symbol type '@'
+
+200=Function not available in DLL
+
+300=Error in value file. Symbol '@'
+301=Symbol type in value file does not match symbol type in layout '@'
+302=RTF value in value file is corrupted: '@'
+303=value file is not valid, maybe Unicode configuration is wrong, see note 733416
+
+501=Dynamically sized text found
+502=Link to graphic '@' inserted
+
+601=Invalid lower limit for the font size: '@'
+602=Invalid upper limit for the font size: '@'
+603=Invalid lower and upper limit for the font size: '@'
+604=Normal text before <100DYNTEXT> marker
+605=The text box "@" was formatted with the lower limit font size. Further reduction may be necessary.
+606=The text box "@" was formatted with the upper limit font size. Further enlargement may be possible.
+607=Bar code library could not be loaded.
+608=The following bar code parameters could not be set: '@'. Default values were set instead.
+609=The bar code bitmap could not be created.
+610=There is a graphic inside a frame with dynamic text. Text sizing not possible.
+611=There is a bar code inside a frame with dynamic text. Text sizing not possible.
+612=There was a graphic or a file inserted into a frame with dynamic text. Text sizing not possible.
+613=Invalid bar code parameter: '@'
+614=Barcode data is invalid for barcode type: '@'
+615=Report Type '@' not supported by GLM. Execute the Label Wizard on the report template.
+616=The bar code library returned an error
+617=Dynamic test sizing might be wrong. No printer device context is used.
+
+999=General error occurred
+
+[ComponentWizard] 
+;Text for controls and forms
+001=Save Component
+002=Group:
+003=Component:
+004=Comment:
+005=Save
+006=Close
+011=Load Component
+012=Select Group:
+013=Component:
+014=Comment:
+015=Load
+016=Close
+021=Delete Component
+022=Select Group:
+023=Component:
+024=Comment:
+025=Delete
+026=Close
+027=Save WWI Component
+028=Load WWI Component
+029=Delete WWI Component
+030=Components
+;Messages
+100=Invalid mode for component dialog.
+101=Cannot initialize the component dialog.
+102=Text for group or component description missing.
+103=Selected object combination is not allowed.
+104=Internal error occurred during saving process.
+105=Cannot initialize the component dialog for the languages.
+106=No selected component found.
+107=Error: Cannot delete the selected component.
+108=Error: Cannot save the selected component.
+109=Error: Cannot load the selected component.
+110=There is no component selected for this action.
+111=The group name must be defined.
+112=The component name must be defined.
+
+[ADOConnection] 
+;Messages
+001=Cannot establish the connection to the WWI database.
+002=Error disconnecting from the database.
+003=Cannot start database transaction.
+004=Cannot complete database transaction.
+005=Cannot roll back database transaction.
+006=Error during the configuration of the ADO OLEDB connection.
+007=Cannot read data from the database.
+008=Cannot filter the data from the database.
+009=Cannot sort the data from the database.
+010=Cannot execute the SQL command.
+011=Error constructing a condition.
+012=Error initializing an ADO data control.
+
+[GENIFIXSNR]
+001=Serial Number Definition
+002=ID
+003=Only Max. Serial No.
+004=Definition
+005=OK
+006=Cancel
+
+[Barcodes] 
+CODABAR=CodaBar
+CODE128=Code 128
+CODE128_A=Code 128 code set A
+CODE128_B=Code 128 code set B
+CODE128_USER=Code 128 User Mode
+CODE39=Code 39
+CODE39_ASCII=Code 39 ASCII Mode
+CODE93=Code 93
+EAN128=EAN-128
+EAN13=EAN-13
+EAN8=EAN-8
+FIM=FIM
+ITF=Interleaved 2 of 5 (ITF)
+MSI=MSI Code
+UCC128=UCC-128
+UPC_A=UPC Version A
+UPC_E=UPC Version E
+UPC_E_USER=UPC Version E User Mode
+USPN=US PostNet
+MC23=Maxi Code Mode 2 and 3
+MC4=Maxi Code Mode 4
+MC5=Maxi Code Mode 5
+MC6=Maxi Code Mode 6
+DM=Data Matrix
+PDF417=PDF417
+001=Bar Code
+002=Type
+003=Automatically Generate Check Digit
+004=OK
+005=Cancel
+006=Generate at Runtime
+007=Symbol
+008=Data
+009=Description
+010=Show Description
+011=Description Corresponds to Data
+012=Multi-Row Mode
+013=Rotation
+014=Linear
+015=Dimension
+016=Width of Thin Lines
+017=Height
+018=Width Ratio
+019=Maxi Code
+020=Bar Code Height
+021=Data Matrix
+022=Font:
+023=Font Style:
+024=Size:
+025=Delimiter
+026=ECI
+027=Country Code
+028=Postal Code
+029=Service Class
+030=Line Number
+031=Symbol Width
+032=Mode
+033=ECC
+034=ECI Prefix
+035=Macro Code
+036=Symbol Data Height
+037=User-Defined Format X
+038=FNC1
+039=Reader Initialization 
+040=Rectangle
+041=Shortened Format
+042=No. of Rows
+043=GLI Prefix
+044=GLI
+045=Height Ratio
+046=Formatting
+047=Font
+048=PDF417
+049=Inch
+050=Millimeter
+051=Italic
+052=Bold
+053=Underlined
+054=B
+055=I
+056=U
+057=Left
+058=Center
+059=Right
+060=Invalid delimiter
+061=Invalid ECI
+062=Invalid country code
+063=Invalid service class
+064=Fixed Capacity & DimX
+065=Fixed Capacity & Match Frame
+066=Auto Capacity & Fixed
+067=Auto Capacity & Match Frame
+068=Invalid display mode
+069=No error recovery
+070=Can recover
+071=Invalid ECC
+072=Invalid no. of columns
+073=Invalid ECI prefix
+074=Invalid ECI
+075=No macro insertion
+076=Insert macro
+077=Invalid macro code
+078=Invalid user-defined format
+079=Autodetect
+080=Invalid symbol data height
+081=Invalid rotation
+082=Invalid no. of rows
+083=Error correction level
+084=Invalid GLI
+085=Invalid GLI prefix
+086=Invalid height ratio
+087=Invalid dimension
+088=Invalid bar width
+089=Invalid bar height
+090=Invalid width ratio
+091=Data Symbol
+092=Parameter Symbol
+093=Invalid WWI symbol
+094=Invalid symbol name
+095=Invalid data
+096=Invalid bar code width
+097=Invalid symbol width
+098=Phrase Symbol
+099=Invalid font size
+100=Invalid font name
+101=Foreground Color
+102=Background Color
+103=Black
+104=Blue
+105=Green
+106=Cyan
+107=Red
+108=Magenta
+109=Yellow
+110=White
+111=Invalid postal code
+112=No bar codes specified
+113=Lower limit reached
+114=Upper limit reached
+115=ID
+116=ID
+117=Enter an ID.
+118=The ID must be shorter than 31 characters.
+
+[TreeDlgLabel]
+Label= Symbol Tree
+
+[Buttons]
+001=OK
+002=Cancel
+
+[LABELWIZARD]
+001=Document has to be empty to use the Label Wizard
+002=Centimeters
+003=Inches
+004=Points
+005=Picas
+006=Invalid size for label layout
+007=Label Layout Size Adjusted (Width/Height):
+008=WWI Label Wizard
+009=Width
+010=Height
+011=Create Label Layout
+

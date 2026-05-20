@@ -1,0 +1,9 @@
+{
+  "name": "com.sap.native.host",
+  "description": "SAP Native message App",
+  "path": "C:\\Program Files (x86)\\SAP\\FrontEnd\\SAPgui\\SAPNativeMessagingHost.exe",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://mhpigfckgphoiifbehgajfbkocihbaho/"
+  ]
+}

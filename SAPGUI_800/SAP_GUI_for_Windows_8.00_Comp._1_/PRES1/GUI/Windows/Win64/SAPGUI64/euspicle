@@ -1,0 +1,445 @@
+# @(#) $Id: //fes/800_REL/src/dwb/eusp/euspicle#1 $ SAP
+#234 123456789012345678901234567890 1 B S M F T 12345678 L 1 123456789012345678901234567890 123456789012345678901234567890
+@00@ ICON_DUMMY                     2 X X X X X @B_DUMY@   E PlaceholderIcon                PlaceholderIcon               
+@01@ ICON_CHECKED                   2   X       @S_OKAY@   E Checked; OK                    Checked; OK                   
+@02@ ICON_INCOMPLETE                2   X       @S_NONO@   E Incomplete                     Incomplete                    
+@03@ ICON_FAILURE                   2   X   X   @S_ERRO@   E Failed                         Failed                        
+@04@ ICON_POSITIVE                  2   X       @S_POSI@   E Positive                       Positive                      
+@05@ ICON_NEGATIVE                  2   X       @S_NEGA@   E Negative                       Negative                      
+@06@ ICON_LOCKED                    2 X X   X   @S_LOCL@   E Locked; lock                   Locked; lock                  
+@07@ ICON_UNLOCKED                  2 X X   X   @S_LOOP@   E Free; unlock                   Free; unlock                  
+@08@ ICON_GREEN_LIGHT               4   X       @S_TL_G@   E Green light; positive          Green light; positive         
+@09@ ICON_YELLOW_LIGHT              4   X       @S_TL_Y@   E Yellow light; neutral          Yellow light; neutral         
+@0A@ ICON_RED_LIGHT                 4   X       @S_TL_R@   E Red light; negative            Red light; negative           
+@0B@ ICON_TOTAL_LEFT                2 X     X   @B_TOTL@   E Extreme left; first ...        Extreme left; first ...       
+@0C@ ICON_TOTAL_RIGHT               2 X     X   @B_TOTR@   E Extreme right; last ...        Extreme right; last ...       
+@0D@ ICON_COLUMN_LEFT               2 X     X   @B_COLL@   E Column left; previous ...      Column left; previous ...     
+@0E@ ICON_COLUMN_RIGHT              2 X     X   @B_COLR@   E Column right; next ...         Column right; next ...        
+@0F@ ICON_PAGE_RIGHT                2 X     X   @B_PAGR@   E Page right                     Page right                    
+@0G@ ICON_PAGE_LEFT                 2 X     X   @B_PAGL@   E Page left                      Page left                     
+@0H@ ICON_PREVIOUS_VALUE            2 X     X   @B_PRVI@   E Previous value; next entry     Previous value; next entry    
+@0I@ ICON_NEXT_VALUE                2 X     X   @B_NXTI@   E Next value; previous entry     Next value; previous entry    
+@0J@ ICON_ANNOTATION                2 X     X   @B_ANNO@   E Note; remark                   Note; remark                  
+@0K@ ICON_CREATE_NOTE               2 X     X   @B_NOCR@   E Create note                    Create note                   
+@0L@ ICON_DISPLAY_NOTE              2 X     X   @B_NODP@   E Display note                   Display note                  
+@0M@ ICON_CALCULATION               2 X     X   @B_CALC@   E Costing                        Costing                       
+@0N@ ICON_GRAPHICS                  2 X     X   @B_GRAF@   E Graphics                       Graphics                      
+@0O@ ICON_CREATE_TEXT               2 X     X   @B_TXCR@   E Create text                    Create text                   
+@0P@ ICON_DISPLAY_TEXT              2 X     X   @B_TXDP@   E Display text                   Display text                  
+@0Q@ ICON_CHANGE_TEXT               2 X     X   @B_TEXT@   E Text                           Text                          
+@0R@ ICON_VARIANTS                  2 X     X   @B_VARI@   E Variants                       Variants                      
+@0S@ ICON_INFORMATION               2 X     X   @B_INFO@   E Information                    Information                   
+@0T@ ICON_ADDRESS                   2 X     X   @B_ADDR@   E Address                        Address                       
+@0U@ ICON_VIEWER_OPTICAL_ARCHIVE    2 X     X   @B_OPTA@   E Optical archive viewer         Optical archive viewer        
+@0V@ ICON_OKAY                      2 X     X   @B_OKAY@   E OK; Continue; Choose <value>   OK; Continue; Choose <value>  
+@0W@ ICON_CANCEL                    2 X     X   @B_CANC@   E Cancel                         Cancel                        
+@0X@ ICON_PRINT                     2 X     X X @B_PRNT@   E Print                          Print                         
+@0Y@ ICON_CREATE                    2 X     X   @B_CREA@   E Create                         Create                        
+@0Z@ ICON_CHANGE                    2 X     X   @B_CHNG@   E Change                         Change                        
+@10@ ICON_DISPLAY                   2 X     X   @B_DISP@   E Display                        Display                       
+@11@ ICON_DELETE                    2 X     X   @B_DELE@   E Delete                         Delete                        
+@12@ ICON_TEST                      2 X     X   @B_TEST@   E Test                           Test                          
+@13@ ICON_SEARCH                    2 X     X   @B_SRCH@   E Find                           Find                          
+@14@ ICON_COPY_OBJECT               2 X     X   @B_COPY@   E Copy <object>                  Copy <object>                 
+@15@ ICON_EXECUTE_OBJECT            2 X     X   @B_EXEC@   E Execute <object>               Execute <object>              
+@16@ ICON_SELECT_DETAIL             2 X     X   @B_DETL@   E Choose detail; detail screen   Choose detail; detail screen  
+@17@ ICON_INSERT_ROW                2 X     X   @B_INSR@   E Insert line                    Insert line                   
+@18@ ICON_DELETE_ROW                2 X     X   @B_DELR@   E Delete line                    Delete line                   
+@19@ ICON_MESSAGE_INFORMATION       4     X     @M_INFO@   E Information message            Information message           
+@1A@ ICON_MESSAGE_WARNING           4     X     @M_WARN@   E Warning                        Warning                       
+@1B@ ICON_MESSAGE_ERROR             4     X     @M_ERRO@   E Error message                  Error message                 
+@1C@ ICON_MESSAGE_QUESTION          4     X     @M_QUES@   E Question                       Question                      
+@1D@ ICON_MESSAGE_CRITICAL          4     X     @M_CRIT@   E Critical message               Critical message              
+@1E@ ICON_DISPLAY_MORE              4 X     X   @BGMORE@   E Display/change more            Display/change more           
+@1F@ ICON_ENTER_MORE                4 X     X   @B_MORE@   E Create more                    Create more                   
+@1G@ ICON_EQUAL                     2 X       X @B_EQUA@   E Equal                          Equal                         
+@1H@ ICON_NOT_EQUAL                 2 X       X @B_NEQU@   E Not equal                      Not equal                     
+@1I@ ICON_GREATER                   2 X       X @B_GREA@   E Greater than                   Greater than                  
+@1J@ ICON_LESS                      2 X       X @B_LESS@   E Less than                      Less than                     
+@1K@ ICON_GREATER_EQUAL             2 X       X @B_GREQ@   E Greater/equal                  Greater/equal                 
+@1L@ ICON_LESS_EQUAL                2 X       X @B_LEEQ@   E Less than or equal             Less than or equal            
+@1M@ ICON_INTERVAL_INCLUDE          2 X       X @B_IVIN@   E Include range                  Include range                 
+@1N@ ICON_INTERVAL_EXCLUDE          2 X       X @B_IVEX@   E Exclude range                  Exclude range                 
+@1O@ ICON_PATTERN_INCLUDE           2 X       X @B_PATT@   E Include pattern                Include pattern               
+@1P@ ICON_PATTERN_EXCLUDE           2 X       X @B_NPAT@   E Exclude pattern                Exclude pattern               
+@1Q@ ICON_PHONE                     2 X     X X @T_PHON@   E Telephone number               Telephone number              
+@1R@ ICON_FAX                       2 X     X X @T_TFAX@   E Fax number                     Fax number                    
+@1S@ ICON_MAIL                      2 X     X X @T_MAIL@   E Send message; mail             Send message; mail            
+@1T@ ICON_TIME                      2 X     X X @T_TIME@   E Time                           Time                          
+@1U@ ICON_DATE                      2 X     X X @T_DATE@   E Date                           Date                          
+@1V@ ICON_ALARM                     2 X     X X @T_ALAR@   E Alarm                          Alarm                         
+@1W@ ICON_PROSHARE                  2 X       X @T_PROS@   E Per share                      Per share                     
+@1X@ ICON_VIDEO                     2 X     X X @T_VIDE@   E Video                          Video                         
+@1Y@ ICON_VOICE_INPUT               2 X       X @T_VOIC@   E Language input                 Language input                
+@1Z@ ICON_VOICE_OUTPUT              2 X       X @T_SOUN@   E Language output                Language output               
+@20@ ICON_EQUAL_GREEN               2 X     X X @BGEQUA@   E Select: Equal                  Select: Equal                 
+@21@ ICON_NOT_EQUAL_GREEN           2 X     X X @BGNEQU@   E Select: Not equal              Select: Not equal             
+@22@ ICON_GREATER_GREEN             2 X       X @BGGREA@   E Select: Greater than           Select: Greater than          
+@23@ ICON_LESS_GREEN                2 X       X @BGLESS@   E Select: Less than              Select: Less than             
+@24@ ICON_GREATER_EQUAL_GREEN       2 X       X @BGGREQ@   E Select: Greater than or equal  Select: Greater than or equal 
+@25@ ICON_LESS_EQUAL_GREEN          2 X       X @BGLEEQ@   E Select: Less than or equal     Select: Less than or equal    
+@26@ ICON_INTERVAL_INCLUDE_GREEN    2 X       X @BGIVIN@   E Select: Include range          Select: Include range         
+@27@ ICON_INTERVAL_EXCLUDE_GREEN    2 X       X @BGIVEX@   E Select: Exclude range          Select: Exclude range         
+@28@ ICON_PATTERN_INCLUDE_GREEN     2 X       X @BGPATT@   E Select: Include pattern        Select: Include pattern       
+@29@ ICON_PATTERN_EXCLUDE_GREEN     2 X       X @BGNPAT@   E Select: Exclude pattern        Select: Exclude pattern       
+@2A@ ICON_EQUAL_RED                 2 X     X X @BREQUA@   E Do not select: Equal           Do not select: Equal          
+@2B@ ICON_NOT_EQUAL_RED             2 X     X X @BRNEQU@   E Do not select: Not equal       Do not select: Not equal      
+@2C@ ICON_GREATER_RED               2 X       X @BRGREA@   E Do not select: Greater than    Do not select: Greater than   
+@2D@ ICON_LESS_RED                  2 X       X @BRLESS@   E Do not select: Less than       Do not select: Less than      
+@2E@ ICON_GREATER_EQUAL_RED         2 X       X @BRGREQ@   E Do not select: Greater/equal   Do not select: Greater/equal  
+@2F@ ICON_LESS_EQUAL_RED            2 X       X @BRLEEQ@   E Do not select: Less than/equal Do not select: Less than/equal
+@2G@ ICON_INTERVAL_INCLUDE_RED      2 X       X @BRIVIN@   E Do not select: Include range   Do not select: Include range  
+@2H@ ICON_INTERVAL_EXCLUDE_RED      2 X       X @BRIVEX@   E Do not select: Exclude range   Do not select: Exclude range  
+@2I@ ICON_PATTERN_INCLUDE_RED       2 X       X @BRPATT@   E Do not select: Include pattern Do not select: Include pattern
+@2J@ ICON_PATTERN_EXCLUDE_RED       2 X       X @BRNPAT@   E Do not select: Exclude pattern Do not select: Exclude pattern
+@2K@ ICON_SYSTEM_OKAY               2           @F_OKAY@ X E OK                             OK                            
+@2L@ ICON_SYSTEM_SAVE               2       X   @F_SAVE@   E Save                           Save                          
+@2M@ ICON_SYSTEM_BACK               2           @F_BACK@ X E Back                           Back                          
+@2N@ ICON_SYSTEM_END                2           @F_ENDT@ X E Exit                           Exit                          
+@2O@ ICON_SYSTEM_CANCEL             2           @F_CANC@ X E Cancel                         Cancel                        
+@2P@ ICON_SYSTEM_PRINT              2           @F_PRNT@ X E Print                          Print                         
+@2Q@ ICON_OTHER_OBJECT              2 X     X   @F_OOBJ@   E Other <object>                 Other <object>                
+@2R@ ICON_PREVIOUS_OBJECT           2 X     X   @F_PRVO@   E Previous screen                Previous screen               
+@2S@ ICON_NEXT_OBJECT               2 X     X   @F_NXTO@   E Next screen                    Next screen                   
+@2T@ ICON_SYSTEM_CUT                2 X     X   @F_CUTO@   E Cut                            Cut                           
+@2U@ ICON_SYSTEM_COPY               2 X     X   @F_COPY@   E Copy                           Copy                          
+@2V@ ICON_SYSTEM_PASTE              2 X     X   @F_PAST@   E Paste                          Paste                         
+@2W@ ICON_SYSTEM_UNDO               2       X   @F_UNDO@   E Undo                           Undo                          
+@2X@ ICON_SYSTEM_MARK               2       X   @F_MARK@   E Select mode; select            Select mode; select           
+@2Y@ ICON_FIRST_PAGE                2 X     X   @F_FSTP@   E First page                     First page                    
+@2Z@ ICON_PREVIOUS_PAGE             2 X     X   @F_PRVP@   E Prev. page                     Prev. page                    
+@30@ ICON_NEXT_PAGE                 2 X     X   @F_NXTP@   E Next page                      Next page                     
+@31@ ICON_LAST_PAGE                 2 X     X   @F_LSTP@   E Last page                      Last page                     
+@32@ ICON_SYSTEM_MODUS_CREATE       2           @F_MOCR@ X E Create session                 Create session                
+@33@ ICON_SYSTEM_MODUS_DELETE       2           @F_MODE@ X E Delete session                 Delete session                
+@34@ ICON_SYSTEM_USERMENU           2           @F_USER@ X E Session Manager                Session Manager               
+@35@ ICON_SYSTEM_HELP               2       X   @F_HELP@   E Help                           Help                          
+@36@ ICON_TABLE_SETTINGS            2 X     X   @B_TVAR@   E Report-report call             Report-report call            
+@37@ ICON_REPLACE                   2 X     X   @B_REPL@   E Replace                        Replace                       
+@38@ ICON_CHECK                     2 X     X   @B_CHCK@   E Check                          Check                         
+@39@ ICON_GENERATE                  2 X     X   @B_GENR@   E Generate                       Generate                      
+@3A@ ICON_REFERENCE_LIST            2 X     X   @B_BOOK@   E Where-used list                Where-used list               
+@3B@ ICON_STACK                     2 X     X   @B_CHIP@   E Stack                          Stack                         
+@3C@ ICON_ACTIVATE                  2 X     X   @B_ACTI@   E Activate                       Activate                      
+@3D@ ICON_ICON_LIST                 2 X     X   @B_ICON@   E Icon list; key                 Icon list; key                
+@3E@ ICON_SORT_UP                   2 X     X X @B_SRTU@   E Sort in ascending order        Sort in ascending order       
+@3F@ ICON_SORT_DOWN                 2 X     X X @B_SRTD@   E Sort in descending order       Sort in descending order      
+@3G@ ICON_LAYOUT_CONTROL            2 X     X   @B_LAYT@   E Page view                      Page view                     
+@3H@ ICON_CONVERT                   2 X     X   @B_CONV@   E Convert                        Convert                       
+@3I@ ICON_TOGGLE_DISPLAY_CHANGE     2 X     X   @B_DPCH@   E Display <-> Change             Display <-> Change            
+@3J@ ICON_SET_STATE                 2 X     X   @B_STAT@   E Set status                     Set status                    
+@3K@ ICON_PREVIOUS_NODE             2 X     X   @B_PRVN@   E Previous node                  Previous node                 
+@3L@ ICON_NEXT_NODE                 2 X     X   @B_NXTN@   E Next node                      Next node                     
+@3M@ ICON_TREE                      2 X     X   @B_TREE@   E Hierarchy                      Hierarchy                     
+@3N@ ICON_INSERT_RELATION           2 X     X   @B_INSN@   E Insert dependency              Insert dependency             
+@3O@ ICON_FINAL_DATE                2 X     X   @B_FDAT@   E End date                       End date                      
+@3P@ ICON_HEADER                    2 X     X   @B_HEAD@   E Header; basic data             Header; basic data            
+@3Q@ ICON_OVERVIEW                  2 X     X   @B_OVIW@   E Overview; overview; list scrn  Overview; overview; list scrn 
+@3R@ ICON_DETAIL                    2 X     X   @B_DAIL@   E Detail view                    Detail view                   
+@3S@ ICON_EXPAND                    2 X     X   @B_EXPA@   E Expand; enlarge                Expand; enlarge               
+@3T@ ICON_COLLAPSE                  2 X     X   @B_COLS@   E Compress; reduce               Compress; reduce              
+@3U@ ICON_BREAKPOINT                2 X X   X   @S_BRKP@   E Breakpoint                     Breakpoint                    
+@3V@ ICON_FOREIGN_KEY               2 X     X   @B_FKEY@   E Foreign key                    Foreign key                   
+@3W@ ICON_LIST                      2 X     X   @B_LIST@   E List                           List                          
+@3X@ ICON_CLOSE                     2 X     X   @B_CLOS@   E Close                          Close                         
+@3Y@ ICON_POSITION                  2 X     X   @B_POSN@   E Position; other entry          Position; other entry         
+@3Z@ ICON_SUM                       2 X     X X @B_SUMM@   E Sum                            Sum                           
+@40@ ICON_MOVE                      2 X     X   @B_MOVE@   E Move                           Move                          
+@41@ ICON_RETRIEVE                  2 X     X   @B_RETR@   E Restore                        Restore                       
+@42@ ICON_REFRESH                   2 X     X   @B_REFR@   E Refresh                        Refresh                       
+@43@ ICON_SKIP                      2 X     X   @B_SKIP@   E Skip                           Skip                          
+@44@ ICON_SYSTEM_SETTINGS           2           @F_SETT@ X E User settings                  User settings                 
+@45@ ICON_TOOLS                     2 X     X X @B_TOOL@   E Tools                          Tools                         
+@46@ ICON_COMPARE                   2 X     X   @B_COMP@   E Compare                        Compare                       
+@47@ ICON_SHORT_MESSAGE             2 X     X X @B_SNDN@   E Short message                  Short message                 
+@48@ ICON_IMPORT                    2 X     X   @B_UPLO@   E Import                         Import                        
+@49@ ICON_EXPORT                    2 X     X   @B_DOWN@   E Export                         Export                        
+@4A@ ICON_TRANSPORT                 2 X     X   @B_TRNS@   E Transport                      Transport                     
+@4B@ ICON_SELECT_ALL                2 X     X   @B_MRKA@   E Select all                     Select all                    
+@4C@ ICON_SELECT_BLOCK              2 X     X   @B_MRKB@   E Select block                   Select block                  
+@4D@ ICON_DESELECT_ALL              2 X     X   @B_MRKD@   E Deselect all                   Deselect all                  
+@4E@ ICON_SEARCH_NEXT               2 X     X   @B_SRCC@   E Continue search                Continue search               
+@4F@ ICON_RENAME                    2 X     X   @B_RENM@   E Rename                         Rename                        
+@4G@ ICON_FILTER                    2 X     X   @B_FILT@   E Filter                         Filter                        
+@4H@ ICON_NEXT_HIERARCHY_LEVEL      2 X     X   @B_NLEV@   E Next hierarchy level           Next hierarchy level          
+@4I@ ICON_PREVIOUS_HIERARCHY_LEVEL  2 X     X   @B_PLEV@   E Previous hierarchy level       Previous hierarchy level      
+@4J@ ICON_SYSTEM_POSSIBLE_ENTRIES   2           @F_INPV@ X E Possible entries               Possible entries              
+@4K@ ICON_INTENSIFY                 2 X     X   @B_INTE@   E Emphasize                      Emphasize                     
+@4L@ ICON_PERSONAL_HELP             2       X   @B_PRSH@   E Individual help                Individual help               
+@4M@ ICON_VARIABLE                  2 X     X X @B_VARB@   E Variable                       Variable                      
+@4N@ ICON_SYSTEM_LOCAL_CUT          2           @F_CUTL@ X E Cut (local)                    Cut (local)                   
+@4O@ ICON_SYSTEM_LOCAL_COPY         2           @F_COPL@ X E Copy (local)                   Copy (local)                  
+@4P@ ICON_SYSTEM_LOCAL_PASTE        2           @F_PASL@ X E Paste (local)                  Paste (local)                 
+@4Q@ ICON_SYSTEM_LOCAL_MARK         2           @F_MRKL@ X E Selection mode (local)         Selection mode (local)        
+@4R@ ICON_SYSTEM_REDO               2 X     X   @F_REDO@   E Repeat                         Repeat                        
+@4S@ ICON_BUSINAV_PROCESS           2 X     X X @B_BNPR@   E Process                        Process                       
+@4T@ ICON_BUSINAV_PROCESSMATRIX     2 X     X X @B_BNPA@   E Proc. sel. matrix              Proc. sel. matrix             
+@4U@ ICON_BUSINAV_SYSORGI           2 X     X X @B_BNSO@   E System chart                   System chart                  
+@4V@ ICON_BUSINAV_SZENARIO          2 X     X X @B_BNSZ@   E Scenario                       Scenario                      
+@4W@ ICON_BUSINAV_OBJECTS           2 X     X X @B_BNBO@   E Business objects               Business objects              
+@4X@ ICON_BUSINAV_INFODIAG          2 X     X X @B_BNID@   E Info flow diagram              Info flow diagram             
+@4Y@ ICON_BUSINAV_ENTITY            2 X     X X @B_BNET@   E Entity type                    Entity type                   
+@4Z@ ICON_BUSINAV_PROC_EXIST        2 X     X X @B_BNPV@   E Process exists                 Process exists                
+@50@ ICON_BUSINAV_COMMDIAG          2 X     X X @B_BNCD@   E Communication diagram          Communication diagram         
+@51@ ICON_BUSINAV_DATAMODEL         2 X     X X @B_BNDM@   E Data model                     Data model                    
+@52@ ICON_ALIGN                     2 X     X   @B_ALIG@   E Align                          Align                         
+@53@ ICON_CUT_RELATION              2 X     X   @B_CUTN@   E Cancel link                    Cancel link                   
+@54@ ICON_FIX_COLUMN                2 X     X   @B_FIXC@   E Fix columns                    Fix columns                   
+@55@ ICON_RELEASE_COLUMN            2 X     X   @B_RELC@   E Cancel column fix              Cancel column fix             
+@56@ ICON_NET_GRAPHIC               2 X     X   @B_NETG@   E Network graphics               Network graphics              
+@57@ ICON_PLANNING_TABLE            2 X     X   @B_PLAN@   E Bar chart graphic; plan. board Bar chart graphic; plan. board
+@58@ ICON_PERIOD                    2 X     X   @B_PERI@   E Period screen; time breakdown  Period screen; time breakdown 
+@59@ ICON_ZOOM_IN                   2 X     X   @B_ZOIN@   E Maximize objects               Maximize objects              
+@5A@ ICON_ZOOM_OUT                  2 X     X   @B_ZOUT@   E Minimize objects               Minimize objects              
+@5B@ ICON_LED_GREEN                 2   X       @S_LEDG@   E Go                             Go                            
+@5C@ ICON_LED_RED                   2   X       @S_LEDR@   E Stop                           Stop                          
+@5D@ ICON_LED_YELLOW                2   X       @S_LEDY@                                                                  
+@5E@ ICON_SYSTEM_EXTENDED_HELP      2 X     X   @F_EHLP@                                                                  
+@5F@ ICON_SPACE                     2 X X       @B_SPCE@                                                                  
+@5G@ ICON_BUSINAV_VALUE_CHAIN       2 X     X X @B_BNWK@                                                                  
+@5H@ ICON_WORKFLOW_ACTIVITY         2 X X   X X @B_AKTI@                                                                  
+@5I@ ICON_WORKFLOW_CONDITION        2 X X   X X @B_BEDI@                                                                  
+@5J@ ICON_WORKFLOW_DECISION         2 X X   X X @B_BENT@                                                                  
+@5K@ ICON_WORKFLOW_CONT_OPERATION   2 X X   X X @B_CONT@                                                                  
+@5L@ ICON_WORKFLOW_EXTERNAL_EVENT   2 X X   X X @B_EREI@                                                                  
+@5M@ ICON_WORKFLOW_INTERNAL_EVENT   2 X X   X X @B_ERIN@                                                                  
+@5N@ ICON_WORKFLOW_MULT_CONDITION   2 X X   X X @B_MBED@                                                                  
+@5O@ ICON_WORKFLOW_PARALLEL_SECTION 2 X X   X X @B_PABS@                                                                  
+@5P@ ICON_WORKFLOW_EVENT_PRODUCER   2 X X   X X @B_SERE@                                                                  
+@5Q@ ICON_WORKFLOW_FLOW_OF_CONTROL  2 X X   X X @B_STEU@                                                                  
+@5R@ ICON_WORKFLOW_INDEFINITE_STEP  2 X X   X X @B_UNBE@                                                                  
+@5S@ ICON_WORKFLOW_UNTIL            2 X X   X X @B_UNTI@                                                                  
+@5T@ ICON_WORKFLOW_WAIT_FOR_EVENTS  2 X X   X X @B_WERE@                                                                  
+@5U@ ICON_WORKFLOW_WHILE            2 X X   X X @B_WHIL@                                                                  
+@5V@ ICON_INTERMEDIATE_SUM          2 X     X X @B_SUMP@                                                                  
+@5W@ ICON_EMPLOYEE                  2 X     X X @B_EMPL@                                                                  
+@5X@ ICON_TIME_ZONE                 2 X X   X X @B_TIMZ@                                                                  
+@5Y@ ICON_RELEASE                   2 X X   X   @B_ROBJ@                                                                  
+@5Z@ ICON_QUALIFY                   2   X       @S_QUAL@                                                                  
+@60@ ICON_ISO_CODE                  2   X       @S_ISOC@                                                                  
+@61@ ICON_MODIFY                    2 X     X   @B_CEXI@                                                                  
+@62@ ICON_GET_AREA                  2 X     X   @B_AREA@                                                                  
+@63@ ICON_INTERFACE                 2 X     X   @B_INTF@                                                                  
+@64@ ICON_ROUTING_OPERATION         2 X     X X @B_EVNT@                                                                  
+@65@ ICON_ROUTING_REF_OPERATION     2 X     X X @B_REFE@                                                                  
+@66@ ICON_ROUTING_TASK              2 X     X X @B_TASK@                                                                  
+@67@ ICON_ROUTING_TODO              2 X     X X @B_TODO@                                                                  
+@68@ ICON_EXPAND_ALL                2 X     X X @B_AEXP@                                                                  
+@69@ ICON_COLLAPSE_ALL              2 X     X X @B_ACOM@                                                                  
+@6A@ ICON_SYSTEM_SAP_MENU           2 X     X   @F_SAPM@                                                                  
+@6B@ ICON_SYSTEM_COMP_MENU          2 X     X   @F_COMM@                                                                  
+@6C@ ICON_SYSTEM_USER_MENU          2 X     X   @F_USRM@                                                                  
+@6D@ ICON_SYSTEM_FAVORITES          2 X     X   @F_FAVO@                                                                  
+@6E@ ICON_BIW_INFO_SOURCE           2 X X   X   @B_BWIS@                                                                  
+@6F@ ICON_BIW_APPLICATION           2 X X   X   @B_BWAP@                                                                  
+@6G@ ICON_BIW_INFO_AREA             2 X X   X   @B_BWIA@                                                                  
+@6H@ ICON_BIW_INFO_CUBE             2 X X   X   @B_BWIU@                                                                  
+@6I@ ICON_BIW_RULES_INA             2 X X   X   @B_BWRU@                                                                  
+@6J@ ICON_BIW_SOURCE_SYS_GEN        2 X X   X   @B_BWSG@                                                                  
+@6K@ ICON_BIW_SOURCE_SYS_R3         2 X X   X   @B_BWSR@                                                                  
+@6L@ ICON_BIW_SOURCE_SYS_EXT        2 X X   X   @B_BWSE@                                                                  
+@6M@ ICON_BIW_SOURCE_SYS_FILE       2 X X   X   @B_BWSF@                                                                  
+@6N@ ICON_BIW_INFO_CATALOG          2 X X   X   @B_BWIC@                                                                  
+@6O@ ICON_BIW_INFO_OBJECT           2 X X   X   @B_BWIO@                                                                  
+@6P@ ICON_BIW_MONITOR               2 X X   X   @B_BWMO@                                                                  
+@6Q@ ICON_BIW_SCHEDULER             2 X X   X   @B_BWSD@                                                                  
+@6R@ ICON_BIW_FORMULA               2 X X   X   @B_BWFO@                                                                  
+@6S@ ICON_BIW_REF_STRUCTURE         2 X X   X   @B_BWRS@                                                                  
+@6T@ ICON_BIW_REPORT                2 X X   X   @B_BWRP@                                                                  
+@6U@ ICON_BIW_REPORT_VIEW           2 X X   X   @B_BWRV@                                                                  
+@6V@ ICON_MASTER_DATA_ACT           2 X X   X   @S_MDAC@                                                                  
+@6W@ ICON_MASTER_DATA_INA           2 X X   X   @S_MDIN@                                                                  
+@6X@ ICON_TEXT_ACT                  2 X X   X   @S_TXAC@                                                                  
+@6Y@ ICON_TEXT_INA                  2 X X   X   @S_TXIN@                                                                  
+@6Z@ ICON_HIERARCHY_ACT             2 X X   X   @S_HIAC@                                                                  
+@70@ ICON_HIERARCHY_INA             2 X X   X   @S_HIIN@                                                                  
+@71@ ICON_MOVING_DATA_ACT           2 X X   X   @S_MOAC@                                                                  
+@72@ ICON_MOVING_DATA_INA           2 X X   X   @S_MOIN@                                                                  
+@73@ ICON_DEBUGGER_STEP_INTO        2 X     X   @B_STIN@                                                                  
+@74@ ICON_DEBUGGER_STEP_OVER        2 X     X   @B_STOV@                                                                  
+@75@ ICON_DEBUGGER_STEP_OUT         2 X     X   @B_STOU@                                                                  
+@76@ ICON_DEBUGGER_CONTINUE         2 X     X   @B_STCO@                                                                  
+@77@ ICON_PARAMETER                 2 X X   X   @B_PARA@                                                                  
+@78@ ICON_PARAMETER_IMPORT          2 X X   X   @B_PARI@                                                                  
+@79@ ICON_PARAMETER_EXPORT          2 X X   X   @B_PARE@                                                                  
+@7A@ ICON_PARAMETER_CHANGING        2 X X   X   @B_PARC@                                                                  
+@7B@ ICON_PARAMETER_RESULT          2 X X   X   @B_PARR@                                                                  
+@7C@ ICON_OO_CLASS                  2 X     X   @B_CLAS@                                                                  
+@7D@ ICON_OO_INTERFACE              2 X     X   @B_INTC@                                                                  
+@7E@ ICON_OO_ATTRIBUTE              2 X     X   @B_ATTR@                                                                  
+@7F@ ICON_OO_CLASS_ATTRIBUTE        2 X     X   @B_KLAT@                                                                  
+@7G@ ICON_OO_INST_ATTRIBUTE         2 X     X   @B_INAT@                                                                  
+@7H@ ICON_OO_METHOD                 2 X   X     @B_METH@                                                                  
+@7I@ ICON_OO_CLASS_METHOD           2 X     X   @B_KLME@                                                                  
+@7J@ ICON_OO_INST_METHOD            2 X     X   @B_INME@                                                                  
+@7K@ ICON_OO_EVENT                  2 X     X   @B_EVEN@                                                                  
+@7L@ ICON_OO_CONSTANT               2 X     X   @B_KONS@                                                                  
+@7M@ ICON_OO_OVERWRITE              2 X     X   @B_UEDE@                                                                  
+@7N@ ICON_OO_CONNECTION             2 X     X   @B_CONN@                                                                  
+@7O@ ICON_OO_INHERITANCE            2 X     X   @B_VERB@                                                                  
+@7P@ ICON_OO_INTERFACE_IC           2 X     X   @B_INIK@                                                                  
+@7Q@ ICON_WS_TRUCK                  2 X X       @S_WSTR@                                                                  
+@7R@ ICON_WS_RAIL                   2 X X       @S_WSRA@                                                                  
+@7S@ ICON_WS_SHIP                   2 X X       @S_WSSH@                                                                  
+@7T@ ICON_WS_PLANE                  2 X X       @S_WSPL@                                                                  
+@7U@ ICON_WS_POST                   2 X X       @S_WSPO@                                                                  
+@7V@ ICON_WS_TRANSFER               2 X X       @S_WSTF@                                                                  
+@7W@ ICON_WS_DOUANE                 2 X X       @S_WSDO@                                                                  
+@7X@ ICON_SELECTION                 2 X X   X   @B_SELC@                                                                  
+@7Y@ ICON_SYSTEM_STOP_RECORDING     2 X     X   @B_STRC@                                                                  
+@7Z@ ICON_FENCING                   2 X     X   @B_FENC@                                                                  
+@80@ ICON_BIW_RULES_ACT             2 X X   X   @B_BWRA@                                                                  
+@81@ ICON_CHARACTERISTICS_ACT       2 X X   X X @S_CHAA@                                                                  
+@82@ ICON_CHARACTERISTICS_INA       2 X X   X X @S_CHAI@                                                                  
+@83@ ICON_KEYFIGURE_ACT             2 X X   X X @S_KEYA@                                                                  
+@84@ ICON_KEYFIGURE_INA             2 X X   X X @S_KEYI@                                                                  
+@85@ ICON_BIW_INFO_OBJECT_UNITS_ACT 2 X X   X X @B_BWIW@                                                                  
+@86@ ICON_BIW_INFO_OBJECT_UNITS_INA 2 X X   X X @B_BWWI@                                                                  
+@87@ ICON_WORKFLOW_INT_EVENT_DATE   2 X X   X X @B_ERTE@                                                                  
+@88@ ICON_BIW_INFO_OBJECT_CATALOGUE 2 X X   X X @S_GRCK@                                                                  
+@89@ ICON_SET_A                     2 X X   X   @B_ABOA@                                                                  
+@8A@ ICON_SET_B                     2 X X   X   @B_ABOB@                                                                  
+@8B@ ICON_SET_SUM                   2 X X   X   @B_ABPL@                                                                  
+@8C@ ICON_SET_INTERSECTION          2 X X   X   @B_ABSC@                                                                  
+@8D@ ICON_SET_A_MINUS_B             2 X X   X   @B_ABMB@                                                                  
+@8E@ ICON_SET_B_MINUS_A             2 X X   X   @B_ABMA@                                                                  
+@8F@ ICON_SET_COPY_IN_A             2 X X   X   @B_ABCA@                                                                  
+@8G@ ICON_SET_COPY_IN_B             2 X X   X   @B_ABCB@                                                                  
+@8H@ ICON_DANGEROUS_GOODS           2 X X   X   @B_BOMB@                                                                  
+@8I@ ICON_DEACTIVATE                2 X     X   @B_DACT@                                                                  
+@8J@ ICON_DESELECT_BLOCK            2 X     X   @B_DMRK@                                                                  
+@8K@ ICON_INVERT_COLUMN             2 X     X   @B_INVS@                                                                  
+@8L@ ICON_INVERT_LINE               2 X     X   @B_INVZ@                                                                  
+@8M@ ICON_FOREIGN_TRADE             2 X X   X   @B_FORT@                                                                  
+@8N@ ICON_MESSAGE_CRITICAL_SMALL    2           @N_CRIT@ X                                                                
+@8O@ ICON_MESSAGE_ERROR_SMALL       2           @N_ERRO@ X                                                                
+@8P@ ICON_MESSAGE_INFORMATION_SMALL 2           @N_INFO@ X                                                                
+@8Q@ ICON_MESSAGE_QUESTION_SMALL    2           @N_QUES@ X                                                                
+@8R@ ICON_MESSAGE_WARNING_SMALL     2           @N_WARN@ X                                                                
+@8S@ ICON_URL                       2 X     X   @B_URLS@                                                                  
+@8T@ ICON_SYSTEM_SHORTCUT           2           @F_MOSH@ X                                                                
+@8U@ ICON_PLANNING_IN               2 X     X   @B_PEIN@                                                                  
+@8V@ ICON_PLANNING_OUT              2 X     X   @B_PAUS@                                                                  
+@8W@ ICON_SUBMIT                    2 X     X   @B_SUMI@                                                                  
+@8X@ ICON_ALLOW                     2 X     X   @B_OKYE@                                                                  
+@8Y@ ICON_REJECT                    2 X     X   @B_OKNO@                                                                  
+@8Z@ ICON_SIMULATE                  2 X     X   @B_RKSI@                                                                  
+@90@ ICON_TE_RECEIPTS               2 X     X   @B_RKQI@                                                                  
+@91@ ICON_TE_STOPOVER               2 X     X   @B_RKZZ@                                                                  
+@92@ ICON_TE_KM_DIVISION            2 X     X   @B_RKKM@                                                                  
+@93@ ICON_TE_ADVANCE_PAYMENT        2 X     X   @B_RKMO@                                                                  
+@94@ ICON_TE_DEDUCTION              2 X     X   @B_RKAB@                                                                  
+@95@ ICON_TE_COSTS_ASSIGN           2 X     X   @B_RKMZ@                                                                  
+@96@ ICON_HISTORY                   2 X     X   @B_RKHI@                                                                  
+@97@ ICON_MODIFICATION_CREATE       2 X     X X @B_MMAK@                                                                  
+@98@ ICON_MODIFICATION_OVERVIEW     2 X     X   @B_MOVR@                                                                  
+@99@ ICON_MODIFICATION_ORIGINAL     2 X     X   @B_MSHO@                                                                  
+@9A@ ICON_MODIFICATION_RESET        2 X     X   @B_MBAC@                                                                  
+@9B@ ICON_ACTIVE_INACTIVE           2 X     X   @B_NOAC@                                                                  
+@9C@ ICON_BEN_OFFER                 2 X     X   @B_OFFE@                                                                  
+@9D@ ICON_BEN_OFFER_DEFAULT         2 X     X   @B_OFDE@                                                                  
+@9E@ ICON_BEN_OFFER_EVENT           2 X     X   @B_OFEV@                                                                  
+@9F@ ICON_BEN_OFFER_OPEN            2 X     X   @B_OFOO@                                                                  
+@9G@ ICON_BEN_WAIVE_COVERAGE        2 X     X   @B_OFWC@                                                                  
+@9H@ ICON_DEPENDENTS                2 X     X   @B_OFPD@                                                                  
+@9I@ ICON_BEN_CURRENT_BENEFITS      2 X     X   @B_OFCB@                                                                  
+@9J@ ICON_BEN_TERMINATION           2 X     X   @B_OFTE@                                                                  
+@9K@ ICON_WS_TRANSPORT              2 X X       @B_WSAB@                                                                  
+@9L@ ICON_ODS_ACT                   2 X X   X X @B_ODSA@                                                                  
+@9M@ ICON_ODS_INA                   2 X X   X X @B_ODSI@                                                                  
+@9N@ ICON_BIW_INFO_PACKAGE          2 X X   X X @B_INPA@                                                                  
+@9O@ ICON_ACTION_FAULT              2 X X   X X @B_ACFA@                                                                  
+@9P@ ICON_ACTION_SUCCESS            2 X X   X X @B_ACSU@                                                                  
+@9Q@ ICON_DIMENSION                 2 X X   X X @B_DIMS@                                                                  
+@9R@ ICON_TIME_INA                  2 X X   X X @B_TINA@                                                                  
+@9S@ ICON_ARROW_LEFT                2 X X   X X @B_ARLE@                                                                  
+@9T@ ICON_ARROW_RIGHT               2 X X   X X @B_ARRI@                                                                  
+@9U@ ICON_ABAP                      2 X X   X X @B_ABAP@                                                                  
+@9V@ ICON_ABAP_LOCAL                2 X X   X   @B_ABAL@                                                                  
+@9W@ ICON_TRANSFER_STRUCTURE        2 X X   X X @B_TRST@                                                                  
+@9X@ ICON_OPERATION                 2 X X   X   @B_OPER@                                                                  
+@9Y@ ICON_ACTIVITY                  2 X X   X   @B_ACTY@                                                                  
+@9Z@ ICON_ORDER                     2 X X   X   @B_ORDA@                                                                  
+@A0@ ICON_CUSTOMER                  2 X X   X X @B_CUST@                                                                  
+@A1@ ICON_WAREHOUSE                 2 X X   X X @B_CEWA@                                                                  
+@A2@ ICON_DISPO_LEVEL               2 X X   X X @B_DILO@                                                                  
+@A3@ ICON_DISTRIBUTION              2 X X   X X @B_DICE@                                                                  
+@A4@ ICON_CUSTOMER_WAREHOUSE        2 X X   X X @B_CUWA@                                                                  
+@A5@ ICON_TRANSPORT_POINT           2 X X   X X @B_TRAP@                                                                  
+@A6@ ICON_MATERIAL                  2 X X   X   @B_MATL@                                                                  
+@A7@ ICON_MODEL                     2 X X   X   @B_MODL@                                                                  
+@A8@ ICON_PLANT                     2 X X   X   @B_PLNT@                                                                  
+@A9@ ICON_PRODUCT_GROUP             2 X X   X   @B_PROG@                                                                  
+@AA@ ICON_RELATIONSHIP              2 X X   X   @B_RESH@                                                                  
+@AB@ ICON_RESOURCE                  2 X X   X   @B_RESU@                                                                  
+@AC@ ICON_STORE_LOCATION            2 X X   X   @B_STOL@                                                                  
+@AD@ ICON_SUPPLIER                  2 X X   X   @B_SUPP@                                                                  
+@AE@ ICON_TRANSPORTATION_MODE       2 X X   X   @B_TRAM@                                                                  
+@AF@ ICON_LOCATION                  2 X X   X   @B_LOCA@                                                                  
+@AG@ ICON_ALERT                     2 X X   X   @B_ALET@                                                                  
+@AH@ ICON_WARNING                   2 X X   X   @B_WARG@                                                                  
+@AI@ ICON_HINT                      2 X X   X   @B_HINT@                                                                  
+@AJ@ ICON_WORKING_PLAN              2 X X   X   @B_PLAA@                                                                  
+@AK@ ICON_MAINTENANCE_PLAN          2 X X   X   @B_PLAW@                                                                  
+@AL@ ICON_REPORT                    2 X X   X   @B_REPO@                                                                  
+@AM@ ICON_WORKPLACE                 2 X X   X   @B_WOPA@                                                                  
+@AN@ ICON_EQUIPMENT                 2 X X   X   @B_EQUI@                                                                  
+@AO@ ICON_TECHNICAL_PLACE           2 X X   X   @B_TEPL@                                                                  
+@AP@ ICON_BOM                       2 X X   X   @B_SLIS@                                                                  
+@AQ@ ICON_BOM_ITEM                  2 X X   X   @B_SLIP@                                                                  
+@AR@ ICON_DOCUMENT                  2 X       X @B_DOCU@                                                                  
+@AS@ ICON_DOCUMENT_REVISION         2 X     X   @B_DOCR@                                                                  
+@AT@ ICON_MATERIAL_REVISION         2 X     X   @B_MATR@                                                                  
+@AU@ ICON_CHANGE_NUMBER             2 X     X   @B_CHNO@                                                                  
+@AV@ ICON_FLIGHT                    2 X X   X   @B_TFLY@                                                                  
+@AW@ ICON_CAR                       2 X X   X   @B_TCAR@                                                                  
+@AX@ ICON_HOTEL                     2 X X   X   @B_HOTL@                                                                  
+@AY@ ICON_RAILWAY                   2 X X   X   @B_TRAI@                                                                  
+@AZ@ ICON_MONEY                     2 X     X   @B_MONY@                                                                  
+@B0@ ICON_QUESTION                  2 X     X   @B_QUES@                                                                  
+@B1@ ICON_BOOKING_OK                2 X     X   @B_BOYE@                                                                  
+@B2@ ICON_BOOKING_STOP              2 X     X   @B_BONO@                                                                  
+@B3@ ICON_STATUS_OPEN               2 X     X   @B_OPEN@                                                                  
+@B4@ ICON_STATUS_BOOKED             2 X     X   @B_BOKD@                                                                  
+@B5@ ICON_STATUS_PARTLY_BOOKED      2 X     X   @B_PBKD@                                                                  
+@B6@ ICON_STATUS_REVERSE            2 X     X   @B_STON@                                                                  
+@B7@ ICON_PREFERENCE                2 X     X   @B_PREF@                                                                  
+@B8@ ICON_NEXT_STEP                 2 X     X   @B_STEN@                                                                  
+@B9@ ICON_PREVIOUS_STEP             2 X     X   @B_STEP@                                                                  
+@BA@ ICON_STORNO                    2 X     X   @B_REVE@                                                                  
+@BB@ ICON_INTERCHANGE               2 X     X   @B_EXCH@                                                                  
+@BC@ ICON_CASHING_UP                2 X     X   @B_CASS@                                                                  
+@BD@ ICON_WORKLOAD                  2 X     X   @B_WLOA@                                                                  
+@BE@ ICON_PROPOSITION               2 X     X   @B_PROP@                                                                  
+@BF@ ICON_PRESENCE                  2 X     X   @B_ANWE@                                                                  
+@BG@ ICON_ABSENCE                   2 X     X   @B_ABWE@                                                                  
+@BH@ ICON_TIME_CONTROL              2 X     X   @B_TICL@                                                                  
+@BI@ ICON_POSITION_HR               2 X     X   @B_POST@                                                                  
+@BJ@ ICON_PARAMETER_TABLE           2 X     X   @B_PART@                                                                  
+@BK@ ICON_TASK                      2 X     X   @B_TSAK@                                                                  
+@BL@ ICON_COST_CENTER               2 X     X   @B_COST@                                                                  
+@BM@ ICON_MANAGER                   2 X     X   @B_MNGR@                                                                  
+@BN@ ICON_ORG_UNIT                  2 X     X   @B_OGUN@                                                                  
+@BO@ ICON_QUERY                     2 X     X   @B_QUER@                                                                  
+@BP@ ICON_WORKFLOW_INBOX            2 X     X   @B_IBOX@                                                                  
+@BQ@ ICON_FAST_ENTRY                2 X     X   @B_FAST@                                                                  
+@BR@ ICON_LIFE_EVENTS               2 X     X   @B_LIFE@                                                                  
+@BS@ ICON_WORK_CENTER               2 X     X   @B_WORK@                                                                  
+@BT@ ICON_GRADUATE                  2 X     X   @B_GRAD@                                                                  
+@BU@ ICON_EXTRA                     2 X     X   @B_XTRA@                                                                  
+@BV@ ICON_CONVERT_ALL               2 X     X   @B_CNVT@                                                                  
+@BW@ ICON_RELATION                  2 X     X   @B_RELA@                                                                  
+@BX@ ICON_CONFIGURATION             2 X     X   @B_CONF@                                                                  
+@BY@ ICON_WIZARD                    2 X     X   @B_WIZA@                                                                  
+@BZ@ ICON_LED_INACTIVE              2   X       @S_LEDI@                                                                  
+@C0@ ICON_STORE                     2 X     X   @B_STOR@                                                                  
+@C1@ ICON_LINK                      2 X     X   @B_LINK@                                                                  
+@C2@ ICON_LATE_STORE                2 X     X   @B_ALLA@                                                                  
+@C3@ ICON_LATE_LINK                 2 X     X   @B_ALLL@                                                                  
+@C4@ ICON_EARLY_STORE               2 X     X   @B_ALEA@                                                                  
+@C5@ ICON_EARLY_LINK                2 X     X   @B_ALEL@                                                                  
+@C6@ ICON_OO_CLASS_EVENT            2 X     X   @B_CLEV@                                                                  
+@C7@ ICON_OO_INST_EVENT             2 X     X   @B_INEV@                                                                  
+@C8@ ICON_OO_ALIAS                  2 X     X   @B_ALIA@                                                                  
+@C9@ ICON_OO_OBJECT                 2 X     X   @B_OBJC@                                                                  
+@CA@ ICON_JOB                       2 X     X   @B_JOBS@                                                                  

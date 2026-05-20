@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR SV 1100 OK 
+PREVIOUS_YEAR                   255 "Föregående år"
+PREVIOUS_MONTH                  255 "Föregående månad"
+NEXT_YEAR                       255 "Nästa år"
+NEXT_MONTH                      255 "Nästa månad"
+WEEK_NUMBER                     255 "Veckonummer"
+WEEK_NUM_STR                    255 "VNr"
+CALENDAR_BTN                    255 "Öppna/stäng datumnavigerare"
+DT_PICKER                       255 "Datumurval: Ändra dag, månad eller år"

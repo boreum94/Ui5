@@ -1,0 +1,38 @@
+# @(#) $Id: //fes/800_REL/src/dwb/eusp/euspd2le#1 $ SAP
+.  
+.                            Attributes
+.  
+. In this window, you can display and, to a certain extent, change the
+. attributes of the current screen object. The header includes:
+.  
+.                  - Graphical type
+.                  - Name
+.                  - Contents
+.                  - Icon name and quick-info
+.                  - Position
+.                  - Size
+.                  - Group assignment
+.                  - Function code and type (pushbuttons only)
+.  
+. By clicking on the three checkboxes below, you can access the remaining
+. field attribute classes. These are:
+.  
+.                  - Dictionary attributes
+.                  - Program attributes
+.                  - Display attributes
+.  
+. or specific attribute classes for TabStrips, Subscreen areas, and Table
+. Controls.
+.  
+. Whether you can change the attributes or not depends on the field type
+. and the current mode (change or display). Modifiable texts are identified
+. by their darker background. Non-modifiable checkboxes are displayed in
+. normal intensity.
+. Although selecting an attribute checkbox makes that attribute immediately
+. effective, you must confirm text input such as name or field texts by
+. pressing ENTER.
+.  
+. Note: Field attributes can also be displayed and, if necessary, changed
+.       in the field list. In the ABAP/4 part of the Screen Painter, you 
+.       can find further help information about the individual attributes.
+.  

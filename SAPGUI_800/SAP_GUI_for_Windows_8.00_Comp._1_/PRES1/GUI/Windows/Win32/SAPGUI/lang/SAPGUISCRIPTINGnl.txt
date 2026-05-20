@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 SAPGUISCRIPTING NL 1100 OK 
+SCRIPTING_SCRIPTISOPENING       150 "Script is bezig verbinding tot stand te brengen met systeem: %s"
+SCRIPTING_SCRIPTNOTINST         150 "Scriptondersteuning is niet geïnstalleerd"
+SCRIPTING_SCRIPTNOTENABLED      150 "Scriptondersteuning door gebruiker gedeactiveerd"
+<#007>SCRIPTING_OK_BTN          016 "OK"
+<#007>SCRIPTING_CANCEL_BTN      016 "Afbreken"
+SCRIPTING_DO_NOT_SHOW_AGAIN     150 "Pop-up niet weergeven als het script een verbinding gaat openen"
+<#007>SCRIPTING_ALLOW_BTN       016 "Toestaan"
+<#007>SCRIPTING_DENY_BTN        016 "Afwijzen"
+<#007>SCRIPTING_HELP_BTN        016 "Help"

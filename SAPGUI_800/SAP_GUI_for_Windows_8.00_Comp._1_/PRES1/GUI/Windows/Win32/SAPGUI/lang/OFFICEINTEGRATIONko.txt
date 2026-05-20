@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 OFFICEINTEGRATION KO 8500 OK 
+OI_LOADING_CUSTOM_MENU          080 "사용자 정의 메뉴를 로드하는 중입니다. 잠시 기다려 주십시오."
+OI_FILE                         060 "파일"
+OI_SAVE                         060 "저장"
+OI_SAVE_AS                      060 "다른 이름으로 저장"
+OI_PRINT_PREVIEW                080 "인쇄 미리보기"
+OI_PROPERTIES                   060 "속성"
+OI_PRINT                        060 "인쇄"

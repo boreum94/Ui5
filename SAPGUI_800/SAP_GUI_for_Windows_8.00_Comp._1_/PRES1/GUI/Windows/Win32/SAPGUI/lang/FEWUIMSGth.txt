@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 FEWUIMSG TH 8600 OK 
+<#001>UIMSG_YNA_DLG_REMEMBER    100 "จดจำการตัดสินใจของผู้ใช้"
+<#001>UIMSG_YNA_DLG_YES         100 "ใช่"
+<#001>UIMSG_YNA_DLG_NO          100 "ไม่ใช่"
+LGN_POP_DTF_TITLE               200 "การล้างข้อมูล SAP Logon"
+LGN_POP_DTF_MESSAGE             200 "คุณต้องการล้างข้อมูลไดเรกทอรีเอกสาร %s หรือไม่?"

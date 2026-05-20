@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 OFFICEINTEGRATION SK 1404 OK 
+OI_LOADING_CUSTOM_MENU          080 "NaËÌtava sa vlastnÈ menu. »akajte..."
+OI_FILE                         060 "S˙bor"
+OI_SAVE                         060 "Uloûenie"
+OI_SAVE_AS                      060 "Uloûiù ako"
+OI_PRINT_PREVIEW                080 "TlaËov˝ n·hæad"
+OI_PROPERTIES                   060 "Vlastnosti"
+OI_PRINT                        060 "TlaË"

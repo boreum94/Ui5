@@ -1,0 +1,16 @@
+# @(#) $Id: //fes/800_REL/src/dwb/eusp/euspktle#1 $ SAP
+&0 Enter
+&1 PgUp
+&2 PgDn
+&3 FstPg
+&4 PgUp
+&5 PgDn
+&6 LstPg
+&A Alt
+&B Backsp
+&C Ctrl
+&D Del
+&E Esc
+&F F
+&I Ins
+&S Shft

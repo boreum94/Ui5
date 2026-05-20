@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapNWBC800WkstaUI.xml">
+	<!-- $Id: //nwbc/nwbc.win/80_REL/src/cfg/installation/setup/SapNWBC800Setup.xml#149 $ -->
+	<SapSetupProduct BuildTime="0x002A910F5730D901" CmdLine="NWBC800" Description="NWBC800ProductDescription" Guid="{DDFD2697-4113-48D1-824E-70DB4C7BE0AA}" Name="NWBC800ProductName" PatchLevel="0" Version="8619">
+		<Prerequisite>
+			<Condition>&quot;%DotNetV4.8%&quot; = &quot;EXISTING&quot;</Condition>
+			<FailureText>strNWBC800DotNetMissing</FailureText>
+		</Prerequisite>
+		<UI>
+			<Page Type="FolderPath">
+				<PageVariable>SapNWBC800DestDir</PageVariable>
+				<Title>NWBC800ProductName</Title>
+				<SubTitle>NWBC800TargetDirPrompt</SubTitle>
+			</Page>
+		</UI>
+		<IncludesProductPart Comment="Business Client 8.00" ProductGuid="{238E6C3D-032B-46C1-ABC2-5761C65D86DE}" Visible="false"/>
+	</SapSetupProduct>
+	<SapSetupProductPart BuildTime="0x002A910F5730D901" Guid="{238E6C3D-032B-46C1-ABC2-5761C65D86DE}" Name="Business Client 8.00" Version="8000">
+		<RequiresComponent ComponentGuid="{82E12394-48A1-4D26-980C-44E29146D1E6}"/>
+		<RequiresComponent ComponentGuid="{4E2D44D7-85F9-4B2D-BFB0-682C6610908A}"/>
+		<RequiresComponent ComponentGuid="{E6E20A53-31B3-4BC2-AB5E-C72EF0DA61F1}"/>
+		<RequiresComponent ComponentGuid="{C9E476F6-292D-4CBE-9BC8-A6347DD98E34}"/>
+		<RequiresComponent ComponentGuid="{C277B10F-5458-4557-AE2B-AC761948B286}"/>
+		<RequiresComponent ComponentGuid="{2D41A5A2-ABDD-4738-824B-57D2C7849C55}"/>
+		<RequiresComponent ComponentGuid="{92772199-5CAB-4E03-91DA-1D33CB3FF076}"/>
+		<RequiresComponent ComponentGuid="{6AD30634-5473-45BE-98E8-0F8804F107E9}"/>
+		<RequiresComponent ComponentGuid="{D91CC8F0-73F4-4EFE-91E6-C71D55B63118}"/>
+		<RequiresComponent ComponentGuid="{6A6E16AB-4982-497C-9BA5-C60E601C47B9}"/>
+	</SapSetupProductPart>
+</SapSetup>

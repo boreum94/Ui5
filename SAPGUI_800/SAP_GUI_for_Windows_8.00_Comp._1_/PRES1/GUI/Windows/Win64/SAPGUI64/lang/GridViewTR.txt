@@ -1,0 +1,12 @@
+_SAPPCTXT_HEADER_               002 8000 GRIDVIEW TR 1614 OK 
+GRIDVIEW_MSGBOX_TITLE           080 "Izgara görünümü"
+GRIDVIEW_MSGBOX_TEXT            128 "Yazdýrma iþi baþlatýlamadý"
+GRIDVIEW_TOOLTIP_DESELECT_ALL   080 "Tümünün seçimini kaldýr"
+GRIDVIEW_TOOLTIP_SELECT_ALL     080 "Tümünü seç"
+GRIDVIEW_TOOLTIP_TEXT_COLLAPSE  080 "Seçimi sýkýþtýr"
+GRIDVIEW_TOOLTIP_TEXT_EXPAND    080 "Seçimi geniþlet"
+GRIDVIEW_ENABLE_HISTORY         255 "Tarihçeyi etkinleþtir"
+GRIDVIEW_DISABLE_HISTORY        255 "Tarihçenin etkinliðini kaldýr"
+GRIDVIEW_DEFAULT_SETTING        255 "Standart ayarlarý kullan"
+GRIDVIEW_MSGBOX_TITLE2          080 "Izgara görünümü"
+GRIDVIEW_MSGBOX_ERROR           128 "Çoklu seçim kopyalanamaz"

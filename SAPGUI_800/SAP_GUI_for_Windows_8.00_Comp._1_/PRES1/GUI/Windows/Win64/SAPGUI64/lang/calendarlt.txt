@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR LT 1904 OK 
+PREVIOUS_YEAR                   255 "Ankstesni metai"
+PREVIOUS_MONTH                  255 "Ankstesnis mënuo"
+NEXT_YEAR                       255 "Kiti metai"
+NEXT_MONTH                      255 "Kitas mënuo"
+WEEK_NUMBER                     255 "Savaitës numeris"
+WEEK_NUM_STR                    255 "SN"
+CALENDAR_BTN                    255 "Atidaryti/uþdaryti 'Date Navigator'"
+DT_PICKER                       255 "Datos apsirinkimas: dienos, mënesio arba metø keitimas"

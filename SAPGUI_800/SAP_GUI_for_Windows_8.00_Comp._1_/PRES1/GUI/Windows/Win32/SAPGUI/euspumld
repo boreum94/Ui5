@@ -1,0 +1,218 @@
+# @(#) $Id: //fes/800_REL/src/dwb/eusp/euspumld#1 $ SAP
+37600	&
+
+37601	Bildgrenze erreicht (Element nicht verändert)
+37602	Element & ist modifiziert gegenüber Dictionary
+37603	Element & stimmt nicht mit Definition im Programm überein
+37604	Elementname & ist bereits vorhanden (Name nicht geändert)
+37605	Elementname muß mit 'A'-'Z' oder '*' beginnen (Name nicht geändert)
+37606	Minimale Elementlänge unterschritten (Element nicht verändert)
+37607	Feldname &-& konnte nicht gegen Dictionary verglichen werden
+37608	Feldname & konnte nicht gegen Prog'felder verglichen werden
+37609	Eingabe muß numerisch und positiv sein (Wert nicht verändert)
+37610	Bildgrenze überschritten (Element nicht verändert)
+37611	Überlappung oder Berührung (Element nicht verändert)
+37612	Feldname & ist kein zulässiger Dictionary-Name ("-" fehlt)
+37613	Dictionary-Feld & konnte nicht gelesen werden (Element nicht ersetzt)
+37614	Feldname darf nicht leer sein (Name nicht geändert)
+37615	Text darf nicht mit Unterstrich beginnen ('_' durch '#' ersetzt)
+37617	Element wird modifiziert, da keiner der Dictionary-Texte paßt
+37618	Gewünschter Text ist im Dictionary nicht vorhanden
+37619	Element ist kürzer als im Dictionary festgelegt
+37620	Ein/Ausgabe-Schablone muß mit Unterstrich beginnen (Erstes Zeichen ersetzt)
+37621	Icon & ist nicht bekannt (Icon-Name nicht geändert)
+37622	Text darf nicht mit Icon-Code beginnen ('@' durch '#' ersetzt)
+37623	Icon & ist für diesen Objekttyp nicht zulässig (Icon-Name nicht geändert)
+37624	Attributname &->& konnte nicht gegen Klassenbibl. verglichen werden
+37625	Feldname & ist kein zulässiger Klassenattributname ("->" fehlt)
+37626	Format & paßt nicht zum Property-Format &
+37627	Format & des Dictionary-Feldes & paßt nicht zum Property-Format &
+37628	Funktionscode darf nicht mit Schrägstrich beginnen ('/' entfernt)
+
+37650	Var.Steploop konnte nicht angepaßt werden (Dynpro-Größe nicht verändert)
+37651	Wollen Sie den Dynpro-Inhalt wirklich komplett löschen?
+37652	Dynpro ist ungesichert. Wollen Sie sichern?
+37653	Kollision am Zielort (Element nicht plaziert)
+37654	Überschreitung der Bildgrenzen (Element nicht plaziert)
+37655	Kollision am Zielort (Gruppe nicht plaziert)
+37656	Kollision am Zielort, weil Font zu klein (Element nicht plaziert)
+#37656	Überschreitung der Bildgrenzen (Gruppe nicht plaziert)
+37657	Steploop würde mit Element(en) kollidieren (Nicht umgewandelt)
+37658	Es wurden nicht alle Elem.der Steploop-Zeile erfaßt (Nicht umgewandelt)
+37659	Überschreitung der Bildgrenzen (Steploop nicht plaziert)
+37660	Bitte zuerst den Cursor plazieren (mit Maus-Klick)
+37661	OkCode-Feld & konnte nicht aus Dictionary geholt werden
+37662	XSynchronize ist ausgeschaltet
+37663	Dynpro ist unverändert
+37664	Keine Objekte gelesen
+37665	Minimale Dynpro-Größe & unterschritten (Größe nicht verändert)
+37666	Maximale Dynpro-Größe & überschritten (Größe nicht verändert)
+37667	Element(e) außerhalb der neuen Grenzen (Dynpro-Größe nicht verändert)
+37668	Minimale Länge des Steploops unterschritten(Dynpro-Größe nicht verändert)
+37669	Min.Länge des var.Steploops unterschritten (Dynpro-Größe nicht verändert)
+37670	Dynpro konnte nicht auf Datei gesichert werden
+37671	Dynpro auf Datei gesichert
+37672	XSynchronize ist angeschaltet (Ausschalten mit Ctrl-x)
+37673	Es ist bereits ein variabler Steploop definiert
+37674	Fixer Steploop neben variablem nicht erlaubt (Steploop nicht angelegt)
+37675	Elementname & ist bereits vorhanden (Text nicht übernommen)
+37676	Name(n) bereits vorhanden. Betreffende Elemente unbenannt übernehmen?
+
+37700	Es sind weder Ein/Ausgabe-Schablone noch Text eingeschaltet
+37701	Übernahme im Testmodus nicht möglich
+37702	Dictionary-Tabelle muß genau spezifiert werden
+37703	Feld & ist entweder leer, nicht erlaubt oder bereits in Elementliste
+37704	Felder sind entweder leer, nicht erlaubt oder bereits in Elementliste
+37705	Ein/Ausgabefeld & hat keine Namen
+37706	Feld(er) sind bereits in Elementliste vorhanden
+37707	Feld & ist zu lang (auf maximale Feldlänge & gekürzt)
+37708   Selektion enthält nicht übernehmbare Felder
+37709	Selektion im Anzeigemodus nicht möglich
+
+37720	Unzulässiger Typ für Reiterelement im Tabstrip
+37721	Unzulässiger Typ für Seitenelement im Tabstrip
+37722	Keine Tabstrip-Seite ausgewählt
+37723	Unreferenziertes Seitenelement wurde gelöscht
+37724	Kollision mit Seitenelement im Tabstrip
+37725	Tabstrip enthält noch Elemente. Wollen Sie wirklich löschen?
+37726	Das Seitenelement wird auch gelöscht. Wirklich löschen?
+37727	Die Seitenelemente werden auch gelöscht. Wirklich löschen?
+37728	Seitenelement & nicht gefunden. Referenz nicht übernommen
+37729	Unzulässiger Typ für Element im Tabstrip
+
+37730	Unzulässiger Typ für Element im Databound Control
+
+37750	Maximale Elementgröße überschritten
+37751	Minimale Elementgröße erreicht
+37752	Kollision am Zielort (Element nicht verschoben)
+37753	OkCode kann nicht gelöscht werden
+37754	Bildgrenze überschritten (Element nicht verschoben)
+37755	Überlappung oder Berührung
+37756	Bild- bzw. Behältergrenze erreicht
+37757	Kollision (Bitte Element an freie Position schieben)
+37758	Fixer Steploop neben variablem nicht erlaubt (Steploop nicht verschoben)
+37759	Icon-Name ist leer
+37760	Element darf nur Ausgabe-, nicht Eingabefeld sein
+37761	Status-Icon erlaubt keinen Text
+37762	Interner Fehler: Bild für Icon & im Screen Painter nicht bekannt
+37763	Kollision am Zielort (Element verkürzt und rollbar gemacht)
+37764	Behälterwechsel im Modifikationsmodus nicht erlaubt
+37765	& ist CHAR 1-Feld. Umwandeln in
+37766	Elementname zu lang (max. & Zeichen)
+37767	Element verlängert auf minimale Länge &
+
+37770	Keine Leerzeile für Rahmen gefunden (Umwandlung nicht möglich)
+37771	Keine Leerspalte für Rahmen gefunden (Umwandlung nicht möglich)
+37772	Textfeld ist leer (Umwandlung nicht möglich)
+37773	Drucktaste ist leer (Umwandlung nicht möglich)
+37774	Drucktasten-Icon ist nicht mit Text vereinbar (Umwandlung nicht möglich)
+37775	Referenzelement & nicht gefunden
+
+37780	Selektion enthielt kein Element
+37781	Kollision am Zielort (Gruppe nicht verschoben)
+37782	Bildgrenze überschritten (Gruppe nicht verschoben)
+37783	Überlappung oder Berührung von Gruppenelementen
+37784	Eingabefeldlänge größer 1, ungleiche Feldnamen, oder unpassende Position
+37785	Gruppe muß mindestens 2 Auswahlknöpfe enthalten
+37786	Gruppe darf nur Auswahlknöpfe enthalten
+37787	Gruppe darf nur Auswahlknöpfe, Ein/Ausgabefelder oder Textfelder enthalten
+37788	Fixer Steploop neben variablem nicht erlaubt (Gruppe nicht verschoben)
+37789	Geschachtelte Steploops nicht erlaubt (Steploop nicht angelegt)
+37790	Auswahlfeld(er) ohne Feldname (Gruppe nicht angelegt)
+37791	Kollision am Zielort (& Element(e) verkürzt oder nicht übernommen)
+37792	Gruppenelemente in verschiedenen Containern
+37793	Elemente einer Auswahlknopfgruppe in verschiedenen Containern
+
+37800	Inkrement für mehrzeiligen Steploop zu klein (Steploop nicht verändert)
+37801	Minimale Steploop-Größe erreicht
+37802	Maximale Steploop-Größe erreicht
+37803	Kollision am Zielort (Steploop nicht verschoben)
+37804	Steploop enthält unzulässiges Elem.für Table Control (Konv.nicht möglich)
+37805	Überlappung von Steploops
+37806	Umwandlung nicht möglich.
+37807	Nicht genug Platz für Steploop
+37808	Mindestgröße des Steploops unterschritten
+37809	Fixer Steploop neben variablem nicht erlaubt (Steploop nicht verändert)
+
+37810	Bricht das Anlegen des neuen Dynpro-Elements ab
+37811	Legt ein neues Textfeld auf dem Dynpro an
+37812	Legt ein neues Ein/Ausgabefeld auf dem Dynpro an
+37813	Legt eine neue Drucktaste auf dem Dynpro an
+37814	Legt ein neues Ankreuzfeld auf dem Dynpro an
+37815	Legt einen neuen Auswahlknopf auf dem Dynpro an
+37816	Legt einen neuen Rahmen auf dem Dynpro an
+37817	Legt einen neuen Subscreen auf dem Dynpro an
+37818	Legt ein neues Table Control auf dem Dynpro an
+37819	Legt ein neues Ein/Ausgabefeld für ein Status-Icon auf dem Dynpro an
+
+37820	&
+37821	Bitte das Textfeld auf dem Dynpro plazieren
+37822	Bitte das Ein/Ausgabefeld auf dem Dynpro plazieren
+37823	Bitte die Drucktaste auf dem Dynpro plazieren
+37824	Bitte das Ankreuzfeld auf dem Dynpro plazieren
+37825	Bitte den Auswahlknopf auf dem Dynpro plazieren
+37826	Bitte den Rahmen auf dem Dynpro plazieren
+37827	Bitte den Subscreen auf dem Dynpro plazieren
+37828	Bitte das Table Control auf dem Dynpro plazieren
+37829	Bitte das Ein/Ausgabefeld auf dem Dynpro plazieren
+
+37830	Bitte das Element auf dem Dynpro plazieren
+37831	Bitte die Gruppe auf dem Dynpro plazieren
+37832	Gruppenselektion enthielt unplazierte Elemente
+37833	Selektionsgruppe darf keine unplazierten Elem.enthalten (Element(e) ausgenommen)
+37834	Element ist in bereits markiertem Element enthalten (Element nicht markiert)
+37835	Element enthält bereits markiertes Element (Element nicht markiert)
+37836	Element(e) im Container nicht sichtbar (Element(e) nicht markiert)
+37837	Zeichen & ist im Elementnamen nicht zulässig
+37838	Soll das Element auf das Dictionary Bezug nehmen?
+37839	Elementname darf nicht nur aus Ziffern bestehen
+
+37840	Legt ein neues Custom Control auf dem Dynpro an
+37841	Bitte das Custom Control auf dem Dynpro plazieren
+37842	Legt einen neuen Tabstrip auf dem Dynpro an
+37843	Bitte den Tabstrip auf dem Dynpro plazieren
+37844	Legt ein neues Databound Control auf dem Dynpro an
+37845	Bitte das Databound Control auf dem Dynpro plazieren
+37846	Ruft Wizard zum Anlegen eines neuen Table Controls auf dem Dynpro
+37847	Bitte das Table Control auf dem Dynpro plazieren (Wizard folgt)
+37848	Ruft Wizard zum Anlegen eines neuen Tabstrips auf dem Dynpro
+37849	Bitte den Tabstrip auf dem Dynpro plazieren (Wizard folgt)
+
+37850	Kollision im Table Control (Element nicht aufgenommen)
+37851	Unzulässiges Element für Table Control (Konversion nicht möglich)
+37852	Überschriftselement im Table Control verkürzt
+37853	Minimale Höhe des Table Controls unterschritten
+37854	Minimale Breite des Table Controls unterschritten
+37855	Unzulässiger Typ für Überschriftselement im Table Control
+37856	Unzulässiger Typ für Spaltenelement im Table Control
+37857	Kollision mit Überschriftselement im Table Control
+37858	Keine Spalte für Überschriftselement im Table Control
+37859	Überschriftselement wurde gelöscht
+37860	Überschriftselement(e) wurde(n) gelöscht
+37861	Überschriftselement wurde ebenfalls gelöscht
+37862	Überschriftselement(e) wurde(n) ebenfalls gelöscht
+37863	Table Control enthält noch Elemente. Wollen Sie wirklich löschen?
+37864	Wollen Sie das Titelelement wirklich löschen?
+37865	Wollen Sie das Überschriftselement wirklich löschen?
+37866	Wollen Sie die Überschriftselemente wirklich löschen?
+37867	Das Überschriftselement wird auch gelöscht. Wirklich löschen?
+37868	Die Überschriftselemente werden auch gelöscht. Wirklich löschen?
+37869	Bitte legen Sie ein Titelelement für das Table Control an
+37870	Bitte legen Sie Überschriftselemente für das Table Control an
+37871	Bitte geben Sie dem Zeilenmarkierelement einen Namen
+37872	Legt eine neue Dialoghilfe-Drucktaste auf dem Dynpro an
+37873	Bitte die Dialoghilfe-Drucktaste auf dem Dynpro plazieren
+
+37880	Interne Fehlermeldungen im Error Logfile!
+37881	Daten für Dynpro & & nicht gefunden
+37882	Verbindung zum SAP-System verloren (Programm wird beendet)
+37883	Funktion im Testmodus nicht verfügbar
+37884	&
+37885	Daten können nicht aufbereitet werden. Programm beenden?
+37886	Daten konnten nicht übergeben werden. Programm beenden?
+37887	Fehler beim Bearbeiten einer Nachricht. Programm beenden?
+
+37890	Bietet Icons zur Selektion an
+37891   Zeichenkette nicht gefunden
+37898	Funktion ist noch nicht implementiert
+37899	

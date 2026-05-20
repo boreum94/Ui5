@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 PLUGINFRAMEWORK SV 1100 OK 
+CP_SERVICE_MENUITEM             030 "Tjänster"
+MENU_ITEM_EXCEL                 030 "Excel"
+MENU_ITEM_SEARCH                030 "Sök"
+MENU_ITEM_CONTEXTSEARCH         120 "Genomsök SAP Help Portal"
+MENU_ITEM_SPELLCHECK            030 "Rättstavningskontroll"
+MENU_ITEM_MAIL                  020 "E-post"
+MENU_ITEM_PRINT                 020 "Skriv ut"
+CP_TREE_PRINT                   060 "Skriv ut träd"
+CP_SPELLCHECK_COMPLETE          128 "Rättstavningskontroll avslutad"

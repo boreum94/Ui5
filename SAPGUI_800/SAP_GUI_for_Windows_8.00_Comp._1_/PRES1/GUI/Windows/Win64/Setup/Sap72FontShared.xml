@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="Sap72FontWksta.xml">
+	<Component BuildTime="0x907D26B05B30D901" Guid="{6A6E16AB-4982-497C-9BA5-C60E601C47B9}" Min_Compliant_Version="760.1" Name="72 Font" Size="1265" Version="1780.14">
+		<Action Dst="%WinDir%\Fonts" Type="File">
+			<Src FileVersion="1.1.0.0" Hash="SHA-256:01e2978df84e45794e2800f3dd3202cc7234da2fdc383c6b99e0b6524e655dc5" Timestamp="0x8C370EA4482FD901">%SAPSrcDir%\System\SAP\Fonts\72-Black.ttf</Src>
+			<Src FileVersion="1.2.0.0" Hash="SHA-256:2494badc55ad58da1068fad39e1e3e84bff8576ddbd2be99f3db5d076e10a89b" Timestamp="0xBBD40EA4482FD901">%SAPSrcDir%\System\SAP\Fonts\72-Bold.ttf</Src>
+			<Src FileVersion="1.2.0.0" Hash="SHA-256:96cf138e67e120aa3156c4694a544438edd2a13818bba19ac4d4c7c4a766b483" Timestamp="0x81BE0FA4482FD901">%SAPSrcDir%\System\SAP\Fonts\72-BoldItalic.ttf</Src>
+			<Src FileVersion="1.3.0.0" Hash="SHA-256:533e2d700018e535362627668c151ab6c0f5a42471d60db5526a86666c224ca0" Timestamp="0xAF8210A4482FD901">%SAPSrcDir%\System\SAP\Fonts\72-Condensed.ttf</Src>
+			<Src FileVersion="1.3.0.0" Hash="SHA-256:79d6ce1f14b38c44ee02ed27c058e34ba808e1f2a95f78089543192aa40d72f9" Timestamp="0xB5B215A4482FD901">%SAPSrcDir%\System\SAP\Fonts\72-CondensedBold.ttf</Src>
+			<Src FileVersion="1.2.0.0" Hash="SHA-256:cedd1674c03c6e8fc066d33109061bffc9c5259e070672a2c1d55d768dd9d1a8" Timestamp="0xAF931AA4482FD901">%SAPSrcDir%\System\SAP\Fonts\72-Italic.ttf</Src>
+			<Src FileVersion="1.2.0.0" Hash="SHA-256:a767a97c43bbd3efd16d75e0d2349fbd6ea65f09bd5d0dbc290daf7f8ed75a87" Timestamp="0xDC561BA4482FD901">%SAPSrcDir%\System\SAP\Fonts\72-Light.ttf</Src>
+			<Src FileVersion="1.0.0.0" Hash="SHA-256:25b1ca991945a0391dc577313aa6e287c6e8c0b005eb1405a5ecbd64cc65c29e" Timestamp="0x15F31BA4482FD901">%SAPSrcDir%\System\SAP\Fonts\72-Monospace-Bd.ttf</Src>
+			<Src FileVersion="1.0.0.0" Hash="SHA-256:71a7888768e970576dd5039472bff0a405ba514ab9dc89fe09abdf2629ccbfcc" Timestamp="0xE9B61CA4482FD901">%SAPSrcDir%\System\SAP\Fonts\72-Monospace-Rg.ttf</Src>
+			<Src FileVersion="1.2.0.0" Hash="SHA-256:df82b81cf0b5a451dcc6c94d00b78c872456afb5ee4061daf869da7bdf0d7fa2" Timestamp="0x1F531DA4482FD901">%SAPSrcDir%\System\SAP\Fonts\72-Regular.ttf</Src>
+		</Action>
+	</Component>
+</SapSetup>

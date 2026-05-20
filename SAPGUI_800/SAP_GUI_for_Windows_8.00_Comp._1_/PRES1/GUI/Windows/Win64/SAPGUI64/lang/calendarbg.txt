@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR BG 1504 OK 
+PREVIOUS_YEAR                   255 "Предходна година"
+PREVIOUS_MONTH                  255 "Предходен месец"
+NEXT_YEAR                       255 "Следваща година"
+NEXT_MONTH                      255 "Следващ месец"
+WEEK_NUMBER                     255 "Номер на седмица"
+WEEK_NUM_STR                    255 "НС"
+CALENDAR_BTN                    255 "Отваряне/затваряне навигатор за дати"
+DT_PICKER                       255 "Избор на дата: промяна на ден, месец или година"

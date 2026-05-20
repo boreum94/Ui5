@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapConsoleWkstaUI.xml">
+	<Product BuildTime="0xF0F0E7D16D01D601" CmdLine="SAPConsole" Description="SapConsoleProductDescription" Guid="{E98BFCE2-7B78-4f73-A37B-BFEEC8136384}" Name="SapConsoleProductName" ProdVersion="4920" WkstaDb="SapConsoleWkstaUI.xml">
+		<UI>
+			<Page Type="FolderPath">
+				<PageVariable>SapConsoleDestDir</PageVariable>
+				<WindowCaption>StrWindowCaption</WindowCaption>
+				<Title>SapConsoleProductName</Title>
+				<SubTitle>SapConsoleDestDirPrompt</SubTitle>
+				<BackBtnText>StrBtnBack</BackBtnText>
+				<NextBtnText>StrBtnNext</NextBtnText>
+				<CancelBtnText>StrBtnCancel</CancelBtnText>
+			</Page>
+		</UI>
+		<Contains Description="SapConsoleProductDescription" Guid="{C799703D-1C1E-456d-9B99-B078597A64C3}" Name="SAP Console" Visible="FALSE"/>
+	</Product>
+	<Component BuildTime="0xF0F0E7D16D01D601" Guid="{C799703D-1C1E-456D-9B99-B078597A64C3}" Name="SAP Console" Version="3001">
+		<Requires Guid="{FEEE0F1B-A577-4A85-A7D9-88F47D8AC2D1}"/>
+		<Requires Guid="{B98EC783-9CAC-4BE4-B030-2B127178463C}"/>
+		<Requires Guid="{C9D59811-A9C7-44A2-8494-DD430480BBFE}"/>
+		<Requires Guid="{48E1BD6C-A696-463D-A093-7D449614870A}"/>
+	</Component>
+</SapSetup>

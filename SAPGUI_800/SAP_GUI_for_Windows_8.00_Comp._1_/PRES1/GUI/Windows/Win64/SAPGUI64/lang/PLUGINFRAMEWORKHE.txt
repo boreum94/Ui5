@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 PLUGINFRAMEWORK HE 1800 OK 
+CP_SERVICE_MENUITEM             030 "שירותים"
+MENU_ITEM_EXCEL                 030 "Excel"
+MENU_ITEM_SEARCH                030 "חפש"
+MENU_ITEM_CONTEXTSEARCH         120 "חיפוש בפורטל עזרה SAP"
+MENU_ITEM_SPELLCHECK            030 "בדיקת איות"
+MENU_ITEM_MAIL                  020 "דואר"
+MENU_ITEM_PRINT                 020 "הדפס"
+CP_TREE_PRINT                   060 "הדפסת עץ"
+CP_SPELLCHECK_COMPLETE          128 "בדיקת איות הושלמה"

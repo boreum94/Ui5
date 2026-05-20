@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR LV 1904 OK 
+PREVIOUS_YEAR                   255 "Iepriekðçjais gads"
+PREVIOUS_MONTH                  255 "Iepriekðçjais mçnesis"
+NEXT_YEAR                       255 "Nâkamais gads"
+NEXT_MONTH                      255 "Nâkamais mçnesis"
+WEEK_NUMBER                     255 "Nedçïas numurs"
+WEEK_NUM_STR                    255 "Nedçïas numurs"
+CALENDAR_BTN                    255 "Atvçrt/slçgt datuma navigatoru"
+DT_PICKER                       255 "Datuma atlase: maiòas datums, mçnesis vai gads"

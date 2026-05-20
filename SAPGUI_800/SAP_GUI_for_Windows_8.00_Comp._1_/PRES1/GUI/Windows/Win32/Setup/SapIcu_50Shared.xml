@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapIcu_50Wksta.xml">
+	<Component BuildTime="0x90437C837B30D901" Guid="{CE1BBBC8-40DF-4340-81F4-9EAEA4F15CFA}" Min_Compliant_Version="1" Name="$Icu_50 DLLs" SysSize="22940" Version="11">
+		<Action Dst="%WinSysDir%" Type="File">
+			<Src FileVersion="50.1.0.1" Hash="SHA-256:dc9bfdec44de9fab0d7eacebc5289b8c07233e07137f74b5871cfbb80c902be0" Timestamp="0x258A42EB7430D901">%SAPSrcDir%\system\Unicode\icudt50.dll</Src>
+			<Src FileVersion="50.1.0.1" Hash="SHA-256:6fad9f9e5fe536e7bedad3969f1d13f0c56d3e9e7b46c6b130ea7886bbdb1ceb" Timestamp="0x61373BEB7430D901">%SAPSrcDir%\system\Unicode\icuin50.dll</Src>
+			<Src FileVersion="50.1.0.1" Hash="SHA-256:66f88c964530198ac5a4cbd101ea570ef425c90629803b28368b2c6b6929ff13" Timestamp="0x02E93AEB7430D901">%SAPSrcDir%\system\Unicode\icuuc50.dll</Src>
+			<Src Hash="SHA-256:63d09b6efa84bedd091694a7e6de99b2aeb3038fcebdf0518b6c9b980362709e" Timestamp="0x00A7D6192EBBCD01">%SAPSrcDir%\system\Unicode\license.html</Src>
+		</Action>
+	</Component>
+</SapSetup>

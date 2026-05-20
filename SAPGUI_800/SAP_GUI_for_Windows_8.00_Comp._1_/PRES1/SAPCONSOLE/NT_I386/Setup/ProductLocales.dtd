@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT SapSetup (String*)+>
+<!ATTLIST SapSetup
+	Context (Init | Server | Workstation | Patch | Locale) #REQUIRED
+	DatabaseVersion CDATA #IMPLIED
+	Version CDATA #IMPLIED
+>
+<!ELEMENT String (En+ | De*)+>
+<!ATTLIST String
+	Name CDATA #REQUIRED
+>
+<!ELEMENT En (#PCDATA)>
+<!ELEMENT De (#PCDATA)>

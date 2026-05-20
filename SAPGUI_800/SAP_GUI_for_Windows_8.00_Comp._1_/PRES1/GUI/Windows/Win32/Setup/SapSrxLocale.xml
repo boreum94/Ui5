@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Locale" Version="7" ConnectedId="{2BF6D3E0-0CBA-4414-AB63-3C55770AB07C}">
+   <!-- FolderPathPage -->
+   <String name="SrxProductName">
+      <En>SAP GUI Screen Reader Extension for JAWS</En>
+      <De>SAP GUI Screen Reader Extension für JAWS</De>
+   </String>
+
+   <String name="SrxMainComponentName">
+      <En>Screen Reader Extension for JAWS</En>
+      <De>Screen Reader Extension für JAWS</De>
+   </String>
+   
+   <String name="SrxProductDescription">
+      <En>Requires SAP GUI (7.20 or higher) and Freedom Scientific JAWS</En>
+      <De>Benötigt SAP GUI (7.20 oder höher) und Scientific Freedom JAWS</De>
+   </String>
+   
+   <String name="SrxFolderPathPageSubTitle">
+      <En>Confirm the path to the installation directory of your JAWS version</En>
+      <De>Bestätigen Sie den Pfad des Installationsverzeichnisses Ihrer JAWS Version</De>
+   </String>
+   
+   <String name="SrxScriptPathPagePrompt">
+      <En>Confirm the path to the scripts directory of your JAWS version</En>
+      <De>Bestätigen Sie den Pfad des scripts Verzeichnisses Ihrer JAWS Version</De>
+   </String>
+
+   <String name="FailureTextStrPreSrxJawsNotInstalled">
+      <En><![CDATA[<a style="COLOR:red">Freedom Scientific JAWS must be installed</a></br>]]></En>
+      <De><![CDATA[<a style="COLOR:red">Freedom Scientific JAWS muss installiert sein</a></br>]]></De>
+   </String>
+
+   <String name="FailureTextStrPreSrxOlderSrxFound">
+      <En><![CDATA[<a style="COLOR:red">Older versions of SAP GUI Screen Reader Extension for JAWS must be uninstalled.</a></br>]]></En>
+      <De><![CDATA[<a style="COLOR:red">Ältere Versionen von SAP GUI Screen Reader Extension für JAWS müssen deinstalliert werden.</a></br>]]></De>
+   </String>
+
+   <String name="StrRemoveSRX640">
+      <En>An older version of SAP GUI Screen Reader Extension is being uninstalled. This may take several minutes...</En>
+      <De>Eine ältere Version der SAP GUI Screen Reader Extension wird deinstalliert. Dies kann einige Minuten dauern...</De>
+   </String>
+   
+   <String name="FailureTextStrPreSrxSapGuiNotFound">
+    <En><![CDATA[<a style="COLOR:red">SAP GUI for Windows was not found. In order to install SAP Screen Reader Extension for JAWS you need to have SAP GUI for Windows installed.</a></br>]]></En>
+    <De><![CDATA[<a style="COLOR:red"> SAP GUI for Windows wurde nicht gefunden. Um SAP Screen Reader Extension for JAWS zu installieren, benötigen Sie SAP GUI for Windows.</a></br>]]></De>
+   </String>
+   
+   <String Name='strSRXAccessibilityProductName'>
+	<En>Accessibility settings for SAP GUI</En>
+	<De>Accessibility Einstellungen für SAP GUI</De>
+   </String>
+
+   <String Name='strSRXAccessibilityProductDescription'>
+	<En>This component applies typical settings required for using SAP GUI for Windows together with a screenreader. One of these settings is to activate the SAP GUI Accessibility mode by default.</En>
+	<De>Diese Komponente nimmt typische Voreinstellungen für den Betrieb des SAP GUI for Windows zusammen mit einem Screenreader vor. So wird beispielsweise der Accessibility Modus im SAP GUI aktiviert.</De>
+   </String>
+</SapSetup>

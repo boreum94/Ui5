@@ -1,0 +1,715 @@
+# @(#)gxne.dat  	20.10	SAP	96/07/19
+
+/ $GTYPE
+:NET
+/ $BRACKET
+: 1
+/ $OPTS
+: SET NOWARN 0
+: SET CUSTOMIZE 1
+: SET COMPACTNOD 4
+: SET OWNLEGEND 1
+: SET NODUPMOVE 1
+: SET NODELPOP 0
+: SET CONFIRM 0
+: SET USRPOPS 1
+: SET INFOTXTNUM 0
+: SET STGAUGE 1
+: SET NODELMSG 3
+: SET LAYOUT 0
+: SET BREAKCON 0
+: SET XPOS 100
+: SET YPOS 100
+: SET WIDTH 700
+: SET MINIMIZE 0
+: SET HEIGHT 500
+#: SET DISPBACKGR DARKCYAN
+: SET DISPBACKGR ORCHID_1
+: SET NODEBACKGR DARKGREEN
+: SET NAVBACKGR  DARKGRAY
+: SET BUTTONPOS 1
+: SET MARKNODE 2
+: SET MARKLINK 1
+: SET HOFFSET 10
+: SET VOFFSET 5
+: SET TITLEBOX 2
+: SET NODESIZE 3000
+: SET AUTOADJUST 0
+: SET MODMODE  2
+: SET STATFORGR  2
+: SET CUSMODE  0
+: SET IGNOREUSER 0
+: SET AUTOPORT  0
+#: SET ALIVE  15
+: SET SUBCHART  1
+: SET MASTERVIEW  7
+: SET LEGEND  2
+: SET INFOTEXTS  1
+: SET TBXZOOM 1
+#: SET TIMER 5
+
+/$STATUS
+:SET SYSID K11
+:SET SAPSYS R/3
+:SET SAPRL 30A
+
+/ $HELP
++ V  V   V              V
+: 2  1   F2=Nachladen   901
+#: 4  0   F4=Test4       9
+: 8  1   F8=Test8       905
+
+/ $ACTION
++ V    V             V
+#: 9    Q             exit
+: 901  L             gxne2.dat
+: 905  S             Action
+
+/ $FMTS
++ V       V     V      V
+: fmt1    n     l      [$a--($b//$c)]
+:         n     s      x
+:         n     f      12
+#:         n     f      14
+#:         n     f      1
+:         n     x       
+: a       i     l      2
+: a       i     w      2000
+: a       i     h      24
+: a       i     t      0
+: a       i     f      c
+: a       i     o      CENTER
+: a       i     v      CENTER
+: b       i     l      1
+: b       i     w      700
+: b       i     h      24
+: b       i     t      1
+: b       i     f      t
+: b       i     o      CENTER
+: b       i     v      CENTER
+: b       i     l      1
+: c       i     l      1
+: c       i     w      1300
+: c       i     h      24
+: c       i     t      2
+: c       i     f      h
+: c       i     o      CENTER
+: c       i     v      CENTER
+: fmt2    n     l      [$a--($b//$c//$d)]
+:         n     f      2
+:         n     e      x
+: a       i     l      2
+: a       i     h      24
+: a       i     t      0
+: a       i     f      c
+: a       i     o      CENTER
+: a       i     v      CENTER
+: b       i     l      1
+: b       i     w      1200
+: b       i     h      24
+: b       i     t      1
+: b       i     f      h
+: b       i     o      CENTER
+: b       i     v      CENTER
+: c       i     l      1
+: c       i     w      1200
+: c       i     h      24
+: c       i     t      2
+: c       i     f      h
+: c       i     o      CENTER
+: c       i     v      CENTER
+: d       i     l      1
+: d       i     w      1200
+: d       i     h      24
+: d       i     t      3
+: d       i     f      h
+: d       i     o      CENTER
+: d       i     v      CENTER
+: fmt3    n     l      [$a--($b//$c)]
+:         n     s      x
+:         n     f      3
+: a       i     l      2
+: a       i     h      24
+: a       i     t      0
+: a       i     f      c
+: a       i     c      WHITE
+: a       i     o      CENTER
+: a       i     v      CENTER
+: b       i     l      1
+: b       i     w      1200
+: b       i     h      24
+: b       i     t      1
+: b       i     f      t
+: b       i     c      WHITE
+: b       i     o      CENTER
+: b       i     v      CENTER
+: b       i     b      3
+: c       i     l      1
+: c       i     w      1200
+: c       i     h      24
+: c       i     t      2
+: c       i     f      h
+: c       i     c      WHITE
+: c       i     o      CENTER
+: c       i     v      CENTER
+: c       i     b      3
+: fmt4    n     l      [$a--($b//$c)]
+:         n     s      x
+:         n     f      4
+: a       i     l      2
+: a       i     h      24
+: a       i     t      0
+: a       i     f      c
+: b       i     l      1
+: b       i     w      1000
+: b       i     h      24
+: b       i     t      1
+: b       i     f      t
+: c       i     l      1
+: c       i     w      2000
+: c       i     h      24
+: c       i     t      2
+: c       i     f      h
+: fmt5    n     l      [$a--$b--$c--$d]
+:         n     s      x
+:         n     f      5
+: a       i     l      1
+: a       i     w      3000
+: a       i     h      24
+: a       i     t      0
+: a       i     f      c
+: a       i     c      GREEN
+: b       i     l      1
+: b       i     h      24
+: b       i     t      1
+: b       i     f      t
+: b       i     c      BLUE
+: c       i     l      1
+: c       i     h      24
+: c       i     t      2
+: c       i     f      t
+: c       i     c      MAGENTA
+: d       i     l      1
+: d       i     h      24
+: d       i     t      3
+: d       i     f      t
+: d       i     c      RED
+: fmt6    n     l      [$a]
+:         n     s      n
+:         n     f      2
+: a       i     l      1
+: a       i     w      2000
+: a       i     h      32
+: a       i     t      0
+: a       i     f      h
+: a       i     o      CENTER
+: a       i     v      CENTER
+: fmt7    n     l      [$a--(($b--$c)//($d--$e))]
+:         n     f      1
+: a       i     l      1
+: a       i     h      24
+: a       i     t      0
+: a       i     f      c
+: b       i     l      1
+: b       i     w      1200
+: b       i     h      24
+: b       i     t      1
+: b       i     f      c
+: c       i     l      1
+: c       i     w      1200
+: c       i     h      24
+: c       i     t      2
+: c       i     f      c
+: d       i     l      1
+: d       i     w      1200
+: d       i     h      24
+: d       i     t      3
+: d       i     f      c
+: e       i     l      1
+: e       i     w      1200
+: e       i     h      24
+: e       i     t      4
+: e       i     f      c
+: fmt8    n     l      [$a--$b--(($c--$d)//($e--$f)//($g--$h))]
+:         n     f      1
+:         n     s      x
+:         n     c      BLUE
+: a       i     l      1
+: a       i     f      HELVETICA
+: a       i     h      24
+: a       i     t      0
+: a       i     o      CENTER
+: a       i     v      CENTER
+: a	      i     b      1
+: a       i     c      WHITE
+: b       i     l      2
+: b       i     h      24
+: b       i     t      1
+: b       i     f      HELVETICA
+: b       i     o      CENTER
+: b       i     v      CENTER
+: b	      i     b      3
+: c       i     l      1
+: c       i     w      1800
+: c       i     h      12
+: c       i     t      2
+: c       i     f      COURIER
+: c       i     o      CENTER
+: c       i     v      CENTER
+: c       i     c      GREEN
+: d       i     l      1
+: d       i     w      1800
+: d       i     h      12
+: d       i     t      3
+: d       i     f      COURIER
+: d       i     o      CENTER
+: d       i     v      CENTER
+: d       i     c      WHITE
+: e       i     l      1
+: e       i     w      1800
+: e       i     h      12
+: e       i     t      4
+: e       i     f      COURIER
+: e       i     o      CENTER
+: e       i     v      CENTER
+: e       i     c      YELLOW
+: f       i     l      1
+: f       i     w      1800
+: f       i     h      12
+: f       i     t      5
+: f       i     f      COURIER
+: f       i     o      CENTER
+: f       i     v      CENTER
+: f       i     c      CYAN
+: g       i     l      1
+: g       i     w      1800
+: g       i     h      12
+: g       i     t      6
+: g       i     f      COURIER
+: g       i     o      CENTER
+: g       i     v      CENTER
+: g       i     c      DARKYELLOW
+: h       i     l      1
+: h       i     w      1800
+: h       i     h      12
+: h       i     t      7
+: h       i     f      COURIER
+: h       i     o      CENTER
+: h       i     v      CENTER
+: h       i     c      BLUE
+: fmt9    n     b      [$a--$b--(($c--$d)//($e--$f)//($g--$h))]
+:         n     f      1
+:         n     s      x
+:         n     c      BLUE
+: a       i     l      1
+: a       i     f      HELVETICA
+: a       i     h      24
+: a       i     t      0
+: a       i     o      CENTER
+: a       i     v      CENTER
+: a	      i     b      1
+: a       i     c      WHITE
+: b       i     l      2
+: b       i     h      24
+: b       i     t      1
+: b       i     f      HELVETICA
+: b       i     o      CENTER
+: b       i     v      CENTER
+: b	      i     b      3
+: c       i     l      1
+: c       i     w      1800
+: c       i     h      12
+: c       i     t      2
+: c       i     f      COURIER
+: c       i     o      CENTER
+: c       i     v      CENTER
+: c       i     c      GREEN
+: d       i     l      1
+: d       i     w      1800
+: d       i     h      12
+: d       i     t      3
+: d       i     f      COURIER
+: d       i     o      CENTER
+: d       i     v      CENTER
+: d       i     c      WHITE
+: e       i     l      1
+: e       i     w      1800
+: e       i     h      12
+: e       i     t      4
+: e       i     f      COURIER
+: e       i     o      CENTER
+: e       i     v      CENTER
+: e       i     c      YELLOW
+: f       i     l      1
+: f       i     w      1800
+: f       i     h      12
+: f       i     t      5
+: f       i     f      COURIER
+: f       i     o      CENTER
+: f       i     v      CENTER
+: f       i     c      CYAN
+: g       i     l      1
+: g       i     w      1800
+: g       i     h      12
+: g       i     t      6
+: g       i     f      COURIER
+: g       i     o      CENTER
+: g       i     v      CENTER
+: g       i     c      DARKYELLOW
+: h       i     l      1
+: h       i     w      1800
+: h       i     h      12
+: h       i     t      7
+: h       i     f      COURIER
+: h       i     o      CENTER
+: h       i     v      CENTER
+: h       i     c      BLUE
+
+/ $HLTS
++ V       V     V
+: hlt1    p     1
+:         y     2
+#:         k     6
+:         t     1
+:         h     GREEN
+:         l     BLUE
+:         s     RED
+: hlt2    p     1
+:         y     2
+:         t     1
+:         h     RED
+:         l     BLACK
+:         s     BLACK
+: hlt3    p     1
+:         y     2
+:         t     2
+:         h     BLUE
+:         l     BLACK
+:         s     WHITE
+: hlt4    p     1
+:         y     2
+:         t     2
+:         h     MAGENTA
+:         l     BLACK
+:         s     BLACK
+: hlt5    p     1
+:         y     2
+:         t     2
+:         h     YELLOW
+:         l     RED
+:         s     BLUE
+: hlt6    p     1
+:         y     2
+:         t     2
+:         h     DARKYELLOW
+:         l     BLACK
+:         s     BLACK
+: hlt7    p     1
+:         y     2
+:         t     2
+:         h     CYAN
+:         l     BLACK
+:         s     BLACK
+: hlt8    p     1
+:         y     2
+:         t     1
+:         h     DARKGREEN
+:         l     BLUE
+:         s     RED
+: hlt9    p     1
+:         y     2
+:         t     1
+:         h     GRAY
+:         l     BLUE
+:         s     RED
+
+/ $NODES
++ V         V     V
+: 4711      fmt8  hlt9
+: 4712      fmt2  hlt8
+: 4713      fmt2  hlt2
+: 4714      fmt8  hlt8
+: 4715      fmt8  hlt2
+: 4716      fmt4  hlt5
+: 4717      fmt5  hlt4
+: 4718      fmt5  hlt5
+: 4719      fmt7  hlt8
+: 4720      fmt7  hlt7
+: 4721      fmt3  hlt4
+: 4722      fmt3  hlt4
+: 4723      fmt3  hlt4
+: 4724      fmt3  hlt4
+: 4725      fmt3  hlt4
+: 4726      fmt3  hlt4
+
+/ $INODES
++ V         V     V
+: I711      fmt1  hlt1
+: I712      fmt2  hlt2
+: I713      fmt3  hlt3
+: I714      fmt4  hlt4
+: I715      fmt5  hlt5
+: I716      fmt7  hlt6
+: I717      fmt8  hlt2
+
+/ $LNODES
++ V         V     V
+: L711      fmt1  hlt1
+: L712      fmt2  hlt2
+: L713      fmt3  hlt3
+: L714      fmt4  hlt4
+
+/ $BOXES
++ V         V      V
+: 123       0      fmt9
+
+/ $BVALS
++ V         V      V
+: 123       H      hlt3
+: 123       0      DIN-Text 1
+: 123       1      DIN-Text 2
+: 123       2      DIN-Text 3
+: 123       3      DIN-Text 4
+: 123       4      DIN-Text 5
+: 123       5      DIN-Text 6
+: 123       6      DIN-Text 7
+: 123       7      DIN-Text 8
+
+/ $LINES
++ V         V         V     V     V    V
+: LINE1     4711      4712  fmt6  hlt6
+: LINE2     4711      4713  fmt6  hlt5
+: LINE3     4712      4714  fmt6  hlt3
+: LINE4     4713      4715  fmt6  hlt5
+: LINE5     4714      4716  fmt6  hlt6
+: LINE6     4715      4716  fmt6  hlt5
+: LINE7     4716      4717  fmt6  hlt1
+: LINE8     4716      4718  fmt6  hlt1
+: LINE9     4717      4719  fmt6  hlt2
+: LINE10    4718      4720  fmt6  hlt2
+: LINE11    4719      4721  fmt6  hlt6
+: LINE12    4720      4721  fmt6  hlt6
+
+/ $NVALS
++ V         V  V
+: I711      0  Expl.
+: L711      0  Label 1
+: L712      0  Label 2
+: L713      0  Label 3
+: L714      0  Label 4
+: I711      1  1
+: I712      0  I am an Example
+: I712      1  2
+: I712      2  2
+: I712      3  2
+: I713      0  Expl.
+: I713      1  3
+: I713      2  3
+: I714      0  Expl.
+: I714      1  4
+: I714      2  4
+: I715      0  Feld a
+: I715      1  Feld b
+: I715      2  Feld c
+: I715      3  Feld d
+: I715      1  5
+: I716      0  Text1
+: I716      1  1
+: I716      2  2
+: I716      3  3
+: I716      4  4
+: I717      0  SAP RM/PPS
+: I717      1  Drehen Welle 4711
+: I717      2  05AUG92
+: I717      3  06AUG92
+: I717      4  47119
+: I717      5  xxxxx
+: I717      6  05AUG92
+: I717      7  06AUG92
+: 4711      m   
+: 4712      m  0
+: 4713      m  x
+: 4711      0  SAP RM/PPS
+: 4711      1  Drehen Welle 001
+: 4711      2  05AUG92
+: 4711      3  06AUG92
+: 4711      4  4711
+: 4711      5  ok
+: 4711      6  11AUG92
+: 4711      7  20AUG92
+: 4711      c  a/BLUE
+: 4711      c  c/BLACK
+: 4711      c  d/BLUE
+: 4711      c  e/DARKGREEN
+: 4711      c  f/DARKYELLOW
+: 4711      c  g/BLACK
+: 4711      c  h/WHITE
+: 4712      0  Fräsen Nut 1
+: 4712      1  1
+: 4712      2  1
+: 4712      3  1
+: 4713      0  Fräsen Nut 2
+: 4713      1  2
+: 4713      2  2
+: 4713      3  2
+: 4713      c  b/GREEN
+: 4713      c  c/CYAN
+: 4713      c  d/YELLOW
+: 4714      0  SAP
+: 4714      1  Montage Flansch A
+: 4714      2  05DEC92
+: 4714      3  06DEC92
+: 4714      4  47119
+: 4714      5  ok
+: 4714      6  11DEC92
+: 4714      7  20DEC92
+: 4715      0  SAP
+: 4715      1  Montage Flansch B
+: 4715      2  05DEC92
+: 4715      3  06DEC92
+: 4715      4  47119
+: 4715      5  ok
+: 4715      6  11DEC92
+: 4715      7  20DEC92
+: 4716      0  fertig
+: 4716      1  4
+: 4716      2  4
+: 4717      0  Prüf a
+: 4717      1  Prüf b
+: 4717      2  Prüf c
+: 4717      3  Prüf d
+: 4718      0  Prüf e
+: 4718      1  Prüf f
+: 4718      2  Prüf g
+: 4718      3  Prüf h
+: 4719      0  Text1
+: 4719      1  sap
+: 4719      2  sap
+: 4719      3  sap
+: 4719      4  sap
+: 4720      0  Text2
+: 4720      1  sap
+: 4720      2  sap
+: 4720      3  sap
+: 4720      4  sap
+: 4721      0  Ende
+: 4721      1  A
+: 4721      2  E
+: 4721      h  hlt4
+: 4721      h  hlt4
+: 4715      s  
+# Hi Udo,
+# An dieser Stelle wird eingeschaltet, ob und wie zentriert werden soll.
+# Einfach hockommen lassen -> Zeile auskommentieren
+#        als Topleft-Rasterview um Knoten 4714 in die dritte Spalte L eintragen
+#        als Center-Rasterview um Knoten 4714 in die dritte Spalte C eintragen
+# Gruss, Markus
+#: 4714      b  L
+
+/ $LVALS
++ V         V  V
+#: LINE1     n  x
+#: LINE2     n  x
+#: LINE3     n  
+: LINE1     h  hlt3
+: LINE1     0  testline
+: LINE2     0  EA
+: LINE3     0  EA
+: LINE4     0  EA
+: LINE5     0  EA
+: LINE6     0  EA
+: LINE7     0  EA
+: LINE8     0  EA
+: LINE9     0  EA
+: LINE10    0  EA
+: LINE11    0  EA
+: LINE12    0  EA
+
+#/ $SUBCON
+#+ V
+#: 4712
+#: 4713
+#: 4714
+#: 4715
+
+# Tabelle zum Ausgeben der Legende:
+# Eingabe ist immer Knoten oder Format und Highlight sowie Text
+# Die beiden ersten Zeilen *koennen* zum Eingeben eigener Texte verwendet
+# werden. Der erste mit einem leeren Format und Knoten ist der Titel, gibt es noch
+# ein zweites leeres Format direkt danach ist das der Tail.
+/ $LEGEND
++ V     V         V          V
+:                 hlt9       Title, title, title...
+:                 hlt9       Tail, tail, tail...
+: L711            hlt9       Extra 1
+:       fmt1      hlt1       Text 1
+:       fmt1      hlt2       Text 2
+:       fmt2      hlt3       Text 3
+:       fmt2      hlt4       Text 4
+: L712            hlt9       Extra 2
+: L713            hlt9       Extra 3
+: L714            hlt9       Extra 4
+:       fmt3      hlt5       Text 5
+:       fmt3      hlt6       Text 6
+
+
+# Tabelle zum Ausgeben der Alternativen Legende, zum Beispiel DIN-Feld:
+# Eingabe ist immer eine Box aus $BOXES (Typ 0)
+/ $OWNLGND
++ V     
+: 123
+
+/ $LABELS
++ V         V
+: 4711      Drehen Welle 001
+: 4712      Fräsen Nut 1
+: 4713      Fräsen Nut 2
+: 4714      Montage Flansch A
+: 4715      Montage Flansch B
+: 4716      fertig
+: 4717      Prüf abcd
+: 4718      Prüf efgh
+: 4719      Text 1
+: 4720      Text 2
+: 4721      Ende
+
+/ $SUBFORM
++ V         V
+: fmt1      hlt1
+
+/ $LPOS
++ V         V       V
+: LINE1     2       3
+
+#/ $POPUP
+#+ V      V
+#: t      Titel vom Popup
+#: b      Radiobutton 1
+#: b      Radiobutton 2
+#: b      Radiobutton 3
+#: p      Pushbutton 1
+#: p      Pushbutton 2
+
+/ $OUTPUT
+: Ich bin eine STatuszeile
+
+/ $U1MENU
++ V         V              V
+: U11       B1tton1        Langtext fuer Button1
+: U12       B1tton2        Langtext fuer Button2
+: U13       B1tton3        Langtext fuer Button3
+: U14       B1tton4        Langtext fuer Button4
+
+#/ $U2MENU
+#+ V         V              V
+#: U21       B2tton1        Langtext fuer Button1
+#: U22       B2tton2        Langtext fuer Button2
+#: U23       B2tton3        Langtext fuer Button3
+#: U24       B2tton4        Langtext fuer Button4
+#: U25       B2tton5        Langtext fuer Button5
+
+/ $BRACKET
+: 0
+
+#/ $WDCOORD
+

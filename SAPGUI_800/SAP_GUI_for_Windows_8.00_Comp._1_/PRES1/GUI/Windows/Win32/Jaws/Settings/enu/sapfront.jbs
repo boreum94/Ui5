@@ -1,0 +1,171 @@
+;
+;  Braille structure file for SAPGUI.
+;
+;  Copyright
+;    SAP AG, www.sap.com
+;    Last Update : 2018/10/04
+;
+
+[Component Aliases]
+GuiCheckBoxName=Name
+GuiCheckBoxState=State
+GuiRadioButtonName=Name
+GuiRadioButtonState=State
+GuiRadioButtonPosition=Position
+GuiButtonName=Name
+GuiComponentPrompt=Prompt
+GuiComponentState=State
+GuiComponentDescriptions=Description
+GuiTextFieldText=Value
+GuiTextFieldState=State
+GuiTextFieldPosition=Position
+GuiComboboxState=State
+GuiComboboxValue=Value
+GuiComboboxPosition=Position
+GuiTableControlInfo=Info
+GuiTableControlColumn=Column
+GuiTableControlCell=Cell
+GuiTabValue=Value
+GuiTabState=State
+GuiTabPosition=Position
+GuiLabelType=Type
+GuiLabelContents=Contents
+GuiLabelInfo=Info
+GuiLabelState=State
+GuiGridViewInfo=Info
+GuiGridViewCell=Cell
+GuiGridViewColumn=Column
+GuiGridViewRow=Row
+GuiCalendar=Calendar
+GuiTreeType=Type
+GuiTreeLevel=Level
+GuiTreeValue=Value
+GuiTreeState=State
+GuiTreeItemType=Itemtype
+GuiTreeItemText=Itemtext
+GuiSplitterShellType=Type
+GuiSplitterShellPosition=Position
+ToolbarItem=Item
+ToolbarItemState=Itemstate
+GuiPicture=Picture
+Container=Container
+
+;  GuiCheckbox
+
+[CustomControl1]
+components=GuiComponentPrompt,GuiCheckBoxName,GuiCheckBoxState,type,GuiComponentState
+type=chk
+removed=
+displayname=Gui Checkbox
+
+;  GuiRadioButton
+
+[CustomControl2]
+components=GuiComponentPrompt,GuiRadioButtonName,GuiRadioButtonState,type,GuiRadioButtonPosition,GuiComponentState
+type=rbtn
+removed=
+displayname=Gui Radio Button
+
+;  GuiPushButton
+
+[CustomControl3]
+components=GuiComponentPrompt,GuiButtonName,type,GuiComponentState
+type=btn
+removed=
+displayname=Gui Button
+
+;  GuiTextField
+
+[CustomControl4]
+components=GuiComponentPrompt,GuiTextFieldState,type,GuiTextFieldText,GuiTextFieldPosition,GuiComponentDescriptions
+type=ed
+removed=
+displayname=Gui Edit
+
+;  GuiCTextField
+
+[CustomControl5]
+components=GuiComponentPrompt,GuiTextFieldState,type,GuiTextFieldText,GuiTextFieldPosition,GuiComponentDescriptions
+type=f4ed
+removed=
+displayname=Gui F4 Edit Combobox
+
+;  GuiComboBox
+
+[CustomControl6]
+components=GuiComponentPrompt,GuiComboboxState,type,GuiComboboxValue,GuiComboboxPosition,GuiComponentDescriptions
+type=dlbx
+removed=
+displayname=Gui Combobox
+
+;  GuiTableControl
+
+[CustomControl7]
+components=type,GuiTableControlInfo,GuiTableControlColumn,GuiTableControlCell
+type=tbl
+removed=
+displayname=Gui Table
+
+;  GuiTabControl
+
+[CustomControl8]
+components=GuiTabValue,GuiTabState,type,GuiTabPosition
+type=tab
+removed=
+displayname=Gui Tabstrip
+
+;  GuiShell TreeView
+
+[CustomControl9]
+components=GuiTreeType,GuiTreeLevel,GuiTreeValue,GuiTreeState,GuiTreeItemType,GuiTreeItemText
+type=tv
+removed=
+displayname=Gui TreeView
+
+[CustomControl10]
+components=GuiLabelType,GuiLabelInfo,GuiLabelContents,GuiLabelState
+type=txt
+removed=
+displayname=Gui Label
+
+[CustomControl11]
+components=type,GuiGridViewInfo,GuiGridViewRow,GuiGridViewColumn,GuiGridViewCell
+type=gv
+removed=
+displayname=Gui GridView
+
+[CustomControl12]
+components=GuiComponentPrompt,type,GuiCalendar
+type=cal
+removed=
+displayname=Gui Calendar
+
+[CustomControl13]
+components=GuiComponentPrompt,GuiTextFieldState,type,GuiTextFieldText,GuiComponentDescriptions
+type=pwded
+removed=
+displayname=Gui PasswordField
+
+[CustomControl14]
+components=type,ToolbarItem,ToolbarItemState
+type=tb
+removed=
+displayname=Gui Toolbar
+
+[CustomControl15]
+components=GuiComponentPrompt,type,GuiPicture
+type=bmp
+removed=
+displayname=Gui Picture
+
+[CustomControl16]
+components=GuiComponentPrompt,type,GuiSplitterShellPosition
+type=splt
+removed=
+displayname=Gui Splitter
+
+[CustomControl17]
+components=type,Container
+type=container
+removed=
+displayname=Gui Container

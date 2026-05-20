@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SapSetup Context="Settings">
+        <Script ScriptName="Add custom logging to the log file" Description="Adds a custom line to NwSAPSetup.log">
+        <![CDATA[
+NwEngine.Context.Log.Write "Your custom statement goes here."
+
+]]>
+        </Script>
+        <Script ScriptName="Log an error" Description="Adds an error log entry to NwSAPSetup.log, SAPSetup will exit with return code different than 0.">
+        <![CDATA[
+NwEngine.Context.Log.WriteError "Error in custom script: something failed!"
+
+]]>
+        </Script>
+        <Script ScriptName="Resolve an installation variable" Description="Shows how to resolve installation parameters and environment variables">
+        <![CDATA[
+strSrcFile   = NwEngine.Variables.ResolveString("%SapSrcDir%\CustomerFiles\TestFile.txt")
+strSrcFolder = NwEngine.Variables.ResolveString("%SapSrcDir%\CustomerFiles")
+strDstFolder = "C:\temp\TestFolder"
+strDstFile   = "C:\temp\TestFolder\TestFile.txt"
+strDstFile1  = NwEngine.Variables.ResolveString("%ProgramFiles%\TestFile.txt")
+strDstFile2  = NwEngine.Variables.ResolveString("%CommonProgramFiles%\TestFile.txt")
+strDstFile3  = NwEngine.Variables.ResolveString("%WinDir%\TestFile.txt")
+
+]]>
+        </Script>
+        <Script ScriptName="Check a file for existence" Description="Checks if 'TestFile.txt' is available on the installation source.">
+        <![CDATA[
+strSrcFile   = NwEngine.Variables.ResolveString("%SapSrcDir%\CustomerFiles\TestFile.txt")
+If NwEngine.Shell.FileExist( strSrcFile ) Then
+        NwEngine.Context.Log.Write "File exists: " & strSrcFile
+Else
+        NwEngine.Context.Log.Write "File missing: " & strSrcFile
+End If
+
+]]>
+        </Script>
+        <Script ScriptName="Copy a file" Description="Copies a file given a source and destination path.">
+        <![CDATA[
+strSrcFile   = NwEngine.Variables.ResolveString("%SapSrcDir%\CustomerFiles\TestFile.txt")
+strDstFile   = "C:\temp\TestFolder\TestFile.txt"
+NwEngine.Shell.CopyFile strSrcFile, strDstFile
+
+]]>
+        </Script>
+        <Script ScriptName="Copy a file in force mode" Description="Copies a file without time stamp or version check.">
+        <![CDATA[
+strSrcFile   = NwEngine.Variables.ResolveString("%SapSrcDir%\CustomerFiles\TestFile.txt")
+strDstFile   = "C:\temp\TestFolder\TestFile.txt"
+NwEngine.Shell.CopyFileEx strSrcFile, strDstFile, vbTrue
+
+]]>
+        </Script>
+        <Script ScriptName="Delete a file" Description="Deletes a file from the file system.">
+        <![CDATA[
+strDstFile   = "C:\temp\TestFolder\TestFile.txt"
+NwEngine.Shell.DeleteFile strDstFile
+
+]]>
+        </Script>
+        <Script ScriptName="Copy a directory recursively" Description="Copies the contents of a directory and its subdirectories to a destination path.">
+        <![CDATA[
+strSrcFolder = NwEngine.Variables.ResolveString("%SapSrcDir%\CustomerFiles")
+strDstFolder = "C:\temp\TestFolder"
+NwEngine.Shell.CopyDirectory strSrcFolder, strDstFolder
+
+]]>
+        </Script>
+        <Script ScriptName="Copy a directory recursively in force mode" Description="Copies the contents of a directory and its subdirectories to a destination path ignoring file version and time stamp information.">
+        <![CDATA[
+strSrcFolder = NwEngine.Variables.ResolveString("%SapSrcDir%\CustomerFiles")
+strDstFolder = "C:\temp\TestFolder"
+NwEngine.Shell.CopyDirectoryEx strSrcFolder, strDstFolder, vbTrue
+
+]]>
+        </Script>
+        <Script ScriptName="Create a directory" Description="Creates a new directory and intermediate directories in the supplied path, if they don't already exist.">
+        <![CDATA[
+strDstFolder = "C:\temp\TestFolder"
+NwEngine.Shell.CreateDirectory strDstFolder
+
+]]>
+        </Script>
+        <Script ScriptName="Delete a directoy" Description="Delete a directory with all it's contents.">
+        <![CDATA[
+strDstFolder = "C:\temp\TestFolder"
+NwEngine.Shell.DeleteDirectory strDstFolder
+
+]]>
+        </Script>
+        <Script ScriptName="Check for the existence of a registry key" Description="Check whether a registry key (example: 'HKLM\SOFTWARE\SAP\TestKey') exists.">
+        <![CDATA[
+'The key path can contain variables which will be resolved
+If NwEngine.Shell.RegKeyExist("HKLM\SOFTWARE\SAP\TestKey") Then
+        NwEngine.Context.Log.Write "Key exists: HKLM\SOFTWARE\SAP\TestKey"
+Else
+        NwEngine.Context.Log.Write "Key does not exist: HKLM\SOFTWARE\SAP\TestKey"
+End If
+
+]]>
+        </Script>
+        <Script ScriptName="Replace or set a registry value" Description="Sets a 'REG_SZ' and a 'REG_DWORD' value in the Windows registry.">
+        <![CDATA[
+'The value path can contain variables which will be resolved
+NwEngine.Shell.SetRegValue "HKLM\SOFTWARE\SAP\TestKey\TestString", "REG_SZ", "TestValue"
+NwEngine.Shell.SetRegValue "HKLM\SOFTWARE\SAP\TestKey\TestDWord", "REG_DWORD", "65536"
+
+]]>
+        </Script>
+        <Script ScriptName="Read a value from the registry" Description="Shows how to read a value from the Windows registry via a sample that reads the key value that stores the user's 'My Documents' folder path.">
+        <![CDATA[
+'The value path can contain variables which will be resolved
+strRegValue = NWEngine.Shell.GetRegValue("HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\Personal")
+NwEngine.Context.Log.Write "User's document folder: " & strRegValue
+
+]]>
+        </Script>
+        <Script ScriptName="Read registry values" Description="Read the values under a key from the Windows registry.">
+        <![CDATA[
+'The key path can contain variables which will be resolved
+dim values
+values = NwEngine.Shell.EnumRegValues("HKLM\SOFTWARE\SAP\TestKey")
+If isArray(values) Then
+        For Each value In values
+                NwEngine.Context.Log.Write "Found value with name " & value
+        Next
+Else
+        NwEngine.Context.Log.Write "TestKey has no values"
+End If
+
+]]>
+        </Script>
+        <Script ScriptName="Read registry subkeys" Description="Read the subkeys under a key from the Windows registry.">
+        <![CDATA[
+'The key path can contain variables which will be resolved
+dim keys
+keys = NwEngine.Shell.EnumRegKeys("HKLM\SOFTWARE\SAP\TestKey")
+If isArray(keys) Then
+        For Each key In keys
+                NwEngine.Context.Log.Write "Found subkey with name " & key
+        Next
+Else
+        NwEngine.Context.Log.Write "TestKey has no subkeys"
+End If
+
+]]>
+        </Script>
+        <Script ScriptName="Set Inifile entry" Description="Add/replace an entry in an inifile.">
+        <![CDATA[
+'The path to the inifile can contain variables which will be resolved
+inifilePath = "C:\Absolute Path\to\the\inifile.ini"
+keyAndSection = "section\key"
+NwEngine.Shell.SetIniValue inifilePath, keyAndSection, "new Value"
+
+]]>
+        </Script>
+        <Script ScriptName="Get Inifile entry" Description="Read an entry from an inifile.">
+        <![CDATA[
+'The path to the inifile can contain variables which will be resolved
+inifilePath = "C:\Absolute Path\to\the\inifile.ini"
+keyAndSection = "section\key"
+value = NwEngine.Shell.GetIniValue(inifilePath, keyAndSection)
+If value = "" Then
+        NwEngine.Context.Log.Write "Either file, or section, or key do not exist"
+Else
+        NwEngine.Context.Log.Write "Read inifile value " & value
+End If
+
+]]>
+        </Script>
+        <Script ScriptName="Execute an application and wait" Description="Start an application (example: notepad.exe) and wait until it ends.">
+        <![CDATA[
+strCmdLine = NwEngine.Variables.ResolveString("%WinDir%\NotePad.exe")
+bNoWaiting = vbFalse
+NwEngine.Shell.Execute strCmdLine, bNoWaiting
+
+]]>
+        </Script>
+        <Script ScriptName="Sample 1: Copying a file" Description="Copying a customized version of 'SapLogon.ini' and 'services' file">
+        <![CDATA[
+'This scripting can be added to the 'On End Install' section of a SAP GUI 710 package event script.
+'It distributes your special version of the 'SapLogon.ini' and services file
+'given these files exist inside a folder ‘\CustomerFiles’ on your installation server share.
+'
+NwEngine.Context.Log.Write "Event: Copying customized SapLogon.ini"
+strSrcFile = NwEngine.Variables.ResolveString("%SapSrcDir%\CustomerFiles\SapLogon.ini")
+strDstFile = NwEngine.Variables.ResolveString("%WinDir%\SapLogon.ini")
+If NwEngine.Shell.FileExist( strSrcFile ) Then
+      NwEngine.Shell.CopyFile strSrcFile, strDstFile
+End If
+NwEngine.Context.Log.Write "Event: Copying customized services file"
+If NwEngine.Shell.FileExist("%SAPSrcDir%\CustomerFiles\services") Then
+      NwEngine.Shell.CopyFile "%SAPSrcDir%\CustomerFiles\services", "%WinSysDir%\drivers\etc\services"
+End If
+
+]]>
+        </Script>
+        <Script ScriptName="Sample 2: Setting registry values" Description="Setting registry values to preconfigure Auto Update settings for SAP Logon">
+        <![CDATA[
+'This scripting can be added to the 'On End Install' section of a SAP GUI 710 package event script to pre define the auto update settings for SAP Logon.
+NwEngine.Context.Log.Write "Event: Setting the auto update registry key for SAP Logon"
+
+strRegUpdate = "HKLM\SOFTWARE\SAP\SAPsetup\SAPstart\AutoUpdate\SAPLogon.exe\UpdateMode"
+strRegProb   = "HKLM\SOFTWARE\SAP\SAPsetup\SAPstart\AutoUpdate\SAPLogon.exe\Prob"
+
+'Option 1: Update Mode is switched on with update frequency = 10. The user is not allowed to configure.
+NwEngine.Shell.SetRegValue strRegUpdate, "REG_SZ", "ForceOn"
+NwEngine.Shell.SetRegValue strRegProb, "REG_DWORD", "10"
+
+'Option 2: Update Mode is switched off. The user is not allowed to switch it on.
+NwEngine.Shell.SetRegValue strRegUpdate, "REG_SZ", "ForceOff"
+
+'Option 3: Update Mode is switched on with update frequency = 10. The user is allowed to change the configuration.
+NwEngine.Shell.SetRegValue strRegUpdate, "REG_SZ", "On"
+NwEngine.Shell.SetRegValue strRegProb, "REG_DWORD", "10"
+
+
+'Option 4: Update Mode is switched off. The user is allowed to change the configuration.
+NwEngine.Shell.SetRegValue strRegUpdate, "REG_SZ", "Off"
+
+'The same settings can be applied to the registry values for 'SAPLgPad.exe':
+' strRegUpdate = "HKLM\SOFTWARE\SAP\SAPsetup\SAPstart\AutoUpdate\SAPLgPad.exe\UpdateMode"
+' strRegProb   = "HKLM\SOFTWARE\SAP\SAPsetup\SAPstart\AutoUpdate\SAPLgPad.exe\Prob"
+
+]]>
+        </Script>
+        <Script ScriptName="Sample 3: Replacing a line" Description="Replacing a line inside a text file">
+        <![CDATA[
+'This scripting can be added to the 'On End Install' section of a SAP GUI 710 package event script
+'
+'It replaces the default line
+' Cmd=""
+'by the line
+' Cmd="/ini_file="C:\temp\saplogon.ini""
+'inside the file '%ProgramFiles%\SAP\SapSetup\setup\SAL\SapLogon.sal'
+'
+'This way, you can redirect 'SAPLogon.exe' to the INI file 'C:\temp\saplogon.ini'.
+NwEngine.Context.Log.Write "Event: Editing SAPLogon.sal"
+
+strSalFile = NwEngine.Variables.ResolveString( "%ProgramFiles%\SAP\SapSetup\setup\SAL\SapLogon.sal" )
+Set objTextFile = CreateObject("NwSapSetupATLCommon.TextFileParser")
+If objTextFile.Parse( strSalFile ) Then
+NwEngine.Context.Log.Write "Event: Open and modify the file " & Chr(34) & strSalFile & Chr(34)
+      strOldLine = "Cmd=" & Chr(34) & Chr(34)
+     strNewLine = "Cmd=" & Chr(34) & "/ini_file=" & Chr(34) & "C:\temp\saplogon.ini" & Chr(34) & Chr(34)
+      objTextFile.ReplaceLineEx strOldLine, strNewLine
+      objTextFile.Save( strSalFile )
+Else
+      NwEngine.Context.Log.WriteWarning "Event: Could not open the file " & Chr(34) & strSalFile & Chr(34)
+End If
+
+]]>
+        </Script>
+        <Script ScriptName="Sample 4: Appending a line" Description="Append content to the 'services' file. You can run this script on EndInstall.">
+        <![CDATA[
+'This scripting can be added to the 'On End UnInstall' section of a SAP GUI 710 package event script
+'
+'It appends a new line to the 'services' file.
+'
+NwEngine.Context.Log.Write "Event: Appending a new line to the services file"
+
+strFile = NwEngine.Variables.ResolveString( "%WinSysDir%\drivers\etc\services" )
+Set objTextFile = CreateObject("NwSapSetupATLCommon.TextFileParser")
+
+If objTextFile.Parse( strFile ) Then
+      NwEngine.Context.Log.Write "Event: Parsing the file " & Chr(34) & strFile & Chr(34)
+      If Not objTextFile.DoesStringExist("Alpha  1901/tcp") Then
+            NwEngine.Context.Log.Write "Script action: Appending line 'Alpha  1901/tcp'"
+            objTextFile.AppendLine "Alpha  1901/tcp"
+      End If
+      objTextFile.Save( strFile )
+Else
+      NwEngine.Context.Log.WriteWarning "Event: Could not open the file " & Chr(34) & strFile & Chr(34)
+End If
+
+]]>
+        </Script>
+        <Script ScriptName="Sample 5: Removing a line" Description="Removing content from the 'services' file. You can run it on EndUninstall">
+        <![CDATA[
+'This scripting can be added to the 'On End UnInstall' section of a SAP GUI 710 package event script
+'
+'It removes a line from the services file which was set in the last Sample 4.
+'
+NwEngine.Context.Log.Write "Event: Removing a line from the services file"
+
+strFile = NwEngine.Variables.ResolveString( "%WinSysDir%\drivers\etc\services" )
+Set objTextFile = CreateObject("NwSapSetupATLCommon.TextFileParser")
+
+If objTextFile.Parse( strFile ) Then
+      NwEngine.Context.Log.Write "Event: Modify the file " & Chr(34) & strFile & Chr(34)
+      If objTextFile.DoesStringExist("Alpha  1901/tcp") Then
+            objTextFile.RemoveLine "Alpha  1901/tcp"
+      End If
+      objTextFile.Save( strFile )
+Else
+      NwEngine.Context.Log.WriteWarning "Event: Could not open the file " & Chr(34) & strFile & Chr(34)
+End If
+
+]]>
+        </Script>
+</SapSetup>

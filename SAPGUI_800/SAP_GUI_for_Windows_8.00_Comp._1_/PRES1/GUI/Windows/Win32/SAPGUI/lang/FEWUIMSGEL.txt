@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 FEWUIMSG EL 1704 OK 
+<#001>UIMSG_YNA_DLG_REMEMBER    100 "Να θυμάται την απόφασή μου"
+<#001>UIMSG_YNA_DLG_YES         100 "Ναι"
+<#001>UIMSG_YNA_DLG_NO          100 "Οχι"
+LGN_POP_DTF_TITLE               200 "Εκκαθάριση Σύνδεσης SAP"
+LGN_POP_DTF_MESSAGE             200 "Θέλετε να εκκαθαρίσετε τον κατάλογο εγγράφων %s;"

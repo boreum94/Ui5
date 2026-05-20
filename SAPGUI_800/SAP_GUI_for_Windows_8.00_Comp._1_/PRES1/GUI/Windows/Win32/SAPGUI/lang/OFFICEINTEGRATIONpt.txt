@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 OFFICEINTEGRATION PT 1100 OK 
+OI_LOADING_CUSTOM_MENU          080 "Carregando menu personalizado. Aguarde..."
+OI_FILE                         060 "File"
+OI_SAVE                         060 "Gravar"
+OI_SAVE_AS                      060 "Gravar como"
+OI_PRINT_PREVIEW                080 "Visualização"
+OI_PROPERTIES                   060 "Características"
+OI_PRINT                        060 "Imprimir"

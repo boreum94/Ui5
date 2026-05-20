@@ -1,0 +1,10 @@
+#@(#) $Id: //bas/BIN/src/dwb/eusp/euspptle#4 $ SAP
+#234567890123456789012345678901234567890 123456789012345678901234567890
+LABEL                                    Hyperlink
+LABEL                                    Areatitle
+TABLELABEL                               Hyperlink
+TABLELABEL                               Areatitle
+PUSHBUTTON                               Emphasized
+TABLEPUSHBUTTON                          Emphasized
+INFOBUTTON                               KnowledgeObject
+TABLEINFOBUTTON                          KnowledgeObject

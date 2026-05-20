@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 TEXTEDIT FR 1100 OK 
+TEXTEDIT_HE_LANG_BUTTON         255 "Basculer la disposition du clavier en hébreu"
+TEXTEDIT_EN_LANG_BUTTON         255 "Basculer la disposition du clavier en anglais"
+TEXTEDIT_DISABLE_LANG_BUTTON    255 "Désactiver le bouton Langue"
+TEXTEDIT_ENABLE_LANG_BUTTON     255 "Activer le bouton Langue"
+TEXTEDIT_PROMPT_TEXT            255 "Saisissez le texte ici..."

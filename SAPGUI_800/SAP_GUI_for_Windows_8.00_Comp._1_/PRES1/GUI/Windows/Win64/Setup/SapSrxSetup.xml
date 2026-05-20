@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapSrxWkstaUI.xml">
+	<SapSetupProduct BuildTime="0xE08560C75730D901" CmdLine="SRX" Description="SrxProductDescription" Guid="{2BF6D3E0-0CBA-4414-AB63-3C55770AB07C}" Name="SrxProductName" PatchLevel="66" Version="1526" Visible="true">
+		<Prerequisite>
+			<Condition>%PRE_SRX%=FULFILLED</Condition>
+			<FailureText>FailureTextStrPreSrxJawsNotInstalled</FailureText>
+		</Prerequisite>
+		<Prerequisite>
+			<Condition>%EXIST_SRX_640%&lt;&gt;TRUE</Condition>
+			<FailureText>FailureTextStrPreSrxOlderSrxFound</FailureText>
+		</Prerequisite>
+		<UI>
+			<Page Type="FolderPath">
+				<WindowCaption>SAPSetup Installation Wizard</WindowCaption>
+				<Title>SrxProductName</Title>
+				<SubTitle>SrxFolderPathPageSubTitle</SubTitle>
+				<NextBtnText>StrBtnNext</NextBtnText>
+				<BackBtnText>StrBtnBack</BackBtnText>
+				<BrowseBtnText>StrBtnBrowse</BrowseBtnText>
+				<PageVariable>JawsDestDir</PageVariable>
+			</Page>
+			<Page Type="FolderPath">
+				<WindowCaption>SAPSetup Installation Wizard</WindowCaption>
+				<Title>SrxProductName</Title>
+				<SubTitle>SrxScriptPathPagePrompt</SubTitle>
+				<NextBtnText>StrBtnNext</NextBtnText>
+				<BackBtnText>StrBtnBack</BackBtnText>
+				<BrowseBtnText>StrBtnBrowse</BrowseBtnText>
+				<PageVariable>JawsScriptDir</PageVariable>
+			</Page>
+		</UI>
+		<IncludesProductPart Comment="Screen Reader Extension" ProductGuid="{EDA3D276-88FD-459E-813D-270D531F3E75}" Visible="false"/>
+		<IncludesProductPart Comment="Accessibility settings for SAP GUI" ProductGuid="{FDA61309-CA08-42AE-A7B3-B82B2564ABB9}"/>
+	</SapSetupProduct>
+	<SapSetupProductPart BuildTime="0xE08560C75730D901" Guid="{EDA3D276-88FD-459E-813D-270D531F3E75}" Name="Screen Reader Extension" Version="5">
+		<RequiresComponent ComponentGuid="{7895AA3C-CB36-4F53-A39E-EE033A994FE1}"/>
+		<RequiresComponent ComponentGuid="{D6D5B808-F9A3-4DB0-8E1D-759CC3A3B4FF}"/>
+		<RequiresComponent ComponentGuid="{1E6F8588-D600-4762-8611-B97592046344}"/>
+		<RequiresComponent ComponentGuid="{4B85E180-B642-4BDA-A188-A7D04ECBF7B4}"/>
+		<RequiresComponent ComponentGuid="{3E27B0BF-1D66-4EE1-B9F9-E9EBA4FFEC06}"/>
+		<RequiresComponent ComponentGuid="{5CB90BBB-FDDC-4C3F-A9AA-B2DB7F2F4FA7}"/>
+		<RequiresComponent ComponentGuid="{400B88B1-79B3-458C-B616-5BFDB5CA916A}"/>
+		<RequiresComponent ComponentGuid="{09E73341-A49C-4571-9175-95D3D02D7EB8}"/>
+		<RequiresComponent ComponentGuid="{ADB9AA06-EEE6-4DD3-BFB2-5D0CA6C35CC8}"/>
+	</SapSetupProductPart>
+	<SapSetupProductPart BuildTime="0xE08560C75730D901" Description="strSRXAccessibilityProductDescription" Guid="{FDA61309-CA08-42AE-A7B3-B82B2564ABB9}" Name="strSRXAccessibilityProductName" Version="1">
+		<RequiresProductPart ProductGuid="{EDA3D276-88FD-459E-813D-270D531F3E75}" Visible="false"/>
+		<RequiresComponent ComponentGuid="{79857FD7-9463-443E-8CD2-A1DC43E3E206}"/>
+	</SapSetupProductPart>
+</SapSetup>

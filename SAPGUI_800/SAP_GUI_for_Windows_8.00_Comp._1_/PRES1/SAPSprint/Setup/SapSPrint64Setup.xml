@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapSPrint64WkstaUI.xml">
+	<SapSetupProduct BuildTime="0xA0C1C7C092F8D801" CmdLine="SPrint64" Description="SapSPrint64ProductDescription" Guid="{768E6874-B6A9-427F-A18D-8C1A77D43FE8}" Name="SapSPrint64ProductName" Version="800.42">
+		<Prerequisite>
+			<Condition>%WOW64MODE% = TRUE</Condition>
+			<FailureText>strSapSPrint64No64BitWindows</FailureText>
+		</Prerequisite>
+		<Prerequisite>
+			<Condition>NOT(IsProductInstalled({EF091753-B596-4589-9103-57DDBD048CEB}))</Condition>
+			<FailureText>strSapSPrint64SPrintx86AlreadyInstalled</FailureText>
+		</Prerequisite>
+		<Prerequisite>
+			<Condition>NOT(%WinType%=[Windows Server 2008,Windows Vista,Windows 2000,Windows XP,Windows Server 2003])</Condition>
+			<FailureText>StrFailedConditionWindowsVersion</FailureText>
+		</Prerequisite>
+		<UI>
+			<Page Type="FolderPath">
+				<PageVariable>SapSPrint64DestDir</PageVariable>
+				<WindowCaption>StrWindowCaption</WindowCaption>
+				<Title>SapSPrint64ProductName</Title>
+				<SubTitle>SapSPrint64DestDirPrompt</SubTitle>
+				<BackBtnText>StrBtnBack</BackBtnText>
+				<NextBtnText>StrBtnNext</NextBtnText>
+				<CancelBtnText>StrBtnCancel</CancelBtnText>
+			</Page>
+			<Page Type="InputString">
+				<PageVariable>SapSPrint64LPDPort</PageVariable>
+				<WindowCaption>StrWindowCaption</WindowCaption>
+				<Title>SapSPrint64ProductName</Title>
+				<SubTitle>SapSPrint64LPDPortPrompt</SubTitle>
+				<BackBtnText>StrBtnBack</BackBtnText>
+				<NextBtnText>StrBtnNext</NextBtnText>
+				<CancelBtnText>StrBtnCancel</CancelBtnText>
+			</Page>
+		</UI>
+		<IncludesProductPart Comment="SAP SPrint64" ProductGuid="{1598D4E7-255C-4EF8-8D18-C22F10F9A5E0}" Visible="false"/>
+	</SapSetupProduct>
+	<SapSetupProductPart BuildTime="0xA0C1C7C092F8D801" Guid="{1598D4E7-255C-4EF8-8D18-C22F10F9A5E0}" Name="SAP SPrint64" Version="800.0">
+		<RequiresComponent ComponentGuid="{22B22A74-B827-42ED-81DE-7AEC431D9920}"/>
+		<RequiresComponent ComponentGuid="{223E30BF-DB42-4C78-AECB-922A7A41730B}"/>
+		<RequiresComponent ComponentGuid="{6FEEB9D4-234B-4CA1-925B-AF474DA50ABF}"/>
+		<RequiresComponent ComponentGuid="{1C283B55-A36F-4D26-A17B-E6DF2D931097}"/>
+	</SapSetupProductPart>
+</SapSetup>

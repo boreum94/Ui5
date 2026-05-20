@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 SAPGUISCRIPTING JA 8000 OK 
+SCRIPTING_SCRIPTISOPENING       150 "スクリプトによって次のシステムへの接続を開始します。%s"
+SCRIPTING_SCRIPTNOTINST         150 "スクリプトサポートがインストールされていません"
+SCRIPTING_SCRIPTNOTENABLED      150 "スクリプトサポートがユーザによって無効化されています"
+<#007>SCRIPTING_OK_BTN          016 "OK"
+<#007>SCRIPTING_CANCEL_BTN      016 "中止"
+SCRIPTING_DO_NOT_SHOW_AGAIN     150 "スクリプトで接続を開始する場合は、このポップアップを表示しないでください"
+<#007>SCRIPTING_ALLOW_BTN       016 "許可"
+<#007>SCRIPTING_DENY_BTN        016 "拒否"
+<#007>SCRIPTING_HELP_BTN        016 "ヘルプ"

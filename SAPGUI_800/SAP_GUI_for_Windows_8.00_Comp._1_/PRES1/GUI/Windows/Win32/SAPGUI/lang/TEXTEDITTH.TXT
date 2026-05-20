@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 TEXTEDIT TH 8600 OK 
+TEXTEDIT_HE_LANG_BUTTON         255 "สลับโครงร่างแป้นพิมพ์เป็นภาษาฮิบรู"
+TEXTEDIT_EN_LANG_BUTTON         255 "สลับโครงร่างแป้นพิมพ์เป็นภาษาอังกฤษ"
+TEXTEDIT_DISABLE_LANG_BUTTON    255 "ปิดใช้งานปุ่มภาษา"
+TEXTEDIT_ENABLE_LANG_BUTTON     255 "เปิดใช้งานปุ่มภาษา"
+TEXTEDIT_PROMPT_TEXT            255 "ป้อนข้อความที่นี่..."

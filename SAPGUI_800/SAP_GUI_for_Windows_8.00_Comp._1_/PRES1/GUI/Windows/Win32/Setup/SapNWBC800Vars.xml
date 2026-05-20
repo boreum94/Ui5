@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SapSetup Context="Variables" Version="306" ConnectedId="{DDFD2697-4113-48D1-824E-70DB4C7BE0AA}">
+<!-- $Id: //nwbc/nwbc.win/80_REL/src/cfg/installation/setup/SapNWBC800Vars.xml#2 $ -->
+    <Variable Name="SapNWBC800Platform" Persistent="true" DisplayInSapAdmin="true" Description="DscrSapNWBC800Platform">
+      <Value>x64</Value>
+	  <Value Script="TRUE">
+            <![CDATA[
+				Option Explicit
+				
+                NwEngine.Context.Log.Write "SapNWBC800Platform Script: Determine Nwbc platform to be installed."
+				Dim processor_architecture, wow64node
+				
+				NWEngine.Variables.AppendDefaultValue "SapNWBC800Platform", "x64"
+				
+				NwEngine.Context.Log.Write "SapNWBC800Platform Script: Checking if OS Platform is x86."
+				processor_architecture = NWEngine.Variables.ResolveString("%%PROCESSOR_ARCHITECTURE%%")
+				NwEngine.Context.Log.Write "SapNWBC800Platform Script: PROCESSOR_ARCHITECTURE: " & processor_architecture
+				wow64node = NWEngine.Variables.ResolveString("%%WOW64MODE%%")
+				NwEngine.Context.Log.Write "SapNWBC800Platform Script: WOW64MODE: " & wow64node
+				If processor_architecture = "x86" Then
+					If wow64node <> "true"  Then
+						NwEngine.Context.Log.Write "SapNWBC800Platform Script: OS Platform is x86."
+						NWEngine.Variables.AppendDefaultValue "SapNWBC800Platform", "x86"
+					End if
+				End If
+				
+				NwEngine.Context.Log.Write "SapNWBC800Platform Script: Checking if parameter '/NWBC800ForceX86' is supplied..."
+				Dim argCollection
+				Set argCollection = NwEngine.DE.CommandLineArguments
+				If argCollection.IsArgumentSupplied("NWBC800ForceX86") Then
+					NwEngine.Context.Log.Write "SapNWBC800Platform Script: Parameter '/NWBC800ForceX86' is supplied."
+					NWEngine.Variables.AppendDefaultValue "SapNWBC800Platform", "x86"
+				Else
+					NwEngine.Context.Log.Write "SapNWBC800Platform Script: Parameter '/NWBC800ForceX86' is not supplied."
+				End If
+				NwEngine.Context.Log.Write "SapNWBC800Platform Script: Setting variable SapNWBC800Platform to " & NWEngine.Variables.ResolveString("%%SapNWBC800Platform%%")
+            ]]>
+        </Value>
+    </Variable>
+	<Variable Name="SapNWBC800DestDir" ConnectedId="{DDFD2697-4113-48D1-824E-70DB4C7BE0AA}" Persistent="true" DisplayInSapAdmin="true" Description="DscrSapNWBC800DestDir">
+      <Value>%PROGRAMFILES64%\SAP\NWBC800</Value>
+	  <Value Script="TRUE">
+            <![CDATA[
+                NwEngine.Context.Log.Write "SapNWBC800Platform Script: Determine proposed Program Files path for NWBC800."
+				Dim programfilesPathX86
+				programfilesPathX86 = NWEngine.Variables.ResolveString("%%PROGRAMFILES32%%") & "\SAP\NWBC800"
+				
+				If NWEngine.Variables.ResolveString("%%SapNWBC800Platform%%") = "x86" Then
+					NwEngine.Context.Log.Write "SapNWBC800Platform Script: SapNWBC800Platform is x86, using PROGRAMFILES32 path."
+					NWEngine.Variables.AppendDefaultValue "SapNWBC800DestDir", programfilesPathX86
+				End If
+            ]]>
+        </Value>
+    </Variable>
+</SapSetup>

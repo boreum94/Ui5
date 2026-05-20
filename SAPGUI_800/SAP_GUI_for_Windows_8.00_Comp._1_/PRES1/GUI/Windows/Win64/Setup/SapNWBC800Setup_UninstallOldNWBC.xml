@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init">
+	<!-- $Id: //nwbc/nwbc.win/80_REL/src/cfg/installation/setup/SapNWBC800Setup_UninstallOldNWBC.xml#1 $ -->
+	<SapSetupProduct BuildTime="0x002A910F5730D901" CmdLine="NWBC800_UninstOldNWBC" Description="SAP Business Client 8.00 - Uninstall old SAP Business Client Releases" Guid="{D9BAA387-2B5B-4DE5-BF2F-4E9B384DDFD0}" Name="SAP Business Client 8.00 - Uninstall old NWBC Releases" PatchLevel="0" Version="8000" Visible="false">
+		<ExcludesProduct Comment="Uninstall SAP Business Client 7.70" ProductGuid="{AEC84400-1F49-4054-90A6-1F41F30A06A9}"/>
+		<ExcludesProduct Comment="Uninstall SAP Business Client 7.0" ProductGuid="{5440B48D-3505-4553-8D3D-024E7EC85A0D}"/>
+		<ExcludesProduct Comment="Uninstall SAP Business Client 6.5" ProductGuid="{0096DF59-A2A4-49df-941B-553599D0EEB0}"/>
+		<ExcludesProduct Comment="Uninstall SAP Business Client 6.5 Chromium" ProductGuid="{0FA9E580-148C-4527-B8E4-9CB77F59DDEC}"/>
+	</SapSetupProduct>
+</SapSetup>

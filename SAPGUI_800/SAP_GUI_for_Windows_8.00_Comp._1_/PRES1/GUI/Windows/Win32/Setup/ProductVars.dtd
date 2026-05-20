@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT SapSetup (Variable*)+>
+<!ATTLIST SapSetup
+    Context (Init | Server | Workstation | Patch | Variables) #REQUIRED
+    Version CDATA #IMPLIED
+    ConnectedId CDATA #IMPLIED
+>
+<!ELEMENT Variable (Value+)+>
+<!ATTLIST Variable
+    Name CDATA #REQUIRED
+    Persistent (true | TRUE | false | FALSE) #IMPLIED
+    ConnectedId CDATA #IMPLIED
+    Description CDATA #IMPLIED
+    DisplayInSapAdmin (true | TRUE | false | FALSE) #IMPLIED
+>
+<!ELEMENT Value (#PCDATA)>
+<!ATTLIST Value
+    Script (true | TRUE | false | FALSE) #IMPLIED
+>

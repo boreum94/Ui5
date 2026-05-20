@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Locale" Version="800.4" ConnectedId="{1460620D-C8BC-44c2-86EC-F00000000020}">
+    <String name='strSapRFC64ProductName'>
+        <De>64Bit RFC Controls für SAP GUI 32Bit</De>
+        <En>64bit RFC Controls for SAP GUI 32bit</En>
+    </String>
+    <String name='strSapRFC64ProductDescription'>
+        <De>64Bit RFC Controls für SAP GUI 32Bit (non-Unicode und Unicode) für den externen Zugriff auf Daten innerhalb von SAP Systemen ohne SAP GUI. Der Zugriff ist beispielsweise mit Visual Basic for Applications über COM-Schnittstelle möglich. Diese Komponente kann nur auf 64bit Betriebssystemen installiert werden und nur zusammen mit SAP GUI für Windows 32bit. SAP GUI für Windows 64bit enthält die Komponente automatisch.</De>
+        <En>64bit RFC Controls for SAP GUI 32bit (both non-Unicode and Unicode) for external access to data within SAP Systems without SAP GUI. Accessible for example from Visual Basic for Applications via COM Interface. This component can only be installed on 64bit operating systems and only together with SAP GUI for Windows 32bit. SAP GUI for Windows 64bit contains this component.</En>
+    </String>
+    <String name='strSapRFC64SelectTargetDir'>
+        <De>Wählen Sie das Zielverzeichnis für 64Bit RFC Controls für SAP GUI 32Bit aus.</De>
+        <En>Select the target directory for 64bit RFC Controls for SAP GUI 32bit.</En>
+    </String>
+    <String name='strSapRFC64DestDir'>
+        <De>SAP GUI for Windows 8.00 64Bit oder 64Bit RFC Controls für SAP GUI 32Bit Installationsverzeichnis</De>
+        <En>SAP GUI for Windows 8.00 64bit or 64bit RFC Controls for SAP GUI 32bit installation directory</En>
+    </String>
+    <String name='strSapRFC64No64BitOS'>
+        <De>Diese Komponente kann nur auf 64Bit Betriebssystemen installiert werden.</De>
+        <En>This component can only be installed on 64bit operating systems.</En>
+    </String>
+</SapSetup>

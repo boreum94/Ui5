@@ -1,0 +1,20 @@
+;  SAP AG, www.sap.com
+;  Last Update : 2020/12/02
+[Braille]
+BrailleMode=1
+BrailleMessages=1
+[OutputModes]
+TOOL_TIP=1|0|0|Tool Tipp
+[options]
+Verbosity=0
+ScreenEcho=0
+MSAAMode=1
+[OSM]
+IncludeGraphics=1
+[MSAAClasses]
+; Button=1
+ListBox=1
+; SysTreeView32=0
+SysTabControl32=1
+[WindowClasses]
+SysDateTimePick32=Graphic

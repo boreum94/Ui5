@@ -1,0 +1,48 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:b="sap.m.Button"
+>
+    <Dialog
+        id="idDialog"
+        title="Carrier List"
+        contentWidth="50%"
+        
+    >
+    <!-- fragment는 OData에서 데이터를 가져오고 있다. 
+    Main view에 만들 버튼이 OData의 /Carriers의 항목이 아닌
+    to_schedules에 들어있는 데이터 유무를 기준으로 작동 여부를
+    결정하려면 Mainview의 테이블(JSONModel)이 데이터를 바인딩
+    해오는 fragment에 expand를 해야한다.  -->
+    <Table
+        id="idDialogTable" 
+        items="{path: '/Carriers',
+                parameters: {
+                expand: 'to_schedules'}}"
+        mode="SingleSelectLeft"
+
+    >
+        <columns>
+            <Column ><header><Text text="{i18n>fragmentCarrierID}"/></header></Column>
+            <Column ><header><Text text="{i18n>fragmentCarrierName}"/></header></Column>
+        </columns>
+        <items>
+            <ColumnListItem >
+                <cells>
+                    <ObjectIdentifier title="{Carrid}" />
+                    <Text text="{Carrname}" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+    <buttons>
+        <Button text="OK"
+                press=".onButtonOK"
+        />
+        <Button text="close"
+                press=".onButtonCloseFragment"
+        />
+    </buttons>
+
+    </Dialog>
+</core:FragmentDefinition>

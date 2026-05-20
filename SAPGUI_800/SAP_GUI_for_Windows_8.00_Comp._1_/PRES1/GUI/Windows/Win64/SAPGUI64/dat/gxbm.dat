@@ -1,0 +1,354 @@
+/$TITLE
+:SAP Performance Monitor
+:Database Alert Monitor - Oracle H3D
+:
+:Category                       Total  10 sec interval
+/$OPTS
+:SET SYSID H3D
+:SET SAPRL 30D
+:SET SAPSYS R/3
+:SET TIMES X
+:SET TITLE 5
+:SET ROWLN 1
+:SET COLLN 15
+:SET MAXVL       100
+:SET MINVL         0
+:SET TIMER         0
+/$SCALE
+/$BSIZE
+:C   1  15 L
+:C   2  15 L
+:C   3  15 L
+:C   4  15 L
+:C   5  15 L
+:C   6  15 L
+:C   7  15 L
+:C   8  15 L
+:C  1  58
+:C  2  30
+:R  16  2
+:R  17  1
+:R  18  1
+/$CCBG
+:1
+:  GRAY
+/$CELLS
+/$AMPLS
+:0
+:0
+:User calls                    703245               33
+:
+:
+:
+:
+:X
+:1
+:0
+:Recursive calls               984008             5817
+:
+:
+:
+:
+:X
+:2
+:0
+:User rollbacks                  1069                0
+:
+:
+:
+:
+:X
+:3
+:0
+:CPU by sessions (sec)              0                0
+:
+:
+:
+:
+:X
+:4
+:0
+:
+:
+:
+:
+:
+:T
+:5
+:0
+:Table scans long tables          739                0
+:
+:
+:
+:
+:X
+:6
+:0
+:Table scan rows gotten       8924266                0
+:
+:
+:
+:
+:X
+:7
+:0
+:
+:
+:
+:
+:
+:T
+:8
+:0
+:Sorts (memory)                  8953                3
+:
+:
+:
+:
+:X
+:9
+:0
+:Sorts (disk)                       0                0
+:
+:
+:
+:
+:X
+:10
+:0
+:Sorts (rows)                  812896               19
+:
+:
+:
+:
+:X
+:11
+:0
+:
+:
+:
+:
+:
+:T
+:12
+:0
+:Physical reads                153258               52
+:
+:
+:
+:
+:X
+:13
+:0
+:DB block changes             1042365              102
+:
+:
+:
+:
+:X
+:14
+:0
+:Data buffer hit ratio %          100               98
+:
+:
+:
+:
+:T
+:15
+:0
+:
+:
+:
+:
+:
+:T
+:16
+:0
+:Background processes               0  errors detected
+:
+:
+:
+:
+:X
+:17
+:0
+:Database indices  ok
+:
+:
+:
+:
+:X
+:18
+:0
+:Freespace management checked on 06.04.1998   07:04:53
+:
+:
+:
+:
+:X
+:0
+:1
+:
+:        2
+:        0
+:GREEN
+:RED
+:YELLOW
+:1
+:1
+:
+:        2
+:       98
+:GREEN
+:RED
+:YELLOW
+:2
+:1
+:
+:        0
+:        0
+:GREEN
+:RED
+:YELLOW
+:3
+:1
+:
+:        0
+:        0
+:GREEN
+:RED
+:YELLOW
+:5
+:1
+:
+:        0
+:        0
+:GREEN
+:RED
+:YELLOW
+:6
+:1
+:
+:        0
+:        0
+:GREEN
+:RED
+:YELLOW
+:8
+:1
+:
+:        0
+:        0
+:GREEN
+:RED
+:YELLOW
+:9
+:1
+:
+:        0
+:        0
+:GREEN
+:RED
+:YELLOW
+:10
+:1
+:
+:        2
+:        0
+:GREEN
+:RED
+:YELLOW
+:12
+:1
+:
+:       52
+:        0
+:GREEN
+:RED
+:YELLOW
+:13
+:1
+:
+:       49
+:       51
+:GREEN
+:RED
+:YELLOW
+:14
+:1
+:
+:       98
+:        0
+:GREEN1
+:blank
+:blank
+:15
+:1
+:0% - 100%
+:        0
+:       10
+:YELLOW
+:RED
+:WHITE
+/$SIGNAL
+:16
+:1
+:GREEN
+:blank
+:blank
+:5
+:0
+:0
+:17
+:1
+:GREEN
+:blank
+:blank
+:5
+:0
+:0
+:18
+:1
+:GREEN
+:blank
+:blank
+:5
+:0
+:0
+/$HELPL
+:3
+:1
+:F3=Back
+:3
+:16
+:1
+:F16=Monitor on
+:16
+:18
+:1
+:F18=Wait stats
+:18
+:19
+:1
+:F19=File stats
+:19
+:20
+:1
+:F20=Customize
+:20
+/$ACTION
+:3
+:Q
+:3
+:16
+:S
+:16
+:18
+:S
+:18
+:19
+:S
+:19
+:20
+:S
+:20

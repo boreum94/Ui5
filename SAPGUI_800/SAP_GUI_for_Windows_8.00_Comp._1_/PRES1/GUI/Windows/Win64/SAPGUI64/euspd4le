@@ -1,0 +1,69 @@
+# @(#) $Id: //fes/800_REL/src/dwb/eusp/euspd4le#1 $ SAP
+#23456789012345678901234567890123456789012345678901234567890123456789012345
+. 
+.                              Field list
+.  
+. On this screen, you can display and, if required, change the attributes
+. of all screen elements. These attributes are identical to those on the
+. "Attributes" screen. You can find help information about the individual
+. attributes on the attributes screen or the field list of the alphanumeric
+. Screen Painter.
+.  
+. The field list is divided into five attribute groups. The first group
+. contains two columns for the element type and the element name. The
+. element type is represented by an icon. If you move over one of these
+. icons, the relevant text for the element type is displayed. If you
+. double-click on the icon, the "Attributes" screen of the corresponding
+. screen element will be displayed. A screen element that is a container
+. for other elements has a +/- marker next to the icon. If you double-click
+. that marker the contained elements will be added to, or removed from the 
+. list.
+.  
+. As in the "Attributes" screen, the remaining four attribute groups
+. contain:
+.  
+. - General attributes
+. - Dictionary attributes
+. - Program attributes
+. - Display attributes
+.  
+. These groups are displayed in a scrollable screen. By using the "-" or
+. "+" keys below the group names, you can either hide or show the groups.
+.  
+. Whether the attributes can be changed or not depends on the element type
+. and current mode (i.e. change or display). Modifiable texts and
+. checkboxes have a white background, unmodifiable texts a gray background.
+.  
+.  
+. Setting a checkbox makes the relevant attribute immediately effective,
+. but text entries such as the name or element text must be activated by
+. pressing ENTER.
+.  
+.  
+. Selecting and Deselecting
+. -------------------------
+. Clicking on a line in the field list selects this line and deselects any
+. previously selected lines. The line selection column on the left allows
+. you to select a single line or several lines.
+. You can select/deselect several lines as follows:
+.  
+. - CTRL  + mouse button selects/deselecte a single line
+. - SHIFT + mouse button selects/deselects all lines between the clicked
+.            line and the line last selected.
+.  
+.  
+. Input focus and key navigation
+. -------------------------------
+. The input focus is a flashing cursor for text input fields and a dotted
+. rectangle for checkboxes. You can change the input focus by clicking the
+. mouse or by pressing the following keys on your keyboard:
+.  
+. - "Arrow up" switches the focus to the field above, if possible.
+. - "Arrow down" switches the focus to the field below.
+. - "TAB" switches the focus to the next field on the right which is
+.    ready for input.
+. - "SHIFT + TAB" switches the focus the next field on the left which
+.    is ready for input.
+. - "CTRL + TAB" switches the focus to the top of the next group.
+. - "SHIFT + CTRL + TAB" switches the focus to the next element.
+.  

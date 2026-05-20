@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGWD2SD0002_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="QuarterSales" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Syear"/>
+                    <PropertyRef Name="Quarter"/>
+                </Key>
+                <Property Name="Syear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="판매실적 연도" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quarter" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="실적 분기" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Salescount" Type="Edm.Int32" sap:unicode="false" sap:label="판매량" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="KpiSummary" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Syear"/>
+                    <PropertyRef Name="Yearnum"/>
+                    <PropertyRef Name="Itemcategory"/>
+                    <PropertyRef Name="Currency"/>
+                </Key>
+                <Property Name="Syear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="판매실적 연도" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Yearnum" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="실적 대상 년도" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Itemcategory" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="아이템 카테고리" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="통화코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="Prevyearnum" Type="Edm.Int32" sap:unicode="false" sap:label="실적 대상 년도" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Categoryname" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="카테고리명" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Currentyearamt" Type="Edm.Decimal" Precision="14" Scale="3" sap:unicode="false" sap:unit="Currency" sap:label="당해 카테고리 매출" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Prevyearamt" Type="Edm.Decimal" Precision="14" Scale="3" sap:unicode="false" sap:unit="Currency" sap:label="전년 카테고리 매출" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Yoygrowthpct" Type="Edm.Decimal" Precision="15" Scale="2" sap:unicode="false" sap:label="성장률" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ttlyearamt" Type="Edm.Decimal" Precision="14" Scale="3" sap:unicode="false" sap:unit="Currency" sap:label="당해 전체 매출" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ttlprevyearamt" Type="Edm.Decimal" Precision="14" Scale="3" sap:unicode="false" sap:unit="Currency" sap:label="전년 전체 매출" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ttlyoygrowthpct" Type="Edm.Decimal" Precision="15" Scale="2" sap:unicode="false" sap:label="전체 성장률" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sharepct" Type="Edm.Decimal" Precision="15" Scale="2" sap:unicode="false" sap:label="카테고리 점유율" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Categorysalescount" Type="Edm.Int32" sap:unicode="false" sap:label="카테고리 판매건수" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ttlsalescount" Type="Edm.Int32" sap:unicode="false" sap:label="전체 판매건수" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZGWD2SD0002_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="QuarterSalesSet" EntityType="ZGWD2SD0002_SRV.QuarterSales" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="KpiSummarySet" EntityType="ZGWD2SD0002_SRV.KpiSummary" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <atom:link rel="self" href="http://61.97.134.36:8000/sap/opu/odata/sap/ZGWD2SD0002_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://61.97.134.36:8000/sap/opu/odata/sap/ZGWD2SD0002_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

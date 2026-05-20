@@ -1,0 +1,101 @@
+<mvc:View controllerName="code.d22.mentoringsy.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+    <Shell >
+        <Page id="page" 
+              title="{i18n>title}"
+              >
+            <content>
+                <Panel 
+                    headerText="{i18n>homePageTitle}"
+                    class="sapUiResponsibleMargin"
+                    width="auto">
+                        <content>
+                            <!-- Dialog 여는 버튼 생성삐1 -->
+                            <Button
+                                id="helloDialogButton" 
+                                icon="sap-icon://world"
+                                text="{i18n>openDialogButtonText}"
+                                press=".onOpenDialog" 
+                                class="sapUiResponsiveMargin" />
+                            <!-- 버튼 생성삐2 -->
+                            <Button 
+                                text="{i18n>showHelloButtonText}"
+                                press=".onShowHello" 
+                                class="sapUiResponsiveMargin" /> 
+                            <!-- 입력필드 생성삐 -->
+                            <Input 
+                                value="{/recipient/name}"
+                                valueLiveUpdate="true"
+                                width="40%"
+                                class="sapUiResponsiveMargin" />
+                            <FormattedText 
+                                htmlText="Hello {/recipient/name}"
+                                class="sapUiResponsiveMargin sapThemeHighlight-asColor myCustomText" />
+                        </content>
+                </Panel>
+                <!-- 나중에 컨트롤러에서 사용하기 위해서 List에 id를 준다.  -->
+                <!-- items에 정렬 옵션을 줬다. 이 때는 경로를 생략없이 path : 까지 다 작성하고
+                sorter : 에는 어떤 값을 기준으로 정렬할 건지 경로를 적어준다. 
+                그런데 우리가 앞서 이미 invoice>/Invoices 라는 경로를 줬기 때문에
+                sorter에는 상대경로를 작성해도 된다.  -->
+                <!-- 추가로 sorter : 에 path와 더불어 group을 주면 정렬기준별로 그룹핑이 된다. -->
+                <List 
+                    id="invoiceList"
+                    class="sapUiResponsiveMargin"
+                    width="auto"
+                    items="{
+                        path : 'invoice>/Invoices',
+                        sorter : { path : 'ProductName', 
+                                   group : true}
+                    }">
+                    <!-- headerToolbar가 우선이므로 List의 headerText는 지워준다.  -->
+                    <headerToolbar> 
+                        <Toolbar >
+                            <Title text="{i18n>invoiceListTitle}" />
+                            <!-- 쩍벌 다리 ToolbarSpacer -->
+                            <ToolbarSpacer />
+                            <SearchField
+                                width="50%"
+                                search=".onFilterInvoices" />
+                        </Toolbar>
+                    </headerToolbar>
+                    <!-- items에 상대경로를 주는 이유는 invoice라는 
+                    manifest에 등록된 invoice 라는 모델의 uri의 Invoices에 
+                    있는 data 개수 만큼 반복해야 하기 때문?  -->
+                    <items>
+                        <ObjectListItem
+                            title="{invoice>Quantity} x {invoice>ProductName}" 
+                            number="{ 
+                                parts: [
+                                    'invoice>ExtendedPrice',
+                                    'view>/currency'],
+                                type: 'sap.ui.model.type.Currency',
+                                formatOptions: {
+                                    showMeasure: false
+                                }
+                            }" 
+                            numberUnit="{view>/currency}"
+                            numberState="{= ${invoice>ExtendedPrice} > 80 ? 'Success' : 'Error' }" 
+                            type="Navigation"
+                            press=".onPress">
+                            <!-- x ? a : b 
+                                 x의 값이 true면 a 실행, false면 b를 실행한다.  -->
+                            <firstStatus>
+                                <ObjectStatus 
+                                    text="{ 
+                                        path: 'invoice>Status',
+                                        formatter: '.formatter.statusText'
+                                    }" />
+                                <!-- path에는 모델의 어느 위치에 우리가 원하는 데이터가 있는지 경로를 주고
+                                    formatter에는 .formatter(이formatter의).statusText(이 함수를 실행 시켜라) -->
+                            </firstStatus>
+                        </ObjectListItem>
+                    </items>
+                </List>
+            </content>
+        </Page>
+    </Shell>
+</mvc:View>

@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 SAPGUISCRIPTING LT 1904 OK 
+SCRIPTING_SCRIPTISOPENING       150 "Scenarijus uþmezga ryðá su sistema: %s"
+SCRIPTING_SCRIPTNOTINST         150 "Neádiegtas scenarijø vykdymo palaikymas"
+SCRIPTING_SCRIPTNOTENABLED      150 "Vartotojas iðjungë scenarijø vykdymo palaikymà"
+<#007>SCRIPTING_OK_BTN          016 "Gerai"
+<#007>SCRIPTING_CANCEL_BTN      016 "Atðaukti"
+SCRIPTING_DO_NOT_SHOW_AGAIN     150 "Nerodyti ðio iððokanèiojo lango, kai scneraijus bando uþmegzti ryðá"
+<#007>SCRIPTING_ALLOW_BTN       016 "Leisti"
+<#007>SCRIPTING_DENY_BTN        016 "Drausti"
+<#007>SCRIPTING_HELP_BTN        016 "Þinynas"

@@ -1,0 +1,929 @@
+# @(#) $Id: //fes/800_REL/src/dwb/eusp/euspicld#1 $ SAP
+#234 123456789012345678901234567890 1 B S M F T 12345678 L 1 123456789012345678901234567890 123456789012345678901234567890
+#euspicld
+@00@ ICON_DUMMY                     2 X X X X X @B_DUMY@   D Platzhaltericon                Platzhaltericon               
+@01@ ICON_CHECKED                   2   X       @S_OKAY@   D Geprüft; Okay                  Geprüft; Okay                 
+@02@ ICON_INCOMPLETE                2   X       @S_NONO@   D Unvollständig; Kritisch        Unvollständig; Kritisch       
+@03@ ICON_FAILURE                   2   X   X   @S_ERRO@   D Fehlgeschlagen                 Fehlgeschlagen                
+@04@ ICON_POSITIVE                  2   X       @S_POSI@   D Positiv, Gut                   Positiv, Gut                  
+@05@ ICON_NEGATIVE                  2   X       @S_NEGA@   D Negativ; Schlecht              Negativ; Schlecht             
+@06@ ICON_LOCKED                    2 X X   X   @S_LOCL@   D Gesperrt; Sperren              Gesperrt; Sperren             
+@07@ ICON_UNLOCKED                  2 X X   X   @S_LOOP@   D Frei; Entsperren               Frei; Entsperren              
+@08@ ICON_GREEN_LIGHT               4   X       @S_TL_G@   D Grüne Ampel; Go; In Ordnung    Grüne Ampel; Go; In Ordnung   
+@09@ ICON_YELLOW_LIGHT              4   X       @S_TL_Y@   D Gelbe Ampel; Achtung           Gelbe Ampel; Achtung          
+@0A@ ICON_RED_LIGHT                 4   X       @S_TL_R@   D Rote Ampel; Stop; Fehlerhaft   Rote Ampel; Stop; Fehlerhaft  
+@0B@ ICON_TOTAL_LEFT                2 X     X   @B_TOTL@   D Ganz nach links; Erste(r) ...  Ganz nach links; Erste(r) ... 
+@0C@ ICON_TOTAL_RIGHT               2 X     X   @B_TOTR@   D Ganz nach rechts; Letzte(r) .. Ganz nach rechts; Letzte(r) ..
+@0D@ ICON_COLUMN_LEFT               2 X     X   @B_COLL@   D Spalte links; Vorige(r) ...    Spalte links; Vorige(r) ...   
+@0E@ ICON_COLUMN_RIGHT              2 X     X   @B_COLR@   D Spalte rechts; Nächste(r) ...  Spalte rechts; Nächste(r) ... 
+@0F@ ICON_PAGE_RIGHT                2 X     X   @B_PAGR@   D Seite rechts                   Seite rechts                  
+@0G@ ICON_PAGE_LEFT                 2 X     X   @B_PAGL@   D Seite links                    Seite links                   
+@0H@ ICON_PREVIOUS_VALUE            2 X     X   @B_PRVI@   D Voriger Wert; Nächst. Eintrag  Voriger Wert; Nächst. Eintrag 
+@0I@ ICON_NEXT_VALUE                2 X     X   @B_NXTI@   D Nächster Wert; Vorig. Eintrag  Nächster Wert; Vorig. Eintrag 
+@0J@ ICON_ANNOTATION                2 X X   X X @B_ANNO@   D Notiz; Anmerkung               Notiz; Anmerkung              
+@0K@ ICON_CREATE_NOTE               2 X     X   @B_NOCR@   D Notiz anlegen                  Notiz anlegen                 
+@0L@ ICON_DISPLAY_NOTE              2 X     X   @B_NODP@   D Notiz anzeigen                 Notiz anzeigen                
+@0M@ ICON_CALCULATION               2 X     X   @B_CALC@   D Kalkulation                    Kalkulation                   
+@0N@ ICON_GRAPHICS                  2 X     X   @B_GRAF@   D Grafik                         Grafik                        
+@0O@ ICON_CREATE_TEXT               2 X     X   @B_TXCR@   D Text anlegen                   Text anlegen                  
+@0P@ ICON_DISPLAY_TEXT              2 X X   X X @B_TXDP@   D Text anzeigen                  Text anzeigen                 
+@0Q@ ICON_CHANGE_TEXT               2 X     X   @B_TEXT@   D Text                           Text                          
+@0R@ ICON_VARIANTS                  2 X     X   @B_VARI@   D Varianten                      Varianten                     
+@0S@ ICON_INFORMATION               2 X X   X X @B_INFO@   D Information                    Information                   
+@0T@ ICON_ADDRESS                   2 X     X   @B_ADDR@   D Adresse                        Adresse                       
+@0U@ ICON_VIEWER_OPTICAL_ARCHIVE    2 X     X   @B_OPTA@   D Viewer optisches Archiv        Viewer optisches Archiv       
+@0V@ ICON_OKAY                      2 X     X   @B_OKAY@   D Okay; Weiter; <Wert> auswählen Okay; Weiter; <Wert> auswählen
+@0W@ ICON_CANCEL                    2 X     X   @B_CANC@   D Abbrechen                      Abbrechen                     
+@0X@ ICON_PRINT                     2 X     X X @B_PRNT@   D Drucken                        Drucken                       
+@0Y@ ICON_CREATE                    2 X     X   @B_CREA@   D Anlegen                        Anlegen                       
+@0Z@ ICON_CHANGE                    2 X     X   @B_CHNG@   D Ändern                         Ändern                        
+@10@ ICON_DISPLAY                   2 X     X   @B_DISP@   D Anzeigen                       Anzeigen                      
+@11@ ICON_DELETE                    2 X     X   @B_DELE@   D Löschen                        Löschen                       
+@12@ ICON_TEST                      2 X     X   @B_TEST@   D Testen                         Testen                        
+@13@ ICON_SEARCH                    2 X     X   @B_SRCH@   D Suchen                         Suchen                        
+@14@ ICON_COPY_OBJECT               2 X     X   @B_COPY@   D <Objekt> kopieren              <Objekt> kopieren             
+@15@ ICON_EXECUTE_OBJECT            2 X     X   @B_EXEC@   D <Objekt> ausführen             <Objekt> ausführen            
+@16@ ICON_SELECT_DETAIL             2 X     X   @B_DETL@   D <Detail> auswählen; Detail     <Detail> auswählen; Detail    
+@17@ ICON_INSERT_ROW                2 X     X   @B_INSR@   D Zeile einfügen                 Zeile einfügen                
+@18@ ICON_DELETE_ROW                2 X     X   @B_DELR@   D Zeile löschen                  Zeile löschen                 
+@19@ ICON_MESSAGE_INFORMATION       4     X     @M_INFO@   D Informationsnachricht          Informationsnachricht         
+@1A@ ICON_MESSAGE_WARNING           4     X     @M_WARN@   D Warnung                        Warnung                       
+@1B@ ICON_MESSAGE_ERROR             4     X     @M_ERRO@   D Fehlernachricht                Fehlernachricht               
+@1C@ ICON_MESSAGE_QUESTION          4     X     @M_QUES@   D Fragetext                      Fragetext                     
+@1D@ ICON_MESSAGE_CRITICAL          4     X     @M_CRIT@   D Kritische Nachricht            Kritische Nachricht           
+@1E@ ICON_DISPLAY_MORE              4 X     X   @BGMORE@   D Mehrfachselektion (aktiv)      Mehrfachselektion (aktiv)     
+@1F@ ICON_ENTER_MORE                4 X     X   @B_MORE@   D Mehrfachselektion              Mehrfachselektion             
+@1G@ ICON_EQUAL                     2 X       X @B_EQUA@   D Gleich                         Gleich                        
+@1H@ ICON_NOT_EQUAL                 2 X       X @B_NEQU@   D Ungleich                       Ungleich                      
+@1I@ ICON_GREATER                   2 X       X @B_GREA@   D Größer                         Größer                        
+@1J@ ICON_LESS                      2 X       X @B_LESS@   D Kleiner                        Kleiner                       
+@1K@ ICON_GREATER_EQUAL             2 X       X @B_GREQ@   D Größer gleich                  Größer gleich                 
+@1L@ ICON_LESS_EQUAL                2 X       X @B_LEEQ@   D Kleiner gleich                 Kleiner gleich                
+@1M@ ICON_INTERVAL_INCLUDE          2 X       X @B_IVIN@   D Intervall einschließen         Intervall einschließen        
+@1N@ ICON_INTERVAL_EXCLUDE          2 X       X @B_IVEX@   D Intervall ausschließen         Intervall ausschließen        
+@1O@ ICON_PATTERN_INCLUDE           2 X       X @B_PATT@   D Muster einschließen            Muster einschließen           
+@1P@ ICON_PATTERN_EXCLUDE           2 X       X @B_NPAT@   D Muster ausschließen            Muster ausschließen           
+@1Q@ ICON_PHONE                     2 X     X X @T_PHON@   D Telefonnummer                  Telefonnummer                 
+@1R@ ICON_FAX                       2 X     X X @T_TFAX@   D Faxnummer                      Faxnummer                     
+@1S@ ICON_MAIL                      2 X     X X @T_MAIL@   D Nachricht senden; Mail         Nachricht senden; Mail        
+@1T@ ICON_TIME                      2 X     X X @T_TIME@   D Uhrzeit                        Uhrzeit                       
+@1U@ ICON_DATE                      2 X     X X @T_DATE@   D Datum                          Datum                         
+@1V@ ICON_ALARM                     2 X     X X @T_ALAR@   D Alarm                          Alarm                         
+@1W@ ICON_PROSHARE                  2 X       X @T_PROS@   D Pro Share                      Pro Share                     
+@1X@ ICON_VIDEO                     2 X     X X @T_VIDE@   D Video                          Video                         
+@1Y@ ICON_VOICE_INPUT               2 X       X @T_VOIC@   D Spracheingabe                  Spracheingabe                 
+@1Z@ ICON_VOICE_OUTPUT              2 X       X @T_SOUN@   D Sprachausgabe                  Sprachausgabe                 
+@20@ ICON_EQUAL_GREEN               2 X     X X @BGEQUA@   D Selektieren: Gleich            Selektieren: Gleich           
+@21@ ICON_NOT_EQUAL_GREEN           2 X     X X @BGNEQU@   D Selektieren: Ungleich          Selektieren: Ungleich         
+@22@ ICON_GREATER_GREEN             2 X       X @BGGREA@   D Selektieren: Größer            Selektieren: Größer           
+@23@ ICON_LESS_GREEN                2 X       X @BGLESS@   D Selektieren: Kleiner           Selektieren: Kleiner          
+@24@ ICON_GREATER_EQUAL_GREEN       2 X       X @BGGREQ@   D Selektieren: Größer gleich     Selektieren: Größer gleich    
+@25@ ICON_LESS_EQUAL_GREEN          2 X       X @BGLEEQ@   D Selektieren: Kleiner gleich    Selektieren: Kleiner gleich   
+@26@ ICON_INTERVAL_INCLUDE_GREEN    2 X       X @BGIVIN@   D Selektieren: Interv. einschl.  Selektieren: Interv. einschl. 
+@27@ ICON_INTERVAL_EXCLUDE_GREEN    2 X       X @BGIVEX@   D Selektieren: Interv. ausschl.  Selektieren: Interv. ausschl. 
+@28@ ICON_PATTERN_INCLUDE_GREEN     2 X       X @BGPATT@   D Selektieren: Muster einschl.   Selektieren: Muster einschl.  
+@29@ ICON_PATTERN_EXCLUDE_GREEN     2 X       X @BGNPAT@   D Selektieren: Muster ausschl.   Selektieren: Muster ausschl.  
+@2A@ ICON_EQUAL_RED                 2 X     X X @BREQUA@   D Nicht selektieren: Gleich      Nicht selektieren: Gleich     
+@2B@ ICON_NOT_EQUAL_RED             2 X     X X @BRNEQU@   D Nicht selektieren: Ungleich    Nicht selektieren: Ungleich   
+@2C@ ICON_GREATER_RED               2 X       X @BRGREA@   D Nicht selektieren: Größer      Nicht selektieren: Größer     
+@2D@ ICON_LESS_RED                  2 X       X @BRLESS@   D Nicht selektieren: Kleiner     Nicht selektieren: Kleiner    
+@2E@ ICON_GREATER_EQUAL_RED         2 X       X @BRGREQ@   D Nicht selekt.: Größer gleich   Nicht selekt.: Größer gleich  
+@2F@ ICON_LESS_EQUAL_RED            2 X       X @BRLEEQ@   D Nicht selekt.: Kleiner gleich  Nicht selekt.: Kleiner gleich 
+@2G@ ICON_INTERVAL_INCLUDE_RED      2 X       X @BRIVIN@   D Nicht selekt.: Interv einschl. Nicht selekt.: Interv einschl.
+@2H@ ICON_INTERVAL_EXCLUDE_RED      2 X       X @BRIVEX@   D Nicht selekt.: Interv ausschl. Nicht selekt.: Interv ausschl.
+@2I@ ICON_PATTERN_INCLUDE_RED       2 X       X @BRPATT@   D Nicht selekt.: Muster einschl. Nicht selekt.: Muster einschl.
+@2J@ ICON_PATTERN_EXCLUDE_RED       2 X       X @BRNPAT@   D Nicht selekt.: Muster ausschl. Nicht selekt.: Muster ausschl.
+@2K@ ICON_SYSTEM_OKAY               2           @F_OKAY@ X D Okay                           Okay                          
+@2L@ ICON_SYSTEM_SAVE               2       X   @F_SAVE@   D Sichern                        Sichern                       
+@2M@ ICON_SYSTEM_BACK               2           @F_BACK@ X D Zurück                         Zurück                        
+@2N@ ICON_SYSTEM_END                2           @F_ENDT@ X D Beenden                        Beenden                       
+@2O@ ICON_SYSTEM_CANCEL             2           @F_CANC@ X D Abbrechen                      Abbrechen                     
+@2P@ ICON_SYSTEM_PRINT              2           @F_PRNT@ X D Drucken                        Drucken                       
+@2Q@ ICON_OTHER_OBJECT              2 X     X   @F_OOBJ@   D Anderes <Objekt>               Anderes <Objekt>              
+@2R@ ICON_PREVIOUS_OBJECT           2 X     X   @F_PRVO@   D Voriges Bild                   Voriges Bild                  
+@2S@ ICON_NEXT_OBJECT               2 X     X   @F_NXTO@   D Nächstes Bild                  Nächstes Bild                 
+@2T@ ICON_SYSTEM_CUT                2 X     X   @F_CUTO@   D Ausschneiden                   Ausschneiden                  
+@2U@ ICON_SYSTEM_COPY               2 X     X   @F_COPY@   D Kopieren                       Kopieren                      
+@2V@ ICON_SYSTEM_PASTE              2 X     X   @F_PAST@   D Einsetzen                      Einsetzen                     
+@2W@ ICON_SYSTEM_UNDO               2       X   @F_UNDO@   D Rückgängig                     Rückgängig                    
+@2X@ ICON_SYSTEM_MARK               2       X   @F_MARK@   D Markiermodus; Markieren        Markiermodus; Markieren       
+@2Y@ ICON_FIRST_PAGE                2 X     X   @F_FSTP@   D Erste Seite                    Erste Seite                   
+@2Z@ ICON_PREVIOUS_PAGE             2 X     X   @F_PRVP@   D Vorige Seite                   Vorige Seite                  
+@30@ ICON_NEXT_PAGE                 2 X     X   @F_NXTP@   D Nächste Seite                  Nächste Seite                 
+@31@ ICON_LAST_PAGE                 2 X     X   @F_LSTP@   D Letzte Seite                   Letzte Seite                  
+@32@ ICON_SYSTEM_MODUS_CREATE       2           @F_MOCR@ X D Modus erzeugen                 Modus erzeugen                
+@33@ ICON_SYSTEM_MODUS_DELETE       2           @F_MODE@ X D Modus löschen                  Modus löschen                 
+@34@ ICON_SYSTEM_USERMENU           2           @F_USER@ X D Session Manager                Session Manager               
+@35@ ICON_SYSTEM_HELP               2       X   @F_HELP@   D Hilfe                          Hilfe                         
+@36@ ICON_TABLE_SETTINGS            2 X     X   @B_TVAR@   D Berichts-Berichtsaufruf        Berichts-Berichtsaufruf       
+@37@ ICON_REPLACE                   2 X     X   @B_REPL@   D Ersetzen                       Ersetzen                      
+@38@ ICON_CHECK                     2 X     X   @B_CHCK@   D Prüfen                         Prüfen                        
+@39@ ICON_GENERATE                  2 X     X   @B_GENR@   D Generieren                     Generieren                    
+@3A@ ICON_REFERENCE_LIST            2 X     X   @B_BOOK@   D Verwendungsnachweis            Verwendungsnachweis           
+@3B@ ICON_STACK                     2 X     X   @B_CHIP@   D Stapel                         Stapel                        
+@3C@ ICON_ACTIVATE                  2 X     X   @B_ACTI@   D Aktivieren                     Aktivieren                    
+@3D@ ICON_ICON_LIST                 2 X X   X   @B_ICON@   D Iconliste; Legende             Iconliste; Legende            
+@3E@ ICON_SORT_UP                   2 X     X X @B_SRTU@   D Sortieren aufsteigend          Sortieren aufsteigend         
+@3F@ ICON_SORT_DOWN                 2 X     X X @B_SRTD@   D Sortieren absteigend           Sortieren absteigend          
+@3G@ ICON_LAYOUT_CONTROL            2 X     X   @B_LAYT@   D Seitenansicht                  Seitenansicht                 
+@3H@ ICON_CONVERT                   2 X     X   @B_CONV@   D Umrechnen                      Umrechnen                     
+@3I@ ICON_TOGGLE_DISPLAY_CHANGE     2 X     X   @B_DPCH@   D Anzeigen <-> Ändern            Anzeigen <-> Ändern           
+@3J@ ICON_SET_STATE                 2 X     X   @B_STAT@   D Status setzen                  Status setzen                 
+@3K@ ICON_PREVIOUS_NODE             2 X     X   @B_PRVN@   D Voriger Knoten                 Voriger Knoten                
+@3L@ ICON_NEXT_NODE                 2 X     X   @B_NXTN@   D Nächster Knoten                Nächster Knoten               
+@3M@ ICON_TREE                      2 X X   X X @B_TREE@   D Hierarchie                     Hierarchie                    
+@3N@ ICON_INSERT_RELATION           2 X     X   @B_INSN@   D Beziehung einfügen             Beziehung einfügen            
+@3O@ ICON_FINAL_DATE                2 X     X   @B_FDAT@   D Endedatum; Termine             Endedatum; Termine            
+@3P@ ICON_HEADER                    2 X     X   @B_HEAD@   D Kopf; Grunddaten               Kopf; Grunddaten              
+@3Q@ ICON_OVERVIEW                  2 X     X   @B_OVIW@   D Übersicht; Überblick; Listbild Übersicht; Überblick; Listbild
+@3R@ ICON_DETAIL                    2 X     X   @B_DAIL@   D Detailsicht                    Detailsicht                   
+@3S@ ICON_EXPAND                    2 X     X   @B_EXPA@   D Expandieren; Vergrößern        Expandieren; Vergrößern       
+@3T@ ICON_COLLAPSE                  2 X     X   @B_COLS@   D Komprimieren; Verkleinern      Komprimieren; Verkleinern     
+@3U@ ICON_BREAKPOINT                2 X X   X   @S_BRKP@   D Haltepunkt                     Haltepunkt                    
+@3V@ ICON_FOREIGN_KEY               2 X     X   @B_FKEY@   D Fremdschlüssel                 Fremdschlüssel                
+@3W@ ICON_LIST                      2 X     X   @B_LIST@   D Liste                          Liste                         
+@3X@ ICON_CLOSE                     2 X     X   @B_CLOS@   D Schließen                      Schließen                     
+@3Y@ ICON_POSITION                  2 X     X   @B_POSN@   D Positionieren; Anderer Eintrag Positionieren; Anderer Eintrag
+@3Z@ ICON_SUM                       2 X     X X @B_SUMM@   D Summieren                      Summieren                     
+@40@ ICON_MOVE                      2 X     X   @B_MOVE@   D Verschieben                    Verschieben                   
+@41@ ICON_RETRIEVE                  2 X     X   @B_RETR@   D Zurückholen                    Zurückholen                   
+@42@ ICON_REFRESH                   2 X     X   @B_REFR@   D Auffrischen                    Auffrischen                   
+@43@ ICON_SKIP                      2 X     X   @B_SKIP@   D Überspringen                   Überspringen                  
+@44@ ICON_SYSTEM_SETTINGS           2           @F_SETT@ X D Benutzereinstellungen          Benutzereinstellungen         
+@45@ ICON_TOOLS                     2 X     X X @B_TOOL@   D Werkzeuge, Fertigungshilfsmit. Werkzeuge, Fertigungshilfsmit.
+@46@ ICON_COMPARE                   2 X     X   @B_COMP@   D Vergleichen                    Vergleichen                   
+@47@ ICON_SHORT_MESSAGE             2 X     X X @B_SNDN@   D Kurznachricht                  Kurznachricht                 
+@48@ ICON_IMPORT                    2 X     X   @B_UPLO@   D Importieren                    Importieren                   
+@49@ ICON_EXPORT                    2 X     X   @B_DOWN@   D Exportieren                    Exportieren                   
+@4A@ ICON_TRANSPORT                 2 X     X   @B_TRNS@   D Transportieren                 Transportieren                
+@4B@ ICON_SELECT_ALL                2 X     X   @B_MRKA@   D Alle markieren                 Alle markieren                
+@4C@ ICON_SELECT_BLOCK              2 X     X   @B_MRKB@   D Block markieren                Block markieren               
+@4D@ ICON_DESELECT_ALL              2 X     X   @B_MRKD@   D Alle Mark. löschen             Alle Mark. löschen            
+@4E@ ICON_SEARCH_NEXT               2 X     X   @B_SRCC@   D Weiter suchen                  Weiter suchen                 
+@4F@ ICON_RENAME                    2 X     X   @B_RENM@   D Umbenennen                     Umbenennen                    
+@4G@ ICON_FILTER                    2 X     X   @B_FILT@   D Filtern                        Filtern                       
+@4H@ ICON_NEXT_HIERARCHY_LEVEL      2 X     X   @B_NLEV@   D Nächste Hierarchiestufe        Nächste Hierarchiestufe       
+@4I@ ICON_PREVIOUS_HIERARCHY_LEVEL  2 X     X   @B_PLEV@   D Vorige Hierarchiestufe         Vorige Hierarchiestufe        
+@4J@ ICON_SYSTEM_POSSIBLE_ENTRIES   2           @F_INPV@ X D Eingabemöglichkeiten           Eingabemöglichkeiten          
+@4K@ ICON_INTENSIFY                 2 X     X   @B_INTE@   D Hervorheben                    Hervorheben                   
+@4L@ ICON_PERSONAL_HELP             2       X   @B_PRSH@   D Persönliche Hilfe              Persönliche Hilfe             
+@4M@ ICON_VARIABLE                  2 X     X X @B_VARB@   D Variable                       Variable                      
+@4N@ ICON_SYSTEM_LOCAL_CUT          2           @F_CUTL@ X D Lokales Ausschneiden           Lokales Ausschneiden          
+@4O@ ICON_SYSTEM_LOCAL_COPY         2           @F_COPL@ X D Lokales Kopieren               Lokales Kopieren              
+@4P@ ICON_SYSTEM_LOCAL_PASTE        2           @F_PASL@ X D Lokales Einsetzen              Lokales Einsetzen             
+@4Q@ ICON_SYSTEM_LOCAL_MARK         2           @F_MRKL@ X D Lokaler Markiermodus           Lokaler Markiermodus          
+@4R@ ICON_SYSTEM_REDO               2 X     X   @F_REDO@   D Wiederholen                    Wiederholen                   
+@4S@ ICON_BUSINAV_PROCESS           2 X     X X @B_BNPR@   D Prozeß                         Prozeß                        
+@4T@ ICON_BUSINAV_PROCESSMATRIX     2 X     X X @B_BNPA@   D Prozeßauswahlmatrix            Prozeßauswahlmatrix           
+@4U@ ICON_BUSINAV_SYSORGI           2 X     X X @B_BNSO@   D Systemorganigramm              Systemorganigramm             
+@4V@ ICON_BUSINAV_SZENARIO          2 X     X X @B_BNSZ@   D Szenario                       Szenario                      
+@4W@ ICON_BUSINAV_OBJECTS           2 X     X X @B_BNBO@   D Business-Objekte               Business-Objekte              
+@4X@ ICON_BUSINAV_INFODIAG          2 X     X X @B_BNID@   D Infoflußdiagramm               Infoflußdiagramm              
+@4Y@ ICON_BUSINAV_ENTITY            2 X     X X @B_BNET@   D Entitätstyp                    Entitätstyp                   
+@4Z@ ICON_BUSINAV_PROC_EXIST        2 X     X X @B_BNPV@   D Prozeß vorhanden               Prozeß vorhanden              
+@50@ ICON_BUSINAV_COMMDIAG          2 X     X X @B_BNCD@   D Kommunikationsdiagramm         Kommunikationsdiagramm        
+@51@ ICON_BUSINAV_DATAMODEL         2 X     X X @B_BNDM@   D Datenmodell                    Datenmodell                   
+@52@ ICON_ALIGN                     2 X     X   @B_ALIG@   D Ausrichten                     Ausrichten                    
+@53@ ICON_CUT_RELATION              2 X     X   @B_CUTN@   D Beziehung aufheben             Beziehung aufheben            
+@54@ ICON_FIX_COLUMN                2 X     X   @B_FIXC@   D Spalten fixieren               Spalten fixieren              
+@55@ ICON_RELEASE_COLUMN            2 X     X   @B_RELC@   D Spaltenfixierung aufheben      Spaltenfixierung aufheben     
+@56@ ICON_NET_GRAPHIC               2 X     X   @B_NETG@   D Netzplangrafik                 Netzplangrafik                
+@57@ ICON_PLANNING_TABLE            2 X     X   @B_PLAN@   D Balkenplangrafik; Plantafel    Balkenplangrafik; Plantafel   
+@58@ ICON_PERIOD                    2 X     X   @B_PERI@   D Periodenbild; Zeitaufriß       Periodenbild; Zeitaufriß      
+@59@ ICON_ZOOM_IN                   2 X     X   @B_ZOIN@   D Objekte vergrößern             Objekte vergrößern            
+@5A@ ICON_ZOOM_OUT                  2 X     X   @B_ZOUT@   D Objekte verkleinern            Objekte verkleinern           
+@5B@ ICON_LED_GREEN                 2   X       @S_LEDG@   D Grüne LED; Go; In Ordnung      Grüne LED; Go; In Ordnung     
+@5C@ ICON_LED_RED                   2   X       @S_LEDR@   D Rote LED; Stop; Fehlerhaft     Rote LED; Stop; Fehlerhaft    
+@5D@ ICON_LED_YELLOW                2   X       @S_LEDY@   D Gelbe LED; Achtung             Gelbe LED; Achtung            
+@5E@ ICON_SYSTEM_EXTENDED_HELP      2 X     X   @F_EHLP@   D Erweiterte Hilfe               Erweiterte Hilfe              
+@5F@ ICON_SPACE                     2 X X       @B_SPCE@   D Leer                           Leer                          
+@5G@ ICON_BUSINAV_VALUE_CHAIN       2 X     X X @B_BNWK@   D Wertschöpfungskette            Wertschöpfungskette           
+@5H@ ICON_WORKFLOW_ACTIVITY         2 X X   X X @B_AKTI@   D Aktivität                      Aktivität                     
+@5I@ ICON_WORKFLOW_CONDITION        2 X X   X X @B_BEDI@   D Bedingung                      Bedingung                     
+@5J@ ICON_WORKFLOW_DECISION         2 X X   X X @B_BENT@   D Benutzerentscheidung           Benutzerentscheidung          
+@5K@ ICON_WORKFLOW_CONT_OPERATION   2 X X   X X @B_CONT@   D Container Operation            Container Operation           
+@5L@ ICON_WORKFLOW_EXTERNAL_EVENT   2 X X   X X @B_EREI@   D Externe Ereignisse             Externe Ereignisse            
+@5M@ ICON_WORKFLOW_INTERNAL_EVENT   2 X X   X X @B_ERIN@   D Interne Ereignisse             Interne Ereignisse            
+@5N@ ICON_WORKFLOW_MULT_CONDITION   2 X X   X X @B_MBED@   D Mehrfachbedingungen            Mehrfachbedingungen           
+@5O@ ICON_WORKFLOW_FORK             2 X X   X X @B_PABS@   D Workflow verzweigen            Workflow verzweigen           
+@5P@ ICON_WORKFLOW_EVENT_PRODUCER   2 X X   X X @B_SERE@   D Ereigniserzeuger               Ereigniserzeuger              
+@5Q@ ICON_WORKFLOW_FLOW_OF_CONTROL  2 X X   X X @B_STEU@   D Ablaufsteuerung                Ablaufsteuerung               
+@5R@ ICON_WORKFLOW_INDEFINITE_STEP  2 X X   X X @B_UNBE@   D Unbestimmter Schritt           Unbestimmter Schritt          
+@5S@ ICON_WORKFLOW_UNTIL            2 X X   X X @B_UNTI@   D Bis Schleife                   Bis Schleife                  
+@5T@ ICON_WORKFLOW_WAIT_FOR_EVENTS  2 X X   X X @B_WERE@   D Warten auf Ereignisse          Warten auf Ereignisse         
+@5U@ ICON_WORKFLOW_WHILE            2 X X   X X @B_WHIL@   D Während Schleife               Während Schleife              
+@5V@ ICON_INTERMEDIATE_SUM          2 X     X X @B_SUMP@   D Zwischensumme                  Zwischensumme                 
+@5W@ ICON_EMPLOYEE                  2 X     X X @B_EMPL@   D Mitarbeiter                    Mitarbeiter                   
+@5X@ ICON_TIME_ZONE                 2 X X   X X @B_TIMZ@   D Zeitzone                       Zeitzone                      
+@5Y@ ICON_RELEASE                   2 X X   X   @B_ROBJ@   D Freigeben                      Freigeben                     
+@5Z@ ICON_QUALIFY                   2   X       @S_QUAL@   D Auszeichnen                    Auszeichnen                   
+@60@ ICON_ISO_CODE                  2   X       @S_ISOC@   D (ISO) Code                     (ISO) Code                    
+@61@ ICON_MODIFY                    2 X     X   @B_CEXI@   D modifizieren; erweitern        modifizieren; erweitern       
+@62@ ICON_GET_AREA                  2 X     X   @B_AREA@   D Umfeldermittlung               Umfeldermittlung              
+@63@ ICON_INTERFACE                 2 X     X   @B_INTF@   D Schnittstelle                  Schnittstelle                 
+@64@ ICON_ROUTING_OPERATION         2 X     X X @B_EVNT@   D Vorgang                        Vorgang                       
+@65@ ICON_ROUTING_REF_OPERATION     2 X     X X @B_REFE@   D Standardvorgang                Standardvorgang               
+@66@ ICON_ROUTING_TASK              2 X     X X @B_TASK@   D Arbeitsaufgabe                 Arbeitsaufgabe                
+@67@ ICON_ROUTING_TODO              2 X     X X @B_TODO@   D Verrichtungen                  Verrichtungen                 
+@68@ ICON_EXPAND_ALL                2 X     X X @B_AEXP@   D Alles expandieren              Alles expandieren             
+@69@ ICON_COLLAPSE_ALL              2 X     X X @B_ACOM@   D Alles komprimieren             Alles komprimieren            
+@6A@ ICON_SYSTEM_SAP_MENU           2 X     X   @F_SAPM@   D SAP-Menü                       SAP-Menü                      
+@6B@ ICON_SYSTEM_COMP_MENU          2 X     X   @F_COMM@   D Unternehmensmenü               Unternehmensmenü              
+@6C@ ICON_SYSTEM_USER_MENU          2 X     X   @F_USRM@   D Benutzermenü                   Benutzermenü                  
+@6D@ ICON_SYSTEM_FAVORITES          2 X     X   @F_FAVO@   D Benutzerfavoriten              Benutzerfavoriten             
+@6E@ ICON_BIW_INFO_SOURCE           2 X X   X   @B_BWIS@   D InfoSource                     InfoSource                    
+@6F@ ICON_BIW_APPLICATION           2 X X   X   @B_BWAP@   D Applikation                    Applikation                   
+@6G@ ICON_BIW_INFO_AREA             2 X X   X   @B_BWIA@   D InfoArea                       InfoArea                      
+@6H@ ICON_BIW_INFO_CUBE             2 X X   X   @B_BWIU@   D InfoCube                       InfoCube                      
+@6I@ ICON_BIW_RULES_INA             2 X X   X   @B_BWRU@   D Fortschreibungsregeln          Fortschreibungsregeln         
+@6J@ ICON_BIW_SOURCE_SYS_GEN        2 X X   X   @B_BWSG@   D Quellsystem, allgemein         Quellsystem, allgemein        
+@6K@ ICON_BIW_SOURCE_SYS_R3         2 X X   X   @B_BWSR@   D Quellsystem R/3                Quellsystem R/3               
+@6L@ ICON_BIW_SOURCE_SYS_EXT        2 X X   X   @B_BWSE@   D Quellsystem, fremd             Quellsystem, fremd            
+@6M@ ICON_BIW_SOURCE_SYS_FILE       2 X X   X   @B_BWSF@   D Quellsystem Datei              Quellsystem Datei             
+@6N@ ICON_BIW_INFO_CATALOG          2 X X   X   @B_BWIC@   D InfoCatalog                    InfoCatalog                   
+@6O@ ICON_BIW_INFO_OBJECT           2 X X   X   @B_BWIO@   D InfoObject                     InfoObject                    
+@6P@ ICON_BIW_MONITOR               2 X X   X   @B_BWMO@   D Monitor                        Monitor                       
+@6Q@ ICON_BIW_SCHEDULER             2 X X   X   @B_BWSD@   D Scheduler                      Scheduler                     
+@6R@ ICON_BIW_FORMULA               2 X X   X   @B_BWFO@   D Formel                         Formel                        
+@6S@ ICON_BIW_REF_STRUCTURE         2 X X   X   @B_BWRS@   D Vorlagestruktur                Vorlagestruktur               
+@6T@ ICON_BIW_REPORT                2 X X   X   @B_BWRP@   D Bericht                        Bericht                       
+@6U@ ICON_BIW_REPORT_VIEW           2 X X   X   @B_BWRV@   D Reportview                     Reportview                    
+@6V@ ICON_MASTER_DATA_ACT           2 X X   X   @S_MDAC@   D Stammdaten                     Stammdaten                    
+@6W@ ICON_MASTER_DATA_INA           2 X X   X   @S_MDIN@   D Stammdaten                     Stammdaten                    
+@6X@ ICON_TEXT_ACT                  2 X X   X   @S_TXAC@   D Texte                          Texte                         
+@6Y@ ICON_TEXT_INA                  2 X X   X   @S_TXIN@   D Texte                          Texte                         
+@6Z@ ICON_HIERARCHY_ACT             2 X X   X   @S_HIAC@   D Hierarchien                    Hierarchien                   
+@70@ ICON_HIERARCHY_INA             2 X X   X   @S_HIIN@   D Hierarchien                    Hierarchien                   
+@71@ ICON_MOVING_DATA_ACT           2 X X   X   @S_MOAC@   D Bewegungsdaten                 Bewegungsdaten                
+@72@ ICON_MOVING_DATA_INA           2 X X   X   @S_MOIN@   D Bewegungsdaten                 Bewegungsdaten                
+@73@ ICON_DEBUGGER_STEP_INTO        2 X     X   @B_STIN@   D Debugger Einzelschritt         Debugger Einzelschritt        
+@74@ ICON_DEBUGGER_STEP_OVER        2 X     X   @B_STOV@   D Debugger Ausführen             Debugger Ausführen            
+@75@ ICON_DEBUGGER_STEP_OUT         2 X     X   @B_STOU@   D Debugger Zurück                Debugger Zurück               
+@76@ ICON_DEBUGGER_CONTINUE         2 X     X   @B_STCO@   D Debugger Weiter                Debugger Weiter               
+@77@ ICON_PARAMETER                 2 X X   X   @B_PARA@   D Parameter                      Parameter                     
+@78@ ICON_PARAMETER_IMPORT          2 X X   X   @B_PARI@   D Parameter Import               Parameter Import              
+@79@ ICON_PARAMETER_EXPORT          2 X X   X   @B_PARE@   D Parameter Export               Parameter Export              
+@7A@ ICON_PARAMETER_CHANGING        2 X X   X   @B_PARC@   D Parameter ändern               Parameter ändern              
+@7B@ ICON_PARAMETER_RESULT          2 X X   X   @B_PARR@   D Parameter Ergebnis             Parameter Ergebnis            
+@7C@ ICON_OO_CLASS                  2 X     X   @B_CLAS@   D Klasse                         Klasse                        
+@7D@ ICON_OO_INTERFACE              2 X     X   @B_INTC@   D Interface                      Interface                     
+@7E@ ICON_OO_ATTRIBUTE              2 X     X   @B_ATTR@   D Attribut                       Attribut                      
+@7F@ ICON_OO_CLASS_ATTRIBUTE        2 X     X   @B_KLAT@   D Klassenattribut                Klassenattribut               
+@7G@ ICON_OO_INST_ATTRIBUTE         2 X     X   @B_INAT@   D Instanzattribut                Instanzattribut               
+@7H@ ICON_OO_METHOD                 2 X   X     @B_METH@   D Methode                        Methode                       
+@7I@ ICON_OO_CLASS_METHOD           2 X     X   @B_KLME@   D Klassenmethode                 Klassenmethode                
+@7J@ ICON_OO_INST_METHOD            2 X     X   @B_INME@   D Instanzmethode                 Instanzmethode                
+@7K@ ICON_OO_EVENT                  2 X     X   @B_EVEN@   D Ereignis                       Ereignis                      
+@7L@ ICON_OO_CONSTANT               2 X     X X @B_KONS@   D Konstante                      Konstante                     
+@7M@ ICON_OO_OVERWRITE              2 X     X   @B_UEDE@   D Überdefinieren                 Überdefinieren                
+@7N@ ICON_OO_CONNECTION             2 X     X   @B_CONN@   D Beziehungen                    Beziehungen                   
+@7O@ ICON_OO_INHERITANCE            2 X     X   @B_VERB@   D Vererbung/Spezialisierung      Vererbung/Spezialisierung     
+@7P@ ICON_OO_INTERFACE_IC           2 X     X   @B_INIK@   D Interface-Impl./Komposition    Interface-Impl./Komposition   
+@7Q@ ICON_WS_TRUCK                  2 X X       @S_WSTR@   D Transport, LKW                 Transport, LKW                
+@7R@ ICON_WS_RAIL                   2 X X       @S_WSRA@   D Transport, Bahn                Transport, Bahn               
+@7S@ ICON_WS_SHIP                   2 X X       @S_WSSH@   D Transport, Schiff              Transport, Schiff             
+@7T@ ICON_WS_PLANE                  2 X X       @S_WSPL@   D Transport, Flugzeug            Transport, Flugzeug           
+@7U@ ICON_WS_POST                   2 X X   X   @S_WSPO@   D Transport, Post                Transport, Post               
+@7V@ ICON_WS_TRANSFER               2 X X       @S_WSTF@   D Warenumschlag                  Warenumschlag                 
+@7W@ ICON_WS_DOUANE                 2 X X       @S_WSDO@   D Grenzpunkt, Zollstation        Grenzpunkt, Zollstation       
+@7X@ ICON_SELECTION                 2 X X   X   @B_SELC@   D Selektion, Auswahl             Selektion, Auswahl            
+@7Y@ ICON_SYSTEM_STOP_RECORDING     2 X     X   @B_STRC@   D Aufzeichnung beenden           Aufzeichnung beenden          
+@7Z@ ICON_FENCING                   2 X     X   @B_FENC@   D freie Abgrenznungen            freie Abgrenznungen           
+@80@ ICON_BIW_RULES_ACT             2 X X   X   @B_BWRA@   D Fortschreibungsregeln          Fortschreibungsregeln         
+@81@ ICON_CHARACTERISTICS_ACT       2 X X   X X @S_CHAA@   D Merkmal, aktiv                 Merkmal, aktiv                
+@82@ ICON_CHARACTERISTICS_INA       2 X X   X X @S_CHAI@   D Merkmal, inaktiv               Merkmal, inaktiv              
+@83@ ICON_KEYFIGURE_ACT             2 X X   X X @S_KEYA@   D Kennzahl, aktiv                Kennzahl, aktiv               
+@84@ ICON_KEYFIGURE_INA             2 X X   X X @S_KEYI@   D Kennzahl, inaktiv              Kennzahl, inaktiv             
+@85@ ICON_BIW_INFO_OBJECT_UNITS_ACT 2 X X   X X @B_BWIW@   D InfoObjects Einheiten, aktiv   InfoObjects Einheiten, aktiv  
+@86@ ICON_BIW_INFO_OBJECT_UNITS_INA 2 X X   X X @B_BWWI@   D InfoObjects Einheiten, inaktiv InfoObjects Einheiten, inaktiv
+@87@ ICON_WORKFLOW_INT_EVENT_DATE   2 X X   X X @B_ERTE@   D Int. Ereignisse mit Termin     Int. Ereignisse mit Termin    
+@88@ ICON_BIW_INFO_OBJECT_CATALOGUE 2 X X   X X @S_GRCK@   D InfoObjekt Katalog             InfoObjekt Katalog            
+@89@ ICON_SET_A                     2 X X   X   @B_ABOA@   D Menge A                        Menge A                       
+@8A@ ICON_SET_B                     2 X X   X   @B_ABOB@   D Menge B                        Menge B                       
+@8B@ ICON_SET_SUM                   2 X X   X   @B_ABPL@   D Menge A+B                      Menge A+B                     
+@8C@ ICON_SET_INTERSECTION          2 X X   X   @B_ABSC@   D SChnittmenge AB                SChnittmenge AB               
+@8D@ ICON_SET_A_MINUS_B             2 X X   X   @B_ABMB@   D Subtraktion A-B                Subtraktion A-B               
+@8E@ ICON_SET_B_MINUS_A             2 X X   X   @B_ABMA@   D Subtraktion B-A                Subtraktion B-A               
+@8F@ ICON_SET_COPY_IN_A             2 X X   X   @B_ABCA@   D in Menge A kopieren            in Menge A kopieren           
+@8G@ ICON_SET_COPY_IN_B             2 X X   X   @B_ABCB@   D in Menge B kopieren            in Menge B kopieren           
+@8H@ ICON_DANGEROUS_GOODS           2 X X   X   @B_BOMB@   D Gefährliche Güter              Gefährliche Güter             
+@8I@ ICON_DEACTIVATE                2 X     X   @B_DACT@   D Deaktivieren                   Deaktivieren                  
+@8J@ ICON_DESELECT_BLOCK            2 X     X   @B_DMRK@   D Block deselektieren            Block deselektieren           
+@8K@ ICON_INVERT_COLUMN             2 X     X   @B_INVS@   D Spalte invertieren             Spalte invertieren            
+@8L@ ICON_INVERT_LINE               2 X     X   @B_INVZ@   D Zeile invertieren              Zeile invertieren             
+@8M@ ICON_FOREIGN_TRADE             2 X X   X   @B_FORT@   D Außenhandel                    Außenhandel                   
+@8N@ ICON_MESSAGE_CRITICAL_SMALL    2           @N_CRIT@ X D Kritische Nachricht            Kritische Nachricht           
+@8O@ ICON_MESSAGE_ERROR_SMALL       2           @N_ERRO@ X D Fehlernachricht                Fehlernachricht               
+@8P@ ICON_MESSAGE_INFORMATION_SMALL 2           @N_INFO@ X D Informationsnachricht          Informationsnachricht         
+@8Q@ ICON_MESSAGE_QUESTION_SMALL    2           @N_QUES@ X D Fragetext                      Fragetext                     
+@8R@ ICON_MESSAGE_WARNING_SMALL     2           @N_WARN@ X D Warnung                        Warnung                       
+@8S@ ICON_URL                       2 X     X   @B_URLS@   D URL                            URL                           
+@8T@ ICON_SYSTEM_SHORTCUT           2           @F_MOSH@ X D Shortcut Modus erzeugen        Shortcut Modus erzeugen       
+@8U@ ICON_PLANNING_IN               2 X     X   @B_PEIN@   D Vorgang einplanen              Vorgang einplanen             
+@8V@ ICON_PLANNING_OUT              2 X     X   @B_PAUS@   D Vorgang ausplanen              Vorgang ausplanen             
+@8W@ ICON_SUBMIT                    2 X X   X   @B_SUMI@   D Weiterleiten                   Weiterleiten                  
+@8X@ ICON_ALLOW                     2 X     X   @B_OKYE@   D Genehmigen                     Genehmigen                    
+@8Y@ ICON_REJECT                    2 X     X   @B_OKNO@   D Ablehnen                       Ablehnen                      
+@8Z@ ICON_SIMULATE                  2 X     X   @B_RKSI@   D Simulieren                     Simulieren                    
+@90@ ICON_TE_RECEIPTS               2 X X   X X @B_RKQI@   D Belege                         Belege                        
+@91@ ICON_TE_STOPOVER               2 X X   X X @B_RKZZ@   D Zwischenziele                  Zwischenziele                 
+@92@ ICON_TE_KM_DIVISION            2 X X   X X @B_RKKM@   D Kilometeraufteilung            Kilometeraufteilung           
+@93@ ICON_TE_ADVANCE_PAYMENT        2 X X   X X @B_RKMO@   D Vorschuß                       Vorschuß                      
+@94@ ICON_TE_DEDUCTION              2 X X   X X @B_RKAB@   D Abzüge                         Abzüge                        
+@95@ ICON_TE_COSTS_ASSIGN           2 X X   X X @B_RKMZ@   D Kostenzuordnung                Kostenzuordnung               
+@96@ ICON_HISTORY                   2 X     X   @B_RKHI@   D Historie                       Historie                      
+@97@ ICON_MODIFICATION_CREATE       2 X     X X @B_MMAK@   D Modifikation: Anlegen, ändern  Modifikation: Anlegen, ändern 
+@98@ ICON_MODIFICATION_OVERVIEW     2 X     X   @B_MOVR@   D Modifikation: Übersicht        Modifikation: Übersicht       
+@99@ ICON_MODIFICATION_ORIGINAL     2 X     X   @B_MSHO@   D Modifikation:Original anzeigen Modifikation:Original anzeigen
+@9A@ ICON_MODIFICATION_RESET        2 X     X   @B_MBAC@   D Modifikation: Rücksetzen       Modifikation: Rücksetzen      
+@9B@ ICON_ACTIVE_INACTIVE           2 X     X   @B_NOAC@   D Anzeigemodus aktiv/nicht aktiv Anzeigemodus aktiv/nicht aktiv
+@9C@ ICON_BEN_OFFER                 2 X     X   @B_OFFE@   D Automatisches Angebot          Automatisches Angebot         
+@9D@ ICON_BEN_OFFER_DEFAULT         2 X     X   @B_OFDE@   D Vorgeschlagenes Angebot        Vorgeschlagenes Angebot       
+@9E@ ICON_BEN_OFFER_EVENT           2 X     X   @B_OFEV@   D Ereignisangebot                Ereignisangebot               
+@9F@ ICON_BEN_OFFER_OPEN            2 X     X   @B_OFOO@   D Freies Angebot                 Freies Angebot                
+@9G@ ICON_BEN_WAIVE_COVERAGE        2 X     X   @B_OFWC@   D Angebotsauswahl                Angebotsauswahl               
+@9H@ ICON_DEPENDENTS                2 X     X   @B_OFPD@   D Angehörige                     Angehörige                    
+@9I@ ICON_BEN_CURRENT_BENEFITS      2 X     X   @B_OFCB@   D Aktuelle Leistungen            Aktuelle Leistungen           
+@9J@ ICON_BEN_TERMINATION           2 X     X   @B_OFTE@   D Beendigung AG-Leistungen       Beendigung AG-Leistungen      
+@9K@ ICON_WS_TRANSPORT              2 X X       @B_WSAB@   D Warentransport                 Warentransport                
+@9L@ ICON_ODS_ACT                   2 X X   X X @B_ODSA@   D ODS aktiv                      ODS aktiv                     
+@9M@ ICON_ODS_INA                   2 X X   X X @B_ODSI@   D ODS inaktiv                    ODS inaktiv                   
+@9N@ ICON_BIW_INFO_PACKAGE          2 X X   X X @B_INPA@   D InfoPackage                    InfoPackage                   
+@9O@ ICON_ACTION_FAULT              2 X X   X X @B_ACFA@   D Request fehlerhaft             Request fehlerhaft            
+@9P@ ICON_ACTION_SUCCESS            2 X X   X X @B_ACSU@   D Request erfolgreich            Request erfolgreich           
+@9Q@ ICON_DIMENSION                 2 X X   X X @B_DIMS@   D Dimension                      Dimension                     
+@9R@ ICON_TIME_INA                  2 X X   X X @B_TINA@   D Zeit inaktiv                   Zeit inaktiv                  
+@9S@ ICON_ARROW_LEFT                2 X X   X X @B_ARLE@   D Pfeil links                    Pfeil links                   
+@9T@ ICON_ARROW_RIGHT               2 X X   X X @B_ARRI@   D Pfeil rechts                   Pfeil rechts                  
+@9U@ ICON_ABAP                      2 X X   X X @B_ABAP@   D ABAP-Routine                   ABAP-Routine                  
+@9V@ ICON_ABAP_LOCAL                2 X X   X   @B_ABAL@   D ABAP lokal                     ABAP lokal                    
+@9W@ ICON_TRANSFER_STRUCTURE        2 X X   X X @B_TRST@   D Transferstruktur aktiv         Transferstruktur aktiv        
+@9X@ ICON_OPERATION                 2 X X   X   @B_OPER@   D Operation, Objekt verarbeiten  Operation, Objekt verarbeiten 
+@9Y@ ICON_ACTIVITY                  2 X X   X   @B_ACTY@   D Aktivität                      Aktivität                     
+@9Z@ ICON_ORDER                     2 X X   X   @B_ORDA@   D Auftrag, Order                 Auftrag, Order                
+@A0@ ICON_CUSTOMER                  2 X X   X X @B_CUST@   D Kunde                          Kunde                         
+@A1@ ICON_WAREHOUSE                 2 X X   X X @B_CEWA@   D Zentrallager                   Zentrallager                  
+@A2@ ICON_DISPO_LEVEL               2 X X   X X @B_DILO@   D Dispositionsebene              Dispositionsebene             
+@A3@ ICON_DISTRIBUTION              2 X X   X X @B_DICE@   D Distributionszentrum           Distributionszentrum          
+@A4@ ICON_CUSTOMER_WAREHOUSE        2 X X   X X @B_CUWA@   D Kundenlager                    Kundenlager                   
+@A5@ ICON_TRANSPORT_POINT           2 X X   X X @B_TRAP@   D Umlagerungspunkt               Umlagerungspunkt              
+@A6@ ICON_MATERIAL                  2 X X   X   @B_MATL@   D Material                       Material                      
+@A7@ ICON_MODEL                     2 X X   X   @B_MODL@   D Modell                         Modell                        
+@A8@ ICON_PLANT                     2 X X   X   @B_PLNT@   D Werk                           Werk                          
+@A9@ ICON_PRODUCT_GROUP             2 X X   X   @B_PROG@   D Produktgruppe                  Produktgruppe                 
+@AA@ ICON_RELATIONSHIP              2 X X   X   @B_RESH@   D Verbindung, Beziehung          Verbindung, Beziehung         
+@AB@ ICON_RESOURCE                  2 X X   X   @B_RESU@   D Ressource                      Ressource                     
+@AC@ ICON_STORE_LOCATION            2 X X   X   @B_STOL@   D Lagerort                       Lagerort                      
+@AD@ ICON_SUPPLIER                  2 X X   X   @B_SUPP@   D Lieferant                      Lieferant                     
+@AE@ ICON_TRANSPORTATION_MODE       2 X X   X   @B_TRAM@   D Transportart                   Transportart                  
+@AF@ ICON_LOCATION                  2 X X   X   @B_LOCA@   D Ort                            Ort                           
+@AG@ ICON_ALERT                     2 X X   X   @B_ALET@   D Alarm                          Alarm                         
+@AH@ ICON_WARNING                   2 X X   X   @B_WARG@   D Warnung                        Warnung                       
+@AI@ ICON_HINT                      2 X X   X   @B_HINT@   D Hinweis                        Hinweis                       
+@AJ@ ICON_WORKING_PLAN              2 X X   X   @B_PLAA@   D Arbeitsplan                    Arbeitsplan                   
+@AK@ ICON_MAINTENANCE_PLAN          2 X X   X   @B_PLAW@   D Wartungsplan                   Wartungsplan                  
+@AL@ ICON_REPORT                    2 X X   X   @B_REPO@   D Meldung                        Meldung                       
+@AM@ ICON_WORKPLACE                 2 X X   X   @B_WOPA@   D Arbeitsplatz                   Arbeitsplatz                  
+@AN@ ICON_EQUIPMENT                 2 X X   X   @B_EQUI@   D Ausstattung                    Ausstattung                   
+@AO@ ICON_TECHNICAL_PLACE           2 X X   X   @B_TEPL@   D Technischer Platz              Technischer Platz             
+@AP@ ICON_BOM                       2 X X   X   @B_SLIS@   D Stückliste                     Stückliste                    
+@AQ@ ICON_BOM_ITEM                  2 X X   X   @B_SLIP@   D Stücklistenposition            Stücklistenposition           
+@AR@ ICON_DOCUMENT                  2 X X     X @B_DOCU@   D Dokument                       Dokument                      
+@AS@ ICON_DOCUMENT_REVISION         2 X     X   @B_DOCR@   D Dokumentrevision               Dokumentrevision              
+@AT@ ICON_MATERIAL_REVISION         2 X     X   @B_MATR@   D Materialrevision               Materialrevision              
+@AU@ ICON_CHANGE_NUMBER             2 X     X   @B_CHNO@   D Änderungsnummer                Änderungsnummer               
+@AV@ ICON_FLIGHT                    2 X X   X X @B_TFLY@   D Flugbuchung                    Flugbuchung                   
+@AW@ ICON_CAR                       2 X X   X X @B_TCAR@   D Mietwagenbuchung               Mietwagenbuchung              
+@AX@ ICON_HOTEL                     2 X X   X X @B_HOTL@   D Hotelbuchung                   Hotelbuchung                  
+@AY@ ICON_RAILWAY                   2 X X   X X @B_TRAI@   D Bahnbuchung                    Bahnbuchung                   
+@AZ@ ICON_MONEY                     2 X X   X X @B_MONY@   D Preisanfrage                   Preisanfrage                  
+@B0@ ICON_QUESTION                  2 X X   X X @B_QUES@   D Abfrage                        Abfrage                       
+@B1@ ICON_BOOKING_OK                2 X X   X X @B_BOYE@   D Buchung ok                     Buchung ok                    
+@B2@ ICON_BOOKING_STOP              2 X X   X X @B_BONO@   D Buchung stornieren             Buchung stornieren            
+@B3@ ICON_STATUS_OPEN               2 X X   X X @B_OPEN@   D Buchungsstatus offen           Buchungsstatus offen          
+@B4@ ICON_STATUS_BOOKED             2 X X   X X @B_BOKD@   D Buchungsstatus gebucht         Buchungsstatus gebucht        
+@B5@ ICON_STATUS_PARTLY_BOOKED      2 X X   X X @B_PBKD@   D Buchungsstatus teilw. gebucht  Buchungsstatus teilw. gebucht 
+@B6@ ICON_STATUS_REVERSE            2 X X   X X @B_STON@   D Buchungsstatus storniert       Buchungsstatus storniert      
+@B7@ ICON_PREFERENCE                2 X X   X X @B_PREF@   D Präferenzen                    Präferenzen                   
+@B8@ ICON_NEXT_STEP                 2 X     X   @B_STEN@   D Nächster Schritt               Nächster Schritt              
+@B9@ ICON_PREVIOUS_STEP             2 X     X   @B_STEP@   D Vorheriger Schritt             Vorheriger Schritt            
+@BA@ ICON_STORNO                    2 X     X   @B_REVE@   D Storno                         Storno                        
+@BB@ ICON_INTERCHANGE               2 X     X   @B_EXCH@   D Vertauschen                    Vertauschen                   
+@BC@ ICON_CASHING_UP                2 X     X   @B_CASS@   D Abrechnung                     Abrechnung                    
+@BD@ ICON_WORKLOAD                  2 X     X   @B_WLOA@   D Workload                       Workload                      
+@BE@ ICON_PROPOSITION               2 X     X   @B_PROP@   D Vorschlag                      Vorschlag                     
+@BF@ ICON_PRESENCE                  2           @B_ANWE@ X D Ein; Anwesenheit               Ein; Anwesenheit              
+@BG@ ICON_ABSENCE                   2           @B_ABWE@ X D Aus; Abwesenheit               Aus; Abwesenheit              
+@BH@ ICON_TIME_CONTROL              2 X     X   @B_TICL@   D Zeitauswertung                 Zeitauswertung                
+@BI@ ICON_POSITION_HR               2 X     X   @B_POST@   D Position (Arbeitsstelle)       Position (Arbeitsstelle)      
+@BJ@ ICON_PARAMETER_TABLE           2 X     X   @B_PART@   D Parameter Tabelle              Parameter Tabelle             
+@BK@ ICON_TASK                      2 X     X   @B_TSAK@   D Aufgabe                        Aufgabe                       
+@BL@ ICON_COST_CENTER               2 X X X X X @B_COST@   D Kostenstelle                   Kostenstelle                  
+@BM@ ICON_MANAGER                   2 X     X   @B_MNGR@   D Manager                        Manager                       
+@BN@ ICON_ORG_UNIT                  2 X     X   @B_OGUN@   D Organisationseinheit           Organisationseinheit          
+@BO@ ICON_QUERY                     2 X     X   @B_QUER@   D Query Tool                     Query Tool                    
+@BP@ ICON_WORKFLOW_INBOX            2 X     X   @B_IBOX@   D Workflow Eingang               Workflow Eingang              
+@BQ@ ICON_FAST_ENTRY                2 X     X   @B_FAST@   D Schnelleingabe                 Schnelleingabe                
+@BR@ ICON_LIFE_EVENTS               2 X     X   @B_LIFE@   D Maßnahmen                      Maßnahmen                     
+@BS@ ICON_WORK_CENTER               2 X     X   @B_WORK@   D Workcenter                     Workcenter                    
+@BT@ ICON_GRADUATE                  2 X     X   @B_GRAD@   D Staffeln                       Staffeln                      
+@BU@ ICON_EXTRA                     2 X     X   @B_XTRA@   D Zugabe, Geschenk               Zugabe, Geschenk              
+@BV@ ICON_CONVERT_ALL               2 X     X   @B_CNVT@   D Mengenumrechnungsfaktor        Mengenumrechnungsfaktor       
+@BW@ ICON_RELATION                  2 X X   X X @B_RELA@   D Beziehungswissen               Beziehungswissen              
+@BX@ ICON_CONFIGURATION             2 X X   X X @B_CONF@   D Konfiguration                  Konfiguration                 
+@BY@ ICON_WIZARD                    2 X     X   @B_WIZA@   D Wizard                         Wizard                        
+@BZ@ ICON_LED_INACTIVE              2 X X   X X @S_LEDI@   D Inaktive LED; Undefiniert      Inaktive LED; Undefiniert     
+@C0@ ICON_STORE                     2 X     X   @B_STOR@   D Ablegen                        Ablegen                       
+@C1@ ICON_LINK                      2 X     X   @B_LINK@   D Zuordnen                       Zuordnen                      
+@C2@ ICON_LATE_STORE                2 X     X   @B_ALLA@   D Spätere Erfassung              Spätere Erfassung             
+@C3@ ICON_LATE_LINK                 2 X     X   @B_ALLL@   D Spätere Zuordung               Spätere Zuordung              
+@C4@ ICON_EARLY_STORE               2 X     X   @B_ALEA@   D Sofortige Erfassung            Sofortige Erfassung           
+@C5@ ICON_EARLY_LINK                2 X     X   @B_ALEL@   D Sofortige Zuordnung            Sofortige Zuordnung           
+@C6@ ICON_OO_CLASS_EVENT            2 X     X   @B_CLEV@   D Klassenereignis                Klassenereignis               
+@C7@ ICON_OO_INST_EVENT             2 X     X   @B_INEV@   D Instanzereignis                Instanzereignis               
+@C8@ ICON_OO_ALIAS                  2 X     X   @B_ALIA@   D Alias                          Alias                         
+@C9@ ICON_OO_OBJECT                 2 X     X   @B_OBJC@   D Objekt                         Objekt                        
+@CA@ ICON_JOB                       2 X     X   @B_JOBS@   D Arbeitsstelle                  Arbeitsstelle                 
+@CB@ ICON_DELIVERY_DATE             2 X     X   @B_ELIE@   D Einmallieferung Wunschtermin   Einmallieferung Wunschtermin  
+@CC@ ICON_DELIVERY_COMPLETE         2 X     X   @B_KLIE@   D Vollständige Lieferung         Vollständige Lieferung        
+@CD@ ICON_DELIVERY_PROPOSAL         2 X     X   @B_VLIE@   D Liefervorschlag                Liefervorschlag               
+@CE@ ICON_PDIR_BACK_SWITCH          2 X     X   @B_PRUU@   D Planrichtung rückwärts (Umsch) Planrichtung rückwärts (Umsch)
+@CF@ ICON_PDIR_BACK                 2 X     X   @B_PRUC@   D Planungsrichtung rückwärts     Planungsrichtung rückwärts    
+@CG@ ICON_PDIR_FOREWARD             2 X     X   @B_PVOR@   D Planungsrichtung vorwärts      Planungsrichtung vorwärts     
+@CH@ ICON_PDIR_FOREWARD_SWITCH      2 X     X   @B_PVOU@   D Planrichtung vorwärts (Umsch)  Planrichtung vorwärts (Umsch) 
+@CI@ ICON_FINITE                    2 X     X   @B_PFIK@   D Finite Kapazität               Finite Kapazität              
+@CJ@ ICON_NONWORK                   2 X     X   @B_PNAR@   D Variationen Nichtarbeitszeiten Variationen Nichtarbeitszeiten
+@CK@ ICON_PM_FREE                   2 X     X   @B_PFKA@   D Planmodus freie Kapazität      Planmodus freie Kapazität     
+@CL@ ICON_PM_INSERT                 2 X     X   @B_PVEF@   D Planmodus Vorgang einfügen     Planmodus Vorgang einfügen    
+@CM@ ICON_PM_PRESS                  2 X     X   @B_PVER@   D Planmodus Vorgang einrütteln   Planmodus Vorgang einrütteln  
+@CN@ ICON_PM_ORDER                  2 X     X   @B_PVRE@   D Planmodus Reihenfolge beibehal Planmodus Reihenfolge beibehal
+@CO@ ICON_DANGEROUS_GOOD_CHECK      2 X X   X X @DAGOCH@   D Gefahrgutprüfung               Gefahrgutprüfung              
+@CP@ ICON_WORKFLOW_DOC_CREATE       2 X X   X X @WFDOKU@   D Dokument aus Vorlage erzeugen  Dokument aus Vorlage erzeugen 
+@CQ@ ICON_WF_LINK                   2 X     X   @WFLINK@   D Datenfluß festlegen            Datenfluß festlegen           
+@CR@ ICON_WF_UNLINK                 2 X X   X X @WFULNK@   D Datenfluß auflösen             Datenfluß auflösen            
+@CS@ ICON_WF_WORKITEM_READY         2 X X   X X @WFWIRE@   D Workitem bereit                Workitem bereit               
+@CT@ ICON_WF_WORKITEM_RESERVED      2 X X   X X @WFWIRS@   D Workitem reserviert            Workitem reserviert           
+@CU@ ICON_WF_WORKITEM_STARTED       2 X X   X X @WFWIST@   D Workitem in Arbeit             Workitem in Arbeit            
+@CV@ ICON_WF_WORKITEM_COMMITTED     2 X X   X X @WFWICO@   D Workitem ausgeführt            Workitem ausgeführt           
+@CW@ ICON_WF_WORKITEM_WAITING       2 X X   X X @WFWIWA@   D Workitem wartend               Workitem wartend              
+@CX@ ICON_WF_WORKITEM_COMPLETED     2 X X   X X @WFWICP@   D Workitem beendet               Workitem beendet              
+@CY@ ICON_WF_WORKITEM_ERROR         2 X X   X X @WFWIER@   D Workitem fehlerhaft            Workitem fehlerhaft           
+@CZ@ ICON_WF_WORKITEM_CANCEL        2 X X   X X @WFWICA@   D Workitem logisch gelöscht      Workitem logisch gelöscht     
+@D0@ ICON_WF_RESERVE_WORKITEM       2 X X   X X @WFREWI@   D Workitem annehmen              Workitem annehmen             
+@D1@ ICON_WF_REPLACE_WORKITEM       2 X X   X X @WFRPWI@   D Workitem zurücklegen           Workitem zurücklegen          
+@D2@ ICON_PROFIT_CENTER             2 X X X X X @PROCEN@   D Profit Center Stammsatz        Profit Center Stammsatz       
+@D3@ ICON_WF_RULE_SYSTEM            2 X X   X X @WFRUSY@   D Regelwerk                      Regelwerk                     
+@D4@ ICON_WF_PARAMETER              2 X X   X X @WFPARA@   D Parameter eines Prozesses      Parameter eines Prozesses     
+@D5@ ICON_JAPAN                     2 X X   X X @XJAPAN@   D Japan                          Japan                         
+@D6@ ICON_SLS                       2 X X   X X @SAPALS@   D Sanctioned Party List Screenin Sanctioned Party List Screenin
+@D7@ ICON_CUSTOMS                   2 X X   X X @DOUANE@   D Zolltechnisches Rechtsgebiet   Zolltechnisches Rechtsgebiet  
+@D8@ ICON_LEGAL_REG                 2 X X   X X @LEGLRG@   D Gesetzliche Grundlage          Gesetzliche Grundlage         
+@D9@ ICON_COMPANY_CODE              2 X X X X X @COMCOD@   D Buchungskreis                  Buchungskreis                 
+@DA@ ICON_UNIT_COSTING              2 X X   X   @EINSKA@   D Einzelkalkulation              Einzelkalkulation             
+@DB@ ICON_BASE_PLANNING_OBJECT      2 X X   X   @BAUTEL@   D Bauteil (Kalkulationsblock)    Bauteil (Kalkulationsblock)   
+@DC@ ICON_ACTIVITY_TYPE             2 X X   X   @LEIART@   D Leistungsart                   Leistungsart                  
+@DD@ ICON_RENTAL_AGREEMENT          2 X     X   @MIETVT@   D Mietvertrag anzeigen           Mietvertrag anzeigen          
+@DE@ ICON_REAL_ESTATE_OBJECT        2 X X   X   @IMMOOB@   D Immobilienverwaltungsdatenobj. Immobilienverwaltungsdatenobj.
+@DF@ ICON_COMPLETE                  2 X X   X   @COMPLE@   D Abgeschlossen; einwandfrei     Abgeschlossen; einwandfrei    
+@DG@ ICON_PARTNER                   2 X     X   @PARTNE@   D Partner aufrufen               Partner aufrufen              
+@DH@ ICON_PROTOCOL                  2 X     X   @PROTOK@   D Protokoll aufrufen             Protokoll aufrufen            
+@DI@ ICON_MAINTENANCE_OBJECT_LIST   2 X     X   @OBJLIS@   D Objektliste aufrufen           Objektliste aufrufen          
+@DJ@ ICON_XXL                       2 X     X   @LISVIE@   D XXL-Listviewer Aufruf          XXL-Listviewer Aufruf         
+@DK@ ICON_WORD_PROCESSING           2 X     X   @TEXTVA@   D Aufruf Textverarbeitung        Aufruf Textverarbeitung       
+@DL@ ICON_ABC                       2 X     X   @ABCANA@   D ABC-Analyse                    ABC-Analyse                   
+@DM@ ICON_ALV_VARIANT_CHOOSE        2 X     X   @VARCHO@   D Anzeigevariante auswählen      Anzeigevariante auswählen     
+@DN@ ICON_ALV_VARIANT_SAVE          2 X     X   @VARSAV@   D Anzeigevariante sichern        Anzeigevariante sichern       
+@DO@ ICON_EXCLUDED_CORRESPONDENCE   2 X     X   @KOROUT@   D ausgeschl. Korrespondenzklasse ausgeschl. Korrespondenzklasse
+@DP@ ICON_INCREASE_DECIMAL          2 X     X   @INCDEC@   D Dezimalstellen vergrößern      Dezimalstellen vergrößern     
+@DQ@ ICON_DECREASE_DECIMAL          2 X     X   @DECDEC@   D Dezimalstellen verkleinern     Dezimalstellen verkleinern    
+@DR@ ICON_ERROR_PROTOCOL            2 X     X   @FEHLER@   D Fehlerprotokoll                Fehlerprotokoll               
+@DS@ ICON_PARTNER_SALES_ACTIVITY    2 X     X X @KONTAK@   D Geschäftspartnerkontakt allg.  Geschäftspartnerkontakt allg. 
+@DT@ ICON_PHONE_CALL_IN             2 X     X   @XTELIN@   D eingehendes Telefonat          eingehendes Telefonat         
+@DU@ ICON_NAFTA                     2 X     X X @XNAFTA@   D North American Free Trade Asso North American Free Trade Asso
+@DV@ ICON_EU                        2 X     X X @X___EU@   D Europäische Union              Europäische Union             
+@DW@ ICON_PHONE_CALL_OUT            2 X     X X @TELOUT@   D ausgehendes Telefonat          ausgehendes Telefonat         
+@DX@ ICON_CONTROLLING_AREA          2 X X X X X @CONARE@   D Kostenrechnungskreis           Kostenrechnungskreis          
+@DY@ ICON_DISTRIBUTION_LIST         2 X X   X X @DISTLI@   D Verteilerliste                 Verteilerliste                
+@DZ@ ICON_MAIL_SAP_UNREAD           2 X X   X   @MAILSU@   D R/3 Mail ungelesen             R/3 Mail ungelesen            
+@E0@ ICON_MAIL_SAP_READ             2 X X   X   @MAILSR@   D R/3 Mail gelesen               R/3 Mail gelesen              
+@E1@ ICON_ENVELOPE_OPEN             2 X X   X   @ENVOPE@   D Nachricht gelesen              Nachricht gelesen             
+@E2@ ICON_ENVELOPE_CLOSED           2 X X   X   @ENVCLO@   D ungelesene Nachricht           ungelesene Nachricht          
+@E3@ ICON_OFFICE_DOCUMENT           2 X X   X   @OFFDOC@   D SAP Office Dokument            SAP Office Dokument           
+@E4@ ICON_INCLUDE_IN_SELECTION      4   X X   X @COLGRE@   D Go; In Ordnung                 Go; In Ordnung                
+@E5@ ICON_WF_WORKITEM_OL            2 X X   X X @WFWIOL@ X D SAP Workitem im Outlook Expl.  SAP Workitem im Outlook Expl. 
+@E6@ ICON_NEW_HANDLING_UNIT         2 X     X   @NHUPPQ@ X D Neues Packstück pro Teilmenge  Neues Packstück pro Teilmenge 
+@E7@ ICON_NEW_HANDLING_IF_FULL      2 X     X   @NEWHIF@ X D Neues Packstück falls voll     Neues Packstück falls voll    
+@E8@ ICON_PACKING                   2 X     X   @PACKIN@   D Verpacken                      Verpacken                     
+@E9@ ICON_UNPACK                    2 X     X   @UNPACK@   D Auspacken                      Auspacken                     
+@EA@ ICON_EMPTY_HANDLING_UNIT       2 X     X   @EMHAUN@   D Leeren                         Leeren                        
+@EB@ ICON_LIGHT_OUT                 4   X       @OUTLIG@   D Ampel aus; Undefiniert         Ampel aus; Undefiniert        
+@EC@ ICON_PS_PROJECT_DEFINITION     2 X X     X @PSPRDE@   D Projektdefinition              Projektdefinition             
+@ED@ ICON_PS_WBS_ELEMENT            2 X X     X @PSWBEL@   D PSP Element                    PSP Element                   
+@EE@ ICON_PS_NETWORK_HEADER         2 X X     X @PSNEHE@   D Netzplankopf                   Netzplankopf                  
+@EF@ ICON_PS_NETWORK_ACTIVITY       2 X X     X @PSNEAC@   D Netzplanvorgang                Netzplanvorgang               
+@EG@ ICON_PS_ACTIVITY_ELEMENT       2 X X     X @PSACEL@   D Netzplanvorgangselement        Netzplanvorgangselement       
+@EH@ ICON_PS_RELATIONSHIP           2 X X     X @PSRELA@   D Anordnungsbeziehung            Anordnungsbeziehung           
+@EI@ ICON_STATUS                    2 X X   X   @STATUS@ X D Systemstatus                   Systemstatus                  
+@EJ@ ICON_BATCH                     2 X X   X X @XBATCH@   D Charge anzeigen                Charge anzeigen               
+@EK@ ICON_ADMINISTRATIVE_DATA       2 X X   X X @ADDATA@   D Verwaltungsdaten anzeigen      Verwaltungsdaten anzeigen     
+@EL@ ICON_STOCK                     2 X     X X @XSTOCK@   D Bestand                        Bestand                       
+@EM@ ICON_ACCOUNT_ASSIGNMENT        2 X     X X @ACCASS@   D Kontierung                     Kontierung                    
+@EN@ ICON_LOT_ORIGIN                2 X X   X X @LOTORI@   D Herkunft                       Herkunft                      
+@EO@ ICON_INSPECTION_LOT            2 X X   X X @INSLOT@   D Prüflos                        Prüflos                       
+@EP@ ICON_SHOW_EXTERNAL_JOBS        2 X     X   @SHEXJO@   D Externe Jobs anzeigen          Externe Jobs anzeigen         
+@EQ@ ICON_SPOOL_REQUEST             2 X     X X @SPOREQ@   D Spoolauftrag                   Spoolauftrag                  
+@ER@ ICON_OUTPUT_REQUEST            2 X     X X @OUTREQ@   D Ausgabeauftrag anzeigen        Ausgabeauftrag anzeigen       
+@ES@ ICON_DELETE_FAVORITES          2 X     X X @DELFAV@   D Entfernen aus Favoritenliste   Entfernen aus Favoritenliste  
+@ET@ ICON_SHOW_EVENTS               2 X     X X @SHOEVE@   D Ereignis anzeigen              Ereignis anzeigen             
+@EU@ ICON_SPOOL_STATUS              2 X     X X @SPOSTA@   D Spool-Status anzeigen          Spool-Status anzeigen         
+@EV@ ICON_INSERT_FAVORITES          2 X     X X @INSFAV@   D Aufnehmen in Favoritenliste    Aufnehmen in Favoritenliste   
+@EW@ ICON_PRINT_WITH_PARAMETERS     2 X     X X @PRINTP@   D Drucken mit Parameterangabe    Drucken mit Parameterangabe   
+@EX@ ICON_USED_RELATION             2 X     X X @USEREL@   D Benutzungsbeziehungen anzeigen Benutzungsbeziehungen anzeigen
+@EY@ ICON_MAPPED_RELATION           2 X     X X @MAPREL@   D Abbildungsbeziehungen anzeigen Abbildungsbeziehungen anzeigen
+@EZ@ ICON_CREATE_COPY               2 X     X X @CRECOP@   D Anlegen mit Vorlage            Anlegen mit Vorlage           
+@F0@ ICON_FLUSH                     2 X     X X @XFLUSH@   D Cache-Eintrag zurücksetzen     Cache-Eintrag zurücksetzen    
+@F1@ ICON_DEFECT                    2 X X   X X @DEFECT@   D Nicht abgeschloss.; fehlerhaft Nicht abgeschloss.; fehlerhaft
+@F2@ ICON_BW_GIS                    2 X X   X X @GISTAB@   D Auf Karte verzweigen           Auf Karte verzweigen          
+@F3@ ICON_BW_INFO_CUBE_SAP          2 X X   X X @BWINCS@   D InfoCube, SAP Version          InfoCube, SAP Version         
+@F4@ ICON_BW_INFO_CUBE_INA          2 X X   X X @BWINCI@   D InfoCube, inaktiv              InfoCube, inaktiv             
+@F5@ ICON_BW_INFO_OBJECT_CATALOGUE  2 X X   X X @BWIOCS@   D InfoObjekt Katalog, SAP Ver.   InfoObjekt Katalog, SAP Ver.  
+@F6@ ICON_SUGGEST_VALUE             2 X X   X X @BWSUVA@   D Werte vorschlagen              Werte vorschlagen             
+@F7@ ICON_DOC_POSITION_PROPOSAL     2 X     X X @DOPOPR@   D Belegposition vorschlagen      Belegposition vorschlagen     
+@F8@ ICON_CUSTOMER_MASTER_DATA_LIST 2 X     X X @CUMADA@   D Kundenstammblatt anzeigen      Kundenstammblatt anzeigen     
+@F9@ ICON_STATUS_OVERVIEW           2 X     X X @STATOV@   D Statusübersicht anzeigen       Statusübersicht anzeigen      
+@FA@ ICON_DOC_HEADER_DETAIL         2 X     X X @DOHEDE@   D Details zum Belegkopf anzeigen Details zum Belegkopf anzeigen
+@FB@ ICON_DOC_ITEM_DETAIL           2 X     X X @DOITDE@   D Details zu Position anzeigen   Details zu Position anzeigen  
+@FC@ ICON_AVAILABILITY_CHECK        2 X     X X @AVACHE@   D Verfügbarkeit prüfen           Verfügbarkeit prüfen          
+@FD@ ICON_PRICE                     2 X     X X @XPRICE@   D Preiskonditionen               Preiskonditionen              
+@FE@ ICON_SCHEDULE_LINE             2 X     X X @SCLINE@   D Einteilungen zur Position      Einteilungen zur Position     
+@FF@ ICON_AVAILABILITY_DISPLAY      2 X     X X @AVASHO@   D Verfügbarkeitssituation anz.   Verfügbarkeitssituation anz.  
+@FG@ ICON_STATISTICS                2 X     X X @STATIS@   D Lagerstatistiken aufrufen      Lagerstatistiken aufrufen     
+@FH@ ICON_CLAIM                     2 X     X X @XCLAIM@   D Aufr./Def. einer Schadenakte   Aufr./Def. einer Schadenakte  
+@FI@ ICON_PLANNING_SITUATION        2 X     X X @LOKPKT@ X D Planung zum Lokationspunkt     Planung zum Lokationspunkt    
+@FJ@ ICON_CHANGE_ORDER              2 X     X X @AUFTRG@ X D Auftrag bearbeiten             Auftrag bearbeiten            
+@FK@ ICON_PRODUCT_REQUIREMENTS      2 X     X X @BESUCH@ X D Bedarfe suchen                 Bedarfe suchen                
+@FL@ ICON_PRODUCT_RECEIPTS          2 X     X X @ZUSUCH@ X D Zugänge suchen                 Zugänge suchen                
+@FM@ ICON_ATTACHMENT                2 X     X X @ATTACH@   D Anlage anzeigen                Anlage anzeigen               
+@FN@ ICON_CLOSED_FOLDER             2 X     X X @CLOFOL@   D Mappeninhalt anzeigen          Mappeninhalt anzeigen         
+@FO@ ICON_OPEN_FOLDER               2 X     X X @OPFOLD@   D Mappe öffnen                   Mappe öffnen                  
+@FP@ ICON_OBJECT_FOLDER             2 X     X X @OBJFOL@   D Objectfolder öffnen            Objectfolder öffnen           
+@FQ@ ICON_OUTBOX                    2 X     X X @OUTBOX@   D Ausgang anzeigen               Ausgang anzeigen              
+@FR@ ICON_RESUBMISSION              2 X     X X @RESUBM@   D Wiedervorlage                  Wiedervorlage                 
+@FS@ ICON_PRIVATE_FILES             2 X     X X @PRIFIL@   D Persönlich Ablage              Persönlich Ablage             
+@FT@ ICON_PUBLIC_FILES              2 X     X X @PUBFIL@   D Allgemeine Ablage              Allgemeine Ablage             
+@FU@ ICON_SUBSCRIPTION              2 X X   X X @SUBSCR@   D Abonnierte Mappen              Abonnierte Mappen             
+@FV@ ICON_AVERAGE                   2 X     X X @AVERAG@   D Ermittlung des Durchschnitts   Ermittlung des Durchschnitts  
+@FW@ ICON_BOLD                      2 X     X   @X_BOLD@   D Fettdruck                      Fettdruck                     
+@FX@ ICON_ITALIC                    2 X     X   @ITALIC@   D Kursivdruck                    Kursivdruck                   
+@FY@ ICON_UNDERLINE                 2 X     X   @UNDERL@   D Unterstrichen                  Unterstrichen                 
+@FZ@ ICON_ALIGN_LEFT                2 X     X   @ALIGLE@   D linksbündig                    linksbündig                   
+@G0@ ICON_ALIGN_RIGHT               2 X     X   @ALIGRI@   D rechtsbündig                   rechtsbündig                  
+@G1@ ICON_ALIGN_CENTER              2 X     X   @ALIGCE@   D zentriert                      zentriert                     
+@G2@ ICON_JUSTIFIED                 2 X     X   @JUSTIF@   D Blocktext                      Blocktext                     
+@G3@ ICON_COLOR                     2 X     X   @XCOLOR@   D Farbe                          Farbe                         
+@G4@ ICON_DELETE_ALL_ATTRIBUTES     2 X     X   @DELATT@   D alle Attribute löschen         alle Attribute löschen        
+@G5@ ICON_IDOC                      2 X X   X X @XIDOCS@   D Anzeigen von Idocs             Anzeigen von Idocs            
+@G6@ ICON_HOST                      2 X X   X X @X_HOST@   D Rechner/Host                   Rechner/Host                  
+@G7@ ICON_SYM_SPOOL_SERVER          2 X X   X X @SYMSPO@   D Applikationsserver mit Spool   Applikationsserver mit Spool  
+@G8@ ICON_SYM_REAL_SERVER           2 X X   X X @SYRESE@   D realer Applikationsserver      realer Applikationsserver     
+@G9@ ICON_SYM_LOG_SERVER            2 X X   X X @SYLOSE@   D logischer Applikationsserver   logischer Applikationsserver  
+@GA@ ICON_SYM_ALT_SERVER            2 X X   X X @SYALSE@   D Alternativ-Server              Alternativ-Server             
+@GB@ ICON_CONNECT                   2 X X   X X @CONNEC@   D Verbindung aufbauen            Verbindung aufbauen           
+@GC@ ICON_DISCONNECT                2 X X   X X @DISCON@   D Verbindung trennen             Verbindung trennen            
+@GD@ ICON_FILTER_UNDO               2 X     X X @FILTUN@   D Filter zurücknehmen            Filter zurücknehmen           
+@GE@ ICON_SET_SUM_UNDO              2 X     X X @SESUUN@ X D Gruppierung zurücknehmen       Gruppierung zurücknehmen      
+@GF@ ICON_INTENSIFY_UNDO            2 X     X X @INTUND@   D Hervorhebung zurücknehmen      Hervorhebung zurücknehmen     
+@GG@ ICON_SORT_UNDO                 2 X     X X @SORTUN@ X D Sortierung zurücknehmen        Sortierung zurücknehmen       
+@GH@ ICON_BW_DATA_MARTS             2 X X   X X @DATAMA@   D Data Marts                     Data Marts                    
+@GI@ ICON_REMOVE_FROM_SELECTION     4   X       @COLRED@   D Stop; Fehlerhaft               Stop; Fehlerhaft              
+@GJ@ ICON_BW_CHARACTERISTICS_SAP    2 X X   X X @BWCHSA@   D Merkmal, SAP Version           Merkmal, SAP Version          
+@GK@ ICON_BW_KEYFIGURE_SAP          2 X X   X X @BWKESA@   D Kennzahl, SAP Version          Kennzahl, SAP Version         
+@GL@ ICON_BW_INFO_OBJECT_UNITS_SAP  2 X X   X X @BWIOUS@   D Einheit, SAP Version           Einheit, SAP Version          
+@GM@ ICON_BW_TIME_SAP               2 X X   X X @BWTISA@   D Zeitmerkmal, SAP Version       Zeitmerkmal, SAP Version      
+@GN@ ICON_BW_RULES_SAP              2 X X   X X @BWRUSA@   D Fortschreibungsregeln, SAP     Fortschreibungsregeln, SAP    
+@GO@ ICON_BW_REPORT_SAP             2 X X   X X @BWRESA@   D Query, SAP Version             Query, SAP Version            
+@GP@ ICON_BW_VARIABLE_SAP           2 X X   X X @BWVASA@   D Variable, SAP Version          Variable, SAP Version         
+@GQ@ ICON_BW_REF_STRUCTURE_SAP      2 X X   X X @BWRESS@   D Template, SAP Version          Template, SAP Version         
+@GR@ ICON_BW_SELECTION_SAP          2 X X   X X @BWSESA@   D Eingeschränkte Kennzahl, SAP   Eingeschränkte Kennzahl, SAP  
+@GS@ ICON_INSPECTION_METHOD         2 X X   X X @INSMET@   D Prüfmethode                    Prüfmethode                   
+@GT@ ICON_CATALOG                   2 X X   X X @CATALG@   D Katalog                        Katalog                       
+@GU@ ICON_INSERT_MULTIPLE_LINES     2 X X   X X @INMALI@   D mehrer Zeilen einfügen         mehrer Zeilen einfügen        
+@GV@ ICON_INSPECTION_CHARACTERISTIC 2 X X   X X @INSCHA@   D Prüfmerkmal                    Prüfmerkmal                   
+@GW@ ICON_PHYSICAL_SAMPLE           2 X X   X X @PHYSAM@   D Physische Probe                Physische Probe               
+@GX@ ICON_BW_FORMULA_SAP            2 X X   X X @BWFOSA@   D Berechnete Kennzahl, SAP Ver.  Berechnete Kennzahl, SAP Ver. 
+@GY@ ICON_BW_INFO_CATALOGUE_SAP     2 X X   X X @BWINCP@   D InfoKatalog, SAP Version       InfoKatalog, SAP Version      
+@GZ@ ICON_BUDGET_STRUCTURE_ELEMENT  2 X X   X X @BUSTEL@   D Haushaltselement               Haushaltselement              
+@H0@ ICON_FINANCING                 2 X X   X X @FINANC@   D Finanzierung                   Finanzierung                  
+@H1@ ICON_RECLASSIFICATION_RULE     2 X X   X X @RECRUL@   D Umwandlungsvermerk             Umwandlungsvermerk            
+@H2@ ICON_RECLASSIFICATION          2 X X   X X @RECLAS@   D Umwandlung                     Umwandlung                    
+@H3@ ICON_REMOVE                    2 X X   X X @REMOVE@   D Wegfallvermerk                 Wegfallvermerk                
+@H4@ ICON_SPECIAL_PURPOSE           2 X X   X X @EARMAR@   D Zweckbindung                   Zweckbindung                  
+@H5@ ICON_DEPUTY                    2 X X   X X @DEPUTY@   D Stellvertreter                 Stellvertreter                
+@H6@ ICON_BUDGET_UPDATE             2 X X   X X @BUDUPD@   D Budgetaktualisierung           Budgetaktualisierung          
+@H7@ ICON_BUDGET_TRANSFER           2 X X   X X @BUDTRA@   D Umbuchung                      Umbuchung                     
+@H8@ ICON_BW_SEGMENT_ACT            2 X X   X X @BWSEAC@   D Segment, aktiv                 Segment, aktiv                
+@H9@ ICON_BW_SEGMENT_INA            2 X X   X X @BWSEIN@   D Segment, inaktiv               Segment, inaktiv              
+@HA@ ICON_BW_SEGMENT_SAP            2 X X   X X @BWSESP@   D Segment, SAP Version           Segment, SAP Version          
+@HB@ ICON_MASS_CHANGE               2 X X   X X @MASSCH@   D Massenänderung durchführen     Massenänderung durchführen    
+@HC@ ICON_INTENSIFY_CRITICAL        2 X X   X X @INTCRI@   D Hervorhebung kritisch          Hervorhebung kritisch         
+@HD@ ICON_INTENSIFY_UNCRITICAL      2 X X   X X @INTUNC@   D Hervorhebung unkritisch        Hervorhebung unkritisch       
+@HE@ ICON_CHOOSE_COLUMNS            2 X X   X X @CHOCOL@   D Spalten auswählen              Spalten auswählen             
+@HF@ ICON_TOTAL_UP                  2 X X   X   @TOT_UP@   D Eintrag ganz nach oben         Eintrag ganz nach oben        
+@HG@ ICON_TOTAL_DOWN                2 X X   X   @TOT_DO@   D Eintrag ganz nach unten        Eintrag ganz nach unten       
+@HH@ ICON_PAGE_UP                   2 X X   X   @PAGEUP@   D Eintrag eine Seite nach oben   Eintrag eine Seite nach oben  
+@HI@ ICON_PAGE_DOWN                 2 X X   X   @PAGEDO@   D Eintrag eine Seite nach unten  Eintrag eine Seite nach unten 
+@HJ@ ICON_READ_FILE                 2 X X   X X @READFI@   D Datei lesen                    Datei lesen                   
+@HK@ ICON_WRITE_FILE                2 X X   X X @WRITFI@   D Datei schreiben                Datei schreiben               
+@HL@ ICON_EDIT_FILE                 2 X X   X X @EDITFI@   D Datei bearbeiten               Datei bearbeiten              
+@HM@ ICON_PS_MILESTONE              2 X X   X X @PSMILE@   D Meilenstein                    Meilenstein                   
+@HN@ ICON_PS_PROJECT_TEXT           2 X X   X X @PSRPTX@   D Projekttext                    Projekttext                   
+@HO@ ICON_ELEMENT                   2   X     X @ELEMEN@   D Datentyp "Element"             Datentyp "Element"            
+@HP@ ICON_STRUCTURE                 2   X     X @STRUCT@   D Datentyp "Struktur"            Datentyp "Struktur"           
+@HQ@ ICON_WS_WHSE_STOCK             2 X X   X X @LAGERB@   D Lagerbestände                  Lagerbestände                 
+@HR@ ICON_ROUTING                   2 X X   X X @ROUTIN@   D Arbeitsplankopf                Arbeitsplankopf               
+@HS@ ICON_MATERIAL_ROUTING_ALLOC    2 X X   X X @MAROAL@   D Material-Plan-Zuordnung        Material-Plan-Zuordnung       
+@HT@ ICON_ROUTING_SUB_OPERATION     2 X X   X X @ROSUOP@   D Untervorgang                   Untervorgang                  
+@HU@ ICON_ROUTING_REF_SUB_OPERATION 2 X X   X X @RORESO@   D Referierter Untervorgang       Referierter Untervorgang      
+@HV@ ICON_ROUTING_SEQUENCE          2 X X   X X @ROUSEQ@   D Folge                          Folge                         
+@HW@ ICON_BOM_SUB_ITEM              2 X X   X X @BOSUIT@   D Unterposition einer Stückliste Unterposition einer Stückliste
+@HX@ ICON_EFFECTIVITY_PERIOD        2 X X   X X @EFFPER@   D Änderungsstand                 Änderungsstand                
+@HY@ ICON_KEY_DATE                  2 X X   X X @KEYDAT@   D Stichtag                       Stichtag                      
+@HZ@ ICON_SELECTION_PERIOD          2 X X   X X @SELPER@   D Selektionszeitraum             Selektionszeitraum            
+@I0@ ICON_EFF                       2 X X   X X @X__EFF@   D Parametergültigkeit            Parametergültigkeit           
+@I1@ ICON_SUPPLY_AREA               2 X X   X X @SUPARE@   D Produktionsversorgungsbereich  Produktionsversorgungsbereich 
+@I2@ ICON_REPORT_CALL               2 X X   X X @REPCAL@   D Berichts-Berichtsaufruf        Berichts-Berichtsaufruf       
+@I3@ ICON_ASSIGN                    2 X X   X X @ASSIGN@   D Tabelleneintrag zuordnen       Tabelleneintrag zuordnen      
+@I4@ ICON_UNASSIGN                  2 X X   X X @UNASSI@   D Tabelleneintrag zuordnen aufh. Tabelleneintrag zuordnen aufh.
+@I5@ ICON_SYSTEM_START_RECORDING    2 X X   X X @SYSTRE@   D Aufzeichnung starten           Aufzeichnung starten          
+@I6@ ICON_SYSTEM_PLAY               2 X X   X X @SYSTPL@   D Aufzeichnung abspielen         Aufzeichnung abspielen        
+@I7@ ICON_TRANSLATION               2 X X   X X @TRANSL@   D Übersetzung pflegen            Übersetzung pflegen           
+@I8@ ICON_TRANSLATION_SHOW          2 X X   X X @TRASHO@   D Übersetzung anzeigen           Übersetzung anzeigen          
+@I9@ ICON_CHANGE_PASSWORD           2 X X   X X @CHAPAS@   D Kennwort ändern                Kennwort ändern               
+@IA@ ICON_DISTRIBUTE                2 X X   X X @DISTRI@   D Verteilen von Einträgen        Verteilen von Einträgen       
+@IB@ ICON_SYSTEMS                   2 X X   X X @SYSTEM@   D Aufruf von Systemen            Aufruf von Systemen           
+@IC@ ICON_ACTIVITY_GROUP            2 X X   X X @ACTGRO@   D Aktivitätsgruppen für Berecht. Aktivitätsgruppen für Berecht.
+@ID@ ICON_USERGROUP                 2 X X   X X @USEGRO@   D Benutzergruppen in Berecht.    Benutzergruppen in Berecht.   
+@IE@ ICON_UNLINK                    2 X X   X X @DISLIN@   D Zuordnung aufheben             Zuordnung aufheben            
+@IF@ ICON_CONTENT_OBJECT            2   X     X @CONOBJ@   D Dokument                       Dokument                      
+@IG@ ICON_OBJECT_LIST               2   X   X   @OBJELI@   D Liste                          Liste                         
+@IH@ ICON_FOLDER                    2   X     X @FOLDER@   D Mappe                          Mappe                         
+@II@ ICON_DIFFERENCE                2 X X   X X @DIFFER@   D Differenzen ermitteln          Differenzen ermitteln         
+@IJ@ ICON_DIFFERENCE_BACK           2 X X   X X @DIFBAC@   D Differenz ermitteln Rücknahme  Differenz ermitteln Rücknahme 
+@IK@ ICON_SYSTEM_DESELECT           2 X X   X X @SYSDEM@   D Demarkieren                    Demarkieren                   
+@IL@ ICON_ADOPT                     2 X X   X X @TAKOVE@   D Übernahme eines Objektes       Übernahme eines Objektes      
+@IM@ ICON_TERMINOLOGY               2 X X   X X @TERMIN@   D Absprung in die Terminologie   Absprung in die Terminologie  
+@IN@ ICON_TRIANGULAR_RELATIONSHIP   2 X X   X X @TRIREL@   D Darstellung Dreiecksbeziehung  Darstellung Dreiecksbeziehung 
+@IO@ ICON_AEW_PROJECT               2 X X   X X @PROJEC@   D Anzeige eines Projektes        Anzeige eines Projektes       
+@IP@ ICON_SICKNESS                  2 X X   X X @SICKNE@   D Krankheit                      Krankheit                     
+@IQ@ ICON_HOLIDAY                   2 X X   X X @HOLIDA@   D Urlaub                         Urlaub                        
+@IR@ ICON_ROLE                      2 X X   X X @X_ROLE@   D Standardrolle, Sachbearbeiter  Standardrolle, Sachbearbeiter 
+@IS@ ICON_PERSONNEL_ADMINISTRATION  2 X X   X X @PERADM@   D Personalverwaltung             Personalverwaltung            
+@IT@ ICON_PDF                       2 X X   X X @X__PDF@   D Adobe Acrobat Reader           Adobe Acrobat Reader          
+@IU@ ICON_BMP                       2 X X   X X @X__BMP@   D Bitmap Image                   Bitmap Image                  
+@IV@ ICON_FAX_DOC                   2 X X   X X @X__FAX@   D Fax Document                   Fax Document                  
+@IW@ ICON_GIF                       2 X X   X X @X__GIF@   D Gif Image                      Gif Image                     
+@IX@ ICON_HLP                       2 X X   X X @X__HLP@   D Help file                      Help file                     
+@IY@ ICON_HTT                       2 X X   X X @X__HTT@   D Hyper Text Template            Hyper Text Template           
+@IZ@ ICON_ITS                       2 X X   X X @X__ITS@   D Internet Document Set          Internet Document Set         
+@J0@ ICON_JPG                       2 X X   X X @X__JPG@   D JPEG Image                     JPEG Image                    
+@J1@ ICON_MSG                       2 X X   X X @X__MSG@   D Mail Message                   Mail Message                  
+@J2@ ICON_XLS                       2 X X   X X @X__XLS@   D MS Excel Worksheet             MS Excel Worksheet            
+@J3@ ICON_XLV                       2 X X   X X @X__XLV@   D MS Excel VBA Module            MS Excel VBA Module           
+@J4@ ICON_HTM                       2 X X   X X @X__HTM@   D HTML Document                  HTML Document                 
+@J5@ ICON_PPT                       2 X X   X X @X__PPT@   D MS PowerPoint Presentation     MS PowerPoint Presentation    
+@J6@ ICON_DOT                       2 X X   X X @X__DOT@   D MS Word Template               MS Word Template              
+@J7@ ICON_DOC                       2 X X   X X @X__DOC@   D MS Word Document               MS Word Document              
+@J8@ ICON_EML                       2 X X   X X @X__EML@   D Outlook Express Mail           Outlook Express Mail          
+@J9@ ICON_RTF                       2 X X   X X @X__RTF@   D Rich Text Format               Rich Text Format              
+@JA@ ICON_TIF                       2 X X   X X @X__TIF@   D TIF Image Document             TIF Image Document            
+@JB@ ICON_WRI                       2 X X   X X @X__WRI@   D Notepad Document               Notepad Document              
+@JC@ ICON_LWP                       2 X X   X X @X__LWP@   D WordPro                        WordPro                       
+@JD@ ICON_LOTUS                     2 X X   X X @XLOTUS@   D Lotus123                       Lotus123                      
+@JE@ ICON_VSD                       2 X X   X X @X__VSD@   D Visio                          Visio                         
+@JF@ ICON_DEFAULT_WINDOWS           2 X X   X X @DEFWIN@   D Default Windows                Default Windows               
+@JG@ ICON_DISPLAY_TREE              2 X X   X X @DISTRE@   D Anzeige eines Baumes           Anzeige eines Baumes          
+@JH@ ICON_EXTENDED_SEARCH           2 X X   X X @EXTSEA@   D Erweiterte Suche               Erweiterte Suche              
+@JI@ ICON_CLOSE_OBJECT              2 X X   X X @CLOOBJ@   D Objekt schließen               Objekt schließen              
+@JJ@ ICON_OPEN                      2 X X   X X @X_OPEN@   D Objekt öffnen                  Objekt öffnen                 
+@JK@ ICON_POLICY                    2 X X   X X @POLICY@   D Ansicht / Anlage Police-Daten  Ansicht / Anlage Police-Daten 
+@JL@ ICON_PAYMENT                   2 X X   X X @PAYMEN@   D Ansicht / Definition Zahlung   Ansicht / Definition Zahlung  
+@JM@ ICON_CATASTROPHE               2 X X   X X @CATAST@   D Ansicht/Definition Katastrophe Ansicht/Definition Katastrophe
+@JN@ ICON_AGGREGATE                 2 X X   X X @AGGREG@   D Bündelung von Schäden          Bündelung von Schäden         
+@JO@ ICON_SUBCLAIM_PERSONAL_INJURY  2 X X   X X @SUPEIN@   D Persönlichkeitsrechtsverl.     Persönlichkeitsrechtsverl.    
+@JP@ ICON_SUB_INTELLECTUAL_PROPERTY 2 X X   X X @SUINPR@   D Teilschaden Geistiges Eigentum Teilschaden Geistiges Eigentum
+@JQ@ ICON_SUBCLAIM_VEHICLE          2 X X   X X @SUBVEH@   D Teilschaden Fahrzeug           Teilschaden Fahrzeug          
+@JR@ ICON_SUB_PERSONAL_PROPERTY     2 X X   X X @SUPEPR@   D Teilschaden Hausrat            Teilschaden Hausrat           
+@JS@ ICON_SUBCLAIM_BUILDING         2 X X   X X @SUBBUI@   D Teilschaden Gebäude            Teilschaden Gebäude           
+@JT@ ICON_SUB_BODILY_INJURY_TREAT   2 X X   X X @SUBOIT@   D Behandlung zu Personenschaden  Behandlung zu Personenschaden 
+@JU@ ICON_SUBCLAIM_BODILY_INJURY    2 X X   X X @SUBOIN@   D Personenschaden                Personenschaden               
+@JV@ ICON_SUB_ENVRONMENTAL_SITE     2 X X   X X @SUENSI@   D Umweltschaden                  Umweltschaden                 
+@JW@ ICON_SUB_FINANCIAL_IMPAIRMENT  2 X X   X X @SUFIIM@   D Vermögensschaden               Vermögensschaden              
+@JX@ ICON_BW_PROCESS                2 X X   X X @BWPROC@ X D Einbuchen                      Einbuchen                     
+@JY@ ICON_BW_SIMULATE               2 X X   X X @BWSIMU@ X D simuliertes Einbuchen          simuliertes Einbuchen         
+@JZ@ ICON_BW_PROCESS_CANCEL         2 X X   X X @BWPRCA@ X D Stornobuchen                   Stornobuchen                  
+@K0@ ICON_BW_SIMULATE_CANCEL        2 X X   X X @BWSICA@ X D Simuliertes Stornobuchen       Simuliertes Stornobuchen      
+@K1@ ICON_DATA_AREA_EXPAND          2 X X   X X @DAAREX@   D Ausklappen von Datenbereichen  Ausklappen von Datenbereichen 
+@K2@ ICON_DATA_AREA_COLLAPSE        2 X X   X X @DAARSO@   D Einklappen von Datenbereichen  Einklappen von Datenbereichen 
+@K3@ ICON_SCRAP                     2 X X   X X @XSCRAP@   D Produktionsausschuß            Produktionsausschuß           
+@K4@ ICON_IMPORT_ALL_REQUESTS       2 X X   X X @IMALRE@   D Importieren                    Importieren                   
+@K5@ ICON_IMPORT_TRANSPORT_REQUEST  2 X X   X X @IMTRRE@   D Einzelimport                   Einzelimport                  
+@K6@ ICON_TOGGLE_DISPLAY            2 X X   X X @TOGDIS@   D Wechsel Grund - Detailsicht    Wechsel Grund - Detailsicht   
+@K7@ ICON_TOGGLE_FUNCTION           2 X X   X X @TOGFUN@   D  Standardmodus - Expertenmodus  Standardmodus - Expertenmodus
+@K8@ ICON_PERSONAL_SETTINGS         2 X X   X X @PERSET@   D Einstellungen                  Einstellungen                 
+@K9@ ICON_PROJECT                   2 X X   X X @PROJCT@   D Projekt                        Projekt                       
+@KA@ ICON_INCLUDE_OBJECTS           2 X X   X X @INCOBJ@   D Objekte aufnehmen              Objekte aufnehmen             
+@KB@ ICON_TRANSFER                  2 X X   X X @TRANSF@   D Übertragen                     Übertragen                    
+@KC@ ICON_DISTRIBUTE_CONFIGURATION  2 X X   X X @DISTCO@   D Konfiguration verteilen        Konfiguration verteilen       
+@KD@ ICON_ADJUST_CONFIGURATION      2 X X   X X @ADJCON@   D Konfiguration abgleichen       Konfiguration abgleichen      
+@KE@ ICON_STANDARD_CONFIGURATION    2 X X   X X @STACON@   D Standardkonfiguration          Standardkonfiguration         
+@KF@ ICON_MODIFIED_OBJECT           2 X X   X X @MODOBJ@   D Überarbeitet                   Überarbeitet                  
+@KG@ ICON_SELECT_WITH_CONDITION     2 X X   X X @SEWICO@   D Markieren mit Bedingung        Markieren mit Bedingung       
+@KH@ ICON_ADDRESS_LIST              2 X X   X X @LIOFAD@   D Adressbestand                  Adressbestand                 
+@KI@ ICON_APPOINTMENT_COMPARISON    2 X X   X X @APPBAL@   D Termin abgleichen              Termin abgleichen             
+@KJ@ ICON_BUSINESS_PARTNER_MASTER_D 2 X X   X X @BPMADA@   D Stammdaten Geschäftspartner    Stammdaten Geschäftspartner   
+@KK@ ICON_INCOMPLETION_LOG          2 X X   X X @INCLOG@   D Unvollständigkeitsprotokoll    Unvollständigkeitsprotokoll   
+@KL@ ICON_MESSAGE                   2 X X   X X @MESSAG@   D Nachricht                      Nachricht                     
+@KM@ ICON_TELEPHONE_CALL            2 X X   X X @TELCAL@   D Telefonat                      Telefonat                     
+@KN@ ICON_VISIT                     2 X X   X X @XVISIT@   D Besuch                         Besuch                        
+@KO@ ICON_LETTER                    2 X X   X X @LETTER@   D Brief                          Brief                         
+@KP@ ICON_OPERATOR                  2 X X   X X @OPERAT@   D Operator                       Operator                      
+@KQ@ ICON_SYSTEM_ADMINISTRATOR      2 X     X X @SYSADM@   D Systemadministrator            Systemadministrator           
+@KR@ ICON_SAP                       2 X X   X X @X__SAP@   D SAP                            SAP                           
+@KS@ ICON_PUBLIC                    2 X X   X X @PUBOBJ@   D Öffentlich                     Öffentlich                    
+@KT@ ICON_SUMMARIZE                 2 X X   X X @SUMMAR@   D Keyfelder verdichten           Keyfelder verdichten          
+@KU@ ICON_SUMMARIZE_UNDO            2 X X   X X @SUMUND@   D Verdichten zurücknehmen        Verdichten zurücknehmen       
+@KV@ ICON_SUM_RED                   2   X       @SUMNEG@   D Anzahl fehlerhafter Einheiten  Anzahl fehlerhafter Einheiten 
+@KW@ ICON_UNSPECIFIED_ONE           2 X X X X X @NOSPCA@   D nicht spezifiziert (1)         nicht spezifiziert (1)        
+@KX@ ICON_UNSPECIFIED_TWO           2 X X X X X @NOSPCB@   D nicht spezifiziert (2)         nicht spezifiziert (2)        
+@KY@ ICON_UNSPECIFIED_THREE         2 X X X X X @NOSPCC@   D nicht spezifiziert (3)         nicht spezifiziert (3)        
+@KZ@ ICON_UNSPECIFIED_FOUR          2 X X X X X @NOSPCD@   D nicht spezifiziert (4)         nicht spezifiziert (4)        
+@L0@ ICON_UNSPECIFIED_FIVE          2 X X X X X @NOSPCE@   D nicht spezifiziert (5)         nicht spezifiziert (5)        
+@L1@ ICON_HR_MANAGER                2   X       @MANAGE@ X D Manager                        Manager                       
+@L2@ ICON_TBH                       2 X X   X X @X__TBH@   D To be hired                    To be hired                   
+@L3@ ICON_TBH_HOLD                  2   X       @TBHHOL@   D To be hired hold               To be hired hold              
+@L4@ ICON_NEW_EMPLOYEE              2 X X   X   @NEWEMP@   D Neuer Mitarbeiter              Neuer Mitarbeiter             
+@L5@ ICON_INCOMING_EMPLOYEE         2 X X   X   @INCEMP@   D Incoming Employee              Incoming Employee             
+@L6@ ICON_OUTGOING_EMPLOYEE         2   X       @OUTEMP@   D Outgoing Employee              Outgoing Employee             
+@L7@ ICON_OBSOLETE_POSITION         2   X       @OBSPOS@   D Obsolete Planstelle            Obsolete Planstelle           
+@L8@ ICON_TERMINATED_POSITION       2   X       @TERPOS@   D abgegrenzte Planstelle         abgegrenzte Planstelle        
+@L9@ ICON_SHARED_POSITION           2   X       @SHAPOS@   D Planstelle mit 2 Inhabern      Planstelle mit 2 Inhabern     
+@LA@ ICON_OBSOLETE_SHARED_POSITION  2   X       @OBSHPO@   D geteilte Planstelle obsolet    geteilte Planstelle obsolet   
+@LB@ ICON_TERMINATED_SHARED_POSITIO 2   X       @TESHPO@   D geteilte Planstelle abgegrenzt geteilte Planstelle abgegrenzt
+@LC@ ICON_HR_POSITION               2   X       @POSITI@ X D Planstelle mit Mitarbeiter     Planstelle mit Mitarbeiter    
+@LD@ ICON_CREATE_POSITION           2 X     X   @CREPOS@   D Planstelle anlegen             Planstelle anlegen            
+@LE@ ICON_HR_ORG_UNIT               2   X       @ORGUNI@ X D Organisationseinheit           Organisationseinheit          
+@LF@ ICON_TERMINATED_ORG_UNIT       2   X       @TEORUN@   D abgegrenzte Organisationseinh. abgegrenzte Organisationseinh.
+@LG@ ICON_NEW_ORG_UNIT              2 X     X   @NEORUN@   D Organisationseinheit anlegen   Organisationseinheit anlegen  
+@LH@ ICON_OUTGOING_ORG_UNIT         2   X       @OUORUN@   D begrenzte Zuordnung            begrenzte Zuordnung           
+@LI@ ICON_INCOMING_ORG_UNIT         2   X       @INORUN@   D hinzugefügte Orga-Einheit      hinzugefügte Orga-Einheit     
+@LJ@ ICON_NEW_TASK                  2 X     X   @NEWTAS@   D Aufgabe anlegen                Aufgabe anlegen               
+@LK@ ICON_TERMINATED_TASK           2   X       @TERTAS@   D abgegrenzte Aufgabe            abgegrenzte Aufgabe           
+@LL@ ICON_OUTGOING_TASK             2   X       @OUTTAS@   D Aufgabenzuordnung abgegrenzt   Aufgabenzuordnung abgegrenzt  
+@LM@ ICON_INCOMING_TASK             2   X       @INCTAS@   D Aufgabe neu zuordnen           Aufgabe neu zuordnen          
+@LN@ ICON_OUTGOING_JOB              2   X       @OUTJOB@   D Stellenzuordnung abgegrenzt    Stellenzuordnung abgegrenzt   
+@LO@ ICON_INCOMING_JOB              2   X       @INCJOB@   D Stelle neu zugeordnet          Stelle neu zugeordnet         
+@LP@ ICON_NEW_JOB                   2 X     X   @NEWJOB@   D Stelle anlegen                 Stelle anlegen                
+@LQ@ ICON_TERMINATED_JOB            2   X       @TERJOB@   D abgegrenzte Stelle             abgegrenzte Stelle            
+@LR@ ICON_INCOMING_OBJECT           2   X       @INCOOB@   D Objekt neu zugeordnet          Objekt neu zugeordnet         
+@LS@ ICON_OUTGOING_OBJECT           2   X       @OUTOBJ@   D Objekt abgegrenzt              Objekt abgegrenzt             
+@LT@ ICON_WS_START_WHSE_PROC_BACKGR 2 X X   X X @LAANHI@   D Lagerprozeß anstoßen Hintergr. Lagerprozeß anstoßen Hintergr.
+@LU@ ICON_WS_START_WHSE_PROC_FOREGR 2 X X   X X @LAANVO@   D Lagerprozeß anstoßen Vordergr. Lagerprozeß anstoßen Vordergr.
+@LV@ ICON_WS_CONFIRM_WHSE_PROC_BACK 2 X X   X X @LAQUHI@   D Lagerprozeß quittieren Hinter. Lagerprozeß quittieren Hinter.
+@LW@ ICON_WS_CONFIRM_WHSE_PROC_FORE 2 X X   X X @LAQUVO@   D Lagerprozeß quittieren Vorder. Lagerprozeß quittieren Vorder.
+@LX@ ICON_HOLD                      2 X     X   @X_HOLD@   D Fenster halten                 Fenster halten                
+@LY@ ICON_HOLD_UNDO                 2 X     X   @HOLUND@   D Fenster halten aufheben        Fenster halten aufheben       
+@LZ@ ICON_ALV_VARIANTS              2 X X   X   @VARIAN@   D Anzeigevarianten               Anzeigevarianten              
+@M0@ ICON_TE_FLAT_RATE              2 X X   X X @FLARAT@   D Pauschale                      Pauschale                     
+@M1@ ICON_BIW_SOURCE_SYS_OWN        2 X X   X   @BWSSOW@   D Quellsystem eigenes System     Quellsystem eigenes System    
+@M2@ ICON_WORKFLOW_JOIN             2 X X   X X @WFJOIN@   D Workflow verbinden             Workflow verbinden            
+@M3@ ICON_WORKFLOW_PROCESS          2 X X X X X @WFPROC@   D Workflow Prozess               Workflow Prozess              
+@M4@ ICON_BACKGROUND_JOB            2 X X   X   @XBGJOB@   D Hintergrund Job                Hintergrund Job               
+@M5@ ICON_JOB_DETAIL                2 X X   X   @JOBDET@   D Hintergrund Job Details        Hintergrund Job Details       
+@M6@ ICON_SYSTEMTYPE                2         X @SYSTYP@   D Systemtyp                      Systemtyp                     
+@M7@ ICON_COMPOSITE_ACTIVITYGROUP   2         X @COMACT@   D Sammelaktivitätsgruppe         Sammelaktivitätsgruppe        
+@M8@ ICON_TREND_DOWN                2   X       @TREDWN@   D Trend fallend                  Trend fallend                 
+@M9@ ICON_TREND_DECREASING          2   X       @TREDCR@   D Trend leicht fallend           Trend leicht fallend          
+@MA@ ICON_TREND_UNCHANGED           2   X       @TREUNC@   D Trend stagnierend              Trend stagnierend             
+@MB@ ICON_TREND_RISING              2   X       @TRERIS@   D Trend leicht steigend          Trend leicht steigend         
+@MC@ ICON_TREND_UP                  2   X       @TRE_UP@   D Trend steigend                 Trend steigend                
+@MD@ ICON_STATUS_ALERT              2   X       @STAALE@   D Status kritisch                Status kritisch               
+@ME@ ICON_STATUS_OK                 2   X       @STA_OK@   D Status gut                     Status gut                    
+@MF@ ICON_STATUS_BEST               2   X       @STABST@   D Status sehr gut                Status sehr gut               
+@MG@ ICON_NO_STATUS                 2   X       @STA_NO@   D Kein Status                    Kein Status                   
+@MH@ ICON_DRAW_SELECT               2 X         @DRWSEL@   D Redlining-Objekt selektieren   Redlining-Objekt selektieren  
+@MI@ ICON_DRAW_FREEHAND             2 X         @DRWFRE@   D Freihandlinien zeichnen        Freihandlinien zeichnen       
+@MJ@ ICON_DRAW_ARROW                2 X         @DRWARR@   D Hinweispfeil zeichnen          Hinweispfeil zeichnen         
+@MK@ ICON_DRAW_LINE                 2 X         @DRWLIN@   D Linie zeichnen                 Linie zeichnen                
+@ML@ ICON_DRAW_POLYLINE             2 X         @DRWPLL@   D Polylinien zeichnen            Polylinien zeichnen           
+@MM@ ICON_DRAW_ELLIPSE              2 X         @DRWELL@   D Ellipsen zeichnen              Ellipsen zeichnen             
+@MN@ ICON_DRAW_POLYGON              2 X         @DRWPLG@   D Polygone zeichnen              Polygone zeichnen             
+@MO@ ICON_DRAW_RECTANGLE            2 X         @DRWREC@   D Rechteck zeichnen              Rechteck zeichnen             
+@MP@ ICON_DRAW_ANGULAR              2 X         @DRWANG@   D Winkelmessung                  Winkelmessung                 
+@MQ@ ICON_DRAW_LINEAR               2 X         @DRWLIR@   D Längenmessung                  Längenmessung                 
+@MR@ ICON_DRAW_RADIAL               2 X         @DRWRAD@   D Radiusmessung                  Radiusmessung                 
+@MS@ ICON_BW_EXCEPTION_MONITOR      2 X X   X X @BWEXMO@   D Exception Monitor              Exception Monitor             
+@MT@ ICON_BOOKMARK                  2 X X   X X @BOOKMA@   D Navigationszustand einer Query Navigationszustand einer Query
+@MU@ ICON_TRANSFER_STRUCTURE_INA    2 X X   X X @TRSTIN@   D Transferstruktur, inaktiv      Transferstruktur, inaktiv     
+@MV@ ICON_EXCEPTION                 2 X X   X X @BWEXCE@   D Ausnahme beim Reporting        Ausnahme beim Reporting       
+@MW@ ICON_RANKING                   2 X         @RANKIN@   D Ranglistenfunktion             Ranglistenfunktion            
+@MX@ ICON_PPE_BHNODE                2 X X   X X @BHNODE@   D Baukasten Kopfknoten           Baukasten Kopfknoten          
+@MY@ ICON_PPE_AENODE                2 X X   X X @AENODE@   D Baukasten, Änderungsstand      Baukasten, Änderungsstand     
+@MZ@ ICON_PPE_ANODE                 2 X X   X X @XANODE@   D Alternative am Strukturknoten  Alternative am Strukturknoten 
+@N0@ ICON_PPE_CVNODE                2 X X   X X @CVNODE@   D Änderungsstand einer Variante  Änderungsstand einer Variante 
+@N1@ ICON_PPE_SNODE                 2 X X   X X @XSNODE@   D Stukturknoten mit Varianten    Stukturknoten mit Varianten   
+@N2@ ICON_PPE_ENODE                 2 X X   X X @XENODE@   D Einstiegsknoten                Einstiegsknoten               
+@N3@ ICON_PPE_APNODE                2 X X   X X @APNODE@   D Aktivitätenplan                Aktivitätenplan               
+@N4@ ICON_PPE_VNODE                 2 X X   X X @XVNODE@   D Gliederungsknoten              Gliederungsknoten             
+@N5@ ICON_PPE_MODNODE               2 X X   X X @MDNODE@   D Modus                          Modus                         
+@N6@ ICON_PPE_AANODE                2 X X   X X @AANODE@   D Alternat. Anordnungsbeziehung  Alternat. Anordnungsbeziehung 
+@N7@ ICON_PPE_AAEXPNODE             2 X X   X X @AXNODE@   D Alternative Zerlegung          Alternative Zerlegung         
+@N8@ ICON_PPE_OPNODE                2 X X   X X @OPNODE@   D Vorgang                        Vorgang                       
+@N9@ ICON_PPE_ACTNODE               2 X X   X X @ACNODE@   D Aktivität                      Aktivität                     
+@NA@ ICON_PPE_VACTNODE              2 X X   X X @VTNODE@   D Gliederungsaktivität           Gliederungsaktivität          
+@NB@ ICON_PPE_VANODE                2 X X   X X @VANODE@   D Puffer                         Puffer                        
+@NC@ ICON_PPE_LSEG                  2 X X   X X @X_LSEG@   D Linienabschnitt                Linienabschnitt               
+@ND@ ICON_PPE_PLINE                 2 X X   X X @XPLINE@   D Fertigungslinie                Fertigungslinie               
+@NE@ ICON_PPE_BPNODE                2 X X   X X @BPNODE@   D Baukasten Positionsknoten      Baukasten Positionsknoten     
+@NF@ ICON_GIS_BAR                   2         X @GISBAR@   D Balkengrafik                   Balkengrafik                  
+@NG@ ICON_GIS_COLOR_SHADING         2         X @GISCOL@   D Farbverlaufgrafik              Farbverlaufgrafik             
+@NH@ ICON_GIS_DEMOTE                2 X     X   @GISDEM@   D Kartenschicht tiefer           Kartenschicht tiefer          
+@NI@ ICON_GIS_DOT_DENSITY           2         X @GISDOT@   D Punktedichtegrafik             Punktedichtegrafik            
+@NJ@ ICON_GIS_LAYER_PROPERTIES      2 X     X   @GISLAY@   D Karteneinstellungen            Karteneinstellungen           
+@NK@ ICON_GIS_PAN                   2 X     X   @GISPAN@   D Kartenmittelpunkt verschieben  Kartenmittelpunkt verschieben 
+@NL@ ICON_GIS_PIE                   2         X @GISPIE@   D Kreisdiagramm                  Kreisdiagramm                 
+@NM@ ICON_GIS_PROMOTE               2 X     X   @GISPRO@   D Kartenschicht höher            Kartenschicht höher           
+@NN@ ICON_GIS_SPATIAL_SELECT        2 X     X   @GISSPA@   D Selektieren von Kartenobjekten Selektieren von Kartenobjekten
+@NO@ ICON_GIS_SYMBOL                2         X @GISSYM@   D Symbolgrafik                   Symbolgrafik                  
+@NP@ ICON_CALL_ANSWER               2 X         @CLANSW@   D Anruf annehmen                 Anruf annehmen                
+@NQ@ ICON_CALL_ALTERNATE            2 X         @CLALTE@   D Zwischen Anrufen wechseln      Zwischen Anrufen wechseln     
+@NR@ ICON_CALL_HOLD                 2 X         @CLHOLD@   D Anruf halten                   Anruf halten                  
+@NS@ ICON_CALL_DEFLECT              2 X         @CLDEFL@   D Anruf weiterleiten             Anruf weiterleiten            
+@NT@ ICON_CALL_CONSULT              2 X         @CLCONS@   D Rückfrage                      Rückfrage                     
+@NU@ ICON_CALL_CONFERENCE           2 X         @CLCONF@   D Konferenzschaltung             Konferenzschaltung            
+@NV@ ICON_CALL_BLIND_TRANSFER       2 X         @CLBLTR@   D Anruf direkt verbinden         Anruf direkt verbinden        
+@NW@ ICON_CALL_RECONNECT            2 X         @CLRECO@   D Gehaltenen Anruf zurücknehmen  Gehaltenen Anruf zurücknehmen 
+@NX@ ICON_CALL_RETRIEVE             2 X         @CLRETR@   D Anruf wiederaufnehmen          Anruf wiederaufnehmen         
+@NY@ ICON_CALL_WARM_TRANSFER        2 X         @CLWATR@   D Anruf indirekt verbinden       Anruf indirekt verbinden      
+@NZ@ ICON_CREATE_CALLBACK           2 X         @CRBACK@   D Rückruf anlegen                Rückruf anlegen               
+@O0@ ICON_PROCESS_CALLBACK          2 X         @PRBACK@   D Rückruf bearbeiten             Rückruf bearbeiten            
+@O1@ ICON_BW_RA_SETTING_ACTIVE      2 X X   X X @BWRASA@   D Reporting Agent: Aktiv         Reporting Agent: Aktiv        
+@O2@ ICON_BW_RA_SETTING_INACTIVE    2 X X   X X @BWRASI@   D Reporting Agent: Inaktiv       Reporting Agent: Inaktiv      
+@O3@ ICON_SNC_INFO                  2 X     X X @SNCINF@   D SNC Information                SNC Information               
+@O4@ ICON_DELIVERY                  2 X X X X X @DELIVE@   D Lieferung                      Lieferung                     
+@O5@ ICON_PPE_ASSY_POS              2 X X   X X @PPEASP@   D Baukastenposition              Baukastenposition             
+@O6@ ICON_PPE_ASSY_HEAD             2 X X   X X @PPEASH@   D Baukastenkopf                  Baukastenkopf                 
+@O7@ ICON_PPE_PARTOF_ALT_ACT        2 X X   X X @PPEPAA@   D Alt. Zerlegung Aktivitätenplan Alt. Zerlegung Aktivitätenplan
+@O8@ ICON_BINARY_DOCUMENT           2   X       @BINDOC@   D Binäres Dokument               Binäres Dokument              
+@O9@ ICON_ANY_DOCUMENT              2   X       @ANYDOC@   D Unbekannter Dokumenttyp        Unbekannter Dokumenttyp       
+@OA@ ICON_OTF_DOCUMENT              2   X       @OTFDOC@   D Dokument mit OTF-Daten         Dokument mit OTF-Daten        
+@OB@ ICON_TEXT_FIELD                2 X X       @TXTFLD@   D Textfeld                       Textfeld                      
+@OC@ ICON_FIELD_WITH_TEXT           2 X X       @FLDTXT@   D Feld mit Text                  Feld mit Text                 
+@OD@ ICON_SIMPLE_FIELD              2 X X       @SIMFLD@   D Einfaches Feld                 Einfaches Feld                
+@OE@ ICON_TRANSPORT_PROPOSAL        2 X     X   @TRAPRO@   D Transportantrag anlegen        Transportantrag anlegen       
+@OF@ ICON_HELPASSISTENT_ON          2           @HELPON@ X D Help-Assistent aktivieren      Help-Assistent aktivieren     
+@OG@ ICON_HELPASSISTENT_OFF         2           @HELPFF@ X D Help-Assistent deaktivieren    Help-Assistent deaktivieren   
+@OH@ ICON_DIALGHELP                 2           @DIHELP@ X D Hilfe zum Kontext              Hilfe zum Kontext             
+@OI@ ICON_DIALOGHELPACTIV           2           @DIHLAC@ X D Aktuelle Hilfe zum Kontext     Aktuelle Hilfe zum Kontext    
+@OJ@ ICON_STATUS_CRITICAL           2   X       @STACRI@   D Status sehr kritisch           Status sehr kritisch          
+@OK@ ICON_SYSTEM_SERVICE_FILLED     2           @F_SEFI@ X D Service Einträge vorhanden     Service Einträge vorhanden    
+@OL@ ICON_SYSTEM_SERVICE_OFF        2           @F_SEOF@ X D Service nicht verfügbar        Service nicht verfügbar       
+@OM@ ICON_SYSTEM_SERVICE_EMPTY      2           @F_SEEM@ X D Service verfügbar              Service verfügbar             
+@ON@ ICON_CONSUMPTION_ALTERNATIVE   2         X @CONALT@   D Verbrauchsalternative          Verbrauchsalternative         
+@OO@ ICON_PROCUREMENT_ALTERNATIVE   2         X @PROALT@   D Beschaffungsalternative        Beschaffungsalternative       
+@OP@ ICON_PROCUREMENT_PROCESS       2         X @PROPRO@   D Beschaffungsprozess            Beschaffungsprozess           
+@OQ@ ICON_WORKFLOW                  2 X X X X X @WRKFLO@   D Workflow                       Workflow                      
+@OR@ ICON_DOCUMENT_MODEL_SPACE      2 X X   X X @DOMOSP@   D Dokumentenmodellbereich        Dokumentenmodellbereich       
+@OS@ ICON_RELATION_CLASS            2 X X   X X @RELCLA@   D Beziehungsklasse               Beziehungsklasse              
+@OT@ ICON_IO_ATTRIBUTE              2 X X   X X @IOATTR@   D Attributdefinition             Attributdefinition            
+@OU@ ICON_VIRTUAL_RELATION_CLASS    2 X X   X X @VIRECL@   D Virtuelle Beziehungsklasse     Virtuelle Beziehungsklasse    
+@OV@ ICON_CLASS_CONNECTION_SPACE    2 X X   X X @CLCOSP@   D Klassenverbindungsbereich      Klassenverbindungsbereich     
+@OW@ ICON_IO_PREDEFINED_VALUE       2 X X   X X @IOPREV@   D Festwerte Attributdefinition   Festwerte Attributdefinition  
+@OX@ ICON_CONTEXT_CLASS             2 X X   X X @CONCLA@   D Kontextklasse                  Kontextklasse                 
+@OY@ ICON_LOIO_CLASS                2 X X   X X @LOIOCL@   D Logische Infoobjektklasse      Logische Infoobjektklasse     
+@OZ@ ICON_VIRTUAL_LOIO_CLASS        2 X X   X X @VILOIO@   D Virtuelle log. Infoobjektkl.   Virtuelle log. Infoobjektkl.  
+@P0@ ICON_PHIO_CLASS                2 X X   X X @PHIOCL@   D Physische Infoobjektklasse     Physische Infoobjektklasse    
+@P1@ ICON_VIRTUAL_PHIO_CLASS        2 X X   X X @VIPHCL@   D Virtuelle phys. Infoobjektkl.  Virtuelle phys. Infoobjektkl. 
+@P2@ ICON_PARAGRAPH                 2 X X   X X @PARAGR@   D Absatzzeichen ein/ausblenden   Absatzzeichen ein/ausblenden  
+@P3@ ICON_MC_CONTENTINDICATOR       2 X X   X X @CONTEN@   D Zeigt ein MC an                Zeigt ein MC an               
+@P4@ ICON_BSC_CONTENTINDICATOR      2 X X   X X @BSCCON@   D Zeigt eine BSC an              Zeigt eine BSC an             
+@P5@ ICON_RATING_MINUSMINUS         2   X       @RAMIMI@   D --                             --                            
+@P6@ ICON_RATING_MINUS              2   X       @RAMINU@   D -                              -                             
+@P7@ ICON_RATING_NEUTRAL            2   X       @RANEUT@   D 0                              0                             
+@P8@ ICON_RATING_POSITIVE           2   X       @RAPOSI@   D +                              +                             
+@P9@ ICON_RATING_POSITIVEPOSITIVE   2   X       @RAPOPO@   D ++                             ++                            
+@PA@ ICON_WORKFLOW_WEB_ACTIVITY     2 X X   X X @WEBACT@   D Schrittyp Web_Aktivität        Schrittyp Web_Aktivität       
+@PB@ ICON_DELIVERY_NO_CONFIRMATION  2 X     X   @DENOCO@   D Weiter ohne Bestätigung        Weiter ohne Bestätigung       
+@PC@ ICON_SNAP_TO_GRID              2 X X X X X @SNAPGR@   D Ausrichten am Raster           Ausrichten am Raster          
+@PD@ ICON_GRID                      2 X X X X X @XXGRID@   D Raster                         Raster                        
+@PE@ ICON_MAIN_GRID                 2 X X X X X @MAGRID@   D Hauptraster                    Hauptraster                   
+@PF@ ICON_TARGET_GROUP              2 X X   X X @TARGRU@   D Zielgruppe                     Zielgruppe                    
+@PG@ ICON_DELIVERY_INBOUND          2 X X X X X @DELINB@   D Anlieferung                    Anlieferung                   
+@PH@ ICON_PPE_LBAL                  2 X         @LINBAL@   D Abtaktung                      Abtaktung                     
+@PI@ ICON_PPE_ENTOBJ                2 X         @ENTOBJ@   D iPPE-Einstiegsobjekt           iPPE-Einstiegsobjekt          
+@PJ@ ICON_PAW_TEST                  2 X X   X X @PAWTST@   D Test der PAW                   Test der PAW                  
+@PK@ ICON_PAW_SUBTEST               2 X X   X X @PAWSUB@   D Subtest eines Tests der PAW    Subtest eines Tests der PAW   
+@PL@ ICON_PAW_PU                    2 X X   X X @PAWPUN@   D Performance Unit               Performance Unit              
+@PM@ ICON_PAW_ITEM                  2 X X   X X @PAWITM@   D Test-Item eines Tests der PAW  Test-Item eines Tests der PAW 
+@PN@ ICON_BUSINESS_AREA             2 X X   X X @BUSARE@   D Geschäftsbereich               Geschäftsbereich              
+@PO@ ICON_DATABASE_TABLE            2 X X   X X @DBTABL@   D Datenbanktabelle               Datenbanktabelle              
+@PP@ ICON_DATABASE_TABLE_INA        2 X X   X X @DBTBIN@   D Inaktive Datenbanktabelle      Inaktive Datenbanktabelle     

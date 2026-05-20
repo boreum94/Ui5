@@ -1,0 +1,176 @@
+<mvc:View controllerName="code.d22.exam4.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:c="sap.ui.core"
+    xmlns:t="sap.ui.table"
+    busyIndicatorDelay="0"
+    >
+    <Page 
+        id="idDetailPage"
+        title="{parts: ['i18n>detailPageTitle',
+                        'OrderID'],
+                formatter: '.formatMessage'}"
+        
+        
+    >
+        <content>
+            <f:SimpleForm
+                class="sapUiResponsiveMargin"
+                width="auto"
+                columnsXL="3"
+                columnsL="3"
+                columnsM="3"
+                
+            >   
+                <!-- 고객정보 -->
+                <c:Title text="{i18n>customerTitle}" />
+                <Label text="{i18n>columnID}" />
+                <Text text="{CustomerID}" />
+
+                <Label text="{i18n>companyName}" />
+                <Text text="{Customer/CompanyName}" />
+
+                <Label text="{i18n>damdangja}" />
+                <Text text="{Customer/ContactName}" />
+                
+                <Label text="{i18n>jickwe}" />
+                <Text text="{Customer/ContactTitle}" />
+                <!-- 주소정보 -->
+                <c:Title text="{i18n>addressTitle}" />
+                <Label text="{i18n>columnshipAddress}" />
+                <Text text="{ShipAddress}" />
+
+                <Label text="{i18n>columnCity}" />
+                <Text text="{Customer/City}" />
+
+                <Label text="{i18n>columnArea}" />
+                <Text text="{Customer/Region}" />
+
+                <Label text="{i18n>columnPostalCode}" />
+                <Text text="{Customer/PostalCode}" />
+
+                <Label text="{i18n>columnCountry}" />
+                <Text text="{Customer/Country}" />
+
+                <Label text="{i18n>columnPhone}" />
+                <Text text="{Customer/Phone}" />
+
+                <Label text="{i18n>columnFax}" />
+                <Text text="{Customer/Fax}" />
+                <!-- 담당직원정보 -->
+                <c:Title text="{i18n>employeeTitle}" />
+                <Label text="{i18n>columnID}" />
+                <Text text="{EmployeeID}" />
+
+                <Label text="{i18n>columnTitleofCoutesy}" />
+                <Text text="{Employee/TitleOfCourtesy}{Employee/LastName}" />
+
+                <Label text="{i18n>columnFirstName}" />
+                <Text text="{Employee/FirstName}" />
+
+                <Label text="{i18n>columnTitle}" />
+                <Text text="{Employee/Title}" />
+
+                
+                
+
+            </f:SimpleForm>
+            <Panel
+                class="sapUiResponsiveMargin"
+                width="auto"
+                headerText="주문제품 목록"
+            >
+                <t:Table
+                    rows="{
+                        path: 'Order_Details',
+                        parameters: {
+                            expand: 'Product'
+                        }}"
+                >
+                    <t:columns>
+                        <!-- ProductID -->
+                        <t:Column>
+                            <t:label>
+                                <Label text="{i18n>columnProductID}"/>
+                            </t:label>
+                            <t:template>
+                                <ObjectIdentifier title="{ProductID}"/>
+                            </t:template>
+                        </t:Column>
+                        <!-- ProductName -->
+                        <t:Column>
+                            <t:label>
+                                <Label text="{i18n>columnProductName}"/>
+                            </t:label>
+                            <t:template>
+                                <Text text="{Product/ProductName}"/>
+                            </t:template>
+                        </t:Column>
+                        <!-- UnitPrice -->
+                        <t:Column hAlign="End">
+                            <t:label>
+                                <Label text="{i18n>columnUnitPrice}"/>
+                            </t:label>
+                            <t:template>
+                                <ObjectNumber 
+                                    number="{
+                                        parts: ['UnitPrice', 'view>/Currency'],
+                                        type: 'sap.ui.model.type.Currency',
+                                        formatOptions: {
+                                            showMdeasure: false }}"
+                                    unit="{veiw>/Currency}"
+                                    textAlign="End"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <!-- Quantity -->
+                        <t:Column hAlign="End">
+                            <t:label>
+                                <Label text="{i18n>columnquantity}"/>
+                            </t:label>
+                            <t:template>
+                                <ObjectNumber 
+                                    number="{path: 'Quantity'
+                                            }"
+                                    unit="EA"
+                                    textAlign="End"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <!-- Discount -->
+                        <t:Column hAlign="End">
+                            <t:label>
+                                <Label text="{i18n>columndiscount}"/>
+                            </t:label>
+                            <t:template>
+                                <ObjectNumber
+                                    number="{path: 'Discount',
+                                            formatter: '.formatter.discountText'}"
+                                    unit="%"
+                                    textAlign="End"
+                                />
+                            </t:template>
+                        </t:Column>
+                        <!-- Amount -->
+                        <t:Column hAlign="End">
+                            <t:label>
+                                <Label text="{i18n>columnAmount}"/>
+                            </t:label>
+                            <t:template>
+                                <ObjectNumber
+                                    number="{parts:['UnitPrice','Quantity','Discount','view>/Currency'],
+                                            formatter: '.formatter.calcAmount'}"
+                                    unit="{view>/Currency}"
+                                    textAlign="End"
+                                />
+                            </t:template>
+                        </t:Column>
+                    </t:columns>
+                </t:Table>
+                
+            </Panel>
+
+        </content>
+    </Page>
+</mvc:View>

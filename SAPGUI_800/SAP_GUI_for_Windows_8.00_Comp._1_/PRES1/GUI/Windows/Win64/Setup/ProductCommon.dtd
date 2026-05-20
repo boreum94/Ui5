@@ -1,0 +1,225 @@
+<!ELEMENT PageVariable (#PCDATA)>
+<!ELEMENT WindowCaption (#PCDATA)>
+<!ELEMENT Title (#PCDATA)>
+<!ELEMENT Description (#PCDATA)>
+<!ELEMENT SubTitle (#PCDATA)>
+<!ELEMENT BackBtnText (#PCDATA)>
+<!ELEMENT NextBtnText (#PCDATA)>
+<!ELEMENT CancelBtnText (#PCDATA)>
+<!ELEMENT BrowseBtnText (#PCDATA)>
+<!ELEMENT UI (Page+)>
+<!ELEMENT Page (PageVariable?, WindowCaption?, Title?, SubTitle?, Description?, Image?, BackBtnText?, NextBtnText?, BrowseBtnText?, CancelBtnText?)>
+<!ATTLIST Page
+        Type (Welcome | Tree | Progress | Finish | FolderPath | InputString) #REQUIRED
+>
+
+<!ELEMENT AttachedProduct EMPTY>
+<!ATTLIST AttachedProduct
+        Guid CDATA #REQUIRED
+        Name CDATA #REQUIRED
+>
+
+<!ELEMENT Event (#PCDATA)>
+<!ATTLIST Event
+        RunAt (Install|install|Uninstall|uninstall|Update|update) #REQUIRED
+        RunAtPosition (Begin|begin|End|end) #REQUIRED
+>
+
+<!ELEMENT Condition (#PCDATA)>
+<!ELEMENT FailureText (#PCDATA)>
+<!ELEMENT Prerequisite (Condition, FailureText)>
+
+<!ELEMENT Component (Requires*, (Action|ExecuteAction|MsiAction|ArchiveAction|ComFileAction)*)>
+<!ATTLIST Component
+        Guid CDATA #REQUIRED
+        Name CDATA #REQUIRED
+        Version CDATA #REQUIRED
+        BuildTime CDATA #IMPLIED
+        Description CDATA #IMPLIED
+        Min_Compliant_Version CDATA #IMPLIED
+        Condition CDATA #IMPLIED
+        Size CDATA #IMPLIED
+        SysSize CDATA #IMPLIED
+        OnlyServer (True|False) #IMPLIED
+        RefCount CDATA #IMPLIED
+        Arch (X86|X64|X86Only) #IMPLIED
+        Error (true) #IMPLIED
+        BaseVersion CDATA #IMPLIED
+        Order (PreInstall | PostInstall) #IMPLIED
+        Update (OnHigherVersion|OnSameVersion|Always) #IMPLIED
+>
+
+<!ELEMENT Requires EMPTY>
+<!ATTLIST Requires
+        Guid CDATA #REQUIRED
+        Name CDATA #IMPLIED
+        Description CDATA #IMPLIED
+        Visible (true | TRUE | false | FALSE) #IMPLIED
+        TransferDeselection (true | TRUE | false | FALSE) #IMPLIED
+>
+
+<!ELEMENT Action (Dst* | Src* | RegValue* | IniSection*)>
+<!ATTLIST Action
+        Type (Script | File | Registry | NtService | Execute | Shortcut | Ini | SeparatedValues | GAC) #REQUIRED
+        Dst CDATA #IMPLIED
+        RunAt CDATA #IMPLIED
+        Condition CDATA #IMPLIED
+        ConditionFailureText CDATA #IMPLIED
+        Use64BitHive (true | TRUE | false | FALSE) #IMPLIED
+        ExeName CDATA #IMPLIED
+        TerminateRunningService (true | TRUE | false | FALSE) #IMPLIED
+        ServiceName CDATA #IMPLIED
+        StartOnServer CDATA #IMPLIED
+        StartType CDATA #IMPLIED
+        ServiceType CDATA #IMPLIED
+        ServiceTypeInteractive (true|false) #IMPLIED
+        Password CDATA #IMPLIED
+        UserName CDATA #IMPLIED
+        Description CDATA #IMPLIED
+        Dependencies CDATA #IMPLIED
+        FileName CDATA #IMPLIED
+        ForceOnServer (true | TRUE | false | FALSE) #IMPLIED
+        Persistent (true | TRUE | false | FALSE) #IMPLIED
+        DisplayName CDATA #IMPLIED
+        Debug (true | TRUE | false | FALSE) #IMPLIED
+        ApplicationId CDATA #IMPLIED 
+>
+
+<!ELEMENT Dst (#PCDATA)>
+<!ATTLIST Dst
+        PathInGac CDATA #IMPLIED
+        CheckInfo_version CDATA #IMPLIED
+        CheckInfo_timestamp CDATA #IMPLIED
+        ForceDelete (true | TRUE | false | FALSE) #IMPLIED
+        RegisterAssembly (true | TRUE | false | FALSE) #IMPLIED
+        Hash CDATA #IMPLIED
+>
+
+<!ELEMENT Src (#PCDATA)>
+<!ATTLIST Src
+        DisplayText CDATA #IMPLIED
+        Parameters CDATA #IMPLIED
+        AppPath CDATA #IMPLIED
+        Register (true | TRUE | false | FALSE | CreateTLB | CreateTLBNoCodebase | TrueNoCodebase) #IMPLIED
+        PatchThis (true | TRUE | false | FALSE) #IMPLIED
+        TimeOut CDATA #IMPLIED
+        AssemblyName CDATA #IMPLIED
+        SuppressWindow (true | TRUE | false | FALSE) #IMPLIED
+        NoWaitOnExecute (true | TRUE | false | FALSE) #IMPLIED
+        ForceDelete (true | TRUE | false | FALSE) #IMPLIED
+        RegisterAssembly (true | TRUE | false | FALSE) #IMPLIED
+        FileVersion CDATA #IMPLIED
+        Timestamp CDATA #IMPLIED
+        Hash CDATA #IMPLIED
+>
+
+<!ELEMENT RegValue (#PCDATA)>
+<!ATTLIST RegValue
+        Name CDATA #IMPLIED
+        Type (String | DWORD | Binary | ExpandedString | MultipleStrings) #IMPLIED
+        Delimiter CDATA #IMPLIED
+        Overwrite (true | TRUE | false | FALSE) #IMPLIED
+>
+
+<!ELEMENT IniSection (IniKey+)>
+<!ATTLIST IniSection
+        Name CDATA #IMPLIED
+>
+
+<!ELEMENT IniKey (#PCDATA)>
+<!ATTLIST IniKey
+        Name CDATA #REQUIRED
+        DeleteKey (true | TRUE | false | FALSE) #IMPLIED
+>
+
+<!ELEMENT ExecuteAction (Condition?, Exe, Parameters?, (Wait|NoWait))>
+<!ATTLIST ExecuteAction
+        Debug (true | TRUE | false | FALSE) #IMPLIED
+        Persistent (true | TRUE | false | FALSE) #IMPLIED
+        RunAt CDATA #IMPLIED
+>
+
+<!ELEMENT Exe (#PCDATA)>
+<!ATTLIST Exe
+        SuppressWindow (true | TRUE | false | FALSE) #IMPLIED
+        RunAsInteractiveUser (true | TRUE | false | FALSE) #IMPLIED
+        DisplayText CDATA #IMPLIED
+        PatchThis (true | TRUE | false | FALSE) #IMPLIED
+        FileVersion CDATA #IMPLIED
+        Timestamp CDATA #IMPLIED
+        Hash CDATA #IMPLIED
+>
+<!ELEMENT Parameters (#PCDATA)>
+<!ELEMENT NoWait EMPTY>
+<!ELEMENT Wait (#PCDATA)>
+<!ATTLIST Wait
+        TimeOut CDATA #IMPLIED
+>
+
+<!ELEMENT MsiAction (Condition?, MsiFile, MsiResource*, MsiParameter*)>
+<!ATTLIST MsiAction
+        Debug (true | TRUE | false | FALSE) #IMPLIED
+        Persistent (true | TRUE | false | FALSE) #IMPLIED
+        RunAt CDATA #IMPLIED
+>
+
+<!ELEMENT MsiFile (#PCDATA)>
+<!ATTLIST MsiFile
+        ProductCode CDATA #IMPLIED
+        PatchThis (true | TRUE | false | FALSE) #IMPLIED
+        FileVersion CDATA #IMPLIED
+        Timestamp CDATA #IMPLIED
+        Hash CDATA #IMPLIED
+>
+
+<!ELEMENT MsiResource (#PCDATA)>
+<!ATTLIST MsiResource
+        PatchThis (true | TRUE | false | FALSE) #IMPLIED
+>
+
+<!ELEMENT MsiParameter (#PCDATA)>
+<!ATTLIST MsiParameter
+        Name CDATA #REQUIRED
+        FileVersion CDATA #IMPLIED
+        Timestamp CDATA #IMPLIED
+        Hash CDATA #IMPLIED
+>
+
+<!ELEMENT ArchiveAction (Condition?, Archive)>
+<!ATTLIST ArchiveAction
+        Dst CDATA #REQUIRED
+        Persistent (true | TRUE | false | FALSE) #IMPLIED
+        RunAt CDATA #IMPLIED
+        Debug (true | TRUE | false | FALSE) #IMPLIED
+>
+
+<!ELEMENT Archive (#PCDATA)>
+<!ATTLIST Archive
+        CRC32 CDATA #IMPLIED
+        Hash CDATA #IMPLIED
+>
+
+<!ELEMENT Succeeds EMPTY>
+<!ATTLIST Succeeds 
+        ProductGuid CDATA #REQUIRED
+>
+
+<!ELEMENT ComFileAction (Condition?, File, Clsid*)>
+<!ATTLIST ComFileAction
+        Dst CDATA #REQUIRED
+        RunAt CDATA #IMPLIED
+        MakeKillBit (true | TRUE | false | FALSE) #IMPLIED
+>
+
+<!ELEMENT File (#PCDATA)>
+<!ATTLIST File
+        AppPath CDATA #IMPLIED
+        FileVersion CDATA #IMPLIED
+        Hash CDATA #IMPLIED
+        TimeStamp CDATA #IMPLIED
+>
+
+<!ELEMENT Clsid (#PCDATA)>
+<!ATTLIST Clsid 
+       UseInBrowser (allow | deny) #IMPLIED
+>

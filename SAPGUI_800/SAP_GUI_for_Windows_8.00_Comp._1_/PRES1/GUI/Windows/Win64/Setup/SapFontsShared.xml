@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapFontsWksta.xml">
+	<Component BuildTime="0x907D26B05B30D901" Guid="{E6F05800-C45B-4D4D-BC41-376D846C6A85}" Min_Compliant_Version="780.1" Name="$SAP Fonts" Size="2511" Version="800.34">
+		<Requires Guid="{6A6E16AB-4982-497C-9BA5-C60E601C47B9}"/>
+		<Action Dst="%WinDir%\Fonts" Type="File">
+			<Src FileVersion="1.2.0.0" Hash="SHA-256:ddb60d7afc7fb7104b7b34d244f3569295a0f4a5d75117b33b86e7cb0a85fd1d" Timestamp="0x903437A4482FD901">%SAPSrcDir%\Shared\Fonts\arimon__.ttf</Src>
+			<Src FileVersion="1.2.0.0" Hash="SHA-256:2acd7b798d3a97b3cc8bdc7de3c6f2f37e3e29906af5edb4df5f29664d440a81" Timestamp="0xAD3D3CA4482FD901">%SAPSrcDir%\Shared\Fonts\arimonbd.ttf</Src>
+			<Src FileVersion="4.1.0.0" Hash="SHA-256:aefda533882e7ca5abf3a2bc9ff9b7e81ebb56a7a02d01c588550bf18907117a" Timestamp="0x2B4697A4482FD901">%SAPSrcDir%\Shared\Fonts\sapdn.ttf</Src>
+			<Src FileVersion="4.1.0.0" Hash="SHA-256:cdf98b112619e14c51fbdeaa1f3dbdd70d7da8fcb4dfe395cb35a6a14a6292f7" Timestamp="0x77C49CA4482FD901">%SAPSrcDir%\Shared\Fonts\sapin.ttf</Src>
+			<Src FileVersion="5.200.0.0" Hash="SHA-256:284bdfd3868409445b0ca5bb126112d20001cb96094041eaa37f24004688351e" Timestamp="0x1F1692A4482FD901">%SAPSrcDir%\Shared\Fonts\SAPGUI-icons.ttf</Src>
+			<Src FileVersion="9.0.0.0" Hash="SHA-256:5fe36b6086a48429503f52526eec697baf83e7e4986aee73851e2eede502a76a" Timestamp="0x754190A4482FD901">%SAPSrcDir%\Shared\Fonts\SAPGUI-Belize-Icons.TTF</Src>
+		</Action>
+	</Component>
+</SapSetup>

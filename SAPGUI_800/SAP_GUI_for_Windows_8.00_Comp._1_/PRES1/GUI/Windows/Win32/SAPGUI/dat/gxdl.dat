@@ -1,0 +1,282 @@
+#@(#)gxdl.dat  	20.5	SAP	95/10/19
+#--------------------------------------------------------------------------#
+#                                                                          #
+# MODULE                                                                   #
+#     gxdl.dat                                                             #
+#                                                                          #
+# DESCRIPTION:                                                             #
+#     Data file for SAP Dialog Widget.                                     #
+#                                                                          #
+# CHANGES                                                                  #
+#     12.Jul.94 - OK, SNUM example values changed to long integer values.  #
+#                                                                          #
+# AUTHOR                                                                   #
+#     OK - Oliver Keim                           Phone:    +49 6227 341522 #
+#     SAP User: D018394             ///          Home:       +49 6227 9883 #
+#     SAP Mail: KEIM               (0 0)         Internet:    ok@sap-ag.de #
+#-------------------------------ooO-(_)-Ooo--------------------------------#
+
+
+/DIALOG
+
+:$BTN
+:TEXT  = Weiter
+:VPOS  =  2 , 46
+:VSIZE = 14 , 3
+:ID    = OK
+
+:$BTN
+:TEXT  = Anwenden
+:VPOS  = 16 , 46
+:VSIZE = 20 , 3
+:ID    = APPLY
+
+:$BTN
+:TEXT  = Abbrechen
+:VPOS  = 36 , 46
+:VSIZE = 20 , 3
+:ID    = CANCEL
+
+:$BTN
+:TEXT  = Hilfe
+:VPOS  = 56 , 46
+:VSIZE = 10,3
+:ID    = HELP
+
+:$STTX
+:TEXT  = Maximale Anzahl Datensätze
+:VPOS  = 1,1
+:VSIZE = 45,3
+
+:$SNUM
+:TITLE  =
+:MINVAL = 00000000000
+:MAXVAL = 00000100000
+:CURVAL = 00000002000
+:INCVAL = 00000001000
+:DISP   = 10
+:VPOS   = 50,1
+:VSIZE  = 29,3
+:ID     = SNUM01
+
+:$STTX
+:TEXT  = Größter Wert
+:VPOS  = 1,5
+:VSIZE = 45,3
+
+:$SNUM
+:TITLE  =
+:MINVAL = 1
+:MAXVAL = 9999
+:CURVAL = 734
+:INCVAL = 1
+:DISP   = 10
+:VPOS   = 50,5
+:VSIZE  = 29,3
+:ID     = SNUM02
+
+:$STTX
+:TEXT  = Sehr oft zugegriffene Sätze
+:VPOS  = 1,9
+:VSIZE = 45,3
+
+:$SNUM
+:TITLE  =
+:MINVAL = 1
+:MAXVAL = 9999
+:CURVAL = 47
+:INCVAL = 1
+:DISP   = 10
+:VPOS   = 50,9
+:VSIZE  = 29,3
+:ID     = SNUM03
+
+
+:$STTX
+:TEXT  = Name der Bezugs-Tabelle:
+:VPOS  = 1,13
+:VSIZE = 45,3
+
+:$ENFL
+:TEXT  = SAPusers
+:TLEN  = 40
+:TYPE  = TEXT
+:VPOS  = 50,13
+:VSIZE = 29,3
+:ALIGN = LEFT
+:ID    = ENFL01
+
+:$STTX
+:TEXT  = Name der Master-Tabelle:
+:VPOS  = 1,17
+:VSIZE = 45,3
+:ID    = STTX01
+
+:$ENFL
+:TEXT  = SAPaddresses
+:TLEN  = 40
+:TYPE  = TEXT
+:VPOS  = 50,17
+:VSIZE = 29,3
+:ALIGN = LEFT
+:ID    = ENFL02
+
+:$STTX
+:TEXT  = Primärindex in Bezugstabelle:
+:VPOS  = 1,21
+:VSIZE = 45,3
+:ID    = STTX03
+
+:$ENFL
+:TEXT  = AdressID
+:TLEN  = 40
+:TYPE  = TEXT
+:VPOS  = 50,21
+:VSIZE = 29,3
+:ALIGN = LEFT
+:ID    = ENFL03
+
+:$STTX
+:TEXT  = Sekundärindex in Mastertabelle:
+:VPOS  = 1,25
+:VSIZE = 45,3
+
+:$ENFL
+:TEXT  = AdressID
+:TLEN  = 40
+:TYPE  = TEXT
+:VPOS  = 50,25
+:VSIZE = 29,3
+:ALIGN = LEFT
+:ID    = ENFL04
+
+
+:$STTX
+:TEXT  = Art der Verknüpfung:
+:VPOS  = 1,29
+:VSIZE = 45,3
+
+:$LSTBX
+#:TEXT  = 1 : 1 Verknüfung
+#:TEXT  = 1 : n Verknüfung
+#:TEXT  = n : n Verknüfung
+:VPOS  = 50,29
+:VSIZE = 29,6
+:ID    = LSTBX01
+
+
+:$STTX
+:TEXT  = Indexeinträge:
+:VPOS  = 1,36
+:VSIZE = 30,3
+
+:$LSTBX
+:TEXT  = AB
+:TEXT  = ACTBAR
+:TEXT  = ABTN
+:TEXT  = CONT
+:TEXT  = ENFL
+:TEXT  = GW
+:TEXT  = HLP
+:TEXT  = TIM
+:TEXT  = LSTBX
+:TEXT  = STTX
+:TEXT  = SHL
+:TEXT  = HL
+:TEXT  = OUT
+:TEXT  = SB
+:TEXT  = SCRA
+:TEXT  = BTN
+:TEXT  = TW
+:TEXT  = TWCSR
+:TEXT  = TWTSEL
+:TEXT  = TWED
+:TEXT  = CLRSEL
+:TEXT  = BTNG
+:TEXT  = SCRN
+:TEXT  = SNUM
+:TEXT  = DCONT
+:TEXT  = DFRM
+:TEXT  = DGRP
+:TEXT  = FILESEL
+:TEXT  = WMSG
+:TEXT  = INPTFD
+:TEXT  = HLE
+:TEXT  = LIBSEL
+:TEXT  = -------
+:TEXT  = WHK
+:TEXT  = WF
+:TEXT  = WCLR
+:TEXT  = WBM
+:TEXT  = WHLP
+:TEXT  = WD
+:TEXT  = WCB
+:TEXT  = WTIM
+:TEXT  = -------
+:TEXT  = Wallocmem
+:TEXT  = Wbeglink
+:TEXT  = Wbuildpath
+:TEXT  = Wbuildpath_key
+:TEXT  = Wcreatechild
+:TEXT  = Wcreateobject
+:TEXT  = Wcreatereg
+:TEXT  = Wcreatesuperwidget
+:TEXT  = Wdestroychild
+:TEXT  = Wdestroyobject
+:TEXT  = Wdestroyreg
+:TEXT  = Wdestroysuperwidget
+:TEXT  = Wdisableinput
+:TEXT  = Wdoconfig
+:TEXT  = Wdolink
+:TEXT  = Wdoloadtexts
+:TEXT  = Wdostdcfg
+:TEXT  = Wdostdtxt
+:TEXT  = Wdropmouse
+:TEXT  = Wendlink
+:TEXT  = Werrorbox
+:TEXT  = Werrorcheck
+:TEXT  = Wfatalerror
+:TEXT  = Wfixappstring
+:TEXT  = Wgetmousepos
+:TEXT  = Winitialise
+:TEXT  = Wlocalid
+:TEXT  = Wmainloop
+:TEXT  = Wpostmsg
+:TEXT  = Wprocesscmd
+:TEXT  = Wqfocus
+:TEXT  = Wqowner
+:TEXT  = Wqparent
+:TEXT  = Wquerydlgsize
+:TEXT  = Wquerypath
+:TEXT  = Wquerywidget
+:TEXT  = Wquerywinpos
+:TEXT  = Wquerywinsize
+:TEXT  = Wquit
+:TEXT  = Wregexitproc
+:TEXT  = Wregistercfg
+:TEXT  = Wregisterclass
+:TEXT  = Wregisterlink
+:TEXT  = Wregistertxt
+:TEXT  = Wresetmouseshape
+:TEXT  = Wsetconfig
+:TEXT  = Wsetfocus
+:TEXT  = Wsetmousepos
+:TEXT  = Wsetmouseshape
+:TEXT  = Wsetowner
+:TEXT  = Wsetwinpos
+:TEXT  = Wstdinit_cfg
+:TEXT  = Wstdinit_cfgtxt
+:TEXT  = Wterminate
+:TEXT  = Wtestpaint
+:TEXT  = Wupdate
+:VPOS  = 50,36
+:VSIZE = 29,8
+:ID    = LSTBX02
+
+
+:$FRAM
+:TITLE = SAP Tabellenverknüpfung Eingeschaftenliste
+:LINK  = HOT
+:SIZE  = 00040,00025
+:VGRID = 00080,00050
+:ID    = DIALOG01

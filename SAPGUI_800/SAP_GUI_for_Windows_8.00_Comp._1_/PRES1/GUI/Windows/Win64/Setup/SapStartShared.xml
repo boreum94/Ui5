@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapStartWksta.xml">
+	<Product BuildTime="0x002A910F5730D901" CmdLine="$SapStartExe" Guid="{816F349A-C565-4ace-A854-2B6791E8C316}" Name="$SapStartExe" ProdVersion="900.158" Visible="false">
+		<Contains Guid="{5092D79A-FF88-4ce1-B5BD-B04082ABFF03}"/>
+	</Product>
+	<Component BuildTime="0x002A910F5730D901" Guid="{82E12394-48A1-4D26-980C-44E29146D1E6}" Min_Compliant_Version="1" Name="$SapStartExe" SysSize="226" Version="900.158">
+		<Requires Guid="{DB5EECE1-FFE3-4223-A597-08CE447B356D}"/>
+		<Action Dst="%SAPSetupDir%\setup" Type="File">
+			<Src FileVersion="2022.0.112.0" Hash="SHA-256:640f6d6aa445312ffa1ae10e8ede739e1b067c0e5761c0402bf293165e44c514" Timestamp="0x005D41344FFED801">%SAPSrcDir%\setup\SapStart.exe</Src>
+		</Action>
+	</Component>
+	<Component BuildTime="0x002A910F5730D901" Guid="{5092D79A-FF88-4CE1-B5BD-B04082ABFF03}" Min_Compliant_Version="2" Name="$SalFile RegKeys" Version="900.158">
+		<Requires Guid="{82E12394-48A1-4D26-980C-44E29146D1E6}"/>
+		<Action Dst="HKCR\.s8l" Type="Registry">
+			<RegValue>s8lfile</RegValue>
+		</Action>
+		<Action Dst="HKCR\s8lfile" Type="Registry">
+			<RegValue>SAP Application Launcher</RegValue>
+		</Action>
+		<Action Dst="HKCR\s8lfile\ShellEx\Iconhandler" Type="Registry">
+			<RegValue>{57651662-CE3E-11D0-8D77-00C04FC99D61}</RegValue>
+		</Action>
+		<Action Dst="HKCR\s8lfile\shell" Type="Registry">
+			<RegValue>Open</RegValue>
+		</Action>
+		<Action Dst="HKCR\s8lfile\shell\open" Type="Registry">
+			<RegValue>Start</RegValue>
+		</Action>
+		<Action Dst="HKCR\s8lfile\shell\open\command" Type="Registry">
+			<RegValue>%SAPSetupDir%\setup\SapStart.exe /sal=&quot;%%1&quot;</RegValue>
+		</Action>
+		<Action Condition="%User_UI_LangId%&lt;&gt;DE" Dst="HKCR\s8lfile\shell\switch" Type="Registry">
+			<RegValue>Configure Update-Check</RegValue>
+		</Action>
+		<Action Condition="%User_UI_LangId%=DE" Dst="HKCR\s8lfile\shell\switch" Type="Registry">
+			<RegValue>Aktualisierung konfigurieren</RegValue>
+		</Action>
+		<Action Dst="HKCR\s8lfile\shell\switch\command" Type="Registry">
+			<RegValue>%SAPSetupDir%\setup\SapStart.exe /switch /sal=&quot;%%1&quot;</RegValue>
+		</Action>
+	</Component>
+</SapSetup>

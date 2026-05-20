@@ -1,0 +1,186 @@
+# @(#) $Id: //fes/800_REL/src/dwb/eusp/euspd1ld#1 $ SAP
+#23456789012345678901234567890123456789012345678901234567890123456789012345
+.  
+.                          Fullscreen Editor
+.  
+. Der Fullscreen Editor ist das Hauptfenster des Grafischen Screen
+. Painters. Es enthält neben den üblichen Menübestandteilen (Menüleiste,
+. Symbolleiste, Drucktastenleiste und Nachrichtenzeile) die Zeichenfläche
+. zum Erstellen und Ändern eines Dynpros.
+.    
+. Programmnamen sowie Nummer und Typ des Dynpros findet man in der 
+. Titelzeile, die Dynpro-Größe in der Statuszeile des Fensters. 
+. Wird das Dynpro im Änderungsmodus bearbeitet, kann man es durch 
+. Anklicken und Verschieben ("Click & Drag") des Rahmens, der um die 
+. Zeichenfläche des Dynpros gezeichnet ist, vergrößern oder verkleinern.
+.  
+. In der Kopfzeile findet man Name, Text, Größe und Position des
+. gerade bearbeiteten Elements. Der Inhalt dieser Felder kann ggf.
+. überschrieben werden, um das betreffende Elementattribut zu ändern.
+.  
+. Links neben der Zeichenfläche wird die Palette möglicher Dynpro-Elemente 
+. angeboten. Die Ikonen in dieser Palette wirken wie Drucktasten und
+. werden zum Anlegen neuer Dynpro-Elemente benutzt.
+. Von oben nach unten findet man:
+.  
+.                - Reset-Taste
+.                - Textfeld (Schlüsselwort)
+.                - Ein-/Ausgabefeld (Schablone)
+.                - Ankreuzfeld (Checkbutton)
+.                - Auswahlknopf (Radiobutton)
+.                - Drucktaste (Pushbutton)
+.                - TabStrip
+.                - Rahmen
+.                - Subscreen-Bereich
+.                - Table Control
+.                - Status-Icon.
+.  
+. Die Reset-Taste erlaubt das Abbrechen, sobald man eine der
+. Tasten zum Anlegen gewählt hat. Das Anlegen neuer Dynpro-Elemente 
+. wird unter "Bearbeiten von Dynpro-Elementen" beschrieben.
+.  
+. Hinweis: Auf der Zeichenfläche selbst ist keine direkte Texteingabe
+.          möglich. Die Eingabe erfolgt über das Eingabefeld zum
+.          Elementtext in der Kopfzeile des Fullscreen-Bildes.
+.  
+.  
+. Weitere Hilfe
+. -------------
+. Das Menü Hilfe->allgemein bietet erklärende Texte auch zu den anderen
+. Fenstern des Grafischen Screen Painters an. Diese Fenster können durch
+. Menüwahl (z.B. Springen->Attribute) oder durch Drücken der betreffenden 
+. Taste in der Drucktastenleiste geöffnet werden.
+.  
+.  
+. Bearbeiten von Dynpro-Elementen
+. -------------------------------
+. * Markieren und Entmarkieren
+. Durch Einfach-Klick mit der linken Maustaste auf die Zeichenfläche 
+. werden einzelne Dynpro-Elemente markiert, d.h. für die Bearbeitung 
+. ausgewählt. Elemente, die Behälter für andere Elemente sind (Rahmen,
+. Steploops, TabStrips und Table Controls), können an den speziellen 
+. "Angriffspunkten" an der oberen, rechten und unteren Kante sowie 
+. in der rechten unteren Ecke markiert werden.
+.  
+. Hinweis: Mit den Drucktasten "Element+" und "Element-" kann man das 
+.          nächste bzw. vorige Element markieren und somit die Dynpro-
+.          Elemente nacheinander von links oben nach rechts unten bzw. 
+.          umgekehrt durchlaufen.
+.  
+. Durch "Einfangen mit dem Lasso" lassen sich mehrere Elemente gleich-
+. zeitig markieren. Dazu drückt man die linke Maustaste an einer freien 
+. Stelle im Dynpro und spannt das erscheinende Rechteck soweit auf, bis 
+. es die gewünschten Elemente enthält.
+.  
+. Ein einzelnes Element läßt sich zu solch einer Gruppe hinzufügen oder 
+. daraus entfernen, indem man es mit der linken Maustaste und gleich-
+. zeitig gedrückter CTRL-Taste anklickt (sog. "modifiziertes" Markieren).
+.  
+. Ein Mausklick an einer leeren Dynpro-Stelle oder Menüwahl Bearbeiten->
+. Entmarkieren entmarkiert die momentan markierten Elemente.
+.  
+. * Verschieben
+. Zum Verschieben bewegt man das markierte Element bei gedrückter Maus-
+. taste über die Zeichenfläche und läßt die Maustaste los, sobald der 
+. mitgeführte Umriß an der gewünschten Position steht ("Drag & Drop").
+. Bei Kollisionen mit anderen Elementen werden deren Umrisse hervor-
+. gehoben, und eine Meldung erscheint in der Nachrichtenzeile. 
+. Behälter-Elemente werden am Angriffspunkt der oberen Kante verschoben.
+.  
+. * Vergrößern und Verkleinern
+. Dynpro-Elemente lassen sich durch Click & Drag auch in der Breite und 
+. ggf. Höhe verändern. Dazu führt man den Maus-Pointer an den rechten 
+. bzw. unteren Rand des markierten Elements, bis sich das Pointersymbol 
+. in einen Richtungspfeil ändert. Dort klickt man das Element an und 
+. verschiebt den Rand bei gedrückter Maustaste in die gewünschte Richtung.
+. Auch hier werden mögliche Kollisionen mit anderen Elementen angezeigt.
+. Behälter-Elemente werden an den Angriffspunkten der rechten und unteren
+. Kante verändert.
+.  
+. * Anlegen
+. Zum Neuanlegen eines Dynpro-Elements drückt man die entsprechende Ikone
+. aus der "Anlegen"-Palette am linken Bildrand und plaziert das neue 
+. Element durch Click & Drag auf dem Dynpro.
+.  
+. Beim Plazieren legt der Mausklick die Position der linken oberen Ecke 
+. des Dynpro-Elements fest. Durch Ziehen bei gedrückter Maustaste kann 
+. die Größe des Elements eingestellt werden. Ergäbe sich schon an der 
+. Anfangsposition eine Kollision mit einem anderen Dynpro-Element, so 
+. läßt sich das neue Element durch Ziehen bei gedrückter Maustaste nur 
+. noch an eine andere Stelle verschieben. Dort wird es in Minimalgröße 
+. angelegt und muß ggf. wie oben beschrieben vergrößert werden.
+.  
+. Vor dem Plazieren kann man die Anlegeoperation durch nochmaliges 
+. Drücken derselben Ikone oder durch Drücken der "Reset"-Drucktaste 
+. ganz oben in der Palette abbrechen.
+.  
+. * Definieren und Auflösen von Steploops und Auswahlknopfgruppen
+. Steploops sind vertikale Wiederholungen von sog. Loop-Blöcken. 
+. In einem Loop-Block können Ein/Ausgabefelder, Textfelder, 
+. Ankreuzfelder und Auswahlknöpfe enthalten sein. Auswahlknöpfe 
+. innerhalb eines Steploops ("vertikale Auswahlknöpfe) sind implizit 
+. voneinander abhängig, d.h. sie schalten sich gegenseitig aus. 
+. Bei allen anderen Gruppen von Auswahlknöpfen muß dieser logische 
+. Zusammenhang explizit definiert werden. Diesem Zweck dienen die 
+. Auswahlknopfgruppen.
+.  
+. Steploops und Auswahlknopfgruppen werden nicht wie Elemente angelegt,
+. sondern als Gruppe "definiert", d.h. aus mehreren Elementen durch
+. Zusammenfassen gebildet. Zum Definieren ist die Menüwahl Bearbeiten->
+. Gruppierung->Steploop/Auswahlknopfgruppe->Definieren auf die markierten 
+. Elemente anzuwenden.
+.  
+. Ein neu angelegter Steploop hat anfangs die minimale Höhe von zwei
+. Wiederholungen des Loop-Blocks und die Breite, die sich aus der
+. Gruppenbreite ergibt. Die Höhe, d.h. die Anzahl der Wiederholungen, 
+. kann durch Click & Drag des unteren Steploop-Randes geändert werden.
+.  
+. Ein Loop-Block kann auch eine Auswahlknopfgruppe enthalten. Bei einer
+. solchen Anordnung hängen jedoch nur die Auswahlknöpfe innerhalb des
+. Loop-Blocks einer Wiederholung voneinander ab ("horizontale"
+. Auswahlknöpfe).
+.
+. Durch Menüwahl Bearbeiten->Gruppierung->Steploop/Auswahlknopfgruppe->
+. Auflösen lassen sich Steploops und Auswahlknopfgruppen "auflösen",
+. d.h., die Gruppierung wird rückgängig gemacht.
+.  
+. Hinweis: Der Steploop ist ein veraltetes Dynpro-Element. Eine
+.          tabellarische Anordnung von Elementen läßt sich komfortabler 
+.          durch ein Table Control realisieren. Table Controls können
+.          die gleichen Elemente enthalten wie Steploops.
+.
+.
+. * Löschen
+. Zum Löschen ist das Element bzw. die Elementgruppe zu markieren und
+. Bearbeiten->Löschen zu wählen oder die Drucktaste Löschen (F14) zu
+. drücken. Irrtümliches Löschen von Dynpro-Elementen kann bis zur nächsten
+. Dynpro-Änderung noch rückgängig gemacht werden (siehe unten).
+.  
+. Hinweis: Beim Löschen eines Rahmens wird nur der Rahmen selbst
+.          gelöscht; die von ihm umrahmten Elemente bleiben erhalten.
+.          Dagegen werden beim Löschen eines TabStrips oder Table 
+.          Controls auch die darin enthaltenen Elemente gelöscht.
+.
+.
+. * Rückgängig machen und Wiederholen
+. Die jeweils letzte Benutzeraktion, die das Dynpro veränderte, kann durch
+. Menüwahl Bearbeiten->Rückgängig rückgängig gemacht werden. Menüwahl 
+. Bearbeiten->Wiederholen wiederholt die Benutzeraktion, stellt also den 
+. Zustand des Dynpros vor dem letzten Rückgängigmachen wieder her.
+. Anstelle der Menüeinträge können auch die beiden betreffenden Drucktasten 
+. in der Symbolleiste benutzt werden, um die Operationen auszulösen.
+. 
+. * Ausschneiden, Kopieren und Einsetzen
+. Die momentan markierten Elemente können durch Menüwahl Bearbeiten->
+. Ausschneiden/Kopieren in die Systemablage (Clipboard) übernommen werden
+. und durch Bearbeiten->Einsetzen an anderer Stelle eingesetzt werden.
+. Beim Ausschneiden werden die markierten Elemente gleichzeitig aus dem 
+. Dynpro gelöscht. Das Einsetzen kann im selben oder in einem anderen 
+. Dynpro des gleichen Release-Standes erfolgen.
+. 
+. Hinweis: Falls es beim Einsetzen zu Namenskonflikten mit den 
+.          vorhandenen Dynpro-Elementen kommen würde, bekommt der 
+.          Benutzer die Möglichkeit angeboten, die neuen Elemente 
+.          unbenannt zu übernehmen.
+.          Zur Zeit können Elemente nur in ein anderes Dynpro des
+.          gleichen Release-Standes eingesetzt werden.

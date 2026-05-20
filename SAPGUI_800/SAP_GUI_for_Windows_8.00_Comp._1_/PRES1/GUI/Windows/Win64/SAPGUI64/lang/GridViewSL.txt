@@ -1,0 +1,12 @@
+_SAPPCTXT_HEADER_               002 8000 GRIDVIEW SL 1404 OK 
+GRIDVIEW_MSGBOX_TITLE           080 "Grid pogled"
+GRIDVIEW_MSGBOX_TEXT            128 "Naloga izpisa ni bilo možno zagnati"
+GRIDVIEW_TOOLTIP_DESELECT_ALL   080 "Preklièi izbiro vseh"
+GRIDVIEW_TOOLTIP_SELECT_ALL     080 "Izberi vse"
+GRIDVIEW_TOOLTIP_TEXT_COLLAPSE  080 "Skrèitev izbire"
+GRIDVIEW_TOOLTIP_TEXT_EXPAND    080 "Razširitev izbire"
+GRIDVIEW_ENABLE_HISTORY         255 "Aktiviranje zgodovine"
+GRIDVIEW_DISABLE_HISTORY        255 "Deaktiviranje zgodovine"
+GRIDVIEW_DEFAULT_SETTING        255 "Uporaba standardnih nastavitev"
+GRIDVIEW_MSGBOX_TITLE2          080 "Grid pogled"
+GRIDVIEW_MSGBOX_ERROR           128 "Veèkratnih izbir ni bilo možno kopirati"

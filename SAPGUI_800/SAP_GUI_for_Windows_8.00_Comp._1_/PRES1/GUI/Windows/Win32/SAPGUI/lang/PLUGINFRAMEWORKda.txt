@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 PLUGINFRAMEWORK DA 1100 OK 
+CP_SERVICE_MENUITEM             030 "Services"
+MENU_ITEM_EXCEL                 030 "Excel"
+MENU_ITEM_SEARCH                030 "Søg"
+MENU_ITEM_CONTEXTSEARCH         120 "Gennemse SAP Help Portal"
+MENU_ITEM_SPELLCHECK            030 "Stavekontrol"
+MENU_ITEM_MAIL                  020 "E-mail"
+MENU_ITEM_PRINT                 020 "Print"
+CP_TREE_PRINT                   060 "Print træ"
+CP_SPELLCHECK_COMPLETE          128 "Stavekontrol afsluttet"

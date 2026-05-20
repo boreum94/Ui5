@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 SAPGUISCRIPTING ET 1904 OK 
+SCRIPTING_SCRIPTISOPENING       150 "Skript avab ühenduse süsteemiga: %s"
+SCRIPTING_SCRIPTNOTINST         150 "Skriptimistugi pole installitud"
+SCRIPTING_SCRIPTNOTENABLED      150 "Kasutaja keelas skriptimistoe"
+<#007>SCRIPTING_OK_BTN          016 "OK"
+<#007>SCRIPTING_CANCEL_BTN      016 "Tühista"
+SCRIPTING_DO_NOT_SHOW_AGAIN     150 "Ära kuva seda hüpikut, kui skript avab ühenduse"
+<#007>SCRIPTING_ALLOW_BTN       016 "Luba"
+<#007>SCRIPTING_DENY_BTN        016 "Keeldu"
+<#007>SCRIPTING_HELP_BTN        016 "Spikker"

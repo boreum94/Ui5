@@ -1,0 +1,142 @@
+<mvc:View controllerName="code.d22.excode.controller.Detail"
+    xmlns:layout="sap.ui.layout" 
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:vixdata="sap.viz.ui5.data"
+    xmlns:vizfeeds="sap.viz.ui5.controls.common.feeds"
+    >
+    <f:DynamicPage>
+        <f:header >
+            <f:DynamicPageHeader>
+                
+                    <fb:FilterBar
+                        id="idFilterbar"
+                        useToolbar="false"
+                        search=".onButtonGo"
+
+                        showGoOnFB="true"
+                    >
+                        <fb:filterGroupItems>
+                            
+                            <fb:FilterGroupItem name="connectionId" 
+                                                label="{i18n>dynamicConnectionID}" 
+                                                groupName="Group1" 
+                                                visibleInFilterBar="true"
+                                                
+                            >
+                                <fb:control>
+                                    <Input value=""
+                                            id="idInputConnectionId"
+                                    />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem name="countryFrom" 
+                                                label="{i18n>dynamicCountryFrom}" 
+                                                groupName="Group1" 
+                                                visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input value="" 
+                                            id="idInputCountryFrom"
+                                    />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem name="cityTo" 
+                                                label="{i18n>dynamicCityTo}" 
+                                                groupName="Group1" 
+                                                visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input value=""
+                                            id="idInputCityTo"
+                                    />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                        </fb:filterGroupItems>
+                    </fb:FilterBar>
+                
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <VBox>
+                <Table id="idDetailViewTable"
+                        items="{view>/Spfli}"
+                        mode="SingleSelectLeft"
+                        growing="true"
+                        growingThreshold="5"
+
+                        selectionChange=".onSelectionChange"
+                >
+                    <columns>
+                        <Column ><header><Text text="{i18n>detailTableCarrierId}"></Text></header></Column>
+                        <Column ><header><Text text="{i18n>detailTableConnectionId}"></Text></header></Column>
+                        <Column ><header><Text text="{i18n>detailTableCountryFrom}"></Text></header></Column>
+                        <Column ><header><Text text="{i18n>detailTableCityFrom}"></Text></header></Column>
+                        <Column ><header><Text text="{i18n>detailTableAirportFrom}"></Text></header></Column>
+                        <Column ><header><Text text="{i18n>detailTableCountryTo}"></Text></header></Column>
+                        <Column ><header><Text text="{i18n>detailTableCityTo}"></Text></header></Column>
+                        <Column ><header><Text text="{i18n>detailTableAirportTo}"></Text></header></Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem >
+                            <cells>
+                                <ObjectIdentifier title="{view>Carrid}"/>
+                                <Text text="{view>Connid}" />
+                                <Text text="{view>Countryfr}" />
+                                <Text text="{view>Cityfrom}" />
+                                <Text text="{view>Airpfrom}" />
+                                <Text text="{view>Countryto}" />
+                                <Text text="{view>Cityto}" />
+                                <Text text="{view>Airpto}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+
+                <viz:VizFrame id="idVizFrame"
+                            visible = "false"
+                            uiConfig="{applicationSet:'fiori'}"
+                            width="100%"
+                            vizType="column"
+                            dataset="{chart>/Flights}"
+                            vizProperties='{ 
+                                "title": {
+                                    "visible": true,
+                                    "text": "항공편 잔여석 현황"}
+                             }'
+                >
+                    <viz:dataset>
+                        <vizdata:FlattenedDataset
+                            xmlns:vizdata="sap.viz.ui5.data"
+                            data="{chart>/Flights}"
+                        >
+                            <vizdata:dimensions>
+                                <vizdata:DimensionDefinition 
+                                    name="날짜"
+                                    value="{path:'chart>Fldate', type:'sap.ui.model.type.Date',
+                                    formatOptions: {
+                                        pattern: 'yy-MM-dd'
+                                    }}" />
+                            </vizdata:dimensions>
+                            <vizdata:measures>
+                                <vizdata:MeasureDefinition name="잔여석" 
+                                value="{chart>Seatsocc}" />
+                            </vizdata:measures>
+                        </vizdata:FlattenedDataset>
+                    </viz:dataset>
+                    <viz:feeds>
+                        <vizfeeds:FeedItem uid="categoryAxis" type="Dimension"
+                                        values="날짜" xmlns:viz="sap.viz.ui5.controls.common.feeds"/>
+                        <vizfeeds:FeedItem uid="valueAxis" type="Measure" 
+                                        values="잔여석" xmlns:vizfeeds="sap.viz.ui5.controls.common.feeds" />
+                    </viz:feeds>
+                </viz:VizFrame>
+
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

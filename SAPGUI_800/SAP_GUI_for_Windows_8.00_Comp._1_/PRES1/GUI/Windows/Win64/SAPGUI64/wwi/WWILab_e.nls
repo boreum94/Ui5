@@ -1,0 +1,97 @@
+[MAIN_WINDOW]
+PRINTINFORMATION=Print Information
+COPIES=Number of Labels:
+FITLABEL=Fit Label
+PRINTER=Printer:
+TRAY=Tray:
+PROPERTIES=Properties
+LABELINFORMATION=Label Information
+INFORMATIONLASER=Laser Labels
+INFORMATIONDOT=Dot Matrix Labels
+LABELPRODUCTS=Label Products:
+PRODUCTSNUMBER=Product Number:
+LABELPROPERTIES=Label Properties
+TYPE=Type:
+HEIGHT=Height:
+WIDTH=Width:
+PAGESIZE=Paper Size:
+NEWLABEL=&New Label
+DETAIL=&Detail
+PRINT=&Print
+PREVIEW=Pre&view
+SETTINGS=&Settings
+EXIT=&Exit
+SHOWFITTINGLABELS=Show Only Fitting Labels
+LABELTEMPLATE=Label Template
+DELETLABEL=Delete Label
+LABELNUMBERING=Numbering
+LABELNUMSTART=Start With
+LABELNUMSTEP=Step Size
+LABELNUMREPEAT=Repetitions
+P=Portrait
+L=Landscape
+ERROR_SELECT_BRAND=Select a Brand first!
+ERROR_WWILABELNOTFOUND1=WWILabel.DLL not found in Path:
+ERROR_WWILABELNOTFOUND2=Create label with MS Word?
+ERROR_LOAD_DLL=Error while loading WWILabel.DLL!
+ERROR_CREATE_FILE=Error writing output file! (WWILabel.DLL)
+
+[DETAIL_WINDOW]
+a = Top Margin:
+b = Side Margin:
+c = Vertical Pitch:
+d = Horizontal Pitch:
+e = Label Height:
+f = Label Width:
+g = Labels in Column:
+h = Labels in Row:
+i = Page Format:
+j = Label Name:
+k = OK
+l = Preview
+m = Cancel
+n = New Label
+o = Detail
+TITLE=Label Details
+ERROR_SIZE_NOT_ALLOWED_TO_BE_NULL_ONE=should not be null!
+ERROR_SIZE_NOT_ALLOWED_TO_BE_NULL_PL=should not be null!
+ERROR_EMPTY_LABEL_NAME=The field "Label Name" should not be empty!
+ERROR_WRITE1=Error on writing label:
+ERROR_WRITE2=in file:
+ERROR_WRITE3=check that the file is writeable.
+
+[SETTINGS_WIN]
+UNIT_FRAME=Select a Unit:
+LANGUAGE_FRAME=Select a Language:
+OPEN_FRAME=Open:
+LABEL_FRAME=Select a Label File:
+ACTUAL_LABEL_FILE=Current Label File:
+SET_BUTTON=Set Selected File
+OK_BUTTON=&OK
+CANCEL_BUTTON=&Cancel
+OPEN_LAST_LABEL=Open with Last Settings
+TITLE=Settings
+INFORMATION_BUTTON=&About...
+INCH=Inches
+CENTIMETERS=Centimeters
+POINTS=Points
+GERMAN=German
+ENGLISH=English
+FRANCE=French
+USERSPECSETTING=Use userspecified path
+ERROR_NOFILESELECTED=No Label file selected. Please select a Label file!
+DLL_CHECK_TEXT=Use WWILabel.DLL
+DLL_GROUPBOX_TEXT=Print:
+
+[PROGRESSBAR]
+TEXTPRINT=Starting printing
+TEXTPREVIEW=Starting preview of
+LOAD=Loading...
+
+[MSGBOX]
+LABELSELECTED=Select a label first.
+DELETLABEL=Are you sure you want to delete that label?
+LABELEXISTS=Label already exists. Do you want to replace it?
+ENTERNAME=Enter a name for the new label.
+NOPRINTER=Install at least one printer.
+WRONGVAR=is a wrong environment variable in UserSpecified Path!

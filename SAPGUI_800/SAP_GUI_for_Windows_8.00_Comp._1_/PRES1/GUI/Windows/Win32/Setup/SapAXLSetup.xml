@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapAXLWkstaUI.xml">
+	<SapSetupProduct BuildTime="0x40C0F8977C30D901" CmdLine="AXL" Description="SapAXLProductDescription" Guid="{a8f40c86-7154-4464-86a0-9a496334f1d5}" Name="SapAXLProductName" PatchLevel="5" Version="31.1784">
+		<Prerequisite>
+			<Condition>((%WOW64MODE% = TRUE) | (%MSExcel2013Exists% = TRUE) | (%MSExcel2010Exists% = TRUE) | (%MSExcel2007Exists% = TRUE) | (%MSExcel2016Exists% = TRUE))</Condition>
+			<FailureText>SapAXLExcelx86NotFound</FailureText>
+		</Prerequisite>
+		<Prerequisite>
+			<Condition>((%WOW64MODE% = FALSE) | (%MSExcel2013Exists% = TRUE) | (%MSExcel2010Exists% = TRUE) | (%MSExcel2007Exists% = TRUE) | (%MSExcel2016Exists% = TRUE))</Condition>
+			<FailureText>SapAXLExcelx64NotFound</FailureText>
+		</Prerequisite>
+		<Prerequisite>
+			<Condition>((%SapAXLIs64Bit% = TRUE) | (%DotNetV4ClientProfile% = EXISTING))</Condition>
+			<FailureText>SapAXLDotNet4x86NotFound</FailureText>
+		</Prerequisite>
+		<Prerequisite>
+			<Condition>((%SapAXLIs64Bit% = FALSE) | (%WOW64MODE% = FALSE) | (%DotNetV4ClientProfilex64% = EXISTING))</Condition>
+			<FailureText>SapAXLDotNet4x64NotFound</FailureText>
+		</Prerequisite>
+		<Prerequisite>
+			<Condition>((%DotNetV4ClientProfile% = EXISTING) | (%DotNetV4ClientProfilex64% = EXISTING))</Condition>
+			<FailureText>SapAXLDotNet4NotFound</FailureText>
+		</Prerequisite>
+		<UI>
+			<Page Type="FolderPath">
+				<PageVariable>SapAXLDestDir</PageVariable>
+				<Title>SapAXLProductName</Title>
+				<SubTitle>SapAXLSelectDestDir</SubTitle>
+			</Page>
+		</UI>
+		<IncludesProductPart Comment="SAP AXL 3.1 Product Part" ProductGuid="{A4355F00-1308-45AF-A00E-D72661FC87F2}" Visible="false"/>
+	</SapSetupProduct>
+	<SapSetupProductPart BuildTime="0x40C0F8977C30D901" Guid="{A4355F00-1308-45AF-A00E-D72661FC87F2}" Name="SAP AXL 3.1 Product Part" Version="31.1">
+		<RequiresComponent ComponentGuid="{4EE9DA6E-D0AF-4AFD-9B01-73451F195F3F}"/>
+	</SapSetupProductPart>
+</SapSetup>

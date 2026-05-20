@@ -1,0 +1,189 @@
+{
+  "Members": [
+    {
+      "Name": "장기원",
+      "Birth": "1999-12-29",
+      "Gender": "M",
+      "Phone": "010-5188-1700",
+      "Address": "구미시",
+      "Email": "gione5188@gmail.com",
+      "_Purchases": [
+        {
+          "Product_name": "트렌드 코리아 2026",
+          "Type": "book",
+          "Price": 18000,
+          "Currency": "KRW",
+          "Store": "교보문고",
+          "Purchase_date": "2025-09-28",
+          "Returned": ""
+        },
+        {
+          "Product_name": "Battlefield 6",
+          "Type": "game",
+          "Price": 80000,
+          "Currency": "KRW",
+          "Store": "Steam",
+          "Purchase_date": "2025-10-08",
+          "Returned": "O"
+        },
+        {
+          "Product_name": "지클릭커 오피스프로",
+          "Type": "keyboard",
+          "Price": 34800,
+          "Currency": "KRW",
+          "Store": "쿠팡",
+          "Purchase_date": "2025-10-29",
+          "Returned": ""
+        }
+      ]
+    },
+    {
+      "Name": "김성호",
+      "Birth": "1995-06-24",
+      "Gender": "M",
+      "Phone": "010-6861-7930",
+      "Address": "고양시",
+      "Email": "903asd@naver.com",
+      "_Purchases": [
+        {
+          "Product_name": "앱코 저소음 풀배열 멤브레인 108키 키보드",
+          "Type": "keyboard",
+          "Price": 10600,
+          "Currency": "KRW",
+          "Store": "쿠팡",
+          "Purchase_date": "2025-10-28",
+          "Returned": ""
+        },
+        {
+          "Product_name": "좀보이드",
+          "Type": "game",
+          "Price": 9800,
+          "Currency": "KRW",
+          "Store": "Steam",
+          "Purchase_date": "2025-10-20",
+          "Returned": "O"
+        }
+      ]
+    },
+    {
+      "Name": "장보름",
+      "Birth": "1994-07-26",
+      "Gender": "F",
+      "Phone": "010-2292-2631",
+      "Address": "서울시",
+      "Email": "bdboreun525@gmail.com",
+      "_Purchases": [
+        {
+          "Product_name": "바지",
+          "Type": "clothes",
+          "Price": 100000,
+          "Currency": "USD",
+          "Store": "옷가게",
+          "Purchase_date": "2025-10-01",
+          "Returned": ""
+        },
+        {
+          "Product_name": "모자",
+          "Type": "clothes",
+          "Price": 20000,
+          "Currency": "KRW",
+          "Store": "쿠팡",
+          "Purchase_date": "2023-10-09",
+          "Returned": "O"
+        },
+        {
+          "Product_name": "키보드",
+          "Type": "keyboard",
+          "Price": 3000,
+          "Currency": "KRW",
+          "Store": "다이소",
+          "Purchase_date": "2010-01-01",
+          "Returned": ""
+        }
+      ]
+    },
+    {
+      "Name": "이수민",
+      "Birth": "2000-08-14",
+      "Gender": "M",
+      "Phone": "010-2789-4884",
+      "Address": "부산시",
+      "Email": "sejoeng4884@gmail.com",
+      "_Purchases": [
+        {
+          "Product_name": "Palworld",
+          "Type": "game",
+          "Price": 32000,
+          "Currency": "KRW",
+          "Store": "Steam",
+          "Purchase_date": "2025-05-10",
+          "Returned": ""
+        },
+        {
+          "Product_name": "독거미 f108 저소음 바다축",
+          "Type": "keyboard",
+          "Price": 58.36,
+          "Currency": "USD",
+          "Store": "AliExpress",
+          "Purchase_date": "2025-10-25",
+          "Returned": ""
+        },
+        {
+          "Product_name": "로마 숄더 버튼 니트",
+          "Type": "clothes",
+          "Price": 49500,
+          "Currency": "KRW",
+          "Store": "프롬투미",
+          "Purchase_date": "2025-10-28",
+          "Returned": "O"
+        }
+      ]
+    },
+    {
+      "Name": "이채영",
+      "Birth": "1997-05-01",
+      "Gender": "F",
+      "Phone": "010-9210-4521",
+      "Address": "군포시",
+      "Email": "stjessicy@gmail.com",
+      "_Purchases": [
+        {
+          "Product_name": "StardewValley",
+          "Type": "game",
+          "Price": 10,
+          "Currency": "USD",
+          "Store": "Steam",
+          "Purchase_date": "2020-10-30",
+          "Returned": ""
+        },
+        {
+          "Product_name": "세계끝의버섯",
+          "Type": "book",
+          "Price": 40000,
+          "Currency": "KRW",
+          "Store": "교보문고",
+          "Purchase_date": "2025-05-13",
+          "Returned": "O"
+        },
+        {
+          "Product_name": "모순",
+          "Type": "book",
+          "Price": 15000,
+          "Currency": "KRW",
+          "Store": "알라딘",
+          "Purchase_date": "2023-08-09",
+          "Returned": ""
+        },
+        {
+          "Product_name": "회색후드집업",
+          "Type": "clothes",
+          "Price": 35000,
+          "Currency": "KRW",
+          "Store": "무신사",
+          "Purchase_date": "2021-01-27",
+          "Returned": ""
+        }
+      ]
+    }
+  ]
+}

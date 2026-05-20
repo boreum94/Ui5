@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.tmp/
+
+SAPGUI_800.ZIP
+GUI800_12-80006342.zip
+GUI800_12-80006342/
+*.EXE
+*.exe

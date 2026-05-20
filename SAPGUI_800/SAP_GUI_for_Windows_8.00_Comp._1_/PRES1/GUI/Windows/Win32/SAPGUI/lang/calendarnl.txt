@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR NL 1100 OK 
+PREVIOUS_YEAR                   255 "Vorig jaar"
+PREVIOUS_MONTH                  255 "Vorige maand"
+NEXT_YEAR                       255 "Volgend jaar"
+NEXT_MONTH                      255 "Volgende maand"
+WEEK_NUMBER                     255 "Weeknummer"
+WEEK_NUM_STR                    255 "WN"
+CALENDAR_BTN                    255 "Datumnavigator openen/sluiten"
+DT_PICKER                       255 "Datumselectie: dag, maand of jaar wijzigen"

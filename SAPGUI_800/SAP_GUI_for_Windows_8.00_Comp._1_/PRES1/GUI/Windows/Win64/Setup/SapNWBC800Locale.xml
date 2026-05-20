@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Locale" Version="8" ConnectedId="{DDFD2697-4113-48D1-824E-70DB4C7BE0AA}">
+<!-- $Id: //nwbc/nwbc.win/80_REL/src/cfg/installation/setup/SapNWBC800Locale.xml#2 $ -->
+	<!-- FolderPathPage -->
+	<String Name="NWBC800ProductName">
+		<En>SAP Business Client 8.00</En>
+		<De>SAP Business Client 8.00</De>
+	</String>
+
+	<String Name="NWBC800ProductDescription">
+		<En>The SAP Business Client 8.00 is a high fidelity desktop client that allows the user to display his assigned roles, and to launch applications. </En>
+		<De>Der Business Client 8.00 ist eine neue, Desktop-basierte Integrationsplattform von SAP, die Endbenutzern ein nahtloses Nebeneinander von klassischen, SAP GUI basierten Transaktionen und neuen, mit Web Dynpro entwickelten Applikationen, präsentiert. Zusätzlich ist es möglich, bereits existierende Browser-basierte Applikationen von SAP zu integrieren.</De>
+	</String>
+
+	<String Name="NWBC800TargetDirPrompt">
+		<En>Choose the path to the SAP Business Client 8.00 installation directory</En>
+		<De>Wählen Sie das SAP Business Client 8.00 Zielverzeichnis aus</De>
+	</String>
+		
+	<String Name="strNWBC800DotNetMissing">
+		<En><![CDATA[
+			<a style="COLOR:red">A prerequisite is not yet fulfilled:<a> 
+            <ul>
+               <li>.NET Framework 4.8: It can be downloaded by following this </a><a style="text-decoration:underline" target="blank" href="https://dotnet.microsoft.com/download/dotnet-framework/net48">link</a></li> 
+            </ul> 
+            <a style="COLOR:red">Please restart the installation after this.</a>
+			]]>
+        </En>
+		<De>
+			<![CDATA[
+			<a style="COLOR:red">Eine Installations-Voraussetzung ist nicht erf&#252;llt:<a> 
+            <ul>
+               <li>.NET Framework 4.8: </a><a style="text-decoration:underline" target="blank" href="https://dotnet.microsoft.com/download/dotnet-framework/net48">Hier herunterladen.</a></li> 
+            </ul> 
+            <a style="COLOR:red">Starten Sie bitte die Installation des BC 8.00 danach erneut.</a>
+			]]>
+		</De>
+	</String>
+
+</SapSetup>

@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR TR 1614 OK 
+PREVIOUS_YEAR                   255 "Önceki yýl"
+PREVIOUS_MONTH                  255 "Önceki ay"
+NEXT_YEAR                       255 "Sonraki yýl"
+NEXT_MONTH                      255 "Sonraki ay"
+WEEK_NUMBER                     255 "Hafta sayýsý"
+WEEK_NUM_STR                    255 "HS"
+CALENDAR_BTN                    255 "Tarih navigator'ýný aç/kapat"
+DT_PICKER                       255 "Tarih seçimi: Günü, ayý veya yýlý deðiþtir"

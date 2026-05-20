@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 SEARCHHELP ZH 8400 OK 
+SEARCH_HELP_FIND                080 "查找 (Enter)"
+SEARCH_HELP_CANCEL              080 "取消 (F12)"
+F4HELP_BUTTON_TOOLTIP           050 "选择字段（限制值）"
+SEARCH_HELP_SORTA               050 "（单击以按升序进行排序）"
+SEARCH_HELP_SORTD               050 "（单击以按降序进行排序）"
+<#001>FEW_MENU_NEWMODE          032 "创建会话"
+<#001>FEW_MENU_STOPMODE         032 "停止事务"

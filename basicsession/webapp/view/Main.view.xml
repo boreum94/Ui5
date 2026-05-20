@@ -1,0 +1,24 @@
+<mvc:View controllerName="code.d22.basicsession.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <Table items="{/CarrierSet}" >
+            <columns>
+                <Column ><header><Text text="항공사코드" /></header></Column>
+                <Column ><header><Text text="항공사명" /></header></Column>
+                <Column ><header><Text text="환율코드" /></header></Column>
+                <Column ><header><Text text="홈페이지" /></header></Column>
+            </columns>
+            <items>
+                <ColumnListItem >
+                    <cells>
+                        <Text text="{Carrid}" />
+                        <Text text="{Carrname}" />
+                        <Text text="{Currcode}" />
+                        <Text text="{Url}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Page>
+</mvc:View>

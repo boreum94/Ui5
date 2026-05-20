@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 TEXTEDIT LV 1904 OK 
+TEXTEDIT_HE_LANG_BUTTON         255 "Pârslçgt tastatûras izkârtojumu uz ivritu"
+TEXTEDIT_EN_LANG_BUTTON         255 "Pârslçgt tastatûras izkârtojumu uz angïu valodu"
+TEXTEDIT_DISABLE_LANG_BUTTON    255 "Atspçjot valodas pogu"
+TEXTEDIT_ENABLE_LANG_BUTTON     255 "Iespçjot valodas pogu"
+TEXTEDIT_PROMPT_TEXT            255 "Ðeit ievadiet tekstu..."

@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 TEXTEDIT NO 1100 OK 
+TEXTEDIT_HE_LANG_BUTTON         255 "Bytt tastaturoppsett til hebraisk"
+TEXTEDIT_EN_LANG_BUTTON         255 "Bytt tastaturoppsett til engelsk"
+TEXTEDIT_DISABLE_LANG_BUTTON    255 "Deaktiver knapp for språk"
+TEXTEDIT_ENABLE_LANG_BUTTON     255 "Aktiver knapp for språk"
+TEXTEDIT_PROMPT_TEXT            255 "Skriv inn tekst her..."

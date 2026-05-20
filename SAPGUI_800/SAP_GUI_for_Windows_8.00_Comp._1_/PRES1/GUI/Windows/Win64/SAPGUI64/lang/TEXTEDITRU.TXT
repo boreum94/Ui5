@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 TEXTEDIT RU 1504 OK 
+TEXTEDIT_HE_LANG_BUTTON         255 "Переключить раскладку клавиатуры на иврит"
+TEXTEDIT_EN_LANG_BUTTON         255 "Переключить раскладку клавиатуры на английский язык"
+TEXTEDIT_DISABLE_LANG_BUTTON    255 "Деактивировать кнопку языка"
+TEXTEDIT_ENABLE_LANG_BUTTON     255 "Активировать кнопку языка"
+TEXTEDIT_PROMPT_TEXT            255 "Введите текст..."

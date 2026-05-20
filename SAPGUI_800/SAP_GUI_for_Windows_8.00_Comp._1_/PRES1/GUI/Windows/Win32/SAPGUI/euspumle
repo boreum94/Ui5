@@ -1,0 +1,212 @@
+# @(#) $Id: //fes/800_REL/src/dwb/eusp/euspumle#1 $ SAP
+37600 &
+37601 Screen limit reached (Element not changed)
+37602 Field & modified against Dictionary
+37603 Field & does not match the program definition
+37604 Field name & already exists (Name not changed)
+37605 Field name must begin with a letter or '*' (Name not changed)
+37606 Field length too short (Element not changed)
+37607 Could not compare field name &-& with DDIC
+37608 Could not compare field name & with program fields
+37609 Input not numeric (Value not changed)
+37610 Screen limit exceeded (Element not changed)
+37611 Element overlapped or bordered (Element not changed)
+37612 Field name & is not a valid DDIC name ("-" missing)
+37613 Could not read DDIC field & (Element not replaced)
+37614 Field name cannot be blank (Name not changed)
+37615 Text cannot begin with an underscore ('_' replaced with '#')
+37617 Element modified, since none of the Dictionary texts fits
+37618 Text does not exist in the Dictionary
+37619 Field definition is shorter than in Dictionary
+37620 I/0 template must begin with an underscore (First character replaced)
+37621 Icon & unknown (Icon name not changed)
+37622 Text cannot begin with an icon code ('@' replaced with '#')
+37623 Icon & is illegal for this type of object (Icon name not changed)
+37624 Could not compare class attribute name &->& against class library
+37625 Field name & is not a valid class attribute name ("->" missing)
+37626 Format & does not match property format &
+37627 Format & of dictionary field & does not match property format &
+37628 Function code cannot begin with a slash character ('/' removed)
+37650 Could not adapt variable step loop (Screen size not changed)
+37651 Do you really want to delete all the screen contents?
+37652 Screen not saved. Do you want to save it?
+37653 Collision at target location (Element not placed)
+37654 Screen limits exceeded (Element not placed)
+37655 Collision at target location (Group not placed)
+37656 Collision at target location because font too small (Element not placed)
+#37656 Screen limits exceeded (Group not placed)
+37657 Step loop would collide with element(s) (Not converted)
+37658 Not all step loop elements have been entered (Not converted)
+37659 Screen limits exceeded (Step loop not placed)
+37660 Please place the cursor (by clicking the mouse) first
+37661 Cannot get command field & from Dictionary
+37662 XSynchronize deactivated
+37663 Screen unchanged
+37664 No objects read
+37665 Screen size & is too small (Size not changed)
+37666 Screen size & is too large (Size not changed)
+37667 Element(s) outside new limits (Screen size not changed)
+37668 Step loop too short (Screen size not changed)
+37669 Variable step loop too short (Screen size not changed)
+37670 CAUTION! Unable to save screen in file
+37671 Screen saved in file
+37672 XSynchronize activated (Deactivate with CTRL-x)
+37673 A variable step loop has already been defined
+37674 Parallel step loops not allowed (Step loop not created)
+37675 Element name & already exists (Text not copied)
+37676 Name(s) already exist(s). Copy conflicting element(s) unnamed?
+
+37700 Neither I/O template nor text activated
+37701 Cannot transfer in test mode
+37702 DDIC table must be specified precisely
+37703 Field & is either blank, not allowed or already in element list
+37704 Fields are either blank, not allowed or already in element list
+37705 Template & has no name
+37706 Field(s) are already in element list
+37707 Field & is too long (truncated to maximum field length &)
+37708 Selection contains fields not allowed to copy
+37709 Selection not allowed in display mode
+
+37720 Illegal type for tab element in Tabstrip
+37721 Illegal type for page element in Tabstrip
+37722 No Tabstrip page selected
+37723 Unreferenced page element was deleted
+37724 Collision with page element in Tabstrip
+37725 Tabstrip still contains elements. Do you really want to delete?
+37726 The page element will also be deleted. Really delete?
+37727 The page elements will also be deleted. Really delete?
+37728 Page element & not found. Reference not copied
+37729 Illegal type for element in Tabstrip
+37730 Illegal type for element in Databound Control
+
+37750 Maximum element size reached
+37751 Element too short
+37752 Collision at target location (Element not moved)
+37753 Cannot delete OK code
+37754 Screen limit exceeded
+37755 Element overlapped or bordered
+37756 Screen or window limit reached
+37757 Collision (Please move element to a free position)
+37758 Parallel step loops not allowed (Element not moved)
+37759 Icon name is blank
+37760 Element can only be an output field, not an input field
+37761 No text allowed with status icon
+37762 Internal error: Screen for icon & unknown in Screen Painter
+37763 Collision at target location (Element truncated and made scrollable)
+37764 Changing containers not allowed in modification mode
+37765 & is CHAR 1 field. Convert into
+37766 Name of element too long (max. & characters)
+37767 Element extended to minimum length &
+
+37770 No blank line for margin (Conversion not possible)
+37771 No blank column found for box (Conversion not possible)
+37772 Text is blank (Unable to convert)
+37773 Pushbutton is blank (Unable to convert)
+37774 Pushbutton icon not compatible with text (Conversion not possible)
+37775 Reference element & not found
+
+37780 Selection contains no element
+37781 Collision at target location (Group not moved)
+37782 Screen limit exceeded
+37783 Group elements overlapping or moved
+37784 Input field > 1, not same as field name or wrong position
+37785 Graphics group must contain at least 2 pushbuttons
+37786 Graphic group may only contain radio buttons
+37787 Graphics group may contain only radio buttons, I/O fields, or text fields
+37788 Parallel step loops not allowed (Group not moved)
+37789 Nested step loops are not allowed (Step loop not created)
+37790 Selection element(s) without field name (Graphical group not created)
+37791 Collision at target location (& element(s) truncated or not copied)
+37792 Group elements are in different containers
+37793 Elements of a radio button group are in different containers
+
+37800 Increment for multiple step loop is too small (Step loop not changed)
+37801 Step loop size too small
+37802 Step loop size too large
+37803 Collision at target location (Step loop not moved)
+37804 Step loop contains element illegal for Table Control (Conv. not possible)
+37805 Overlapping step loops
+37806 Conversion not possible
+37807 Not enough space for step loop
+37808 Step loop size too small
+37810 Terminates creation of new screen element
+37811 Creates a new text field on the screen
+37812 Creates a new I/O field on the screen
+37813 Creates a new pushbutton on the screen
+37814 Creates a new checkbox on the screen
+37815 Creates a new radio button on the screen
+37816 Creates a new box on the screen
+37817 Creates a new subscreen on the screen
+37818 Creates a new table control on the screen
+37819 Creates a new I/O field for a status icon on the screen
+37820 &
+37821 Place the text field on the screen
+37822 Place the I/O field on the screen
+37823 Place the pushbutton on the screen
+37824 Place the checkbox on the screen
+37825 Place the pushbutton on the screen
+37826 Place the box on the screen
+37827 Place the subscreen on the screen
+37828 Place the table control on the screen
+37829 Place the I/O field on the screen
+37830 Place the element on the screen
+37831 Place the group on the screen
+37832 Group selection contains unplaced elements
+37833 Selection cannot contain unplaced elements (Element(s) excepted)
+37834 Element contained in already marked element (Element excepted)
+37835 Element contains already marked element (Element excepted)
+37836 Element(s) in container not visible (Element(s) excepted)
+37837 Character & is not allowed in element name
+37838 Do you want the element to refer to the Dictionary definition?
+37839 Element name must not consist only of digits
+
+37840 Creates a new custom control on the screen
+37841 Place the custom control on the screen
+37842 Creates a new tabstrip on the screen
+37843 Place the tabstrip on the screen
+37844 Creates a new databound control on the screen
+37845 Place the databound control on the screen
+37846 Calls wizard to create a new table control on the screen
+37847 Place the table control on the screen (wizard will follow)
+37848 Calls wizard to create a new tabstrip on the screen
+37849 Place the tabstrip on the screen (wizard will follow)
+
+37850 Collision within Table Control (Element not moved)
+37851 Illegal element for Table Control (Conversion not possible)
+37852 Head line element in Table Control truncated
+37853 Height below minimum for Table Control
+37854 Width below minimum for Table Control
+37855 Illegal type for head line element in Table Control
+37856 Illegal type for column element in Table Control
+37857 Collision with head line element in Table Control
+37858 No column for head line element in Table Control
+37859 Deleted head line element
+37860 Deleted head line element(s)
+37861 Deleted head line element as well
+37862 Deleted head line element(s) as well
+37863 Table Control still contains elements. Do you really want to delete it?
+37864 Do you really want to delete the title element?
+37865 Do you really want to delete the head line element?
+37866 Do you really want to delete all head line elements?
+37867 The head line element will also be deleted. Really delete?
+37868 The head line elements will also be deleted. Really delete?
+37869 Please create a title element for the Table Control
+37870 Please create head line elements for the Table Control
+37871 Please provide a name for the line selection element
+37872 Creates a new dialog help button on the screen
+37873 Place the dialog help button on the screen
+
+37880 Internal error messages in error log file!
+37881 Data for screen & & not found
+37882 Connection to SAP System lost (Program terminated)
+37883 Function not available in test mode
+37884 &
+37885 Unable to format data. End program?
+37886 Unable to transfer data. End program?
+37887 Error when editing a message. End program?
+37888
+
+37890 Offers icons for selection
+37891 String not found
+37898 Function not yet implemented
+37899

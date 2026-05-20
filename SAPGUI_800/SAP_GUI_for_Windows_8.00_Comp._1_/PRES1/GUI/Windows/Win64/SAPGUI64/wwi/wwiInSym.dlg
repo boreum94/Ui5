@@ -1,0 +1,268 @@
+$VERSION(2.5b)
+
+;-------------------------------------------------------------------------
+; WA  10.06.99  Make symbol name editable.
+;               Allow all resolution methods for all symbols
+;=========================================================================
+; Layout Part
+;=========================================================================
+$LAYOUT(InsSy)
+
+Begin Dialog BenutzerDialog 470, 270, "001", .evalDlg
+
+	GroupBox 10, 10, 450, 95, "", .grIni
+	GroupBox 10, 10, 450, 95, "041", .grSym
+	GroupBox 10, 10, 450, 95, "042", .grPar
+	TextBox 25, 28, 30, 19, .txtSymArt
+	TextBox 60, 28, 170, 19, .txtSymName
+	PushButton 255, 27, 120, 21, "029", .pbF4
+
+	CheckBox 26, 58, 130, 18, "007", .chkHand
+	OptionGroup  .ogHand
+	  OptionButton 210, 58, 98, 16, "009", .opFirst
+	  OptionButton 210, 78, 98, 15, "008", .opAll
+
+	GroupBox 10, 110, 450, 125, "011", .grSol
+
+	; TextBox 20, 135, 40, 19, .txtExpanCat
+
+	OptionGroup  .ogExpanCat
+	  OptionButton 25, 128, 120, 16, "012", .opExNone
+	  OptionButton 105, 128, 120, 16, "013", .opExGPC
+	  OptionButton 185, 128, 120, 16, "014", .opExIT
+	  OptionButton 265, 128, 120, 16, "015", .opExNM
+;	  OptionButton 345, 128, 120, 16, "032", .opExB
+
+	Text 25, 149, 60, 19, "030", .tBarcode
+	DropListBox 130, 147, 210, 80, Dummy$(), .drpBCode
+
+	OptionGroup  .ogGPC
+	  ;OptionButton 25, 148, 120, 16, "012", .opGPCnone
+	  OptionButton 25, 148, 120, 16, "016", .opGPCG
+	  OptionButton 25, 168, 120, 16, "017", .opGPCP
+	  OptionButton 25, 188, 120, 16, "018", .opGPCC
+;	  OptionButton 25, 208, 120, 16, "031", .opGPCF
+
+	OptionGroup  .ogIT
+	  ;OptionButton 25, 148, 120, 16, "012", .opITnone
+	  OptionButton 25, 148, 50, 16, "019", .opITI
+	  OptionButton 25, 168, 50, 16, "020", .opITT
+
+	Text 80, 149, 50, 19, "021", .tType
+	TextBox 145, 147, 80, 19, .txtType
+	Text 230, 149, 29, 19, "022", .tKind
+	TextBox 260, 147, 80, 19, .txtKind
+	Text 345, 149, 29, 19, "023", .tList
+	TextBox 380, 147, 60, 19, .txtList
+	Text 80, 169, 50, 19, "024", .tMeth
+	TextBox 145, 167, 296, 19, .txtMeth
+
+	OptionGroup  .ogNM
+	  ;OptionButton 25, 168, 120, 16, "012", .opNMnone
+	  OptionButton 25, 148, 50, 16, "025", .opNMN
+	  OptionButton 25, 168, 50, 16, "026", .opNMM
+
+	Text 80, 149, 60, 12, "027", .tMask
+	TextBox 210, 147, 220, 19, .txtMask
+	Text 80, 169, 200, 13, "028", .tSolMeth
+	TextBox 210, 167, 220, 19, .txtSolMeth
+
+	OKButton 86, 242, 120, 21
+	CancelButton 231, 242, 120, 21
+End Dialog 
+
+
+
+;=========================================================================
+; Value Part
+;=========================================================================
+$VALUES
+
+;txtSymArt=HIDDEN
+;txtSymName=DISPLAYONLY
+;txtExpanCat = HIDDEN
+;tHand =INVISIBLE
+;txtExpanCat = B
+;txtExpanCat = -
+
+txtSymArt =01
+
+chkHand=ON:1
+chkHand=OFF:0
+chkHand=0
+
+;opSymbol=01
+;opParameter=02
+
+;--- List of values for Multiple handling option group -------------------
+opFirst = 1
+opAll = *
+
+;--- List of values for ogExpanCat option group --------------------------
+opExNone =-
+opExB    =B
+opExGPC  =G
+opExIT   =I
+opExNM   =N
+ogExpanCat=-
+
+;--- List of values for GPC option group ---------------------------------
+opGPCnone=-
+opGPCG=G
+opGPCP=P
+opGPCC=C
+;opGPCF=F
+ogGPC=P
+
+;--- List of values for IT option group ----------------------------------
+opITnone=-
+opITI=I
+opITT=T
+ogIT=I
+
+;--- List of values for NM option group ----------------------------------
+opNMnone=-
+opNMN=N
+opNMM=M
+ogNM=N
+
+;--- Action for F4 Button ------------------------------------------------
+
+pbF4=ACTION : "wwi","wwiOpenTreeView","getSymbol","parent"
+pbExt=VISIBLE:tHand,"051"
+drpBCode=FILLEDBY:"wwi","wwiListFromIniStart","wwiListFromIniNext","BarcodeKey"
+
+;txtExpanCat=FILLEDBY:"wwiehs","wwiGetExpCat",,"getExpCat"
+ogExpanCat=FILLEDBY:"wwiehs","wwiGetExpCat",,"getExpCat"
+;=========================================================================
+; Dependance Part
+;=========================================================================
+$DEPENDANCES
+
+;--- Group boxes GPC, IT, NM only active if correct option button selected
+;ogGPC/VISIBLE=txtExpanCat(G,P,C)
+;ogIT /VISIBLE=txtExpanCat(I,T)
+;ogNM /VISIBLE=txtExpanCat(N,M)
+
+ogGPC/VISIBLE=ogExpanCat(G)
+ogIT /VISIBLE=ogExpanCat(I)
+ogNM /VISIBLE=ogExpanCat(N)
+drpBCode  /VISIBLE =ogExpanCat(B)
+tBarcode  /VISIBLE =ogExpanCat(B)
+
+grSym/VISIBLE=txtSymArt(01)
+grPar/VISIBLE=txtSymArt(02)
+;grIni/VISIBLE=txtSymArt()
+
+;drpBCode  /VISIBLE =txtExpanCat(B)
+;tBarcode  /VISIBLE =txtExpanCat(B)
+
+tType     /VISIBLE=ogIT
+txtType   /VISIBLE=ogIT
+tKind     /VISIBLE=ogIT
+txtKind   /VISIBLE=ogIT
+tList     /VISIBLE=ogIT
+txtList   /VISIBLE=ogIT
+tMeth     /VISIBLE=ogIT
+txtMeth   /VISIBLE=ogIT
+tMask     /VISIBLE=ogNM
+txtMask   /VISIBLE=ogNM
+tSolMeth  /VISIBLE=ogNM
+txtSolMeth/VISIBLE=ogNM
+
+tType     /ACTIVE=ogIT(I)
+txtType   /ACTIVE=ogIT(I)
+tKind     /ACTIVE=ogIT(I)
+txtKind   /ACTIVE=ogIT(I)
+tList     /ACTIVE=ogIT(I)
+txtList   /ACTIVE=ogIT(I)
+tMeth     /ACTIVE=ogIT(T)
+txtMeth   /ACTIVE=ogIT(T)
+tMask     /ACTIVE=ogNM(N)
+txtMask   /ACTIVE=ogNM(N)
+tSolMeth  /ACTIVE=ogNM(M)
+txtSolMeth/ACTIVE=ogNM(M)
+
+ogHand/VISIBLE = chkHand(1)
+
+;pbF4 /DEFBUTTON=txtSymArt
+
+;=========================================================================
+; Evaluation Part
+;=========================================================================
+$EVALUATION(MsgBox)
+;-------------------------------------------------------------------------
+; Evaluations are only checked if control is active
+;-------------------------------------------------------------------------
+txtSymName=NULL:080
+txtType   =NULL:084
+txtKind   =NULL:083
+;txtList   =NULL:082
+txtMeth   =NULL:085
+txtMask   =NULL:086
+txtSolMeth=NULL:087
+
+;=========================================================================
+; Input Part
+;=========================================================================
+$INPUT
+
+Start:(2:GetSymName=txtSymArt,ogHand=*)
+
+GetSymName:("(":GetSol,"Rest":GetSolFromTree=txtSymName,ogExpanCat=-)
+
+GetSol:(")":CheckSol,":":GetSolPar1,";":GetMulti=(G,P,C,F)ogGPC,ogExpanCat=G,(I,T)ogIT,ogExpanCat=I,(N,M)ogNM,ogExpanCat=N,(B)ogExpanCat=B)
+GetSolPar1:ogExpanCat(I)=GetSolParIT,GetSolPar2
+GetSolPar2:ogExpanCat(N)=GetSolParNM,GetSolPar3
+GetSolPar3:ogExpanCat(B)=GetSolParBarcode,SkipSolPar
+GetSolParIT:ogIT(I)=GetSolParI,GetSolParT
+GetSolParI:(",":GetSolParIKind=txtType)
+GetSolParIKind:(",":GetSolParIList=txtKind)
+GetSolParIList:(")":END,";":GetMulti=txtList)
+GetSolParT:(")":END,";":GetMulti=txtMeth)
+GetSolParNM:ogNM(N)=GetSolParN,GetSolParM
+GetSolParN:(")":END,";":GetMulti=txtMask)
+GetSolParM:(")":END,";":GetMulti=txtSolMeth)
+
+GetSolParBarcode:(")":END,";":GetMulti=drpBCode(FILL),drpBCode)
+
+SkipSolPar:(")":GetSolFromTree,";":GetMulti)
+GetMulti:(")":CheckSol=chkHand=1,ogHand)
+
+CheckSol:ogExpanCat()=GetSolFromTree,END
+
+GetSolFromTree:("":END=ogExpanCat(FILL))
+;GetSolFromTree:("":END)
+
+;=========================================================================
+; Output Part
+;=========================================================================
+$OUTPUT
+;txtExpanCat("-"),ogHand=("%s%s(;%s)",txtSymArt,txtSymName,ogHand)
+;txtExpanCat("-")=("%s%s",txtSymArt,txtSymName)
+ogExpanCat(B)=("%s%s(B:%s)",txtSymArt,txtSymName,drpBCode)
+ogGPC(G,P,C,F),ogHand=("%s%s(%s;%s)",txtSymArt,txtSymName,ogGPC,ogHand)
+ogGPC(G,P,C,F)       =("%s%s(%s)",txtSymArt,txtSymName,ogGPC)
+ogIT(I),ogHand    =("%s%s(%s:%s,%s,%s;%s)",txtSymArt,txtSymName,ogIT,txtType,txtKind,txtList,ogHand)
+ogIT(I)           =("%s%s(%s:%s,%s,%s)",txtSymArt,txtSymName,ogIT,txtType,txtKind,txtList)
+ogIT(T),ogHand    =("%s%s(%s:%s;%s)",txtSymArt,txtSymName,ogIT,txtMeth,ogHand)
+ogIT(T)           =("%s%s(%s:%s)",txtSymArt,txtSymName,ogIT,txtMeth)
+ogNM(N),ogHand    =("%s%s(%s:\"%s\";%s)",txtSymArt,txtSymName,ogNM,txtMask,ogHand)
+ogNM(N)           =("%s%s(%s:\"%s\")",txtSymArt,txtSymName,ogNM,txtMask)
+ogNM(M),ogHand    =("%s%s(%s:%s;%s)",txtSymArt,txtSymName,ogNM,txtSolMeth,ogHand)
+ogNM(M)           =("%s%s(%s:%s)",txtSymArt,txtSymName,ogNM,txtSolMeth)
+ogHand            =("%s%s(;%s)",txtSymArt,txtSymName,ogHand)
+                   ("%s%s",txtSymArt,txtSymName)
+
+$OUTPUT(getSymbol)
+txtSymName()=("S")
+	       ("S%s%s",txtSymArt,txtSymName)
+
+
+$OUTPUT(getExpCat)
+("%s%s",txtSymArt,txtSymName)
+
+$OUTPUT(BarcodeKey)
+("Barcodes/all")
+
+$END

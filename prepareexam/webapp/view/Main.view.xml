@@ -1,0 +1,69 @@
+<mvc:View controllerName="code.d22.prepareexam.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form">
+    <Page id="page" title="{i18n>title}">
+
+        <Panel height="50%"
+            class="sapUiResponsiveMargin"
+            width="auto" >
+
+            <Table items="{/BookClassSet}"
+                class="sapUiResponsiveMargin"
+                mode="SingleSelect"
+                selectionChange="onSelectionChange" >
+                <columns>
+                    <Column ><header><Text text="항공사ID" /> </header></Column>
+                    <Column ><header><Text text="항공편번호" /> </header></Column>
+                    <Column ><header><Text text="비행일자" /> </header></Column>
+                    <Column ><header><Text text="예약번호" /> </header></Column>
+                    <Column ><header><Text text="좌석등급" /> </header></Column>
+
+                </columns>
+
+                <items >
+                    <ColumnListItem >
+                        <Text text="{Carrid}" />
+                        <Text text="{Connid}" />
+                        <Text text="{Fldate}" />
+                        <Text text="{Bookid}" />
+                        <Text text="{Class}" />
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </Panel>
+
+        <form:SimpleForm 
+            class="sapUiResponsiveMargin"
+            width="auto" >
+            <Label text="항공사ID" />
+            <Text text="{update>/data/Carrid}" />
+            <Label text="항공편번호" />
+            <Text text="{update>/data/Connid}" />
+            <Label text="비행일자" />
+            <Text text="{update>/data/Fldate}" />
+            <Label text="예약번호" />
+            <Text text="{update>/data/Bookid}" />
+            <Label text="좌석등급" />
+            <Text text="{update>/data/Class}" />
+
+            <Input value="{update>/data/Class}"
+                maxLength="1"
+                width="2rem" />
+        </form:SimpleForm>
+
+        <footer>
+            <OverflowToolbar >
+                <ToolbarSpacer />
+                <Button 
+                    text="저장"
+                    type="Accept"
+                    press=".onSave" />
+                <Button 
+                    text="리셋"
+                    type="Attention"
+                    press=".onReset" />
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

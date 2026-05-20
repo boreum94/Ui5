@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR DE 1100 OK 
+PREVIOUS_YEAR                   255 "Letztes Jahr"
+PREVIOUS_MONTH                  255 "Letzter Monat"
+NEXT_YEAR                       255 "Nächstes Jahr"
+NEXT_MONTH                      255 "Nächster Monat"
+WEEK_NUMBER                     255 "Kalenderwoche"
+WEEK_NUM_STR                    255 "KW"
+CALENDAR_BTN                    255 "Datumsnavigator öffnen/schließen"
+DT_PICKER                       255 "Datumsauswahl: Tag, Monat oder Jahr anpassen"

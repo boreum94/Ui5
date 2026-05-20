@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR CA 1100 OK 
+PREVIOUS_YEAR                   255 "Any anterior"
+PREVIOUS_MONTH                  255 "Mes anterior"
+NEXT_YEAR                       255 "Any següent"
+NEXT_MONTH                      255 "Mes següent"
+WEEK_NUMBER                     255 "Número de setmana"
+WEEK_NUM_STR                    255 "NS"
+CALENDAR_BTN                    255 "Obrir/Tancar navegador de dates"
+DT_PICKER                       255 "Selecció de dates: modificar dia, mes o any"

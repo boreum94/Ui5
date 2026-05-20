@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="Sap.NetConnector31x86Wksta.xml">
+	<Component BuildTime="0xC0CF12A2FB2AD901" Condition="&quot;%DOTNETV4.0%&quot; = &quot;EXISTING&quot;" Guid="{8E517890-8675-4F23-861F-45B568776C66}" Min_Compliant_Version="800.1" Name="SAP .NET Connector 3.1 32 Bit" Size="54" SysSize="10053" Version="800.21">
+		<Requires Guid="{DB5EECE1-FFE3-4223-A597-08CE447B356D}"/>
+		<Action Dst="%COMMONPROGRAMFILES32%\SAP Shared\Kernel_785" Type="File">
+			<Src FileVersion="7850.212.32.56810" Hash="SHA-256:63afababaa1a419d904f8c55843469b286c54c67df73b715dcd83e40e0a455c8" Timestamp="0xDCAE6D62DCE3D801">%SAPSrcDir%\System\SAP .NET Connector\3.1\libicudecnumber.dll</Src>
+		</Action>
+		<Action ApplicationId="net40" Type="GAC">
+			<Src AssemblyName="rscp4n, Version=1.1.0.0, Culture=neutral, PublicKeyToken=50436dca5c7f7d23, processorArchitecture=x86" FileVersion="1.1.1.0" Hash="SHA-256:b432f077e8ccc05b189d546f2d8c542aebeddf900256d764fcbf33e9168c21ca" RegisterAssembly="true" Timestamp="0x74137662DCE3D801">%SAPSrcDir%\System\SAP .NET Connector\3.1\rscp4n.dll</Src>
+			<Src AssemblyName="sapnco_utils, Version=3.1.0.42, Culture=neutral, PublicKeyToken=50436dca5c7f7d23, processorArchitecture=x86" FileVersion="3.1.1.0" Hash="SHA-256:41eb000a7e7722b54142859ae9d9616f4af8e0cca5ec3eac61f994421bbdaf3e" RegisterAssembly="true" Timestamp="0x46A09B9FFB2AD901">%SAPSrcDir%\System\SAP .NET Connector\3.1\sapnco_utils.dll</Src>
+			<Src AssemblyName="sapnco, Version=3.1.0.42, Culture=neutral, PublicKeyToken=50436dca5c7f7d23, processorArchitecture=x86" FileVersion="3.1.1.0" Hash="SHA-256:2eba9253d7e834a1bff7eff459d5617e378ffe21383fa495d694a6d22111718c" RegisterAssembly="true" Timestamp="0xA0CA269FFB2AD901">%SAPSrcDir%\System\SAP .NET Connector\3.1\sapnco.dll</Src>
+		</Action>
+	</Component>
+</SapSetup>

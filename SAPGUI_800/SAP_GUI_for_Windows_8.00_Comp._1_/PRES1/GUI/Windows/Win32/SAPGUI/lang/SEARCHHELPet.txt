@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 SEARCHHELP ET 1904 OK 
+SEARCH_HELP_FIND                080 "Otsi (ENTER)"
+SEARCH_HELP_CANCEL              080 "Tühista (F12)"
+F4HELP_BUTTON_TOOLTIP           050 "Valikuväli (piirväärtused)"
+SEARCH_HELP_SORTA               050 "(Vajutage sortimiseks kasvavalt)"
+SEARCH_HELP_SORTD               050 "(Vajutage sortimiseks kahanevalt)"
+<#001>FEW_MENU_NEWMODE          032 "Loo seanss"
+<#001>FEW_MENU_STOPMODE         032 "Peata toiming"

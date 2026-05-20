@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapIshMed64Wksta.xml">
+	<Component Arch="X64" BuildTime="0x907D26B05B30D901" Guid="{D0E85127-9A2E-4CB6-B338-38248C2EE47B}" Min_Compliant_Version="800.2" Name="$SapIshMed 64 Shared Keys" Version="800.2">
+		<Action Dst="HKLM\SOFTWARE\SAP\SAP Shared\SAP_IshMed" Type="Registry">
+			<RegValue>SAP ISH MED 64</RegValue>
+			<RegValue Name="SAPSourceDir">%SAPSrcDir%</RegValue>
+			<RegValue Name="SAPDestDir">%SapFrontEnd64Dir%\SapGui</RegValue>
+		</Action>
+	</Component>
+	<Component Arch="X64" BuildTime="0x907D26B05B30D901" Guid="{06DC6CBF-3610-486D-8D4A-C7FAFE12C324}" Min_Compliant_Version="800.10" Name="$SapIshMed 64 Files" Size="1434" Version="800.41">
+		<Action Dst="%SapFrontEnd64Dir%\SapGui" Type="File">
+			<Src Hash="SHA-256:add79db3bf1385612a61b3fe5505de92ec622b228421caf88cb9dc819e548989" Timestamp="0x0EA8AFEE452FD901">%SapSrcDir%\SapGui64\ISHMEDControl.jar</Src>
+			<Src Hash="SHA-256:60de385342854924dc08ad187c93b2f35a3cd9afd34ddb40c24b03be391ead99" Timestamp="0x626BB0EE452FD901">%SapSrcDir%\SapGui64\ISHMEDUtilities.jar</Src>
+			<Src Hash="SHA-256:a63fb9d015c20f810281495bc631af932d804d2c0d7149d109928c49c555ab75" Timestamp="0x68A0B3EE452FD901">%SapSrcDir%\SapGui64\Scheduler.jar</Src>
+		</Action>
+		<Action Condition="%ISHMED64JAVABITNESS%=&quot;64&quot;" Dst="%SapFrontEnd64Dir%\SapGui" Type="File">
+			<Src FileVersion="1.8.0.0" Hash="SHA-256:2f1fde4820c429d7b6a78e4c8236b38eacedd8df1ad1d47d7e2dfc136988b556" Timestamp="0x3067B2EE452FD901">%SapSrcDir%\SapGui64\SIJAB.exe</Src>
+		</Action>
+		<ComFileAction Dst="%SapFrontEnd64Dir%\SapGui">
+			<File FileVersion="1.8.0.0" Hash="SHA-256:a1bde066225f401e773af43ae019a1fbe241b2357994402db42716f35c7fff4d" Timestamp="0xDD5EB6EE452FD901">%SapSrcDir%\SapGui64\SIJABclient.dll</File>
+			<Clsid>{F1D9C5F5-518E-4728-A525-CBFDF672EBDA}</Clsid>
+			<Clsid>{872A8103-6E3C-4953-8199-2C01537E2120}</Clsid>
+		</ComFileAction>
+		<Action RunAt="Install" Type="Execute">
+			<Src DisplayText="Registering SIJAB.exe" Parameters="/regserver">%SapFrontEnd64Dir%\SapGui\SIJAB.exe</Src>
+		</Action>
+		<Action RunAt="Uninstall" Type="Execute">
+			<Src DisplayText="De-registering SIJAB.exe" Parameters="/unregserver">%SapFrontEnd64Dir%\SapGui\SIJAB.exe</Src>
+		</Action>
+	</Component>
+	<Component Arch="X64" BuildTime="0x907D26B05B30D901" Guid="{51601A51-A727-4E33-84DC-C4FE7F99A601}" Min_Compliant_Version="800.2" Name="$SapIshMed 64bit Keys" Version="800.3">
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Prefs\com\ishmed\jccf\ishmedutilities" Type="Registry">
+			<RegValue Name="installpath">%SapFrontEnd64Dir%\SapGui</RegValue>
+		</Action>
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Prefs\com\ishmed\jccf\scheduler" Type="Registry">
+			<RegValue Name="installpath">%SapFrontEnd64Dir%\SapGui</RegValue>
+		</Action>
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Prefs\com\ishmed\jccf" Type="Registry">
+			<RegValue Name="sapguiinstalled">true</RegValue>
+			<RegValue Name="standalonepath">%SapFrontEnd64Dir%\SapGui</RegValue>
+			<RegValue Name="javavm">%ISHMEDJAVAVERSION%</RegValue>
+		</Action>
+		<Action Dst="HKLM\Software\Microsoft\Internet Explorer\ActiveX Compatibility\{A02C35DB-066E-4F0C-8E9B-D4DAA7E2E1A2}" FileName="SIJAB Java Manager" Type="Registry">
+			<RegValue Name="Compatibility Flags" Type="DWORD">1024</RegValue>
+		</Action>
+	</Component>
+</SapSetup>

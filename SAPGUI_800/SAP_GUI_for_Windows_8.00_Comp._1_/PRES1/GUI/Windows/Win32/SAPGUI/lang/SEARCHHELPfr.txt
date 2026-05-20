@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 SEARCHHELP FR 1100 OK 
+SEARCH_HELP_FIND                080 "Rechercher (saisie)"
+SEARCH_HELP_CANCEL              080 "Interrompre (F12)"
+F4HELP_BUTTON_TOOLTIP           050 "Zone de sélection (valeurs limites)"
+SEARCH_HELP_SORTA               050 "(Cliquez pour trier par ordre croissant)"
+SEARCH_HELP_SORTD               050 "(Cliquez pour trier par ordre décroissant)"
+<#001>FEW_MENU_NEWMODE          032 "Créer session"
+<#001>FEW_MENU_STOPMODE         032 "Interrompre transaction"

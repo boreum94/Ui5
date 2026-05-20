@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR JA 8000 OK 
+PREVIOUS_YEAR                   255 "前年"
+PREVIOUS_MONTH                  255 "前月"
+NEXT_YEAR                       255 "来年度"
+NEXT_MONTH                      255 "来月"
+WEEK_NUMBER                     255 "週番号"
+WEEK_NUM_STR                    255 "週番号"
+CALENDAR_BTN                    255 "日付ナビゲータを開く/閉じる"
+DT_PICKER                       255 "日付選択: 日、月、または年の変更"

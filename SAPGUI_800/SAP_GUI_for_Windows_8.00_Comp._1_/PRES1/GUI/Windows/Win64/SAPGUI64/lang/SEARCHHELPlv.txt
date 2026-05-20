@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 SEARCHHELP LV 1904 OK 
+SEARCH_HELP_FIND                080 "Atrast (ievadît)"
+SEARCH_HELP_CANCEL              080 "Atcelt (F12)"
+F4HELP_BUTTON_TOOLTIP           050 "Atlases lauks (ierobeþot vçrtîbas)"
+SEARCH_HELP_SORTA               050 "(Noklikðíinât, lai kârtotu augoðâ secîbâ)"
+SEARCH_HELP_SORTD               050 "(Noklikðíinât, lai kârtotu dilstoðâ secîbâ)"
+<#001>FEW_MENU_NEWMODE          032 "Izveidot sesiju"
+<#001>FEW_MENU_STOPMODE         032 "Beigt transakciju"

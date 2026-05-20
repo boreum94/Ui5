@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 TEXTEDIT CS 1404 OK 
+TEXTEDIT_HE_LANG_BUTTON         255 "Pøepnout rozložení klávesnice na hebrejštinu"
+TEXTEDIT_EN_LANG_BUTTON         255 "Pøepnout rozložení klávesnice na angliètinu"
+TEXTEDIT_DISABLE_LANG_BUTTON    255 "Deaktivovat tlaèítko Jazyk"
+TEXTEDIT_ENABLE_LANG_BUTTON     255 "Aktivovat tlaèítko Jazyk"
+TEXTEDIT_PROMPT_TEXT            255 "Zde zadejte text..."

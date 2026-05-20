@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 PLUGINFRAMEWORK HU 1404 OK 
+CP_SERVICE_MENUITEM             030 "Szolgáltatások"
+MENU_ITEM_EXCEL                 030 "Excel"
+MENU_ITEM_SEARCH                030 "Keresés"
+MENU_ITEM_CONTEXTSEARCH         120 "Keresés az SAP Help Portalban"
+MENU_ITEM_SPELLCHECK            030 "Helyesírás-ellenõrzés"
+MENU_ITEM_MAIL                  020 "Mail"
+MENU_ITEM_PRINT                 020 "Nyomtatás"
+CP_TREE_PRINT                   060 "Struktúra nyomtatása"
+CP_SPELLCHECK_COMPLETE          128 "A helyesírás-ellenõrzés befejezõdött"

@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 OFFICEINTEGRATION RO 1404 OK 
+OI_LOADING_CUSTOM_MENU          080 "Încãrcare meniu definit de utilizator. A?tepta?i..."
+OI_FILE                         060 "Fiºier"
+OI_SAVE                         060 "Salvare"
+OI_SAVE_AS                      060 "Salvare ca"
+OI_PRINT_PREVIEW                080 "Previzualizare pt.tipãrire"
+OI_PROPERTIES                   060 "Proprietãþi"
+OI_PRINT                        060 "Tipãrire"

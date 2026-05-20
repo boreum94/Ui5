@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Locale" Version="800.0">
+	<!-- FolderPathPage -->
+	<String name="SapSPrint64ProductName">
+		<En>SAP Print Service (x64)</En>
+		<De>SAP Print Service (x64)</De>
+	</String>
+	
+	<String name="SapSPrint64ProductDescription">
+		<En>The SAP Print Service (x64)....</En>
+		<De>Der SAP Print Service (x64)....</De>
+	</String>
+
+	<String name="SapSPrint64DestDirPrompt">
+		<En>Choose the path to the SAP Print Service (x64) installation directory</En>
+		<De>Wählen Sie das SAP Print Service (x64) Zielverzeichnis aus</De>
+	</String>
+	
+	<String name="DscrSapSPrint64DestDir">
+		<En>SAP Print Service (x64) installation directory</En>
+		<De>SAP Print Service (x64) Installationsverzeichnis</De>
+	</String>
+
+	<String name="SapSPrint64LPDPortPrompt">
+		<En>Specify the SAP Print Service (x64) LPD Port</En>
+		<De>Geben Sie den SAP Print Service (x64) LPD Port ein</De>
+	</String>
+	
+	<String name="DscrSapSPrint64LPDPort">
+		<En>SAP Print Service LPD Port (x64)</En>
+		<De>SAP Print Service LPD Port (x64)</De>
+	</String>
+
+	<String name="SapSPrint64LogDirPrompt">
+		<En>Choose the path to the SAP Print Service (x64) log directory</En>
+		<De>Wählen Sie das SAP Print Service (x64) Log-Verzeichnis</De>
+	</String>
+	
+	<String name="DscrSapSPrint64LogDir">
+		<En>SAP Print Service Log Directory</En>
+		<De>SAP Print Service Log-Verzeichnis</De>
+	</String>
+	
+	<String Name="strSapSPrint64SPrintx86AlreadyInstalled">
+		<En><![CDATA[<a style="COLOR:red">SAP SPrint (x86) is already installed on this compouter. Please uninstall it and restart this setup.<br/>]]></En>
+		<De><![CDATA[<a style="COLOR:red">SAP SPrint (x86) is bereits installiert. Bitte deinstallieren Sie die vorhandene Version und starten Sie dieses Setup neu.<br/>]]></De>
+	</String>
+	
+	<String Name="strSapSPrint64No64BitWindows">
+		<En><![CDATA[<a style="COLOR:red">SAP SPrint (x64) needs a 64 Bit enabled Windows operating system.<br/>]]></En>
+		<De><![CDATA[<a style="COLOR:red">SAP SPrint (x64) benötigt ein 64 Bit Windows Betriebssystem.<br/>]]></De>
+	</String>
+
+	<String Name="StrFailedConditionWindowsVersion">
+		<En><![CDATA[<a style="COLOR:red">This version of Windows is not supported.</a>]]></En>
+		<De><![CDATA[<a style="COLOR:red">Diese Version von Windows ist nicht unterstützt.</a>]]></De>
+	</String>
+
+</SapSetup>

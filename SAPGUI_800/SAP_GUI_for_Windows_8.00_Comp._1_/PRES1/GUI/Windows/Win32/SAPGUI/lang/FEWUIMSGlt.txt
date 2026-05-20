@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 FEWUIMSG LT 1904 OK 
+<#001>UIMSG_YNA_DLG_REMEMBER    100 "Atsiminti mano sprendimà"
+<#001>UIMSG_YNA_DLG_YES         100 "Taip"
+<#001>UIMSG_YNA_DLG_NO          100 "Ne"
+LGN_POP_DTF_TITLE               200 "'SAP Logon' valymas"
+LGN_POP_DTF_MESSAGE             200 "Ar norite iðvalyti dokumentø katalogà %s?"

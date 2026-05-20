@@ -1,0 +1,39 @@
+<mvc:View controllerName="code.t2.ui5.review2.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form">
+    <Page id="page" title="{i18n>title}">
+
+        <form:SimpleForm
+            title="신규 등록"
+            layout="ResponsiveGridLayout"
+            >
+            <form:toolbar>
+                <Toolbar >
+                    <Title text="신규 등록"/>
+                    <ToolbarSpacer />
+                    <Button text="저장"
+                            press=".onSave"
+                    />
+
+                    <!-- onReset 메서드는 Main 컨트롤러에 정의되어 있다.
+                    이 메서드는 버튼이 눌렸을 때 실행될 함수를 지정한다. -->
+                    <Button text="초기화"
+                            press=".onReset"
+                    />
+                </Toolbar>
+            </form:toolbar>
+
+            <form:content>
+                <Label text="이름"></Label>
+                <Input value="{/name}"></Input>
+                
+                <Label text="나이"></Label>
+                <Input value="{/age}"></Input>
+
+                <Label text="주소"></Label>
+                <Input value="{/city}"></Input>
+            </form:content>
+        </form:SimpleForm>
+    </Page>
+</mvc:View>

@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 SAPGUISCRIPTING SK 1404 OK 
+SCRIPTING_SCRIPTISOPENING       150 "Skript otv·ra pripojenie k systÈmu: %s"
+SCRIPTING_SCRIPTNOTINST         150 "Podpora skriptov nie je inötalovan·"
+SCRIPTING_SCRIPTNOTENABLED      150 "Podpora skriptingu deaktivovan· uûÌvateæom"
+<#007>SCRIPTING_OK_BTN          016 "OK"
+<#007>SCRIPTING_CANCEL_BTN      016 "Zruöenie"
+SCRIPTING_DO_NOT_SHOW_AGAIN     150 "Nezobrazovaù dialÛg, ak sa skript pok˙öa otvoriù spojenie"
+<#007>SCRIPTING_ALLOW_BTN       016 "Povolenie"
+<#007>SCRIPTING_DENY_BTN        016 "Zamietnutie"
+<#007>SCRIPTING_HELP_BTN        016 "N·poveÔ"

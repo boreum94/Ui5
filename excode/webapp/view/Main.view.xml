@@ -1,0 +1,88 @@
+<mvc:View controllerName="code.d22.excode.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:rowmodes="sap.ui.table.rowmodes"
+    >
+    <Page id="page" title="{i18n>title}">
+        <Panel>
+            <t:Table
+                id="idMainViewTable"
+                class="sapUiMediumMargin"
+                rows="{view>/Carriers}"
+            >
+                <t:rowMode>
+                    <rowmodes:Interactive rowCount="20"/>
+                </t:rowMode>
+                <t:extension>
+                    <OverflowToolbar>
+                        <Title text="{i18n>OverflowToolbarTitle}"/>
+                        <ToolbarSpacer/>
+                        <Button text="{i18n>ButtonText1}"
+                                press=".onPressAddButton"
+                        />
+                        <Button text="{i18n>ButtonText2}"
+                                press=".onPressDeleteButton"
+                        />
+                    </OverflowToolbar>
+                </t:extension> 
+                    <t:columns>
+                        <!-- 첫 번째 컬럼 -->
+                        <t:Column>
+                            <t:label>
+                                <Label text="{i18n>columnCarrierID}"/>
+                            </t:label>
+
+                            <t:template>
+                                <ObjectIdentifier text="{view>Carrid}"/>
+                            </t:template>
+                        </t:Column>
+                        <!-- 두 번째 컬럼 -->
+                        <t:Column>
+                            <t:label>
+                                <Label text="{i18n>columnCarrierName}"/>
+                            </t:label>
+
+                            <t:template>
+                                <ObjectIdentifier text="{view>Carrname}" />
+                            </t:template>
+                        </t:Column>
+                        <!-- 세 번째 컬럼 -->
+                        <t:Column>
+                            <t:label>
+                                <Label text="{i18n>columnCurrencyCode}"/>
+                            </t:label>
+
+                            <t:template>
+                                <ObjectIdentifier text="{view>Currcode}" />
+                            </t:template>
+                        </t:Column>
+                        <!-- 네 번째 컬럼 -->
+                        <t:Column>
+                            <t:label>
+                                <Label text="{i18n>columnUrl}"/>
+                            </t:label>
+
+                            <t:template>
+                                <ObjectIdentifier text="{view>Url}" />
+                            </t:template>
+                        </t:Column>
+                        <!-- Details 컬럼 -->
+                        <t:Column>
+                            <t:label>
+                                <Label text="{i18n>columnDetails}"/>
+                            </t:label>
+                            <!-- button에 to_schedules 안에 자료여부에 따라 
+                            활성화/비활성화를 설정했다. -->
+                            <t:template>
+                                <Button text="{i18n>FlightInfo}" 
+                                        press=".onButtonDetailsPage"
+                                        enabled="{= ${view>to_schedules/__list}.length >0 ? true : false}"
+                                />
+                            </t:template>
+                        </t:Column>
+                    </t:columns>
+            </t:Table>
+        </Panel>
+    </Page>
+</mvc:View>

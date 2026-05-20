@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 FEWUIMSG LV 1904 OK 
+<#001>UIMSG_YNA_DLG_REMEMBER    100 "Atcerçties manu izvçli"
+<#001>UIMSG_YNA_DLG_YES         100 "Jâ"
+<#001>UIMSG_YNA_DLG_NO          100 "Nç"
+LGN_POP_DTF_TITLE               200 "SAP Logon tîrîðana"
+LGN_POP_DTF_MESSAGE             200 "Vai vçlaties iztîrît dokumentu direktoriju %s?"

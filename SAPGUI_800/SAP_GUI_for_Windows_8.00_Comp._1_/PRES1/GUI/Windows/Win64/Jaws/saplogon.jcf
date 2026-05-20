@@ -1,0 +1,22 @@
+
+;
+; JAWS configuration file for SAPLogon
+;
+; Copyright
+; SAP AG, www.sap.com
+; Last Update : 2020/12/02
+;
+
+[Listview Options]
+default=1|*
+[MSAAClasses]
+; Button=1
+ListBox=1
+SysTabControl32=1
+; SysTreeView32=1
+[WindowClasses]
+ComboLBox=ListBox
+[OSM]
+IncludeGraphics=1
+[Options]
+MSAAMode=1

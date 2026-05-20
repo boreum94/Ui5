@@ -1,0 +1,71 @@
+# @(#) $Id: //fes/800_REL/src/dwb/eusp/euspd3ld#1 $ SAP
+#23456789012345678901234567890123456789012345678901234567890123456789012345
+.  
+.                         Dict/Programmfelder
+.  
+. Dieses Fenster erlaubt die Übernahme von Tabellenfeldern aus dem Data
+. Dictionary bzw. von Feldern aus der generierten Fassung des zugehörigen
+. Programms (Modulpool oder Report).
+.  
+. Felder aus dem Data Dictionary können als Ein/Ausgabefeld (Schablone)
+. und/oder Textfeld (Schlüsselwort) in das Dynpro übernommen werden. 
+. Felder aus dem Programm können nur als Ein/Ausgabefeld übernommen
+. werden.
+.  
+. In der Kopfzeile des Fensters gibt man zunächst den Tabellen- bzw. 
+. Feldnamen an. Feldnamen können generisch sein, Tabellennamen nicht.
+.  
+. Die Drucktasten "Holen aus Dict" und "Holen aus Programm" lösen die
+. Suche nach der Tabelle bzw. dem Feld im Data Dictionary bzw. im
+. Programm aus.
+.  
+. In den Listboxen werden die gefundenen Felder mit Feldnamen, Format, 
+. Länge und Text angezeigt. Der Text richtet sich danach, welche der 
+. Schalter "Ein/Ausgabefeld" und "Text" gedrückt sind:
+.  
+. - Ein/Ausgabefeld "Nein", Text "ohne":
+.                   Kurzbeschreibung (Kommentar); nur bei Feldern aus dem 
+.                   Data Dictionary
+. - Ein/Ausgabefeld "Ja", Text "ohne":
+.                   Ein/Ausgabe-Schablone (Default bei Programmfeldern)
+. - Text "Kurz", "Mittel", "Lang" oder "Überschrift":
+.                   kurzer, mittlerer oder langer Text oder
+.                   Überschrift des Datenelementes, auf das das
+.                   Tabellenfeld referiert; nur bei Feldern aus dem
+.                   Data Dictionary.
+.  
+. Hinweis: Zum Suchen von Tabellenfeldern in den Listboxen kann man den 
+.          Feldnamen in das Eingabefeld eingeben. Nach jedem eingegebenen 
+.          Zeichen werden die Listen auf den ersten Eintrag positioniert, 
+.          dessen Feldname mit der eingegebenen Zeichenkette beginnt.
+.  
+. In den Listen können nun durch Anklicken einzelne bzw. durch Anklicken 
+. und Ziehen bei gedrückter Maustaste mehrere aufeinanderfolgende Einträge 
+. markiert und somit zur Übernahme ausgewählt werden.
+.  
+. Hinweis: Durch "modifiziertes" Markieren (CTRL & Maustaste) ist 
+.          Mehrfachauswahl auch mit Lücken möglich.
+.  
+. Nachdem man in der Liste eine Auswahl getroffen und die Taste
+. "Übernehmen" gedrückt hat, werden diejenigen Feldanteile ins Dynpro
+. übernommen, die durch die Schalter eingestellt sind.
+.  
+. Felder, die
+.         - leer (d.h. ohne Text),
+.         - in Dynpros nicht erlaubt oder
+.         - im Dynpro schon vorhanden sind,
+. werden in der Liste durch dünne Schrift kenntlich gemacht. 
+. Solche Felder werden ggf. automatisch entmarkiert.
+.  
+. Durch Klicken (und evtl. Verschieben) im Fullscreen-Fenster legt man
+. anschließend fest, wo die Felder plaziert werden sollen. Wurden 
+. mehrere Felder markiert, so werden diese als kompakte Gruppe plaziert. 
+. Sie müssen anschließend ggf. auseinandergeschoben werden.
+.  
+. Können Felder nicht kollisionsfrei plaziert werden, erscheint eine
+. Meldung. Die Übernahme dieser Felder ist dann an anderer Stelle im
+. Fullscreen-Fenster zu wiederholen.
+.  
+. Hinweis: Mit der Reset-Taste in der "Anlegen"-Palette des Fullscreen-
+.          Fensters kann man die Übernahme der Dict/Programmfelder
+.          vor dem Plazieren abbrechen.

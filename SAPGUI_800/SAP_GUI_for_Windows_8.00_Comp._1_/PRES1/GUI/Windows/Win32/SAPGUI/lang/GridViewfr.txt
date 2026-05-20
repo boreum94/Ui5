@@ -1,0 +1,12 @@
+_SAPPCTXT_HEADER_               002 8000 GRIDVIEW FR 1100 OK 
+GRIDVIEW_MSGBOX_TITLE           080 "Vue de grille"
+GRIDVIEW_MSGBOX_TEXT            128 "Impossible de lancer l'ordre d'édition"
+GRIDVIEW_TOOLTIP_DESELECT_ALL   080 "Tout désélectionner"
+GRIDVIEW_TOOLTIP_SELECT_ALL     080 "Tout sélectionner"
+GRIDVIEW_TOOLTIP_TEXT_COLLAPSE  080 "Réduire sélection"
+GRIDVIEW_TOOLTIP_TEXT_EXPAND    080 "Développer sélection"
+GRIDVIEW_ENABLE_HISTORY         255 "Activer historique"
+GRIDVIEW_DISABLE_HISTORY        255 "Désactiver historique"
+GRIDVIEW_DEFAULT_SETTING        255 "Utiliser options standard"
+GRIDVIEW_MSGBOX_TITLE2          080 "Vue de grille"
+GRIDVIEW_MSGBOX_ERROR           128 "Vous ne pouvez pas copier des sélections multiples."

@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR UK 1504 OK 
+PREVIOUS_YEAR                   255 "Попередній рік"
+PREVIOUS_MONTH                  255 "Попередній місяць"
+NEXT_YEAR                       255 "Наступний рік"
+NEXT_MONTH                      255 "Наступний місяць"
+WEEK_NUMBER                     255 "Номер тижня"
+WEEK_NUM_STR                    255 "НТ"
+CALENDAR_BTN                    255 "Відкрити/закрити навігатор дат"
+DT_PICKER                       255 "Вибір дати: змінити день, місяць або рік"

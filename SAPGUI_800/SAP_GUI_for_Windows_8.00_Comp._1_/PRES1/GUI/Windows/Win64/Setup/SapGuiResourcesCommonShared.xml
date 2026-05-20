@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapGuiResourcesCommonSharedWksta.xml">
+	<Component BuildTime="0x907D26B05B30D901" Guid="{C166D7A0-8FA9-4412-80F3-38E6B4857B65}" Min_Compliant_Version="800.1" Name="$CWDIllegalInDllSearch Common Shared Keys" Version="800.2">
+		<Action Dst="HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\saplogon.exe" Type="Registry">
+			<RegValue Name="CWDIllegalInDllSearch" Type="DWORD">4294967295</RegValue>
+		</Action>
+		<Action Dst="HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\saplgpad.exe" Type="Registry">
+			<RegValue Name="CWDIllegalInDllSearch" Type="DWORD">4294967295</RegValue>
+		</Action>
+		<Action Dst="HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sapgui.exe" Type="Registry">
+			<RegValue Name="CWDIllegalInDllSearch" Type="DWORD">4294967295</RegValue>
+		</Action>
+		<Action Dst="HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sapguiserver.exe" Type="Registry">
+			<RegValue Name="CWDIllegalInDllSearch" Type="DWORD">4294967295</RegValue>
+		</Action>
+		<Action Dst="HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sapshcut.exe" Type="Registry">
+			<RegValue Name="CWDIllegalInDllSearch" Type="DWORD">4294967295</RegValue>
+		</Action>
+		<Action Dst="HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\SapSettingsShow.exe" Type="Registry">
+			<RegValue Name="CWDIllegalInDllSearch" Type="DWORD">4294967295</RegValue>
+		</Action>
+		<Action Dst="HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\BExAnalyzer.exe" Type="Registry">
+			<RegValue Name="CWDIllegalInDllSearch" Type="DWORD">4294967295</RegValue>
+		</Action>
+		<Action Dst="HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\wdb3xlau.exe" Type="Registry">
+			<RegValue Name="CWDIllegalInDllSearch" Type="DWORD">4294967295</RegValue>
+		</Action>
+	</Component>
+	<Component BuildTime="0x907D26B05B30D901" Guid="{0B031EA3-B529-46E0-AA63-1098DA11289C}" Min_Compliant_Version="800.1" Name="$CoreGUI Files Common Shared Keys" Version="800.3">
+		<Action Dst="HKCR\MIME\Database\Content Type\application/vnd.sap-gui" Type="Registry">
+			<RegValue Name="CLSID">{83658045-6571-3232-7082-797884697869}</RegValue>
+		</Action>
+		<Action Dst="HKCR\MIME\Database\Content Type\application/x-sapshortcut" Type="Registry">
+			<RegValue Name="Extension">.sap</RegValue>
+		</Action>
+		<Action Dst="HKCR\.sapssd" Type="Registry">
+			<RegValue>Sapfront.App</RegValue>
+		</Action>
+		<Action Dst="HKCR\.sapssd" Type="Registry">
+			<RegValue Name="Content Type">application/vnd.sap-gui</RegValue>
+		</Action>
+		<Action Dst="HKCR\.sap\OpenWithProgIds" Type="Registry">
+			<RegValue Name="SapGui.Shortcut.File"/>
+		</Action>
+		<Action Dst="HKCR\.sap\SapGui.Shortcut.File\ShellNew" Type="Registry">
+			<RegValue Name="NullFile"/>
+		</Action>
+		<Action Condition="%User_UI_LangId%=DE" Dst="HKCR\SapGui.Shortcut.File" Type="Registry">
+			<RegValue>SAP GUI Verknüpfung</RegValue>
+		</Action>
+		<Action Condition="%User_UI_LangId% &lt;&gt; DE" Dst="HKCR\SAPGui.Shortcut.File" Type="Registry">
+			<RegValue>SAP GUI Shortcut</RegValue>
+		</Action>
+		<Action Dst="HKCR\SapFront.App" Type="Registry">
+			<RegValue>SAP Logon Application</RegValue>
+			<RegValue Name="EditFlags" Type="Binary">00000100</RegValue>
+		</Action>
+		<Action Dst="HKCR\SapFront.App\CLSID" Type="Registry">
+			<RegValue>{83658045-6571-3232-7082-797884697869}</RegValue>
+		</Action>
+		<Action Dst="HKCR\SapFront.App\DocObject" Type="Registry">
+			<RegValue>0</RegValue>
+		</Action>
+		<Action Dst="HKCR\SapFront.App\Insertable" Type="Registry">
+			<RegValue/>
+		</Action>
+		<Action Dst="HKCR\SapFront.App\protocol\StdFileEditing\verb\0" Type="Registry">
+			<RegValue>&amp;Edit</RegValue>
+		</Action>
+		<Action Dst="HKCR\SapGui.Automation" Type="Registry">
+			<RegValue>Sapgui Automation</RegValue>
+		</Action>
+		<Action Dst="HKCR\SapGui.Automation\Clsid" Type="Registry">
+			<RegValue>{136B4B54-D25E-11D3-BD3F-00105AB02CA1}</RegValue>
+		</Action>
+		<Action Dst="HKCR\Sapgui.Application" Type="Registry">
+			<RegValue>Sapgui Application</RegValue>
+		</Action>
+		<Action Dst="HKCR\Sapgui.Application\Clsid" Type="Registry">
+			<RegValue>{83658045-6571-3232-7082-797884697868}</RegValue>
+		</Action>
+		<Action RunAt="Install" Type="Script">
+			<Src><![CDATA[
+If NwEngine.Shell.SetRegValue ("HKCR\.sap\", "REG_SZ", "SAPGui.Shortcut.File" ) Then
+						NwEngine.Context.Log.Write "HKCR\.sap\ has been set to SAPGui.Shortcut.File."
+					Else
+						NwEngine.Context.Log.Write "Failure: HKCR\.sap\ has not been set to SAPGui.Shortcut.File."
+					End If
+			]]></Src>
+		</Action>
+		<Action RunAt="Uninstall" Type="Script">
+			<Src><![CDATA[
+If NwEngine.Shell.DeleteRegValue ("HKCR\.sap\") Then
+						NwEngine.Context.Log.Write "HKCR\.sap\ has been removed."
+					Else
+						NwEngine.Context.Log.Write "Failure: HKCR\.sap\ could not be removed."
+					End If
+			]]></Src>
+		</Action>
+	</Component>
+	<Component BuildTime="0x907D26B05B30D901" Guid="{EDFB7260-642A-49B7-A569-899B24066800}" Min_Compliant_Version="800.2" Name="SAPGUI6432 Scripting Controls" SysSize="7" Update="Always" Version="800.2">
+		<Action Dst="%SAPSetupDir%\Setup" Type="File">
+			<Src Hash="SHA-256:3f82637dd9b6f69b23ad8d3c8bd8bd9983b09c4cd0ab076002e6d077bbf062c5" Timestamp="0x6FD37727452FD901">%SapSrcDir%\Setup\SapGuiResourcesCommon.inc</Src>
+		</Action>
+		<Action Type="Script">
+			<Src><![CDATA[
+Sub includeFile(fSpec)
+					With CreateObject("Scripting.FileSystemObject")
+						executeGlobal .openTextFile(fSpec).readAll()
+					End With
+				End Sub
+				
+				strFile = NwEngine.Variables.ResolveString("%SAPSetupDir%\Setup\SapGuiResourcesCommon.inc")
+				
+				includeFile(strFile)
+				HandleGUIScriptingControlRegKeys
+			]]></Src>
+		</Action>
+	</Component>
+</SapSetup>

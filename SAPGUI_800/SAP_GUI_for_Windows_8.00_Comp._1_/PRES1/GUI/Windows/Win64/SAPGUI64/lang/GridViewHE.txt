@@ -1,0 +1,12 @@
+_SAPPCTXT_HEADER_               002 8000 GRIDVIEW HE 1800 OK 
+GRIDVIEW_MSGBOX_TITLE           080 "GridView"
+GRIDVIEW_MSGBOX_TEXT            128 "לא ניתן היה להתחיל עבודת הדפסה"
+GRIDVIEW_TOOLTIP_DESELECT_ALL   080 "בטל בחירה של הכול"
+GRIDVIEW_TOOLTIP_SELECT_ALL     080 "בחר הכול"
+GRIDVIEW_TOOLTIP_TEXT_COLLAPSE  080 "צמצם בחירה"
+GRIDVIEW_TOOLTIP_TEXT_EXPAND    080 "הרחב בחירה"
+GRIDVIEW_ENABLE_HISTORY         255 "הפוך היסטוריה לזמינה"
+GRIDVIEW_DISABLE_HISTORY        255 "הפוך היסטוריה ללא-זמינה"
+GRIDVIEW_DEFAULT_SETTING        255 "השתמש בהגדרות ברירת מחדל"
+GRIDVIEW_MSGBOX_TITLE2          080 "GridView"
+GRIDVIEW_MSGBOX_ERROR           128 "אינך יכול להעתיק בחירות מרובות"

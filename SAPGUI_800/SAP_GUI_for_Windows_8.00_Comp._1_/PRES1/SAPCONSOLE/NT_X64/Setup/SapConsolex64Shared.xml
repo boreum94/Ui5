@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapConsolex64Wksta.xml">
+	<Product BuildTime="0xB099F6AF4A01D601" CmdLine="Consolex64_Shared" Guid="{DC74F907-C8C0-4fc3-931A-1C718620F5DD}" Name="SAP Console x64 Shared" ProdVersion="2015" Visible="FALSE"/>
+	<Component Arch="X64" BuildTime="0xB099F6AF4A01D601" Guid="{B4208E63-9209-40BE-B72F-162BC56730E0}" Min_Compliant_Version="2000" Name="$SAPConsole x64 ARP" Version="2001">
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\SAPConsolex64" Type="Registry">
+			<RegValue Name="DisplayName">SAP Console 7.30 (64 Bit)</RegValue>
+			<RegValue Name="DisplayIcon">&quot;%SapConsolex64DestDir%\sapConsole.exe&quot;,0</RegValue>
+			<RegValue Name="Publisher">SAP SE</RegValue>
+			<RegValue Name="URLUpdateInfo">http://service.sap.com</RegValue>
+			<RegValue Name="UninstallString">&quot;%SAPSetupDir%\setup\NwSapSetup.exe&quot; /product:&quot;SapConsolex64&quot; /uninstall</RegValue>
+		</Action>
+	</Component>
+	<Component Arch="X64" BuildTime="0xB099F6AF4A01D601" Guid="{4C032825-C60C-49E9-83E4-FF29E337D90B}" Min_Compliant_Version="2000" Name="$SAPConsole x64 Shared Keys" Version="2000">
+		<Action Dst="HKLM\SOFTWARE\SAP\SAP Shared\Console" Type="Registry">
+			<RegValue>SAP Console</RegValue>
+			<RegValue Name="SAPSourceDir">%SAPSrcDir%</RegValue>
+			<RegValue Name="SAPDestDir">%SapConsolex64DestDir%</RegValue>
+		</Action>
+	</Component>
+	<Component BuildTime="0xB099F6AF4A01D601" Guid="{C9D59811-A9C7-44A2-8494-DD430480BBFE}" Name="$SAPConsole MS DotNET DLLs" Version="3001">
+		<Requires Guid="{C293FC4A-741B-4C17-9FF6-90CED945B19D}"/>
+	</Component>
+	<Component Arch="X64" BuildTime="0xB099F6AF4A01D601" Guid="{1B313A73-4288-4D5D-AB98-D081FD67B7A3}" Min_Compliant_Version="2000" Name="$SAPConsole x64 Files" Size="74356" SysSize="2504" Version="3536">
+		<Action Dst="%SapConsolex64DestDir%" Type="File">
+			<Src>%SAPSrcDir%\SapConsolex64\sapcpp47.dll</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\sapcpp47.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\xml71d.dll</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\xml71d.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\xtc21d.dll</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\xtc21d.pdb</Src>
+			<Src Register="False">%SAPSrcDir%\SapConsolex64\guirfc.dll</Src>
+		</Action>
+		<Action Dst="%SapConsolex64DestDir%" Type="File">
+			<Src>%SAPSrcDir%\SapConsolex64\ConnectionGuilib.dll</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\ConnectionGuilib.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\sapcnsl.exe</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\sapcnslexe.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\isapi_sapcnsl.dll</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\isapi_sapcnsl.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\sapcnsl.dll</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\sapcnsl.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\ConsoleDisplayer.dll</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\ConsoleDisplayer.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\WebDisplayer.dll</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\WebDisplayer.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\SymbolDisplayer.dll</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\SymbolDisplayer.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\VoiceXMLDisplayer.dll</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\VoiceXMLDisplayer.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\IntermecDisplayer.dll</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\IntermecDisplayer.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\Trace.dll</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\Trace.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\SAPConsole_Help.pdf</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\Profile.exe</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\Profile.pdb</Src>
+		</Action>
+		<Action Dst="%SapConsolex64DestDir%" Type="File">
+			<Src>%SAPSrcDir%\SapConsolex64\XMLDisplayer.dll</Src>
+			<Src>%SAPSrcDir%\SapConsolex64\XMLDisplayer.pdb</Src>
+		</Action>
+		<Action Dst="%SapConsolex64DestDir%\sounds" Type="File">
+			<Src>%SAPSrcDir%\SapConsolex64\sounds\alert.wav</Src>
+		</Action>
+		<Action Dst="%SapConsolex64DestDir%\images" Type="File">
+			<Src>%SAPSrcDir%\SapConsolex64\images\saplogo.gif</Src>
+		</Action>
+		<Action Dst="%WinSysDir%" Type="File">
+			<Src>%SAPsrcDir%\SapConsolex64\Profile64.cpl</Src>
+		</Action>
+		<Action Dst="HKLM\SOFTWARE\SAP\Ofek\SapConsole" Type="Registry">
+			<RegValue Name="HelpFile">%SapConsolex64DestDir%\SAPConsole_Help.pdf</RegValue>
+		</Action>
+		<Action Dst="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\Extended Properties\System.ControlPanel.Category" Type="Registry">
+			<RegValue Name="%%SystemRoot%%\System32\Profile64.cpl" Type="REG_SZ">1</RegValue>
+		</Action>
+	</Component>
+</SapSetup>

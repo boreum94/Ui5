@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR NO 1100 OK 
+PREVIOUS_YEAR                   255 "Forrige år"
+PREVIOUS_MONTH                  255 "Forrige måned"
+NEXT_YEAR                       255 "Neste år"
+NEXT_MONTH                      255 "Neste måned"
+WEEK_NUMBER                     255 "Ukenummer"
+WEEK_NUM_STR                    255 "UN"
+CALENDAR_BTN                    255 "Åpne/lukk datonavigator"
+DT_PICKER                       255 "Datoutvalg: Endre dag, måned eller år"

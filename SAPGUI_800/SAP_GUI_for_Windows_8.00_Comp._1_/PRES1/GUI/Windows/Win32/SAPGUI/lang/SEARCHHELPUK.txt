@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 SEARCHHELP UK 1504 OK 
+SEARCH_HELP_FIND                080 "Знайти (Ввести)"
+SEARCH_HELP_CANCEL              080 "Скасувати (F12)"
+F4HELP_BUTTON_TOOLTIP           050 "Поле вибору (значення лімітів)"
+SEARCH_HELP_SORTA               050 "(Клацніть, щоб сортувати за зростанням)"
+SEARCH_HELP_SORTD               050 "(Клацніть, щоб сортувати за спаданням)"
+<#001>FEW_MENU_NEWMODE          032 "Створити сеанс"
+<#001>FEW_MENU_STOPMODE         032 "Зупинити транзакцію"

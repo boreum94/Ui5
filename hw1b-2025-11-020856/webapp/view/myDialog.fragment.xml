@@ -1,0 +1,18 @@
+<core:FragmentDefinition 
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <!-- Dialog가 컨트롤러에 load되었을 때 컨트롤러에서 .close 함수를 실행시킬때 
+    Dialog의 id가 필요하다 -->
+    <Dialog
+        id="idDialog"
+        type="Message"
+        >
+        <content>
+            <Text text="만나서 반갑습니다." />
+        </content>
+        <!-- Dialog에서 사용자가 버튼을 누르면 onCloseDialog 함수가 실행된다. -->
+        <beginButton>
+            <Button text="click" press=".onCloseDialog" />
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

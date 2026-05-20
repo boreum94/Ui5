@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 PLUGINFRAMEWORK ZF 8300 OK 
+CP_SERVICE_MENUITEM             030 "ªA°È"
+MENU_ITEM_EXCEL                 030 "Excel"
+MENU_ITEM_SEARCH                030 "·j´M"
+MENU_ITEM_CONTEXTSEARCH         120 "·j´M SAP Help Portal"
+MENU_ITEM_SPELLCHECK            030 "«÷¦rÀË¬d"
+MENU_ITEM_MAIL                  020 "¶l¥ó"
+MENU_ITEM_PRINT                 020 "¦C¦L"
+CP_TREE_PRINT                   060 "¦C¦L¾ðª¬µ²ºc"
+CP_SPELLCHECK_COMPLETE          128 "«÷¦rÀË¬d§¹¦¨"

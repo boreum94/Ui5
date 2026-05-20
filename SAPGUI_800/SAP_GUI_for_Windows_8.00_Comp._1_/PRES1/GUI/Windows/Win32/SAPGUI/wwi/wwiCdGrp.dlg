@@ -1,0 +1,124 @@
+$VERSION(1.0)
+;=========================================================================
+; Layout Part
+;=========================================================================
+$LAYOUT(NotNull)
+
+Begin  Dialog BenutzerDialog 705, 235,	 "001", .evalDlg
+	Text 570, 5, 63, 19, "007", .Text1
+	Text 332, 5, 110, 19, "008", .Text2
+	Text 12, 5, 200, 19, "009", .Text3
+
+	ListBox 12, 24, 200, 175, ListBox1$(), .highlight
+
+	PushButton 222, 84, 100, 21, "025", .Copy
+
+	ListBox 332, 24, 200, 174, , .symbols
+
+  	PushButton 560, 24, 120, 21, "002", .Add
+	PushButton 560, 54, 120, 21, "003", .Del
+	PushButton 560, 84, 118, 21, "026", .Modify
+	GroupBox 560, 117, 120, 64, "004", .grOp
+
+	OptionGroup  .ogOp
+	  OptionButton 570, 135, 80, 16, "005", .opAnd
+	  OptionButton 570, 155, 80, 19, "006", .opOr
+	
+	OKButton 173, 201, 120, 21
+	CancelButton 413, 202, 120, 21
+End Dialog 
+
+;=========================================================================
+; Value Part
+;=========================================================================
+$VALUES
+
+;--- List of values for Multiple handling option group -------------------
+opAnd = *
+opOr = +
+
+;--- set initial value of option group as * ------------------------------
+ogOp=+
+
+
+Del=DELETE:symbols	
+Copy=ADD:highlight,symbols
+Add=DIALOG:wwiInSym,"InputInSym",""
+Modify=DIALOG:wwiInSym,"InputModSym","OutputModSym"
+
+highlight = DBLCLICK:Copy
+symbols   = DBLCLICK:Modify
+
+;=========================================================================
+; Dependance Part
+;=========================================================================
+$DEPENDANCES
+
+;ogOp/ACTIVE=grOp
+Del /ACTIVE=symbols(NOTNULL)
+Copy/ACTIVE=highlight(NOTNULL)
+
+;Text2 /ACTIVE=symbols(NOTNULL)
+
+Copy/DEFBUTTON = highlight
+
+;=========================================================================
+; Evaluation Part
+;=========================================================================
+$EVALUATION(MsgBox)
+
+symbols=NULL:231
+
+
+;=========================================================================
+; Input Part
+;=========================================================================
+;(+:01SYM1,01SYM2)
+$INPUT
+
+Start:(1:GetOper)  
+GetOper:(1:GetColon=ogOp)      ; "+" goes into the option group for and/or
+GetColon:(1:GetList)           ; skip colon
+GetList:(")":CheckSelSymList=symbols(CONCAT:","))  ; scan all to right parenthesis
+                               ; and split it into single list items (2 in this case)
+                               ; scanning for commas as separator
+                               ; fill it into list box for control symbols
+CheckSelSymList:("{":GetSelSymList,"Rest":END) 
+			       ; if not left parenthesis, finish,
+                               ; else take selected symbol list
+GetSelSymList:("}":END=highlight(CONCAT:"|"))   ; scan all to right parenthesis
+                               ; and split it into single list items (4 in this case)
+                               ; scanning for commas as separator
+                               ; fill it into listbox for selected symbols
+
+		
+
+
+;InputInSym will be there in the 'DIALOG' button action
+;input rule that defines how to split the result string of the called 
+;dialog i.e. InsertSymbol dialog and fill it into controls.
+
+$INPUT(InputInSym)
+Start:("Rest":END=symbols(ADD)) ; take everything and add it
+                                ; as new item to the list box
+
+
+
+$INPUT(InputModSym)
+Start:("Rest":END=symbols(MODIFY)) ; take everything and replace
+                                   ; the currently selected item by it
+
+
+
+;=========================================================================
+; Output Part
+;=========================================================================
+$OUTPUT
+
+("13BNG000(%s:%s)/13ENG000",ogOp,symbols(CONCAT:","))
+
+$OUTPUT(OutputModSym)
+("%s",symbols)
+
+$END
+

@@ -1,0 +1,16 @@
+Copyright/Trademark Notice 
+
+ENGLISH
+
+© 2023 SAP SE or an SAP affiliate company. All rights reserved.
+No part of this publication may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company.
+
+SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies.
+Please see http://www.sap.com/corporate-en/legal/copyright/index.epx#trademark for additional trademark information and notices.
+
+GERMAN
+© 2023 SAP SE oder ein SAP-Konzernunternehmen. Alle Rechte vorbehalten.
+Weitergabe und Vervielfältigung dieser Publikation oder von Teilen daraus sind, zu welchem Zweck und in welcher Form auch immer, ohne die ausdrückliche schriftliche Genehmigung durch die SAP SE nicht gestattet.
+
+SAP und andere in diesem Dokument erwähnte Produkte und Dienstleistungen von SAP sowie die dazugehörigen Logos sind Marken oder eingetragene Marken der SAP SE in Deutschland und anderen Ländern. Alle anderen Namen von Produkten und Dienstleistungen sind Marken der jeweiligen Firmen. 
+Zusätzliche Informationen zur Marke und Vermerke finden Sie auf der Seite http://www.sap.com/corporate-en/about/legal/copyright/index.html#trademark. 

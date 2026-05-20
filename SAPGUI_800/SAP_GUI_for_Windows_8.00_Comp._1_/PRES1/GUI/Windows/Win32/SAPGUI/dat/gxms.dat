@@ -1,0 +1,138 @@
+#@(#)gxms.dat  	20.4	SAP	94/09/20
+#
+#
+# SAP Transaction Menu Data File 1
+#
+#
+                                  
+                                  
+/FRAME
+:TITLE=SAP Benutzermenü
+:POSITION=10,10
+:SIZE=100,200
+:BUTTON=Button,Menu pflegen
+:USERNAME=D018394
+:SAPSYS=R/3
+:SYSID=BIN
+:PALTIT=Arbeitsbereiche
+:ITMTIT=Anwendungen
+:VIEW=LIST
+#:VIEW=GRAPH
+
+/PALETTES
+
+:NEWPALETTE=SAP Grafik
+:NEWITEM=3!/nSE31,SAP Praesentationsgrafik
+:NEWITEM=3!/nSE31,SAP Hierarchiegrafik
+:NEWITEM=3!/nSE31,SAP Statistik-Grafik
+:NEWITEM=3!/nSE31,SAP Portfolio-Grafik
+:NEWITEM=3!/nSE31,SAP Gantt-Diagramm
+:NEWITEM=3!/nSE31,SAP Bitmap-Anzeige
+:NEWITEM=3!/nSE31,SAP HPGL-Anzeige
+:NEWITEM=3!/nSE31,SAP Button Matrix
+:NEWITEM=3!/nSE31,SAP List Prozessor
+:NEWITEM=3!/nSE31,SAP Frame
+:NEWITEM=SE31,SAP Netz-Editor
+
+:NEWPALETTE=Benutzerstamm
+:NEWITEM=3!/nSM01,Pflegen Benutzer
+:NEWITEM=3!/nSM02,Hizufuegen Benutzer
+:NEWITEM=3!/nSM03,Aendern Benutzer
+:NEWITEM=3!/nSM04,Loeschen Benutzer
+
+:NEWPALETTE=Materialwirtschaft
+:NEWITEM=3!/nTB01,Buchen Beleg
+
+:NEWPALETTE=Systemfunktionen
+:NEWITEM=3!/nTM08, Anzeigen Tabelle
+:NEWITEM=3!/nTM31,ABAP Programmentwicklung
+:NEWITEM=3!/nTM61, Data Dictionary
+:NEWITEM=3!/nTM51,Screen Painter
+
+:NEWPALETTE=Management-Tools
+:NEWITEM=3!/nXX01,Kostenstellenbericht
+:NEWITEM=3!/nXX02,BA Studenten Erfolgskontrolle
+
+:NEWPALETTE=Kostenrechnung
+:NEWITEM=3!/nTB01,Buchen Beleg
+
+:NEWPALETTE=Anlagen-Buchhaltung
+:NEWITEM=3!n/AB01,Anlagenbewegung erfassen                     
+:NEWITEM=3!n/AB02,Ändern Einzelposten                          
+:NEWITEM=3!n/AB03,Anzeigen Anlagen-Einzelposten                
+:NEWITEM=3!n/AB08,Storno ANEinzelposten                        
+:NEWITEM=3!n/ABAD,Anlagenabgang d. Verkauf m. Debitor          
+:NEWITEM=3!n/ABAO,Anlagenabgang d. Verkauf o. Debitor          
+:NEWITEM=3!n/ABAV,Anlagenabgang durch Verschrottung            
+:NEWITEM=3!n/ABF1,Beleg buchen                                 
+:NEWITEM=3!n/ABLG,Ablageverwaltung                             
+:NEWITEM=3!n/ABSO,Sonstige Bewegung                            
+:NEWITEM=3!n/ABSV,Sachkontenbuchungen erfassen                 
+:NEWITEM=3!n/ABUM,Umbuchung                                    
+:NEWITEM=3!n/ABZE,Zugang durch Eigenfertigung                  
+:NEWITEM=3!n/ABZK,Anlagenzugang d. Kauf m. Kreditor            
+:NEWITEM=3!n/ABZO,Anlagenzugang d. Kauf o. Kreditor            
+:NEWITEM=3!n/ABZP,Zugang von verbundenem Unternehmen           
+:NEWITEM=3!n/ABZV,Anlagenzugang a. Verrechnungskonto           
+:NEWITEM=3!n/AD02,Tabellen (Test)                              
+:NEWITEM=3!n/AD08,Fremdschlüssel (test)                        
+:NEWITEM=3!n/AD20,Matchcode-Objekte (Test)                     
+:NEWITEM=3!n/AD22,Sperrobjekt (Test)                           
+:NEWITEM=3!n/AD23,Matchcode-Ids (Test)                         
+:NEWITEM=3!n/AD25,SAP-Views (Test)                             
+:NEWITEM=3!n/AD33,Fremdschlüssel (test)                        
+:NEWITEM=3!n/ADOK,AM: Organisationshandbuch                    
+:NEWITEM=3!n/AFAB,Abschreibung buchen                          
+:NEWITEM=3!n/AFAF,Fehlerhafte Anlagen                          
+:NEWITEM=3!n/AFAR,Abschreibung neu rechnen                     
+:NEWITEM=3!n/AFBD,AfA-BDC-Mappe wiederherstellen               
+:NEWITEM=3!n/AFBN,Neuen Bewertungsbereich aufnehmen            
+                   
+
+:NEWPALETTE=Projekte
+:NEWITEM=3!/nCJ44,Zuschläge Projekt Ist                 
+:NEWITEM=3!/nCJ45,Zuschläge Projekt Ist Simulation      
+:NEWITEM=3!/nCJ46,Zuschläge Projekt Plan                
+:NEWITEM=3!/nCJ47,Zuschläge Projekt Plan Simulation     
+:NEWITEM=3!/nCJ50,Strukturbericht: Kosten               
+:NEWITEM=3!/nCJ51,Mittelübersicht: Projekt              
+:NEWITEM=3!/nCJ52,Strukturübersicht: Erlöse             
+:NEWITEM=3!/nCJ53,Erlösübersicht: Projekt               
+:NEWITEM=3!/nCJ54,Strukturbericht: Budget               
+:NEWITEM=3!/nCJ55,Budgetübersicht: Projekt              
+:NEWITEM=3!/nCJ61,Gesamtliste Berichte                  
+:NEWITEM=3!/nCJ62,Ausgewählte Berichte ausführen        
+:NEWITEM=3!/nCJ63,Berichte auswählen                    
+:NEWITEM=3!/nCJ71,Erzeugen Projektliste und Set         
+:NEWITEM=3!/nCJ73,Versionspflege Projekt-EP Ist         
+:NEWITEM=3!/nCJ74,Anzeige Projekt-Einzelposten Ist      
+:NEWITEM=3!/nCJ75,Versionen Projekt-EP Obligo           
+:NEWITEM=3!/nCJ76,Anzeige Projekt-Einzelposten Obligo   
+:NEWITEM=3!/nCJ7A,Projekt-Einzelposten Plan Edition     
+:NEWITEM=3!/nCJ7B,Projekt-Einzelposten Plan Selektion   
+:NEWITEM=3!/nCJ7C,Projekt-Einzelposten Plan Rahmen      
+:NEWITEM=3!/nCJ7D,Projekt-Einzelp. Plan Edition Batch   
+:NEWITEM=3!/nCJ7E,Projekteinzelp. Plan Selektion Batch  
+:NEWITEM=3!/nCJ7F,Projekt-Einzelp. Plan Rahmen Batch    
+:NEWITEM=3!/nCJ7G,PSP-Einzelposten Plan Edition         
+:NEWITEM=3!/nCJ7H,PSP-Einzelposten Plan Selektion       
+:NEWITEM=3!/nCJ7I,PSP-Einzelposten Plan Rahmen          
+:NEWITEM=3!/nCJ7J,PSP-Einzelposten Plan Edition Batch   
+
+:NEWPALETTE=Vertriebswesen
+:NEWITEM=3!/nTB01,Buchen Beleg
+
+:NEWPALETTE=Ergebnisrechnung
+:NEWITEM=3!/nTB01,Buchen Beleg
+
+:NEWPALETTE=SAP Freizeit
+:NEWITEM=3!/nTE01,SAP Tennis Turnier
+:NEWITEM=3!/nTE02,Tennis Platzreservierung
+:NEWITEM=3!/nTE03,Tennis Rang-Uebersicht
+:NEWITEM=3!/nFB01,SAP Fussball Turnier
+
+                   
+                   
+                                  
+                                  
+                                  

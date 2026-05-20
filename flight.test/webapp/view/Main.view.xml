@@ -1,0 +1,33 @@
+<mvc:View controllerName="code.d22.flight.test.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+        <Table
+            items="{/CarrierSet}" 
+            mode="SingleSelectMaster"
+            selectionChange=".onSelectionChange"
+            >
+                <columns>
+                    <Column ><Text text="항공사ID" /></Column>
+                    <Column ><Text text="항공사명" /></Column>
+                    <Column ><Text text="통화코드" /></Column>
+                    <Column ><Text text="홈페이지" /></Column>
+                    <Column ><Text text="항공편수" /></Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <!-- 키필드만 특별대우 -->
+                        <ObjectIdentifier title="{CarrierId}" />
+                        <Text text="{CarrierName}" />
+                        <Text text="{CurrencyCode}" />
+                        <Text text="{WebUrl}" />
+                        <Text text="{path: 'toConnections',
+                                    formatter: '.formatter.getFlightCount'
+                        }" />
+                    </ColumnListItem>
+                </items>
+        </Table>
+
+    </Page>
+</mvc:View>

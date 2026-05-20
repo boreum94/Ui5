@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 FEWUIMSG IT 1100 OK 
+<#001>UIMSG_YNA_DLG_REMEMBER    100 "Ricordare decisione"
+<#001>UIMSG_YNA_DLG_YES         100 "Sì"
+<#001>UIMSG_YNA_DLG_NO          100 "No"
+LGN_POP_DTF_TITLE               200 "Ripulitura del SAP Logon"
+LGN_POP_DTF_MESSAGE             200 "Ripulire la directory documenti %s?"

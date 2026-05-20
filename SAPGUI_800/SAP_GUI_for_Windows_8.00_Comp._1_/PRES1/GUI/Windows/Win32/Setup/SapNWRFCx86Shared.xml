@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapNWRFCx86Wksta.xml">
+	<Component BuildTime="0x90437C837B30D901" Guid="{D0D4EF18-972D-46C4-8288-676B6B6F9C26}" Min_Compliant_Version="780.1" Name="Sap NW RFC DLLs 32 Bit" SysSize="6865" Update="OnSameVersion" Version="780.387">
+		<Requires Guid="{DB5EECE1-FFE3-4223-A597-08CE447B356D}"/>
+		<Requires Guid="{CE1BBBC8-40DF-4340-81F4-9EAEA4F15CFA}"/>
+		<Action Dst="%WinSysDir%" Type="File">
+			<Src FileVersion="7530.1116.0.0" Hash="SHA-256:22e1adf1c56bd2b2ea4510c49b03f58bba95929da4c38ae271e8a4f3f3ab1eff" Register="FALSE" Timestamp="0x16AE36307B30D901">%SAPSrcDir%\system\sapnwrfc.dll</Src>
+		</Action>
+	</Component>
+</SapSetup>

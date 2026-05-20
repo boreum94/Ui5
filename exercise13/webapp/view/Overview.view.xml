@@ -1,0 +1,45 @@
+<mvc:View controllerName="code.d22.exercise13.controller.Overview"          
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Panel headerText="New Customer" expandable="true" expanded="true">
+                <content>
+                    <f:SimpleForm layout="ColumnLayout" eidtable="true">
+                        <f:toolbar>
+                            <Toolbar>
+                                <ToolbarSpacer/>
+                                <Button text="create" press=".onOpenDialog"/>
+                            </Toolbar>
+                        </f:toolbar>
+
+                        <f:content>
+                            <core:Title text="Customer Information"/>
+                            <Label text="이름"/>
+                            <Input value="{customer>/Name}"/>
+
+                            <Label text="나이" />
+                            <Input value="{customer>/Age}"/>
+
+                            <Label text="주소"/>
+                            <Input value="{customer>/Address}"/>
+
+                            <Label text="우편번호"/>
+                            <Input value="{customer>/Zipcode}"/>    
+
+                            <core:Title text="Contact Information"/>
+                            <Label text="연락처"/>
+                            <Input value="{customer>/Phone}"/>
+
+                            <Label text="펙스"/>
+                            <Input value="{customer>/Fax}"/>
+                        </f:content>
+                    </f:SimpleForm>
+                </content>
+            </Panel>
+        </content>
+     </Page>
+</mvc:View>

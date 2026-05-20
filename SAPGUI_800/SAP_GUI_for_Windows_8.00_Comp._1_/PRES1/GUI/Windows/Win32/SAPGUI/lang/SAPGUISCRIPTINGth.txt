@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 SAPGUISCRIPTING TH 8600 OK 
+SCRIPTING_SCRIPTISOPENING       150 "สคริปต์กำลังเปิดการเชื่อมต่อไปยังระบบ: %s"
+SCRIPTING_SCRIPTNOTINST         150 "ไม่ได้ติดตั้งการสนับสนุนการเขียนสคริปต์"
+SCRIPTING_SCRIPTNOTENABLED      150 "การสนับสนุนการเขียนสคริปต์ถูกปิดใช้งานโดยผู้ใช้"
+<#007>SCRIPTING_OK_BTN          016 "ตกลง"
+<#007>SCRIPTING_CANCEL_BTN      016 "ยกเลิก"
+SCRIPTING_DO_NOT_SHOW_AGAIN     150 "ไม่แสดงป็อปอัพนี้เมื่อเปิดการเชื่อมต่อสคริปต์"
+<#007>SCRIPTING_ALLOW_BTN       016 "อนุญาต"
+<#007>SCRIPTING_DENY_BTN        016 "ปฏิเสธ"
+<#007>SCRIPTING_HELP_BTN        016 "วิธีใช้"

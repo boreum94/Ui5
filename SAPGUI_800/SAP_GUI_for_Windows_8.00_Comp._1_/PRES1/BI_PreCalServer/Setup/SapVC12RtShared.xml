@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapVC12RtWksta.xml">
+	<Component BuildTime="0xC0CF12A2FB2AD901" Guid="{BC01AE68-B71A-43D7-99C6-0A93AFF0C62B}" Name="VC12RT" Order="PreInstall" Size="6357" Version="12.4">
+		<Requires Guid="{34DF7CBB-1753-4582-815C-B21A590F06B5}"/>
+		<Action Condition="1=0" Dst="%TEMP%" Type="File">
+			<Src FileVersion="12.0.40664.0" Hash="SHA-256:53b605d1100ab0a88b867447bbf9274b5938125024ba01f5105a9e178a3dcdbd" Timestamp="0x006A1F838774D701">%SapSrcDir%\System\VC12\vc12redist_x86.exe</Src>
+		</Action>
+		<Action RunAt="Install,Update" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+
+					Sub includeFile(fSpec)
+						Dim fso : Set fso = CreateObject("Scripting.FileSystemObject")
+						Dim textObj : Set textObj = fso.OpenTextFile(fSpec)
+						executeGlobal textObj.readAll()
+					End Sub
+				
+					Dim strFile, runtimeVersion, runtimeBitness, params
+					runtimeVersion = "12"
+					runtimeBitness = "x86"
+					params = "/install /quiet /norestart"
+					strFile = NwEngine.Variables.ResolveString("%SAPSetupDir%\Setup\VCRuntime.inc")
+					
+					includeFile(strFile)
+					ExecuteVCInstall runtimeVersion, runtimeBitness, params
+			]]></Src>
+		</Action>
+	</Component>
+</SapSetup>

@@ -1,0 +1,79 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SapSetup Context='Locale' Version='31.2' ConnectedId='{a8f40c86-7154-4464-86a0-9a496334f1d5}'>
+    <String Name='SapAXLProductName'>
+        <En>SAP Interactive Excel %SapAXLVersion%</En>
+    </String>
+    <String Name='SapAXLSelectDestDir'>
+        <En>Please select the destination folder for SAP Interactive Excel %SapAXLVersion%.</En>
+    </String>
+    <String Name='SapAXLExcelx86NotFound'>
+        <En>
+			<![CDATA[
+				<a style="COLOR:red">● Microsoft Excel could not be found. You need one of the following versions:</a><br/>
+				<a style="COLOR:white">● </a><a style="COLOR:red">■ Microsoft Excel 2010 (32 bit)</a><br/>
+				<a style="COLOR:white">● </a><a style="COLOR:red">■ Microsoft Excel 2013 (32 bit)</a><br/>
+				<a style="COLOR:white">● </a><a style="COLOR:red">■ Microsoft Excel 2016 (32 bit)</a><br/>
+			]]>
+		</En>
+    </String>
+    <String Name='SapAXLProductDescription'>
+        <En>SAP Interactive Excel %SapAXLVersion%</En>
+    </String>
+    <String Name='SapAXLExcelx64NotFound'>
+        <En>
+			<![CDATA[
+				<a style="COLOR:red">● Microsoft Excel could not be found. You need one of the following versions:</a><br/>
+				<a style="COLOR:white">● </a><a style="COLOR:red">■ Microsoft Excel 2010 (32 bit or 64 bit)</a><br/>
+				<a style="COLOR:white">● </a><a style="COLOR:red">■ Microsoft Excel 2013 (32 bit or 64 bit)</a><br/>
+				<a style="COLOR:white">● </a><a style="COLOR:red">■ Microsoft Excel 2016 (32 bit or 64 bit)</a><br/>
+			]]>
+		</En>
+    </String>
+    <String Name='SapAXLDotNet4x86NotFound'>
+        <En>
+			<![CDATA[
+				<a style="COLOR:red">● Microsoft .NET Framework 4.0 (32 bit) could not be found. This is needed in 32 bit also if used on a 64 bit enabled Windows.</a><br/>
+			]]>
+		</En>
+    </String>
+    <String Name='SapAXLDotNet4x64NotFound'>
+        <En>
+			<![CDATA[
+				<a style="COLOR:red">● Microsoft .NET Framework 4.0 (64 bit) could not be found. This is needed on 64 bit Windows with a 64 bit Microsoft Excel.</a><br/>
+			]]>
+		</En>
+    </String>
+    <String Name='SapAXLDotNet4NotFound'>
+        <En>
+			<![CDATA[
+				<a style="COLOR:white">● </a><a style="COLOR:red">■ Please download from here: </a><a style="text-decoration:underline" target="blank" href="http://www.microsoft.com/en-us/download/details.aspx?id=17718">Microsoft .NET Framework 4 download 32/64 bit</a><br/>
+			]]>
+		</En>
+    </String>
+    <String Name='SapAXLNco30x86NotFound'>
+        <En>
+			<![CDATA[
+				<a style="COLOR:red">● SAP Connector for Microsoft .NET 3.0 (NCo 3.0) (x86) could not be found. </a><br/>
+				<a style="COLOR:white">● </a><a style="COLOR:red">■ NCo 3.0 is available for download on the </a><a style="text-decoration:underline" target="blank" href="http://service.sap.com/connectors">SAP .NET Connector homepage</a><br/>
+				<a style="COLOR:white">● </a>■ You can find details about the support strategy of the current versions in note <a style="text-decoration:underline" target="blank" href="https://service.sap.com/sap/support/notes/856863">856863</a><br/>
+			]]>
+		</En>
+    </String>
+    <String Name='SapAXLNco30x64NotFound'>
+        <En>
+			<![CDATA[
+				<a style="COLOR:red">● SAP Connector for Microsoft .NET 3.0 (NCo 3.0) (x64) could not be found. </a><br/>
+				<a style="COLOR:white">● </a><a style="COLOR:red">■ NCo 3.0 is available for download on the </a><a style="text-decoration:underline" target="blank" href="http://service.sap.com/connectors">SAP .NET Connector homepage</a><br/>
+				<a style="COLOR:white">● </a>■ You can find details about the support strategy of the current versions in note <a style="text-decoration:underline" target="blank" href="https://service.sap.com/sap/support/notes/856863">856863</a><br/>
+			]]>
+		</En>
+    </String>
+    <String Name='SapAXLMSVSTO30NotInstalled'>
+        <En>
+			<![CDATA[
+				<a style="COLOR:red">● Microsoft Visual Studio 2010 Tools for Office Runtime 4.0 (VSTO) could not be found.</a><br/>
+				<a style="COLOR:white">● </a><a style="COLOR:red">■ Please download from here: </a><a style="text-decoration:underline" target="blank" href="http://www.microsoft.com/en-us/search/result.aspx?q=visual%%20studio%%202010%%20tools%%20for%%20office%%20runtime&form=DLC">VSTO 4.0 Download</a><br/>
+			]]>
+		</En>
+    </String>
+</SapSetup>

@@ -1,0 +1,12 @@
+_SAPPCTXT_HEADER_               002 8000 GRIDVIEW NL 1100 OK 
+GRIDVIEW_MSGBOX_TITLE           080 "GridView"
+GRIDVIEW_MSGBOX_TEXT            128 "Starten afdrukopdracht niet mogelijk"
+GRIDVIEW_TOOLTIP_DESELECT_ALL   080 "Alles deselecteren"
+GRIDVIEW_TOOLTIP_SELECT_ALL     080 "Alles selecteren"
+GRIDVIEW_TOOLTIP_TEXT_COLLAPSE  080 "Selectie verbergen"
+GRIDVIEW_TOOLTIP_TEXT_EXPAND    080 "Selectie weergeven"
+GRIDVIEW_ENABLE_HISTORY         255 "Historie activeren"
+GRIDVIEW_DISABLE_HISTORY        255 "Historie deactiveren"
+GRIDVIEW_DEFAULT_SETTING        255 "Standaardinstellingen gebruiken"
+GRIDVIEW_MSGBOX_TITLE2          080 "GridView"
+GRIDVIEW_MSGBOX_ERROR           128 "Kopiëren meervoudige selecties niet mogelijk"

@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 PLUGINFRAMEWORK TR 1614 OK 
+CP_SERVICE_MENUITEM             030 "Servisler"
+MENU_ITEM_EXCEL                 030 "Excel"
+MENU_ITEM_SEARCH                030 "Ara"
+MENU_ITEM_CONTEXTSEARCH         120 "SAP Help Portal'a gözat"
+MENU_ITEM_SPELLCHECK            030 "Yazým kontrolü"
+MENU_ITEM_MAIL                  020 "Posta"
+MENU_ITEM_PRINT                 020 "Yazdýr"
+CP_TREE_PRINT                   060 "Aðacý yazdýr"
+CP_SPELLCHECK_COMPLETE          128 "Yazým kontrolü tamamlandý"

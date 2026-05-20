@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 PLUGINFRAMEWORK EN 1100 OK 
+CP_SERVICE_MENUITEM             030 "Services"
+MENU_ITEM_EXCEL                 030 "Excel"
+MENU_ITEM_SEARCH                030 "Search"
+MENU_ITEM_CONTEXTSEARCH         120 "Search SAP Help Portal"
+MENU_ITEM_SPELLCHECK            030 "SpellCheck"
+MENU_ITEM_MAIL                  020 "Mail"
+MENU_ITEM_PRINT                 020 "Print"
+CP_TREE_PRINT                   060 "Print Tree"
+CP_SPELLCHECK_COMPLETE          128 "Spell-check complete"

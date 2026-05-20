@@ -1,0 +1,12 @@
+_SAPPCTXT_HEADER_               002 8000 GRIDVIEW BG 1504 OK 
+GRIDVIEW_MSGBOX_TITLE           080 "GridView"
+GRIDVIEW_MSGBOX_TEXT            128 "Не може да стартира задача печат"
+GRIDVIEW_TOOLTIP_DESELECT_ALL   080 "Отмяна на избор за всички"
+GRIDVIEW_TOOLTIP_SELECT_ALL     080 "Избор на всички"
+GRIDVIEW_TOOLTIP_TEXT_COLLAPSE  080 "Скриване на избор"
+GRIDVIEW_TOOLTIP_TEXT_EXPAND    080 "Разширяване на избор"
+GRIDVIEW_ENABLE_HISTORY         255 "Активиране на история"
+GRIDVIEW_DISABLE_HISTORY        255 "Дезактивиране на история"
+GRIDVIEW_DEFAULT_SETTING        255 "Използване настройки по подразбиране"
+GRIDVIEW_MSGBOX_TITLE2          080 "GridView"
+GRIDVIEW_MSGBOX_ERROR           128 "Не можете да копирате множество критерии на избор"

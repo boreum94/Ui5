@@ -1,0 +1,18 @@
+#@(#)gxbi.dat  	20.2	SAP	94/01/05
+/$LIBS
+:CNTRYLIB
+
+/$BITMAP
+#:JP
+#:GB
+:US
+#:FR
+#:DE
+#:IT
+#:flgfran.tif
+#:flgitaly.tif
+#:flgswitz.tif
+#:flgusa.tif
+#:flggerm.tif
+#:flgjapan.tif
+#:flguk.tif

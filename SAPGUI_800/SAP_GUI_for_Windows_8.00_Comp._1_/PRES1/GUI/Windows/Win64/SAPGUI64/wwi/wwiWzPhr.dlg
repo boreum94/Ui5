@@ -1,0 +1,87 @@
+$VERSION(1.0)
+;=========================================================================
+; Layout Part
+;=========================================================================
+$LAYOUT(WizPhr)
+  Begin  Dialog BenutzerDialog 610, 190, "001", .evalDlg
+
+	GroupBox 12, 12, 585, 140, "004", .grpHead
+	Text 25, 32, 29, 16, "002", .tFilter
+	TextBox 92, 31, 385, 18, .txtFilter
+	TextBox 600, 31, 385, 18, .txtCat
+	TextBox 600, 51, 385, 18, .txtPhrGrp
+	TextBox 600, 71, 385, 18, .txtPhrNam
+	ListBox 25, 60, 560, 78, ListBox2$(), .lstPhSrchResult
+	PushButton 493, 30, 88, 21, "006", .pbPhSrch
+
+	Text 25, 120, 29, 16, "005", .tHeadStyle
+	DropListBox 140, 120, 125, 75, DropListBox1$(), .drpHeadStyle
+
+	OKButton 177, 160, 88, 21
+	CancelButton 318, 160, 88, 21
+
+  End Dialog 
+;=========================================================================
+; Value Part
+;=========================================================================
+$VALUES
+
+txtCat    = HIDDEN
+txtPhrGrp = HIDDEN
+txtPhrNam = HIDDEN
+
+drpHeadStyle=FILLEDBY:"wwi","wwiListFromIniStart","wwiListFromIniNext","StyleHeadKey"
+
+lstPhSrchResult = FILLEDBY : "wwiehs","wwiPhraseStart","wwiPhraseNext","RoutineOutputPart"
+pbPhSrch = FILL : lstPhSrchResult
+
+txtCat=FILLEDBY:"wwi","wwiGetTextFromIniFile",,"GetCatFromIni"
+txtPhrNam=FILLEDBY:"wwi","wwiGetTextFromIniFile",,"GetNamFromIni"
+txtPhrGrp=FILLEDBY:"wwi","wwiGetTextFromIniFile",,"GetGrpFromIni"
+
+lstPhSrchResult = DBLCLICK:OK
+
+;=========================================================================
+; Dependance Part
+;=========================================================================
+$DEPENDANCES
+
+pbPhSrch/DEFBUTTON = txtFilter
+
+;=========================================================================
+; Evaluation Part
+;=========================================================================
+$EVALUATION(MsgBox)
+lstPhSrchResult=NULL:232
+
+;=========================================================================
+; Input Part
+;=========================================================================
+$INPUT
+
+Start:("#":Start,"Rest":END=txtFilter,txtCat(FILL),txtPhrNam(FILL),txtPhrGrp(FILL),drpHeadStyle(FILL),lstPhSrchResult(FILL))
+
+;=========================================================================
+; Output Part
+;=========================================================================
+$OUTPUT
+("PAR/STYLE = %s /TEXT = 03%s(%s-%s)",drpHeadStyle,txtPhrNam,txtCat,lstPhSrchResult)
+
+$OUTPUT(RoutineOutputPart)
+("%s/%s/%s",txtCat,txtPhrGrp,txtFilter)
+
+$OUTPUT(GetCatFromIni)
+("Template/Catalog")
+
+$OUTPUT(GetNamFromIni)
+("Template/PhraseName")
+
+$OUTPUT(GetGrpFromIni)
+("Template/PhraseGrp")
+
+$OUTPUT(StyleHeadKey)
+("Template/StyleHeading")
+
+$END
+
+

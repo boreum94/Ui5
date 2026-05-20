@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Variables" Version="18" ConnectedId="{2BF6D3E0-0CBA-4414-AB63-3C55770AB07C}">
+	<Variable Name="JawsScriptDir" Persistent="true" DisplayInSapAdmin="false">
+		<Value>UNDEFINED</Value>
+    </Variable>
+	<Variable Name="JawsVersion" Persistent="true" DisplayInSapAdmin="false">
+		<Value>0</Value>
+	</Variable>
+	<Variable Name="JawsLangEnuExist" Persistent="true" DisplayInSapAdmin="false">
+		<Value>FALSE</Value>
+	</Variable>
+	<Variable Name="JawsLangDeuExist" Persistent="true" DisplayInSapAdmin="false">
+		<Value>FALSE</Value>
+	</Variable>
+	<Variable Name="JawsLangFraExist" Persistent="true" DisplayInSapAdmin="false">
+		<Value>FALSE</Value>
+	</Variable>
+	<Variable Name="JawsLangFrcExist" Persistent="true" DisplayInSapAdmin="false">
+		<Value>FALSE</Value>
+	</Variable>
+	<Variable Name="JawsLangItaExist" Persistent="true" DisplayInSapAdmin="false">
+		<Value>FALSE</Value>
+	</Variable>
+	<Variable Name="JawsDestDir" Persistent="true" DisplayInSapAdmin="false">
+		<Value>UNDEFINED</Value>
+	</Variable>
+	<Variable Name="JawsEvaluateDestDir" Persistent="false" DisplayInSapAdmin="false">
+		<Value>UNDEFINED</Value>
+		<Value Script="TRUE">
+			<![CDATA[
+				Option Explicit
+				
+				Dim versionArray(25)
+				Dim szJawsDestDir
+				Dim szJawsScriptDir
+				Dim szJawsRegKey
+				Dim arrayItem
+				Dim commonAppData
+				Dim szJawsVersion
+								
+				versionArray( 0) = Array("5.0",  "32",   "Target")
+				versionArray( 1) = Array("5.00", "32",   "Target")
+				versionArray( 2) = Array("5.1",  "32",   "Target")
+				versionArray( 3) = Array("5.10", "32",   "Target")
+				versionArray( 4) = Array("6.0",  "32",   "Common")
+				versionArray( 5) = Array("6.10", "32",   "Common")
+				versionArray( 6) = Array("6.20", "32",   "Common")
+				versionArray( 7) = Array("7.0",  "32",   "Common")
+				versionArray( 8) = Array("7.10", "32",   "Common")
+				versionArray( 9) = Array("8.0",  "32",   "Common")
+				versionArray(10) = Array("9.0",  "32",   "Common")
+				versionArray(11) = Array("10.0", "Both", "Common")
+				versionArray(12) = Array("11.0", "Both", "Common")
+				versionArray(13) = Array("12.0", "Both", "Common")
+				versionArray(14) = Array("13.0", "Both", "Common")
+				versionArray(15) = Array("14.0", "Both", "Common")
+				versionArray(16) = Array("15.0", "Both", "Common")
+				versionArray(17) = Array("16.0", "Both", "Common")
+				versionArray(18) = Array("17.0", "Both", "Common")
+				versionArray(19) = Array("18.0", "Both", "Common")
+				versionArray(20) = Array("2018", "Both", "Common")
+				versionArray(21) = Array("2019", "Both", "Common")
+				versionArray(22) = Array("2020", "Both", "Common")
+				versionArray(23) = Array("2021", "Both", "Common")
+				versionArray(24) = Array("2022", "Both", "Common")
+				versionArray(25) = Array("2023", "Both", "Common")
+				
+				szJawsDestDir = ""
+				szJawsRegKey = "HKLM\SOFTWARE\Freedom Scientific\JAWS\"
+				szJawsScriptDir = ""
+				commonAppData = NwEngine.Shell.GetRegValue("HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\Common AppData")
+				szJawsVersion = 0
+				
+				For Each arrayItem in versionArray
+					If arrayItem(1) = "32" or arrayItem(1) = "Both" Then
+						NwEngine.Context.Log.Write "SRX Script: Checking for Freedom Scientific JAWS " & arrayItem(0) & " in 32 Bit applications."
+						If NwEngine.Shell.RegKeyExist(szJawsRegKey & arrayItem(0)) Then
+							szJawsDestDir = NwEngine.Shell.GetRegValue(szJawsRegKey & arrayItem(0) & "\Target")
+							If szJawsDestDir <> "" Then
+								NwEngine.Context.Log.Write "SRX Script: Freedom Scientific JAWS " & arrayItem(0) & " (32 Bit) is installed in: " & szJawsDestDir
+								If InStr(arrayItem(0), ".") > 1 Then
+									szJawsVersion = Left(arrayItem(0), InStr(arrayItem(0), ".") - 1)
+								Else
+									szJawsVersion = arrayItem(0)
+								End If
+								If arrayItem(2) = "Target" Then
+									szJawsScriptDir = szJawsDestDir
+								Else
+									szJawsScriptDir = commonAppData & "\Freedom Scientific\JAWS\" & arrayItem(0)
+								End If
+								NwEngine.Context.Log.Write "SRX Script: Freedom Scientific JAWS " & arrayItem(0) & " (32 Bit) script folder: " & szJawsScriptDir
+							End If
+						End If
+					End If
+					If "%Wow64Mode%" = "TRUE" Or "%Wow64Mode%" = "true" Then
+						NwEngine.Shell.Use64BitHive = vbTrue
+						If arrayItem(1) = "Both" Or arrayItem(1) = "64" Then
+							NwEngine.Context.Log.Write "SRX Script: Checking for Freedom Scientific JAWS " & arrayItem(0) & " in 64 Bit applications."
+							If NwEngine.Shell.RegKeyExist(szJawsRegKey & arrayItem(0)) Then
+								szJawsDestDir = NwEngine.Shell.GetRegValue(szJawsRegKey & arrayItem(0) & "\Target")
+								If szJawsDestDir <> "" Then
+									NwEngine.Context.Log.Write "SRX Script: Freedom Scientific JAWS " & arrayItem(0) & " (64 Bit) is installed in: " & szJawsDestDir
+									szJawsScriptDir = commonAppData & "\Freedom Scientific\JAWS\" & arrayItem(0)
+									NwEngine.Context.Log.Write "SRX Script: Freedom Scientific JAWS " & arrayItem(0) & " (64 Bit) script folder: " & szJawsScriptDir
+									If InStr(arrayItem(0), ".") > 1 Then
+										szJawsVersion = Left(arrayItem(0), InStr(arrayItem(0), ".") - 1)
+									Else
+										szJawsVersion = arrayItem(0)
+									End If
+								End If
+							End If
+						End If
+						NwEngine.Shell.Use64BitHive = vbFalse
+					End If
+				Next
+ 
+				If Not szJawsDestDir = "" Then
+					'SCompileExeDir-Folder must contain "scompile.exe"
+					Dim szSCompileExe
+					szSCompileExe = szJawsDestDir & "\scompile.exe"
+					NwEngine.Context.Log.Write "SRX Script: Searching for " & Chr(34) & szSCompileExe & Chr(34) & " ..."
+					If Not NwEngine.Shell.FileExist( szSCompileExe ) Then
+						NwEngine.Context.Log.Write "SRX Script: scompile.exe could not be found in folder " & szJawsDestDir & "!"
+						szJawsDestDir = ""
+						szJawsScriptDir = ""
+					Else
+						NwEngine.Context.Log.Write "SRX Script: Found scompile.exe in " & szJawsDestDir & "."
+						NwEngine.Variables.AppendDefaultValue "JawsDestDir", szJawsDestDir
+						NwEngine.Variables.AppendDefaultValue "JawsScriptDir", szJawsScriptDir
+						NwEngine.Variables.AppendDefaultValue "JawsVersion", szJawsVersion
+					End If
+				End If
+				
+				Dim szJS2JD
+				szJS2JD = NwEngine.DE.CommandLineArguments.QueryArgument("JS2JD")
+				If szJS2JD = "TRUE" Then
+					NwEngine.Variables.AppendDefaultValue "JawsScriptDir", szJawsDestDir
+					NwEngine.Context.Log.Write "Variables-Script: Override JawsScriptDir by JawsDestDir = " & NwEngine.Variables.ResolveString("%JawsScriptDir%")
+				End If
+			]]>
+		</Value>
+	</Variable>
+	<Variable Name="JawsEvaluatingLanguages" Persistent="false" DisplayInSapAdmin="false">
+		<Value>FALSE</Value>
+		<Value Script="true">
+			<![CDATA[
+				Option Explicit
+				Dim szJawsScriptDir, szJawsVersion
+				szJawsScriptDir = NwEngine.Variables.ResolveString("%JawsScriptDir%")
+				szJawsVersion = NwEngine.Variables.ResolveString("%JawsVersion%")
+				
+				If szJawsScriptDir = "UNDEFINED" Then
+					NwEngine.Context.Log.Write "SRX Script: JawsScriptDir is undefined, checking for installed languages cannot be evaluated"
+				Else
+					Dim langArray(4), scriptFolder, scriptLangFolder, scriptLanguage, fileArray(2), fileItem, filePath
+					langArray(0) = "enu"
+					langArray(1) = "deu"
+					langArray(2) = "fra"
+					langArray(3) = "frc"
+					langArray(4) = "ita"
+					
+					fileArray(0) = "default.jss"
+					fileArray(1) = "myextensions.jss"
+					fileArray(2) = "default.jkm"
+					
+					NwEngine.Context.Log.Write "SRX Script: Checking for installed JAWS languages in SETTINGS/Scripts folder depending on installed JAWS version"
+					If szJawsVersion < 17 Then
+						NwEngine.Context.Log.Write "SRX Script: JAWS version lower then 17, using SETTINGS folder..."
+						scriptFolder = szJawsScriptDir & "\SETTINGS"
+					Else
+						NwEngine.Context.Log.Write "SRC Script: JAWS version higher or equal 17, using Scripts folder..."
+						scriptFolder = szJawsScriptDir & "\Scripts"
+					End If
+					For Each scriptLanguage in langArray
+						scriptLangFolder = scriptFolder & "\" & scriptLanguage
+						NwEngine.Context.Log.Write "SRX Script: Checking if directory " & scriptLangFolder & " exists"
+						If NwEngine.Shell.DirectoryExist(scriptLangFolder) Then
+							NwEngine.Context.Log.Write "SRX Script: Folder " & scriptLangFolder & " exists, checking existence of some files:"
+							For Each fileItem in fileArray
+								filePath = scriptLangFolder & "\" & fileItem
+								If NwEngine.Shell.FileExist(filePath) Then
+									NwEngine.Context.Log.Write "SRC Script: " & filePath & ": FOUND"
+									Dim varName
+									varName = "JawsLang" & scriptLanguage & "Exist"
+									NwEngine.Variables.AppendDefaultValue varName, "TRUE"
+									Exit For
+								Else
+									NwEngine.Context.Log.Write "SRC Script: " & filePath & ": MISSING"
+								End If
+							Next
+						Else
+							NwEngine.Context.Log.Write "SRX Script: Language " & scriptLanguage & " is not installed, as directory " & scriptLangFolder & " doesn't exist."
+						End If
+					Next
+				End If
+			]]>
+		</Value>
+	</Variable>
+   <Variable Name="PRE_SRX" ConnectedId="{2BF6D3E0-0CBA-4414-AB63-3C55770AB07C}" Persistent="FALSE">
+      <Value>UNDEFINED</Value>
+      <Value Script="TRUE">
+      <![CDATA[
+         bReadyForSRX = vbTRUE
+         NwEngine.Context.Log.Write "Variable-Script: Checking Installation Pre-Requisite for SRX."
+         strJawsDestDir = NwEngine.Variables.ResolveString("%JawsDestDir%")
+         strJawsScriptDir = NwEngine.Variables.ResolveString("%JawsScriptDir%")
+         If strJawsDestDir = "UNDEFINED" Or strJawsScriptDir = "UNDEFINED" Then
+            bReadyForSRX = vbFALSE
+            NwEngine.Context.Log.WriteWarning "Variable-Script: JAWS is not yet installed!"
+         Else
+             NwEngine.Context.Log.Write "Variables-Script: PRE_SRX: JawsDestDir = " & strJawsDestDir
+             NwEngine.Context.Log.Write "Variables-Script: PRE_SRX: JawsScriptDir = " & strJawsScriptDir
+         End If
+         If bReadyForSRX Then
+            NwEngine.Variables.AppendDefaultValue "PRE_SRX", "FULFILLED"
+         End If
+      ]]>
+      </Value>
+   </Variable>
+   <Variable Name="EXIST_SRX_640" ConnectedId="{2BF6D3E0-0CBA-4414-AB63-3C55770AB07C}" Persistent="FALSE">
+      <Value>FALSE</Value>
+      <Value Script="TRUE">
+      <![CDATA[
+         bExistSRX640 = vbFALSE
+         NwEngine.Context.Log.Write "Variable-Script: Checking for existence of SRX 640."
+         If NwEngine.Shell.RegKeyExist("HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\SAPSRX") Then
+            bExistSRX640 = vbTRUE
+            NwEngine.Context.Log.WriteWarning "Variable-Script: Older version of SRX exists. It needs to be uninstalled first!"
+         End If
+         If bExistSRX640 Then
+            NwEngine.Variables.AppendDefaultValue "EXIST_SRX_640", "TRUE"
+         End If
+      ]]>
+      </Value>
+   </Variable>
+	<Variable Name="SapSrxPatchLevel" Persistent="FALSE" DisplayInSapAdmin="false">
+		<Value>0</Value>
+		<Value Script="TRUE">
+			<![CDATA[
+				strSrxPatch = "0"
+				NwEngine.Context.Log.Write "SAP SRX Script: Reading PatchLevel and Hotfix versions..."
+				strSapSrxSetupXML = NwEngine.Variables.ResolveString("%SapSrcDir%\Setup\SapSrxSetup.xml")
+				If NwEngine.Shell.FileExist(strSapSrxSetupXML) Then
+					NwEngine.Context.Log.Write "SAP SRX Script: Reading file '" & strSapSrxSetupXML & "'."
+					Dim objXMLDoc
+					Set objXMLDoc = CreateObject("Microsoft.XMLDOM")
+					objXMLDoc.async = False
+					objXMLDoc.load(strSapSrxSetupXML)
+					If objXMLDoc.parseError.errorCode <> 0 Then
+						NwEngine.Context.Log.Write "SAP SRX Script: Error reading file '" & strSapSrxSetupXML & "'! ExitCode: " & objXMLDoc.parseError.errorCode
+					Else
+						Dim Node
+						Set Node = objXMLDoc.SelectSingleNode("//SapSetupProduct")
+						
+						strPatchHotfix = Node.getAttribute("PatchLevel")
+						If strPatchHotfix <> "" Then
+							NwEngine.Context.Log.Write "SAP SRX Script: PatchLevel is set to: " & strPatchHotfix
+							strSrxPatch = strPatchHotfix
+							NwEngine.Variables.AppendDefaultValue "SapSrxPatchLevel", strSrxPatch
+						Else
+							NwEngine.Context.Log.Write "SAP SRX Script: PatchLevel attribute is not set."
+						End If
+					End If
+				Else
+					NwEngine.Context.Log.Write "SAP SRX Script: File '" & strSapSrxSetupXML & "' doesn't exist!"
+				End If
+			]]>
+		</Value>
+	</Variable>
+</SapSetup>

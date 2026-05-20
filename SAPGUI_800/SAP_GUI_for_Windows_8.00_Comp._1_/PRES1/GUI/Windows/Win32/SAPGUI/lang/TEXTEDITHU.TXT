@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 TEXTEDIT HU 1404 OK 
+TEXTEDIT_HE_LANG_BUTTON         255 "Billentyûzetkiosztás átváltása héberre"
+TEXTEDIT_EN_LANG_BUTTON         255 "Billentyûzetkiosztás átváltása angolra"
+TEXTEDIT_DISABLE_LANG_BUTTON    255 "Nyelv gombjának letiltása"
+TEXTEDIT_ENABLE_LANG_BUTTON     255 "Nyelv gombjának engedélyezése"
+TEXTEDIT_PROMPT_TEXT            255 "Ide írja be a szöveget..."

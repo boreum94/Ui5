@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapBiPcsWkstaUI.xml">
+	<SapSetupProduct BuildTime="0xC0CF12A2FB2AD901" CmdLine="BiPcs" Description="SapBiPcsProductDescription" Guid="{EB645960-713B-425C-A926-61EB2A14EFD4}" Name="SapBiPcsProductName" ProdVersion="800.2">
+		<Prerequisite>
+			<Condition>&quot;%Pre_BiPcs%&quot; = &quot;FULFILLED&quot;</Condition>
+			<FailureText>strSapBIPcsOlderVersionInstalled</FailureText>
+		</Prerequisite>
+		<Prerequisite>
+			<Condition><![CDATA[((IsProductAvailable({986C96AA-FE9A-48ab-B384-6D418EFEC1DB})) & (ProductVersion({986C96AA-FE9A-48ab-B384-6D418EFEC1DB}) > 800.0))]]></Condition>
+			<FailureText>strSapBIPcsBEXVersionTooLow</FailureText>
+		</Prerequisite>
+		<IncludesProductPart Comment="BiPcs" ProductGuid="{00B8783A-F470-4FEE-9D15-2EE75241E58E}" Visible="false"/>
+		<RequiresProductPart Comment="Business Explorer" OverrideName="Requires Business Explorer" ProductGuid="{986C96AA-FE9A-48ab-B384-6D418EFEC1DB}"/>
+	</SapSetupProduct>
+	<SapSetupProductPart BuildTime="0xC0CF12A2FB2AD901" Description="BiPcs" Guid="{00B8783A-F470-4FEE-9D15-2EE75241E58E}" Name="BiPcs" Version="800.1">
+		<RequiresComponent ComponentGuid="{D8889911-E100-4957-959C-A3CEC6A2E3D7}"/>
+		<RequiresComponent ComponentGuid="{454CD65C-CD3D-47B0-A21B-452015C9CA36}"/>
+		<RequiresComponent ComponentGuid="{C1184358-918B-456E-8FA5-4DBD2203A2DD}"/>
+	</SapSetupProductPart>
+</SapSetup>

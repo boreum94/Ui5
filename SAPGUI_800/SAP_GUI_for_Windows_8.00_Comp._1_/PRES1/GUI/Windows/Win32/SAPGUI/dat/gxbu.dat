@@ -1,0 +1,152 @@
+#@(#)gxbu.dat  	20.5	SAP	94/11/23
+/$COLO
+:paletteid = 1
+    
+:genback =   darkgray
+:genlines =  8                         
+:gentitle =  yellow
+:genscale =  yellow                          
+:gendimti =  yellow                          
+:gendimel =  yellow                          
+    
+:contrast01 = 17
+:contrast02 = 18
+:contrast03 = 19
+:contrast04 = 20
+:contrast05 = 21
+:contrast06 = 22
+:contrast07 = 23
+:contrast08 = 24
+:contrast09 = 25
+:contrast10 = 26
+:contrast11 = 27
+:contrast12 = 28
+:contrast13 = 29
+:contrast14 = 30
+:contrast15 = 31
+:contrast16 = 32
+    
+:2dback =     darkred
+:2dobject =   red
+:2dareacont = white
+:2dobjcont =  white
+:2dbackgrid = white
+:2dbacktext = white
+    
+:3dfrbase =   42
+:3dfrright =  43
+:3dfrleft =   44
+:3dobjtop =   19
+:3dobjneg =   17
+:3dobjside =  21
+:3dobjp01 =   21
+:3dobjp02 =   20
+:3dobjp03 =   19
+:3dobjp04 =   18
+:3dmenuback = blue
+:3dareacont =  black
+:3dobjscales = blue
+:3drowcollines = red
+:3dobjcont =   black
+:3dmenutext =  yellow
+
+
+
+/$OPTS
+:SET FISTK3 X
+:SET FIFRST 3D
+:SET CLPALT A
+
+/$DIMS 2
+:Per
+:T
+:Lst
+:T
+:Kst
+:T
+
+/Per
+:Lîhne
+:GehÑlter
+:Nebenkosten
+/Lst
+:RUE RÅststd.
+:FER Fertigungsstd.
+:MON Montagestd.
+/Kst
+:00110 Schlosserei
+:00111 Schreinerei
+:00112 Lackiererei
+:00113 Giesserei
+
+/$TEXT 2
+:$TITL
+:Kostenanalyse
+:Per
+:Personalkosten
+:Lst
+:Leistungsarten
+:Kst
+:Kostenstellen
+
+/$DATA
+: 00000058060000000000-05
+: 00000017650000000000-05
+: 00000007800000000000-05
+
+: 00000096500000000000-05
+: 00000038700000000000-05
+: 00000007920000000000-05
+
+: 00000076500000000000-05
+: 00000028700000000000-05
+: 00000005920000000000-05
+
+
+
+: 00000056500000000000-05
+: 00000018700000000000-05
+: 00000004920000000000-05
+
+: 00000070920000000000-05
+: 00000019300000000000-05
+: 00000005920000000000-05
+
+: 00000125800000000000-05
+: 00000042800000000000-05
+: 00000010450000000000-05
+
+
+
+: 00000085800000000000-05
+: 00000022800000000000-05
+: 00000005450000000000-05
+
+: 00000075800000000000-05
+: 00000012800000000000-05
+: 00000004450000000000-05
+
+: 00000052670000000000-05
+: 00000014320000000000-05
+: 00000002870000000000-05
+
+
+
+: 00000097100000000000-05
+: 00000032250000000000-05
+: 00000006920000000000-05
+
+: 00000067100000000000-05
+: 00000012250000000000-05
+: 00000005920000000000-05
+
+: 00000057100000000000-05
+: 00000011250000000000-05
+: 00000004920000000000-05
+
+
+
+
+
+
+

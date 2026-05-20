@@ -1,0 +1,12 @@
+_SAPPCTXT_HEADER_               002 8000 GRIDVIEW RU 1504 OK 
+GRIDVIEW_MSGBOX_TITLE           080 "GridView"
+GRIDVIEW_MSGBOX_TEXT            128 "Запрос на печать не удалось запустить"
+GRIDVIEW_TOOLTIP_DESELECT_ALL   080 "Отменить выбор"
+GRIDVIEW_TOOLTIP_SELECT_ALL     080 "Выбрать все"
+GRIDVIEW_TOOLTIP_TEXT_COLLAPSE  080 "Свернуть выбор"
+GRIDVIEW_TOOLTIP_TEXT_EXPAND    080 "Развернуть выбор"
+GRIDVIEW_ENABLE_HISTORY         255 "Активировать историю"
+GRIDVIEW_DISABLE_HISTORY        255 "Деактивировать историю"
+GRIDVIEW_DEFAULT_SETTING        255 "Использ. стандартные параметры"
+GRIDVIEW_MSGBOX_TITLE2          080 "GridView"
+GRIDVIEW_MSGBOX_ERROR           128 "Многократный выбор не может быть скопирован"

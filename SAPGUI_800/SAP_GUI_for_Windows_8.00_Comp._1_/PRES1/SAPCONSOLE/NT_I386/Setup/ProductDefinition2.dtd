@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- include the Product Common DTD to define required UI elements -->
+<!ENTITY % ProductCommonDTD SYSTEM "ProductCommon.dtd">
+%ProductCommonDTD;
+
+<!ELEMENT SapSetup (SapSetupProduct, SapSetupProductPart*, Component*)>
+<!ATTLIST SapSetup
+        WkstaDb CDATA #REQUIRED
+  Context (Init | Server | Patch) #REQUIRED
+>
+
+<!ELEMENT SapSetupProduct (Prerequisite*,Succeeds*,UI?,((IncludesProductPart|ExcludesProduct|RequiresProductPart|Folder)+|RequiresComponent+))>
+<!ATTLIST SapSetupProduct
+        Name CDATA #REQUIRED
+        Guid CDATA #REQUIRED
+        Version CDATA #REQUIRED
+        CmdLine CDATA #REQUIRED
+        Description CDATA #IMPLIED
+        Visible (true | false) #IMPLIED
+        PatchLevel CDATA #IMPLIED
+        Arch (X64|X86Only) #IMPLIED
+        Selected (true | false) #IMPLIED
+ >
+
+<!ELEMENT SapSetupProductPart (Prerequisite*, (RequiresProductPart|ExcludesProduct)*, RequiresComponent+)>
+<!ATTLIST SapSetupProductPart
+        Guid CDATA #REQUIRED
+        Name CDATA #REQUIRED
+        Description CDATA #IMPLIED
+        Version CDATA #REQUIRED
+        BuildTime CDATA #IMPLIED
+        Error (true) #IMPLIED
+>
+
+<!ELEMENT ExcludesProduct EMPTY>
+<!ATTLIST ExcludesProduct
+        ProductGuid CDATA #REQUIRED
+        Comment CDATA #IMPLIED
+>
+
+<!ELEMENT IncludesProductPart EMPTY>
+<!ATTLIST IncludesProductPart
+        ProductGuid CDATA #REQUIRED
+        Comment CDATA #IMPLIED
+        OverrideName CDATA #IMPLIED
+        OverrideDescription CDATA #IMPLIED
+        Visible (true | false) #IMPLIED
+        Selected (true | false) #IMPLIED
+ >
+
+<!ELEMENT RequiresProductPart EMPTY>
+<!ATTLIST RequiresProductPart
+        ProductGuid CDATA #REQUIRED
+        Comment CDATA #IMPLIED
+        OverrideName CDATA #IMPLIED
+        OverrideDescription CDATA #IMPLIED
+        Visible (true | false) #IMPLIED
+        TransferDeselection (true | false) #IMPLIED
+>
+
+<!ELEMENT Folder (Folder|IncludesProductPart)+>
+<!ATTLIST Folder
+        Name CDATA #REQUIRED
+        Description CDATA #IMPLIED
+>
+
+<!ELEMENT RequiresComponent EMPTY>
+<!ATTLIST RequiresComponent
+        ComponentGuid CDATA #REQUIRED
+        Comment CDATA #IMPLIED
+        Selected (true | false) #IMPLIED
+>

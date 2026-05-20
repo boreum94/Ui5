@@ -1,0 +1,237 @@
+   <AvailableFeatures>
+     <component>
+        <toolbar>
+          <StretchStructure win = 'X' plat = ' ' web = ' ' />
+          <AlignRight win ='X' plat =' ' web =' ' />
+        </toolbar>
+    </component>
+    <component>
+        <ControlModeF4>
+            <MultiInsDelPVL win = 'X' plat = ' ' web = ' ' />
+            <ColheaderAbbrevation win="X" plat="" web="" />
+        </ControlModeF4>
+    </component>
+    <component>
+        <officeintegration>
+            <setmergetemplate win = 'X' plat = ' ' web = ' ' />
+            <saveerrorcheck win = 'X' plat = ' ' web = ' ' />
+	    <setwebdavserver win = 'X' plat = ' ' web = ' ' />
+	    <installreadonlytemplate win = 'X' plat = ' ' web = ' ' />
+	    <XXLSetRangesData win='X' plat = ' ' web = ' ' />
+        </officeintegration>
+    </component>
+    <component>
+        <saphtml>
+            <simplebrowse win = 'X' plat = ' ' web = ' ' />
+            <detachurlinbrowser win = 'X' plat = ' ' web = ' ' />
+	        <getcharsetstring win = 'X' plat = ' ' web = ' ' />
+	        <DetachedBrowser win = 'X' plat = ' ' web = ' ' />
+	        <EndSessionFeature win = 'X' plat = ' ' web = ' ' />
+		<LoadIconFont win = 'X' plat = ' ' web = ' ' />
+		<EnableSecSess win = 'X' plat = ' ' web = ' ' />
+		<dragacceptfiles win = 'X' plat = ' ' web = ' ' />
+		<InitScreenDetails win = 'X' plat = ' ' web = ' ' />
+		<EdgeCOMAccess win = 'X' plat = ' ' web = ' ' />
+        </saphtml>
+    </component>
+    <component>
+        <sapawole>
+            <paramsasstring win = 'X' plat = ' ' web = ' ' />
+        </sapawole>
+    </component>
+    <component>
+        <sapinfocntl>
+            <customdlg win = 'X' plat = ' ' web = ' ' />
+            <overwriteonprompt win = 'X' plat = ' ' web = ' ' />
+            <saplogoncodepage  win = 'X' plat = ' ' web = ' ' />
+            <platformex     win = 'X' plat = ' ' web = ' ' />
+   			<CHECK_GUI_SUPPORT win = 'X' plat = '' web = ' ' />
+   			<CLIPBOARD_EXPORT win = 'X' plat = '' web = ' ' />
+   			<CLIPBOARD_IMPORT win = 'X' plat = '' web = ' ' />
+   			<DIRECTORY_BROWSE win = 'X' plat = '' web = ' ' />
+   			<DIRECTORY_CREATE win = 'X' plat = '' web = ' ' />
+   			<DIRECTORY_DELETE win = 'X' plat = '' web = ' ' />
+   			<DIRECTORY_EXIST win = 'X' plat = '' web = ' ' />
+   			<DIRECTORY_GET_CURRENT win = 'X' plat = '' web = ' ' />
+   			<DIRECTORY_LIST_FILES win = 'X' plat = 'X' web = 'X' />
+   			<DIRECTORY_LIST_FILES_EXT win = 'X' plat = 'X' web = 'X' />
+   			<DIRECTORY_SET_CURRENT win = 'X' plat = '' web = ' ' />
+   			<DISABLEHISTORYFORFIELD win = 'X' plat = '' web = ' ' />
+   			<ENVIRONMENT_GET_VARIABLE win = 'X' plat = '' web = ' ' />
+   			<ENVIRONMENT_SET_VARIABLE win = 'X' plat = '' web = ' ' />
+   			<EXECUTE win = 'X' plat = '' web = ' ' />
+   			<FILE_COPY win = 'X' plat = '' web = ' ' />
+   			<FILE_DELETE win = 'X' plat = '' web = ' ' />
+   			<FILE_EXIST win = 'X' plat = '' web = ' ' />
+   			<FILE_GET_ATTRIBUTES win = 'X' plat = '' web = ' ' />
+   			<FILE_GET_SIZE win = 'X' plat = 'X' web = 'X' />
+   			<FILE_GET_SIZE_LONG win = 'X' plat = 'X' web = 'X' />
+   			<FILE_GET_VERSION win = 'X' plat = '' web = ' ' />
+   			<FILE_OPEN_DIALOG win = 'X' plat = '' web = ' ' />
+   			<FILE_SAVE_DIALOG win = 'X' plat = '' web = ' ' />
+   			<FILE_SET_ATTRIBUTES win = 'X' plat = '' web = ' ' />
+   			<FREESPACEINMB win = 'X' plat = '' web = ' ' />
+   			<GET_COMPUTER_NAME win = 'X' plat = '' web = ' ' />
+   			<GET_DESKTOP_DIRECTORY win = 'X' plat = '' web = ' ' />
+   			<GET_DRIVE_FREE_SPACE_MEGABYTE win = '' plat = 'X' web = ' ' />
+   			<GET_DRIVE_TYPE win = 'X' plat = '' web = ' ' />
+   			<GET_FILE_SEPARATOR win = 'X' plat = '' web = ' ' />
+   			<GET_FREE_SPACE_FOR_DRIVE win = 'X' plat = 'X' web = ' ' />
+   			<GET_FREE_SPACE_FOR_DRIVE_LONG win = 'X' plat = 'X' web = ' ' />
+   			<GET_GUI_FEATURES_TAB win = 'X' plat = '' web = ' ' />
+   			<GET_GUI_PROPERTIES win = 'X' plat = '' web = ' ' />
+   			<GET_GUI_VERSION win = 'X' plat = '' web = ' ' />
+   			<GET_IP_ADDRESS win = 'X' plat = '' web = ' ' />
+   			<GET_LF_FOR_DESTINATION_GUI win = 'X' plat = '' web = ' ' />
+   			<GET_PLATFORM win = 'X' plat = '' web = ' ' />
+   			<GET_SAPGUI_DIRECTORY win = 'X' plat = '' web = ' ' />
+   			<GET_SAPGUI_WORKDIR win = 'X' plat = '' web = ' ' />
+   			<GET_SAPLOGON_ENCODING win = 'X' plat = '' web = ' ' />
+   			<GET_SCREENSHOT win = 'X' plat = '' web = ' ' />
+   			<GET_SYSTEM_DIRECTORY win = 'X' plat = '' web = ' ' />
+   			<GET_TEMP_DIRECTORY win = 'X' plat = '' web = ' ' />
+   			<GET_DOWNLOAD_PATH win = 'X' plat = '' web = ' ' />
+   			<GET_UPLOAD_DOWNLOAD_PATH win = 'X' plat = '' web = ' ' />
+   			<GET_UPLOAD_PATH win = 'X' plat = '' web = ' ' />
+   			<GET_USER_NAME win = 'X' plat = '' web = ' ' />
+   			<GET_WINDOWS_DIRECTORY win = 'X' plat = '' web = ' ' />
+   			<GET_WINDOWS_VERSION_EX win = 'X' plat = '' web = ' ' />
+   			<GUI_DOWNLOAD win = 'X' plat = '' web = ' ' />
+   			<GUI_UPLOAD win = 'X' plat = '' web = ' ' />
+   			<IS_FEATURE_SUPPORTED win = 'X' plat = '' web = ' ' />
+   			<IS_TERMINAL_SERVER win = 'X' plat = '' web = ' ' />
+   			<NATIVE_FILE_EXIST win = 'X' plat = '' web = ' ' />
+   			<REGISTRY_DELETE_KEY win = 'X' plat = '' web = ' ' />
+   			<REGISTRY_DELETE_VALUE win = 'X' plat = '' web = ' ' />
+   			<REGISTRY_GET_DWORD_VALUE win = 'X' plat = '' web = ' ' />
+   			<REGISTRY_GET_VALUE win = 'X' plat = '' web = ' ' />
+   			<REGISTRY_SET_DWORD_VALUE win = 'X' plat = '' web = ' ' />
+   			<REGISTRY_SET_VALUE win = 'X' plat = '' web = ' ' />
+			   <RAISE_SCRIPTING_EVENT win = 'X' plat = '' web = ' ' />
+			   <IS_SCRIPTING_ACTIVE win = 'X' plat = '' web = ' ' />
+            <SHOWDOCUMENT win = 'X' plat = 'X' web = ' ' />
+	    <TYPEAHEAD_EXPORT win = 'X' plat = 'X' web = ' ' />
+        </sapinfocntl>
+    </component>
+    <component>
+        <dataprovider>
+            <tableasstring win = 'X' plat = ' ' web = ' ' />
+        </dataprovider>
+    </component>
+    <component>
+        <treecontrol>
+            <disableselchange win = 'X' plat = ' ' web = ' ' />
+        </treecontrol>
+    </component>
+    <component>
+            <ganttcontrol>
+                <usedataasstream win = 'X' plat = ' ' web = ' ' />
+                <collapsed_hierarchy win = 'X' plat = ' ' web = ' ' />
+                <multmove3 win = 'X' plat = ' ' web = ' ' />
+                <startdayofweek win = 'X' plat = ' ' web = ' ' />
+            </ganttcontrol>
+    </component>
+    <component>
+            <netcontrol>
+                <usedataasstream win = 'X' plat = ' ' web = ' ' />
+            </netcontrol>
+    </component>
+    <component>
+        <LSAPIWrapper>
+            <v100 win = 'X' plat = ' ' web = ' ' />
+            <v101 win = 'X' plat = ' ' web = ' ' />
+            <v102 win = 'X' plat = ' ' web = ' ' />
+        </LSAPIWrapper>
+    </component>
+    <component>
+        <abapeditor>
+            <exists win = 'X' plat = ' ' web = ' ' />
+            <ab4 win = 'X' plat = ' ' web = ' ' />
+            <extended_f1 win = 'X' plat = ' ' web = ' ' />
+            <backend_rfc_prop win = 'X' plat = ' ' web = ' ' />
+			<language_spec win = 'X' plat = ' ' web = ' ' />
+        </abapeditor>
+    </component>
+    <component>
+        <sapfront>
+            <new_bp_icons win = 'X' plat = ' ' web = ' ' />
+        </sapfront>
+    </component>
+    <component>
+        <gridview>
+            <cacheselectedrows win = 'X' plat = ' ' web = ' ' />
+	    <stretching win="X" plat="" web="" />
+	    <stretchingHeader win="X" plat="" web="" />
+	    <stretchingToolbar win="X" plat="" web="" />
+      <excelinplacewithoutmacros win="X" plat="" web="" />
+	    <RowGrouping win="X" plat="" web="" />
+        </gridview>
+    </component>
+    <component>
+        <crcontainer>
+            <feat1 win="X" plat="" web="" />
+        </crcontainer>
+    </component>
+    <component>
+        <sappicture>
+            <Tooltip win = 'X' plat = ' ' web = ' ' />
+        </sappicture>
+    </component>
+<component>
+   <sapcache>
+      <getcachedir win="X" plat="" web="" />
+   </sapcache>
+</component>
+<component>
+  <sapguiresources>
+    <getthemename win="X" plat="" web="" />
+   </sapguiresources>
+</component>
+<component>
+	<treeandgrid>
+		<dragacceptfiles win="X" plat="" web="" />
+	</treeandgrid>
+</component>
+<component>
+	<treeandgrid>
+		<getdroppedexternalfiles win="X" plat="" web="" />
+	</treeandgrid>
+</component>
+<component>
+        <sapcalen>
+	    <stretchingdaynames win="X" plat="" web="" />
+	    <hijricalendarsupport win='X' plat=' ' web=' ' />
+        </sapcalen>
+</component>
+<component>
+	<typeahead>
+		<more_results_dialog win="X" plat="" web="" />
+		<extended_format win="X" plat="" web="" />
+	</typeahead>
+</component>
+<component>
+     <input_field>
+  		<exists win = 'X' plat = ' ' web = ' ' />
+	 </input_field>
+</component>
+<component>
+	<SAPComboBoxCtrl>
+     	 <exists win = 'X' plat = ' ' web = ' ' />
+	</SAPComboBoxCtrl>
+</component>
+<!--
+<component>
+   <Personas>
+      <AvoidUnnecessaryProxiesActive win = 'X' plat = ' ' web = ' ' />
+   </Personas>
+</component>
+-->
+<component>
+	<icons>
+		<alvexpandcollapse win = 'X' plat = ' ' web = ' ' />
+		<shoppingcarts win = 'X' plat = ' ' web = ' ' />
+	</icons>
+</component>
+
+
+   </AvailableFeatures>

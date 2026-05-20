@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 OFFICEINTEGRATION EN 1100 OK 
+OI_LOADING_CUSTOM_MENU          080 "Loading custom menu. Please wait..."
+OI_FILE                         060 "File"
+OI_SAVE                         060 "Save"
+OI_SAVE_AS                      060 "Save As"
+OI_PRINT_PREVIEW                080 "Print Preview"
+OI_PROPERTIES                   060 "Properties"
+OI_PRINT                        060 "Print"

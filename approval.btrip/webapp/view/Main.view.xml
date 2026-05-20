@@ -1,0 +1,197 @@
+<mvc:View controllerName="code.d22.approval.btrip.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form">
+    <Page id="page" title="{i18n>title}">
+        <Panel
+            headerText="{i18n>listPanelTitle}"
+            class="sapUiResponsiveMargin"
+            width="auto"
+            height="50%"
+        >
+            <content>
+                <Table
+                    mode="SingleSelectLeft"
+                    selectionChange=".onSelectionChange"
+                    items="{
+                        path: '/RequestListSet'
+                    }"
+                    growing="true"
+                    growingScrollToLoad="true"
+                >
+                    <columns>
+                        <Column>
+                            <Text text="{i18n>colTripId}" />
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>colEmpId}" />
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>colDest}" />
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>colBgnDate}" />
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>colEndDate}" />
+                        </Column>
+                        <Column hAlign="End">
+                            <Text text="{i18n>colBudAmt}" />
+                        </Column>
+                        <!-- <Column>
+                            <Text text="{i18n>colStat}" />
+                        </Column> -->
+                        <Column>
+                            <Text text="{i18n>colNote}" />
+                        </Column>
+                        <!-- <Column>
+                            <Text text="{i18n>colCreatedAt}" />
+                        </Column> -->
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{TripId}" />
+                                <Text text="{EmpId}" />
+                                <Text text="{Dest}" />
+                                <Text text="{
+                                    path: 'BgnDate',
+                                    type: 'sap.ui.model.type.DateTime',
+                                    formatOptions: {
+                                        pattern: 'yyyy-MM-dd'
+                                    }
+                                }" />
+                                <Text text="{
+                                    path: 'EndDate',
+                                    type: 'sap.ui.model.type.DateTime',
+                                    formatOptions: {
+                                        pattern: 'yyyy-MM-dd'
+                                    }
+                                }" />
+                                <ObjectNumber number="{
+                                    parts: [{
+                                        path: 'BudAmt'
+                                    }, {
+                                        path: 'Waers'
+                                    }],
+                                    type: 'sap.ui.model.type.Currency'
+                                }" />
+                                <!-- <Text text="{
+                                    path: 'Stat',
+                                    formatter: '.formatter.Stat'
+                                }" /> -->
+                                <Text text="{Note}" />
+                                <!-- <Text text="{
+                                    path: 'CreatedAt',
+                                    type: 'sap.ui.model.type.DateTime',
+                                    formatOptions: {
+                                        style: 'medium'
+                                    }
+                                }" /> -->
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </content>
+        </Panel>
+        <Panel
+            headerText="{i18n>detailPanelTitle}"
+            class="sapUiResponsiveMargin"
+            width="auto"
+        >
+            <content>
+                <MessageStrip
+                    visible="{= !${sel>/TripID} }"
+                    text="{i18n>selectOneHint}"
+                    type="Information"
+                    showIcon="true"
+                />
+                <form:SimpleForm
+                    visible="{= ${sel>/TripID} ? true : false }"
+                    adjustLabelSpan="false"
+                    labelSpanM="5"
+                    labelSpanL="5"
+                    labelSpanXL="4"
+                >
+                    <form:toolbar>
+                        <OverflowToolbar>
+                            <ToolbarSpacer />
+                            <Button
+                                id="btnApprove"
+                                text="{i18n>approvalButtonText}"
+                                type="Emphasized"
+                                press="onApprove"
+                                enabled="{= ${sel>/Stat} === 'REQ' }"
+                            />
+                            <Button
+                                id="btnReject"
+                                text="{i18n>rejectButtonText}"
+                                type="Negative"
+                                press="onReject"
+                                enabled="{= ${sel>/Stat} === 'REQ' }"
+                                class="sapUiTinyMarginBegin"
+                            />
+                        </OverflowToolbar>
+                    </form:toolbar>
+                    <form:content>
+                        <Label text="{i18n>colTripId}" />
+                        <Text text="{sel>/TripID}" />
+                        <Label text="{i18n>colEmpId}" />
+                        <Text text="{sel>/EmpID}({sel>/to_Employee/EmpName})" />
+                        <Label text="{i18n>colDest}" />
+                        <Text text="{sel>/Dest}" />
+                        <Label text="{i18n>colBgnDate}" />
+                        <Text text="{
+                            path: 'sel>/BgnDate',
+                            type: 'sap.ui.model.type.DateTime',
+                            formatOptions: {
+                                pattern: 'yyyy-MM-dd'
+                            }
+                        }" />
+                        <Label text="{i18n>colEndDate}" />
+                        <Text text="{
+                            path: 'sel>/EndDate',
+                            type: 'sap.ui.model.type.DateTime',
+                            formatOptions: {
+                                pattern: 'yyyy-MM-dd'
+                            }
+                        }" />
+                        <Label text="{i18n>colBudAmt}" />
+                        <ObjectNumber number="{
+                            parts: [{
+                                path: 'sel>/BudAmt'
+                            }, {
+                                path: 'sel>/Waers'
+                            }],
+                            type: 'sap.ui.model.type.Currency'
+                        }" />
+                        <!-- <Label text="{i18n>colUseAmt}" />
+                        <ObjectNumber number="{
+                            parts: [{
+                                path: 'sel>/UseAmt'
+                            }, {
+                                path: 'sel>/Waers'
+                            }],
+                            type: 'sap.ui.model.type.Currency'
+                        }" /> -->
+                        <Label text="{i18n>colStat}" />
+                        <Text text="{
+                            path: 'sel>/Stat',
+                            formatter: '.formatter.Stat'
+                        }" />
+                        <Label text="{i18n>colNote}" />
+                        <Text text="{sel>/Note}" />
+                        <Label text="{i18n>colCreatedAt}" />
+                        <Text text="{
+                            path: 'sel>/CreatedAt',
+                            type: 'sap.ui.model.type.DateTime',
+                            formatOptions: {
+                                style: 'long'
+                            }
+                        }" />
+                    </form:content>
+                </form:SimpleForm>
+            </content>
+        </Panel>
+    </Page>
+</mvc:View>

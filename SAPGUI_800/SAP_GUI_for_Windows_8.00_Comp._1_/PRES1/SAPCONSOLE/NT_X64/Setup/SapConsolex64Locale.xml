@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Locale" Version="2">
+	<!-- FolderPathPage -->
+	<String name="SapConsolex64ProductName">
+		<En>SAP Console 7.30 (64 Bit)</En>
+		<De>SAP Console 7.30 (64 Bit)</De>
+	</String>
+
+	<String name="SapConsolex64ProductDescription">
+		<En>SAP Console (64 Bit) is a framework in which several components work together enabling users to access and execute R/3 from character based device or web enabled handled device. SAP Console supports character-cell terminals, including radio frequency (RF) devices, and web-equipped devices. The main components involved are &quot;SAP Console&quot; and &quot;SAP Console Administrator&quot;.</En>
+		<De>SAP Console (64 Bit) is a framework in which several components work together enabling users to access and execute R/3 from character based device or web enabled handled device. SAP Console supports character-cell terminals, including radio frequency (RF) devices, and web-equipped devices. The main components involved are &quot;SAP Console&quot; and &quot;SAP Console Administrator&quot;.</De>
+	</String>
+
+	<String name="SapConsolex64DestDirPrompt">
+		<En>Choose the path to the SAP Console (64 Bit) installation directory</En>
+		<De>Wählen Sie das SAP Console (64 Bit) Zielverzeichnis aus</De>
+	</String>
+
+	<String name="DscrSapConsolex64DestDir">
+		<En>SAP Console (64 Bit) installation directory</En>
+		<De>SAP Console (64 Bit) Installationsverzeichnis</De>
+	</String>
+
+</SapSetup>

@@ -1,0 +1,826 @@
+; Copyright
+;   SAP AG, www.sap.com
+;   Last Update : 2020/11/10
+
+:function IsCursorInRect
+:Returns int No Return Description
+:Param int/x1 Left
+:Param int/x2 Right
+:Param int/y1 Top
+:Param int/y1 Bottom
+:Description Check if current cursor position is located within the given rectangle
+
+:function IsParentWindow
+:Returns int No Return Description
+:Param handle/hWnd Handle of potential child window
+:Param handle/hParentWnd Handle of potential parent window
+:Description Check if hParentWindow is an (in-)direct parent of hWnd
+
+:function GetRealTitleWindow
+:Returns handle Handle to real window
+:Param handle/hWnd Search parents of this window
+:Description Searches the parents of hWnd for a window with a real window title
+
+:function GetSubtypeCode
+:Returns int The subtype code to the currently focused window.
+:Description Returns the subtype code of the focused window
+
+:function InitializePlayButtons
+:returns void Nothing
+
+:function IsPlayButton
+:returns int TRUE for play/browse buttons
+
+:function GetCurrentABAPListElement
+:Synopsis Retrieve current list element values
+
+:function ResetABAPListElement
+:Synopsis Clear all list element values
+
+:function SayCurrentABAPListElement
+:Synopsis Announce the current list element
+
+:function GetCurrentGuiLabel
+:Returns int TRUE on success
+:Synopsis Get and store contents of a label
+:Description Retrieves relevant contents of a label and stores it's values in global variables
+
+:function GetCurrentGuiBox
+:Returns int TRUE if a GuiBox is found, FALSE otherwise
+:Synopsis Get and store the values of the currently encompassing GuiBox
+:Description On success the GuiBox's values are stored in the globals
+
+:function GetCurrentStepLoop
+:Returns int
+:Synopsis GetCurrentStepLoop
+:Description GetCurrentStepLoop
+
+:function SayCurrentStepLoop
+:Synopsis SayCurrentStepLoop
+:Description SayCurrentStepLoop
+
+:function SysTbBtnText
+:Returns string No Return Description
+:Param string/sButtonName Internal name of button
+:Description Returns the text of an unavailable toolbar button
+
+:function GetCurrentGuiButton
+:Returns int No Return Description
+:Synopsis GetCurrentGuiButton
+:Description GetCurrentGuiButton
+
+:function SayCurrentGuiTextField
+:Synopsis says current text field
+
+:function GetCurrentGuiCheckBox
+:Returns int TRUE on success
+:Synopsis Get and store checkbox name and state
+:Description Get values of a currently focused checkbox and update the variables accordingly
+
+:function ResetGuiCheckBox
+:Returns int TRUE on success
+
+:function BrailleAddObjectGuiTextFieldState
+:Returns int No Return Description
+:Param int/nType The object type code
+
+:function BrailleAddObjectGuiTextFieldPosition
+:Returns int No Return Description
+:Param int/nType The object type code
+
+:function ResetGuiBox
+:Synopsis Reset GuiBox values
+
+:function BrailleAddObjectGuiLabelContents
+:Returns int No Return Description
+:Synopsis Handles the GuiLabel Braille output
+:Param int/nType The object type code
+
+:function HandleCustomWindows
+
+:function BrailleAddObjectGuiTableControlColumn
+:Returns int No Return Description
+:Synopsis Handles the table control
+:Param int/nType The object type code
+
+:function SayCurrentGuiBox
+:Synopsis Speak the currently active GuiBox
+
+:function CheckForGroupEnd
+:Synopsis Check whether we have exited a group of elements
+
+:script CtrlShiftTab
+
+:function BrailleAddObjectGuiLabelState
+:Returns int No Return Description
+:Synopsis Handles the GuiLabel Braille output
+:Param int/nType The object type code
+
+:function BrailleAddObjectGuiLabelInfo
+:Returns int No Return Description
+:Synopsis Handles the GuiLabel Braille output
+:Param int/nType The object type code
+
+:function BrailleAddObjectGuiComboBoxPosition
+:Returns int No Return Description
+:Synopsis Braille function for Combobox
+:Param int/nType No Description
+
+:function GetCurrentGuiComponent
+:Returns int TRUE on success
+:Synopsis Access the currently focused GuiComponent object
+:Description Gets the properties of the current GuiComponent object
+
+:function GetGuiComponentProperties
+:Returns int TRUE on success
+:Synopsis Access common properties of the given GuiComponent object
+:Description Returns common properties of the given GuiComponent object
+:Param object/oGuiComponent Get properties for this object
+:Param int/nTypeAsNumber/ByRef Type of the object
+:Param int/bChangeable/ByRef Indicates if the object is changeable
+:Param string/sId/ByRef GuiComponentID
+:Param string/sTooltip/ByRef Tooltip string
+:Param string/sAccTooltip/ByRef AccTooltip string
+:Param string/sAccText/ByRef AccText string
+:Param string/sAccDescription/ByRef AccDescription string
+
+:function GetGuiComponentPos
+:Returns int TRUE on success
+:Synopsis Calculate coordinates of the given GuiComponent object
+:Description Returns the coordinates of the given GuiComponent object
+:Param object/oGuiComponent Get properties for this object
+:Param int/nLeft/ByRef Left position in screen coordinates
+:Param int/nTop/ByRef Top position in screen coordinates
+:Param int/nWidth/ByRef Width of object
+:Param int/nHeight/ByRef Height of object
+
+:function GetGuiComponentParent
+:Returns int TRUE on success
+:Synopsis Find the parent of the given GuiComponent object
+:Description Returns the parent of the given GuiComponent object
+:Param object/oGuiComponent Get parent for this object
+:Param object/oParent/ByRef The returned parent object
+:Param int/nParentType/ByRef Type of the parent object
+:Param string/sParentId/ByRef Id of the parent
+
+:function SayCurrentGuiCheckBox
+:Synopsis Speak type and state of a checkbox
+
+:function GetGuiRadioButton
+:Returns int TRUE on success
+:Synopsis Get and store contents of a radio button
+:Description Retrieves relevant contents of a radio button
+:Param object/oGuiComponent Get properties for this object
+:Param string/sText/ByRef Value of the radio button
+:Param int/bState/ByRef State of the radio button
+:Param int/nGroupPos/ByRef Position in radio button group
+:Param int/nGroupCount/ByRef Count of radio button group
+
+:function GetCurrentGuiRadioButton
+:Returns int TRUE on success
+:Synopsis Get and store contents of a radio button
+:Description Retrieves relevant contents of a radio button and stores it's values in global varaibles
+
+:function ResetGuiRadioButton
+:Returns int TRUE on success
+
+:script EndKey
+
+:function GetGuiStatusBar
+:Returns object The statusbar object on success
+:Synopsis Determines the GuiStatusBar object
+
+:function HandleGuiStatusBarMessage
+:Synopsis This function handles text written to the status bar
+
+:function GetCurrentGuiStatusPane
+:Returns int Returns true on success
+:Synopsis Determine properties of GuiStatusPane objects
+
+:function ResetGuiStatusPane
+:Synopsis Reset properties GuiStatusPane objects
+
+:function SayCurrentGuiStatusPane
+:Synopsis Announcement of GuiStatusPane objects
+
+:function ResetGuiSplitterShell
+:Synopsis Reset all splitter shell values
+
+:function GetGuiSplitterShell
+:Synopsis Get and store values of specified splitter shell
+:Description Retrieves relevant contents of a splitter shell
+:Param object/oGuiComponent Get properties for this object
+:Param int/nType/ByRef Indicates whether horizontal or vertical splitter
+:Param int/nPos1/ByRef Relative position of left/top shell
+:Param int/nPos2/ByRef Relative position of right/bottom shell
+
+:function GetCurrentGuiSplitterShell
+:Synopsis Get and store values of splitter shells
+
+:function SayCurrentGuiSplitterShell
+:Synopsis Annouce splitter shells
+
+:function BrailleAddObjectGuiSplitterShellPosition
+:Returns int No Return Description
+:Synopsis Brailles the position of a splitter shell
+:Param int/nType The object type code
+
+:function SayCurrentOTFPreview
+:Synopsis Announce OTF preview
+:Returns void
+
+:function BrailleAddObjectContainer
+:Returns int No Return Description
+:Synopsis Brailles container (list container or user area)
+:Param int/nType The object type code 
+
+:function ResetGuiCtrlApoGrid
+:Synopsis Reset all values of the ApoGrid
+
+:function GetCurrentGuiCtrlApoGrid
+:Synopsis Get and store values of the ApoGrid
+
+:function SayCurrentGuiCtrlApoGrid
+:Synopsis Annouce ApoGrid
+
+:function SayCurrentGuiContainer
+:Synopsis SayCurrentGuiContainer
+:Description SayCurrentGuiContainer
+
+:function SayCurrentGuiButton
+
+:function BrailleAddObjectGuiRadioButtonState
+:Returns int No Return Description
+:Synopsis Handles the GuiRadioButton object
+:Param int/nType The object type code
+
+:function UpdateCurrentGuiComponent
+:Returns int TRUE on success
+:Synopsis Invalidate cached values of current object and get values
+
+:function GetCurrentGuiOkCodeField
+:Returns int TRUE on success
+:Synopsis Get and store contents of the OK code field
+
+:function SayWarningMessage
+:Synopsis Speak a warning message if session object cannot be found
+
+:script SayStatusMessage
+:Synopsis Refreshes the statusbar and speaks the statusbar message
+
+:script SaySessionInfo
+:Synopsis Announces information about the current session
+
+:script SayCurrentElement
+:Synopsis Announces again the current element
+
+:script ShiftCursorUp
+
+:function HandleTextFieldInput
+
+:function BrailleAddObjectGuiCheckBoxState
+:Returns int No Return Description
+:Param int/nType The object type code
+
+:function AutoStartEvent
+:Synopsis Handles the Jaws Autostartevent.
+
+:function HandleComboboxInput
+
+:function GetCurrentGuiShell
+:returns void No return description
+:description GetCurrentGuiShell
+
+:function SayCurrentGuiShell
+:Synopsis Says Current GuiShell
+:Description Says Current GuiShell if ALV, TreeCtrl, ...
+
+:function ResetGuiShell
+:returns void No return description
+
+:function GetCurrentGuiGridView
+:returns void No return description
+:description Get properties of GuiGridView object
+
+:function SayCurrentGuiGridView
+:returns void No return description
+
+:function ResetGuiGridView
+:returns void No return description
+
+:function BrailleAddObjectGuiGridViewInfo
+:Returns int No Return Description
+:Synopsis Handles Braille output for GridViews
+:Param int/nType No Description
+
+:function BrailleAddObjectGuiGridViewColumn
+:Returns int No Return Description
+:Synopsis Handles Braille output for GridViews
+:Param int/nType No Description
+
+:function BrailleAddObjectGuiGridViewRow
+:Returns int No Return Description
+:Synopsis Handles Braille output for GridViews
+:Param int/nType No Description
+
+:function BrailleAddObjectGuiGridViewCell
+:Returns int No Return Description
+:Param int/nType The object type code
+
+:function GetCurrentGuiTree
+:returns void No return description
+:description Get properties of GuiTree object
+
+:function SayCurrentGuiTree
+:returns void No return description
+
+:function ResetGuiTree
+:returns void No return description
+
+:function BrailleAddObjectGuiTreeLevel
+:Returns int No Return Description
+:Synopsis BrailleAddObjectGuiTreeLevel
+:Description BrailleAddObjectGuiTreeLevel
+:Param int/nType The object type code
+
+:function BrailleAddObjectGuiTreeType
+:Returns int No Return Description
+:Synopsis BrailleAddObjectGuiTreeType
+:Description BrailleAddObjectGuiTreeType
+:Param int/nType The object type code
+
+:function BrailleAddObjectGuiTreeValue
+:Returns int No Return Description
+:Synopsis BrailleAddObjectGuiTreeValue
+:Description BrailleAddObjectGuiTreeValue
+:Param int/nType The object type code
+
+:function BrailleAddObjectGuiTreeState
+:Returns int No Return Description
+:Synopsis BrailleAddObjectGuiTreeState
+:Description BrailleAddObjectGuiTreeState
+:Param int/nType The object type code
+
+:function BrailleAddObjectGuiTreeItemType
+:Returns int No Return Description
+:Param int/nType The object type code
+
+:function BrailleAddObjectGuiTreeItemText
+:Returns int No Return Description
+:Synopsis BrailleAddObjectGuiTreeItemText
+:Description BrailleAddObjectGuiTreeItemText
+:Param int/nType The object type code
+
+:function GetCurrentGuiCalendar
+:returns void No return description
+:description Get properties of GuiCalendar object
+
+:function SayCurrentGuiCalendar
+:returns void No return description
+:description Get properties of GuiCalendar object
+
+:function ResetGuiCalendar
+:returns void No return description
+
+:function BrailleAddObjectGuiCalendarFocusDate
+:Returns int No Return Description
+:Synopsis BrailleAddObjectGuiCalendarFocusDate
+:Description BrailleAddObjectGuiCalendarFocusDate
+:Param int/nType The object type code
+
+:function BrailleAddObjectGuiCalendarWeekday
+:Returns int No Return Description
+:Synopsis BrailleAddObjectGuiCalendarWeekday
+:Description BrailleAddObjectGuiCalendarWeekday
+:Param int/nType The object type code
+
+:function BrailleAddObjectGuiCalendarWeekNumber
+:Returns int No Return Description
+:Synopsis BrailleAddObjectGuiCalendarWeekNumber
+:Description BrailleAddObjectGuiCalendarWeekNumber
+:Param int/nType The object type code
+
+:function GetCurrentGuiTextField
+:Returns int TRUE on success
+:Synopsis Get content of current text field
+:Description Get content of current text field
+
+:function BrailleAddObjectGuiCheckBoxName
+:Returns int No Return Description
+:Synopsis Handles the GuiCheckbox object
+:Param int/nType The object's type code
+
+:function BrailleAddObjectGuiButtonName
+:Returns int No Return Description
+:Param int/nType No Description
+
+:function GetCurrentToolbar
+:Returns int TRUE on success
+:Synopsis Gets values of the toolbar
+
+:function ResetToolbar
+:Synopsis Resets the cached value of the toolbar
+
+:function SayCurrentToolbar
+:Synopsis Speaks the toolbar information
+
+:function BrailleAddObjectToolbarItem
+:Returns int No Return Description
+:Synopsis Handles Braille output for toolbar items
+:Param int/nType The object's type code
+
+:function BrailleAddObjectToolbarItemState
+:Returns int No Return Description
+:Synopsis Handles Braille output for toolbar items
+:Param int/nType The object's type code
+
+:function ResetGuiOkCodeField
+
+:script AltCursorDown
+
+:script ShiftSpace
+:Synopsis ShiftSpace
+:Description ShiftSpace
+
+:function BrailleAddObjectGuiTableControlInfo
+:Returns int No Return Description
+:Synopsis Handles the table control
+:Param int/nType No Description
+
+:function GetCurrentGuiContainer
+:Synopsis GetCurrentGuiContainer
+:Description GetCurrentGuiContainer
+
+:function ResetGuiContainer
+:Synopsis Resets the cached value of a GuiContainer
+
+:function BrailleAddObjectGuiComboboxValue
+:Returns int No Return Description
+:Param int/nType No Description
+
+:function GetGuiTableControlAttributes
+:Synopsis GetGuiTableControlAttributes
+:Description GetGuiTableControlAttributes
+
+:script CtrlTab
+
+:script ShiftF1
+:Synopsis ShiftF1
+
+:script CtrlShiftF11
+:Synopsis Tunnels this key combination to the application
+:Description Tunnels this key combination to the application and effectively overwrites the view system tray icon function.
+
+:script SapViewSysTrayItems
+:Synopsis Invokes the actual view system tray items script of Jaws
+:Description Invokes the actual view system tray items script of Jaws
+
+:script CtrlI
+:Synopsis CtrlI
+:Description CtrlI
+
+:script CtrlQ
+:Synopsis CtrlQ
+:Description CtrlQ
+
+:script ShiftF2
+:Synopsis ShiftF2
+:Description to delete rows in tables
+
+:function GetCurrentGuiCombobox
+:Returns int TRUE on success
+:Synopsis GetCurrentGuiCombobox
+:Description GetCurrentGuiCombobox
+
+:function ResetGuiCombobox
+:Synopsis Reset values of GuiCombobox
+
+:function BrailleAddObjectGuiComboBoxState
+:Returns int No Return Description
+:Synopsis Braille function for Combobox
+:Description Braille function for Combobox
+:Param int/nType No Description
+
+:script ShiftCursorDown
+
+:function SayCurrentGuiLabel
+:Synopsis Speak type and state of labels
+:Description Speaks type and state of  the current label. If the label is part of list or tables, additional information is spoken
+
+:function GetCurrentGuiTab
+:Returns int TRUE on success
+:Synopsis Get and store the values of the current GuiTab
+:Description On success the GuiTab's values are stored in the globals
+
+:function BrailleCallbackObjectIdentify
+:Returns int No Return Description
+
+:function GetCurrentGuiPicture
+:Returns int No Return Description
+:Synopsis Get and store information for the current picture control
+
+:function ResetGuiPicture
+:Synopsis Deletes information about current picture control
+
+:function SayCurrentGuiPicture
+:Synopsis Speak information about the picture control
+
+:function BrailleAddObjectGuiPicture
+:Returns int No Return Description
+:Synopsis Braille function for picture control
+:Description Braille function for picture control
+:Param int/nType No Description
+
+:function GetCurrentGuiTextEdit
+:Returns int No Return Description
+:Synopsis Get and store information for the text editor control
+
+:function ResetGuiTextEdit
+:Synopsis Deletes information about current text editor control
+
+:function SayCurrentGuiTextEdit
+:Synopsis Speak contents of the text editor control
+:returns void No return description
+:param int/bLine Annouce line or announce control
+
+:function SayTextEditColorInfo
+:Synopsis Announce special color semantics in a text editor
+
+:script SayTextEditStatusLine
+:Synopsis Say status line of the text editor and the new ABAP editor control
+
+:function GetCurrentGuiAbapEditorTooltipText
+:Returns int No Return Description
+:Synopsis Get and store tooltip information for the auto completion quickinfo
+
+:function GetCurrentGuiAbapEditorToolbar
+:Returns int No Return Description
+:Synopsis Get and store information for the toolbar of the auto completion dialog
+
+:script SayStartLine
+:Synopsis Within an ABAP editor control, announce the start line of a structured block
+
+:script SayEndLine
+:Synopsis Within an ABAP editor control, announce the end line of a structured block
+
+:function ShowAutoCompletionQuickinfo
+:Returns int No Return Description
+:Synopsis Shows the tooltip/quickinfo text currently displayed when in an auto completion
+dialog of the new ABAP editor
+
+:script AutoCompletionQuickinfo
+:Synopsis Shows the tooltip/quickinfo text currently displayed when in an auto completion
+dialog of the new ABAP editor
+
+:function ShowAutoCompletionToolbarHelp
+:Returns int No Return Description
+:Synopsis Displays a list of available toolbar button along with its' access key when in an
+auto completion dialog of the new ABAP editor
+
+:script AutoCompletionToolbarHelp
+:Synopsis Displays a list of available toolbar button along with its' access key when in an
+auto completion dialog of the new ABAP editor
+
+:function PressAutoCompletionToolbarButton
+:Returns int No Return Description
+:Synopsis Press and announce a toolbar button in the ABAP editor.
+
+:function HandleAutoCompletion
+:Returns int No Return Description
+:Synopsis This function is invoked when an auto completion dialog pops up in the ABAP editor.
+
+:function SayBookmarkStatus
+:Returns int No Return Description
+:Synopsis Announce bookmark in the ABAP editor.
+
+:function GetCurrentGuiAbapEditor 
+:Synopsis Get the values of an ABAP editor control
+:Returns int No Return Description
+
+:function SayCurrentGuiAbapEditor 
+:Synopsis Announcements made when in an ABAP editor control
+
+:function BrailleLineWithBreakpoint
+:Synopsis Sends a flash message to the display for lines with breakpoints
+
+:function SayCurrentGuiAbapEditorLine
+:Synopsis Announcements for a line of the ABAP editor control
+
+:function ResetGuiAbapEditor
+:Synopsis Reset all values of the ABAP editor
+
+:function GetCurrentGuiAbapEditorSelection
+:Synopsis Gets the currently selected text in an ABAP editor
+
+:function SayCurrentGuiAbapEditorNewSelection
+:Synopsis Speak new selected text
+
+:function SayCurrentGuiAbapEditorBlock
+:Params int/nType Type of announcement
+:Synopsis Speak block on request
+
+:function MenuModeEvent
+
+:script ToggleDebug
+:Synopsis Toggle debug messages on/off
+
+:function SayCurrentGuiTabPage
+:Synopsis SayCurrentGuiTabPage
+:Description SayCurrentGuiTabPage
+
+:function ToggleSapGuiAccVerbosity
+:Returns string No Return Description
+:Synopsis Toggles the accessibility verbosity level
+:Param int/nRetCurVal No Description
+
+:function ToggleSapGuiSteploopMode
+:Returns string No Return Description
+:Synopsis Toggles steploop recognition mode
+:Param int/nRetCurVal No Description
+
+:script SapEndRequest
+
+:function AnnounceHistoryOpened
+:returns void No return description
+
+:script HistoryOpened
+
+:script StatusBarUpdated
+
+:function CheckCurrentObject
+:Returns int Returns (0) if object should not be further processed, (1) otherwise
+:Synopsis Check if current object needs no special care
+
+:function SayStandardWindow
+:Synopsis Speaks the current window for standard window types after cursor event
+
+:function ResetGuiLabel
+:Synopsis Delete/Reset label values
+
+:function SayCurrentGuiTab
+:Synopsis Speak the currently active GuiTab
+
+:function BrailleAddObjectGuiRadioButtonName
+:Returns int No Return Description
+:Synopsis Handles the GuiRadioButton object
+:Param int/nType The object type code
+
+:function SayCurrentGuiCombobox
+:Synopsis SayCurrentGuiCombobox
+:Description SayCurrentGuiCombobox
+
+:function BrailleAddObjectGuiTableControlCell
+:Returns int No Return Description
+:Synopsis Handles the table control contents
+:Param int/nType No Description
+
+:script HomeKey
+
+:function ResetGuiTableControl
+:Synopsis Deletes the attributes of a GuiTableControl
+:Description Deletes the attributes of a GuiTableControl
+
+:function BrailleAddObjectGuiRadioButtonPosition
+:Returns int No Return Description
+:Synopsis Handles the GuiRadioButton object
+:Param int/nType The object type code
+
+:script AltCursorUp
+:Synopsis Handles Alt+UpArrow keystroke
+
+:function SayCurrentGuiRadioButton
+:Synopsis Speak type and state of a radio button
+
+:function BrailleAddObjectGuiTabValue
+:Returns int No Return Description
+:Synopsis Handles the tab strip control
+:Param int/nType No Description
+
+:function BrailleAddObjectGuiComboboxPrompt
+:Returns int No Return Description
+:Param int/nType No Description
+
+:function ResetGuiComponent
+:Synopsis Resets the stored GuiComponent values
+
+:script RightAltShiftTabKey
+
+:function BrailleAddObjectGuiTextFieldText
+:Returns int No Return Description
+:Param int/nType No Description
+
+:script PageDownKey
+
+:function SayCurrentGuiOkCodeField
+:Synopsis Speaks the text for a focused ok code field
+
+:function BrailleAddObjectGuiTabState
+:Returns int No Return Description
+:Synopsis Handles the GuiTab object
+:Param int/nType The object's type code
+
+:function BrailleAddObjectGuiTabPosition
+:Returns int No Return Description
+:Synopsis Handles the GuiTab object
+:Param int/nType The object type code
+
+:function HandleWindowRedraw
+:Synopsis Handle object update / redraw of active window
+
+:function SayCurrentGuiTableControl
+:Synopsis SayCurrentGuiTableControl
+:Description SayCurrentGuiTableControl
+
+:function BrailleAddObjectGuiComponentPrompt
+:Returns int No Return Description
+:Param int/nType The object type code
+
+:function BrailleAddObjectGuiComponentDescriptions
+:Returns int No Return Description
+:Param int/nType The object type code
+
+:function CheckExitToNWBC
+:Returns int TRUE if about to switch to NWBC, FALSE otherwise
+
+:function HandleGeneralNavigationKey
+:Returns int No Return Description
+:Synopsis Handles reaction after keyboard input like tab/shift-tab
+:Param int/nDelay No Description
+
+:function BrailleAddObjectGuiLabelType
+:Returns int No Return Description
+:Synopsis BrailleAddObjectGuiLabelType
+:Description BrailleAddObjectGuiLabelType
+:Param int/nType The object type code
+
+:function HandleCustomRealWindows
+
+:function BrailleAddObjectGuiComboboxType
+:Returns int No Return Description
+:Synopsis Handles the GuiCombobox
+:Param int/nType No Description
+
+:function SayCurrentGuiComponent
+
+:function RouteToCurrentGuiComponent
+:Synopsis Routes Braille to the currently focused component
+
+:function GuiFocusChanged
+:Returns int
+
+:function GetLabelText
+:Returns int TRUE on success
+:Synopsis Retrieves all the label properties to the given GuiComponent
+:Param object/oGuiComponent Get label properties for this object
+:Param string/sLeftLabelText/ByRef Left label value
+:Param string/sRightLabelText/ByRef Right label value
+:Param string/sLeftLabelTooltip/ByRef Tooltip on left label
+:Param string/sRightLabelTooltip/ByRef Tooltip on right label
+:Param string/sAccLabels/ByRef All AccLabel values
+
+:function SayLabelText
+:Returns String No Return Description
+:Synopsis Speak the currently stored label texts (of left and acc label variables)
+
+:function SayRightLabelText
+:Returns void No Return Description
+:Synopsis Speak the currently stored right label text
+
+:script OnAnyNavigationalKey
+:Synopsis Handle navigation shortcut keys
+
+:script TabKey
+:Synopsis Handle the tab key
+
+:script ShiftTabKey
+:Synopsis Handle shift+tab
+
+:script RightAltTabKey
+
+:script PageUpKey
+:Synopsis Handles the PageUp key
+
+:function ResetGuiButton
+:Synopsis Resets the cached value of GuiButton
+
+:function AutoFinishEvent
+:Synopsis Handler for the Jaws Autofinishevent.
+
+:function HandleSelected
+:Synopsis Invoked when checkbox/radiobutton state change is assumed and should be announced
+
+:function HandleWindowTitle
+:Synopsis Called when window title has changed
+:Description Invoked when window title change is detected - announces new window title
+
+;function HandleMouseNavigation
+:Synopsis To handle left mouse button clicks
+
+:script SayGuiTreeNodeFullText
+:Synopsis Reads a node in column tree
+
+:Function GetCurrentGuiTextEditSelection
+:Synopsis Returns the currently selected text in the TextEdit
+:Returns string String containing the selected or empty string if no text selected.
+
+; :script TestScript

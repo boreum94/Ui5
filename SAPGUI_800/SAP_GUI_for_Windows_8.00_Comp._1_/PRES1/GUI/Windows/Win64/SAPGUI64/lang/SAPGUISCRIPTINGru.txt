@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 SAPGUISCRIPTING RU 1504 OK 
+SCRIPTING_SCRIPTISOPENING       150 "Скрипт открывает соединение со следующей системой: %s"
+SCRIPTING_SCRIPTNOTINST         150 "Поддержка скриптов не инсталлирована"
+SCRIPTING_SCRIPTNOTENABLED      150 "Поддержка скриптов деактивирована пользователем"
+<#007>SCRIPTING_OK_BTN          016 "ОК"
+<#007>SCRIPTING_CANCEL_BTN      016 "Отменить"
+SCRIPTING_DO_NOT_SHOW_AGAIN     150 "Не показывать всплывающее окно, если скрипт открывает соединение"
+<#007>SCRIPTING_ALLOW_BTN       016 "Разрешить"
+<#007>SCRIPTING_DENY_BTN        016 "Отклонить"
+<#007>SCRIPTING_HELP_BTN        016 "Справка"

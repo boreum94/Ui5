@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 TEXTEDIT AR 8704 OK 
+TEXTEDIT_HE_LANG_BUTTON         255 "ΚΘΟνα ΚΞΨνΨ αζΝΙ ΗαγέΗΚνΝ Εαμ ΗαΪΘΡνΙ"
+TEXTEDIT_EN_LANG_BUTTON         255 "ΚΘΟνα ΚΞΨνΨ αζΝΙ ΗαγέΗΚνΝ Εαμ ΗαΕδΜανÒνΙ"
+TEXTEDIT_DISABLE_LANG_BUTTON    255 "ÒΡ ΚΪΨνα ΗααΫΙ"
+TEXTEDIT_ENABLE_LANG_BUTTON     255 "ÒΡ Κγίνδ ΗααΫΙ"
+TEXTEDIT_PROMPT_TEXT            255 "ΓΟΞα ΗαδΥ εδΗ..."

@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR CS 1404 OK 
+PREVIOUS_YEAR                   255 "Pøedchozí rok"
+PREVIOUS_MONTH                  255 "Pøedchozí mìsíc"
+NEXT_YEAR                       255 "Následující rok"
+NEXT_MONTH                      255 "Další mìsíc"
+WEEK_NUMBER                     255 "Èíslo týdne"
+WEEK_NUM_STR                    255 "ÈT"
+CALENDAR_BTN                    255 "Otevøít/zavøít navigátor data"
+DT_PICKER                       255 "Výbìr data: zmìnit den, mìsíc nebo rok"

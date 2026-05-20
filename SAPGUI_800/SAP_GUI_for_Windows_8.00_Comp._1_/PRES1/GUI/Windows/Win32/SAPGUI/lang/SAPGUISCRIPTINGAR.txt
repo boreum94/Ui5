@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 SAPGUISCRIPTING AR 8704 OK 
+SCRIPTING_SCRIPTISOPENING       150 "Ì»œ√ »—‰«„Ã ‰’Ì « ’«·« »«·‰Ÿ«„: %s"
+SCRIPTING_SCRIPTNOTINST         150 "œ⁄„ «·»—„Ã… «·‰’Ì… €Ì— „À»¯Û "
+SCRIPTING_SCRIPTNOTENABLED      150 " „  ⁄ÿÌ· œ⁄„ «·»—„Ã… «·‰’Ì… »Ê«”ÿ… «·„” Œœ„"
+<#007>SCRIPTING_OK_BTN          016 "„Ê«›ﬁ"
+<#007>SCRIPTING_CANCEL_BTN      016 "≈·€«¡"
+SCRIPTING_DO_NOT_SHOW_AGAIN     150 "⁄œ„ ≈ŸÂ«— Â–Â «·‰«›–… «·„‰»Àﬁ… ⁄‰œ„« ÌﬁÊ„ »—‰«„Ã ‰’Ì »› Õ « ’«·"
+<#007>SCRIPTING_ALLOW_BTN       016 "”„«Õ"
+<#007>SCRIPTING_DENY_BTN        016 "—›÷"
+<#007>SCRIPTING_HELP_BTN        016 "„”«⁄œ…"

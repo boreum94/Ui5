@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SapSetup Context="Variables" Version="800.1" ConnectedId="{986C96AA-FE9A-48ab-B384-6D418EFEC1DB}">
+    <Variable Name="SapBiDestDir" Description="DscrSapBiDestDir" DisplayInSapAdmin="TRUE" Persistent="true">
+      <Value>%ProgramFiles%\SAP\Business Explorer</Value>
+    </Variable>
+</SapSetup>

@@ -1,0 +1,10 @@
+﻿<!-- 
+In this file, you can specify a reference to a server (for example, http://my.central.server.com:8080/somepath/NwbcOptions.xml) 
+or a reference to a share in the internal network (for example, \\myfileshare\somepath\NwbcOptions.xml). 
+If an administrator has defined a reference that is temporarily not available (for example, the server cannot be reached), 
+the system displays an error message for end users and SAP Business Client cannot be started.
+-->
+<NwbcRemoteOptions>
+  <!--<Path> http://my.central.server.com:8080/somepath/NwbcOptions.xml </Path>-->
+  <!--<Path> \\myfileshare\somepath\NwbcOptions.xml </Path>-->
+</NwbcRemoteOptions>

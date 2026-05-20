@@ -1,0 +1,195 @@
+<mvc:View controllerName="code.d22.exercise30.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:c="sap.ui.core"
+>
+    <Page id="page" title="{i18n>title}">
+
+        <t:Table
+            rows="{
+                path: '/Orders',
+                filters: [{path: 'OrderDate',
+                            operator: 'BT',
+                            value1: '1996-12-01',
+                            value2: '1996-12-31'}],
+                parameters:{expand: 'Customer'}
+            }"
+            selectionBehavior="Row"
+            selectionMode="Single"
+            rowSelectionChange=".onRowSelectionChange"
+
+
+        >
+            <!-- m.Table이 아님. items가 없음 -->
+            <t:columns>
+                <!-- //첫 번째 컬럼은 주문ID -->
+                <t:Column>
+                        <t:label>
+                            <Label text="{i18n>columnOrderID}" />
+                        </t:label>
+                    
+                    <t:template>
+                        <ObjectIdentifier title="{OrderID}"/>
+                    </t:template>
+                </t:Column>
+                <!-- 두 번째 컬럼  고객ID-->
+                <t:Column>
+                    <t:label>
+                        <Label text="{i18n>columnCustomerID}" />
+                    </t:label>
+                    <t:template>
+                        <Text text="{CustomerID}" />
+                    </t:template>
+                </t:Column>
+
+                <!-- 세번째 컬럼 고객명 -->
+                <t:Column>
+                    <t:label>
+                        <Label text="{i18n>columnContactName}" />
+                    </t:label>
+                    <t:template>
+                        <Text text="{Customer/ContactName}" />
+                    </t:template>
+                </t:Column>
+
+                <!-- 네번째 컬럼 연락처 -->
+                <t:Column>
+                    <t:label>
+                        <Label text="{i18n>columnOrderPhone}" />
+                    </t:label>
+                    <t:template>
+                    <Text text="{Customer/Phone}" />
+                    </t:template>
+                </t:Column>
+                
+                <!-- 다섯 번째 컬럼 주문일자 -->
+                <t:Column>
+                    <t:label>
+                        <Label text="{i18n>columnOrderDate}" />
+                    </t:label>
+                    <t:template>
+                        <Text text="{
+                            path: 'OrderDate',
+                            type: 'sap.ui.model.type.Date',
+                            formatOptions: {
+                                pattern: 'yyyy-MM-dd'
+                            }}"/>
+                    </t:template>
+                </t:Column>
+            </t:columns>
+            
+        </t:Table>
+
+        <Panel headerText="주문정보">
+            <f:SimpleForm layout="ResponsiveGridLayout">
+                <f:content>
+                    <c:Title text="기본정보" />
+
+                    <Label text="선택한 주문 ID" />
+                    <Text text="{OrderID}" />
+
+                    <Label text="직원ID" />
+                    <Text text="{EmployeeID}" />
+
+                    <Label text="직원명" />
+                    <Text text="{Employee/FirstName} {Employee/LastName}"/>
+
+                    <c:Title text="고객정보" />
+                    <Label text="고객ID"/>
+
+                    <Text text="{CustomerID}" />
+                    <Label text="고객명" />
+                    <Text text="{Customer/ContactName}" />
+                </f:content>
+            </f:SimpleForm>
+        </Panel>
+
+        <Panel headerText="주문 세부내역">
+            <t:Table
+                rows="{path: '/Order_Details',
+                    parameters:{expand: 'Product'}
+                        }"
+                
+            >
+                <t:columns>
+                    <!-- 1번 컬럼 주문 아이디-->
+                    <t:Column>
+                        <t:label>
+                            <Label text="{i18n>columnCustomerID}" />
+                        </t:label>
+                        <t:template>
+                            <ObjectIdentifier title="{OrderID}" />
+                        </t:template>
+                    </t:Column>
+
+                    <!-- 2번 컬럼 제품 아이디-->
+                    <t:Column>
+                        <t:label>
+                            <Label text="{i18n>columnProductID}" />
+                        </t:label>
+                        <t:template>
+                            <ObjectIdentifier title="{ProductID}" />
+                        </t:template>
+                    </t:Column>
+
+                    <!-- 3번 컬럼 제품 아이디의 속성인 제품명-->
+                    <t:Column>
+                        <t:label>
+                            <Label text="{i18n>columnProductName}" />
+                        </t:label>
+                        <t:template>
+                            <Text text="{Product/ProductName}" />
+                        </t:template>
+                    </t:Column>
+
+                    <!-- 4번 컬럼 개당 가격 EUR-->
+                    <t:Column>
+                        <t:label>
+                            <Label text="{i18n>columnUnitPrice}" />
+                        </t:label>
+                        <t:template>
+                            <ObjectNumber number="{ parts: [ {path: 'UnitPrice'}, 
+                                                            {path: 'view>/Currency'}],
+                                                    type: 'sap.ui.model.type.Currency',
+                                                    formatOptions: {showMeasure: false} }"
+                                            unit="{view/Currency}"
+                        />
+                        </t:template>
+                    </t:Column>
+
+                    <!-- 5번 컬럼 수량 EA-->
+                    <t:Column>
+                        <t:label>
+                            <Label text="{i18n>columnQuantity}" />
+                        </t:label>
+                        <t:template>
+                            <ObjectNumber 
+                                number="{ parts: ['Quantity' , 'view>/Unit'],
+                                        type: 'sap.ui.model.type.Unit',
+                                        formatOptions: {showMeasure: false} }"
+                                unit="{view>/Unit}"
+                            />
+                        </t:template>
+                    </t:Column>
+
+                    <!-- 6번 컬럼 할인 %-->
+                    <t:Column>
+                        <t:label>
+                            <Label text="{i18n>columnDiscount}" />
+                        </t:label>
+                        <t:template>
+                            <ObjectNumber 
+                                number="{path: 'Discount',
+                                        formatter: '.formatter.discountText'}"
+                                unit="%"
+                            />
+                        </t:template>
+                    </t:Column>
+
+                </t:columns>
+            </t:Table>
+        </Panel>
+    </Page>
+</mvc:View>

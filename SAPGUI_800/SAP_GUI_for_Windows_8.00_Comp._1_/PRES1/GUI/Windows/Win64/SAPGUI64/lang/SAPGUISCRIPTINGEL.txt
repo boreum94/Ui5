@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 SAPGUISCRIPTING EL 1704 OK 
+SCRIPTING_SCRIPTISOPENING       150 "Μια δέσμη ενεργειών ανοίγει μια σύνδεση στο σύστημα: %s"
+SCRIPTING_SCRIPTNOTINST         150 "Υποστήριξη σεναρίου δεν είναι εγκατεστημένη"
+SCRIPTING_SCRIPTNOTENABLED      150 "Υποστήριξη σεναρίου είναι απενεργοποιημένη από τον χρήστη"
+<#007>SCRIPTING_OK_BTN          016 "ΟΚ"
+<#007>SCRIPTING_CANCEL_BTN      016 "Ακύρωση"
+SCRIPTING_DO_NOT_SHOW_AGAIN     150 "Μην εμφανίσετε αυτό το παράθυρο όταν ένα σενάριο ανοίγει μία σύνδεση"
+<#007>SCRIPTING_ALLOW_BTN       016 "Επιτρέπεται"
+<#007>SCRIPTING_DENY_BTN        016 "Απόρριψη"
+<#007>SCRIPTING_HELP_BTN        016 "Βοήθεια"

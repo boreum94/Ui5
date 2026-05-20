@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapSPrint64Wksta.xml">
+	<Component Arch="X64" BuildTime="0xA0C1C7C092F8D801" Guid="{22B22A74-B827-42ED-81DE-7AEC431D9920}" Min_Compliant_Version="800.0" Name="$SPrint ARP" Version="800.0">
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\SAPSPrint" Type="Registry">
+			<RegValue Name="DisplayName">SAP Print Service (x64)</RegValue>
+			<RegValue Name="DisplayIcon">&quot;%SapSPrint64DestDir%\sapsprint.exe&quot;,0</RegValue>
+			<RegValue Name="Publisher">SAP SE</RegValue>
+			<RegValue Name="URLUpdateInfo">http://service.sap.com</RegValue>
+			<RegValue Name="UninstallString">&quot;%SAPSetupDir%\setup\nwsapsetup.exe&quot; /product:&quot;SPrint64&quot; /uninstall</RegValue>
+		</Action>
+	</Component>
+	<Component Arch="X64" BuildTime="0xA0C1C7C092F8D801" Guid="{223E30BF-DB42-4C78-AECB-922A7A41730B}" Min_Compliant_Version="800.0" Name="$SPrint64 Shared Keys" Version="800.0">
+		<Action Dst="HKLM\SOFTWARE\SAP\SAP Shared\SPrint" Type="Registry">
+			<RegValue>SAP SPrint</RegValue>
+			<RegValue Name="SAPSourceDir">%SAPSrcDir%</RegValue>
+			<RegValue Name="SAPDestDir">%SapSPrint64DestDir%</RegValue>
+		</Action>
+	</Component>
+	<Component Arch="X64" BuildTime="0xA0C1C7C092F8D801" Guid="{6FEEB9D4-234B-4CA1-925B-AF474DA50ABF}" Min_Compliant_Version="800.0" Name="$SPrint64 MS DotNET DLLs" Version="800.1">
+		<Requires Guid="{BC20379A-C5F9-469D-ABAA-381AB0A01FD4}"/>
+	</Component>
+	<Component Arch="X64" BuildTime="0xA0C1C7C092F8D801" Guid="{1C283B55-A36F-4D26-A17B-E6DF2D931097}" Min_Compliant_Version="800.0" Name="$SPrint64 Files" Size="104084" Version="800.42">
+		<Action Dst="%SapSPrint64DestDir%" Type="File">
+			<Src Hash="SHA-256:58f1d4d0624af4a16527efddaac64d2e204fd144ab6a04b84827c227dd615912" Timestamp="0x448C85B1EAF5D801">%SAPsrcDir%\SapSPrint64\swinbitm.txt</Src>
+		</Action>
+		<Action Dst="%SapSPrint64DestDir%" Type="File">
+			<Src FileVersion="8000.1.0.44" Hash="SHA-256:d42ee5a2cad74bcdeccf456564e91ffb7c291e283cfa4872ffc7cd5d18e1ff7b" Timestamp="0x37FDE77D92F8D801">%SAPsrcDir%\SapSPrint64\SAPSprintOptEdit.exe</Src>
+			<Src Hash="SHA-256:80a644b9b3e3e1dc7cdbe8e0a7c1420e5e44dea37657c801ff4aa9854b718df0" Timestamp="0x82255F19E9F5D801">%SAPsrcDir%\SapSPrint64\SAPSprintOptEdit_d.chm</Src>
+			<Src Hash="SHA-256:4c4e7deb4286d50a7bc8e62901c3c1f392c6d511bc98e4da13bb51ec50385de0" Timestamp="0xF7F16419E9F5D801">%SAPsrcDir%\SapSPrint64\SAPSprintOptEdit_e.chm</Src>
+			<Src FileVersion="8000.1.0.14" Hash="SHA-256:33dbba6031bc65e2a0cb1ecd8629efcfae95fe23a5878625a7c1d357e53470be" Timestamp="0x93C6687892F8D801">%SAPsrcDir%\SapSPrint64\omsprint.exe</Src>
+		</Action>
+		<Action Dst="ProgramFiles\SAPSPrint\Options Editor" Type="Shortcut">
+			<Src>&quot;%SapSPrint64DestDir%\SAPSprintOptEdit.exe&quot;</Src>
+		</Action>
+		<Action Dependencies="Spooler" Description="SAP Print Service" DisplayName="SAPSprint" Dst="%SapSPrint64DestDir%" ExeName="&quot;%SapSPrint64DestDir%\sapsprint.exe&quot;" ServiceName="SAPSprint" Type="NtService">
+			<Src FileVersion="8000.1.0.59" ForceDelete="true" Hash="SHA-256:3c62708c69745516296d5c7c719f4811715fdbbe8d9333cabe44000c49c8fd26" Timestamp="0x9F41B47C92F8D801">%SAPsrcDir%\SapSPrint64\sapsprint.exe</Src>
+			<Src FileVersion="8000.1.0.110" ForceDelete="true" Hash="SHA-256:543cf80a8bbbef1d6628d9aac840ebd4bbab5a2e1f05f7e83fedfa3832c8e0d1" Timestamp="0xC37E2C7692F8D801">%SAPsrcDir%\SapSPrint64\sapwin.dll</Src>
+			<Src FileVersion="8000.1.0.1313" ForceDelete="true" Hash="SHA-256:af8c8ab01e858fee33535a8cdfbb765753ad3289069b893329513cb4a93b44a7" Timestamp="0xC12BD07792F8D801">%SAPsrcDir%\SapSPrint64\SAPbtmp.dll</Src>
+			<Src FileVersion="8000.1.0.40" ForceDelete="true" Hash="SHA-256:c1eba3a284950af62a88537ed2df2e7d7ca6479ac0747f01e2f02e09cad49750" Timestamp="0xC667B47692F8D801">%SAPsrcDir%\SapSPrint64\sappdfpr.dll</Src>
+			<Src FileVersion="22.5.0.0" ForceDelete="true" Hash="SHA-256:6fd2e9df199596485c6a8e2f453431b1db57efa448f8eb3da082baf5fab4d677" Register="false" Timestamp="0xB38EEBB3E8F5D801">%SAPsrcDir%\SapSPrint64\Aspose.Cells.dll</Src>
+			<Src FileVersion="22.4.0.0" ForceDelete="true" Hash="SHA-256:9a6bd6e5dc74617340e58f3c181e9a678e0e2a9a36ca7094e4552a743d56c8fe" Register="false" Timestamp="0xB3052DB4E8F5D801">%SAPsrcDir%\SapSPrint64\Aspose.Slides.dll</Src>
+			<Src FileVersion="22.5.0.0" ForceDelete="true" Hash="SHA-256:2b58dd38350df52c278b6ceacdf99199dd8676259d9f87bee24707a3ae3244af" Register="false" Timestamp="0x7CA73DB4E8F5D801">%SAPsrcDir%\SapSPrint64\Aspose.Words.dll</Src>
+			<Src FileVersion="22.4.0.0" ForceDelete="true" Hash="SHA-256:cd33d1ac49182aa700c3743fe6abab43d12a9044a1a04ad7842974d88fbc6164" Register="false" Timestamp="0x905510B4E8F5D801">%SAPsrcDir%\SapSPrint64\Aspose.Pdf.dll</Src>
+			<Src FileVersion="8000.1.8353.40442" ForceDelete="true" Hash="SHA-256:84dcb4ddd4bee05d95c47f30f72ad68ad151f5fe949b7ee5fa52cf12e15b8d75" Register="false" Timestamp="0xEFB23E7792F8D801">%SAPsrcDir%\SapSPrint64\ACSWrapper.dll</Src>
+		</Action>
+		<Action RunAt="Install" Type="Execute">
+			<Src DisplayText="Setting SPrint (x64) Recovery" Parameters=" -co" SuppressWindow="true" TimeOut="60000">%SapSPrint64DestDir%\sapsprint.exe</Src>
+		</Action>
+		<Action Condition="%SapSPrint64LPDPort%&lt;&gt;" RunAt="Install" Type="Execute">
+			<Src DisplayText="Setting SPrint (x64) LPD Port" Parameters=" -oi LPDPort &quot;%SapSPrint64LPDPort%&quot;" SuppressWindow="true" TimeOut="60000">%SapSPrint64DestDir%\sapsprint.exe</Src>
+		</Action>
+	</Component>
+</SapSetup>

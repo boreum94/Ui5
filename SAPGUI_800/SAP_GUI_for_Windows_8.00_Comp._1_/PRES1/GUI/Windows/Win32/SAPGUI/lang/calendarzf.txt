@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR ZF 8300 OK 
+PREVIOUS_YEAR                   255 "上年度"
+PREVIOUS_MONTH                  255 "上個月"
+NEXT_YEAR                       255 "下年度"
+NEXT_MONTH                      255 "下個月"
+WEEK_NUMBER                     255 "週數"
+WEEK_NUM_STR                    255 "WN"
+CALENDAR_BTN                    255 "開啟/關閉日期導覽"
+DT_PICKER                       255 "日期選擇：更改日、月或年"

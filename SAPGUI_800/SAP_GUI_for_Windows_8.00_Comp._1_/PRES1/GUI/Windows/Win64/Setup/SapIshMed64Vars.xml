@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SapSetup Context="Variables" Version="800.21" ConnectedId="{1460620D-C8BC-44c2-86ED-000000000040}">
+    <Variable Name='SAPJRE11Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE11Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK11Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE11Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE17Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE17Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK17Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK17Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+                Option Explicit
+                
+                Function GetVersion(version)
+                    If Len(version) - Len(Replace(version, ".", "")) >= 3 Then
+                        GetVersion = version
+                    Else
+                        GetVersion = GetVersion(version & ".0")
+                    End If
+                End Function
+
+                If "%WOW64MODE%" = "true" Then
+                    NwEngine.Shell.Use64BitHive = "true"
+                    Dim JavaRKs(1), JavaRK, regKey
+                    JavaRKs(0) = "JDK"
+                    JavaRKs(1) = "JRE"
+                    regKey = "HKEY_LOCAL_MACHINE\SOFTWARE\SapMachine"
+                    
+                    Dim JavaItems(3), JavaItem
+                    JavaItems(0) = Array("JRE", "11", "0.0.0")
+                    JavaItems(1) = Array("JRE", "17", "0.0.0")
+                    JavaItems(2) = Array("JDK", "11", "0.0.0")
+                    JavaItems(3) = Array("JDK", "17", "0.0.0")
+                    
+                    NwEngine.Context.Log.Write "Script SapMachine: Checking for installed SapMachine JRE/JDK 11 or higher..."
+                    For JavaItem = 0 To UBound(JavaItems)
+                        If NwEngine.Shell.RegKeyExist(regKey & "\" & JavaItems(JavaItem)(0)) Then
+                            Dim javaVersionEntry
+                            For Each javaVersionEntry in NwEngine.Shell.EnumRegKeys(regKey & "\" & JavaItems(JavaItem)(0))
+                                If Left(javaVersionEntry, Len(JavaItems(JavaItem)(1))) = JavaItems(JavaItem)(1) Then
+                                    If NwEngine.DE.ConditionsHandler.Evaluate("FileVersion(" & GetVersion(javaVersionEntry) & ") > FileVersion(" & GetVersion(JavaItems(JavaItem)(2)) & ")") Then
+                                        NwEngine.Context.Log.Write "Script SapMachine: Found " & JavaItems(JavaItem)(0) & JavaItems(JavaItem)(1) & " in version " & javaVersionEntry
+                                        JavaItems(JavaItem)(2) = javaVersionEntry
+                                    End If
+                                End If
+                            Next
+                        End If
+                    Next
+                    For Each JavaItem in JavaItems
+                        If NwEngine.DE.ConditionsHandler.Evaluate("FileVersion(" & GetVersion(JavaItem(2)) & ") > FileVersion(0.0.0.0)") Then
+                            If NwEngine.Shell.RegValueExist(regKey & "\" & JavaItem(0) & "\" & JavaItem(2) & "\JavaHome") Then
+                                Dim JavaDir
+                                JavaDir = NwEngine.Shell.GetRegValue(regKey & "\" & JavaItem(0) & "\" & JavaItem(2) & "\JavaHome")
+                                NwEngine.Variables.AppendDefaultValue "SAP" & JavaItem(0) & JavaItem(1) & "Version", JavaItem(2)
+                                NwEngine.Variables.AppendDefaultValue "SAP" & JavaItem(0) & JavaItem(1) & "Home", JavaDir
+                                NwEngine.Context.Log.Write "Script SapMachine: Adding variable " & "SAP" & JavaItem(0) & JavaItem(1) & "Version with value " & JavaItem(2)
+                                NwEngine.Context.Log.Write "Script SapMachine: Adding variable " & "SAP" & JavaItem(0) & JavaItem(1) & "Home with value " & JavaDir
+                            End If
+                        End If
+                    Next
+                End If
+            ]]>
+        </Value>
+    </Variable>
+	<Variable Name="ISHMED64JAVABITNESS" Persistent="FALSE">
+		<Value>UNDEFINED</Value>
+	</Variable>
+	<Variable Name="ISHMED64JAVAVERSION" Persistent="FALSE">
+		<Value>UNDEFINED</Value>
+	</Variable>
+	<Variable Name="ISHMED64JAVA" Persistent="FALSE">
+		<Value>UNDEFINED</Value>
+		<Value Script="TRUE"><![CDATA[
+			NWEngine.Context.Log.Write "IshMed64 Script: Determining the JRE for ISHmed64"
+			If Not NwEngine.Variables.GetValue("SAPJRE17Home") = "UNDEFINED" Then
+				NwEngine.Context.Log.Write "IshMed64 Script: Found SAPmachine JRE 17."
+				strJava = NwEngine.Variables.ResolveString("%SAPJRE17Home%bin\java.exe")
+				strIshMed64JavaBitness = "64"
+				strIshMed64JavaVersion = NwEngine.Variables.ResolveString("%SAPJRE17VERSION%")
+			ElseIf Not NwEngine.Variables.GetValue("SAPJRE11Home") = "UNDEFINED" Then
+				NwEngine.Context.Log.Write "IshMed64 Script: Found SAPmachine JRE 11."
+				strJava = NwEngine.Variables.ResolveString("%SAPJRE11Home%bin\java.exe")
+				strIshMed64JavaBitness = "64"
+				strIshMed64JavaVersion = NwEngine.Variables.ResolveString("%SAPJRE11VERSION%")
+			End If
+			NwEngine.Variables.AppendDefaultValue "ISHMED64JAVA", strJava
+			NwEngine.Context.Log.Write "IshMed64 Script: ISHMED64JAVA set to " & strJava
+			NwEngine.Variables.AppendDefaultValue "ISHMED64JAVABITNESS", strIshMed64JavaBitness
+			NwEngine.Context.Log.Write "IshMed64 Script: ISHMED64JAVABITNESS set to " & strIshMed64JavaBitness
+			strIshMed64JavaVersion = StrReverse(Replace(StrReverse(strIshMed64JavaVersion), ".", "_", 1, 1, 1))
+			NwEngine.Variables.AppendDefaultValue "ISHMED64JAVAVERSION", strIshMed64JavaVersion
+			NwEngine.Context.Log.Write "IshMed64 Script: ISHMED64JAVAVERSION set to " & strIshMed64JavaVersion
+		]]></Value>
+	</Variable>
+</SapSetup>

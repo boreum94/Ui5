@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapLogonControlWksta.xml">
+	<Component BuildTime="0x90437C837B30D901" Guid="{66EF6ABF-7F7F-4406-A907-950B40005948}" Min_Compliant_Version="760.1" Name="$SAPLogonControl" Size="143" Version="780.63">
+		<Requires Guid="{8E517890-8675-4F23-861F-45B568776C66}"/>
+		<Action Dst="%CommonProgramFiles%\SAP Shared" Type="File">
+			<Src FileVersion="7700.0.3.204" Hash="SHA-256:25eb28430fbc6608552bc288984ef35454173a6414f19596af938b3506006cd2" Timestamp="0x5321A4337B30D901">%SapSrcDir%\System\SAP\SAPLogonCtrl.dll</Src>
+			<Src FileVersion="8000.1.0.31" Hash="SHA-256:abc10f7fa5ff650e136b3f382b27e356a60e5d7c9c15e87396d2e9e6d09e491c" Timestamp="0x2C3F24327B30D901">%SapSrcDir%\System\SAP\LogonControlEx.dll</Src>
+		</Action>
+	</Component>
+</SapSetup>

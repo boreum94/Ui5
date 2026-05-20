@@ -1,0 +1,72 @@
+<mvc:View controllerName="code.d22.exam1.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:c="sap.ui.core"
+>
+    <Page id="page" title="{i18n>title}">
+        <Panel>
+            <form:SimpleForm  
+                class="sapUiResponsiveMargin"
+                width="auto"
+            >
+                <form:content>
+                    <c:Title text="숫자입력" />
+                    <Label text="숫자1" 
+                            labelFor="idNumber1"/>
+
+                    <!-- Input에 필수입력 조건 설정, 소수점까지 취급하기 위해 type.Float로 설정 -->
+                    <Input 
+                        id="myInput1"
+                        value="{
+                            path: '/Input/number1',
+                            type: 'sap.ui.model.type.Float',
+                            constraints: {minimum: 1}}"
+                            required="true"
+                        
+                        />
+
+                    <Label text="숫자2" 
+                            laberFor="idNumber2"/>
+                    <Input 
+                        id="myInput2"
+                        value="{
+                            path: '/Input/number2',
+                            type: 'sap.ui.model.type.Float',
+                            constraints: {minimum: 1}}" 
+                            required="true"
+                        />
+                    
+                    <c:Title text="결과출력" />
+                    <!-- 더하기 버튼 -->
+                    <Label text="덧셈" />
+                    <Text text="{path: '/Output/Plus',
+                                type: 'sap.ui.model.type.Float'}" />
+                    <Button 
+                        text="더하기"
+                        press=".onButtonPlus"/>
+                    <!-- 빼기 버튼 -->
+                    <Label text="뺄셈" />
+                    <Text text="" />
+                    <Button 
+                        text="빼기"
+                        press=".onButtonMinus"/>
+                    <!-- 곱하기 버튼 -->
+                    <Label text="곱셈" />
+                    <Text text="" />
+                    <Button 
+                        text="곱하기"
+                        press=".onButtonMultiple"/>
+                    <!-- 나누기 버튼 -->
+                    <Label text="나눗셈" />
+                    <Text text="{path: '/Output/Division',
+                                type: 'sap.ui.model.type.Float'}" />
+                    <Button 
+                        text="나누기"
+                        press=".onButtonDivision"/>
+                </form:content>
+            
+            </form:SimpleForm>
+        </Panel>
+    </Page>
+</mvc:View>

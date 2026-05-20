@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 PLUGINFRAMEWORK SL 1404 OK 
+CP_SERVICE_MENUITEM             030 "Storitve"
+MENU_ITEM_EXCEL                 030 "Excel"
+MENU_ITEM_SEARCH                030 "Iskanje"
+MENU_ITEM_CONTEXTSEARCH         120 "Iskanje po SAP Help Portalu"
+MENU_ITEM_SPELLCHECK            030 "Kontrola pravopisa"
+MENU_ITEM_MAIL                  020 "E-pošta"
+MENU_ITEM_PRINT                 020 "Izpis"
+CP_TREE_PRINT                   060 "Izpis drevesa"
+CP_SPELLCHECK_COMPLETE          128 "Preverjanje pravopisa zakljuèeno"

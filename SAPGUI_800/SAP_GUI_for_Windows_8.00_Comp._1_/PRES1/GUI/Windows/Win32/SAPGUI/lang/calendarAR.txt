@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR AR 8704 OK 
+PREVIOUS_YEAR                   255 "«·”‰… «·”«»ﬁ…"
+PREVIOUS_MONTH                  255 "«·‘Â— «·”«»ﬁ"
+NEXT_YEAR                       255 "«·”‰… «· «·Ì…"
+NEXT_MONTH                      255 "«·‘Â— «· «·Ì"
+WEEK_NUMBER                     255 "—ﬁ„ «·√”»Ê⁄"
+WEEK_NUM_STR                    255 "—ﬁ„ «·√”»Ê⁄"
+CALENDAR_BTN                    255 "› Õ/≈€·«ﬁ „” ﬂ‘› «· Ê«—ÌŒ"
+DT_PICKER                       255 " ÕœÌœ «· «—ÌŒ:  €ÌÌ— «·ÌÊ„ √Ê «·‘Â— √Ê «·”‰…"

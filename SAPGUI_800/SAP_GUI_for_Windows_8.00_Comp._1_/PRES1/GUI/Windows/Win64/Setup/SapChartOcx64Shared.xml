@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapChartOcx64Wksta.xml">
+	<Component Arch="X64" BuildTime="0x907D26B05B30D901" Guid="{92457186-6662-492B-B082-BEC5A38CEA7E}" Min_Compliant_Version="2000" Name="$SAPChart64OCX" Size="7470" Version="4572">
+		<Action Dst="%CommonProgramFiles64%\SAP Shared" Type="File">
+			<Src FileVersion="7530.1.14043.1024" Hash="SHA-256:72018489f863110e26a37243fb87c2a18af2239ed7c0f01ae7d8f4f2be497a29" Timestamp="0xF8537A575B30D901">%SapSrcDir%\System64\SAP\sapchart.ocx</Src>
+		</Action>
+	</Component>
+	<Component Arch="X64" BuildTime="0x907D26B05B30D901" Guid="{B3694722-39C0-4833-91EA-CCCD33EC2C33}" Min_Compliant_Version="2000" Name="$SAPChart64OCX Additional Files" Size="1738" Version="3145">
+		<Action Dst="%CommonProgramFiles64%\SAP Shared\lang" Type="File">
+			<Src Hash="SHA-256:2c960d2eaa8d3caaf347930e52984acb43a97aa1145574aad32323b5d1ba0f2c" Timestamp="0x78AF896EC1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerAR.txt</Src>
+			<Src Hash="SHA-256:2f6a3e0f0e284b1d06694ae59fd1ac97686a166597cefb93c597194cc013b7fc" Timestamp="0xF7B1F16FC1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerBG.txt</Src>
+			<Src Hash="SHA-256:8426d1ab3c5d8fea6aec0116c0a6dc55f54a7c9deff64736df44b50500c6f39b" Timestamp="0x90AA8C70C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerCA.txt</Src>
+			<Src Hash="SHA-256:7b1da34e909d957c81fafce4ad7f6775cbc3213df59b2e09ec933651ff876bf7" Timestamp="0x122B5071C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerCS.txt</Src>
+			<Src Hash="SHA-256:233f2e1177f4bb4ba4b2eab1ad09c4ee3b259fc636160014fd18acdcf31cb82d" Timestamp="0xC171F971C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerDA.txt</Src>
+			<Src Hash="SHA-256:59669cfecc70dda643fa7abd3c1cb1b8c8c911d4793c205f305eb3751c1e3ab7" Timestamp="0x227DA772C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerDE.txt</Src>
+			<Src Hash="SHA-256:b6e8a4a8d6abe5865a4f9ae03a00a6920e55af673611991eb9b654dddd1b3316" Timestamp="0x13AE7B73C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerEL.txt</Src>
+			<Src Hash="SHA-256:15602887bdd20e1e9403f89372c625c87c214e81852aba7d0b215e3f732c0db0" Timestamp="0xEE904174C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerEN.txt</Src>
+			<Src Hash="SHA-256:c392e95812538f46308351e74e5dbad660d3a8b36a23d8daf544ca065a4d2a05" Timestamp="0x4475E874C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerES.txt</Src>
+			<Src Hash="SHA-256:2482a89c2b5c6bd8fefacb58963ba0c4216425eda1883fc622a193ea24e15a93" Timestamp="0x2BA97E75C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerET.txt</Src>
+			<Src Hash="SHA-256:b646c32a155fae57f85204618869e9a6b24eac0a62a66dba6d7e83da9c0e0b38" Timestamp="0xCFC82076C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerFI.txt</Src>
+			<Src Hash="SHA-256:f28a9d75a0ebcdf6c4ae71efb35f19da5e40a3983af24c0f4d0ebd037a452b9a" Timestamp="0xC123BE76C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerFR.txt</Src>
+			<Src Hash="SHA-256:775410dad74de14bde1f0c64b82d71261afd8e55cd8ca417e68135080e339239" Timestamp="0xF5688677C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerHE.txt</Src>
+			<Src Hash="SHA-256:ac414260da4886c2dd58f9550d6f072eb6a31863c848c8ec2bd3e34ca1ad6a4a" Timestamp="0x08393978C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerHR.txt</Src>
+			<Src Hash="SHA-256:07bb658ec33bf23ffc2ff00a5419ff76c10d3322b30394e925711b4ef92b21ba" Timestamp="0x80BCBE78C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerHU.txt</Src>
+			<Src Hash="SHA-256:099198b4d33f0945139822aff2f32d84cf506cca76c2511f11284e97f28ba92b" Timestamp="0x03674B79C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerIT.txt</Src>
+			<Src Hash="SHA-256:9f2e9d39a338a32436ce9ae89eec162af472d84106d3536e526f6a70e6e85251" Timestamp="0x4E24EB79C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerJA.txt</Src>
+			<Src Hash="SHA-256:bb4aa3b056666674715b9a529d987e135f83c76c2321b5e158c841deca03e6e0" Timestamp="0x3558817AC1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerKO.txt</Src>
+			<Src Hash="SHA-256:b8314771bf48e8fcb526e8d16748986eb1726c1c00acbeaed6d8915a5eb990f6" Timestamp="0x04EA767BC1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerLT.txt</Src>
+			<Src Hash="SHA-256:2d40afed17a64a395af65f11dde075591e3828500f4efd3fc25530bfe7fe780b" Timestamp="0xEB1D0D7CC1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerLV.txt</Src>
+			<Src Hash="SHA-256:6e450787bd46b30ec97ba766025dc217bb2f8a350b383b66b2bd9d9a5175309f" Timestamp="0xFEEDBF7CC1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerNL.txt</Src>
+			<Src Hash="SHA-256:862f9f0ea8258c671dda78431302a8d757fc49815fe6ff1cc7e12a693bf21bed" Timestamp="0x28364A7DC1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerNO.txt</Src>
+			<Src Hash="SHA-256:28ba1eaf6065dbe8f9fd0e48cf9aea2a312067dc32c96a26aeb9134e0668ebe5" Timestamp="0xF91BD27DC1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerPL.txt</Src>
+			<Src Hash="SHA-256:1e16bad488d1650f753ac6a7ada0b2d98fc6ba91e59ed677164f8996f11988b5" Timestamp="0x6678507EC1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerPT.txt</Src>
+			<Src Hash="SHA-256:93b718a6832bed749d4b90c561d1796a5c924575e9f0525cdde7589e4d18e0fc" Timestamp="0xB135F07EC1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerRO.txt</Src>
+			<Src Hash="SHA-256:287add8c003031910a1fc297fcfce1f8c25cead07768ea4c7699e157bc1fc697" Timestamp="0xD056737FC1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerRU.txt</Src>
+			<Src Hash="SHA-256:02f13a28bdab4b5df99d5732743dc82d7d6468d763834561875db347edbd2f37" Timestamp="0x48DAF87FC1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerSH.txt</Src>
+			<Src Hash="SHA-256:3aecc4bf9716f426d39d57df09dec726bf78aa48afed6470a294c89b1504c10a" Timestamp="0x9F5D7E80C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerSK.txt</Src>
+			<Src Hash="SHA-256:0b7102487127f6ed6b7dfb4f755eaaa236e09ad6927f101dd571f2f8f1503287" Timestamp="0x37430681C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerSL.txt</Src>
+			<Src Hash="SHA-256:0ce94b70def701e78f58ea826a35278e62272d0e0c9334eaa86938c8f552674d" Timestamp="0x173D8281C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerSV.txt</Src>
+			<Src Hash="SHA-256:668553f67f4fbc6d045cb9916507a03f0b7f8f2b28edacf585d175d0f45ba149" Timestamp="0xFF5D0582C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerTH.txt</Src>
+			<Src Hash="SHA-256:28e77b875cd381548345614cbe43ea2692b0aa2e8f4fe3b0ec5997f4d1257e40" Timestamp="0x8F1C8682C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerTR.txt</Src>
+			<Src Hash="SHA-256:796e14627a052708083b0683a2209b6c93cf174ac599eef40d586a570235bd3e" Timestamp="0x1FDB0683C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerUK.txt</Src>
+			<Src Hash="SHA-256:b8bf9476172e10d88a8d357c3058d3610631b72ba94a5dc81ec86c21e3faec05" Timestamp="0xB7C08E83C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerZF.txt</Src>
+			<Src Hash="SHA-256:94bd5fa27cbe38c15bb66ae65a396bcae4bd641a624f0c7173367cdc8e92fc0e" Timestamp="0xEF1C0D84C1E9CE01">%SapSrcDir%\System64\SAP\lang\chartdesignerZH.txt</Src>
+		</Action>
+	</Component>
+</SapSetup>

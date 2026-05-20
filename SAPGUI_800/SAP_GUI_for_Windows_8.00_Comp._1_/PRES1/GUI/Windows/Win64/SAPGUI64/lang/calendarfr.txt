@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR FR 1100 OK 
+PREVIOUS_YEAR                   255 "Année précédente"
+PREVIOUS_MONTH                  255 "Mois précédent"
+NEXT_YEAR                       255 "Année suivante"
+NEXT_MONTH                      255 "Mois suivant"
+WEEK_NUMBER                     255 "Numéro de semaine"
+WEEK_NUM_STR                    255 "NS"
+CALENDAR_BTN                    255 "Ouvrir/Fermer navigateur de dates"
+DT_PICKER                       255 "Sélection de la date : modifier jour, mois ou année"

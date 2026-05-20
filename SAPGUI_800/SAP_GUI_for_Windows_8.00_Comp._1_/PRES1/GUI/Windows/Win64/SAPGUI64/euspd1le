@@ -1,0 +1,148 @@
+/*# @(#) $Id: //fes/800_REL/src/dwb/eusp/euspd1le#1 $ SAP*/
+#2345678901234567890123456789012345678901234567890123456789012345678901234567890
+.  
+.                          Fullscreen Editor
+.  
+. The fullscreen editor is the main window of the Graphical Screen Painter. 
+. In addition to the usual menu components (menu bar, standard tool bar,
+. application tool bar and message line), it contains an input area for
+. creating and changing a screen.
+.  
+.  
+. Program name as well as screen number and type can be found in the window's
+. title bar, while the screen size can be found in the window's status bar. 
+. If you are in change mode, you can increase or reduce the screen size by 
+. "clicking and dragging" the frame surrounding the input area.
+.  
+. The header line contains the name, text, size and position of the
+. currently selected screen element. The contents of these entry fields may
+. be changed to modify the respective attribute of the screen element.
+.    
+. To the left of the screen, you see the palette of possible screen
+. elements. The icons in this palette work just like pushbuttons and are
+. used to create new screen elements. From top to bottom, these include:
+.  
+.                - Reset button
+.                - Text field (Key word)
+.                - Input/output field (template)
+.                - Check box
+.                - Radio button
+.                - Pushbutton
+.                - TabStrip
+.                - Frame
+.                - Subscreen area
+.                - Table Control
+.                - Status icon.
+.
+. The Reset button allows you to cancel the operation once you have
+. started creating a new element. Creating new screen elements is 
+. described below in the section "Editing screen elements".
+.  
+. Note: The input area itself does not actually allow any text input.
+.       Instead, you can modify the text of the currently selected screen 
+.       element by entering or changing the string in text entry field.
+.  
+.  
+. Further help
+. ------------
+. The Help menu also provides explanatory notes about the other Screen 
+. Painter windows. You reach these windows by selecting, for instance,
+. Goto -> attributes or Goto -> DDIC/program fields, or by pressing the
+. appropriate keys in the application tool bar.
+.  
+.  
+. Editing screen elements
+. -----------------------
+. * Selecting and deselecting
+. By clicking once on the left mouse button in the input area, you can
+. select individual screen elements for editing. The tab and backtab keys
+. allow you to select the next or previous element and thus run through the
+. screen elements from left to right moving down the screen or the other way
+. round.
+. 
+. By "lassoing", you can select several elements at the same time. To do
+. this, you press the left mouse button in the blank area of the screen and
+. pull on the right corner until all the desired elements are surrounded.
+. 
+. You can select individual elements either for or from such a group by
+. clicking on the left mouse button at the same time as you hold down the
+. CTRL or SHIFT key (this is known as modified selection).
+. 
+. To deselect the currently selected elements, click on the mouse in the
+. blank area of the screen or select Edit -> Deselect.
+.  
+. * Move
+. To move an element, select by clicking on the left mouse button. Keep the
+. button depressed as you drag the element to the desired position and then
+. release (this is known as "drag and drop"). If collisions occur, the
+. outline of the elements concerned are highlighted and a suitable message
+. appears in the message line.
+.  
+. * Enlarging and reducing
+. You can change the width and height of screen elements by clicking and
+. dragging. To do this, you direct the mouse pointer towards the right or
+. lower edge of the selected element until the pointer symbol changes to a
+. direction arrow. There, you click on the element and move the edge in the
+. desired direction by keeping the mouse button depressed. Collisions with
+. other elements are also highlighted here.
+.  
+. * Create
+. To create a new screen element, you select the appropriate icon from the
+. "Create" palette on the left screen edge and place the new element on the
+. screen by clicking and dragging.
+. 
+. When placing an element, clicking on the mouse defines the position of the
+. upper left corner of the screen element. By dragging and keeping the mouse
+. button depressed, you can define the size of the element. If this collides
+. with another screen element right at the start position, you must move the
+. new element to a different position. There, it is created in its minimal
+. size and must then be enlarged, if necessary, as described above.
+. 
+. Before placing the element, you can cancel the "Create" operation by
+. pressing the same icon or by pressing the "Reset" pushbutton, i.e. the
+. topmost button in the palette.
+.   
+. * Defining and dissolving step loops and graphical groups
+. Step loops are vertical repetitions of loop blocks, which may contain
+. input/output fields, texts, check boxes and radio buttons. Radio
+. buttons within a step loop ("vertical" radio buttons) are implicitly
+. dependent on each other in that activating one deactivates another. With
+. all other groups of radio buttons, you must define this logical
+. connection explicitly by making use of the graphical group.
+. 
+. Step loops and graphical groups are not created like elements, but are
+. "defined" as a group by combining several elements together. To do this
+. for the selected elements, select Edit -> Group -> Step loop/GraphGroup
+. -> Define. 
+. 
+. At first, a new step loop has a minimum of two loop block repetitions and
+. a width depending on the the width of the group. You can modify the
+. number of repetitions by clicking and dragging the lower step loop edge.
+. A loop block can also contain a graphical group of radio buttons. In this
+. context, however, only the radio buttons of one repetition depend on each
+. other ("horizontal" radio buttons).
+. 
+. To "dissolve", i.e. break up the groups, select Edit -> Step loop/
+. GraphGroup -> Dissolve.
+. 
+. Note: Step loops have become obselete after the introduction of the
+.       Table Control, which may contain the same types of screen elements
+.       as a step loop.
+.    
+. * Delete
+. To delete, mark the element or element group and select Edit -> Delete 
+. or use the pushbutton Delete (F14). If you delete an element 
+. inadvertently you can undo this action until another operation changes
+. the screen contents (see below).
+.
+. Note: When you delete a frame, only the frame itself is deleted; the
+.       elements within remain unchanged. However, if you delete a 
+.       container such as a TabStrip or a Table Control, the elements
+.       within the container will be deleted as well. 
+.
+. * Undo and Redo
+. ( to be completed )
+.
+.
+. * Cut, Copy and Paste
+. ( to be completed )

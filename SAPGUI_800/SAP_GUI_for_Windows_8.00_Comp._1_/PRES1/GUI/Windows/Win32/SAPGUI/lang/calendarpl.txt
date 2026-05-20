@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR PL 1404 OK 
+PREVIOUS_YEAR                   255 "Poprzedni rok"
+PREVIOUS_MONTH                  255 "Poprzedni miesi¹c"
+NEXT_YEAR                       255 "Nastêpny rok"
+NEXT_MONTH                      255 "Nastêpny miesi¹c"
+WEEK_NUMBER                     255 "Numer tygodnia"
+WEEK_NUM_STR                    255 "NT"
+CALENDAR_BTN                    255 "Otwórz/zamknij nawigatora daty"
+DT_PICKER                       255 "Wybór daty: Zmieñ dzieñ, miesi¹c lub rok"

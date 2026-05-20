@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR HR 1404 OK 
+PREVIOUS_YEAR                   255 "Prethodna godina"
+PREVIOUS_MONTH                  255 "Prethodni mjesec"
+NEXT_YEAR                       255 "Sljedeæa godina"
+NEXT_MONTH                      255 "Sljedeæi mjesec"
+WEEK_NUMBER                     255 "Broj tjedna"
+WEEK_NUM_STR                    255 "BT"
+CALENDAR_BTN                    255 "Otvori/zatvori navigator datuma"
+DT_PICKER                       255 "Odabir datuma: promijeni dan, mjesec ili godinu"

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapCalSyncWkstaUI.xml">
+	<SapSetupProduct BuildTime="0x907D26B05B30D901" CmdLine="CALSYNC" Description="strCalendarSyncForMsOutlookDescription" Guid="{DE9BCE75-3714-4d1a-BBBD-10F3489B6ADD}" Name="Calendar Synchronisation for Microsoft Outlook 32bit" Version="800.29">
+		<Succeeds Name="CALSYNC old GUID" ProductGuid="{747A3BB5-DDBA-40d8-96B1-6D7E5C47E6FF}"/>
+		<Succeeds Name="CALSYNC old GUID 2" ProductGuid="{1460620D-C8BC-44c2-86EC-F00000000060}"/>
+		<Prerequisite>
+			<Condition>(%WinType%=[Windows 7,Windows 8.1,Windows 10])</Condition>
+			<FailureText>The Outlook Client extension requires Windows 7, 8.1 or 10.</FailureText>
+		</Prerequisite>
+		<Prerequisite>
+			<Condition>((%MSOutlook2010Exists% = TRUE) | (%MSOutlook2013Exists% = TRUE) | (%MSOutlook2016Exists% = TRUE))</Condition>
+			<FailureText>The Outlook Client extension requires a 32bit version of Microsoft Office 2010, 2013 or 2016.</FailureText>
+		</Prerequisite>
+		<Prerequisite>
+			<Condition>(%MSVSTOR2010_CLR40_Installed% = TRUE)</Condition>
+			<FailureText>The Outlook Client extension requires Microsoft VSTO 2010 for .NET 4.0.</FailureText>
+		</Prerequisite>
+		<Prerequisite>
+			<Condition>%DotNetV4.5.2% = EXISTING</Condition>
+			<FailureText>The Outlook Client extension requires Microsoft .NET 4.5.2 or later.</FailureText>
+		</Prerequisite>
+		<Prerequisite>
+			<Condition>%MSOFFICE32BIT% = TRUE</Condition>
+			<FailureText>The Outlook Client extension requires a 32bit version of Microsoft Office.</FailureText>
+		</Prerequisite>
+		<RequiresProductPart Name="requires SAP GUI 32bit" ProductGuid="{C0EB1513-8349-48ed-8119-EA89589F8EC7}"/>
+		<IncludesProductPart Name="CalSync" ProductGuid="{EE58B538-A06A-4f27-BC31-78A5C0D8456A}" Visible="FALSE"/>
+	</SapSetupProduct>
+	<SapSetupProductPart BuildTime="0x907D26B05B30D901" Guid="{EE58B538-A06A-4F27-BC31-78A5C0D8456A}" Name="CalSync" Version="800.5">
+		<RequiresComponent ComponentGuid="{1759AECA-C093-43B0-A424-ABB48AFEE8A7}"/>
+	</SapSetupProductPart>
+</SapSetup>

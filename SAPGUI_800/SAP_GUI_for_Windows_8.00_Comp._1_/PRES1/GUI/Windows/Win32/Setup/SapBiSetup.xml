@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapBiWkstaUI.xml">
+	<SapSetupProduct BuildTime="0xD09917867930D901" CmdLine="SapBI" Description="SapBiProductDescription" Guid="{986C96AA-FE9A-48ab-B384-6D418EFEC1DB}" Name="SapBiProductName" Version="800.5256">
+		<Prerequisite>
+			<Condition>%DOTNETV4.6%=EXISTING</Condition>
+			<FailureText>strSAPBEXFailedConditionNET46</FailureText>
+		</Prerequisite>
+		<Succeeds ProductGuid="{61CF11DF-8382-47B1-A227-CCF64D66A843}"/>
+		<UI>
+			<Page Type="FolderPath">
+				<PageVariable>SapBiDestDir</PageVariable>
+				<Title>SapBiProductName</Title>
+				<SubTitle>SapBiTargetDirPrompt</SubTitle>
+			</Page>
+		</UI>
+		<IncludesProductPart Comment="Business Explorer (SAP NetWeaver 8.X)" ProductGuid="{90C8D495-2790-4354-872B-91BB2025A1FD}"/>
+		<IncludesProductPart Comment="OLE DB for OLAP Provider" ProductGuid="{5390360A-98D9-4377-BD41-9A147392D000}"/>
+	</SapSetupProduct>
+	<SapSetupProductPart BuildTime="0xD09917867930D901" Description="SapBiProductDescription" Guid="{90C8D495-2790-4354-872B-91BB2025A1FD}" Name="Business Explorer (SAP NetWeaver 8.X)" Version="800.3">
+		<RequiresComponent ComponentGuid="{D90D6783-FA88-4578-B262-0B086F62ED1E}"/>
+		<RequiresComponent ComponentGuid="{E773C20A-08A9-41A0-8DF3-8BFD1A26254E}"/>
+		<RequiresComponent ComponentGuid="{DB5EECE1-FFE3-4223-A597-08CE447B356D}"/>
+		<RequiresComponent ComponentGuid="{C0C8FB32-58D0-418B-9B59-8C20CCB40362}"/>
+		<RequiresComponent ComponentGuid="{E7A36482-6208-43C3-940D-83C7E4ADA37A}"/>
+		<RequiresComponent ComponentGuid="{21B43D24-E493-4351-B2BF-C690DF981FDC}"/>
+		<RequiresComponent ComponentGuid="{66EF6ABF-7F7F-4406-A907-950B40005948}"/>
+		<RequiresComponent ComponentGuid="{9659D3C1-3C75-4230-BB86-DA170E4C6381}"/>
+		<RequiresComponent ComponentGuid="{4C6645DF-8834-4B72-A87C-D60CC929CFC0}"/>
+		<RequiresComponent ComponentGuid="{985A37A5-0D57-481C-8C89-C978945B2B1E}"/>
+		<RequiresComponent ComponentGuid="{EBFD6DB4-B7A8-4D1A-9296-8513CA5A2E3B}"/>
+	</SapSetupProductPart>
+	<SapSetupProductPart BuildTime="0xD09917867930D901" Description="strOLEDBForOlapProviderDescription" Guid="{5390360A-98D9-4377-BD41-9A147392D000}" Name="OLE DB for OLAP Provider" Version="800.1">
+		<RequiresComponent ComponentGuid="{D90D6783-FA88-4578-B262-0B086F62ED1E}"/>
+		<RequiresComponent ComponentGuid="{E773C20A-08A9-41A0-8DF3-8BFD1A26254E}"/>
+		<RequiresComponent ComponentGuid="{E92A7287-4EA3-43E3-85D5-66EC32D338F4}"/>
+	</SapSetupProductPart>
+</SapSetup>

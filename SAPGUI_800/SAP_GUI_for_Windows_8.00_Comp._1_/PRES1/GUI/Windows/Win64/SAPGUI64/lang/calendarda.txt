@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR DA 1100 OK 
+PREVIOUS_YEAR                   255 "Forrige år"
+PREVIOUS_MONTH                  255 "Forrige måned"
+NEXT_YEAR                       255 "Næste år"
+NEXT_MONTH                      255 "Næste måned"
+WEEK_NUMBER                     255 "Ugenummer"
+WEEK_NUM_STR                    255 "Ugenummer"
+CALENDAR_BTN                    255 "Åbn/luk DateNavigator"
+DT_PICKER                       255 "Datoselektion: Ændr dag, måned eller år"

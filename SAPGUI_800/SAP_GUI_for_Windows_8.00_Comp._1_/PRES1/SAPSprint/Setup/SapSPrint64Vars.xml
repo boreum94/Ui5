@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SapSetup Context="Variables" Version="800.0">
+    <Variable Name="SapSPrint64DestDir" ConnectedId="{768E6874-B6A9-427F-A18D-8C1A77D43FE8}" Description="DscrSapSPrint64DestDir" Persistent="TRUE">
+      <Value>%ProgramFiles64%\SAP\SAPSPrint</Value>
+    </Variable>
+    <Variable Name="SapSPrint64LPDPort" ConnectedId="{768E6874-B6A9-427F-A18D-8C1A77D43FE8}" Description="DscrSapSPrint64LPDPort">
+      <Value>515</Value>
+    </Variable>
+</SapSetup>

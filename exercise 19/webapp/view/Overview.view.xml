@@ -1,0 +1,177 @@
+<mvc:View controllerName="sap.training.exc.controller.Overview"
+          xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          core:require="{formatter: 'sap/training/exc/model/formatter'}">
+
+     <Page title="Flight Customers">
+        <content>
+            <Panel headerText="New Customer" expandable="true" expanded="true" class="sapUiResponsiveMargin sapUiHideOnPhone" width="auto">
+				<content>								
+                    <f:SimpleForm layout="ColumnLayout" editable="true">
+                        <f:toolbar>
+                            <Toolbar>
+                                <content>
+                                    <ToolbarSpacer/>
+                                    <Button icon="sap-icon://create" text="Create Customer" press=".onSave"
+                                            enabled="{= ${customer>/CustomerName} !== undefined &amp;&amp; 
+                                                        ${customer>/CustomerName}.length > 0 }"/>
+                                </content>
+                            </Toolbar>
+                        </f:toolbar>
+                        <f:content>
+                            <core:Title text="General Data"/>
+                                <Label text="Form"/>
+                                <Input value="{customer>/Form}"/>
+
+                                <Label text="Customer Name"/>
+                                <Input value="{customer>/CustomerName}" valueLiveUpdate="true" />
+                               
+                                <Label text="Discount"/>
+                                <Input value="{ path: 'customer>/Discount',
+                                                type: 'sap.ui.model.type.Integer',
+                                                constraints: {minimum: 0, maximum: 100} }"/>
+
+                            <core:Title text="Address Data"/>
+                                <Label text="Street"/>
+                                <Input value="{customer>/Street}"/>
+
+                                <Label text="Post Code"/>
+                                <Input value="{customer>/PostCode}"/>
+
+                                <Label text="City"/>
+                                <Input value="{customer>/City}"/>
+
+                                <Label text="Country"/>
+                                <Input value="{customer>/Country}"/>                  
+
+                            <core:Title text="Contact Data"/>
+                                <Label text="Email"/>                    
+                                <Input value="{customer>/Email}"/>
+
+                                <Label text="Telephone"/>
+                                <Input value="{customer>/Telephone}"/>                     
+                        </f:content>
+                    </f:SimpleForm>
+                </content>
+            </Panel>
+
+            <Table id="customerTable" growing="true" growingThreshold="5" class="sapUiResponsiveMargin" width="auto"
+                   mode="SingleSelectLeft" selectionChange=".onCustomerChange"
+                   items="{ path: '/Customers',
+                            sorter: [ {path: 'City', group: true}, {path: 'CustomerName'} ] }">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="Customers"/>
+                        <ToolbarSpacer/>
+                        <SearchField width="40%" search=".onFilterCustomers"/>
+                    </Toolbar>
+                </headerToolbar>          
+                <columns>
+                     <Column>
+                        <header>
+                            <Text text="Customer Name"/>
+                        </header>                        
+                    </Column>
+                    <Column>
+                        <header>
+                            <Text text="Street"/>
+                        </header>                        
+                    </Column>
+                    <Column>
+                        <header>
+                            <Text text="Post Code"/>
+                        </header>                        
+                    </Column>
+                    <Column>
+                        <header>
+                            <Text text="City"/>
+                        </header>                        
+                    </Column>
+                    <Column>
+                        <header>
+                            <Text text="Country"/>
+                        </header>                        
+                    </Column>
+                    <Column>
+                        <header>
+                            <Text text="Email"/>
+                        </header>                        
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <ObjectIdentifier title="{CustomerName}"/>
+                            <Text text="{Street}"/>
+                            <Text text="{PostCode}"/>
+                            <Text text="{City}"/>
+                            <Text text="{Country}"/>
+                            <Text text="{Email}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+            <Table id="bookingTable" headerText="Bookings" items="{_Bookings}" growing="true" growingThreshold="5" class="sapUiResponsiveMargin" width="auto">
+                <columns>
+                    <Column>
+                        <header>
+                            <Text text="Airline ID"/>
+                        </header>                        
+                    </Column>
+                    <Column>
+                        <header>
+                            <Text text="Connection Number"/>
+                        </header>                        
+                    </Column>
+                    <Column>
+                        <header>
+                            <Text text="Flight Date"/>
+                        </header>                        
+                    </Column>
+                    <Column>
+                        <header>
+                            <Text text="Class"/>
+                        </header>                        
+                    </Column>
+                    <Column>
+                        <header>
+                            <Text text="Foreign Currency Payment"/>
+                        </header>                        
+                    </Column>
+                    <Column>
+                        <header>
+                            <Text text="Cancellation Status"/>
+                        </header>                        
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <ObjectIdentifier title="{AirlineID}"/>
+                            <ObjectIdentifier title="{ConnectionNumber}"/> 
+                            <ObjectIdentifier title="{ path: 'FlightDate',
+                                                       type: 'sap.ui.model.type.Date',
+                                                       formatOptions: {source: {pattern: 'yyyy-MM-dd'}, style: 'medium'} }"/>
+                            <Text text="{ path: 'Class', 
+                                          formatter: 'formatter.classText' }"/>
+                            <ObjectNumber
+                                    number="{
+                                        parts: [ {path: 'ForeignCurrencyPayment'}, {path: 'ForeignCurrency'} ],
+                                        type: 'sap.ui.model.type.Currency',
+                                        formatOptions: {showMeasure: false}
+                                    }"
+                                    unit="{ForeignCurrency}"/>
+                            <!-- <Text text="{IsCancelled}"/> -->
+                            <core:Icon src="{= ${IsCancelled} === 'X' ? 'sap-icon://cancel' : 'sap-icon://accept'}"
+                                        tooltip="{= ${IsCancelled} === 'X' ? 'cancelled' : 'not cancelled'}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+        </content>
+    </Page>
+   
+</mvc:View>

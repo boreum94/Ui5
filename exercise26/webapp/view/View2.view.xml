@@ -1,0 +1,23 @@
+<mvc:View controllerName="code.d22.exercise26.controller.View2"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+
+    <Page 
+        id="page2"
+        title="{i18n>page2Title}"
+        showNavButton="true"
+        navButtonPress=".onNavBack"
+    >
+
+        <VBox>
+            <Text text="이건 View2.view.xml이다" />
+
+            <Button 
+            text="이건 View1으로 돌아가는 버튼"
+            press=".onNavView1"
+            />
+        </VBox>
+    </Page>
+
+</mvc:View>

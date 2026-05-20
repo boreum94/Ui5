@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 PLUGINFRAMEWORK PL 1404 OK 
+CP_SERVICE_MENUITEM             030 "Us³ugi"
+MENU_ITEM_EXCEL                 030 "Excel"
+MENU_ITEM_SEARCH                030 "Szukanie"
+MENU_ITEM_CONTEXTSEARCH         120 "Przegl¹danie SAP Help Portal"
+MENU_ITEM_SPELLCHECK            030 "Kontrola pisowni"
+MENU_ITEM_MAIL                  020 "Poczta elektroniczna"
+MENU_ITEM_PRINT                 020 "Drukowanie"
+CP_TREE_PRINT                   060 "Drukowanie drzewa"
+CP_SPELLCHECK_COMPLETE          128 "Kontrola pisowni zakoñczona"

@@ -1,0 +1,61 @@
+<mvc:View controllerName="code.d00.exercise23.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+        <!-- 이 화면은 고객 목록이 출력되는 Table이 먼저 등장한다.
+        고객 목록은 OData 에서 /Customers 로 제공되므로, 
+        items에 Aggregation Binding하여 출력하도록 한다.
+        ColumnListItem은 ObjectIdentifier와 Text로 구별되는데,
+        
+        고객의 Key인 CustomerID만 ObjectIdentifier로 다루고,
+        그 외는 모두 Text로 출력한다.
+
+        출력하는 정보는 다음과 같다.
+            - CustomerID
+            - CompanyName
+            - ContactName
+            - Address
+            - City
+            - PostalCode
+            - Country
+            - Phone
+        -->
+        <Table
+            items="{ path: '/Customers' }"
+            headerText="{i18n>customerTableTitle}"
+            class="sapUiResponsiveMargin"
+            width="auto"
+            growing="true"
+            growingThreshold="10"
+            mode="SingleSelectMaster"
+            itemPress="onItemPress"
+        >
+            <columns>
+                <Column ><header><Text text="{i18n>columnTextCustomerID}" /></header></Column>
+                <Column ><header><Text text="{i18n>columnTextCompanyName}" /></header></Column>
+                <Column ><header><Text text="{i18n>columnTextContactName}" /></header></Column>
+                <Column ><header><Text text="{i18n>columnTextAddress}" /></header></Column>
+                <Column ><header><Text text="{i18n>columnTextCity}" /></header></Column>
+                <Column ><header><Text text="{i18n>columnTextPostalCode}" /></header></Column>
+                <Column ><header><Text text="{i18n>columnTextCountry}" /></header></Column>
+                <Column ><header><Text text="{i18n>columnTextPhone}" /></header></Column>
+            </columns>
+
+            <items>
+                <ColumnListItem type="Active">
+                    <ObjectIdentifier title="{CustomerID}" />
+                    <Text text="{CompanyName}" />
+                    <Text text="{ContactName}" />
+                    <Text text="{Address}" />
+                    <Text text="{City}" />
+                    <Text text="{PostalCode}" />
+                    <Text text="{Country}" />
+                    <Text text="{Phone}" />
+                </ColumnListItem>
+            </items>
+
+        </Table>
+
+    </Page>
+</mvc:View>

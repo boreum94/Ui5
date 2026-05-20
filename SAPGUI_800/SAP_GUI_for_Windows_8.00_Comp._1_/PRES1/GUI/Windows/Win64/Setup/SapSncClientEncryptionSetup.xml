@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapChannelEncryptionSetupWkstaUI.xml">
+	<SapSetupProduct BuildTime="0xF0ACCF585C30D901" CmdLine="SCE" Description="strChannelEncryptionProductDescription" Guid="{79A6F4C3-DB6B-4DF8-92A0-50B775326A91}" Name="strChannelEncryptionProductName" Version="200.5" Visible="true">
+		<IncludesProductPart Comment="Channel Encryption Part" ProductGuid="{AC42EC5E-B36C-4bb1-B3CA-023373326C2A}" Visible="false"/>
+	</SapSetupProduct>
+	<SapSetupProductPart BuildTime="0xF0ACCF585C30D901" Guid="{AC42EC5E-B36C-4BB1-B3CA-023373326C2A}" Name="Channel Encryption Part" Version="200.1">
+		<RequiresComponent ComponentGuid="{59F01BBE-5656-476B-87DE-74BC7EEBA652}"/>
+		<RequiresComponent ComponentGuid="{BFED64A5-7B35-4F9D-AAA1-17EDB1BF865D}"/>
+		<RequiresComponent ComponentGuid="{608066B4-AF53-494F-ADFC-023EA3853DCB}"/>
+	</SapSetupProductPart>
+</SapSetup>

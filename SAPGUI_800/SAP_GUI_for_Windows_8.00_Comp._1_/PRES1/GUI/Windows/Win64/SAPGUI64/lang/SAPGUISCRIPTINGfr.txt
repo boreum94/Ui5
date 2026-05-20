@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 SAPGUISCRIPTING FR 1100 OK 
+SCRIPTING_SCRIPTISOPENING       150 "Un script établit une connexion avec le système %s"
+SCRIPTING_SCRIPTNOTINST         150 "Le support de scripts n'est pas installé."
+SCRIPTING_SCRIPTNOTENABLED      150 "Le support de scripts a été désactivé par l'utilisateur."
+<#007>SCRIPTING_OK_BTN          016 "OK"
+<#007>SCRIPTING_CANCEL_BTN      016 "Interrompre"
+SCRIPTING_DO_NOT_SHOW_AGAIN     150 "Ne pas afficher de fenêtre pop-up si un script tente d'ouvrir une connexion"
+<#007>SCRIPTING_ALLOW_BTN       016 "Autoriser"
+<#007>SCRIPTING_DENY_BTN        016 "Refuser"
+<#007>SCRIPTING_HELP_BTN        016 "Aide"

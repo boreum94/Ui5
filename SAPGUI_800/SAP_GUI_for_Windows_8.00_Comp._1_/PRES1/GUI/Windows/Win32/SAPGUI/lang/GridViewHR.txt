@@ -1,0 +1,12 @@
+_SAPPCTXT_HEADER_               002 8000 GRIDVIEW HR 1404 OK 
+GRIDVIEW_MSGBOX_TITLE           080 "GridView"
+GRIDVIEW_MSGBOX_TEXT            128 "Posao ispisa nije bilo moguæe pokrenuti"
+GRIDVIEW_TOOLTIP_DESELECT_ALL   080 "Poništi sve odabire"
+GRIDVIEW_TOOLTIP_SELECT_ALL     080 "Odaberi sve"
+GRIDVIEW_TOOLTIP_TEXT_COLLAPSE  080 "Sažmi odabir"
+GRIDVIEW_TOOLTIP_TEXT_EXPAND    080 "Proširi odabir"
+GRIDVIEW_ENABLE_HISTORY         255 "Aktiviraj povijest"
+GRIDVIEW_DISABLE_HISTORY        255 "Deaktiviraj povijest"
+GRIDVIEW_DEFAULT_SETTING        255 "Koristi preddefinirane postave"
+GRIDVIEW_MSGBOX_TITLE2          080 "GridView"
+GRIDVIEW_MSGBOX_ERROR           128 "Kopiranje višestrukih odabira nije dopušteno"

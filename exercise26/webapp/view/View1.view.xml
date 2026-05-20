@@ -1,0 +1,16 @@
+<mvc:View controllerName="code.d22.exercise26.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    >
+
+    <Page id="page" title="{i18n>title}">
+        <VBox>
+            <Text text="이건 View1.view.xml이다." />
+            <Button 
+                text="View2로 이동"
+                press=".onNavView2" />
+        </VBox>
+
+    </Page>
+
+</mvc:View>

@@ -1,0 +1,87 @@
+;  SAP AG, www.sap.com
+;  Last Update : 2020/11/10
+
+[Common Keys]
+Shift+Tab=ShiftTabKey
+Tab=TabKey
+Alt+DownArrow=AltCursorDown
+Control+Tab=CtrlTab
+Control+Shift+Tab=CtrlShiftTab
+Alt+UpArrow=AltCursorUp
+PageUp=PageUpKey
+PageDown=PageDownKey
+End=EndKey
+Home=HomeKey
+Control+Alt+Tab=RightAltTabKey
+Control+Alt+Shift+Tab=RightAltShiftTabKey
+Control+Shift+F11=CtrlShiftF11
+Control+Alt+Shift+F11=SapViewSysTrayItems
+
+Shift+DownArrow=ShiftCursorDown
+Shift+UpArrow=ShiftCursorUp
+
+Control+Alt+D=ToggleDebug
+Control+Shift+S=SayStatusMessage
+Control+Alt+I=SaySessionInfo
+Control+Alt+V=AdjustJAWSVerbosity
+Control+Alt+L=SayTextEditStatusLine
+
+Control+Alt+C=SayCurrentElement
+
+Control+Shift+UpArrow=SayStartLine
+Control+Shift+DownArrow=SayEndLine
+Control+Shift+K=AutoCompletionQuickinfo
+Control+Shift+B=AutoCompletionToolbarHelp
+
+Shift+Space=ShiftSpace
+; Shift+F1=ShiftF1
+; Shift+F2=ShiftF2
+Control+I=CtrlI
+Control+Q=CtrlQ
+JAWSKey+Shift+UpArrow=SayGuiTreeNodeFullText
+JAWSKey+V=AdjustJAWSVerbosity
+
+Enter=Enter
+;Enter=OnAnyNavigationalKey
+;MouseButtonEvent=OnAnyNavigationalKey
+Control+Shift+Alt+A=OnAnyNavigationalKey
+Control+Shift+Alt+B=OnAnyNavigationalKey
+Control+Shift+Alt+C=OnAnyNavigationalKey
+Control+Shift+Alt+D=OnAnyNavigationalKey
+Control+Shift+Alt+E=OnAnyNavigationalKey
+Control+Shift+Alt+F=OnAnyNavigationalKey
+Control+Shift+Alt+G=OnAnyNavigationalKey
+Control+Shift+Alt+H=OnAnyNavigationalKey
+Control+Shift+Alt+I=OnAnyNavigationalKey
+Control+Shift+Alt+J=OnAnyNavigationalKey
+Control+Shift+Alt+K=OnAnyNavigationalKey
+Control+Shift+Alt+L=OnAnyNavigationalKey
+Control+Shift+Alt+M=OnAnyNavigationalKey
+Control+Shift+Alt+N=OnAnyNavigationalKey
+Control+Shift+Alt+O=OnAnyNavigationalKey
+Control+Shift+Alt+P=OnAnyNavigationalKey
+Control+Shift+Alt+Q=OnAnyNavigationalKey
+Control+Shift+Alt+R=OnAnyNavigationalKey
+Control+Shift+Alt+S=OnAnyNavigationalKey
+Control+Shift+Alt+T=OnAnyNavigationalKey
+Control+Shift+Alt+U=OnAnyNavigationalKey
+Control+Shift+Alt+V=OnAnyNavigationalKey
+Control+Shift+Alt+W=OnAnyNavigationalKey
+Control+Shift+Alt+X=OnAnyNavigationalKey
+Control+Shift+Alt+Y=OnAnyNavigationalKey
+Control+Shift+Alt+Z=OnAnyNavigationalKey
+Control+Shift+Alt+0=OnAnyNavigationalKey
+Control+Shift+Alt+1=OnAnyNavigationalKey
+Control+Shift+Alt+2=OnAnyNavigationalKey
+Control+Shift+Alt+3=OnAnyNavigationalKey
+Control+Shift+Alt+4=OnAnyNavigationalKey
+Control+Shift+Alt+5=OnAnyNavigationalKey
+Control+Shift+Alt+6=OnAnyNavigationalKey
+Control+Shift+Alt+7=OnAnyNavigationalKey
+Control+Shift+Alt+8=OnAnyNavigationalKey
+Control+Shift+Alt+9=OnAnyNavigationalKey
+
+; only for debugging purposes
+; Control+Alt+P=FHPBraillePriorLine
+; Control+Alt+N=FHPBrailleNextLine
+; Control+Shift+T=TestScript

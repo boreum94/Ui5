@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Locale" Version="800.7" ConnectedId="{1460620D-C8BC-44c2-86EC-F00000000060}">
+
+	<String Name="StrFailedConditionCalSync">
+		<En>No compatible version of Microsoft Outlook found.</En>
+		<De>Keine kompatible Version von Microsoft Outlook gefunden.</De>
+	</String>	
+	
+	<String Name="strCalSyncFailureOffice">
+		<En>The Outlook Client extension requires Microsoft Office 2010, 2013 or 2016 32bit.</En>
+		<De>Die Erweiterung von Outlook benötigt Microsoft Office 2010, 2013 oder 2016 32bit.</De>
+	</String>
+
+	<String Name="strCalSyncFailureVsto">
+		<En>The Outlook Client extension requires Microsoft VSTO 4.0.</En>
+		<De>Die Erweiterung von Outlook benötigt Microsoft VSTO 4.0.</De>
+	</String>
+
+	<String Name="strCalSyncFailureDotNet">
+		<En>The Outlook Client extension requires Microsoft .Net 4.5.2 or later.</En>
+		<De>Die Erweiterung von Outlook benötigt Microsoft .Net 4.5.2 oder neuer.</De>
+	</String>
+
+	<String Name="strCalSyncFailureWindows">
+		<En>The Outlook Client extension requires Windows 7, 8.1 or 10.</En>
+		<De>Die Erweiterung von Outlook benötigt Windows 7, 8.1 oder 10.</De>
+	</String>
+
+</SapSetup>

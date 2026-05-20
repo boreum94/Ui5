@@ -1,0 +1,334 @@
+$VERSION(1.1)
+; WA  24.01.01  Allow all resolution methods for all symbols
+;=========================================================================
+; Layout Part
+;=========================================================================
+$LAYOUT(WizSym)
+Begin  Dialog BenutzerDialog 470, 490, "001", .evalDlg
+	
+	GroupBox 10, 10, 450, 95, "", .grIni
+	GroupBox 10, 10, 450, 95, "041", .grSym
+	GroupBox 10, 10, 450, 95, "042", .grPar
+	TextBox 25, 28, 100, 19, .txtSymArt
+	TextBox 25, 28, 170, 19, .txtSymName
+
+	CheckBox 26, 58, 130, 18, "007", .chkHand
+	OptionGroup  .ogHand
+	  OptionButton 210, 58, 98, 16, "009", .opFirst
+	  OptionButton 210, 78, 98, 15, "008", .opAll
+
+	GroupBox 10, 110, 450, 105, "011", .grSol
+
+; TextBox 20, 135, 40, 19, .txtExpanCat
+
+	Text 25, 129, 60, 19, "030", .tBarcode
+	DropListBox 130, 127, 210, 80, Dummy$(), .drpBCode
+
+	OptionGroup  .ogExpanCat
+	  OptionButton 25, 128, 120, 16, "012", .opExNone
+	  OptionButton 105, 128, 120, 16, "013", .opExGPC
+	  OptionButton 185, 128, 120, 16, "014", .opExIT
+	  OptionButton 265, 128, 120, 16, "015", .opExNM
+
+	OptionGroup  .ogGPC
+;	  OptionButton 25, 128, 120, 16, "012", .opGPCnone
+	  OptionButton 25, 148, 120, 16, "016", .opGPCG
+	  OptionButton 25, 168, 120, 16, "017", .opGPCP
+	  OptionButton 25, 188, 120, 16, "018", .opGPCC
+
+	OptionGroup  .ogIT
+;	  OptionButton 25, 128, 120, 16, "012", .opITnone
+	  OptionButton 25, 148, 50, 16, "019", .opITI
+	  OptionButton 25, 168, 50, 16, "020", .opITT
+
+	Text 80, 149, 50, 19, "021", .tType
+	TextBox 145, 147, 80, 19, .txtType
+	Text 230, 149, 29, 19, "022", .tKind
+	TextBox 260, 147, 80, 19, .txtKind
+	Text 345, 149, 29, 19, "023", .tList
+	TextBox 380, 147, 60, 19, .txtList
+	Text 80, 169, 50, 19, "024", .tMeth
+	TextBox 145, 167, 296, 19, .txtMeth
+
+	OptionGroup  .ogNM
+;	  OptionButton 25, 128, 120, 16, "012", .opNMnone
+	  OptionButton 25, 148, 50, 16, "025", .opNMN
+	  OptionButton 25, 168, 50, 16, "026", .opNMM
+
+	Text 80, 149, 60, 12, "027", .tMask
+	TextBox 210, 147, 220, 19, .txtMask
+	Text 80, 169, 200, 13, "028", .tSolMeth
+	TextBox 210, 167, 220, 19, .txtSolMeth
+
+	GroupBox 10, 220, 450, 40, "", .grSol
+	CheckBox 25, 235, 149, 16, "130", .chkSymHead
+	CheckBox 150, 235, 175, 17, "138", .chkNotNull
+	Text 340, 235, 72, 17, "136", .tSep
+	TextBox 430, 234, 19, 18, .txtSep
+	
+	GroupBox 10, 265, 450, 112, "131", .grpPhSrch
+	Text 25, 285, 29, 16, "134", .tFilter
+	TextBox 92, 284, 250, 18, .txtFilter
+	TextBox 92, 284, 385, 18, .txtCat
+	TextBox 92, 284, 385, 18, .txtPhrGrp
+	TextBox 92, 284, 385, 18, .txtPhrNam
+	ListBox 25, 313, 423, 78, ListBox2$(), .lstPhSrchResult
+	PushButton 360, 283, 88, 21, "132", .pbPhSrch
+
+	GroupBox 10, 385, 450, 65, "139", .grpStyles
+	Text 25, 400, 29, 19, "135", .tPhraseStyle
+	DropListBox 26, 420, 125, 65, DropListBox2$(), .drpPhrStyle
+	Text 220, 400, 29, 16, "137", .tSymStyle
+	DropListBox 221, 420, 125, 75, DropListBox2$(), .drpSymStyle
+	
+
+	OKButton 86, 460, 112, 21
+	CancelButton 231, 460, 120, 21
+
+
+End Dialog 
+
+	
+;=========================================================================
+; Value Part
+;=========================================================================
+$VALUES
+
+txtSymArt=HIDDEN
+txtSymName=DISPLAYONLY
+;txtExpanCat = HIDDEN
+;txtExpanCat = -
+
+chkHand=ON:1
+chkHand=OFF:0
+chkHand=0
+
+;--- List of values for Multiple handling option group -------------------
+opFirst = 1
+opAll = *
+
+;--- List of values for ogExpanCat option group --------------------------
+opExNone =-
+opExGPC  =G
+opExIT   =I
+opExNM   =N
+ogExpanCat=-
+
+;--- List of values for GPC option group ---------------------------------
+;opGPCnone=-
+opGPCG=G
+opGPCP=P
+opGPCC=C
+ogGPC=-
+
+;--- List of values for IT option group ----------------------------------
+;opITnone=-
+opITI=I
+opITT=T
+ogIT=-
+
+;--- List of values for NM option group ----------------------------------
+;opNMnone=-
+opNMN=N
+opNMM=M
+ogNM=-
+
+;--- Action for F4 Button ------------------------------------------------
+
+pbExt=VISIBLE:tHand,"051"
+drpBCode=FILLEDBY:"wwi","wwiListFromIniStart","wwiListFromIniNext","BarcodeKey"
+
+txtCat    = HIDDEN
+txtPhrGrp = HIDDEN
+txtPhrNam = HIDDEN
+
+txtCat=FILLEDBY:"wwi","wwiGetTextFromIniFile",,"GetCatFromIni"
+txtPhrNam=FILLEDBY:"wwi","wwiGetTextFromIniFile",,"GetNamFromIni"
+txtPhrGrp=FILLEDBY:"wwi","wwiGetTextFromIniFile",,"GetGrpFromIni"
+
+txtSep=FILLEDBY:"wwi","wwiGetTextFromIniFile",,"GetSepFromIni"
+
+drpPhrStyle=FILLEDBY:"wwi","wwiListFromIniStart","wwiListFromIniNext","StylePhrKey"
+drpSymStyle=FILLEDBY:"wwi","wwiListFromIniStart","wwiListFromIniNext","StyleSymKey"
+
+;#################################################
+
+
+chkSymHead= ON:1
+chkSymHead= OFF:0
+chkSymHead= 1
+
+chkNotNull= ON:1
+chkNotNull= OFF:0
+chkNotNull= 1
+
+lstPhSrchResult = FILLEDBY:"wwiehs","wwiPhraseStart","wwiPhraseNext","RoutineOutputPart"
+pbPhSrch=FILL:lstPhSrchResult
+
+
+;=========================================================================
+; Dependance Part
+;=========================================================================
+$DEPENDANCES
+;--- Group boxes GPC, IT, NM only active if correct option button selected
+ogGPC/VISIBLE=ogExpanCat(G)
+ogIT /VISIBLE=ogExpanCat(I)
+ogNM /VISIBLE=ogExpanCat(N)
+
+grSym/VISIBLE=txtSymArt(01)
+grPar/VISIBLE=txtSymArt(02)
+grIni/VISIBLE=txtSymArt()
+
+drpBCode  /VISIBLE =ogExpanCat(B)
+tBarcode  /VISIBLE =ogExpanCat(B)
+
+tType     /VISIBLE=ogIT
+txtType   /VISIBLE=ogIT
+tKind     /VISIBLE=ogIT
+txtKind   /VISIBLE=ogIT
+tList     /VISIBLE=ogIT
+txtList   /VISIBLE=ogIT
+tMeth     /VISIBLE=ogIT
+txtMeth   /VISIBLE=ogIT
+tMask     /VISIBLE=ogNM
+txtMask   /VISIBLE=ogNM
+tSolMeth  /VISIBLE=ogNM
+txtSolMeth/VISIBLE=ogNM
+
+tType     /ACTIVE=ogIT(I)
+txtType   /ACTIVE=ogIT(I)
+tKind     /ACTIVE=ogIT(I)
+txtKind   /ACTIVE=ogIT(I)
+tList     /ACTIVE=ogIT(I)
+txtList   /ACTIVE=ogIT(I)
+tMeth     /ACTIVE=ogIT(T)
+txtMeth   /ACTIVE=ogIT(T)
+tMask     /ACTIVE=ogNM(N)
+txtMask   /ACTIVE=ogNM(N)
+tSolMeth  /ACTIVE=ogNM(M)
+txtSolMeth/ACTIVE=ogNM(M)
+
+ogHand/VISIBLE = chkHand(1)
+
+grpPhSrch /ACTIVE = chkSymHead(1)
+lstPhSrchResult /ACTIVE = chkSymHead(1)
+pbPhSrch /ACTIVE = chkSymHead(1)
+txtFilter /ACTIVE = chkSymHead(1)
+tFilter /ACTIVE = chkSymHead(1)
+
+tPhraseStyle/ACTIVE = chkSymHead(1)
+drpPhrStyle/ACTIVE = chkSymHead(1)
+tSep/ACTIVE = chkSymHead(1)
+txtSep/ACTIVE = chkSymHead(1)
+chkNotNull/ACTIVE = chkSymHead(1)
+
+pbPhSrch/DEFBUTTON = txtFilter
+
+;=========================================================================
+; Evaluation Part
+;=========================================================================
+$EVALUATION(MsgBox)
+lstPhSrchResult=NULL:232
+
+;=========================================================================
+; Input Part
+;=========================================================================
+$INPUT
+
+;GetSymName:("/":GetFilter,"Rest":END=txtSymName,drpBCode(FILL))
+;GetFilter:("(":GetSol,"Rest":END=txtFilter)
+
+Start:(2:GetSymName=txtSymArt,ogHand=*,txtCat(FILL),txtPhrNam(FILL),txtPhrGrp(FILL),txtSep(FILL),drpPhrStyle(FILL),drpSymStyle(FILL))
+
+GetSymName:("(":GetSol,"/":GetFilter,"Rest":END=txtSymName,drpBCode(FILL))
+GetFilter:("#":GetFilter,"Rest":End=txtFilter,lstPhSrchResult(FILL))
+GetSol:(")":SkipAndGetFilter,":":GetSolPar1,";":GetMulti=(G,P,C)ogGPC,ogExpanCat=G,(I,T)ogIT,ogExpanCat=I,(N,M)ogNM,ogExpanCat=N,(B)ogExpanCat=B)
+GetSolPar1:ogExpanCat(I)=GetSolParIT,GetSolPar2
+GetSolPar2:ogExpanCat(N)=GetSolParNM,GetSolPar3
+GetSolPar3:ogExpanCat(B)=GetSolParBarcode,SkipSolPar
+GetSolParIT:ogIT(I)=GetSolParI,GetSolParT
+GetSolParI:(",":GetSolParIKind=txtType)
+GetSolParIKind:(",":GetSolParIList=txtKind)
+GetSolParIList:(")":SkipAndGetFilter,";":GetMulti=txtList)
+
+SkipAndGetFilter:("/":GetFilter,"Rest":End)
+
+GetSolParT:(")":SkipAndGetFilter,";":GetMulti=txtMeth)
+GetSolParNM:ogNM(N)=GetSolParN,GetSolParM
+GetSolParN:(")":SkipAndGetFilter,";":GetMulti=txtMask)
+GetSolParM:(")":SkipAndGetFilter,";":GetMulti=txtSolMeth)
+GetSolParBarcode:(")":SkipAndGetFilter,";":GetMulti=drpBCode)
+SkipSolPar:(")":SkipAndGetFilter,";":GetMulti)
+GetMulti:(")":SkipAndGetFilter=ogHand)
+
+;=========================================================================
+; Output Part
+;=========================================================================
+$OUTPUT
+
+chkSymHead(0),ogExpanCat("-"),ogHand=("PAR/STYLE = %s /TEXT = %s%s(;%s)",drpSymStyle,txtSymArt,txtSymName,ogHand)
+chkSymHead(0),ogExpanCat("-")=("PAR/STYLE = %s /TEXT = %s%s",drpSymStyle,txtSymArt,txtSymName)
+chkSymHead(0),ogExpanCat(B)=("PAR/STYLE = %s /TEXT = %s%s(B:%s)",drpSymStyle,txtSymArt,txtSymName,drpBCode)
+chkSymHead(0),ogExpanCat(G,P,C),ogHand =("PAR/STYLE = %s /TEXT = %s%s(%s;%s)",drpSymStyle,txtSymArt,txtSymName,ogGPC,ogHand)
+chkSymHead(0),ogExpanCat(G,P,C)=("PAR/STYLE = %s /TEXT = %s%s(%s)",drpSymStyle,txtSymArt,txtSymName,ogGPC)
+chkSymHead(0),ogIT(I),ogHand    =("PAR/STYLE = %s /TEXT = %s%s(%s:%s,%s,%s;%s)",drpSymStyle,txtSymArt,txtSymName,ogIT,txtType,txtKind,txtList,ogHand)
+chkSymHead(0),ogIT(I)           =("PAR/STYLE = %s /TEXT = %s%s(%s:%s,%s,%s)",drpSymStyle,txtSymArt,txtSymName,ogIT,txtType,txtKind,txtList)
+chkSymHead(0),ogIT(T),ogHand    =("PAR/STYLE = %s /TEXT = v%s%s(%s:%s;%s)",drpSymStyle,txtSymArt,txtSymName,ogIT,txtMeth,ogHand)
+chkSymHead(0),ogIT(T)           =("PAR/STYLE = %s /TEXT = %s%s(%s:%s)",drpSymStyle,txtSymArt,txtSymName,ogIT,txtMeth)
+chkSymHead(0),ogNM(N),ogHand    =("PAR/STYLE = %s /TEXT = %s%s(%s:\"%s\";%s)",drpSymStyle,txtSymArt,txtSymName,ogNM,txtMask,ogHand)
+chkSymHead(0),ogNM(N)           =("PAR/STYLE = %s /TEXT = %s%s(%s:\"%s\")",drpSymStyle,txtSymArt,txtSymName,ogNM,txtMask)
+chkSymHead(0),ogNM(M),ogHand    =("PAR/STYLE = %s /TEXT =%s%s(%s:%s;%s)",drpSymStyle,txtSymArt,txtSymName,ogNM,txtSolMeth,ogHand)
+chkSymHead(0),ogNM(M)           =("PAR/STYLE = %s /TEXT =%s%s(%s:%s)",drpSymStyle,txtSymArt,txtSymName,ogNM,txtSolMeth)
+
+chkSymHead(1),chkNotNull(0),ogExpanCat("-"),ogHand   =("ROW/STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s \n          /STYLE = %s / TEXT = %s%s(;%s)",drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogHand)
+chkSymHead(1),chkNotNull(0),ogExpanCat("-")          =("ROW/STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s \n          /STYLE = %s / TEXT = %s%s",drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName)
+chkSymHead(1),chkNotNull(0),ogExpanCat(B)            =("ROW/STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s \n          /STYLE = %s / TEXT = %s%s(B:%s)",drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,drpBCode)
+chkSymHead(1),chkNotNull(0),ogExpanCat(G,P,C),ogHand =("ROW/STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s \n          /STYLE = %s / TEXT = %s%s(%s;%s)",drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogGPC,ogHand)
+chkSymHead(1),chkNotNull(0),ogExpanCat(G,P,C)        =("ROW/STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s \n          /STYLE = %s / TEXT = %s%s(%s)",drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogGPC)
+chkSymHead(1),chkNotNull(0),ogIT(I),ogHand            =("ROW/STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s \n          /STYLE = %s / TEXT = %s%s(%s:%s,%s,%s;%s)",drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogIT,txtType,txtKind,txtList,ogHand)
+chkSymHead(1),chkNotNull(0),ogIT(I)                   =("ROW/STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s \n          /STYLE = %s / TEXT = %s%s(%s:%s,%s,%s)",drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogIT,txtType,txtKind,txtList)
+chkSymHead(1),chkNotNull(0),ogIT(T),ogHand            =("ROW/STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s \n          /STYLE = %s / TEXT = %s%s(%s:%s;%s)",drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogIT,txtMeth,ogHand)
+chkSymHead(1),chkNotNull(0),ogIT(T)                   =("ROW/STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s \n          /STYLE = %s / TEXT = %s%s(%s:%s)",drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogIT,txtMeth)
+chkSymHead(1),chkNotNull(0),ogNM(N),ogHand            =("ROW/STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s \n          /STYLE = %s / TEXT = %s%s(%s:\"%s\";%s)",drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogNM,txtMask,ogHand)
+chkSymHead(1),chkNotNull(0),ogNM(N)                   =("ROW/STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s \n          /STYLE = %s / TEXT = %s%s(%s:\"%s\")",drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogNM,txtMask)
+chkSymHead(1),chkNotNull(0),ogNM(M),ogHand            =("ROW/STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s \n          /STYLE = %s / TEXT = %s%s(%s:%s;%s)",drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogNM,txtSolMeth,ogHand)
+chkSymHead(1),chkNotNull(0),ogNM(M)                   =("ROW/STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s \n          /STYLE = %s / TEXT = %s%s(%s:%s)",drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogNM,txtSolMeth)
+
+chkSymHead(1),chkNotNull(1),ogExpanCat("-"),ogHand   =("ROW/NG = %s%s \n        /STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s \n        /STYLE = %s / TEXT = %s%s(;%s)",txtSymArt,txtSymName,drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogHand)
+chkSymHead(1),chkNotNull(1),ogExpanCat("-")          =("ROW/NG = %s%s \n        /STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s \n        /STYLE = %s / TEXT = %s%s",txtSymArt,txtSymName,drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName)
+chkSymHead(1),chkNotNull(1),ogExpanCat(B)            =("ROW/NG = %s%s \n        /STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s        \n /STYLE = %s / TEXT = %s%s(B:%s)",txtSymArt,txtSymName,drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,drpBCode)
+chkSymHead(1),chkNotNull(1),ogExpanCat(G,P,C),ogHand =("ROW/NG = %s%s \n        /STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s        \n /STYLE = %s / TEXT = %s%s(%s;%s)",txtSymArt,txtSymName,drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogGPC,ogHand)
+chkSymHead(1),chkNotNull(1),ogExpanCat(G,P,C)        =("ROW/NG = %s%s \n        /STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s        \n /STYLE = %s / TEXT = %s%s(%s)",txtSymArt,txtSymName,drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogGPC)
+chkSymHead(1),chkNotNull(1),ogIT(I),ogHand            =("ROW/NG = %s%s \n        /STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s        \n /STYLE = %s / TEXT = %s%s(%s:%s,%s,%s;%s)",txtSymArt,txtSymName,drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogIT,txtType,txtKind,txtList,ogHand)
+chkSymHead(1),chkNotNull(1),ogIT(I)                   =("ROW/NG = %s%s \n        /STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s        \n /STYLE = %s / TEXT = %s%s(%s:%s,%s,%s)",txtSymArt,txtSymName,drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogIT,txtType,txtKind,txtList)
+chkSymHead(1),chkNotNull(1),ogIT(T),ogHand            =("ROW/NG = %s%s \n        /STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s        \n /STYLE = %s / TEXT = %s%s(%s:%s;%s)",txtSymArt,txtSymName,drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogIT,txtMeth,ogHand)
+chkSymHead(1),chkNotNull(1),ogIT(T)                   =("ROW/NG = %s%s \n        /STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s        \n /STYLE = %s / TEXT = %s%s(%s:%s)",txtSymArt,txtSymName,drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogIT,txtMeth)
+chkSymHead(1),chkNotNull(1),ogNM(N),ogHand            =("ROW/NG = %s%s \n        /STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s        \n /STYLE = %s / TEXT = %s%s(%s:\"%s\";%s)",txtSymArt,txtSymName,drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogNM,txtMask,ogHand)
+chkSymHead(1),chkNotNull(1),ogNM(N)                   =("ROW/NG = %s%s \n        /STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s        \n /STYLE = %s / TEXT = %s%s(%s:\"%s\")",txtSymArt,txtSymName,drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogNM,txtMask)
+chkSymHead(1),chkNotNull(1),ogNM(M),ogHand            =("ROW/NG = %s%s \n        /STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s        \n /STYLE = %s / TEXT = %s%s(%s:%s;%s)",txtSymArt,txtSymName,drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogNM,txtSolMeth,ogHand)
+chkSymHead(1),chkNotNull(1),ogNM(M)                   =("ROW/NG = %s%s \n        /STYLE = %s /LABEL = 03%s(%s-%s)/SEP = %s        \n /STYLE = %s / TEXT = %s%s(%s:%s)",txtSymArt,txtSymName,drpPhrStyle,txtPhrNam,txtCat,lstPhSrchResult,txtSep,drpSymStyle,txtSymArt,txtSymName,ogNM,txtSolMeth)
+
+$OUTPUT(RoutineOutputPart)
+("%s/%s/%s",txtCat,txtPhrGrp,txtFilter)
+
+$OUTPUT(GetCatFromIni)
+("Template/Catalog")
+
+$OUTPUT(GetNamFromIni)
+("Template/PhraseName")
+
+$OUTPUT(GetGrpFromIni)
+("Template/PhraseGrp")
+
+$OUTPUT(GetSepFromIni)
+("Template/Separator")
+
+$OUTPUT(StylePhrKey)
+("Template/StyleLabel")
+
+$OUTPUT(StyleSymKey)
+("Template/StyleSymbol")
+
+
+$END
+

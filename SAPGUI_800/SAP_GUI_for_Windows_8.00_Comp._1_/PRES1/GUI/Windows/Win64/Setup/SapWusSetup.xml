@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapWUSWkstaUI.xml">
+	<Product BuildTime="0x907D26B05B30D901" CmdLine="SAPWUS" Description="SapWUSProductDescription" Guid="{40D11884-3906-4e67-8A96-91035CA09814}" Name="SapWUSProductName" ProdVersion="900.158">
+		<Contains Description="SapWUSProductDescription" Guid="{99FCC57E-E0F0-4322-A846-850EBA7CCAEA}" Name="SAPSetup Automatic Workstation Update Service" Visible="false"/>
+	</Product>
+	<Component BuildTime="0x907D26B05B30D901" Guid="{99FCC57E-E0F0-4322-A846-850EBA7CCAEA}" Name="SAPSetup Automatic Workstation Update Service" Version="900.158">
+		<Requires Guid="{5C4D15BE-7199-4927-9E63-7A0E0CA207D4}"/>
+		<Requires Guid="{25596A32-5EBF-4FA7-8B3E-1871FAAB6353}"/>
+		<Requires Guid="{73BD1C1C-878A-49FA-AC4D-DB11688F2D0B}"/>
+	</Component>
+</SapSetup>

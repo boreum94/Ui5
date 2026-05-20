@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR SK 1404 OK 
+PREVIOUS_YEAR                   255 "Predch·dzaj˙ci rok"
+PREVIOUS_MONTH                  255 "Predch·dzaj˙ci mesiac"
+NEXT_YEAR                       255 "Nasleduj˙ci rok"
+NEXT_MONTH                      255 "Nasleduj˙ci mesiac"
+WEEK_NUMBER                     255 "»Ìslo t˝ûdÚa"
+WEEK_NUM_STR                    255 "»T"
+CALENDAR_BTN                    255 "Otvoriù/zatvoriù navig·tora d·tumu"
+DT_PICKER                       255 "V˝ber d·tumu: Zmeniù deÚ, mesiac alebo rok"

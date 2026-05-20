@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapNWBC800Wksta.xml">
+	<!-- $Id: //nwbc/nwbc.win/80_REL/src/cfg/installation/setup/SapNWBC800Shared.xml#159 $ -->
+	<Component BuildTime="0x002A910F5730D901" Guid="{3C684BE5-CADC-46DB-BAE6-77293BD528CB}" Min_Compliant_Version="8000" Name="$SapNwBcSetup" SysSize="271" Version="8004">
+		<Action Condition="1=0" Dst="%SapSetupDir%" Type="File">
+			<Src FileVersion="2022.0.112.0" Hash="SHA-256:d3338830cbc505b8029c13841ea1817956adac953ac95da8760905967f1cd8ed" Timestamp="0x00AC381B4FFED801">%SAPsrcDir%\SapNwBcSetup.exe</Src>
+		</Action>
+		<Action Condition="1=0" Dst="%SapSetupDir%\setup" Type="File">
+			<Src Hash="SHA-256:9e27ea076e1132015481fb14974077171e00705ae1c2723135d158439ec28c3c" Timestamp="0x345D6CC2535BD801">%SAPsrcDir%\setup\SapNwBcSetup.cfg</Src>
+		</Action>
+	</Component>
+	<Component BuildTime="0x002A910F5730D901" Guid="{4E2D44D7-85F9-4B2D-BFB0-682C6610908A}" Min_Compliant_Version="8000" Name="NWBC Set Variable PreUninstall" Order="PostInstall" Version="8000">
+		<Action RunAt="Uninstall" Type="Script">
+			<Src><![CDATA[
+NwEngine.Context.Log.Write "Checking other installed NWBC releases."
+		
+		Dim RegSapSharedKey, RegVal, releases, release, highestRelease
+		RegSapSharedKey = "HKLM\SOFTWARE\SAP\SAP Shared\"
+		releases = Array("SAP_NWBC50", "SAP_NWBC60", "SAP_NWBC65", "SAP_NWBC70", "SAP_NWBC770")
+		RegVal = "NONE"
+		highestRelease = "NONE"
+		
+		For Each release In releases
+			NwEngine.Context.Log.Write "Checking: " & release
+			If NwEngine.Shell.RegKeyExist(RegSapSharedKey & release) Then
+				NwEngine.Context.Log.Write RegSapSharedKey & release & " exists."
+				If NwEngine.Shell.RegValueExist(RegSapSharedKey & release & "\SAPDestDir") Then
+					RegVal = NwEngine.Shell.GetRegValue(RegSapSharedKey & release & "\SAPDestDir")
+					highestRelease = release
+					NwEngine.Context.Log.Write "Registry value of " & RegSapSharedKey & release & "\SAPDestDir is: " & RegVal
+				End if
+			Else
+				NwEngine.Context.Log.Write RegSapSharedKey & release & " does not exist."
+			End if
+		Next
+		
+		NwEngine.Variables.InsertVariable "SapNWBCHighestOtherRelease", highestRelease
+		NwEngine.Context.Log.Write "Set SapNWBCHighestOtherRelease to: " & NwEngine.Variables.GetValue("SapNWBCHighestOtherRelease")
+		NwEngine.Variables.InsertVariable "SapNWBCHighestOtherReleaseDestDir", RegVal
+		NwEngine.Context.Log.Write "Set SapNWBCHighestOtherReleaseDestDir to: " & NwEngine.Variables.GetValue("SapNWBCHighestOtherReleaseDestDir")
+			]]></Src>
+		</Action>
+	</Component>
+	<Component BuildTime="0x002A910F5730D901" Guid="{E6E20A53-31B3-4BC2-AB5E-C72EF0DA61F1}" Min_Compliant_Version="8000" Name="$ARP NWBC 80" Update="Always" Version="8004">
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\SAP_NWBC800" Type="Registry">
+			<RegValue Name="DisplayName">SAP Business Client 8.00</RegValue>
+			<RegValue Name="DisplayVersion">8.00 PL0</RegValue>
+			<RegValue Name="DisplayIcon">&quot;%SapNWBC800DestDir%\NWBC.exe&quot;,0</RegValue>
+			<RegValue Name="Publisher">SAP SE</RegValue>
+			<RegValue Name="URLUpdateInfo">http://service.sap.com</RegValue>
+			<RegValue Name="UninstallString">&quot;%SAPSetupDir%\setup\nwsapsetup.exe&quot; /product:&quot;NWBCGUI+NWBC800&quot; /uninstall /TitleComponent:&quot;NWBC800&quot; /IgnoreMissingProducts</RegValue>
+		</Action>
+	</Component>
+	<Component BuildTime="0x002A910F5730D901" Guid="{C277B10F-5458-4557-AE2B-AC761948B286}" Min_Compliant_Version="8000" Name="$NWBC MS DotNET DLLs" Version="8000">
+		<Requires Guid="{DB5EECE1-FFE3-4223-A597-08CE447B356D}"/>
+	</Component>
+	<Component BuildTime="0x002A910F5730D901" Condition="%SapNWBC800Platform%=x86" Guid="{2D41A5A2-ABDD-4738-824B-57D2C7849C55}" Min_Compliant_Version="8000" Name="$NWBC 80 x86 Files" Size="32289" Update="Always" Version="8247">
+		<Requires Guid="{4E2D44D7-85F9-4B2D-BFB0-682C6610908A}"/>
+		<Action Dst="%SapNWBC800DestDir%" Type="File">
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:cd00d4870f9602397a2633112e3d817ebc5c3d79735fa1cb1322c2a34909a7c9" Timestamp="0xC5E813D15630D901">%SapSrcDir%\NWBC800\x86\AxInterop.BrowserUtil.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:3464e4d533faff16736a0de4356e9bac0e47bdfab3fbebbdd95443a16097cfe4" Timestamp="0xA2FA12DD5630D901">%SapSrcDir%\NWBC800\x86\NwbcSettings.dll</Src>
+			<Src FileVersion="7.0.9466.1" Hash="SHA-256:3cc025ce0ace6595fe0306426f52bfa7c34870d1d28a01e12cf631aea75a582c" Timestamp="0x7EE1B3AA98BED701">%SapSrcDir%\NWBC800\x86\stdole.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:4b067186765d7e077d566fb4f85960041fc5336beea92c0f5979739929fb03dc" Timestamp="0x0F7AE2D25630D901">%SapSrcDir%\NWBC800\x86\Interop.BrowserUtil.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:c96cc5dece49e93ea3992d26e2c1e45eea96878610c78cdf07516138a9f34763" Timestamp="0x95D79ED35630D901">%SapSrcDir%\NWBC800\x86\Interop.MsSearch.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:f26609d02dca0f7e6e11497bca25268836089c271ba248f21ad1dc66136ac571" Timestamp="0xC1F6DBD45630D901">%SapSrcDir%\NWBC800\x86\Interop.SHDocVw.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:e4643be72055a468295b6ad2705919d29f070c66bf1f0be08b1e1602191cb1e0" Timestamp="0xDA4A11D45630D901">%SapSrcDir%\NWBC800\x86\Interop.SAPFEWSELib.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:86013a0073d3303ae6da31b08cfbc91a8ebe81c0969cdaffd1140533b68afe57" Timestamp="0xF6D177D45630D901">%SapSrcDir%\NWBC800\x86\Interop.SapROTWr.dll</Src>
+			<Src FileVersion="7.0.3300.1" Hash="SHA-256:e17415de8b690796e502cab02d288074367e78652522f482970340b904de6429" Timestamp="0xC716631424E1D701">%SapSrcDir%\NWBC800\x86\Microsoft.mshtml.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:89b1d73de058fece50e7628bb5507ddce9dea821897c1d56317d9ff9b0da4e62" Timestamp="0x913509E05630D901">%SapSrcDir%\NWBC800\x86\NWBC.exe</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:3f1fd5c665d1be173052e0cb2851a854e6b21307aa6fde5893cbb4810e5f208b" Timestamp="0x5AE395E05630D901">%SapSrcDir%\NWBC800\x86\NwbcBrowserHost.exe</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:7bb62207faff78bcecc38ff9d9ff26a5c48d1080652325f043208d48658360ab" Timestamp="0xEFB092D65630D901">%SapSrcDir%\NWBC800\x86\NwbcBrowserIE.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:97b092b0faef530ca0e26220b891d06495ef821dcce69f618088dd3bbbdb355a" Timestamp="0x0291B2D55630D901">%SapSrcDir%\NWBC800\x86\NwbcBrowserEdge.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:69a194e5082cd3afd3108fb6f180974e774e856acd8d1b28a9a4fc7cf613472e" Timestamp="0xF0C002D75630D901">%SapSrcDir%\NWBC800\x86\NwbcConfiguration.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:8ca074ba4dceeb0584ba57d727507dda4ea07438663fff340f0a5b052d0b96b8" Timestamp="0xB1F0AFD85630D901">%SapSrcDir%\NWBC800\x86\NwbcGlyphIcons.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:bf6ea0a5b54dc6bc3a534d68608eed7cccac24f569daad0890a478b0b9e2dff8" Timestamp="0x422E20E15630D901">%SapSrcDir%\NWBC800\x86\NwbcCore.exe</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:33135bae867408b3ee198f53ee083dfedede09403bcb19e92fe05b05ee08f555" Timestamp="0x149F1DD95630D901">%SapSrcDir%\NWBC800\x86\NwbcHttpRuntime.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:ba34587a4cdbe80ee10611fa7f45d05555848c6a6eba2b3a55c6e77b8f900f3e" Timestamp="0xF32062D75630D901">%SapSrcDir%\NWBC800\x86\NwbcDesktopSearch.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:cae0933b29046fd56f685afdacd107b6af11dca8b98f13ede9a5dd0fd2718490" Timestamp="0x2F1B3BD85630D901">%SapSrcDir%\NWBC800\x86\NwbcFederatedRuntime.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:bba7ef00cf9eb058e2c61d91e2dd7e82294d9013ea202bac54d4ec72bc0a7dc9" Timestamp="0x4BFE9BD95630D901">%SapSrcDir%\NWBC800\x86\NwbcModel.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:6fad482296c66a54e71d40d2ae5211194cf9a3ea5c12e8008aa5b5baf67f4b18" Timestamp="0xE2E704DA5630D901">%SapSrcDir%\NWBC800\x86\NwbcPipeLib.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:f2e11f32ad0a319893669de944d58827c9a7eb00ff45fe3778f451fff1cd0b6e" Timestamp="0x58F5F0DA5630D901">%SapSrcDir%\NWBC800\x86\NwbcRemoting.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:c41932f0798b65b838f7fdf76cb4f0d24e7dd68fbecc1eeeda85c7e82328d2df" Timestamp="0x4D415CDB5630D901">%SapSrcDir%\NWBC800\x86\NwbcSapguiCom.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:4c3cd7c26916bd46c077044c524677d52ed5df777701262eebe11a2499d77530" Timestamp="0x6E003ADC5630D901">%SapSrcDir%\NWBC800\x86\NwbcSapGuiRuntime.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:ba05d0e6138b0e9997430db0769ed05900ed5724663eab48f14a979cff9ef6e6" Timestamp="0x90EFC9DB5630D901">%SapSrcDir%\NWBC800\x86\NwbcSapguiExtractor.dll</Src>
+			<Src FileVersion="8002.2301.25018.2" Hash="SHA-256:9ddd3ddd63841bb9d0fd0946f080c4f0354c0176eaaafdb40c84bfa73bd5bd3d" Timestamp="0xF9E9A2DC5630D901">%SapSrcDir%\NWBC800\x86\NwbcScreenCapture.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:523b37337ad5df4f3eba9a36943973899c9975c349a80f48866b75a82b40614b" Timestamp="0x087D33DE5630D901">%SapSrcDir%\NWBC800\x86\NwbcTranslation.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:df47d277eafd012e27bc0a612a382b0ba7b3ee87c6d00376dd2cac0f9f0b9e22" Timestamp="0xE55991DD5630D901">%SapSrcDir%\NWBC800\x86\NwbcThemes.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:bf379c6cc472dd1e11205c73ba8d8626e063cf5ad5e5c6a8ce8f915fbdcd1910" Timestamp="0xEDC89EDE5630D901">%SapSrcDir%\NWBC800\x86\NwbcUiUtil.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:7d42380e78be97ed4e6a686b97f146fc92e30e0b9dfb15044360a34a6e74ca7b" Timestamp="0xE64655E35630D901">%SapSrcDir%\NWBC800\x86\NwbcUrlHandler.exe</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:86bbbbfe6131dcc9b0e876983a16316cf3881b317fe5c5600c1d3dc9a365fc0f" Timestamp="0x1436E5E25630D901">%SapSrcDir%\NWBC800\x86\NwbcTaskbarHandler.exe</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:9c0ef2e495e1b76c3a3538f80cd2d434ee8119921a66145b2a3445b8768fe8cb" Timestamp="0x7C3DCEE15630D901">%SapSrcDir%\NWBC800\x86\NwbcProcessAgent.exe</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:07373698ab075344035506983846ae141a1cd4e48d5d2e1f17e9ddb86c6cd4db" Timestamp="0xA6D90EDF5630D901">%SapSrcDir%\NWBC800\x86\NwbcUtil.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:98d0406a9a56aa94a87c56d6d5c53e6859cc9e73827753795591b70aba178a9f" Timestamp="0x319672DA5630D901">%SapSrcDir%\NWBC800\x86\NwbcPluginApi.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:d81364b20e654012d59bbc9930cd1899ed136cb239a9a280e33262f12110aa40" Timestamp="0x7981C1D75630D901">%SapSrcDir%\NWBC800\x86\NwbcExtensionApi.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:4a279ba5a16bdb7c211054e2d6592863757d692f1729b58247d4e283ced43ea0" Timestamp="0x829C4CE25630D901">%SapSrcDir%\NWBC800\x86\NwbcPropertyCollector.exe</Src>
+			<Src FileVersion="8002.2301.25018.2" Hash="SHA-256:9fff479ae1d9637eba54a95b946f82bec5c35a20990d25c318008a6f8a9d1d3e" Timestamp="0x711D07D25630D901">%SapSrcDir%\NWBC800\x86\BrowserUtil.dll</Src>
+			<Src Hash="SHA-256:87d6931b6de2fcecd48140dca5c103cc1329cded59ddf9ba2949c9c375845991" Timestamp="0x7BF52AFE5130D901">%SapSrcDir%\NWBC800\x86\BrowserUtil.dll.manifest</Src>
+			<Src FileVersion="1.0.1264.42" Hash="SHA-256:c5697253aa5d203206e0961f8ddfe2db8e27dd377ebebc4059cb460cb87a64ed" Timestamp="0x00449AE03A8BD801">%SapSrcDir%\NWBC800\x86\WebView2Loader.dll</Src>
+			<Src FileVersion="8002.2301.25018.2" Hash="SHA-256:b6345a30d74aec1191fbd2875b6798658ec4292ccb1e58ca819eb1e443a972a7" Register="false" Timestamp="0xFC557ED25630D901">%SapSrcDir%\NWBC800\x86\EdgeAxControl.dll</Src>
+			<Src Hash="SHA-256:8619f02b2091e7e123b8e2ac25ff5633ca3192b27eebdde49d436f91497fe82e" Timestamp="0x1F9AA80B5230D901">%SapSrcDir%\NWBC800\x86\EdgeAxControl.dll.manifest</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:5912a3c50fb758644030d235fe4ecee4f29b2c22fcde69ceea41edb74aaf2eb1" Register="CreateTLB" Timestamp="0x1DA549D55630D901">%SapSrcDir%\NWBC800\x86\NwbcBrowser.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:f92eeb7be5504b3a54b1268326c3c213d144e89678f19492fec884adcec50ccc" Register="CreateTLB" Timestamp="0x619F22D65630D901">%SapSrcDir%\NWBC800\x86\NwbcBrowserExternal.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:c368a2cb0c7edb37a21439466934848867d5ce2893b51658d919d870bc1ab19b" Timestamp="0x9F773FD35630D901">%SapSrcDir%\NWBC800\x86\Interop.EdgeAxControl.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:30700ac5f21b5c0aa962fa66ea01becea4e718dbe663513d58c6b806bc3275ff" Timestamp="0xD85B86D15630D901">%SapSrcDir%\NWBC800\x86\AxInterop.EdgeAxControl.dll</Src>
+			<Src FileVersion="8002.2301.25018.2217" Hash="SHA-256:8a6dbea9d817d43e3551e269b293a73fbfd128955d48f8af4f96a476d49a6c04" Timestamp="0x34AF83DF5630D901">%SapSrcDir%\NWBC800\x86\LandscapeMigration32Wrapper.exe</Src>
+			<Src FileVersion="1.0.117.0" Hash="SHA-256:24043ef4472d9d035cd1a8294f68d2bbfdf76f5455af80c09c89e64f6ed15917" Timestamp="0x3788E33E5909D901">%SapSrcDir%\NWBC800\x86\System.Data.SQLite.dll</Src>
+			<Src FileVersion="1.0.117.0" Hash="SHA-256:98b0e0e7cde328d21284687dd359e36a42d39a329d4353d3c39def990b46a18b" Timestamp="0x252A463E5909D901">%SapSrcDir%\NWBC800\x86\SQLite.Interop.dll</Src>
+		</Action>
+	</Component>
+	<Component BuildTime="0x002A910F5730D901" Condition="%SapNWBC800Platform%=x64" Guid="{92772199-5CAB-4E03-91DA-1D33CB3FF076}" Min_Compliant_Version="8000" Name="$NWBC 80 x64 Files" Size="33190" Update="Always" Version="8254">
+		<Requires Guid="{4E2D44D7-85F9-4B2D-BFB0-682C6610908A}"/>
+		<Action Dst="%SapNWBC800DestDir%" Type="File">
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:77a25131980fac6c0011a5c13af3a13f5aba00d5948aaa02367624318a44fb16" Timestamp="0x741CCAE35630D901">%SapSrcDir%\NWBC800\x64\AxInterop.BrowserUtil.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:e624a10db193a5061b6759b0c727077cb5058cfae8145328f472b7864e00607d" Timestamp="0xF5F3AEEF5630D901">%SapSrcDir%\NWBC800\x64\NwbcSettings.dll</Src>
+			<Src FileVersion="7.0.9466.1" Hash="SHA-256:3cc025ce0ace6595fe0306426f52bfa7c34870d1d28a01e12cf631aea75a582c" Timestamp="0x7EE1B3AA98BED701">%SapSrcDir%\NWBC800\x64\stdole.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:4a5ee9e64aef034b42096f960626514c61cf02a5bd8a7d8cdf23cab591f5b37e" Timestamp="0xC599A4E55630D901">%SapSrcDir%\NWBC800\x64\Interop.BrowserUtil.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:a10273e93ce229585af61a556fcb47438403c51863fb14a6af946b1956b6c893" Timestamp="0x64F760E65630D901">%SapSrcDir%\NWBC800\x64\Interop.MsSearch.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:902b65671d4ac5cdbe22464382c3be3ab8c7b70cf8f261c977f4187f3a70dda0" Timestamp="0x732B92E75630D901">%SapSrcDir%\NWBC800\x64\Interop.SHDocVw.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:96cc22aeb7762e8c180d95550d33bb216332b7145961edc3f4f3a2ffa9c7fc2a" Timestamp="0xF3E0C9E65630D901">%SapSrcDir%\NWBC800\x64\Interop.SAPFEWSELib.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:6c5f8ea2f87c1d63096b141a54d2d5b4cb0cc641266e1e53db75432aec46a940" Timestamp="0x8BCA32E75630D901">%SapSrcDir%\NWBC800\x64\Interop.SapROTWr.dll</Src>
+			<Src FileVersion="7.0.3300.1" Hash="SHA-256:e17415de8b690796e502cab02d288074367e78652522f482970340b904de6429" Timestamp="0xC716631424E1D701">%SapSrcDir%\NWBC800\x64\Microsoft.mshtml.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:6c0752e6794510307a1a49a7ccbf874223a48be9a37ba08a88bfc365dfb62474" Timestamp="0x4E7DB3F25630D901">%SapSrcDir%\NWBC800\x64\NWBC.exe</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:a878a5446dd11eb594de89d484dde1d268e7c37ca9906a8e4cf403b22b6c5028" Timestamp="0x0C5247F35630D901">%SapSrcDir%\NWBC800\x64\NwbcBrowserHost.exe</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:40fa397d466d56e2bfd05ccbdc724f43d0bc4b8b5b7cd8aeb482dc4dcaaa039d" Timestamp="0xE6E348E95630D901">%SapSrcDir%\NWBC800\x64\NwbcBrowserIE.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:f0537550489be4ea3192c663d2cadba18507b75ef01c6809f340fffc182e8711" Timestamp="0x66AE74E85630D901">%SapSrcDir%\NWBC800\x64\NwbcBrowserEdge.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:c5db7931fdf125bb8bc9cfef27d85e210065af3cf9cda2261eb2d73331b1ef90" Timestamp="0xCB2FB4E95630D901">%SapSrcDir%\NWBC800\x64\NwbcConfiguration.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:aaffaabc713ea0cfcb863f81d07d7dcbc7b1e31988ab5e832cdd60070af12f3d" Timestamp="0x68E889EB5630D901">%SapSrcDir%\NWBC800\x64\NwbcGlyphIcons.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:ba4b3741f54edb91db280bcc69ca46881867c216411fbdc657a55fb267dee146" Timestamp="0x569DD1F35630D901">%SapSrcDir%\NWBC800\x64\NwbcCore.exe</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:3809a0a3160ae0d52e8a82924add71aebd173f03769b704d427a51ff0044ab3b" Timestamp="0x5E34F5EB5630D901">%SapSrcDir%\NWBC800\x64\NwbcHttpRuntime.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:1c73c353e6d9809a3e1208ed07fd143d0a3e538a072f2925bd7c60bf7e344623" Timestamp="0x6D0529EA5630D901">%SapSrcDir%\NWBC800\x64\NwbcDesktopSearch.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:2fd252351aab1419061f503fef1d0abaf75eb04e2d0d4e085d7137f4c69b0299" Timestamp="0xA6B012EB5630D901">%SapSrcDir%\NWBC800\x64\NwbcFederatedRuntime.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:1319b8916e99461e9e202e5d20c7f18300c4a16c593c7ad7a1d35e68dbb82a78" Timestamp="0x28F675EC5630D901">%SapSrcDir%\NWBC800\x64\NwbcModel.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:a37d1f6ef3f9b7f18a791b55cc90f333fb0106b3835638d57da41fd525bf6393" Timestamp="0x87A4E3EC5630D901">%SapSrcDir%\NWBC800\x64\NwbcPipeLib.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:ce7c8c89f396c266eb827a0c4fc3cc17393254e6d55c6dd402fc70f62fe645d8" Timestamp="0x003D9BED5630D901">%SapSrcDir%\NWBC800\x64\NwbcRemoting.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:11589aac95c0d2c953fb6d775fa898471f39dafb3f91ba8916f2f1fabd04bcb1" Timestamp="0xDA3AF8ED5630D901">%SapSrcDir%\NWBC800\x64\NwbcSapguiCom.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:19e080cd429e352df6a49e270c50c82904ae13db43aa8ab5d7f7829dae0b4b73" Timestamp="0x4797D3EE5630D901">%SapSrcDir%\NWBC800\x64\NwbcSapGuiRuntime.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:81af7fbbdca9d29b8101808b0f20a3540a6d21b36a3ca38c10d03dec85383b1e" Timestamp="0xCAC15EEE5630D901">%SapSrcDir%\NWBC800\x64\NwbcSapguiExtractor.dll</Src>
+			<Src FileVersion="8004.2301.25018.2" Hash="SHA-256:dc5c109b896b053ddf95a45f13c3ea359ab2758eff6078e5bf43782908985074" Timestamp="0x4DE33EEF5630D901">%SapSrcDir%\NWBC800\x64\NwbcScreenCapture.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:1b5d2a5979523f4217ba6b734859dd1df008ddb9b5be6821b27b6e32977812a3" Timestamp="0x8A9DD6F05630D901">%SapSrcDir%\NWBC800\x64\NwbcTranslation.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:db5507fb3111f5a21e85e94c9ce157ecef271d6dca7f78902837c91941e87cfa" Timestamp="0x362B45F05630D901">%SapSrcDir%\NWBC800\x64\NwbcThemes.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:4c2071e8133dcf200f21f40d126be00b23fd1ef848ead63a4b20632cc9d04e0f" Timestamp="0x175F57F15630D901">%SapSrcDir%\NWBC800\x64\NwbcUiUtil.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:cad7d8e23581e81a1922b1cdefddff1e9858e8eaa554f59b46e88d1e7878b93e" Timestamp="0x9C1ACBF55630D901">%SapSrcDir%\NWBC800\x64\NwbcUrlHandler.exe</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:bea3169bdb10ec75a53983f22e61bd05d7b3981e80a988da7bdd88cf185c8277" Timestamp="0x7D7F51F55630D901">%SapSrcDir%\NWBC800\x64\NwbcTaskbarHandler.exe</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:f5f1801934b3f69e3771101856bef2f9b16252da4902c14da78c35da237afb60" Timestamp="0x962357F45630D901">%SapSrcDir%\NWBC800\x64\NwbcProcessAgent.exe</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:6552a13f0fde518f63c82a6e25548dd495cda89814ce9814052f69d5fb50a020" Timestamp="0xFBAAC2F15630D901">%SapSrcDir%\NWBC800\x64\NwbcUtil.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:b667e4cde5e620bef2c59796d3f65454c2b9ccee54c445da0b71af2f8f76549f" Timestamp="0xEAA140ED5630D901">%SapSrcDir%\NWBC800\x64\NwbcPluginApi.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:211107481a9e344527fef8de0f7c10bad37f86ce295e00b16067b743facfa0b4" Timestamp="0x581699EA5630D901">%SapSrcDir%\NWBC800\x64\NwbcExtensionApi.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:006f40954795ea0b7c5e4501daa6c546c9ce66dbfa281cfc8d460cc3c0927535" Timestamp="0xE86EE1F45630D901">%SapSrcDir%\NWBC800\x64\NwbcPropertyCollector.exe</Src>
+			<Src FileVersion="8004.2301.25018.2" Hash="SHA-256:419ef7b95cfc17a9732f87965cfc072796840569c8fdee95af3d634f6c21ba82" Timestamp="0x5DA0ACE45630D901">%SapSrcDir%\NWBC800\x64\BrowserUtil.dll</Src>
+			<Src Hash="SHA-256:023e00099f2354bd89a101beb67ca459774189fc214228d435decbf94208eaac" Timestamp="0x2029FCA55530D901">%SapSrcDir%\NWBC800\x64\BrowserUtil.dll.manifest</Src>
+			<Src FileVersion="1.0.1264.42" Hash="SHA-256:fb82ac089963e1dee932acce2f86ba34c128770cec4b60bcfd86f95d29e971ab" Timestamp="0x002B08BE3A8BD801">%SapSrcDir%\NWBC800\x64\WebView2Loader.dll</Src>
+			<Src FileVersion="8004.2301.25018.2" Hash="SHA-256:9bc2ba64095598de6dcd1b162789a3de24c1bdb598c1a02786e3f0291535f5f6" Register="false" Timestamp="0x0D9D28E55630D901">%SapSrcDir%\NWBC800\x64\EdgeAxControl.dll</Src>
+			<Src Hash="SHA-256:b14d0a039ab28b3f8616656a5e7e5a7bae38ecf2f983f9f8784f506e69f4a236" Timestamp="0x1CC1D9B15530D901">%SapSrcDir%\NWBC800\x64\EdgeAxControl.dll.manifest</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:027946db2492537f28c50f80d064645df424d7b8a406b232f0f9985644886950" Register="CreateTLB" Timestamp="0x1DC50BE85630D901">%SapSrcDir%\NWBC800\x64\NwbcBrowser.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:8f783385f3b40ccfac2838d2370431719bb7c0a993775de442971fbcc606a9a7" Register="CreateTLB" Timestamp="0x56E6EBE85630D901">%SapSrcDir%\NWBC800\x64\NwbcBrowserExternal.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:0517578948a5630cf12c25b410bfb844652d8a7ea5b70509f85a49a20ea281b8" Timestamp="0xD8F903E65630D901">%SapSrcDir%\NWBC800\x64\Interop.EdgeAxControl.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:9a080a9b1483d4106ec5e83abd5f81d43828faa52d07bf0614cb586740ef66f0" Timestamp="0xEE0533E45630D901">%SapSrcDir%\NWBC800\x64\AxInterop.EdgeAxControl.dll</Src>
+			<Src FileVersion="8004.2301.25018.3002" Hash="SHA-256:b62df3fe2cf2c289528fb9464d3bc2d93857a0e81c077a7efe8a1fbb058cbe13" Timestamp="0x753148F25630D901">%SapSrcDir%\NWBC800\x64\LandscapeMigration32Wrapper.exe</Src>
+			<Src FileVersion="1.0.117.0" Hash="SHA-256:24043ef4472d9d035cd1a8294f68d2bbfdf76f5455af80c09c89e64f6ed15917" Timestamp="0x3788E33E5909D901">%SapSrcDir%\NWBC800\x64\System.Data.SQLite.dll</Src>
+			<Src FileVersion="1.0.117.0" Hash="SHA-256:10c9ccec863ed80850c7b7080e4f2e34b133ce259d1ae3ea7a305cebf6e2940d" Timestamp="0xCFDB373E5909D901">%SapSrcDir%\NWBC800\x64\SQLite.Interop.dll</Src>
+		</Action>
+	</Component>
+	<Component BuildTime="0x002A910F5730D901" Guid="{C9E476F6-292D-4CBE-9BC8-A6347DD98E34}" Min_Compliant_Version="8000" Name="$NWBC Shared Files and Keys" Size="4649" Update="Always" Version="8027">
+		<Action Dst="%SapNWBC800DestDir%" Type="File">
+			<Src Hash="SHA-256:98b90ed99106e2331c3375cc1745b58e58ac0ddca763bb6c1963dbd3dd535fb3" Timestamp="0xEBB36DDD0509D901">%SapSrcDir%\NWBC800\compInfo.txt</Src>
+			<Src Hash="SHA-256:0b52ce1292a087aacc9b722ede8ce0bb913537dc413e1060461b228ddc5fefca" Timestamp="0x730A1E4B41E0D701">%SapSrcDir%\NWBC800\reset_fontcache.bat</Src>
+		</Action>
+		<Action Dst="%SapNWBC800DestDir%\Documentation" Type="File">
+			<Src Hash="SHA-256:970e93e4f568f5526dec106de72f3e31bff17c519e8f5aee73227a45d06725fd" Timestamp="0xDEF36A2B4F0FD901">%SapSrcDir%\NWBC800\Documentation\NWBC800.pdf</Src>
+		</Action>
+		<Action Dst="%SapNWBC800DestDir%\Lang" Type="File">
+			<Src Hash="SHA-256:225117d812e5e25ae46f71b9be84fdcf9f7441d3588a6eee1676793713071e3d" Timestamp="0x8647B4FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2.txt</Src>
+			<Src Hash="SHA-256:4ad7e53f5d2107a2a00c1b41485600245d8131f891c82830692794a2adc547c7" Timestamp="0x8647B4FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_ar.txt</Src>
+			<Src Hash="SHA-256:9ec459960b16601a6c45695ffd03f66fa5f1b9b38ad1274a6b36fede7197e169" Timestamp="0x13AAB6FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_bg.txt</Src>
+			<Src Hash="SHA-256:eadc34c1967f7a02be051b668f71a4d04a5b9e6b57478c9daf7e73ef510a2f07" Timestamp="0x13AAB6FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_ca.txt</Src>
+			<Src Hash="SHA-256:5c48700c2d64fc8cf4b4bd8c9d3068a13d0221fd1eccc06705ba5bd10a9fbc3a" Timestamp="0x680CB9FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_cs.txt</Src>
+			<Src Hash="SHA-256:82365fd024cc5f5b2b2f53b9be4fbe29de3999c201ef92cc16dd30f16e8bb873" Timestamp="0x696EBBFF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_da.txt</Src>
+			<Src Hash="SHA-256:6b472b1dbaa140c0cd11a29c1e80cfd139ab3821d1ab303456ba2df4faa5c3f5" Timestamp="0x696EBBFF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_de.txt</Src>
+			<Src Hash="SHA-256:ff1de4686f7bcd206d896e94096ebc15d16599dfbcb4f547d49adc5ff33f5efc" Timestamp="0xE3D0BDFF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_el.txt</Src>
+			<Src Hash="SHA-256:e612428d617054e9153fb4e7b4903257263073032062b8f7f154392d826dd60e" Timestamp="0xE3D0BDFF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_en.txt</Src>
+			<Src Hash="SHA-256:484185e52eb719a690a7dd3d4cb701b8b7ec059d8d1a4deacdcdb1c294922a2f" Timestamp="0x5433C0FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_es.txt</Src>
+			<Src Hash="SHA-256:2a4f8dffcf180a8be1eb9c752ed77bc0f33560badaee3e82445d9731ead02bfc" Timestamp="0xE095C2FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_et.txt</Src>
+			<Src Hash="SHA-256:459aee36271b350d5227a3e11bff76229b505900865905344829ad5ac3cd05e1" Timestamp="0xE095C2FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_fi.txt</Src>
+			<Src Hash="SHA-256:ff729a5e4cd4fc3d918d011082c7b0c9b98dc4b3cf72e0b51718cfc7e10d93b1" Timestamp="0x48F8C4FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_fr.txt</Src>
+			<Src Hash="SHA-256:9a2ade69ede1c4f5bab4b13a295012c276634b159b48f122e1f2bfc8965a1d8b" Timestamp="0x48F8C4FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_he.txt</Src>
+			<Src Hash="SHA-256:04fa16168713e1d075df9ff5a7396cb12ed013021709b555a46019cb704e9f44" Timestamp="0x4D5AC7FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_hi.txt</Src>
+			<Src Hash="SHA-256:669c3f49a5beabd201dbcd1465cd4e6fa910f906cdc6d10e283b0cdf7f5fbf75" Timestamp="0x4D5AC7FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_hr.txt</Src>
+			<Src Hash="SHA-256:56cb9345d28267402d46f87c64a2900b329145b3cf3c173fa85f8b22d1bfb2d4" Timestamp="0xB5BCC9FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_hu.txt</Src>
+			<Src Hash="SHA-256:f5b4c8e52398839b9f90549e6234ace5948c94ce1b29c69cbb1ad7f9ff7fa4ad" Timestamp="0x1C1FCCFF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_it.txt</Src>
+			<Src Hash="SHA-256:5b37f2f57167d1059f8f034719216dc6f102755abf032daa47af25596d0be7ab" Timestamp="0x1C1FCCFF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_ja.txt</Src>
+			<Src Hash="SHA-256:7ea89e4147c5630a5b01824a707fb7119cee09b91db45beaec74f1e92197b4c7" Timestamp="0x7181CEFF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_kk.txt</Src>
+			<Src Hash="SHA-256:06ac610ee63050f929ecf1ee29fb7963365de74792bdc5ecd4eb031b02ee841b" Timestamp="0x7181CEFF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_ko.txt</Src>
+			<Src Hash="SHA-256:b56a0552afd876b290434ef59e5faad5f65865e568bf1498d26bf92dd52a2357" Timestamp="0xE2E3D0FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_lt.txt</Src>
+			<Src Hash="SHA-256:1683750c1c7ba91f4b9d5a2abf784f63b00b24b95da620ee55a6e41e30523577" Timestamp="0xE2E3D0FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_lv.txt</Src>
+			<Src Hash="SHA-256:b8fae7fd4b40d8f62c591b932a658e4b2cc6c037cd08715c327bbf33759de575" Timestamp="0x7846D3FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_nl.txt</Src>
+			<Src Hash="SHA-256:9d43e37e13a690470f2d2151305607b905288b0c69af24a337f460676671e778" Timestamp="0x7846D3FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_no.txt</Src>
+			<Src Hash="SHA-256:7088fd5ea21f9a40e8ca0bfc035b2239f7cf50224464b79f6ec64dc6a68f513e" Timestamp="0x18A9D5FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_pl.txt</Src>
+			<Src Hash="SHA-256:0183c804be99cdac2ed064b5c101efe14aedcff98cb505484605b9233f8a4626" Timestamp="0xE10BD8FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_pt.txt</Src>
+			<Src Hash="SHA-256:5960545dcf6e85831bc042e21f65ebf31b113a7dceb0ddb3ecc2087618788e87" Timestamp="0x6D6DDAFF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_ro.txt</Src>
+			<Src Hash="SHA-256:0d21ae6496572d408cfc0ada101b79e89671261d3723cf3d465671e0c7b72ce2" Timestamp="0x6D6DDAFF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_ru.txt</Src>
+			<Src Hash="SHA-256:d925772892b23a8dc93c99901a8d5db287780c1c57d4f9948c2e8fec23746145" Timestamp="0x03D0DCFF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_sh.txt</Src>
+			<Src Hash="SHA-256:2246ce3b547c25bcee00261a010d9406dda1a476f3eb37a46aa1907bd8c1ed78" Timestamp="0x03D0DCFF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_sk.txt</Src>
+			<Src Hash="SHA-256:98c34095d968fa17c11a68df658d67efe4ae135e1801a41f3d38a6d1e5d7a308" Timestamp="0x8732DFFF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_sl.txt</Src>
+			<Src Hash="SHA-256:b3d21d9eae35514049ba2c6c4923d7979bdbb7ae822eaa1a77729c4a8d15766b" Timestamp="0x8732DFFF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_sv.txt</Src>
+			<Src Hash="SHA-256:8646ef651432ae287e275629b399e075ff7c1d34bcfa7f2734a98ba597aae187" Timestamp="0xDC94E1FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_th.txt</Src>
+			<Src Hash="SHA-256:10d17e5106d45dc6a08e9481b3e2d7327de1d14cac19d72170f11820e30c13b5" Timestamp="0xD8F6E3FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_tr.txt</Src>
+			<Src Hash="SHA-256:fceaa7a2e7fb811807dcb8346e3d713cd03508db548134a8dcae3de0b9ec7cb3" Timestamp="0xD8F6E3FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_uk.txt</Src>
+			<Src Hash="SHA-256:8132498437b7bda62c217965fc4bcdba93a50415abdd53db721b8388f1c2280f" Timestamp="0xA659E6FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_vi.txt</Src>
+			<Src Hash="SHA-256:e39e766740459dbd9376caa104ee8932a2680f1a98f8b6525455bd24bab727e2" Timestamp="0xA659E6FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_zh_cn.txt</Src>
+			<Src Hash="SHA-256:62c75a75ed1190003f35999b70768be7430304bc6bcd67e18bd8b6386fe7fca2" Timestamp="0x8BBBE8FF5630D901">%SapSrcDir%\NWBC800\Lang\nwbcv2_zh_tw.txt</Src>
+		</Action>
+		<Action Dst="HKLM\SOFTWARE\SAP\SAP Shared\SAP_NWBC800" Type="Registry">
+			<RegValue>SAP Business Client 8.00</RegValue>
+			<RegValue Name="SAPSourceDir">%SAPSrcDir%</RegValue>
+			<RegValue Name="SAPDestDir">%SapNWBC800DestDir%</RegValue>
+			<RegValue Name="nwbc_version">8.00</RegValue>
+		</Action>
+		<Action Dst="HKLM\SOFTWARE\SAP\SAP Shared\SAP_NWBC_INSTALLED" RunAt="Install,Update" Type="Registry">
+			<RegValue>true</RegValue>
+		</Action>
+		<Action Condition="%SapNWBCHighestOtherReleaseDestDir%=NONE" Dst="HKLM\SOFTWARE\SAP\SAP Shared\SAP_NWBC_INSTALLED" RunAt="Uninstall" Type="Registry">
+			<RegValue>true</RegValue>
+		</Action>
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_MAXCONNECTIONSPERSERVER" RunAt="Install,Update" Type="Registry">
+			<RegValue Name="NWBC.exe" Type="DWORD">10</RegValue>
+		</Action>
+		<Action Condition="%SapNWBCHighestOtherReleaseDestDir%=NONE" Dst="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_MAXCONNECTIONSPERSERVER" RunAt="Uninstall" Type="Registry">
+			<RegValue Name="NWBC.exe" Type="DWORD">10</RegValue>
+		</Action>
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_MAXCONNECTIONSPER1_0SERVER" RunAt="Install,Update" Type="Registry">
+			<RegValue Name="NWBC.exe" Type="DWORD">10</RegValue>
+		</Action>
+		<Action Condition="%SapNWBCHighestOtherReleaseDestDir%=NONE" Dst="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\MAIN\FeatureControl\FEATURE_MAXCONNECTIONSPER1_0SERVER" RunAt="Uninstall" Type="Registry">
+			<RegValue Name="NWBC.exe" Type="DWORD">10</RegValue>
+		</Action>
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BLOCK_LMZ_SCRIPT" RunAt="Install,Update" Type="Registry">
+			<RegValue Name="NWBC.exe" Type="DWORD">0</RegValue>
+		</Action>
+		<Action Condition="%SapNWBCHighestOtherReleaseDestDir%=NONE" Dst="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BLOCK_LMZ_SCRIPT" RunAt="Uninstall" Type="Registry">
+			<RegValue Name="NWBC.exe" Type="DWORD">0</RegValue>
+		</Action>
+		<ExecuteAction RunAt="Uninstall">
+			<Exe DisplayText="Refreshing Icons" SuppressWindow="true">%SapSetupDir%\setup\SapStart.exe</Exe>
+			<Parameters>/refresh</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<Action RunAt="Uninstall" Type="Script">
+			<Src><![CDATA[
+NwEngine.Context.Log.Write "Recreating registry keys for parallel NWBC release, if it is installed."
+				
+				Dim dest
+				dest = NwEngine.Variables.GetValue("SapNWBCHighestOtherReleaseDestDir")
+								
+				If dest <> "NONE" Then
+					NwEngine.Context.Log.Write "Parallel NWBC release detected. Changing registry keys to new destination dir: " & dest
+					
+					NwEngine.Shell.SetRegValue "HKCR\NWBCfile\", "REG_SZ", "SAP NWBC Launcher"
+					NwEngine.Shell.SetRegValue "HKCR\NWBCfile\SapCreateKey", "REG_DWORD", 0
+					
+					NwEngine.Shell.SetRegValue "HKCR\NWBCfile\DefaultIcon\", "REG_SZ", dest & "\NWBC.exe,0"
+					NwEngine.Shell.SetRegValue "HKCR\NWBCfile\DefaultIcon\SapCreateKey", "REG_DWORD", 0
+										
+					NwEngine.Shell.SetRegValue "HKCR\NWBCfile\shell\open\command\", "REG_SZ", dest & "\NWBC.exe %1"
+					NwEngine.Shell.SetRegValue "HKCR\NWBCfile\shell\open\command\SapCreateKey", "REG_DWORD", 0
+					
+					NwEngine.Shell.SetRegValue "HKCR\NWBCfile\shell\", "REG_SZ", "Open"
+					NwEngine.Shell.SetRegValue "HKCR\NWBCfile\shell\SapCreateKey", "REG_DWORD", 0
+					
+					NwEngine.Shell.SetRegValue "HKCR\NWBCfile\shell\open\", "REG_SZ", "Start"
+					NwEngine.Shell.SetRegValue "HKCR\NWBCfile\shell\open\SapCreateKey", "REG_DWORD", 0
+					
+					NwEngine.Shell.SetRegValue "HKCR\sapnwbc\DefaultIcon\", "REG_SZ", dest & "\NwbcUrlHandler.exe"
+					NwEngine.Shell.SetRegValue "HKCR\sapnwbc\DefaultIcon\SapCreateKey", "REG_DWORD", 0
+					
+					NwEngine.Shell.SetRegValue "HKCR\sapnwbc\shell\open\command\", "REG_SZ", """" & dest & "\NwbcUrlHandler.exe"" ""%1"""
+					NwEngine.Shell.SetRegValue "HKCR\sapnwbc\shell\open\command\SapCreateKey", "REG_DWORD", 0
+					NwEngine.Shell.SetRegValue "HKCR\sapnwbc\shell\open\SapCreateKey", "REG_DWORD", 0
+					NwEngine.Shell.SetRegValue "HKCR\sapnwbc\shell\SapCreateKey", "REG_DWORD", 0
+					
+					NwEngine.Shell.SetRegValue "HKCR\sap-nwbc\DefaultIcon\", "REG_SZ", dest & "\NwbcUrlHandler.exe"
+					NwEngine.Shell.SetRegValue "HKCR\sap-nwbc\DefaultIcon\SapCreateKey", "REG_DWORD", 0
+					
+					NwEngine.Shell.SetRegValue "HKCR\sap-nwbc\shell\open\command\", "REG_SZ", """" & dest & "\NwbcUrlHandler.exe"" ""%1"""
+					NwEngine.Shell.SetRegValue "HKCR\sap-nwbc\shell\open\command\SapCreateKey", "REG_DWORD", 0
+					NwEngine.Shell.SetRegValue "HKCR\sap-nwbc\shell\open\SapCreateKey", "REG_DWORD", 0
+					NwEngine.Shell.SetRegValue "HKCR\sap-nwbc\shell\SapCreateKey", "REG_DWORD", 0
+					
+				End If
+			]]></Src>
+		</Action>
+		<Action Dst="HKCR\.nwbc-config-update" RunAt="Install,Update" Type="Registry">
+			<RegValue>NWBCfile</RegValue>
+		</Action>
+		<Action Condition="%SapNWBCHighestOtherReleaseDestDir%=NONE" Dst="HKCR\.nwbc-config-update" RunAt="Uninstall" Type="Registry">
+			<RegValue>NWBCfile</RegValue>
+		</Action>
+		<Action Dst="HKCR\NWBCfile" RunAt="Install,Update" Type="Registry">
+			<RegValue>SAP NWBC Launcher</RegValue>
+		</Action>
+		<Action Condition="%SapNWBCHighestOtherReleaseDestDir%=NONE" Dst="HKCR\NWBCfile" RunAt="Uninstall" Type="Registry">
+			<RegValue>SAP NWBC Launcher</RegValue>
+		</Action>
+		<Action Dst="HKCR\NWBCfile\DefaultIcon" Type="Registry">
+			<RegValue>%SapNWBC800DestDir%\NWBC.exe,0</RegValue>
+		</Action>
+		<Action Dst="HKCR\NWBCfile\shell" Type="Registry">
+			<RegValue>Open</RegValue>
+		</Action>
+		<Action Dst="HKCR\NWBCfile\shell\open" Type="Registry">
+			<RegValue>Start</RegValue>
+		</Action>
+		<Action Dst="HKCR\NWBCfile\shell\open\command" Type="Registry">
+			<RegValue>%SapNWBC800DestDir%\NWBC.exe %%1</RegValue>
+		</Action>
+		<ExecuteAction RunAt="Install,Update">
+			<Exe DisplayText="Refreshing Icons" SuppressWindow="true">%SapSetupDir%\setup\SapStart.exe</Exe>
+			<Parameters>/refresh</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<Action Dst="HKCR\sapnwbc" RunAt="Install,Update" Type="Registry">
+			<RegValue Name="URL Protocol"/>
+			<RegValue>&quot;URL: sapnwbc Protocol&quot;</RegValue>
+		</Action>
+		<Action Condition="%SapNWBCHighestOtherReleaseDestDir%=NONE" Dst="HKCR\sapnwbc" RunAt="Uninstall" Type="Registry">
+			<RegValue Name="URL Protocol"/>
+			<RegValue>&quot;URL: sapnwbc Protocol&quot;</RegValue>
+		</Action>
+		<Action Dst="HKCR\sapnwbc\DefaultIcon" Type="Registry">
+			<RegValue>%SapNWBC800DestDir%\NwbcUrlHandler.exe</RegValue>
+		</Action>
+		<Action Dst="HKCR\sapnwbc\shell\open\command" Type="Registry">
+			<RegValue>&quot;%SapNWBC800DestDir%\NwbcUrlHandler.exe&quot; &quot;%%1&quot;</RegValue>
+		</Action>
+		<Action Dst="HKCR\sap-nwbc" RunAt="Install,Update" Type="Registry">
+			<RegValue Name="URL Protocol"/>
+			<RegValue>&quot;URL: sapnwbc Protocol&quot;</RegValue>
+		</Action>
+		<Action Condition="%SapNWBCHighestOtherReleaseDestDir%=NONE" Dst="HKCR\sap-nwbc" RunAt="Uninstall" Type="Registry">
+			<RegValue Name="URL Protocol"/>
+			<RegValue>&quot;URL: sapnwbc Protocol&quot;</RegValue>
+		</Action>
+		<Action Dst="HKCR\sap-nwbc\DefaultIcon" Type="Registry">
+			<RegValue>%SapNWBC800DestDir%\NwbcUrlHandler.exe</RegValue>
+		</Action>
+		<Action Dst="HKCR\sap-nwbc\shell\open\command" Type="Registry">
+			<RegValue>&quot;%SapNWBC800DestDir%\NwbcUrlHandler.exe&quot; &quot;%%1&quot;</RegValue>
+		</Action>
+	</Component>
+	<Component BuildTime="0x002A910F5730D901" Guid="{D91CC8F0-73F4-4EFE-91E6-C71D55B63118}" Min_Compliant_Version="8000" Name="NWBC800.sap shortcuts" Size="80" Update="Always" Version="8010">
+		<Action Dst="%ALLUSERSPROFILE%\SAP\NWBC" Type="File">
+			<Src Hash="SHA-256:dfded8a6a7db3601660fe64ba96607a7b55f2ed5b7baa6505fbd43a58e28c44d" Timestamp="0x3FF87EAF912ED801">%SapSrcDir%\NWBC800\Configuration\NwbcOptions800.xsd</Src>
+			<Src Hash="SHA-256:92b06874619b149588a8ca8bf5fee4ddd76717bdffbc1077dcfd729938087fdd" Timestamp="0xD288CB2EE105D901">%SapSrcDir%\NWBC800\Configuration\NwbcOptions.xml.800template</Src>
+			<Src Hash="SHA-256:7e9fded341d56885df3872a8a1edf7d79da414861fb86b84b2b53ef961bf35f0" Timestamp="0xE233414941E0D701">%SapSrcDir%\NWBC800\Configuration\NwbcRemoteOptions.xml.800template</Src>
+		</Action>
+		<Action Dst="HKCR\.sap\OpenWithProgIds" Type="Registry">
+			<RegValue name="NWBC800.sap"/>
+		</Action>
+		<Action Dst="HKCR\.sap\NWBC800.sap" Type="Registry">
+			<RegValue>NWBC Shortcut</RegValue>
+		</Action>
+		<Action Dst="HKCR\.sap\NWBC800.sap\ShellNew" Type="Registry">
+			<RegValue name="NullFile"/>
+		</Action>
+		<Action RunAt="Install" Type="Script">
+			<Src><![CDATA[
+If NwEngine.Shell.SetRegValue ("HKCR\.sap\", "REG_SZ", "NWBC800.sap" ) Then
+					NwEngine.Context.Log.Write "HKCR\.sap\ has been set to NWBC800.sap."
+				Else
+                    NwEngine.Context.Log.Write "Failure: HKCR\.sap\ has not been set to NWBC800.sap."
+                End If
+			]]></Src>
+		</Action>
+		<Action RunAt="Uninstall" Type="Script">
+			<Src><![CDATA[
+If NwEngine.Shell.RegKeyExist("HKCR\.sap\") Then
+				If NwEngine.Shell.DeleteRegValue ("HKCR\.sap\") Then
+					NwEngine.Context.Log.Write "HKCR\.sap\ has been removed."
+                Else
+					NwEngine.Context.Log.Write "Failure: HKCR\.sap\ could not be removed."
+                End If
+			End If
+			]]></Src>
+		</Action>
+		<Action Dst="HKCR\NWBC800.sap\" Type="Registry">
+			<RegValue>SAP GUI Shortcut</RegValue>
+		</Action>
+		<Action Dst="HKCR\NWBC800.sap\Shell\Open\command" Type="Registry">
+			<RegValue>&quot;%SapNWBC800DestDir%\NwbcUrlHandler.exe&quot; /SHORTCUT=&quot;%%1&quot;</RegValue>
+		</Action>
+		<Action Condition="IsProductAvailable({1460620D-C8BC-44c2-86EC-E632E0986B01})" Dst="HKCR\NWBC800.sap\Shell\Edit\command" Type="Registry">
+			<RegValue>&quot;%SapFrontEndDir%\SAPGUI\sapgui.exe&quot; /SHORTCUT=&quot;/edit %1&quot;</RegValue>
+		</Action>
+		<Action Condition="IsProductAvailable({1460620D-C8BC-44c2-86EC-E632E0986B01})" Dst="HKCR\NWBC800.sap\Defaulticon" Type="Registry">
+			<RegValue>%SapFrontEndDir%\SAPGUI\sapshlib.dll,0</RegValue>
+		</Action>
+		<Action Condition="IsProductAvailable({1460620D-C8BC-44c2-86ED-000000000010})" Dst="HKCR\NWBC800.sap\Shell\Edit\command" Type="Registry">
+			<RegValue>&quot;%SapFrontEnd64Dir%\SAPGUI\sapgui.exe&quot; /SHORTCUT=&quot;/edit %1&quot;</RegValue>
+		</Action>
+		<Action Condition="IsProductAvailable({1460620D-C8BC-44c2-86ED-000000000010})" Dst="HKCR\NWBC800.sap\Defaulticon" Type="Registry">
+			<RegValue>%SapFrontEnd64Dir%\SAPGUI\sapshlib.dll,0</RegValue>
+		</Action>
+	</Component>
+	<Component BuildTime="0x002A910F5730D901" Guid="{6AD30634-5473-45BE-98E8-0F8804F107E9}" Min_Compliant_Version="8000" Name="$NWBC 80 Client Shortcuts" Order="PostInstall" Version="8000">
+		<Action Dst="ProgramFiles\SAP Business Client 8.00" Type="Shortcut">
+			<Src>&quot;%SapNWBC800DestDir%\NWBC.exe&quot;</Src>
+		</Action>
+		<Action Dst="Desktop\SAP Business Client 8.00" Type="Shortcut">
+			<Src>&quot;%SapNWBC800DestDir%\NWBC.exe&quot;</Src>
+		</Action>
+	</Component>
+</SapSetup>

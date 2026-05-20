@@ -1,0 +1,12 @@
+_SAPPCTXT_HEADER_               002 8000 GRIDVIEW CS 1404 OK 
+GRIDVIEW_MSGBOX_TITLE           080 "View møížky"
+GRIDVIEW_MSGBOX_TEXT            128 "Tiskový požadavek nebylo možno spustit"
+GRIDVIEW_TOOLTIP_DESELECT_ALL   080 "Reset výbìru"
+GRIDVIEW_TOOLTIP_SELECT_ALL     080 "Výbìr všech"
+GRIDVIEW_TOOLTIP_TEXT_COLLAPSE  080 "Sbalit výbìr"
+GRIDVIEW_TOOLTIP_TEXT_EXPAND    080 "Rozbalit výbìr"
+GRIDVIEW_ENABLE_HISTORY         255 "Aktivovat historii"
+GRIDVIEW_DISABLE_HISTORY        255 "Deaktivovat historii"
+GRIDVIEW_DEFAULT_SETTING        255 "Použití standardních nastavení"
+GRIDVIEW_MSGBOX_TITLE2          080 "View møížky"
+GRIDVIEW_MSGBOX_ERROR           128 "Vícenásobné výbìry nemùžete zkopírovat"

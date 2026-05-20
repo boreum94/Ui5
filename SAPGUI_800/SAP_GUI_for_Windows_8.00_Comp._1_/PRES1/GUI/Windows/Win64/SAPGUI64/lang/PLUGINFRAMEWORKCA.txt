@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 PLUGINFRAMEWORK CA 1100 OK 
+CP_SERVICE_MENUITEM             030 "Serveis"
+MENU_ITEM_EXCEL                 030 "Excel"
+MENU_ITEM_SEARCH                030 "Cercar"
+MENU_ITEM_CONTEXTSEARCH         120 "Navegar SAP Help Portal"
+MENU_ITEM_SPELLCHECK            030 "Correcció ortogràfica"
+MENU_ITEM_MAIL                  020 "C/e"
+MENU_ITEM_PRINT                 020 "Imprimir"
+CP_TREE_PRINT                   060 "Imprimir arbre"
+CP_SPELLCHECK_COMPLETE          128 "Verificació de l'ortigrafia conclosa"

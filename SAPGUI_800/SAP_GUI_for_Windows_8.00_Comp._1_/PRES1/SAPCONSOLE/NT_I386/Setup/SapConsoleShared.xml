@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapConsoleWksta.xml">
+	<Product BuildTime="0xF0F0E7D16D01D601" CmdLine="Console_Shared" Guid="{DC74F907-C8C0-4fc3-931A-1C718620F5DD}" Name="SAP Console Shared" ProdVersion="3001" Visible="FALSE" WkstaDb="SapConsoleWksta.xml"/>
+	<Component BuildTime="0xF0F0E7D16D01D601" Guid="{FEEE0F1B-A577-4A85-A7D9-88F47D8AC2D1}" Min_Compliant_Version="2000" Name="$SAPConsole ARP" Version="3002">
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\SAPConsole" Type="Registry">
+			<RegValue Name="DisplayName">SAP Console 7.30</RegValue>
+			<RegValue Name="DisplayIcon">&quot;%SapConsoleDestDir%\sapConsole.exe&quot;,0</RegValue>
+			<RegValue Name="Publisher">SAP SE</RegValue>
+			<RegValue Name="URLUpdateInfo">http://service.sap.com</RegValue>
+			<RegValue Name="UninstallString">&quot;%SAPSetupDir%\setup\NwSapSetup.exe&quot; /product:&quot;SAPConsole&quot; /uninstall</RegValue>
+		</Action>
+	</Component>
+	<Component BuildTime="0xF0F0E7D16D01D601" Guid="{B98EC783-9CAC-4BE4-B030-2B127178463C}" Min_Compliant_Version="2000" Name="$SAPConsole Shared Keys" Version="3001">
+		<Action Dst="HKLM\SOFTWARE\SAP\SAP Shared\Console" Type="Registry">
+			<RegValue>SAP Console</RegValue>
+			<RegValue Name="SAPSourceDir">%SAPSrcDir%</RegValue>
+			<RegValue Name="SAPDestDir">%SapConsoleDestDir%</RegValue>
+		</Action>
+	</Component>
+	<Component BuildTime="0xF0F0E7D16D01D601" Guid="{C9D59811-A9C7-44A2-8494-DD430480BBFE}" Name="$SAPConsole MS DotNET DLLs" Version="3001">
+		<Requires Guid="{EB118682-0BFD-467C-8DC9-1E4435883D50}"/>
+	</Component>
+	<Component BuildTime="0xF0F0E7D16D01D601" Guid="{48E1BD6C-A696-463D-A093-7D449614870A}" Min_Compliant_Version="2000" Name="$SAPConsole Files" Size="56283" SysSize="1871" Version="4921">
+		<Action Dst="%SAPConsoleDestDir%" Type="File">
+			<Src>%SAPSrcDir%\SapConsole\sapcpp47.dll</Src>
+			<Src>%SAPSrcDir%\SapConsole\sapcpp47.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsole\xml71d.dll</Src>
+			<Src>%SAPSrcDir%\SapConsole\xml71d.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsole\xtc21d.dll</Src>
+			<Src>%SAPSrcDir%\SapConsole\xtc21d.pdb</Src>
+			<Src Register="False">%SAPSrcDir%\SapConsole\guirfc.dll</Src>
+		</Action>
+		<Action Dst="%SAPConsoleDestDir%" Type="File">
+			<Src>%SAPSrcDir%\SapConsole\ConnectionGuilib.dll</Src>
+			<Src>%SAPSrcDir%\SapConsole\ConnectionGuilib.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsole\sapcnsl.exe</Src>
+			<Src>%SAPSrcDir%\SapConsole\sapcnslexe.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsole\isapi_sapcnsl.dll</Src>
+			<Src>%SAPSrcDir%\SapConsole\isapi_sapcnsl.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsole\sapcnsl.dll</Src>
+			<Src>%SAPSrcDir%\SapConsole\sapcnsl.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsole\ConsoleDisplayer.dll</Src>
+			<Src>%SAPSrcDir%\SapConsole\ConsoleDisplayer.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsole\WebDisplayer.dll</Src>
+			<Src>%SAPSrcDir%\SapConsole\WebDisplayer.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsole\SymbolDisplayer.dll</Src>
+			<Src>%SAPSrcDir%\SapConsole\SymbolDisplayer.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsole\VoiceXMLDisplayer.dll</Src>
+			<Src>%SAPSrcDir%\SapConsole\VoiceXMLDisplayer.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsole\IntermecDisplayer.dll</Src>
+			<Src>%SAPSrcDir%\SapConsole\IntermecDisplayer.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsole\Trace.dll</Src>
+			<Src>%SAPSrcDir%\SapConsole\Trace.pdb</Src>
+			<Src>%SAPSrcDir%\SapConsole\SAPConsole_Help.pdf</Src>
+			<Src>%SAPSrcDir%\SapConsole\Profile.exe</Src>
+			<Src>%SAPSrcDir%\SapConsole\Profile.pdb</Src>
+		</Action>
+		<Action Dst="%SAPConsoleDestDir%" Type="File">
+			<Src>%SAPSrcDir%\SapConsole\XMLDisplayer.dll</Src>
+			<Src>%SAPSrcDir%\SapConsole\XMLDisplayer.pdb</Src>
+		</Action>
+		<Action Dst="%SAPConsoleDestDir%\sounds" Type="File">
+			<Src>%SAPSrcDir%\SapConsole\sounds\alert.wav</Src>
+		</Action>
+		<Action Dst="%SAPConsoleDestDir%\images" Type="File">
+			<Src>%SAPSrcDir%\SapConsole\images\saplogo.gif</Src>
+		</Action>
+		<Action Dst="%WinSysDir%" Type="File">
+			<Src>%SAPsrcDir%\SapConsole\Profile.cpl</Src>
+		</Action>
+		<Action Dst="HKLM\SOFTWARE\SAP\Ofek\SapConsole" Type="Registry">
+			<RegValue Name="HelpFile">%SAPConsoleDestDir%\SAPConsole_Help.pdf</RegValue>
+		</Action>
+		<Action Dst="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\Extended Properties\System.ControlPanel.Category" Type="Registry">
+			<RegValue Name="%%systemRoot%%\System32\Profile.cpl" Type="REG_SZ">1</RegValue>
+		</Action>
+	</Component>
+</SapSetup>

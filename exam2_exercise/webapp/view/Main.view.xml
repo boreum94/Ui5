@@ -1,0 +1,75 @@
+<mvc:View controllerName="code.d22.exam2exercise.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Page id="page" title="{i18n>title}">
+        <Panel>
+            <headerToolbar>
+                <Toolbar>
+                    <ToolbarSpacer/>
+                    <ComboBox
+                        selectedKey="A"
+                        selectionChange=".onComboBoxSelectionChange"
+                    >
+                        <items>
+                            <core:Item key="A" text="전체"/>
+                            <core:Item key="B" text="부산"/>
+                            <core:Item key="S" text="서울"/>
+                        </items>
+                    </ComboBox>
+                </Toolbar>
+            </headerToolbar>
+            <List
+                id="idList"
+                headerText="상품 재고 목록"
+                class="sapUiResponsiveMargin"
+                width="auto"
+                items="{path: '/Products',
+                        sorter:
+                            {path: 'Storage', group: true}}"
+            >
+                <items>
+                    <ObjectListItem
+                        title="{ProductName}"
+                        number="{parts: ['Quantity','Unit'],
+                                type: 'sap.ui.model.type.Unit',
+                                formatOptions: {
+                                    showMeasure: false}}"
+                        numberUnit="{Unit}"
+                    >
+                    <firstStatus>
+                            <ObjectStatus
+                                title="재고상태"
+                                state="{path: 'Quantity',
+                                        formatter: '.formatter.quantityState'}"
+                                text="{path: 'Quantity',
+                                    formatter: '.formatter.quantityText'}"
+                            >
+                            </ObjectStatus>
+
+                        </firstStatus>
+                    
+                        <attributes>
+                            <ObjectAttribute
+                                title="창고"
+                                text="{Storage}"
+                            />
+                            <ObjectAttribute
+                                title="가격"
+                                text="{parts: [{path: 'Price'},
+                                                {path: 'Currency'}],
+                                        type: 'sap.ui.model.type.Currency',
+                                        formatOptions: {
+                                            showMeasure: true}
+                                        }"
+                            />
+                        </attributes>
+                        
+                    </ObjectListItem>
+                </items>
+                
+            </List>
+        </Panel>
+    </Page>
+</mvc:View>

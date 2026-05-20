@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 SEARCHHELP SL 1404 OK 
+SEARCH_HELP_FIND                080 "Iskanje (vnos)"
+SEARCH_HELP_CANCEL              080 "Prekinitev (F12)"
+F4HELP_BUTTON_TOOLTIP           050 "Polje izbire (mejne vrednosti)"
+SEARCH_HELP_SORTA               050 "(Kliknite za narašèajoèe razvršèanje)"
+SEARCH_HELP_SORTD               050 "(Kliknite za padajoèe razvršèanje)"
+<#001>FEW_MENU_NEWMODE          032 "Modus kreiranja"
+<#001>FEW_MENU_STOPMODE         032 "Prekinitev transakcije"

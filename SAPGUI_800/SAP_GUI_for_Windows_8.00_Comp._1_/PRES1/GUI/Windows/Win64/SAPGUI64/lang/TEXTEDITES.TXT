@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 TEXTEDIT ES 1100 OK 
+TEXTEDIT_HE_LANG_BUTTON         255 "Cambiar el diseño del teclado a hebreo"
+TEXTEDIT_EN_LANG_BUTTON         255 "Cambiar el diseño del teclado a inglés"
+TEXTEDIT_DISABLE_LANG_BUTTON    255 "Desactivar botón de idioma"
+TEXTEDIT_ENABLE_LANG_BUTTON     255 "Activar botón de idioma"
+TEXTEDIT_PROMPT_TEXT            255 "Introduzca texto aquí..."

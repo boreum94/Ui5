@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Locale" Version="800.25" ConnectedId="{1460620D-C8BC-44c2-86ED-000000000010}">
+
+	<!-- FolderPathPage -->
+
+	<String name="StrSapGui64">
+		<En>SAP GUI for Windows 8.00 64bit (Compilation 1%SapGuiPatchLevel%)</En>
+		<De>SAP GUI for Windows 8.00 64bit (Compilation 1%SapGuiPatchLevel%)</De>
+	</String>
+
+	<String Name="StrSapGui64SelectTargetDir">
+		<En>Select the target directory for SAP GUI for Windows 8.00 64bit.</En>
+		<De>W&#228;hlen Sie das Zielverzeichnis f&#252;r SAP GUI for Windows 8.00 64bit aus.</De>
+	</String>
+
+	<String name="StrSapGui64Description">
+		<En>SAP GUI for Windows 8.00 64bit including related components. &lt;br/&gt; SAP GUI for Windows is SAP's universal client on Microsoft Windows platforms for accessing SAP functionality. SAP GUI functions like a browser. It gets information from the SAP system like the following: Which contents to display in its window as well as where, when, and how.</En>
+		<De>SAP GUI for Windows 8.00 64bit und zugehörige Komponenten. &lt;br/&gt; SAP GUI for Windows ist der universelle Client von SAP, der auf den Plattformen von Microsoft Windows den Zugriff auf SAP-Funktionen ermöglicht. Die Funktionsweise des SAP GUI ähnelt der eines Browsers. Die Informationen, die SAP GUI von einem SAP-System abruft, sind beispielsweise: Welche Inhalte werden wo, wann und wie in seinem Fenster angezeigt.</De>
+	</String>
+	
+	<String Name="strSapGui64RequiresSapGui">
+		<En>requires SAP GUI</En>
+		<De>erfordert SAP GUI</De>
+	</String>
+
+	<String name="StrPreSapGui64Failed">
+		<En>&lt;a style=&quot;COLOR:red&quot;&gt;An older version of SAP GUI is existing on your workstation. Please uninstall the older version first!&lt;a&gt;</En>
+		<De>&lt;a style=&quot;COLOR:red&quot;&gt;Es befindet sich noch eine &#228;ltere Version von SAP GUI auf Ihrem Rechner. Bitte die &#228;ltere Version zuerst deinstallieren!&lt;a&gt;</De>
+	</String>
+
+	<String Name="StrRemoveOldSapGui">
+		<En>An older version of SAP GUI is being uninstalled. Please wait.</En>
+		<De>Eine &#228;ltere Version von SAP GUI wird deinstalliert. Bitte warten.</De>
+	</String>
+
+	<String Name="DscrSapFrontEnd64Dir">
+		<En>SAP GUI for Windows 8.00 64bit installation directory</En>
+		<De>SAP GUI for Windows 8.00 64bit Installationsverzeichnis</De>
+	</String>
+
+	<String Name="DscrSapWorkDir">
+		<En>SAP GUI for Windows 8.00 64bit Working Directory</En>
+		<De>SAP GUI for Windows 8.00 64bit Arbeitsverzeichnis</De>
+	</String>
+	
+	<String Name="DscrSapGuiHistoryDir">
+		<En>SAP GUI for Windows 8.00 64bit Input history database directory</En>
+		<De>SAP GUI for Windows 8.00 64bit Verzeichnis f&#252;r Datenbank der Eingabehistorie</De>
+	</String>
+
+	<String Name="strSapGui64SuiteDescription">
+		<En>SAP GUI 64bit and related components</En>
+		<De>SAP GUI 64bit und zugehörige Komponenten</De>
+	</String>
+	
+	<String Name="strSapGuiLogonPad64Description">
+		<En>SAP Graphical Front End for 64bit with starter application SAP Logon Pad. The user can only display preconfigured connection information for SAP systems provided by the administrator (see manual for details).</En>
+		<De>Grafisches SAP-Frontend für 64bit mit Startanwendung SAP-Logon-Pad. Der Benutzer kann nur vorkonfigurierte Verbindungsinformationen für SAP-Systeme anzeigen, die der Administrator zur Verfügung stellt (detaillierte Informationen finden Sie in der SAP GUI Hilfe).</De>
+	</String>
+	
+	<String Name="strSapLogonPad64Description">
+		<En>Desktop and Start menu Shortcuts for SAP Logon Pad for 64bit. &lt;br/&gt;&lt;i&gt;Remark: The functionality of SAP Logon Pad is fully contained in SAP Logon. Therefore these Shortcuts are created only if SAP Logon is not selected.&lt;/i&gt;</En>
+		<De>Desktop- und Startmenü-Verknüpfungen für SAP-Logon-Pad für 64bit. &lt;br/&gt;&lt;i;gt;Hinweis: Die Funktionen des SAP-Logon-Pad sind in SAP Logon vollständig enthalten. Deshalb werden diese Verknüpfungen nur angelegt, wenn SAP Logon nicht ausgewählt ist.&lt;/i&gt;</De>
+	</String>
+	
+	<String Name="strSapLogon64Description">
+		<En>Extended starter application SAP Logon for 64bit with Desktop and Start menu Shortcuts. The user can display and modify connection information for SAP systems.</En>
+		<De>Erweiterte Startanwendung SAP Logon für 64bit mit Desktop- und Startmenü-Verknüpfungen. Der Benutzer kann die Verbindungsinformationen für SAP-Systeme anzeigen und ändern.</De>
+	</String>
+	
+	<String Name="strSapGui64ScriptingDescription">
+		<En>SAP GUI 64bit Scripting Interface</En>
+		<De>SAP GUI 64bit Scripting-Schnittstelle</De>
+	</String>
+	
+	<String Name="strSapGuiXT64Description">
+		<En>SAP GUI Extensions for client side customizing of SAP Dynpro screensfor 64bit</En>
+		<De>SAP-GUI-Erweiterungen für Client-seitiges Customizing der SAP-Bildschirme für 64bit.</De>
+	</String>
+	
+	<String Name="strShortcutToSaplpdDescription">
+		<En>Routing program for print output on Windows PCs. SAPlpd is addressed via a network connection or locally via SAP GUI. If used via network connection, PC must have a fixed IP address, and SAPlpd must be started manually before printing.</En>
+		<De>Routing-Programm für Druckausgabe auf Windows-Rechnern. SAPlpd wird über eine Netzwerkverbindung oder lokal über SAP GUI adresssiert. Wenn die Netzwerkverbindung verwendet wird, muss der Rechner eine feststehende IP-Adresse haben und SAPlpd muss manuell vor dem Drucken gestartet werden.</De>
+	</String>
+	
+	<String Name="strUnicodeRFC64LibsDescription">
+		<En>Unicode RFC Libraries for software developers. Supports Unicode and Non-Unicode communication partners. Accessible from Visual Basic via COM Interface.</En>
+		<De>Unicode RFC-Bibliotheken für Software-Entwickler. Unterstützt Unicode- und Nicht-Unicode-Kommunikationspartner. Zugriff mit Visual Basic über COM-Schnittstelle.</De>
+	</String>
+	
+	<String Name="strR3Addon64Description">
+		<En>Front-End Add-On for SAP R/3 Enterprise for SAP GUI 64bit. This package contains application extensions needed for some R/3 transactions. Please ask your SAP system administrator for details.</En>
+		<De>Frontend-Add-On für SAP R/3 Enterprise für SAP GUI 64bit. Dieses Paket enthält Anwendungserweiterungen, die für einige SAP-Transaktionen erforderlich sind.</De>
+	</String>
+	
+	<String Name="strECCSRemoteEntryDescription">
+		<En>Module EC: Data input and validation of reported financial data without a connection to a R/3 System. Requires MS Access 97.</En>
+		<De>Komponente EC: Dateneingabe und Validierung der Finanzmeldedaten ohne Verbindung zu einem SAP-System. Microsoft Access erforderlich (in SAP-Hinweis 169887 finden Sie die genauen Anforderungen).</De>
+	</String>
+	
+	<String Name="strFILCRemoteEntryDescription">
+		<En>Module FI: Data input and validation of reported financial data without a connection to a R/3 System. Requires MS Access 95 or 97.</En>
+		<De>Komponente FI: Dateneingabe und Validierung der Finanzmeldedaten ohne Verbindung zu einem SAP-System. Microsoft Access erforderlich.</De>
+	</String>
+	
+	<String Name="strInteractiveExcelDescription">
+		<En>Module FI or EC: Add-On to MS Excel for creating reports in Excel using data from FI-LC or EC-CS consolidation. Excel sheets can be filled with data from R/3 or the Remote Data Entry tools for FI-LC and EC-CS. It can be used for data entry into the FI-LC or EC-CS Remote Data Entry tool. Requires MS Excel 97.</En>
+		<De>Komponente FI oder EC: Add-On für Microsoft Excel zum Erstellen von Berichten in Excel auf der Grundlage von Daten aus der FI-LC- oder EC-CS-Konsolidierung. Excel-Sheets können mit Daten aus dem SAP-System oder den Werkzeugen des Remote Data Entry für FI-LC und EC-CS gefüllt werden. Kann für die Dateneingabe in das Werkzeug des Remote Data Entry für FI-LC oder EC-CS verwendet werden. Microsoft Excel erforderlich.</De>
+	</String>
+	
+	<String Name="strECEISDescription">
+		<En>Module EC / Executive Information System: Transfer of report data to Microsoft Word. Requires MS Word 95, 97 or 2000.</En>
+		<De>Komponente EC / Executive Information System: Übertragung von Berichtsdaten an Microsoft Word. Microsoft Word erforderlich.</De>
+	</String>
+	
+	<String Name="strPDMSExcelLinkDescription">
+		<En>Module PT / Shift Planning: Allows to display the SAP duty roster data with Microsoft Excel. Requires MS Excel 5, 95, 97 or 2000.</En>
+		<De>Komponente PT / Shift Planning: Ermöglicht die Anzeige der SAP-Dienstplandaten mit Microsoft Excel.</De>
+	</String>
+	
+	<String Name="strPSExportInterfaces">
+		<En>Module PS: Export of project data in the formats GRANEDA, MS Access and MPX. Requires Graneda, MS Project 4 or any other program that can read MS Access 7 data.</En>
+		<De>Komponente PS: Export der Projektdaten in den Formaten GRANEDA, Microsoft Access und MPX. Erforderlich ist Graneda, Microsoft Project oder ein anderes Programm, das Daten von MS Access 7 lesen kann.</De>
+	</String>
+	
+	<String Name="strSolutionManagerControlsDescription">
+		<En>These Controls are used by the SAP Solution Manager. They add new graphical formats like the visualization of your business processes or your system landscapes.</En>
+		<De>Diese Controls werden von SAP Solution Manager verwendet. Sie fügen neue graphische Formate wie die Visualisierung Ihrer Geschäftsprozesse oder Ihrer Systemlandschaft hinzu.</De>
+	</String>
+	
+	<String Name="strEHSWWI64Description">
+		<En>Module EH&amp;S: Windows Wordprocessor Integration for SAP GUI 64bit. Report tool for mySAP PLM Environment, Health and Safety to generate reports such as material safety data sheets and labels. RTF Viewer required, Word 97, 2000 or XP recommended.</En>
+		<De>Komponente EH&amp;S: Windows Wordprocessor Integration für SAP GUI 64bit. Berichtswerkzeug für SAP PLM Environment, Health and Safety für das Generieren von Berichten wie Datentabellen und Bezeichner für Materialsicherheit. RTF Viewer erforderlich, Microsoft Word empfohlen (in SAP-Hinweis 907221 finden Sie die genauen Anforderungen).</De>
+	</String>
+
+	<String Name="strGeneralAddOnDescription">
+		<En>Front-End Add-On that can be used to extend functionality of SAP systems and that are not restricted to one SAP Component (R/3, BW, APO, CRM, SEM, KW, EP, ...)</En>
+		<De>Frontend-Add-On für die Erweiterung der Funktionen von SAP-Systemen, das nicht auf eine SAP-Komponente beschränkt ist (BW, APO, CRM, SEM, KW, EP, ...)</De>
+	</String>
+	
+	<String Name="strSapGuiECLViewer7Description">
+		<En>Engineering Client Viewer enables you to view 2D and 3D files in the Document Management System.&lt;br/&gt;The following 2D formats are supported: &lt;br/&gt;906, 907, bmp, c4, cgm, dwf, dwg, dxf, gif, hpgl, iges, jpeg, mdl, mi, mlr, mpc, ovl, pcx, pict, png, ps, ras, rvf, tg4, tiff, tlc, triff, txt&lt;br/&gt;The following 3D formats are supported: &lt;br/&gt;JT, STL, VRML 1.0, for ECL versions lower than 6.0 refer to Note 381777 to use VRML 2.0 &lt;br/&gt;The following formats are supported from the version 6.0 of ECL Viewer: &lt;br/&gt;VRML 2.0, PDF with redlining, AutoCAD 2007 (DWG), DGN, 902 &lt;br/&gt;ECL Viewer Version 7.0 now supports additionally the following format:&lt;br/&gt;AutoCAD 2010.&lt;br/&gt;&lt;br/&gt;The viewer provides functions such as Redlining/Markup, Comparing, Measurement, Stamps and Watermarks, Rotating, Zooming, Printing. Additionally, Dynamic Assembly Viewing and Cross Sectioning are supported for 3D files.</En>
+		<De>Engineering Client Viewer ermöglicht es Ihnen, 2D- und 3D-Dateien im Document Management System anzusehen.&lt;br/&gt;Die folgenden 2D-Formate werden unterstützt: &lt;br/&gt;906, 907, bmp, c4, cgm, dwf, dwg, dxf, gif, hpgl, iges, jpeg, mdl, mi, mlr, mpc, ovl, pcx, pict, png, ps, ras, rvf, tg4, tiff, tlc, triff, txt&lt;br/&gt;Die folgenden 3D-Formate werden unterstützt: &lt;br/&gt;JT, STL und VRML 1.0. Für ECL-Versionen, die niedriger als 6.0 sind, lesen Sie SAP-Hinweis 381777 für die Verwendung von VRML 2.0 &lt;br/&gt;Die folgenden Formate werden ab Version 6.0 des ECL Viewer unterstützt: &lt;br/&gt;VRML 2.0, PDF mit Redlining, AutoCAD 2007 (DWG), DGN und 902. &lt;br/&gt;ECL Viewer Version 7.0 unterstützt nun zusätzlich das folgende Format:&lt;br/&gt;AutoCAD 2010.&lt;br/&gt;&lt;br/&gt;Der Viewer verfügt über Funktionen wie Redlining/Markup, Vergleichen, Measurement, Stempel und Wasserzeichen, Rotieren, Zooming und Drucken. Außerdem werden Dynamic Assembly Viewing und Cross Sectioning für 3D-Dateien unterstützt.</De>
+	</String>
+	
+	<String Name="strSapPhoneCallStatusControlDescription">
+		<En>The SAPphone Call Status Control allows to raise events to inform the R/3 SAPphone softphone user interface about telephony call state changes. The control itself has no user interface. It must not be reused by other components beside SAPphone.</En>
+		<De>SAPphone Call Status Control ermöglicht es, Ereignisse auszulösen, um die SAPphone Softphone-Benutzungsoberfläche über Änderungen im Telefonierufzustand zu informieren. Das Control selbst hat keine Benutzeroberfläche. Es darf von keiner anderen Komponente als SAPphone wiederverwendet werden.</De>
+	</String>
+	
+	<String Name="strSapPhoneServerDescription">
+		<En>Tool to connect the R/3 System to telephone systems and call centers.</En>
+		<De>Werkzeug zur Verbindung des SAP-Systems mit Telefonsystemen und Call-Centers.</De>
+	</String>
+	
+	<String Name="strCalendarSyncForMsOutlookDescription">
+		<En>Outlook Client extension for the synchronisation of SAPoffice calendar with the Outlook calendar. Supports Microsoft Outlook 2010, 2013 and 2016.</En>
+		<De>Erweiterung von Outlook Client für die Synchronisation des SAPoffice-Kalenders mit dem Outlook-Kalender. Microsoft Outlook 2010, 2013 oder 2016 erforderlich - lesen Sie für unterstützte Versionen den SAP-Hinweis 337442 und verwandte Hinweise.</De>
+	</String>
+	
+	<String Name="strGraphicalDistributionNetworkDescription">
+		<En>Display and maintenance of a distribution network inside a corporation.</En>
+		<De>Anzeige und Pflege eines Verteilungsnetzwerks innerhalb eines Unternehmens.</De>
+	</String>
+	
+	<String Name="strCRMAddOnDescription">
+		<En>Audit Management - MS Project Integration</En>
+		<De>Audit Management - MS Project Integration</De>
+	</String>
+	
+	<String Name="strBWAddOnDescription">
+		<En>Front-End Add-On for SAP NetWeaver Business Intelligence (BI). Release independent: Can be used in SAP BW 3.0B, SAP BW 3.5 and SAP NetWeaver 2004s. If used in SAP NetWeaver 2004s, only the SAP BW 3.5 capabilities are available.</En>
+		<De>Frontend-Add-On für SAP NetWeaver Business Intelligence (BI). Release-unabhängig: Kann in SAP BW 3.0B, SAP BW 3.5 und SAP NetWeaver 2004s verwendet werden. Falls in SAP NetWeaver 2004s verwendet, sind nur die Funktionen von SAP BW 3.5 verfügbar.</De>
+	</String>
+	
+	<String Name="strSapBW35Description">
+		<En>Business Intelligence Suite of SAP BW 3.0B / 3.5 that provides tools for analysis and reporting</En>
+		<De>Business Intelligence Suite von SAP BW 3.0B / 3.5, die Werkzeuge für die Analyse und das Reporting zur Verfügung stellt</De>
+	</String>
+	
+	<String Name="strMerchandiseAndAssortmentPlanningDescription">
+		<En>Front-End Add-On for 'SAP for Retail: SAP Merchandise and Assortment planning' that provides tools for planning</En>
+		<De>Frontend-Add-On für 'SAP for Retail: SAP Merchandise und Assortment Planning', die Werkzeuge für die Planung zur Verfügung stellen</De>
+	</String>
+	
+	<String Name="strKWAddOnnDescription">
+		<En>Front-End Add-On of SAP's Knowledge Management solution that includes all SAP training courses and all SAP documentation.</En>
+		<De>Frontend-Add-On für die SAP-Knowledge-Management-Lösung, die sämtliche SAP-Schulungen und die gesamte SAP-Dokumentation einschließt.</De>
+	</String>
+	
+	<String Name="strKWKnowledgeWorkbenchDescription">
+		<En>Authoring Tool to easily maintain SAP documentation and SAP training. Requires Microsoft Internet Explorer 5.</En>
+		<De>Autorenwerkzeug, mit dem man auf einfache Weise SAP-Dokumentation und SAP-Schulungsunterlagen bearbeiten und verwalten kann. Microsoft Internet Explorer 6 oder höher erforderlich.</De>
+	</String>
+	
+	<String Name="strKWOnlineEditingDescription">
+		<En>Knowledge Warehouse Editing within SAPGUI. Requires Microsoft Internet Explorer 5.</En>
+		<De>Knowledge Warehouse Editing in SAP GUI. Microsoft Internet Explorer 6 oder höher erforderlich.</De>
+	</String>
+	
+	<String Name="strKWTranslatorDescription">
+		<En>Knowledge Warehouse Translator:\par Translation tool to process translation packages offline. Requires Microsoft Internet Explorer 5.</En>
+		<De>Knowledge Warehouse Translator:\par Übersetzungswerkzeug für die Offline-Bearbeitung der Übersetzungspakete. Microsoft Internet Explorer 6 oder höher erforderlich.</De>
+	</String>
+	
+	<String Name="strPAWAuthorDescription">
+		<En>Performance Assessment Workbench Author: Authoring Tool to easily maintain test items, performance units, performance tests and surveys. Requires Microsoft Internet Explorer 5.</En>
+		<De>Performance Assessment Workbench Author: Autorenwerkzeug für die einfache Pflege von Testaufgaben, Performance-Einheiten, Performance-Tests und Umfragen. Microsoft Internet Explorer 6 oder höher erforderlich.</De>
+	</String>
+	
+	<String Name="strSCMAddOn64Description">
+		<En>Front-End Add-On of SAP Supply Chain Management (SCM) for SAP GUI 64bit</En>
+		<De>Frontend-Add-On für SAP Supply Chain Management (SCM) für SAP GUI 64bit</De>
+	</String>
+	
+	<String Name="strSEMAddOn64Description">
+		<En>Front-End Add-On for SAP Strategic Enterprise Management (SEM) for SAP GUI 64bit</En>
+		<De>Frontend-Add-On für SAP Strategic Enterprise Management (SEM) für SAP GUI 64bit</De>
+	</String>
+	
+	<String Name="strBalancedScorecardDescription">
+		<En>Balanced Scorecard Presentation</En>
+		<De>Balanced-Scorecard-Präsentation</De>
+	</String>
+	
+	<String Name="strGraphicalAssignmentDescription">
+		<En>Graphical Assignment Tool</En>
+		<De>Graphical-Assignment-Werkzeug</De>
+	</String>
+	
+	<String Name="strSalesPlanningDescription">
+		<En>Sales planning Add-In to MS Excel. Requires MS Office 97 or MS Office 2000. You can use this Add-In to extend your local MS Excel to enable Sales Planning within Excel environment as part of Customer Relationship Analytics. Requires Microsoft Excel 97 or 2000.</En>
+		<De>Vertriebsplanungs-Add-In für Microsoft Excel. Microsoft Office erforderlich. Mit diesem Add-In können Sie Ihr lokales MS Excel so erweitern, dass Sie Vertriebsplanung in der Excel-Umgebung als Teil der Customer Relationship Analytics durchführen können.</De>
+	</String>
+	
+	<String Name="strLegacyComponents64Description">
+		<En>Components for the usage with older SAP releases (R/3 4.6 and lower) and/or old Office products (Excel 95, ...) for SAP GUI 64bit. These components will only be needed, if you intend to use this version of SAP GUI for Windows with your old SAP installations.</En>
+		<De>Komponenten für die Verwendung mit älteren SAP-Releases (R/3 4.6 und niedriger) und/oder alten Office-Produkten (Excel 95, ...) für SAP GUI 64bit. Diese Komponenten werden nur dann benötigt, wenn Sie diese Version des SAP GUI for Windows zusammen mit Ihren alten SAP-Installationen einsetzen wollen.</De>
+	</String>
+	
+	<String Name="strMsWordLinkViaRFCDescription">
+		<En>Installation of Word connection for SAP R/3 3.x, 4.0A und 4.0B. Requires MS Word 6, 95, 97 or 2000.</En>
+		<De>Installation of Word connection for SAP R/3 3.x, 4.0A und 4.0B. Requires MS Word 6, 95, 97 or 2000.</De>
+	</String>
+
+	<String Name="strLegacyFrontendPrintingDescription">
+		<En>Legacy Frontend Printing for SAP R/3 systems 4.5 and older. Requires SAP GUI.</En>
+		<De>Komponenten für das Drucken zur Verwendung mit SAP R/3 4.5 und älter. Benötigt SAP GUI.</De>
+	</String>
+
+	<String Name="strReportWriterMSExcelLinkDescription">
+		<En>Import filter for MS Excel: converts a file exported by Report Writer in Excel format (RPW format) into an Excel spreadsheet. Works with Excel 95, 97 or 2000. Used with SAP Back-End Releases 3.1 to 4.5 only!</En>
+		<De>Importfilter für Microsoft Excel: Konvertiert eine vom Report Writer exportierte Datei im Excel-Format (RPW-Format) in eine Excel-Tabellenkalkulation. Geeignet für Excel 95, 97 oder 2000. Kann nur mit SAP R/3 3.1 bis 4.5 verwendet werden.</De>
+	</String>
+	
+	<String Name="DscrSapGui64.ShowShadowBorder">
+		<En>Show shadow border (only SAP Signature and Corbu Design). Allowed values: 0 = inactive; 1 = active</En>
+		<De>Schatten anzeigen (nur für SAP Signature und Corbu Design). Erlaubte Werte: 0 = inaktiv; 1 = aktiv</De>
+	</String>
+	
+	<String Name="DscrSapGui64.SelectedTheme">
+		<En>SAP GUI 64 Theme. This variable requires the HEX notation (e.g. 0x800 for Quartz). Please refer to the SAP GUI Administration Guide for a list of allowed values.</En>
+		<De>SAP GUI 64 Theme. Diese Variable benötigt die HEX Notation (z.B. 0x800 für Quartz). Bitte schlagen Sie die erlaubten Werte im SAP GUI Administration Guide nach.</De>
+	</String>
+	
+	<String Name="DscrSapGui64.BrandingImage">
+		<En>Path to the SAP GUI Branding Image. Insert a valid path to a valid image or leave empty if not used or insert "NONE" for deletion.</En>
+		<De>Pfad zum SAP GUI Firmenlogo. Valider Pfad zu einer validen Bilddatei oder leer lassen falls unbenutzt oder "NONE" eingeben zum Löschen.</De>
+	</String>
+	
+	<String Name="DscrSapGui64.UseBrandingImage">
+		<En>Activate or deactivate the SAP GUI Branding Image. Allowed values: 0 = inactive; 1 = activates the display of a logo in the titlebar of a SAP GUI session, if a valid path to a branding picture is provided</En>
+		<De>SAP GUI Firmenlogo verwenden. Erlaubte Werte: 0 = inaktiv; 1 = aktiviert die Anzeige eines Firmenlogos in der Titelleiste einer SAP GUI Sitzung wenn auch ein valider Pfad zu einem Firmenlogo angegeben ist.</De>
+	</String>
+	
+	<String Name="DscrSapGui64.Sound">
+		<En>Activate Audio Feedback. Allowed values: "Off" = inactive; "On" = active</En>
+		<De>Aktiviert SAP GUI Töne. Erlaubte Werte: "Off" = inaktiv; "On" = aktiv</De>
+	</String>
+	
+	<String Name="DscrSapGui64.Accessibility">
+		<En>Accessibility mode: Enable the accessibility mode of SAP GUI. Allowed values: "Off" = inactive; "On" = active</En>
+		<De>Barrierefreier Modus: Barrierefreien Modus von SAP GUI aktivieren. Erlaubte Werte: "Off" = inaktiv; "On" = aktiv</De>
+	</String>
+	
+	<String Name="DscrSapGui64.Accessibility.EnhancedTabChain">
+		<En>Accessibility mode: Include read-only and disabled elements in tab chain. Allowed values: 0 = inactive; 1 = active</En>
+		<De>Barrierefreier Modus: Nur lesbare sowie abgeschaltete Elemente in der TabChain anzeigen. Erlaubte Werte: 0 = inaktiv; 1 = aktiv</De>
+	</String>
+	
+	<String Name="DscrSapGui64.Accessibility.SymbolsAsLetters">
+		<En>Accessibility mode: Display symbols in lists as letters. Allowed values: 0 = inactive; 1 = active</En>
+		<De>Barrierefreier Modus: Symbole in Listen als Buchstaben anzeigen. Erlaubte Werte: 0 = inaktiv; 1 = aktiv</De>
+	</String>
+	
+	<String Name="DscrSapGui64.LandscapeFileOnServer">
+		<En>Path to the central configuration file for the new landscape format. Insert a valid path or leave empty if not used or insert "NONE" for deletion.</En>
+		<De>Pfad zur zentralen Konfigurationsdatei im Landscape Format. Valider Pfad oder leer lassen falls unbenutzt oder "NONE" eingeben zum Löschen.</De>
+	</String>
+	
+	<String Name="DscrSapGui64.SecurityFileOnServer">
+		<En>Path to the central security rules file. Insert a valid path or leave empty if not used or insert "NONE" for deletion.</En>
+		<De>Pfad zur zentralen Datei für Sicherheitsregeln. Valider Pfad oder leer lassen falls unbenutzt oder "NONE" eingeben zum Löschen.</De>
+	</String>
+	
+	<String Name="DscrSapGui64.UserScripting">
+		<En>Enable or disable user scripting. Allowed values: 0 = inactive; 1 = active</En>
+		<De>Scripting aktivieren oder deaktivieren: Erlaubte Werte: "Off" = inaktiv; "On" = aktiv</De>
+	</String>
+	
+	<String Name="DscrSapGui64.BrowserControl">
+		<En>Browser used by HTML Control in SAP GUI. Allowed values: 0 = Internet Explorer; 1 = Edge (based on Chromium), SAP GUI Default</En>
+		<De>Browser des HTML Control in SAP GUI : Erlaubte Werte: Internet Explorer; 1 = Edge (based on Chromium), SAP GUI Default</De>
+	</String>
+	
+	<String Name="strVCT64Description">
+		<En>With the Visual Configuration Tool (VCT) it is possible to carry out the configuration of screen sequences and screens with drag and drop in BDT (transaction BUCO).</En>
+		<De>Mit dem Visual Configuration Tool (VCT) kann die Konfiguration von Screen Sequences sowie Screens mit Drag and Drop in BDT (Transaktion BUCO) gepflegt werden.</De>
+	</String>
+	
+	<String Name="DscrSapGui.ShortcutEnabled">
+		<En>Enable or disable the installation of the shortcut to SAP Logon/ SAP Logon-Pad. Allowed values: 0 = disabled; 1 = enabled</En>
+		<De>Installation der Desktop-Ikone für SAP Logon oder SAP Logon-Pad. Erlaubte Werte: 0 = deaktiviert; 1 = aktiviert</De>
+	</String>
+	
+	<String Name="strSapGuiDocumentationDescription">
+		<En>HTML based SAP GUI documentation for end users and SAP GUI Scripting API documentation. If this component is not installed, the online help from help.sap.com is used instead.</En>
+		<De>HTML basierte SAP GUI Dokumentation für Endanwender und SAP GUI Scripting API Dokumentation. Wenn diese Komponente nicht installiert wird, verwendet SAP GUI stattdessen die Online Hilfe von help.sap.com.</De>
+	</String>
+	
+	<String Name="strSapGui64InstOsNotSupported">
+		<En>&lt;a style=&quot;COLOR:red&quot;&gt;SAP GUI for Windows 8.00 64bit does not support Windows XP, Windows 2003 Server, Windows Vista, Windows 7, Windows 2008 Server, Windows Server 2012, Windows Server 2012 R2 and Windows 8.1 anymore.&lt;a&gt;</En>
+		<De>&lt;a style=&quot;COLOR:red&quot;&gt;SAP GUI für Windows 8.00 64bit unterstützt Windows XP, Windows 2003 Server, Windows Vista, Windows 7, Windows 2008 Server, Windows Server 2012, Windows Server 2012 R2 und Windows 8.1 nicht mehr.&lt;a&gt;</De>
+	</String>
+	
+	<String Name="strSapGui64Inst64BitOnly">
+		<En>&lt;a style=&quot;COLOR:red&quot;&gt;SAP GUI for Windows 8.00 64bit requires a 64bit platform.&lt;a&gt;</En>
+		<De>&lt;a style=&quot;COLOR:red&quot;&gt;SAP GUI für Windows 8.00 64bit benötigt ein 64bit Betriebssystem.&lt;a&gt;</De>
+	</String>
+	
+	<String Name="strSapGui64CannotCoexistWithSapGui32">
+		<En>&lt;a style=&quot;COLOR:red&quot;&gt;SAP GUI for Windows 64bit cannot be installed together with SAP GUI for Windows 32bit. SAP GUI for Windows 32bit has to be uninstalled first.&lt;a&gt;</En>
+		<De>&lt;a style=&quot;COLOR:red&quot;&gt;SAP GUI für Windows 64bit kann nicht gemeinsam mit SAP GUI für Windows 32bit installiert werden. SAP GUI für Windows 32bit muss zuerst deinstalliert werden.&lt;a&gt;</De>
+	</String>
+</SapSetup>
+

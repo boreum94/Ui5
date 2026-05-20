@@ -1,0 +1,148 @@
+$VERSION(1.0)
+; 22.06.98 W.Ambrosch  Added slave repeating group type CLASS
+; 01.03.99 W.Ambrosch  <BRG000(Q:xx)> -> <BRG000(Q,xx)>
+;=========================================================================
+; Layout Part
+;=========================================================================
+$LAYOUT(DfRGr)  
+	Begin  Dialog BenutzerDialog 605, 305, "001", .evalDlg
+
+	GroupBox        10, 195, 585,  55, "015", .grMH
+	OptionGroup  .ogMH
+      OptionButton  20, 210, 565,  15, "016", .opAll
+      OptionButton  20, 230, 565,  15, "017", .opSec
+
+	GroupBox        10, 10, 585, 175, "005", .grTyp
+	OptionGroup  .ogTyp
+      OptionButton  20, 25, 170,  15, "006", .opTypM
+	  OptionButton  20, 50, 170,  15, "007", .opTypS
+      OptionButton  20, 75, 565,  15, "008", .opTypG
+      OptionButton  20, 100, 565,  15, "009", .opTypD
+	  OptionButton  20, 125, 170,  15, "010", .opTypQ
+
+	TextBox        200, 25, 270,  19, .txtMaster
+	PushButton     480, 25, 100,  20, "020", .pbF4
+
+	DropListBox    200, 50, 160, 110, LG_sllist$(), .dbSlave
+	Text           370, 52, 150,  15, "011", .tRek
+	Text 	       371, 52,  50,  15, "018", .tType
+	TextBox        500, 50,  80,  19, .txtRek
+	TextBox        420, 50, 160,  19, .txtFree
+
+	GroupBox       200, 115, 380,  55, "", .grSort
+	OptionGroup  .ogSort
+ 	  OptionButton 210, 125, 360,  15, "012", .opAlph
+	  OptionButton 210, 145, 360,  15, "013", .opRise
+
+	OKButton       120, 280, 120,  21
+	CancelButton   360, 280, 120,  21
+  End Dialog
+;=========================================================================
+; Value Part
+;=========================================================================
+$VALUES
+
+;--- List of values for symbol type drop list box ------------------------
+dbSlave="030":POS
+dbSlave="031":POSD
+dbSlave="032":FREI
+dbSlave="033":VERW
+dbSlave="034":CLASS
+
+opTypM=M
+opTypS=S
+opTypG=G
+opTypD=D
+opTypQ=Q
+
+ogTyp=M
+
+opAlph=ALPH
+opRise=AUFT
+
+ogSort=ALPH
+
+opAll=*
+opSec="2-*"
+
+ogMH=*
+
+pbF4=ACTION : "wwi","wwiOpenTreeView","toTree","fromTree"
+txtMaster=DISPLAYONLY
+
+;=========================================================================
+; Dependance Part
+;=========================================================================
+$DEPENDANCES
+
+ogTyp/ACTIVE=grTyp
+
+txtMaster /ACTIVE =ogTyp(M)
+pbF4      /ACTIVE =ogTyp(M)
+dbSlave   /ACTIVE =ogTyp(S)
+tRek      /VISIBLE=dbSlave(POSD)
+tType     /VISIBLE=dbSlave(FREI)
+txtRek    /VISIBLE=dbSlave(POSD)
+txtFree   /VISIBLE=dbSlave(FREI)
+ogSort    /ACTIVE =ogTyp(Q)
+
+;=========================================================================
+; Evaluation Part
+;=========================================================================
+$EVALUATION(MsgBox)
+
+txtMaster=NULL:222
+txtRek=NULL:223
+txtFree=NULL:224
+
+;=========================================================================
+; Input Part
+;=========================================================================
+$INPUT
+Start:(1:SetRpGrpType)							; skip open parenthesis
+SetRpGrpType:(":":SetParam,",":SetParam,";":setmultivalue,")":END=ogTyp)	; take type
+SetParam:ogTyp(M)=fillmaster,CheckSlave
+CheckSlave:ogTyp(S)=SetSlaveList,SetQ
+SetSlaveList:(",":checkSlaveList1,";":setmultivalue,")":END=dbSlave)
+checkSlaveList1:dbSlave(POSD)=fillRecText,checkSlaveList2
+checkSlaveList2:dbSlave(FREI)=fillTypeText,setmultivalue
+fillTypeText:(";":setmultivalue,")":END=txtFree)
+fillRecText:(";":setmultivalue,")":END=txtRek)
+fillmaster:(";":setmultivalue,")":END=txtMaster)
+SetQ:(";":setmultivalue,")":END=ogSort)
+setmultivalue:(")":END=ogMH)
+
+$INPUT (fromTree)
+Start:(":":SetParam,",":SetParam,"Rest":END=ogTyp)
+SetParam:ogTyp(M)=fillmaster,CheckSlave
+CheckSlave:ogTyp(S)=SetSlaveList,SetQ
+SetSlaveList:(",":checkSlaveList1,";":setmultivalue,")":END=dbSlave)
+checkSlaveList1:dbSlave(POSD)=fillRecText,checkSlaveList2
+checkSlaveList2:dbSlave(FREI)=fillTypeText,END
+fillTypeText:("Rest":END=txtFree)
+fillRecText:("Rest":END=txtRek)
+fillmaster:("Rest":END=txtMaster)
+SetQ:("Rest":END=ogSort)
+
+;=========================================================================
+; Output Part
+;=========================================================================
+$OUTPUT
+ogTyp(M)                  =("11BRG000(%s,%s;%s)/11ERG000",ogTyp,txtMaster,ogMH)
+ogTyp(S),dbSlave(POSD)    =("11BRG000(%s:%s,%s;%s)/11ERG000",ogTyp,dbSlave,txtRek,ogMH)
+ogTyp(S),dbSlave(FREI)    =("11BRG000(%s:%s,%s;%s)/11ERG000",ogTyp,dbSlave,txtFree,ogMH)
+ogTyp(S)                  =("11BRG000(%s:%s;%s)/11ERG000",ogTyp,dbSlave,ogMH)
+ogTyp(G,D)                =("11BRG000(%s;%s)/11ERG000",ogTyp,ogMH)
+ogTyp(Q)                  =("11BRG000(%s,%s;%s)/11ERG000",ogTyp,ogSort,ogMH)
+
+; Output to selection tree
+$OUTPUT(toTree)
+ogTyp(M)                  =("G%s,%s",ogTyp,txtMaster)
+ogTyp(S),dbSlave(POSD)    =("G%s:%s,%s",ogTyp,dbSlave,txtRek)
+ogTyp(S),dbSlave(FREI)    =("G%s:%s,%s",ogTyp,dbSlave,txtFree)
+ogTyp(S)                  =("G%s:%s",ogTyp,dbSlave)
+ogTyp(G,D)                =("G%s;%s",ogTyp)
+ogTyp(Q)                  =("G%s,%s",ogTyp,ogSort)
+
+
+$END 

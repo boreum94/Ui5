@@ -1,0 +1,1190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapSrxWksta.xml">
+	<Component BuildTime="0xE08560C75730D901" Guid="{7895AA3C-CB36-4F53-A39E-EE033A994FE1}" Min_Compliant_Version="1" Name="$CleanSRX640" Version="2">
+		<ExecuteAction RunAt="Install">
+			<Condition>(%EXIST_SRX_640%=TRUE)&amp;(%Param_Silent%=TRUE)</Condition>
+			<Exe DisplayText="StrRemoveSRX640">%Windir%\SapWksta\setup\SAPsetup.exe</Exe>
+			<Parameters>/product=&quot;SRX&quot; /uninstall /silent /noRestart /suppressReboot</Parameters>
+			<Wait TimeOut="60000"/>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install">
+			<Condition>(%EXIST_SRX_640%=TRUE)&amp;(%Param_Silent%&lt;&gt;TRUE)</Condition>
+			<Exe DisplayText="StrRemoveSRX640">%Windir%\SapWksta\setup\SAPsetup.exe</Exe>
+			<Parameters>/product=&quot;SRX&quot; /uninstall /noDLG /noRestart /suppressReboot</Parameters>
+			<Wait TimeOut="60000"/>
+		</ExecuteAction>
+	</Component>
+	<Component BuildTime="0xE08560C75730D901" Guid="{D6D5B808-F9A3-4DB0-8E1D-759CC3A3B4FF}" Min_Compliant_Version="1" Name="$ARP SRX" Update="OnSameVersion" Version="5">
+		<Action Type="Script">
+			<Src><![CDATA[
+szSapSrxPatchLevel = NwEngine.Variables.GetValue("SapSrxPatchLevel") 
+					NwEngine.Context.Log.Write "SAP SRX Script: Variable SapSrxPatchLevel has the value <" & szSapSrxPatchLevel & ">"
+					If szSapSrxPatchLevel <> "" And szSapSrxPatchLevel <> "0" Then
+						NwEngine.Context.Log.Write "SAP SRX Script: Checking Variable SapSrxPatchLevel: Patch found."
+						szSrxPatchLevelText = " (Patch " & szSapSrxPatchLevel & ")"
+						NWEngine.Variables.InsertVariable "SrxPatchLevel", szSrxPatchLevelText
+					Else
+						NwEngine.Context.Log.Write "SAP SRX Script: Checking Variable SapSrxPatchLevel: No Patch found."
+						NWEngine.Variables.InsertVariable "SrxPatchLevel", ""
+					End If
+			]]></Src>
+		</Action>
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\SAP_SRX" Type="Registry">
+			<RegValue Name="DisplayName">SAP Screen Reader Extension %SrxPatchLevel%</RegValue>
+			<RegValue Name="DisplayIcon">&quot;%SAPSetupDir%\setup\NwSapsetup.exe&quot;,0</RegValue>
+			<RegValue Name="Publisher">SAP SE</RegValue>
+			<RegValue Name="URLUpdateInfo">http://service.sap.com</RegValue>
+			<RegValue Name="UninstallString">&quot;%SAPSetupDir%\setup\NwSapsetup.exe&quot; /product:&quot;SRX&quot; /uninstall /noDLG</RegValue>
+		</Action>
+	</Component>
+	<Component BuildTime="0xE08560C75730D901" Guid="{1E6F8588-D600-4762-8611-B97592046344}" Min_Compliant_Version="2" Name="$SRX Shared Keys" Update="OnSameVersion" Version="4">
+		<Action Dst="HKLM\SOFTWARE\SAP\SAP Shared\SRX" Type="Registry">
+			<RegValue>SAP Screen Reader Extension</RegValue>
+			<RegValue Name="SAPSourceDir">%SAPSrcDir%</RegValue>
+		</Action>
+	</Component>
+	<Component BuildTime="0xE08560C75730D901" Condition="&quot;%JawsVersion%&quot; &gt;= &quot;17&quot;" Guid="{ADB9AA06-EEE6-4DD3-BFB2-5D0CA6C35CC8}" Min_Compliant_Version="1" Name="SRX Global Files for version 17 and higher" Size="441" Version="829">
+		<Requires Guid="{4B85E180-B642-4BDA-A188-A7D04ECBF7B4}"/>
+		<Requires Guid="{5CB90BBB-FDDC-4C3F-A9AA-B2DB7F2F4FA7}"/>
+		<Requires Guid="{3E27B0BF-1D66-4EE1-B9F9-E9EBA4FFEC06}"/>
+		<Requires Guid="{400B88B1-79B3-458C-B616-5BFDB5CA916A}"/>
+		<Requires Guid="{09E73341-A49C-4571-9175-95D3D02D7EB8}"/>
+		<Action Condition="%JawsVersion% &gt;= 17" Dst="%JawsScriptDir%\Scripts" Type="File">
+			<Src Hash="SHA-256:2f5cb6390d776b6f55b03c6648a0a0c012cff15437bb5db96772d431fafd250f" Timestamp="0xB0BA2ADC472FD901">%SapSrcDir%\Jaws\sapfront.jsh</Src>
+			<Src Hash="SHA-256:59ffe067b72c45336d36cb65dd20cdffa0c1abce0e1c1b55817fe11c62bccd21" Timestamp="0x90E628DC472FD901">%SapSrcDir%\Jaws\sapfront.jss</Src>
+			<Src Hash="SHA-256:bae0bc0dbbadbae956a492be14d787f6c8e01afcd16cccc3385e5c2868385d35" Timestamp="0xE02F2BDC472FD901">%SapSrcDir%\Jaws\sapglobal.jsh</Src>
+			<Src Hash="SHA-256:b7db8de11771fb1aa9b62f9bc225bba72c8c59ec8a28d408cd4d006326e97999" Timestamp="0xA7B22EDC472FD901">%SapSrcDir%\Jaws\saputils.jss</Src>
+			<Src Hash="SHA-256:7cf1c61c825a2d0354b0358969b3ad9f3bc39b2887b4a085fd61ef876464fcf9" Timestamp="0xF4A02DDC472FD901">%SapSrcDir%\Jaws\saplogon.jss</Src>
+			<Src Hash="SHA-256:d42176edd3ab89cd3b6abfe4f8a4f8a6a2a5910ba21d114d47623a46e8ac74fe" Timestamp="0x43BA21DC472FD901">%SapSrcDir%\Jaws\SapSettings.jss</Src>
+			<Src Hash="SHA-256:d42176edd3ab89cd3b6abfe4f8a4f8a6a2a5910ba21d114d47623a46e8ac74fe" Timestamp="0x19CC2BDC472FD901">%SapSrcDir%\Jaws\saplgpad.jss</Src>
+			<Src Hash="SHA-256:a6cfe8414258133e6493992fc0f169fca03487622fe6901951857c056ce18af5" Timestamp="0x9BF620DC472FD901">%SapSrcDir%\Jaws\NWBC.JSS</Src>
+			<Src Hash="SHA-256:6b0452b2c27b5788a943b75381de0db5a053cc8eea9c48706100b0632a2d4a19" Timestamp="0xF22626DC472FD901">%SapSrcDir%\Jaws\gridview.jss</Src>
+		</Action>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &gt;= 17</Condition>
+			<Exe DisplayText="Compiling %JawsScriptDir%\Scripts\saputils.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>&quot;%JawsScriptDir%\Scripts\saputils.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &gt;= 17</Condition>
+			<Exe DisplayText="Compiling %JawsScriptDir%\Scripts\sapfront.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>&quot;%JawsScriptDir%\Scripts\sapfront.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &gt;= 17</Condition>
+			<Exe DisplayText="Compiling %JawsScriptDir%\Scripts\saplogon.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>&quot;%JawsScriptDir%\Scripts\saplogon.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &gt;= 17</Condition>
+			<Exe DisplayText="Compiling %JawsScriptDir%\Scripts\saplgpad.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>&quot;%JawsScriptDir%\Scripts\saplgpad.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &gt;= 17</Condition>
+			<Exe DisplayText="Compiling %JawsScriptDir%\Scripts\SapSettings.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>&quot;%JawsScriptDir%\Scripts\SapSettings.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &gt;= 17</Condition>
+			<Exe DisplayText="Compiling %JawsScriptDir%\Scripts\NWBC.JSS" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>&quot;%JawsScriptDir%\Scripts\NWBC.JSS&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &gt;= 17</Condition>
+			<Exe DisplayText="Compiling %JawsScriptDir%\Scripts\gridview.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>&quot;%JawsScriptDir%\Scripts\gridview.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<Action RunAt="Install,Update" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+				
+				Dim objDefaultJss, strJawsVersion, szDefaultJss, szJssFile
+				Set objDefaultJss = CreateObject("NwSapSetupATLCommon.TextFileParser")
+				NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\Scripts\myExtensions.jss for JAWS " + strJawsVersion
+				szJssFile = "%JawsScriptDir%\Scripts\myExtensions.jss"
+			
+				szDefaultJss = NWEngine.Variables.ResolveString(szJssFile)
+				If objDefaultJss.Parse( szDefaultJss ) Then
+					NWEngine.Context.Log.Write "Script action: Open and modify the file " & Chr(34) & szDefaultJss & Chr(34)
+					If Not objDefaultJss.DoesStringExist("saputils.jsb") Then
+					   NWEngine.Context.Log.Write "Script action: Appending lines..."
+					   objDefaultJss.AppendLine "; SAP specific"
+					   objDefaultJss.AppendLine "use " & Chr(34) & "saputils.jsb" & Chr(34)
+					   objDefaultJss.AppendLine "; end SAP specific"
+					End If
+					objDefaultJss.Save( szDefaultJss )
+				Else
+					NWEngine.Context.Log.WriteWarning "Script action: Could not open the file " & Chr(34) & szDefaultJss & Chr(34)
+				End If
+			]]></Src>
+		</Action>
+		<ExecuteAction>
+			<Condition>%JawsVersion% &gt;= 17</Condition>
+			<Exe DisplayText="Compiling %JawsScriptDir%\Scripts\myExtensions.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>&quot;%JawsScriptDir%\Scripts\myExtensions.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<Action RunAt="UnInstall" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+				
+				Dim objDefaultJss, strJawsVersion, szDefaultJss, szJssFile
+				Set objDefaultJss = CreateObject("NwSapSetupATLCommon.TextFileParser")
+				NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\Scripts\myExtensions.jss for JAWS " + strJawsVersion
+				szJssFile = "%JawsScriptDir%\Scripts\myExtensions.jss"
+				
+				szDefaultJss = NWEngine.Variables.ResolveString(szJssFile)
+				If objDefaultJss.Parse( szDefaultJss ) Then
+					NWEngine.Context.Log.Write "Script action: Open the file " & Chr(34) & szDefaultJss & Chr(34)
+					objDefaultJss.RemoveLine "; SAP specific"
+					objDefaultJss.RemoveLine "use " & Chr(34) & "saputils.jsb" & Chr(34)
+					objDefaultJss.RemoveLine "; end SAP specific"
+					objDefaultJss.Save( szDefaultJss )
+				End If
+			]]></Src>
+		</Action>
+		<Action RunAt="Uninstall" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+				
+					NwEngine.Context.Log.Write "SRX Script: Removing .jsb files created during install."
+					Dim fileArray(6), strJawsVersion, scriptPath, filePath, fileItem
+					fileArray(0) = "saputils.jsb"
+					fileArray(1) = "sapfront.jsb"
+					fileArray(2) = "saplogon.jsb"
+					fileArray(3) = "saplgpad.jsb"
+					fileArray(4) = "SapSettings.jsb"
+					fileArray(5) = "NWBC.JSB"
+					fileArray(6) = "gridview.jsb"
+					
+					NwEngine.Context.Log.Write "SRX Script: Retrieving JAWS version..."
+					strJawsVersion = NwEngine.Variables.GetValue("JawsVersion")
+					If strJawsVersion < 17 Then
+						scriptPath = "%JawsScriptDir%\SETTINGS\enu\"
+					Else
+						scriptPath = "%JawsScriptDir%\Scripts\"
+					End If
+					NwEngine.Context.Log.Write "SRX Script: Version " & strJawsVersion & " detected, using path " & scriptPath
+					For Each fileItem in fileArray
+						filePath = NwEngine.Variables.ResolveString(scriptPath & fileItem)
+						NwEngine.Context.Log.Write "SRX Script: Checking existence of " & filePath
+						If NwEngine.Shell.FileExist(filePath) Then
+							NwEngine.Context.Log.Write "SRX Script: File " & filePath & " exists, will be deleted."
+							If NwEngine.Shell.DeleteFile(filePath) Then
+								NwEngine.Context.Log.Write "SRX Script: Successfully deleted file " & filePath
+							Else
+								NwEngine.Context.Log.Write "SRX Script: Could not delete file " & filePath
+							End If
+						Else
+							NwEngine.Context.Log.Write "SRX Script: File " & filePath & " doesn't exist!"
+						End If
+					Next
+			]]></Src>
+		</Action>
+	</Component>
+	<!-- English (enu) Section -->
+	<Component BuildTime="0xE08560C75730D901" Condition="&quot;%JawsLangEnuExist%&quot; = &quot;TRUE&quot;" Guid="{4B85E180-B642-4BDA-A188-A7D04ECBF7B4}" Min_Compliant_Version="5" Name="$SRX Enu Files" Size="549" Update="OnSameVersion" Version="1495">
+		<Action Dst="%JawsScriptDir%\SETTINGS\enu" Type="File">
+			<Src Hash="SHA-256:745c12943b5f257b9cba691c73332f384c9646c31fa525d0b409afb395907c7e" Timestamp="0xE62228DC472FD901">%SapSrcDir%\Jaws\sapfront.JCF</Src>
+			<Src Hash="SHA-256:7ecaa2dc2c28dfeee69c3bbe37e4611655d519252174b6042be50274a3e9bbb2" Timestamp="0x04052DDC472FD901">%SapSrcDir%\Jaws\saplogon.jcf</Src>
+			<Src Hash="SHA-256:0a9f996e82396e373b032be4ff0740fbb7dccabf2e8a44891a48f1d685ce6958" Timestamp="0x668120DC472FD901">%SapSrcDir%\Jaws\NWBC.JCF</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &lt; 17" Dst="%JawsScriptDir%\SETTINGS\enu" Type="File">
+			<Src Hash="SHA-256:1f0772ea25b68f50fc76162923122d53424ef716bf77a4378d31a110ed70cb22" Timestamp="0x248229DC472FD901">%SapSrcDir%\Jaws\sapfront.jkm</Src>
+			<Src Hash="SHA-256:cb048a6694709e2afac9e8057f48ec69fe89041f595eb3fe83e6eba51eed34f9" Timestamp="0x751E2ADC472FD901">%SapSrcDir%\Jaws\sapfront.jsd</Src>
+			<Src Hash="SHA-256:2f5cb6390d776b6f55b03c6648a0a0c012cff15437bb5db96772d431fafd250f" Timestamp="0xB0BA2ADC472FD901">%SapSrcDir%\Jaws\sapfront.jsh</Src>
+			<Src Hash="SHA-256:59ffe067b72c45336d36cb65dd20cdffa0c1abce0e1c1b55817fe11c62bccd21" Timestamp="0x90E628DC472FD901">%SapSrcDir%\Jaws\sapfront.jss</Src>
+			<Src Hash="SHA-256:bae0bc0dbbadbae956a492be14d787f6c8e01afcd16cccc3385e5c2868385d35" Timestamp="0xE02F2BDC472FD901">%SapSrcDir%\Jaws\sapglobal.jsh</Src>
+			<Src Hash="SHA-256:b28309780fe6c842179ebe25f54753b69d68f65da1b7c7a20f796a5b8c2c3d86" Timestamp="0x6C162EDC472FD901">%SapSrcDir%\Jaws\saputils.jsd</Src>
+			<Src Hash="SHA-256:b7db8de11771fb1aa9b62f9bc225bba72c8c59ec8a28d408cd4d006326e97999" Timestamp="0xA7B22EDC472FD901">%SapSrcDir%\Jaws\saputils.jss</Src>
+			<Src Hash="SHA-256:f1da26fb9c6ff67151c27c91bfdaf05a561cb97693713955a7b63bbca0fe6556" Timestamp="0xC78F2CDC472FD901">%SapSrcDir%\Jaws\saplogon.jbs</Src>
+			<Src Hash="SHA-256:7cf1c61c825a2d0354b0358969b3ad9f3bc39b2887b4a085fd61ef876464fcf9" Timestamp="0xF4A02DDC472FD901">%SapSrcDir%\Jaws\saplogon.jss</Src>
+			<Src Hash="SHA-256:d42176edd3ab89cd3b6abfe4f8a4f8a6a2a5910ba21d114d47623a46e8ac74fe" Timestamp="0x43BA21DC472FD901">%SapSrcDir%\Jaws\SapSettings.jss</Src>
+			<Src Hash="SHA-256:d42176edd3ab89cd3b6abfe4f8a4f8a6a2a5910ba21d114d47623a46e8ac74fe" Timestamp="0x19CC2BDC472FD901">%SapSrcDir%\Jaws\saplgpad.jss</Src>
+			<Src Hash="SHA-256:a6cfe8414258133e6493992fc0f169fca03487622fe6901951857c056ce18af5" Timestamp="0x9BF620DC472FD901">%SapSrcDir%\Jaws\NWBC.JSS</Src>
+			<Src Hash="SHA-256:6b0452b2c27b5788a943b75381de0db5a053cc8eea9c48706100b0632a2d4a19" Timestamp="0xF22626DC472FD901">%SapSrcDir%\Jaws\gridview.jss</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &lt; 17" Dst="%JawsScriptDir%\SETTINGS\enu" Type="File">
+			<Src Hash="SHA-256:fcc8621b712dc8175f12b29ea23286d2fad6dc5acc74764c0c9e7da56bdff777" Timestamp="0xB8B523DC472FD901">%SapSrcDir%\Jaws\Settings\enu\sapfront.jbs</Src>
+			<Src Hash="SHA-256:0e60a1940f90a8dd93237dfea83b65cdc96ef0e2711848f7405a6dfdc0bb80ce" Timestamp="0xFE5124DC472FD901">%SapSrcDir%\Jaws\Settings\enu\sapfront.jsm</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &lt; 17" Dst="%JawsScriptDir%\SETTINGS\enu\default.jkm" Type="Ini">
+			<IniSection Name="Common Keys">
+				<IniKey Name="Control+Alt+O">SapExitToOCF</IniKey>
+			</IniSection>
+		</Action>
+		<Action Condition="%JawsVersion% &gt;= 17" Dst="%JawsScriptDir%\Scripts\enu" Type="File">
+			<Src Hash="SHA-256:1f0772ea25b68f50fc76162923122d53424ef716bf77a4378d31a110ed70cb22" Timestamp="0x248229DC472FD901">%SapSrcDir%\Jaws\sapfront.jkm</Src>
+			<Src Hash="SHA-256:cb048a6694709e2afac9e8057f48ec69fe89041f595eb3fe83e6eba51eed34f9" Timestamp="0x751E2ADC472FD901">%SapSrcDir%\Jaws\sapfront.jsd</Src>
+			<Src Hash="SHA-256:b28309780fe6c842179ebe25f54753b69d68f65da1b7c7a20f796a5b8c2c3d86" Timestamp="0x6C162EDC472FD901">%SapSrcDir%\Jaws\saputils.jsd</Src>
+			<Src Hash="SHA-256:f1da26fb9c6ff67151c27c91bfdaf05a561cb97693713955a7b63bbca0fe6556" Timestamp="0xC78F2CDC472FD901">%SapSrcDir%\Jaws\saplogon.jbs</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &gt;= 17" Dst="%JawsScriptDir%\Scripts\enu" Type="File">
+			<Src Hash="SHA-256:fcc8621b712dc8175f12b29ea23286d2fad6dc5acc74764c0c9e7da56bdff777" Timestamp="0xB8B523DC472FD901">%SapSrcDir%\Jaws\Settings\enu\sapfront.jbs</Src>
+			<Src Hash="SHA-256:0e60a1940f90a8dd93237dfea83b65cdc96ef0e2711848f7405a6dfdc0bb80ce" Timestamp="0xFE5124DC472FD901">%SapSrcDir%\Jaws\Settings\enu\sapfront.jsm</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &gt;= 17" Dst="%JawsScriptDir%\Scripts\enu\default.jkm" Type="Ini">
+			<IniSection Name="Common Keys">
+				<IniKey Name="Control+Alt+O">SapExitToOCF</IniKey>
+			</IniSection>
+		</Action>
+		<Action Condition="&quot;%JawsVersion%&quot; &lt; &quot;17&quot;" RunAt="Install,Update" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+				
+				Dim objDefaultJss, strJawsVersion, szDefaultJss, szJssFile
+				Set objDefaultJss = CreateObject("NwSapSetupATLCommon.TextFileParser")
+				strJawsVersion = NwEngine.Variables.GetValue("JawsVersion")
+				If strJawsVersion < 14 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\enu\Default.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\enu\Default.jss"
+				ElseIf strJawsVersion < 17 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\enu\myExtensions.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\enu\myExtensions.jss"
+				End If
+			
+				szDefaultJss = NWEngine.Variables.ResolveString(szJssFile)
+				If objDefaultJss.Parse( szDefaultJss ) Then
+					NWEngine.Context.Log.Write "Script action: Open and modify the file " & Chr(34) & szDefaultJss & Chr(34)
+					If Not objDefaultJss.DoesStringExist("saputils.jsb") Then
+					   NWEngine.Context.Log.Write "Script action: Appending lines..."
+					   objDefaultJss.AppendLine "; SAP specific"
+					   objDefaultJss.AppendLine "use " & Chr(34) & "saputils.jsb" & Chr(34)
+					   objDefaultJss.AppendLine "; end SAP specific"
+					End If
+					objDefaultJss.Save( szDefaultJss )
+				Else
+					NWEngine.Context.Log.WriteWarning "Script action: Could not open the file " & Chr(34) & szDefaultJss & Chr(34)
+				End If
+			]]></Src>
+		</Action>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling %JawsScriptDir%\SETTINGS\enu\saputils.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\enu\saputils.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling %JawsScriptDir%\SETTINGS\enu\sapfront.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\enu\sapfront.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling %JawsScriptDir%\SETTINGS\enu\saplogon.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\enu\saplogon.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling %JawsScriptDir%\SETTINGS\enu\saplgpad.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\enu\saplgpad.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling %JawsScriptDir%\SETTINGS\enu\SapSettings.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\enu\SapSettings.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling NWBC.JSS" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\enu\NWBC.JSS&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling gridview.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\enu\gridview.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction>
+			<Condition>%JawsVersion% &lt; 14</Condition>
+			<Exe DisplayText="Compiling %JawsScriptDir%\SETTINGS\enu\Default.JSS" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\enu\Default.JSS&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction>
+			<Condition>((%JawsVersion% &gt;= 14) &amp; (%JawsVersion% &lt; 17))</Condition>
+			<Exe DisplayText="Compiling %JawsScriptDir%\SETTINGS\enu\myExtensions.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\enu\myExtensions.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<Action Condition="&quot;%JawsVersion%&quot; &lt; &quot;17&quot;" RunAt="UnInstall" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+				
+				Dim objDefaultJss, strJawsVersion, szDefaultJss, szJssFile
+				Set objDefaultJss = CreateObject("NwSapSetupATLCommon.TextFileParser")
+				strJawsVersion = NwEngine.Variables.GetValue("JawsVersion")
+				If strJawsVersion < 14 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\enu\Default.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\enu\Default.jss"
+				ElseIf strJawsVersion < 17 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\enu\myExtensions.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\enu\myExtensions.jss"
+				Else
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\Scripts\myExtensions.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\Scripts\myExtensions.jss"
+				End If
+				
+				szDefaultJss = NWEngine.Variables.ResolveString(szJssFile)
+				If objDefaultJss.Parse( szDefaultJss ) Then
+					NWEngine.Context.Log.Write "Script action: Open the file " & Chr(34) & szDefaultJss & Chr(34)
+					objDefaultJss.RemoveLine "; SAP specific"
+					objDefaultJss.RemoveLine "use " & Chr(34) & "saputils.jsb" & Chr(34)
+					objDefaultJss.RemoveLine "; end SAP specific"
+					objDefaultJss.Save( szDefaultJss )
+				End If
+			]]></Src>
+		</Action>
+		<Action Condition="&quot;%JawsVersion%&quot; &lt; &quot;17&quot;" RunAt="Uninstall" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+				
+					NwEngine.Context.Log.Write "SRX Script: Removing .jsb files created during install. (Language enu)"
+					Dim fileArray(6), strJawsVersion, scriptPath, filePath, fileItem
+					fileArray(0) = "saputils.jsb"
+					fileArray(1) = "sapfront.jsb"
+					fileArray(2) = "saplogon.jsb"
+					fileArray(3) = "saplgpad.jsb"
+					fileArray(4) = "SapSettings.jsb"
+					fileArray(5) = "NWBC.JSB"
+					fileArray(6) = "gridview.jsb"
+					
+					NwEngine.Context.Log.Write "SRX Script: Retrieving JAWS version..."
+					strJawsVersion = NwEngine.Variables.GetValue("JawsVersion")
+					If strJawsVersion < 17 Then
+						scriptPath = "%JawsScriptDir%\SETTINGS\enu\"
+					Else
+						scriptPath = "%JawsScriptDir%\Scripts\"
+					End If
+					NwEngine.Context.Log.Write "SRX Script: Version " & strJawsVersion & " detected, using path " & scriptPath
+					For Each fileItem in fileArray
+						filePath = NwEngine.Variables.ResolveString(scriptPath & fileItem)
+						NwEngine.Context.Log.Write "SRX Script: Checking existence of " & filePath
+						If NwEngine.Shell.FileExist(filePath) Then
+							NwEngine.Context.Log.Write "SRX Script: File " & filePath & " exists, will be deleted."
+							If NwEngine.Shell.DeleteFile(filePath) Then
+								NwEngine.Context.Log.Write "SRX Script: Successfully deleted file " & filePath
+							Else
+								NwEngine.Context.Log.Write "SRX Script: Could not delete file " & filePath
+							End If
+						Else
+							NwEngine.Context.Log.Write "SRX Script: File " & filePath & " doesn't exist!"
+						End If
+					Next
+			]]></Src>
+		</Action>
+	</Component>
+	<!-- German (deu) Section almost identical to the (enu) Section -->
+	<Component BuildTime="0xE08560C75730D901" Condition="&quot;%JawsLangDeuExist%&quot; = &quot;TRUE&quot;" Guid="{3E27B0BF-1D66-4EE1-B9F9-E9EBA4FFEC06}" Min_Compliant_Version="5" Name="$SRX Deu Files" Size="549" Update="OnSameVersion" Version="1494">
+		<Action Dst="%JawsScriptDir%\SETTINGS\deu" Type="File">
+			<Src Hash="SHA-256:745c12943b5f257b9cba691c73332f384c9646c31fa525d0b409afb395907c7e" Timestamp="0xE62228DC472FD901">%SapSrcDir%\Jaws\sapfront.JCF</Src>
+			<Src Hash="SHA-256:7ecaa2dc2c28dfeee69c3bbe37e4611655d519252174b6042be50274a3e9bbb2" Timestamp="0x04052DDC472FD901">%SapSrcDir%\Jaws\saplogon.jcf</Src>
+			<Src Hash="SHA-256:0a9f996e82396e373b032be4ff0740fbb7dccabf2e8a44891a48f1d685ce6958" Timestamp="0x668120DC472FD901">%SapSrcDir%\Jaws\NWBC.JCF</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &lt; 17" Dst="%JawsScriptDir%\SETTINGS\deu" Type="File">
+			<Src Hash="SHA-256:1f0772ea25b68f50fc76162923122d53424ef716bf77a4378d31a110ed70cb22" Timestamp="0x248229DC472FD901">%SapSrcDir%\Jaws\sapfront.jkm</Src>
+			<Src Hash="SHA-256:cb048a6694709e2afac9e8057f48ec69fe89041f595eb3fe83e6eba51eed34f9" Timestamp="0x751E2ADC472FD901">%SapSrcDir%\Jaws\sapfront.jsd</Src>
+			<Src Hash="SHA-256:2f5cb6390d776b6f55b03c6648a0a0c012cff15437bb5db96772d431fafd250f" Timestamp="0xB0BA2ADC472FD901">%SapSrcDir%\Jaws\sapfront.jsh</Src>
+			<Src Hash="SHA-256:59ffe067b72c45336d36cb65dd20cdffa0c1abce0e1c1b55817fe11c62bccd21" Timestamp="0x90E628DC472FD901">%SapSrcDir%\Jaws\sapfront.jss</Src>
+			<Src Hash="SHA-256:bae0bc0dbbadbae956a492be14d787f6c8e01afcd16cccc3385e5c2868385d35" Timestamp="0xE02F2BDC472FD901">%SapSrcDir%\Jaws\sapglobal.jsh</Src>
+			<Src Hash="SHA-256:b28309780fe6c842179ebe25f54753b69d68f65da1b7c7a20f796a5b8c2c3d86" Timestamp="0x6C162EDC472FD901">%SapSrcDir%\Jaws\saputils.jsd</Src>
+			<Src Hash="SHA-256:b7db8de11771fb1aa9b62f9bc225bba72c8c59ec8a28d408cd4d006326e97999" Timestamp="0xA7B22EDC472FD901">%SapSrcDir%\Jaws\saputils.jss</Src>
+			<Src Hash="SHA-256:f1da26fb9c6ff67151c27c91bfdaf05a561cb97693713955a7b63bbca0fe6556" Timestamp="0xC78F2CDC472FD901">%SapSrcDir%\Jaws\saplogon.jbs</Src>
+			<Src Hash="SHA-256:7cf1c61c825a2d0354b0358969b3ad9f3bc39b2887b4a085fd61ef876464fcf9" Timestamp="0xF4A02DDC472FD901">%SapSrcDir%\Jaws\saplogon.jss</Src>
+			<Src Hash="SHA-256:d42176edd3ab89cd3b6abfe4f8a4f8a6a2a5910ba21d114d47623a46e8ac74fe" Timestamp="0x43BA21DC472FD901">%SapSrcDir%\Jaws\SapSettings.jss</Src>
+			<Src Hash="SHA-256:d42176edd3ab89cd3b6abfe4f8a4f8a6a2a5910ba21d114d47623a46e8ac74fe" Timestamp="0x19CC2BDC472FD901">%SapSrcDir%\Jaws\saplgpad.jss</Src>
+			<Src Hash="SHA-256:a6cfe8414258133e6493992fc0f169fca03487622fe6901951857c056ce18af5" Timestamp="0x9BF620DC472FD901">%SapSrcDir%\Jaws\NWBC.JSS</Src>
+			<Src Hash="SHA-256:6b0452b2c27b5788a943b75381de0db5a053cc8eea9c48706100b0632a2d4a19" Timestamp="0xF22626DC472FD901">%SapSrcDir%\Jaws\gridview.jss</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &lt; 17" Dst="%JawsScriptDir%\SETTINGS\deu" Type="File">
+			<Src Hash="SHA-256:59ef2319917af6769fcc1a9518e45e301c38c3c4b201f6b8e03189af1938c55b" Timestamp="0x367D22DC472FD901">%SapSrcDir%\Jaws\Settings\deu\sapfront.jbs</Src>
+			<Src Hash="SHA-256:04695a38e764c50e46ee752b74e6642fc30de462a56dfdf69172454a1a399cae" Timestamp="0x761923DC472FD901">%SapSrcDir%\Jaws\Settings\deu\sapfront.jsm</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &lt; 17" Dst="%JawsScriptDir%\SETTINGS\deu\default.jkm" Type="Ini">
+			<IniSection Name="Common Keys">
+				<IniKey Name="Control+Alt+O">SapExitToOCF</IniKey>
+			</IniSection>
+		</Action>
+		<Action Condition="%JawsVersion% &gt;= 17" Dst="%JawsScriptDir%\Scripts\deu" Type="File">
+			<Src Hash="SHA-256:1f0772ea25b68f50fc76162923122d53424ef716bf77a4378d31a110ed70cb22" Timestamp="0x248229DC472FD901">%SapSrcDir%\Jaws\sapfront.jkm</Src>
+			<Src Hash="SHA-256:cb048a6694709e2afac9e8057f48ec69fe89041f595eb3fe83e6eba51eed34f9" Timestamp="0x751E2ADC472FD901">%SapSrcDir%\Jaws\sapfront.jsd</Src>
+			<Src Hash="SHA-256:b28309780fe6c842179ebe25f54753b69d68f65da1b7c7a20f796a5b8c2c3d86" Timestamp="0x6C162EDC472FD901">%SapSrcDir%\Jaws\saputils.jsd</Src>
+			<Src Hash="SHA-256:f1da26fb9c6ff67151c27c91bfdaf05a561cb97693713955a7b63bbca0fe6556" Timestamp="0xC78F2CDC472FD901">%SapSrcDir%\Jaws\saplogon.jbs</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &gt;= 17" Dst="%JawsScriptDir%\Scripts\deu" Type="File">
+			<Src Hash="SHA-256:59ef2319917af6769fcc1a9518e45e301c38c3c4b201f6b8e03189af1938c55b" Timestamp="0x367D22DC472FD901">%SapSrcDir%\Jaws\Settings\deu\sapfront.jbs</Src>
+			<Src Hash="SHA-256:04695a38e764c50e46ee752b74e6642fc30de462a56dfdf69172454a1a399cae" Timestamp="0x761923DC472FD901">%SapSrcDir%\Jaws\Settings\deu\sapfront.jsm</Src>
+		</Action>
+		<Action Condition="&quot;%JawsVersion%&quot; &lt; &quot;17&quot;" RunAt="Install,Update" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+				
+				Dim objDefaultJss, strJawsVersion, szDefaultJss, szJssFile
+				Set objDefaultJss = CreateObject("NwSapSetupATLCommon.TextFileParser")
+				strJawsVersion = NwEngine.Variables.GetValue("JawsVersion")
+				If strJawsVersion < 14 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\deu\Default.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\deu\Default.jss"
+				ElseIf strJawsVersion < 17 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\deu\myExtensions.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\deu\myExtensions.jss"
+				Else
+					NwEngine.Context.Log.Write "SRX Script: No changes needed on JAWS 17 or higher"
+				End If
+
+				If strJawsVersion < 17 Then
+					szDefaultJss = NWEngine.Variables.ResolveString(szJssFile)
+					If objDefaultJss.Parse( szDefaultJss ) Then
+						NWEngine.Context.Log.Write "Script action: Open and modify the file " & Chr(34) & szDefaultJss & Chr(34)
+						If Not objDefaultJss.DoesStringExist("saputils.jsb") Then
+						   NWEngine.Context.Log.Write "Script action: Appending lines..."
+						   objDefaultJss.AppendLine "; SAP specific"
+						   objDefaultJss.AppendLine "use " & Chr(34) & "saputils.jsb" & Chr(34)
+						   objDefaultJss.AppendLine "; end SAP specific"
+						End If
+						objDefaultJss.Save( szDefaultJss )
+					Else
+						NWEngine.Context.Log.WriteWarning "Script action: Could not open the file " & Chr(34) & szDefaultJss & Chr(34)
+					End If
+				End if
+			]]></Src>
+		</Action>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling saputils.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\deu\saputils.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling sapfront.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\deu\sapfront.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling saplogon.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\deu\saplogon.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling saplgpad.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\deu\saplgpad.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling SapSettings.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\deu\SapSettings.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling NWBC.JSS" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\deu\NWBC.JSS&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling gridview.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\deu\gridview.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction>
+			<Condition>%JawsVersion% &lt; 14</Condition>
+			<Exe DisplayText="Compiling Default.JSS" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\deu\Default.JSS&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction>
+			<Condition>((%JawsVersion% &gt;= 14) &amp; (%JawsVersion% &lt; 17))</Condition>
+			<Exe DisplayText="Compiling myExtensions.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\deu\myExtensions.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<Action Condition="&quot;%JawsVersion%&quot; &lt; &quot;17&quot;" RunAt="UnInstall" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+				
+				Dim objDefaultJss, strJawsVersion, szDefaultJss, szJssFile
+				Set objDefaultJss = CreateObject("NwSapSetupATLCommon.TextFileParser")
+				strJawsVersion = NwEngine.Variables.GetValue("JawsVersion")
+				If strJawsVersion < 14 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\deu\Default.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\deu\Default.jss"
+				ElseIf strJawsVersion < 17 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\deu\myExtensions.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\deu\myExtensions.jss"
+				Else
+					NwEngine.Context.Log.Write "No changes needed on JAWS 17 or higher"
+				End If
+				
+				If strJawsVersion < 17 Then
+					szDefaultJss = NWEngine.Variables.ResolveString(szJssFile)
+					If objDefaultJss.Parse( szDefaultJss ) Then
+						NWEngine.Context.Log.Write "Script action: Open the file " & Chr(34) & szDefaultJss & Chr(34)
+						objDefaultJss.RemoveLine "; SAP specific"
+						objDefaultJss.RemoveLine "use " & Chr(34) & "saputils.jsb" & Chr(34)
+						objDefaultJss.RemoveLine "; end SAP specific"
+						objDefaultJss.Save( szDefaultJss )
+					End If
+				End If
+			]]></Src>
+		</Action>
+		<Action Condition="&quot;%JawsVersion%&quot; &lt; &quot;17&quot;" RunAt="UnInstall" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+				
+					NwEngine.Context.Log.Write "SRX Script: Removing .jsb files created during install. (Language deu)"
+					Dim fileArray(6), strJawsVersion, scriptPath, filePath, fileItem
+					fileArray(0) = "saputils.jsb"
+					fileArray(1) = "sapfront.jsb"
+					fileArray(2) = "saplogon.jsb"
+					fileArray(3) = "saplgpad.jsb"
+					fileArray(4) = "SapSettings.jsb"
+					fileArray(5) = "NWBC.JSB"
+					fileArray(6) = "gridview.jsb"
+					
+					NwEngine.Context.Log.Write "SRX Script: Retrieving JAWS version..."
+					strJawsVersion = NwEngine.Variables.GetValue("JawsVersion")
+					If strJawsVersion < 17 Then
+						scriptPath = "%JawsScriptDir%\SETTINGS\deu\"
+						NwEngine.Context.Log.Write "SRX Script: Version " & strJawsVersion & " detected, using path " & scriptPath
+						For Each fileItem in fileArray
+							filePath = NwEngine.Variables.ResolveString(scriptPath & fileItem)
+							NwEngine.Context.Log.Write "SRX Script: Checking existence of " & filePath
+							If NwEngine.Shell.FileExist(filePath) Then
+								NwEngine.Context.Log.Write "SRX Script: File " & filePath & " exists, will be deleted."
+								If NwEngine.Shell.DeleteFile(filePath) Then
+									NwEngine.Context.Log.Write "SRX Script: Successfully deleted file " & filePath
+								Else
+									NwEngine.Context.Log.Write "SRX Script: Could not delete file " & filePath
+								End If
+							Else
+								NwEngine.Context.Log.Write "SRX Script: File " & filePath & " doesn't exist!"
+							End If
+						Next
+					Else
+						NwEngine.Context.Log.Write "SRX Script: Version 17 or higher, nothing to delete for language deu"
+					End If
+			]]></Src>
+		</Action>
+	</Component>
+	<!-- French (fra) Section almost identical to the (enu) Section -->
+	<Component BuildTime="0xE08560C75730D901" Condition="&quot;%JawsLangFraExist%&quot; = &quot;TRUE&quot;" Guid="{5CB90BBB-FDDC-4C3F-A9AA-B2DB7F2F4FA7}" Min_Compliant_Version="5" Name="$SRX Fra Files" Size="551" Update="OnSameVersion" Version="1494">
+		<Action Dst="%JawsScriptDir%\SETTINGS\fra" Type="File">
+			<Src Hash="SHA-256:745c12943b5f257b9cba691c73332f384c9646c31fa525d0b409afb395907c7e" Timestamp="0xE62228DC472FD901">%SapSrcDir%\Jaws\sapfront.JCF</Src>
+			<Src Hash="SHA-256:7ecaa2dc2c28dfeee69c3bbe37e4611655d519252174b6042be50274a3e9bbb2" Timestamp="0x04052DDC472FD901">%SapSrcDir%\Jaws\saplogon.jcf</Src>
+			<Src Hash="SHA-256:0a9f996e82396e373b032be4ff0740fbb7dccabf2e8a44891a48f1d685ce6958" Timestamp="0x668120DC472FD901">%SapSrcDir%\Jaws\NWBC.JCF</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &lt; 17" Dst="%JawsScriptDir%\SETTINGS\fra" Type="File">
+			<Src Hash="SHA-256:1f0772ea25b68f50fc76162923122d53424ef716bf77a4378d31a110ed70cb22" Timestamp="0x248229DC472FD901">%SapSrcDir%\Jaws\sapfront.jkm</Src>
+			<Src Hash="SHA-256:cb048a6694709e2afac9e8057f48ec69fe89041f595eb3fe83e6eba51eed34f9" Timestamp="0x751E2ADC472FD901">%SapSrcDir%\Jaws\sapfront.jsd</Src>
+			<Src Hash="SHA-256:2f5cb6390d776b6f55b03c6648a0a0c012cff15437bb5db96772d431fafd250f" Timestamp="0xB0BA2ADC472FD901">%SapSrcDir%\Jaws\sapfront.jsh</Src>
+			<Src Hash="SHA-256:59ffe067b72c45336d36cb65dd20cdffa0c1abce0e1c1b55817fe11c62bccd21" Timestamp="0x90E628DC472FD901">%SapSrcDir%\Jaws\sapfront.jss</Src>
+			<Src Hash="SHA-256:bae0bc0dbbadbae956a492be14d787f6c8e01afcd16cccc3385e5c2868385d35" Timestamp="0xE02F2BDC472FD901">%SapSrcDir%\Jaws\sapglobal.jsh</Src>
+			<Src Hash="SHA-256:b28309780fe6c842179ebe25f54753b69d68f65da1b7c7a20f796a5b8c2c3d86" Timestamp="0x6C162EDC472FD901">%SapSrcDir%\Jaws\saputils.jsd</Src>
+			<Src Hash="SHA-256:b7db8de11771fb1aa9b62f9bc225bba72c8c59ec8a28d408cd4d006326e97999" Timestamp="0xA7B22EDC472FD901">%SapSrcDir%\Jaws\saputils.jss</Src>
+			<Src Hash="SHA-256:f1da26fb9c6ff67151c27c91bfdaf05a561cb97693713955a7b63bbca0fe6556" Timestamp="0xC78F2CDC472FD901">%SapSrcDir%\Jaws\saplogon.jbs</Src>
+			<Src Hash="SHA-256:7cf1c61c825a2d0354b0358969b3ad9f3bc39b2887b4a085fd61ef876464fcf9" Timestamp="0xF4A02DDC472FD901">%SapSrcDir%\Jaws\saplogon.jss</Src>
+			<Src Hash="SHA-256:d42176edd3ab89cd3b6abfe4f8a4f8a6a2a5910ba21d114d47623a46e8ac74fe" Timestamp="0x43BA21DC472FD901">%SapSrcDir%\Jaws\SapSettings.jss</Src>
+			<Src Hash="SHA-256:d42176edd3ab89cd3b6abfe4f8a4f8a6a2a5910ba21d114d47623a46e8ac74fe" Timestamp="0x19CC2BDC472FD901">%SapSrcDir%\Jaws\saplgpad.jss</Src>
+			<Src Hash="SHA-256:a6cfe8414258133e6493992fc0f169fca03487622fe6901951857c056ce18af5" Timestamp="0x9BF620DC472FD901">%SapSrcDir%\Jaws\NWBC.JSS</Src>
+			<Src Hash="SHA-256:6b0452b2c27b5788a943b75381de0db5a053cc8eea9c48706100b0632a2d4a19" Timestamp="0xF22626DC472FD901">%SapSrcDir%\Jaws\gridview.jss</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &lt; 17" Dst="%JawsScriptDir%\SETTINGS\fra" Type="File">
+			<Src Hash="SHA-256:887a551eaf459ee37d371086f1b2a451cb3485c376bea447695183172c08772a" Timestamp="0x44EE24DC472FD901">%SapSrcDir%\Jaws\Settings\fra\sapfront.jbs</Src>
+			<Src Hash="SHA-256:c2ff945e82b350e106e7a5509eb716a0a0092ff2d8144894dc1ef70be0266063" Timestamp="0x818A25DC472FD901">%SapSrcDir%\Jaws\Settings\fra\sapfront.jsm</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &lt; 17" Dst="%JawsScriptDir%\SETTINGS\fra\default.jkm" Type="Ini">
+			<IniSection Name="Common Keys">
+				<IniKey Name="Control+Alt+O">SapExitToOCF</IniKey>
+			</IniSection>
+		</Action>
+		<Action Condition="%JawsVersion% &gt;= 17" Dst="%JawsScriptDir%\Scripts\fra" Type="File">
+			<Src Hash="SHA-256:1f0772ea25b68f50fc76162923122d53424ef716bf77a4378d31a110ed70cb22" Timestamp="0x248229DC472FD901">%SapSrcDir%\Jaws\sapfront.jkm</Src>
+			<Src Hash="SHA-256:cb048a6694709e2afac9e8057f48ec69fe89041f595eb3fe83e6eba51eed34f9" Timestamp="0x751E2ADC472FD901">%SapSrcDir%\Jaws\sapfront.jsd</Src>
+			<Src Hash="SHA-256:b28309780fe6c842179ebe25f54753b69d68f65da1b7c7a20f796a5b8c2c3d86" Timestamp="0x6C162EDC472FD901">%SapSrcDir%\Jaws\saputils.jsd</Src>
+			<Src Hash="SHA-256:f1da26fb9c6ff67151c27c91bfdaf05a561cb97693713955a7b63bbca0fe6556" Timestamp="0xC78F2CDC472FD901">%SapSrcDir%\Jaws\saplogon.jbs</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &gt;= 17" Dst="%JawsScriptDir%\Scripts\fra" Type="File">
+			<Src Hash="SHA-256:887a551eaf459ee37d371086f1b2a451cb3485c376bea447695183172c08772a" Timestamp="0x44EE24DC472FD901">%SapSrcDir%\Jaws\Settings\fra\sapfront.jbs</Src>
+			<Src Hash="SHA-256:c2ff945e82b350e106e7a5509eb716a0a0092ff2d8144894dc1ef70be0266063" Timestamp="0x818A25DC472FD901">%SapSrcDir%\Jaws\Settings\fra\sapfront.jsm</Src>
+		</Action>
+		<Action Condition="&quot;%JawsVersion%&quot; &lt; &quot;17&quot;" RunAt="Install,Update" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+				
+				Dim objDefaultJss, strJawsVersion, szDefaultJss, szJssFile
+				Set objDefaultJss = CreateObject("NwSapSetupATLCommon.TextFileParser")
+				strJawsVersion = NwEngine.Variables.GetValue("JawsVersion")
+				If strJawsVersion < 14 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\fra\Default.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\fra\Default.jss"
+				ElseIf strJawsVersion < 17 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\fra\myExtensions.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\fra\myExtensions.jss"
+				Else
+					NwEngine.Context.Log.Write "SRX Script: No changes needed on JAWS 17 or higher"
+				End If
+
+				If strJawsVersion < 17 Then
+					szDefaultJss = NWEngine.Variables.ResolveString(szJssFile)
+					If objDefaultJss.Parse( szDefaultJss ) Then
+						NWEngine.Context.Log.Write "Script action: Open and modify the file " & Chr(34) & szDefaultJss & Chr(34)
+						If Not objDefaultJss.DoesStringExist("saputils.jsb") Then
+						   NWEngine.Context.Log.Write "Script action: Appending lines..."
+						   objDefaultJss.AppendLine "; SAP specific"
+						   objDefaultJss.AppendLine "use " & Chr(34) & "saputils.jsb" & Chr(34)
+						   objDefaultJss.AppendLine "; end SAP specific"
+						End If
+						objDefaultJss.Save( szDefaultJss )
+					Else
+						NWEngine.Context.Log.WriteWarning "Script action: Could not open the file " & Chr(34) & szDefaultJss & Chr(34)
+					End If
+				End if
+			]]></Src>
+		</Action>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling saputils.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\fra\saputils.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling sapfront.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\fra\sapfront.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling saplogon.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\fra\saplogon.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling saplgpad.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\fra\saplgpad.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling SapSettings.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\fra\SapSettings.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling NWBC.JSS" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\fra\NWBC.JSS&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling gridview.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\fra\gridview.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction>
+			<Condition>%JawsVersion% &lt; 14</Condition>
+			<Exe DisplayText="Compiling Default.JSS" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\fra\Default.JSS&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction>
+			<Condition>((%JawsVersion% &gt;= 14) &amp; (%JawsVersion% &lt; 17))</Condition>
+			<Exe DisplayText="Compiling myExtensions.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\fra\myExtensions.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<Action Condition="&quot;%JawsVersion%&quot; &lt; &quot;17&quot;" RunAt="UnInstall" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+				
+				Dim objDefaultJss, strJawsVersion, szDefaultJss, szJssFile
+				Set objDefaultJss = CreateObject("NwSapSetupATLCommon.TextFileParser")
+				strJawsVersion = NwEngine.Variables.GetValue("JawsVersion")
+				If strJawsVersion < 14 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\fra\Default.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\fra\Default.jss"
+				ElseIf strJawsVersion < 17 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\fra\myExtensions.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\fra\myExtensions.jss"
+				Else
+					NwEngine.Context.Log.Write "No changes needed on JAWS 17 or higher"
+				End If
+				
+				If strJawsVersion < 17 Then
+					szDefaultJss = NWEngine.Variables.ResolveString(szJssFile)
+					If objDefaultJss.Parse( szDefaultJss ) Then
+						NWEngine.Context.Log.Write "Script action: Open the file " & Chr(34) & szDefaultJss & Chr(34)
+						objDefaultJss.RemoveLine "; SAP specific"
+						objDefaultJss.RemoveLine "use " & Chr(34) & "saputils.jsb" & Chr(34)
+						objDefaultJss.RemoveLine "; end SAP specific"
+						objDefaultJss.Save( szDefaultJss )
+					End If
+				End If
+			]]></Src>
+		</Action>
+		<Action Condition="&quot;%JawsVersion%&quot; &lt; &quot;17&quot;" RunAt="UnInstall" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+				
+					NwEngine.Context.Log.Write "SRX Script: Removing .jsb files created during install. (Language fra)"
+					Dim fileArray(6), strJawsVersion, scriptPath, filePath, fileItem
+					fileArray(0) = "saputils.jsb"
+					fileArray(1) = "sapfront.jsb"
+					fileArray(2) = "saplogon.jsb"
+					fileArray(3) = "saplgpad.jsb"
+					fileArray(4) = "SapSettings.jsb"
+					fileArray(5) = "NWBC.JSB"
+					fileArray(6) = "gridview.jsb"
+					
+					NwEngine.Context.Log.Write "SRX Script: Retrieving JAWS version..."
+					strJawsVersion = NwEngine.Variables.GetValue("JawsVersion")
+					If strJawsVersion < 17 Then
+						scriptPath = "%JawsScriptDir%\SETTINGS\fra\"
+						NwEngine.Context.Log.Write "SRX Script: Version " & strJawsVersion & " detected, using path " & scriptPath
+						For Each fileItem in fileArray
+							filePath = NwEngine.Variables.ResolveString(scriptPath & fileItem)
+							NwEngine.Context.Log.Write "SRX Script: Checking existence of " & filePath
+							If NwEngine.Shell.FileExist(filePath) Then
+								NwEngine.Context.Log.Write "SRX Script: File " & filePath & " exists, will be deleted."
+								If NwEngine.Shell.DeleteFile(filePath) Then
+									NwEngine.Context.Log.Write "SRX Script: Successfully deleted file " & filePath
+								Else
+									NwEngine.Context.Log.Write "SRX Script: Could not delete file " & filePath
+								End If
+							Else
+								NwEngine.Context.Log.Write "SRX Script: File " & filePath & " doesn't exist!"
+							End If
+						Next
+					Else
+						NwEngine.Context.Log.Write "SRX Script: Version 17 or higher, nothing to delete for language fra"
+					End If
+			]]></Src>
+		</Action>
+	</Component>
+	<!-- Italian (ita) Section almost identical to the (enu) Section -->
+	<Component BuildTime="0xE08560C75730D901" Condition="&quot;%JawsLangItaExist%&quot; = &quot;TRUE&quot;" Guid="{09E73341-A49C-4571-9175-95D3D02D7EB8}" Min_Compliant_Version="5" Name="$SRX Ita Files" Size="551" Update="OnSameVersion" Version="1494">
+		<Action Dst="%JawsScriptDir%\SETTINGS\ita" Type="File">
+			<Src Hash="SHA-256:745c12943b5f257b9cba691c73332f384c9646c31fa525d0b409afb395907c7e" Timestamp="0xE62228DC472FD901">%SapSrcDir%\Jaws\sapfront.JCF</Src>
+			<Src Hash="SHA-256:7ecaa2dc2c28dfeee69c3bbe37e4611655d519252174b6042be50274a3e9bbb2" Timestamp="0x04052DDC472FD901">%SapSrcDir%\Jaws\saplogon.jcf</Src>
+			<Src Hash="SHA-256:0a9f996e82396e373b032be4ff0740fbb7dccabf2e8a44891a48f1d685ce6958" Timestamp="0x668120DC472FD901">%SapSrcDir%\Jaws\NWBC.JCF</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &lt; 17" Dst="%JawsScriptDir%\SETTINGS\ita" Type="File">
+			<Src Hash="SHA-256:1f0772ea25b68f50fc76162923122d53424ef716bf77a4378d31a110ed70cb22" Timestamp="0x248229DC472FD901">%SapSrcDir%\Jaws\sapfront.jkm</Src>
+			<Src Hash="SHA-256:cb048a6694709e2afac9e8057f48ec69fe89041f595eb3fe83e6eba51eed34f9" Timestamp="0x751E2ADC472FD901">%SapSrcDir%\Jaws\sapfront.jsd</Src>
+			<Src Hash="SHA-256:2f5cb6390d776b6f55b03c6648a0a0c012cff15437bb5db96772d431fafd250f" Timestamp="0xB0BA2ADC472FD901">%SapSrcDir%\Jaws\sapfront.jsh</Src>
+			<Src Hash="SHA-256:59ffe067b72c45336d36cb65dd20cdffa0c1abce0e1c1b55817fe11c62bccd21" Timestamp="0x90E628DC472FD901">%SapSrcDir%\Jaws\sapfront.jss</Src>
+			<Src Hash="SHA-256:bae0bc0dbbadbae956a492be14d787f6c8e01afcd16cccc3385e5c2868385d35" Timestamp="0xE02F2BDC472FD901">%SapSrcDir%\Jaws\sapglobal.jsh</Src>
+			<Src Hash="SHA-256:b28309780fe6c842179ebe25f54753b69d68f65da1b7c7a20f796a5b8c2c3d86" Timestamp="0x6C162EDC472FD901">%SapSrcDir%\Jaws\saputils.jsd</Src>
+			<Src Hash="SHA-256:b7db8de11771fb1aa9b62f9bc225bba72c8c59ec8a28d408cd4d006326e97999" Timestamp="0xA7B22EDC472FD901">%SapSrcDir%\Jaws\saputils.jss</Src>
+			<Src Hash="SHA-256:f1da26fb9c6ff67151c27c91bfdaf05a561cb97693713955a7b63bbca0fe6556" Timestamp="0xC78F2CDC472FD901">%SapSrcDir%\Jaws\saplogon.jbs</Src>
+			<Src Hash="SHA-256:7cf1c61c825a2d0354b0358969b3ad9f3bc39b2887b4a085fd61ef876464fcf9" Timestamp="0xF4A02DDC472FD901">%SapSrcDir%\Jaws\saplogon.jss</Src>
+			<Src Hash="SHA-256:d42176edd3ab89cd3b6abfe4f8a4f8a6a2a5910ba21d114d47623a46e8ac74fe" Timestamp="0x43BA21DC472FD901">%SapSrcDir%\Jaws\SapSettings.jss</Src>
+			<Src Hash="SHA-256:d42176edd3ab89cd3b6abfe4f8a4f8a6a2a5910ba21d114d47623a46e8ac74fe" Timestamp="0x19CC2BDC472FD901">%SapSrcDir%\Jaws\saplgpad.jss</Src>
+			<Src Hash="SHA-256:a6cfe8414258133e6493992fc0f169fca03487622fe6901951857c056ce18af5" Timestamp="0x9BF620DC472FD901">%SapSrcDir%\Jaws\NWBC.JSS</Src>
+			<Src Hash="SHA-256:6b0452b2c27b5788a943b75381de0db5a053cc8eea9c48706100b0632a2d4a19" Timestamp="0xF22626DC472FD901">%SapSrcDir%\Jaws\gridview.jss</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &lt; 17" Dst="%JawsScriptDir%\SETTINGS\ita" Type="File">
+			<Src Hash="SHA-256:c3393b9dd05a0678f7ab8268836f1890715fc633020f76411c61d0be5b2b087d" Timestamp="0x06C326DC472FD901">%SapSrcDir%\Jaws\Settings\ita\sapfront.jbs</Src>
+			<Src Hash="SHA-256:043cbe7598985f817d4f58910e6e29cd338291d44d20e04fbae961a8572fa5ac" Timestamp="0x608627DC472FD901">%SapSrcDir%\Jaws\Settings\ita\sapfront.jsm</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &lt; 17" Dst="%JawsScriptDir%\SETTINGS\ita\default.jkm" Type="Ini">
+			<IniSection Name="Common Keys">
+				<IniKey Name="Control+Alt+O">SapExitToOCF</IniKey>
+			</IniSection>
+		</Action>
+		<Action Condition="%JawsVersion% &gt;= 17" Dst="%JawsScriptDir%\Scripts\ita" Type="File">
+			<Src Hash="SHA-256:1f0772ea25b68f50fc76162923122d53424ef716bf77a4378d31a110ed70cb22" Timestamp="0x248229DC472FD901">%SapSrcDir%\Jaws\sapfront.jkm</Src>
+			<Src Hash="SHA-256:cb048a6694709e2afac9e8057f48ec69fe89041f595eb3fe83e6eba51eed34f9" Timestamp="0x751E2ADC472FD901">%SapSrcDir%\Jaws\sapfront.jsd</Src>
+			<Src Hash="SHA-256:b28309780fe6c842179ebe25f54753b69d68f65da1b7c7a20f796a5b8c2c3d86" Timestamp="0x6C162EDC472FD901">%SapSrcDir%\Jaws\saputils.jsd</Src>
+			<Src Hash="SHA-256:f1da26fb9c6ff67151c27c91bfdaf05a561cb97693713955a7b63bbca0fe6556" Timestamp="0xC78F2CDC472FD901">%SapSrcDir%\Jaws\saplogon.jbs</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &gt;= 17" Dst="%JawsScriptDir%\Scripts\ita" Type="File">
+			<Src Hash="SHA-256:c3393b9dd05a0678f7ab8268836f1890715fc633020f76411c61d0be5b2b087d" Timestamp="0x06C326DC472FD901">%SapSrcDir%\Jaws\Settings\ita\sapfront.jbs</Src>
+			<Src Hash="SHA-256:043cbe7598985f817d4f58910e6e29cd338291d44d20e04fbae961a8572fa5ac" Timestamp="0x608627DC472FD901">%SapSrcDir%\Jaws\Settings\ita\sapfront.jsm</Src>
+		</Action>
+		<Action Condition="&quot;%JawsVersion%&quot; &lt; &quot;17&quot;" RunAt="Install,Update" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+				
+				Dim objDefaultJss, strJawsVersion, szDefaultJss, szJssFile
+				Set objDefaultJss = CreateObject("NwSapSetupATLCommon.TextFileParser")
+				strJawsVersion = NwEngine.Variables.GetValue("JawsVersion")
+				If strJawsVersion < 14 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\ita\Default.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\ita\Default.jss"
+				ElseIf strJawsVersion < 17 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\ita\myExtensions.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\ita\myExtensions.jss"
+				Else
+					NwEngine.Context.Log.Write "SRX Script: No changes needed on JAWS 17 or higher"
+				End If
+
+				If strJawsVersion < 17 Then
+					szDefaultJss = NWEngine.Variables.ResolveString(szJssFile)
+					If objDefaultJss.Parse( szDefaultJss ) Then
+						NWEngine.Context.Log.Write "Script action: Open and modify the file " & Chr(34) & szDefaultJss & Chr(34)
+						If Not objDefaultJss.DoesStringExist("saputils.jsb") Then
+						   NWEngine.Context.Log.Write "Script action: Appending lines..."
+						   objDefaultJss.AppendLine "; SAP specific"
+						   objDefaultJss.AppendLine "use " & Chr(34) & "saputils.jsb" & Chr(34)
+						   objDefaultJss.AppendLine "; end SAP specific"
+						End If
+						objDefaultJss.Save( szDefaultJss )
+					Else
+						NWEngine.Context.Log.WriteWarning "Script action: Could not open the file " & Chr(34) & szDefaultJss & Chr(34)
+					End If
+				End if
+			]]></Src>
+		</Action>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling saputils.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\ita\saputils.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling sapfront.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\ita\sapfront.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling saplogon.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\ita\saplogon.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling saplgpad.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\ita\saplgpad.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling SapSettings.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\ita\SapSettings.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling NWBC.JSS" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\ita\NWBC.JSS&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling gridview.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\ita\gridview.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction>
+			<Condition>%JawsVersion% &lt; 14</Condition>
+			<Exe DisplayText="Compiling Default.JSS" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\ita\Default.JSS&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction>
+			<Condition>((%JawsVersion% &gt;= 14) &amp; (%JawsVersion% &lt; 17))</Condition>
+			<Exe DisplayText="Compiling myExtensions.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\ita\myExtensions.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<Action Condition="&quot;%JawsVersion%&quot; &lt; &quot;17&quot;" RunAt="UnInstall" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+				
+				Dim objDefaultJss, strJawsVersion, szDefaultJss, szJssFile
+				Set objDefaultJss = CreateObject("NwSapSetupATLCommon.TextFileParser")
+				strJawsVersion = NwEngine.Variables.GetValue("JawsVersion")
+				If strJawsVersion < 14 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\ita\Default.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\ita\Default.jss"
+				ElseIf strJawsVersion < 17 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\ita\myExtensions.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\ita\myExtensions.jss"
+				Else
+					NwEngine.Context.Log.Write "No changes needed on JAWS 17 or higher"
+				End If
+				
+				If strJawsVersion < 17 Then
+					szDefaultJss = NWEngine.Variables.ResolveString(szJssFile)
+					If objDefaultJss.Parse( szDefaultJss ) Then
+						NWEngine.Context.Log.Write "Script action: Open the file " & Chr(34) & szDefaultJss & Chr(34)
+						objDefaultJss.RemoveLine "; SAP specific"
+						objDefaultJss.RemoveLine "use " & Chr(34) & "saputils.jsb" & Chr(34)
+						objDefaultJss.RemoveLine "; end SAP specific"
+						objDefaultJss.Save( szDefaultJss )
+					End If
+				End If
+			]]></Src>
+		</Action>
+		<Action Condition="&quot;%JawsVersion%&quot; &lt; &quot;17&quot;" RunAt="UnInstall" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+				
+					NwEngine.Context.Log.Write "SRX Script: Removing .jsb files created during install. (Language ita)"
+					Dim fileArray(6), strJawsVersion, scriptPath, filePath, fileItem
+					fileArray(0) = "saputils.jsb"
+					fileArray(1) = "sapfront.jsb"
+					fileArray(2) = "saplogon.jsb"
+					fileArray(3) = "saplgpad.jsb"
+					fileArray(4) = "SapSettings.jsb"
+					fileArray(5) = "NWBC.JSB"
+					fileArray(6) = "gridview.jsb"
+					
+					NwEngine.Context.Log.Write "SRX Script: Retrieving JAWS version..."
+					strJawsVersion = NwEngine.Variables.GetValue("JawsVersion")
+					If strJawsVersion < 17 Then
+						scriptPath = "%JawsScriptDir%\SETTINGS\ita\"
+						NwEngine.Context.Log.Write "SRX Script: Version " & strJawsVersion & " detected, using path " & scriptPath
+						For Each fileItem in fileArray
+							filePath = NwEngine.Variables.ResolveString(scriptPath & fileItem)
+							NwEngine.Context.Log.Write "SRX Script: Checking existence of " & filePath
+							If NwEngine.Shell.FileExist(filePath) Then
+								NwEngine.Context.Log.Write "SRX Script: File " & filePath & " exists, will be deleted."
+								If NwEngine.Shell.DeleteFile(filePath) Then
+									NwEngine.Context.Log.Write "SRX Script: Successfully deleted file " & filePath
+								Else
+									NwEngine.Context.Log.Write "SRX Script: Could not delete file " & filePath
+								End If
+							Else
+								NwEngine.Context.Log.Write "SRX Script: File " & filePath & " doesn't exist!"
+							End If
+						Next
+					Else
+						NwEngine.Context.Log.Write "SRX Script: Version 17 or higher, nothing to delete for language ita"
+					End If
+			]]></Src>
+		</Action>
+	</Component>
+	<!-- French canadian (frc) Section almost identical to the (enu) Section -->
+	<Component BuildTime="0xE08560C75730D901" Condition="&quot;%JawsLangFrcExist%&quot; = &quot;TRUE&quot;" Guid="{400B88B1-79B3-458C-B616-5BFDB5CA916A}" Min_Compliant_Version="5" Name="$SRX Frc Files" Size="551" Update="OnSameVersion" Version="1494">
+		<Action Dst="%JawsScriptDir%\SETTINGS\frc" Type="File">
+			<Src Hash="SHA-256:745c12943b5f257b9cba691c73332f384c9646c31fa525d0b409afb395907c7e" Timestamp="0xE62228DC472FD901">%SapSrcDir%\Jaws\sapfront.JCF</Src>
+			<Src Hash="SHA-256:7ecaa2dc2c28dfeee69c3bbe37e4611655d519252174b6042be50274a3e9bbb2" Timestamp="0x04052DDC472FD901">%SapSrcDir%\Jaws\saplogon.jcf</Src>
+			<Src Hash="SHA-256:0a9f996e82396e373b032be4ff0740fbb7dccabf2e8a44891a48f1d685ce6958" Timestamp="0x668120DC472FD901">%SapSrcDir%\Jaws\NWBC.JCF</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &lt; 17" Dst="%JawsScriptDir%\SETTINGS\frc" Type="File">
+			<Src Hash="SHA-256:1f0772ea25b68f50fc76162923122d53424ef716bf77a4378d31a110ed70cb22" Timestamp="0x248229DC472FD901">%SapSrcDir%\Jaws\sapfront.jkm</Src>
+			<Src Hash="SHA-256:cb048a6694709e2afac9e8057f48ec69fe89041f595eb3fe83e6eba51eed34f9" Timestamp="0x751E2ADC472FD901">%SapSrcDir%\Jaws\sapfront.jsd</Src>
+			<Src Hash="SHA-256:2f5cb6390d776b6f55b03c6648a0a0c012cff15437bb5db96772d431fafd250f" Timestamp="0xB0BA2ADC472FD901">%SapSrcDir%\Jaws\sapfront.jsh</Src>
+			<Src Hash="SHA-256:59ffe067b72c45336d36cb65dd20cdffa0c1abce0e1c1b55817fe11c62bccd21" Timestamp="0x90E628DC472FD901">%SapSrcDir%\Jaws\sapfront.jss</Src>
+			<Src Hash="SHA-256:bae0bc0dbbadbae956a492be14d787f6c8e01afcd16cccc3385e5c2868385d35" Timestamp="0xE02F2BDC472FD901">%SapSrcDir%\Jaws\sapglobal.jsh</Src>
+			<Src Hash="SHA-256:b28309780fe6c842179ebe25f54753b69d68f65da1b7c7a20f796a5b8c2c3d86" Timestamp="0x6C162EDC472FD901">%SapSrcDir%\Jaws\saputils.jsd</Src>
+			<Src Hash="SHA-256:b7db8de11771fb1aa9b62f9bc225bba72c8c59ec8a28d408cd4d006326e97999" Timestamp="0xA7B22EDC472FD901">%SapSrcDir%\Jaws\saputils.jss</Src>
+			<Src Hash="SHA-256:f1da26fb9c6ff67151c27c91bfdaf05a561cb97693713955a7b63bbca0fe6556" Timestamp="0xC78F2CDC472FD901">%SapSrcDir%\Jaws\saplogon.jbs</Src>
+			<Src Hash="SHA-256:7cf1c61c825a2d0354b0358969b3ad9f3bc39b2887b4a085fd61ef876464fcf9" Timestamp="0xF4A02DDC472FD901">%SapSrcDir%\Jaws\saplogon.jss</Src>
+			<Src Hash="SHA-256:d42176edd3ab89cd3b6abfe4f8a4f8a6a2a5910ba21d114d47623a46e8ac74fe" Timestamp="0x43BA21DC472FD901">%SapSrcDir%\Jaws\SapSettings.jss</Src>
+			<Src Hash="SHA-256:d42176edd3ab89cd3b6abfe4f8a4f8a6a2a5910ba21d114d47623a46e8ac74fe" Timestamp="0x19CC2BDC472FD901">%SapSrcDir%\Jaws\saplgpad.jss</Src>
+			<Src Hash="SHA-256:a6cfe8414258133e6493992fc0f169fca03487622fe6901951857c056ce18af5" Timestamp="0x9BF620DC472FD901">%SapSrcDir%\Jaws\NWBC.JSS</Src>
+			<Src Hash="SHA-256:6b0452b2c27b5788a943b75381de0db5a053cc8eea9c48706100b0632a2d4a19" Timestamp="0xF22626DC472FD901">%SapSrcDir%\Jaws\gridview.jss</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &lt; 17" Dst="%JawsScriptDir%\SETTINGS\frc" Type="File">
+			<Src Hash="SHA-256:887a551eaf459ee37d371086f1b2a451cb3485c376bea447695183172c08772a" Timestamp="0x44EE24DC472FD901">%SapSrcDir%\Jaws\Settings\frc\sapfront.jbs</Src>
+			<Src Hash="SHA-256:c2ff945e82b350e106e7a5509eb716a0a0092ff2d8144894dc1ef70be0266063" Timestamp="0x818A25DC472FD901">%SapSrcDir%\Jaws\Settings\frc\sapfront.jsm</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &lt; 17" Dst="%JawsScriptDir%\SETTINGS\frc\default.jkm" Type="Ini">
+			<IniSection Name="Common Keys">
+				<IniKey Name="Control+Alt+O">SapExitToOCF</IniKey>
+			</IniSection>
+		</Action>
+		<Action Condition="%JawsVersion% &gt;= 17" Dst="%JawsScriptDir%\Scripts\frc" Type="File">
+			<Src Hash="SHA-256:1f0772ea25b68f50fc76162923122d53424ef716bf77a4378d31a110ed70cb22" Timestamp="0x248229DC472FD901">%SapSrcDir%\Jaws\sapfront.jkm</Src>
+			<Src Hash="SHA-256:cb048a6694709e2afac9e8057f48ec69fe89041f595eb3fe83e6eba51eed34f9" Timestamp="0x751E2ADC472FD901">%SapSrcDir%\Jaws\sapfront.jsd</Src>
+			<Src Hash="SHA-256:b28309780fe6c842179ebe25f54753b69d68f65da1b7c7a20f796a5b8c2c3d86" Timestamp="0x6C162EDC472FD901">%SapSrcDir%\Jaws\saputils.jsd</Src>
+			<Src Hash="SHA-256:f1da26fb9c6ff67151c27c91bfdaf05a561cb97693713955a7b63bbca0fe6556" Timestamp="0xC78F2CDC472FD901">%SapSrcDir%\Jaws\saplogon.jbs</Src>
+		</Action>
+		<Action Condition="%JawsVersion% &gt;= 17" Dst="%JawsScriptDir%\Scripts\frc" Type="File">
+			<Src Hash="SHA-256:887a551eaf459ee37d371086f1b2a451cb3485c376bea447695183172c08772a" Timestamp="0x44EE24DC472FD901">%SapSrcDir%\Jaws\Settings\frc\sapfront.jbs</Src>
+			<Src Hash="SHA-256:c2ff945e82b350e106e7a5509eb716a0a0092ff2d8144894dc1ef70be0266063" Timestamp="0x818A25DC472FD901">%SapSrcDir%\Jaws\Settings\frc\sapfront.jsm</Src>
+		</Action>
+		<Action Condition="&quot;%JawsVersion%&quot; &lt; &quot;17&quot;" RunAt="Install,Update" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+				
+				Dim objDefaultJss, strJawsVersion, szDefaultJss, szJssFile
+				Set objDefaultJss = CreateObject("NwSapSetupATLCommon.TextFileParser")
+				strJawsVersion = NwEngine.Variables.GetValue("JawsVersion")
+				If strJawsVersion < 14 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\frc\Default.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\frc\Default.jss"
+				ElseIf strJawsVersion < 17 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\frc\myExtensions.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\frc\myExtensions.jss"
+				Else
+					NwEngine.Context.Log.Write "SRX Script: No changes needed on JAWS 17 or higher"
+				End If
+
+				If strJawsVersion < 17 Then
+					szDefaultJss = NWEngine.Variables.ResolveString(szJssFile)
+					If objDefaultJss.Parse( szDefaultJss ) Then
+						NWEngine.Context.Log.Write "Script action: Open and modify the file " & Chr(34) & szDefaultJss & Chr(34)
+						If Not objDefaultJss.DoesStringExist("saputils.jsb") Then
+						   NWEngine.Context.Log.Write "Script action: Appending lines..."
+						   objDefaultJss.AppendLine "; SAP specific"
+						   objDefaultJss.AppendLine "use " & Chr(34) & "saputils.jsb" & Chr(34)
+						   objDefaultJss.AppendLine "; end SAP specific"
+						End If
+						objDefaultJss.Save( szDefaultJss )
+					Else
+						NWEngine.Context.Log.WriteWarning "Script action: Could not open the file " & Chr(34) & szDefaultJss & Chr(34)
+					End If
+				End if
+			]]></Src>
+		</Action>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling saputils.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\frc\saputils.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling sapfront.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\frc\sapfront.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling saplogon.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\frc\saplogon.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling saplgpad.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\frc\saplgpad.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling SapSettings.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\frc\SapSettings.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling NWBC.JSS" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\frc\NWBC.JSS&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction RunAt="Install,Update">
+			<Condition>%JawsVersion% &lt; 17</Condition>
+			<Exe DisplayText="Compiling gridview.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\frc\gridview.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction>
+			<Condition>%JawsVersion% &lt; 14</Condition>
+			<Exe DisplayText="Compiling Default.JSS" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\frc\Default.JSS&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<ExecuteAction>
+			<Condition>((%JawsVersion% &gt;= 14) &amp; (%JawsVersion% &lt; 17))</Condition>
+			<Exe DisplayText="Compiling myExtensions.jss" SuppressWindow="true">%JawsDestDir%\scompile.exe</Exe>
+			<Parameters>-d &quot;%JawsScriptDir%\SETTINGS\frc\myExtensions.jss&quot;</Parameters>
+			<Wait TimeOut="60000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<Action Condition="&quot;%JawsVersion%&quot; &lt; &quot;17&quot;" RunAt="UnInstall" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+				
+				Dim objDefaultJss, strJawsVersion, szDefaultJss, szJssFile
+				Set objDefaultJss = CreateObject("NwSapSetupATLCommon.TextFileParser")
+				strJawsVersion = NwEngine.Variables.GetValue("JawsVersion")
+				If strJawsVersion < 14 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\frc\Default.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\frc\Default.jss"
+				ElseIf strJawsVersion < 17 Then
+					NwEngine.Context.Log.Write "SRX Script: Adapting changes on %JawsScriptDir%\SETTINGS\frc\myExtensions.jss for JAWS " + strJawsVersion
+					szJssFile = "%JawsScriptDir%\SETTINGS\frc\myExtensions.jss"
+				Else
+					NwEngine.Context.Log.Write "No changes needed on JAWS 17 or higher"
+				End If
+				
+				If strJawsVersion < 17 Then
+					szDefaultJss = NWEngine.Variables.ResolveString(szJssFile)
+					If objDefaultJss.Parse( szDefaultJss ) Then
+						NWEngine.Context.Log.Write "Script action: Open the file " & Chr(34) & szDefaultJss & Chr(34)
+						objDefaultJss.RemoveLine "; SAP specific"
+						objDefaultJss.RemoveLine "use " & Chr(34) & "saputils.jsb" & Chr(34)
+						objDefaultJss.RemoveLine "; end SAP specific"
+						objDefaultJss.Save( szDefaultJss )
+					End If
+				End If
+			]]></Src>
+		</Action>
+		<Action Condition="&quot;%JawsVersion%&quot; &lt; &quot;17&quot;" RunAt="UnInstall" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+				
+					NwEngine.Context.Log.Write "SRX Script: Removing .jsb files created during install. (Language frc)"
+					Dim fileArray(6), strJawsVersion, scriptPath, filePath, fileItem
+					fileArray(0) = "saputils.jsb"
+					fileArray(1) = "sapfront.jsb"
+					fileArray(2) = "saplogon.jsb"
+					fileArray(3) = "saplgpad.jsb"
+					fileArray(4) = "SapSettings.jsb"
+					fileArray(5) = "NWBC.JSB"
+					fileArray(6) = "gridview.jsb"
+					
+					NwEngine.Context.Log.Write "SRX Script: Retrieving JAWS version..."
+					strJawsVersion = NwEngine.Variables.GetValue("JawsVersion")
+					If strJawsVersion < 17 Then
+						scriptPath = "%JawsScriptDir%\SETTINGS\frc\"
+						NwEngine.Context.Log.Write "SRX Script: Version " & strJawsVersion & " detected, using path " & scriptPath
+						For Each fileItem in fileArray
+							filePath = NwEngine.Variables.ResolveString(scriptPath & fileItem)
+							NwEngine.Context.Log.Write "SRX Script: Checking existence of " & filePath
+							If NwEngine.Shell.FileExist(filePath) Then
+								NwEngine.Context.Log.Write "SRX Script: File " & filePath & " exists, will be deleted."
+								If NwEngine.Shell.DeleteFile(filePath) Then
+									NwEngine.Context.Log.Write "SRX Script: Successfully deleted file " & filePath
+								Else
+									NwEngine.Context.Log.Write "SRX Script: Could not delete file " & filePath
+								End If
+							Else
+								NwEngine.Context.Log.Write "SRX Script: File " & filePath & " doesn't exist!"
+							End If
+						Next
+					Else
+						NwEngine.Context.Log.Write "SRX Script: Version 17 or higher, nothing to delete for language frc"
+					End If
+			]]></Src>
+		</Action>
+	</Component>
+	<Component BuildTime="0xE08560C75730D901" Guid="{79857FD7-9463-443E-8CD2-A1DC43E3E206}" Min_Compliant_Version="1" Name="Accessibility Settings for SAP GUI" Update="OnSameVersion" Version="2">
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\SAP\General" Type="Registry">
+			<RegValue Name="AccMode" Type="String">on</RegValue>
+			<RegValue Name="OfficeOutplaceMode" Type="String">on</RegValue>
+		</Action>
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\SAP\SAPGUI Frontend Server\Customize" Type="Registry">
+			<RegValue Name="PopupWarning" Type="DWORD">1</RegValue>
+			<RegValue Name="PopupError" Type="DWORD">1</RegValue>
+			<RegValue Name="PopupSuccess" Type="DWORD">1</RegValue>
+			<RegValue Name="UseClientAccessKeys" Type="DWORD">1</RegValue>
+		</Action>
+	</Component>
+</SapSetup>

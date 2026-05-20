@@ -1,0 +1,70 @@
+<mvc:View controllerName="code.d22.exercise16.controller.Overview"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    >
+    <Page id="page" title="{i18n>title}">
+        
+        <f:SimpleForm>
+
+            <f:content>
+
+                <core:Title text="데이터 타입 연습"/>
+                
+                <Label text="정수만 입력가능"/>
+                <Input 
+                    value="{
+                        path: 'view>/Int',
+                        type: 'sap.ui.model.type.Integer',
+                        constraints: {
+                            minimum: 10,
+                            maximum:100
+                        }
+                    }"
+                />
+                <Text text="{view>/Int}"/>
+
+                <Label text="날짜만 출력"/>
+                <Text text="{
+                    path: 'view>/Date',
+                    type: 'sap.ui.model.type.Date',
+                    formatOptions: {
+                        source: {
+                            pattern: 'yyyy-MM-dd'
+                        },
+                        pattern: 'yyyy.MM.dd(EEEE)'
+                    }  
+                }"/>
+
+                <Label text="금액만 입력가능"/>
+                <Input value="{
+                    path: 'view>/Currency/Value',
+                    type: 'sap.ui.model.type.Float'
+                    }"/>
+                <Input value="{
+                    path: 'view>/Currency/Key',
+                    type: 'sap.ui.model.type.String',
+                    constraints: {
+                        minLength: 3,
+                        maxLength: 3
+                    }
+                }"/>
+
+                <Label text="입력된 금액"/>
+                <ObjectNumber                     
+                        number="{
+                            parts: [{path: 'view>/Currency/Value'},
+                                    {path: 'view>/Currency/Key'}],
+                            type: 'sap.ui.model.type.Currency',
+                            formatOptions: {
+                                showMeasure: false    
+                            }
+                        }"
+                        unit="{view>/Currency/Key}"/>
+
+            </f:content>
+
+        </f:SimpleForm>
+    </Page>
+</mvc:View>

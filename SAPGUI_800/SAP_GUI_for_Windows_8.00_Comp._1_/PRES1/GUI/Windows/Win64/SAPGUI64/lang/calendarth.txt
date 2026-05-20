@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR TH 8600 OK 
+PREVIOUS_YEAR                   255 "ปีก่อนหน้า"
+PREVIOUS_MONTH                  255 "เดือนก่อนหน้า"
+NEXT_YEAR                       255 "ปีถัดไป"
+NEXT_MONTH                      255 "เดือนถัดไป"
+WEEK_NUMBER                     255 "เลขที่สัปดาห์"
+WEEK_NUM_STR                    255 "WN"
+CALENDAR_BTN                    255 "เปิด/ปิดเนวิเกเตอร์วันที่"
+DT_PICKER                       255 "การเลือกวันที่: เปลี่ยนวัน เดือน หรือปี"

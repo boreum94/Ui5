@@ -1,0 +1,189 @@
+#@(#)gxho.dat  	20.5.11.1	SAP	97/03/26
+/$HEAD 10              # Version 3.1H +             # State: 26.03.1997
+:NEURO 3
+:19981122
+:130203
+:19981117
+:19981125
+:
+:X          #flag: securitypopups active
+:123        #actual client
+:ABC(3)     #actual systemname
+:hostname   #actual hostname
+
+/$ROOM 1
+:E201    K             201     X 0  10 3  6 
+:E202    K             202     X 5  10 3  4
+:E203    K             203       0  16 3  6
+:E204    S WC Herren   WC H      8  10 2  4
+:E205    K             205       5  16 5  6
+:E206    S WC Damen    WC D      10 10 2  4
+:E207    K             207       10 16 3  6
+:E208    S Station     208       12 10 6  4
+:E209    K             209       13 16 3  6
+:E210    K             210       20 10 5  4
+:E211    K             211       18 16 3  6
+:E213    S Putzgeraete 213       21 16 4  3
+:EF201   F             F201      3  10 2  12
+:EF202   F             F202      5  14 20 2
+:EF203   F             F203      16 16 2  6
+:EF204   F             F204      18 10 2  4
+
+/$DOOR 1
+# agreement, if no doors are customized:
+#:xxxxxxxxxxxxxxxx0  0
+:EF201   E201    0  0   
+:EF201   E201    0  5
+:EF201   E202    2  0
+:EF201   E203    0  6
+:EF202   E202    0  0
+:EF202   E204    3  0
+:EF202   E205    2  2
+:EF202   E206    5  0
+:EF202   E207    7  2
+:EF202   E208    8  0
+:EF202   E208    12 0
+:EF202   E209    8  2
+:EF202   E210    16 0
+:EF202   E211    13 2
+:EF202   E213    16 2
+:EF202   EF202   20 2
+:EF202   EF202   13 0
+:EF203   EF203   0  0
+:EF204   E208    0  0
+:EF204   E210    2  0
+:EF204   EF204   0  4
+
+/$BEDS 1
+:1       B1      E201    0  0                   1998120124000001     
+:2       B2      E201    0  2  X                1991120224000001
+:3       B3      E201    0  4                   1998120324000001
+:4       B4      E202    1  0                   1998120424000002
+:5       B5      E202    1  2                   1998120124000002
+:6       B6      E203    0  0                   1998120124000001
+:7       B7      E203    0  2                   1998120124000001
+:8       B8      E203    0  4   XTestzwecke     1998112916300003
+:9       B9      E205    0  0                   1998120124000001
+:10      B10     E205    0  2                   1998120124000001
+:11      B11     E205    0  4                   1998120124000001
+:12      B12     E205    3  0                   1998120124000001
+:13      B13     E205    3  2                   1998120124000001
+:14      B14     E205    3  4                   1998120124000001
+:15      B15     E207    0  0                   1998120124000001
+:16      B16     E207    0  2                   1998120124000001
+:17      B17     E207    0  4                   1998120124000001
+:18      B18     E209    1  0                   1998120124000001
+:19      B19     E209    1  2                   1998120124000001
+:20      B20     E209    1  4   XTestzwecke     1998120124000003
+:10001   B21     E210    3  0                   1998120124000001
+:10002   B22     E210    3  2                   1998120124000001
+:10003   B23     E211    1  0                   1998120111300003
+:10004   B24     E211    1  2                   1998120124000001
+:10005   B25     E211    1  4                   1998120124000001
+:10007   B26     EF201   0  10                  1998120124000003
+:20001   B27     EF202   18 0   Xorg. Gruende   1998120124000003
+:20002   B28     EF203   0  4   Xsonst. Gruende 1998120124000001
+:20003   B29     EF204   0  2                   1998120124000003
+
+/$PATS 3
+:071148MEI01123411HY002               Karl                          Meier                         m19481107X XX
+::            0                  I1998112208374519981125170000BEinweisung     I1998112208374519981125170000E201
+::PRIV1BPrivatpatient/1
+:010158HUB1 123411HY02                Herrmann                      Huber                         m19580101  X
+::A1/S1       0          20003   I1998111108374519981125170000BEinweisung     I1998111108374519981125170000EF204
+::
+:131211HOP13765411CF033von            Anneliese                     Hoppenstedt                   w19111213X XXXX
+::A1/S1       1765411CF0410001   I1998111108374519981125170000BEinweisung     I1998111108374519981125170000E210
+::PRIV2BPrivatpatient/2
+:270908HOP1 765411CF04 von            Friedrich                     Hoppenstedt                   m19080927     X
+::A1/S1       2765411CF0310002   I1998111108374519981125170000BEinweisung     I1998111108374519981125170000E210
+::KASS  Kasse normal
+:121212MEI1 333311AT04                Karla                         Meier                         w19121212   X
+::A1/S1       0          2       P1998111108374519981125170000AEinweisung     I1998111108374519981125170000E201
+::KASS  Kasse normal
+:130233WOL33456711FX057Dr.            Wolfgang                      Weber                         m19330213X XXXX
+::A1/S1       0          14      I1998111108374519981125170000UEinweisung     I1998111108374519981125170000E205
+::PRIV2BPrivatpatient/2
+:060606BRA1 123411HY06                Pater                         Braun                         m19060606
+::A1/S1       0          8       I1998112208374519981125170000BEinweisung     I1998112208374519981125170000E203
+::KASS  Kasse normal
+:280860LAN0 123411HY07                Feng-Chang Mui                Lan                           m19600628
+::A1/S1       0          7       I1998111108374519981125170000BEinweisung     I1998111108374519981125170000E203
+::KASS  Kasse normal
+:111111MEI1 471111KL08                Hans                          Meier                         m19111111  X
+::A1/S1       0                  I1998112207374519981129170000AEinweisung     I1998112208374519981129170000
+::KASS  Kasse normal
+:010233GRA7 123411HY09                Carla                         Grasnatik                     w19330101X   XX
+::A1/S1       0                  I1998111708374519981125170000Vverlegt        I1998111912345519981125170000
+::PRIV1BPrivatpatient/1
+:010233SAU6 123411HY10                Hans                          Sauer                         m19330201X X X
+::A1/S1       0                  I1998110109014519981125170000EEntlassung     I1998112517000019981125170000
+::PRIV2BPrivatpatient/2
+:310853GRA2 123411HY09                Berta                         Grau                          w19530831    XX
+::A1/S1       0                  I1998112008374519981125170000EEntlassung     I1998112008374519981125170000
+::KASS  Kasse normal
+:211243SAU6 123411HY10                Heinz                         Sauer                         m19431221
+::A1/S1       0                  I1998112207374519981125170000uEinweisung     I1998112208374519981125170000
+::KASS  Kasse normal
+:060606ALT1 123411HY11                Herbert Peter                 Altheim                       m19060606X X
+::A1/S1       0          3       P1998112208374519981129170000AEinweisung     P1998112208374519981129170000E201
+::PRIV2BPrivatpatient/2
+:999999UNB1 444411HY44                                                                            u           X
+::A3/S3       0          10005   I1998112208374519981207170000BEinweisung     I1998112208374519981125170000E211
+::KASS  Kasse normal
+
+# CUA-Infos only for tests necessary, therefore commented out!
+#/$CUABAR SAPLNGRB STATGRAF 0
+#:00000000
+#:01000000
+#:99
+#:1
+#:0001
+#:~CUA-Test
+#:01000000
+#:00000000
+#:99
+#:1
+#:KEYS
+#:~Keys
+#:01000000
+#:00000000
+#:99
+#:1
+#:EXIT
+#:~End
+#:01000000
+#:00000000
+#:99
+#:9
+#:QUIT
+#:~Quit
+#:01000000
+#:00000000
+#:99
+#:9
+#:BACK
+#:~Back
+#
+#/$CUAHELP SAPLNGRB STATGRAF 0
+#:17
+#:1
+#:@3D\QShow keys@ Keys
+#:S
+#:KEYS
+#:03
+#:1
+#:Back
+#:S
+#:BACK
+#:15
+#:1
+#:End
+#:S
+#:EXIT
+#:12
+#:1
+#:Quit
+#:S
+#:QUIT
+

@@ -1,0 +1,107 @@
+$VERSION(1.0)
+;=========================================================================
+; Layout Part
+;=========================================================================
+$LAYOUT(PhSrch)
+  Begin Dialog BenutzerDialog 572, 394, "001", .evalDlg
+
+	Text 15, 10, 29, 13, "006", .tPhName
+	DropListBox 130, 8, 415, 108, DropListBox1$(), .drpPhName
+
+	Text 15, 35, 29, 13, "002", .tCat
+	DropListBox 130, 33, 415, 108, DropListBox1$(), .drpCat
+
+	Text 15, 60, 29, 13, "007", .tGroup
+	DropListBox 130, 58, 415, 108, DropListenfeld1$(), .drpGroup
+
+	Text 15, 85, 29, 13, "003", .tPhr
+	TextBox 129, 83, 417, 21, .txtPhr, 1
+
+	PushButton 216, 115, 120, 21, "004", .pbPhSrch
+
+	ListBox 15, 140, 535, 210, ListBox1$(), .lstSrchResult
+
+	TextBox 372, 357, 100, 18, .txtKeyVal
+
+	OKButton 132, 360, 120, 21
+	CancelButton 301, 360, 120, 21
+  End Dialog 
+
+;=========================================================================
+; Value Part
+;=========================================================================
+$VALUES
+
+;txtKeyVal = DISPLAYONLY
+txtKeyVal = HIDDEN
+
+drpCat   =FILLEDBY:"wwiehs","wwiPhrCatStart","wwiPhrCatNext",
+drpPhName=FILLEDBY:"wwiehs","wwiPhrNamStart","wwiPhrNamNext",
+drpGroup =FILLEDBY:"wwiehs","wwiPhrGrpStart","wwiPhrGrpNext",GetGroups
+
+lstSrchResult = FILLEDBY:"wwiehs","wwiPhraseStart","wwiPhraseNext","SearchParam"
+
+pbPhSrch = FILL : lstSrchResult
+
+lstSrchResult = DBLCLICK:OK
+
+;=========================================================================
+; Dependance Part
+;=========================================================================
+$DEPENDANCES
+
+; re-search groups on change of catalog
+drpGroup     /FILL =drpCat
+
+; clear search result on change of group or catalog
+lstSrchResult/CLEAR=drpCat,drpGroup
+
+;clear old key value on change of catalog
+txtKeyVal    /CLEAR=drpCat
+txtKeyVal    /CLEAR=lstSrchResult
+txtKeyVal    /CLEAR=txtPhr
+
+pbPhSrch/DEFBUTTON = txtPhr, drpCat, drpGroup
+
+;=========================================================================
+; Evaluation Part
+;=========================================================================
+$EVALUATION(MsgBox)
+;-------------------------------------------------------------------------
+; Evaluations are only checked if control is active
+;-------------------------------------------------------------------------
+txtPhr=NULL:081
+;lstSrchResult=NULL:221
+txtKeyVal=NULL:221
+
+;=========================================================================
+; Input Part
+;=========================================================================
+$INPUT
+;03BEZ(02-04)
+
+Start:("(":GetKatalog=drpCat(FILL),drpGroup(FILL),drpPhName(FILL),drpPhName)
+GetKatalog:("-":GetKeyVal=drpCat)
+;AG0904
+GetKeyVal:(")":FillFilter=txtKeyVal)
+FillFilter:("Rest":CheckSearch=txtPhr)
+CheckSearch:txtKeyVal()=END,DoSearch
+DoSearch:("Rest":END=lstSrchResult(FILL))
+
+;Start:("Rest":END=txtPhr,drpCat(FILL),drpGroup(FILL),drpPhName(FILL),drpPhName)
+;=========================================================================
+; Output Part
+;=========================================================================
+$OUTPUT
+lstSrchResult()=("%s(%s-%s)",drpPhName,drpCat,txtKeyVal)
+("%s(%s-%s)",drpPhName,drpCat,lstSrchResult)
+
+$OUTPUT(SearchParam)
+("%s/%s/%s/%s",drpCat,drpGroup,txtPhr,txtKeyVal)
+
+$OUTPUT(GetGroups)
+("%s",drpCat)
+
+$END
+
+

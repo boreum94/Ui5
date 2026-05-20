@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 PLUGINFRAMEWORK ZH 8400 OK 
+CP_SERVICE_MENUITEM             030 "服务"
+MENU_ITEM_EXCEL                 030 "Excel"
+MENU_ITEM_SEARCH                030 "搜索"
+MENU_ITEM_CONTEXTSEARCH         120 "搜索 SAP 帮助门户"
+MENU_ITEM_SPELLCHECK            030 "拼写检查"
+MENU_ITEM_MAIL                  020 "邮件"
+MENU_ITEM_PRINT                 020 "打印"
+CP_TREE_PRINT                   060 "打印树"
+CP_SPELLCHECK_COMPLETE          128 "拼写检查完成"

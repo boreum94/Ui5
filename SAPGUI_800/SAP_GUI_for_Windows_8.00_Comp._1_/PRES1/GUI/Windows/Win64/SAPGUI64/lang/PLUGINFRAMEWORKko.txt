@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 PLUGINFRAMEWORK KO 8500 OK 
+CP_SERVICE_MENUITEM             030 "서비스"
+MENU_ITEM_EXCEL                 030 "Excel"
+MENU_ITEM_SEARCH                030 "검색"
+MENU_ITEM_CONTEXTSEARCH         120 "SAP 도움말 포털 검색"
+MENU_ITEM_SPELLCHECK            030 "맞춤법 검사"
+MENU_ITEM_MAIL                  020 "메일"
+MENU_ITEM_PRINT                 020 "인쇄"
+CP_TREE_PRINT                   060 "인쇄 트리"
+CP_SPELLCHECK_COMPLETE          128 "맞춤법 검사 완료"

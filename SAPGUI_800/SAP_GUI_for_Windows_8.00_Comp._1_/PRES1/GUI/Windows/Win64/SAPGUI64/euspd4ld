@@ -1,0 +1,67 @@
+# @(#) $Id: //fes/800_REL/src/dwb/eusp/euspd4ld#1 $ SAP
+#23456789012345678901234567890123456789012345678901234567890123456789012345
+. 
+.                              Feldliste
+.  
+. In diesem Fenster können die Attribute sämtlicher Dynpro-Elemente 
+. angesehen und ggf. geändert werden. Die Attribute sind identisch mit 
+. denen im "Attribute"-Fenster. Hilfe-Informationen zu den einzelnen 
+. Attributen findet man im Attribute-Bild bzw. der Feldliste des 
+. alphanumerischen Screen Painters.
+.  
+. Die Feldliste ist in fünf Attributgruppen unterteilt. Die erste Gruppe 
+. enthält zwei Spalten, in denen Elementtyp und Elementname dargestellt 
+. werden. Die Darstellung des Elementtyps erfolgt durch ein Icon. 
+. Bewegt man die Maus auf ein solches Icon, wird der zugehörige 
+. Elementtyp als Text angezeigt. Ein Doppelklick auf das Icon bringt
+. das Attribute-Bild für das betreffende Feld zur Anzeige.
+. Elemente, die Behälter für andere Elemente sind, haben links neben dem
+. Icon eine +/- Markierung. Ein Doppelklick auf diese Markierung bringt
+. die enthaltenen Elemente dieses Behälters ebenfalls zur Anzeige bzw.
+. entfernt sie aus der Anzeige.
+.  
+. Die übrigen vier Attributgruppen enthalten wie im "Attribute"-Fenster 
+.        - Allgemeine Attribute
+.        - Dictionary-Attribute
+.        - Programmattribute
+.        - Anzeigeattribute.
+.  
+. Diese Gruppen werden in einem rollbaren Bereich dargestellt. Mit Hilfe 
+. der Tasten "-" bzw. "+" unterhalb der Gruppennamen lassen sich die 
+. Gruppen in der Darstellung aus- bzw. einblenden.
+.  
+. Je nach Elementtyp und momentanem Modus (Änderungs- oder Anzeigemodus) 
+. sind die Attribute änderbar oder nicht. Änderbare Texte und Ankreuz- 
+. felder haben einen weißen, nicht änderbare einen grauen Hintergrund.
+.  
+. Während das Setzen eines Ankreuzfeldes das jeweilige Attribut sofort 
+. wirksam werden läßt, müssen Texteingaben z.B. des Namens oder Element- 
+. textes durch die RETURN-Taste abgeschlossen werden.
+.  
+.  
+. Markieren und Entmarkieren
+. --------------------------
+. Ein Mausklick in eine Feldlistenzeile markiert diese Zeile und 
+. entmarkiert alle bisher markierten Zeilen. Die Markierspalte am 
+. linken Rand ermöglicht die Markierung einzelner und mehrerer Zeilen. 
+. Mehrere Zeilen können durch "modifiziertes" Anklicken einzelner 
+. Zeilen markiert werden. Dabei markiert bzw. entmarkiert
+.        - Ctrl & Maustaste eine einzelne Zeile,
+.        - Shift & Maustaste alle Zeilen zwischen der angeklickten 
+.          und der letzten markierten Zeile.
+.  
+.  
+. Eingabefokus und Tastennavigation
+. ---------------------------------
+. Der Eingabefokus wird bei Texteingabefeldern durch den blinkenden 
+. Cursor signalisiert, bei Ankreuzfeldern durch ein gepunktetes Rechteck. 
+. Man kann den Eingabefokus nicht nur durch Mausklick, sondern auch mit
+. Hilfe der Tastatur umsetzen:
+.        - "Pfeil oben" wechselt in das darüberliegende Feld, falls 
+.          dieses den Eingabefokus haben kann;
+.        - "Pfeil unten" wechselt in das darunterliegende Feld;
+.        - "Tab" wechselt in das nächste eingabebereite Feld nach rechts; 
+.        - "Shift & Tab" wechselt in das nächste eingabebereite Feld nach 
+.          links;
+.        - "Ctrl & Tab" wechselt zum Anfang der nächsten Gruppe;
+.        - "Shift & Ctrl & Tab" wechselt zum nächsten Element.

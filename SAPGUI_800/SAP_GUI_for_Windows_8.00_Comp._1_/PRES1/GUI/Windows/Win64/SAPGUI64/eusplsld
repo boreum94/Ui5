@@ -1,0 +1,329 @@
+# @(#) $Id: //fes/800_REL/src/dwb/eusp/eusplsld#1 $ SAP
+
+# TermView labels
+600 Screen Painter: Layout Editor
+601 Layout
+
+# ToolView labels
+610 Programm
+611 Dynpro-Nr.
+612 Typ
+613 Zeilen
+614 Spalten
+615 Name
+616 Text
+617 Lg
+618 H
+619 Z
+620 Sp
+
+622 aktiv / inaktiv vorhanden
+623 aktiv
+624 inaktiv
+625 gesichert
+626 ungesichert
+627 generiert
+628 (überarbeitet)
+629 modifiziert
+
+631 Customizing
+632 Prototyping
+633 Class 
+634 Class Include
+635 Anzeigen
+636 Ändern
+637 Modifizieren
+638 Aktivieren
+639 Version anzeigen
+
+# 640-669 defined below for specific elements
+
+# PaletteView labels
+670 Anlegen
+671 Reset
+
+675 Tab1
+676 Tab2
+
+#SField graph types
+680 <keiner>
+681 Textfeld
+682 Ein/Ausgabefeld
+683 Ankreuzfeld
+684 Auswahlknopf
+685 Drucktaste
+686 Rahmen
+687 Subscreen-Bereich
+688 Steploop
+689 Table Control
+690 Auswahlknopfgruppe
+691 Status-Icon
+692 Custom Control
+693 Databound Control
+694 Tabstrip
+695 Table Control (mittels Wizard)
+696 Tabstrip (mittels Wizard)
+697 Dialoghilfe-Drucktaste
+699 Ok-Code-Feld
+
+
+# AListView labels
+700 Screen Painter: Attribute
+701 Attribute
+703 Attribute
+705 Dict
+706 Programm
+707 Anzeige
+
+710 Allgemeine Attr.
+711 Elementtyp
+712 Name
+713 Text
+714 FktCode
+715 defLänge
+716 Höhe
+717 Zeile
+718 Spalte
+719 Gruppen
+720 FktTyp
+721 LoopTyp
+722 LoopAnz
+723 visLänge
+724 Icon-Name
+725 I-Lg
+726 Quick-Info
+727 Mit Icon
+728 Rollbar
+729 Dropdown
+
+730 Dictionary-Attr.
+731 Format
+732 Interner Typ
+733 Aus Dict.
+734 Modifiziert
+735 Fremdschlüsselprüfung
+736 Groß- u.Kleinschreibg.
+737 Mit Vorzeichen
+738 KonvertExit
+739 Suchhilfe
+740 Referenzfeld
+741 Parameter-Id
+742 SET Parameter
+743 GET Parameter
+744 Modifiz.
+745 Grundrichtung LTR
+746 keine BIDI-Filterung
+747 Ausgabestil
+748 keine Eingabe-Historie
+749 AM/PM-fähig
+
+750 Programm-Attr.
+751 Eingabefeld
+752 Ausgabefeld
+753 Mußeingabefeld
+754 Nur Ausgabefeld
+755 Rechtsbündig
+756 Führende Nullen
+757 *-Eingabe
+758 Ohne Rücknahme
+759 Ohne Schablone
+760 Eingabehilfe
+761 Eingabehilfetaste
+762 Werteliste
+
+#767 HRef
+767 Eingabe
+768 Control Composite
+769 Control Composer...
+
+770 Anzeige-Attr.
+771 Äquidistanzschrift
+772 Hell
+773 Unsichtbar
+774 2-dimensional
+775 als Bezeichner links
+776 als Bezeichner rechts 
+777 Doppelklick-sensitiv
+778 Properties...
+779 Events...
+
+# FListView labels
+780 Screen Painter: Elementliste
+781 Elementliste
+785 Fremdschlüssel
+786 Groß u. Klein
+
+787 Schalter
+788 SwitchId Auswahl
+789 Reaktion
+
+791 Context Menu
+792 Context Menu Form
+793 Context Menu Methode
+794 ON_CTMENU_
+795 ON_R_CLCK_
+
+798 Hilfe
+799 Schließen
+
+
+##############################
+# 640 - 679
+# Labels for specific elements
+# - Table Control attributes
+641 Tabellentyp
+642 Erfassung
+643 Auswahl
+644 konfig'bar
+645 Resizing
+646 vertikal
+647 horizontal
+648 Trennlinien
+#650 Markierbarkeit
+651 Zeilenmark.
+652 ohne
+653 einfach
+654 mehrfach
+655 Spaltenmark.
+#656 Zeilenmarkierspalte
+656 mit MarkSp.
+657 Fixe Spalten
+658 mit SpÜb.
+660 mit Titel
+
+# - TabSTrip
+661 Tab-Reiter
+662 oben
+663 unten
+#664 links
+#665 rechts
+
+666 Rollbar
+
+668 Zeilen min.
+669 Spalten min.
+##############################
+
+# CListView & DListView labels
+800 Screen Painter: Dict/Programmfelder
+801 DictFelder
+802 Screen Painter: Klassen-/Interface-Attribute
+803 Klassenattr.
+
+810 Tabellen-/Feldname
+811 Holen aus Dict
+812 Holen aus Programm
+813 Klasse/Interface
+814 Holen aus Klassenbibliothek
+815 Holen aus ???
+816 Klassen-/Attributname
+817 RFC-Destination
+
+820 Feldname
+821 Format Länge
+822 Tabellenname
+823 Attributname
+824 Klassenname
+825 Art
+826 Sicht
+827 RO
+828 Typisierung
+829 Bezugsfeld
+
+830 Beschreibung
+831 Ein/Ausgabefeld
+832 Kurzer Text
+833 Mittlerer Text
+834 Langer Text
+835 Überschrift
+
+840 Ein/Ausgabefeld
+841 Ja
+842 Nein
+
+850 Text
+851 kurz
+852 mittel
+853 lang
+854 Überschrift
+855 ohne
+856 Übers.
+
+860 Übernehmen als
+861 Text
+862 AnkrF
+863 AuswK
+
+864 Einschalten
+865 Ausschalten
+866 Nicht umwandeln
+
+891 Übernehmen
+898 Hilfe
+899 Schließen
+
+
+# Dialog labels
+900 Screen Painter: Frage
+901 Ja
+902 Nein
+903 Abbrechen
+
+910 Screen Painter
+911 Weiter
+912 Screen Painter: Fehlernachricht
+913 Screen Painter: Information
+914 Screen Painter: Warnung
+
+920 Screen Painter: allgemeine Hilfe - Layout
+921 ScrP Hilfe
+922 Screen Painter: allgemeine Hilfe - Attribute
+923 Screen Painter: allgemeine Hilfe - Elementliste
+924 Screen Painter: allgemeine Hilfe - Dict/Programmfelder
+929 Schließen
+
+930 Properties
+931 Property
+932 Kommentar
+933 Eingabe
+934 Format
+935 Feldname
+936 Lg.
+937 Dict.-Typ
+
+940 Events
+941 Event
+942 Kommentar
+943 FktCode
+944 FktTyp
+
+
+950 Screen Painter: Schriftgrößen
+951 ScrP Fonts
+952 ScrP Font
+953 Dynpro Font
+954 Groß
+955 Mittel
+956 Klein
+958 Übernehmen
+959 Schließen
+
+960 Screen Painter: Icons
+961 ScrP Icons
+962 Screen Painter: Icons für Textfeld
+963 Screen Painter: Icons für Drucktaste
+964 Screen Painter: Icons für Ankreuzfeld/Auswahlknopf
+965 Screen Painter: Icons für Status-Icon
+967 Icon-Auswahl
+968 Übernehmen
+969 Schließen
+970 Suchen
+971 Suche nach Zeichenkette:
+972 Groß/Kleinschreibung 
+
+980 Databound Control - Auswahl
+981 Control Name
+982 Kommentar
+988 Darstellung mit Icons
+989 Darstellung als Liste
+

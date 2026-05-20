@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 SAPGUISCRIPTING LV 1904 OK 
+SCRIPTING_SCRIPTISOPENING       150 "Skripts atver savienojumu ar sistçmu: %s"
+SCRIPTING_SCRIPTNOTINST         150 "Skriptçðanas atbalsts nav instalçts"
+SCRIPTING_SCRIPTNOTENABLED      150 "Skriptçðanas atbalstu ir atspçjojis lietotâjs"
+<#007>SCRIPTING_OK_BTN          016 "Labi"
+<#007>SCRIPTING_CANCEL_BTN      016 "Atcelt"
+SCRIPTING_DO_NOT_SHOW_AGAIN     150 "Nerâdît ðo uznirstoðo logu, kad skripts atver savienojumu"
+<#007>SCRIPTING_ALLOW_BTN       016 "Atïaut"
+<#007>SCRIPTING_DENY_BTN        016 "Atteikt"
+<#007>SCRIPTING_HELP_BTN        016 "Palîdzîba"

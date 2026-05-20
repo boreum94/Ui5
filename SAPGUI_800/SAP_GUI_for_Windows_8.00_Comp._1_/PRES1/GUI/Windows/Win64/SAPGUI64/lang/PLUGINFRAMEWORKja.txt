@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 PLUGINFRAMEWORK JA 8000 OK 
+CP_SERVICE_MENUITEM             030 "サービス"
+MENU_ITEM_EXCEL                 030 "Excel"
+MENU_ITEM_SEARCH                030 "検索"
+MENU_ITEM_CONTEXTSEARCH         120 "SAP ヘルプポータル検索"
+MENU_ITEM_SPELLCHECK            030 "スペルチェック"
+MENU_ITEM_MAIL                  020 "メール"
+MENU_ITEM_PRINT                 020 "印刷"
+CP_TREE_PRINT                   060 "ツリー印刷"
+CP_SPELLCHECK_COMPLETE          128 "スペルチェック完了"

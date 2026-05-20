@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR ZH 8400 OK 
+PREVIOUS_YEAR                   255 "上一年"
+PREVIOUS_MONTH                  255 "上个月"
+NEXT_YEAR                       255 "下一年"
+NEXT_MONTH                      255 "下个月"
+WEEK_NUMBER                     255 "周号"
+WEEK_NUM_STR                    255 "周号"
+CALENDAR_BTN                    255 "打开/关闭日期导航器"
+DT_PICKER                       255 "日期选择：更改日、月或年"

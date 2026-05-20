@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 SEARCHHELP HE 1800 OK 
+SEARCH_HELP_FIND                080 "חפש (Enter)"
+SEARCH_HELP_CANCEL              080 "בטל (F12)"
+F4HELP_BUTTON_TOOLTIP           050 "שדה בחירה (ערכי הגבלה)"
+SEARCH_HELP_SORTA               050 "(לחץ כדי למיין בסדר עולה)"
+SEARCH_HELP_SORTD               050 "(לחץ כדי למיין בסדר יורד)"
+<#001>FEW_MENU_NEWMODE          032 "פתח חלון עבודה חדש"
+<#001>FEW_MENU_STOPMODE         032 "הפסק טרנזקציה"

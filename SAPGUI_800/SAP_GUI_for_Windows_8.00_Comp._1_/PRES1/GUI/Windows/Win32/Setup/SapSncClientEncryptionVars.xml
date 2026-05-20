@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SapSetup Context="Variables" Version="200.3" ConnectedId="{79A6F4C3-DB6B-4DF8-92A0-50B775326A91}">
+	<Variable Name="varSapSncClientEncryptionDestDir" Persistent="true" DisplayInSapAdmin="true">
+		<Value>%ProgramFiles%\SAP\SNCEncryption</Value>
+	</Variable>
+	<Variable Name="varSapSncClientEncryptionSrcDir" Persistent="false" DisplayInSapAdmin="false">
+		<Value>SncClientEncryption</Value>
+	</Variable>
+	<Variable Name="varSapSncClientEncryptionVersion" Persistent="false" DisplayInSapAdmin="false">
+		<Value>2.0</Value>
+	</Variable>
+    <Variable Name="SCE_SNC_LIB_Exists" Persistent="true">
+        <Value>UNDEFINED</Value>
+        <Value Script="true"><![CDATA[
+				NwEngine.Context.Log.Write "SCE Script: Checking if environment variable SNC_LIB already exists"
+				If NwEngine.Shell.RegValueExist("HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Session Manager\Environment\SNC_LIB") Then
+					szSNCLIB = NwEngine.Shell.GetRegValue("HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Session Manager\Environment\SNC_LIB")
+					NwEngine.Context.Log.Write "SCE Script: Variable SNC_LIB exists and its value is " & szSNCLIB
+					If szSNCLIB <> "" Then
+						NwEngine.Variables.AppendDefaultValue "SCE_SNC_LIB_Exists", szSNCLIB
+					End If
+				Else
+					NwEngine.Context.Log.Write "SCE Script: Variable SNC_LIB not found, will be inserted by SapSetup"
+				End if
+			]]></Value>
+    </Variable>
+	<Variable Name="varSapSncClientEncryptionARPVersion" Persistent="false" DisplayInSapAdmin="false">
+		<Value>2.0.0.0</Value>
+		<Value Script="true">
+			<![CDATA[
+				Option Explicit
+				
+				Dim path : path = NwEngine.Variables.ResolveString("%SapSrcDir%\%varSapSncClientEncryptionSrcDir%\cfg\sce.version")
+				NwEngine.Context.Log.Write "SCE Script: Retrieving version from " & path & " for Uninstall entry."
+				If NwEngine.Shell.FileExist(path) Then
+					Dim fso
+					Dim file
+					Dim content
+					
+					Set fso = CreateObject("Scripting.FileSystemObject")
+					Set file = fso.OpenTextFile(path, 1)
+					content = file.ReadAll
+					Dim version
+					version = Trim(Replace(content, vbCRLF, ""))
+					NwEngine.Context.Log.Write "SCE Script: Extracted version is: " & version
+					NwEngine.Variables.AppendDefaultValue "varSapSncClientEncryptionARPVersion", version
+				Else
+					NwEngine.Context.Log.Write "SCE Script: Version file " & path & " doesn't exist."
+				End If
+			]]>
+		</Value>
+	</Variable>
+</SapSetup>

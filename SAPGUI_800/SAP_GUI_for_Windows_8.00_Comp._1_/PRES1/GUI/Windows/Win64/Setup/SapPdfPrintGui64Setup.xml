@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapPdfPrintGui64WkstaUI.xml">
+	<SapSetupProduct BuildTime="0x907D26B05B30D901" CmdLine="PdfPrintGui64" Description="SapPdfPrintGui64ProductDescription" Guid="{1460620D-C8BC-44c2-86ED-000000000050}" Name="SapPdfPrintGui64ProductName" PatchLevel="0" Version="800.1956">
+		<Succeeds Name="PdfPrintGui old GUID" ProductGuid="{2089C399-EBD5-4988-8753-1F8085806274}"/>
+		<IncludesProductPart Comment="SAP PdfPrint GUI 64" ProductGuid="{9953B1EA-E66C-4143-9AE6-294EFAC0CCB0}" Visible="false"/>
+		<RequiresProductPart OverrideName="Requires SAP GUI" ProductGuid="{209FBC3B-1F7B-4796-AFE0-4034F9999F71}"/>
+	</SapSetupProduct>
+	<SapSetupProductPart BuildTime="0x907D26B05B30D901" Guid="{9953B1EA-E66C-4143-9AE6-294EFAC0CCB0}" Name="SAP PdfPrint GUI 64" Version="800.1">
+		<RequiresComponent ComponentGuid="{A02E0520-EE77-43B9-816C-C5655E7883F8}"/>
+		<RequiresComponent ComponentGuid="{74716643-0F56-4C22-A1DC-618CC0935FF2}"/>
+	</SapSetupProductPart>
+</SapSetup>

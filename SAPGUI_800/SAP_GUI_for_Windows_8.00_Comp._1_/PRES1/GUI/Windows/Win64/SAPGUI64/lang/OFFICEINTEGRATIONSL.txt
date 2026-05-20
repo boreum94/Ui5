@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 OFFICEINTEGRATION SL 1404 OK 
+OI_LOADING_CUSTOM_MENU          080 "Nalaganje menija po meri. Prosim, poèakajte..."
+OI_FILE                         060 "Datoteka"
+OI_SAVE                         060 "Shranjevanje"
+OI_SAVE_AS                      060 "Shranjevanje kot"
+OI_PRINT_PREVIEW                080 "Predogled izpisa"
+OI_PROPERTIES                   060 "Lastnosti"
+OI_PRINT                        060 "Izpis"

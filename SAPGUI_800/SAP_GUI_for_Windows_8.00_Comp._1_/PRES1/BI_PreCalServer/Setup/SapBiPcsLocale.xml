@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Locale" Version="800.1" ConnectedId="{EB645960-713B-425C-A926-61EB2A14EFD4}">
+    <!-- FolderPathPage -->
+    <String name="SapBiPcsProductName">
+        <En>SAP BW Precalculation Service</En>
+        <De>SAP BW Precalculation Service</De>
+    </String>
+
+    <String name="SapBiPcsProductDescription">
+        <En>Service to precalculate workbooks in SAP BW Broadcaster.</En>
+        <De>Dienst zum Vorberechnen von Arbeitsmappen im SAP BW Broadcaster.</De>
+    </String>
+
+    <String name="SapBiPcsDestDirPrompt">
+        <En>Choose the path to the SAP BW Precalculation Service installation directory</En>
+        <De>Wählen Sie das SAP BW Precalculation Service Zielverzeichnis aus</De>
+    </String>
+
+    <String name="DscrSapBiPcsDestDir">
+        <En>SAP BW Precalculation Service installation directory</En>
+        <De>SAP BW Precalculation Service Installationsverzeichnis</De>
+    </String>
+
+    <String name="strSapBIPcsOlderVersionInstalled">
+        <En>The old version of SAP BW Precalculation Service must be uninstalled.</En>
+        <De>Die alte Version des SAP BW Precalculation Service muss deinstalliert werden.</De>
+    </String>
+	<String Name="strSapBIPcsBEXNotFound">
+		<En>SAP Business Explorer 7.50 must be installed first.</En>
+		<De>SAP Business Explorer 7.50 muss zuerst installiert werden.</De>
+	</String>
+	<String Name="strSapBIPcsBEXVersionTooLow">
+		<En>SAP Business Explorer 7.50 PL210 or higher could not be found.</En>
+		<De>SAP Business Explorer 7.50 PL210 oder höher konnte nicht gefunden werden.</De>
+	</String>
+</SapSetup>

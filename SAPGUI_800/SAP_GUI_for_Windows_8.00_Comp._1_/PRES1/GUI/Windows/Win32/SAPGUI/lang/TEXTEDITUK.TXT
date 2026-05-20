@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 TEXTEDIT UK 1504 OK 
+TEXTEDIT_HE_LANG_BUTTON         255 "Перемкнути розкладку клавіатури на іврит"
+TEXTEDIT_EN_LANG_BUTTON         255 "Перемкнути розкладку клавіатури на англійську"
+TEXTEDIT_DISABLE_LANG_BUTTON    255 "Деактивувати кнопку мови"
+TEXTEDIT_ENABLE_LANG_BUTTON     255 "Активувати кнопку мови"
+TEXTEDIT_PROMPT_TEXT            255 "Введіть текст тут..."

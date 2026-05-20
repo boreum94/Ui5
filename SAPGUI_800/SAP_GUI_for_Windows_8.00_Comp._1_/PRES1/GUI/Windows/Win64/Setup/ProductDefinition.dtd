@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- include the Product Common DTD to define required UI elements -->
+<!ENTITY % ProductCommonDTD SYSTEM "ProductCommon.dtd">
+%ProductCommonDTD;
+
+<!ELEMENT SapSetup ((Product?, Component*)|Package+)>
+
+<!ATTLIST SapSetup
+        Context CDATA #REQUIRED
+        WkstaDb CDATA #IMPLIED
+>
+<!ELEMENT Product ((Prerequisite|Succeeds|UI|Contains|Requires|Excludes|AttachedProduct)*)>
+<!ATTLIST Product
+        Name CDATA #REQUIRED
+        Description CDATA #IMPLIED
+        Guid CDATA #REQUIRED
+        WkstaDb CDATA #IMPLIED
+        Condition CDATA #IMPLIED
+        ConditionFailureText CDATA #IMPLIED
+        Visible (true | TRUE | false | FALSE) #IMPLIED
+        ProdVersion CDATA #REQUIRED
+        PatchLevel CDATA #IMPLIED
+        CmdLine CDATA #REQUIRED
+        Selected (true | TRUE | false | FALSE) #IMPLIED
+        MasterNode (true | TRUE | false | FALSE) #IMPLIED
+        UIOnly (true | TRUE | false | FALSE) #IMPLIED
+        Arch (X64|X86Only) #IMPLIED
+>
+<!ELEMENT Excludes EMPTY>
+<!ATTLIST Excludes
+        Guid CDATA #REQUIRED
+        Name CDATA #IMPLIED
+>
+<!ELEMENT Contains (Contains* | Requires* | Excludes*)*>
+<!ATTLIST Contains
+        Guid CDATA #REQUIRED
+        Name CDATA #IMPLIED
+        Description CDATA #IMPLIED
+        Condition CDATA #IMPLIED
+        ConditionFailureText CDATA #IMPLIED
+        Selected (true | TRUE | false | FALSE) #IMPLIED
+        UIOnly (true | TRUE | false | FALSE) #IMPLIED
+        Visible (true | TRUE | false | FALSE) #IMPLIED
+>
+
+<!ELEMENT Package (Event*,Variable*,Product+)>
+<!ATTLIST Package
+        Name CDATA #REQUIRED
+        Description CDATA #IMPLIED
+        Guid CDATA #REQUIRED
+        CmdLine CDATA #REQUIRED
+        Selected (true | TRUE | false | FALSE) #IMPLIED
+        Version CDATA #REQUIRED
+        Condition CDATA #IMPLIED
+        ConditionFailureText CDATA #IMPLIED
+>
+<!ELEMENT Variable (Value)>
+<!ATTLIST Variable
+        Name CDATA #REQUIRED
+        Description CDATA #IMPLIED
+>
+<!ELEMENT Value (#PCDATA)>

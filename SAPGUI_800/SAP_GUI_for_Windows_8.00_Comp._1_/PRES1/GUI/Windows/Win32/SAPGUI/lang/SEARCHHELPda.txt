@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 SEARCHHELP DA 1100 OK 
+SEARCH_HELP_FIND                080 "Søg (input)"
+SEARCH_HELP_CANCEL              080 "Afbryd (F12)"
+F4HELP_BUTTON_TOOLTIP           050 "Selektionsfelt (grænseværdier)"
+SEARCH_HELP_SORTA               050 "(Klik for at sortere stigende)"
+SEARCH_HELP_SORTD               050 "(Klik for at sortere faldende)"
+<#001>FEW_MENU_NEWMODE          032 "Åbn session"
+<#001>FEW_MENU_STOPMODE         032 "Afbryd transaktion"

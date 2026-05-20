@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 OFFICEINTEGRATION SH 1404 OK 
+OI_LOADING_CUSTOM_MENU          080 "Uèitavanje korisnièki definisanog menija. Saèekajte..."
+OI_FILE                         060 "Fajl"
+OI_SAVE                         060 "Saèuvaj"
+OI_SAVE_AS                      060 "Saèuvaj kao"
+OI_PRINT_PREVIEW                080 "Izgled pre štampanja"
+OI_PROPERTIES                   060 "Svojstva"
+OI_PRINT                        060 "Štampaj"

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapConsolex64WkstaUI.xml">
+	<SapSetupProduct BuildTime="0xB099F6AF4A01D601" CmdLine="SAPConsolex64" Description="SapConsolex64ProductDescription" Guid="{763249D7-0CC4-40ab-8147-F6DED531CA0D}" Name="SapConsolex64ProductName" Version="2097">
+		<Prerequisite>
+			<Condition>&quot;%WOW64MODE%&quot; = &quot;true&quot;</Condition>
+			<FailureText>Kein 64 Bit Betriebssystem!</FailureText>
+		</Prerequisite>
+		<UI>
+			<Page Type="FolderPath">
+				<PageVariable>SapConsolex64DestDir</PageVariable>
+				<WindowCaption>StrWindowCaption</WindowCaption>
+				<Title>SapConsolex64ProductName</Title>
+				<SubTitle>SapConsolex64DestDirPrompt</SubTitle>
+				<BackBtnText>StrBtnBack</BackBtnText>
+				<NextBtnText>StrBtnNext</NextBtnText>
+				<CancelBtnText>StrBtnCancel</CancelBtnText>
+			</Page>
+		</UI>
+		<IncludesProductPart Comment="SapConsoleProductName" ProductGuid="{915403A8-663E-4f1b-8D7A-8F57B8EC7C18}" Visible="false"/>
+	</SapSetupProduct>
+	<SapSetupProductPart BuildTime="0xB099F6AF4A01D601" Guid="{915403A8-663E-4F1B-8D7A-8F57B8EC7C18}" Name="SAP Console x64" Version="578">
+		<RequiresComponent ComponentGuid="{C293FC4A-741B-4C17-9FF6-90CED945B19D}"/>
+		<RequiresComponent ComponentGuid="{B4208E63-9209-40BE-B72F-162BC56730E0}"/>
+		<RequiresComponent ComponentGuid="{4C032825-C60C-49E9-83E4-FF29E337D90B}"/>
+		<RequiresComponent ComponentGuid="{1B313A73-4288-4D5D-AB98-D081FD67B7A3}"/>
+	</SapSetupProductPart>
+</SapSetup>

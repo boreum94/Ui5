@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapVC10RtX64Wksta.xml">
+	<Product BuildTime="0xA02FAFDBF1F1D301" CmdLine="$VC10RT64" Guid="{05A3F893-D45A-4699-A676-856D2DD247BF}" Name="$VC10RT64" ProdVersion="9" Visible="false">
+		<Contains Guid="{C293FC4A-741B-4c17-9FF6-90CED945B19D}" Name="$VC10RT64"/>
+	</Product>
+	<Component Arch="X64" BuildTime="0xA02FAFDBF1F1D301" Condition="&quot;%WOW64MODE%&quot; = &quot;TRUE&quot;" Guid="{C293FC4A-741B-4C17-9FF6-90CED945B19D}" Min_Compliant_Version="1" Name="$VC10RT64" Order="PreInstall" Size="20066" Version="9">
+		<ExecuteAction Persistent="true" RunAt="Install,Update">
+			<Exe DisplayText="Installing Visual C++ 2010 (x64) Redistributable" FileVersion="10.0.40219.325" Hash="SHA-256:cc7ec044218c72a9a15fca2363baed8fc51095ee3b2a7593476771f9eba3d223" SuppressWindow="true" Timestamp="0x7BECE3B5EEF1D301">%SapSrcDir%\System\VC10\vc10redist_x64.exe</Exe>
+			<Parameters>/log &quot;%SAPSETUPDIR%\LOGs&quot; /q /norestart</Parameters>
+			<Wait TimeOut="240000">((%ErrorLevel% = 0) | (%ErrorLevel% = 1638) | (%ErrorLevel% = 3010))</Wait>
+		</ExecuteAction>
+		<Action Condition="1=0" Dst="%TEMP%" Type="File">
+			<Src FileVersion="10.0.40219.325" Hash="SHA-256:cc7ec044218c72a9a15fca2363baed8fc51095ee3b2a7593476771f9eba3d223" Timestamp="0x7BECE3B5EEF1D301">%SapSrcDir%\System\VC10\vc10redist_x64.exe</Src>
+		</Action>
+	</Component>
+</SapSetup>

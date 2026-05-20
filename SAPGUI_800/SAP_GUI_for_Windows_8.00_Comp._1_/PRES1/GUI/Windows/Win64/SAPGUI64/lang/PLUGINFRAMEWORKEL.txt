@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 PLUGINFRAMEWORK EL 1704 OK 
+CP_SERVICE_MENUITEM             030 "Υπηρεσίες"
+MENU_ITEM_EXCEL                 030 "Excel"
+MENU_ITEM_SEARCH                030 "Αναζήτ"
+MENU_ITEM_CONTEXTSEARCH         120 "Αναζήτηση Πύλης Βοήθειας SAP"
+MENU_ITEM_SPELLCHECK            030 "Ελεγχος Ορθογραφίας"
+MENU_ITEM_MAIL                  020 "Mail"
+MENU_ITEM_PRINT                 020 "Εκτύπωση"
+CP_TREE_PRINT                   060 "Δέντρο Εκτύπωσης"
+CP_SPELLCHECK_COMPLETE          128 "Ολοκληρωμένος έλεγχος ορθογραφίας"

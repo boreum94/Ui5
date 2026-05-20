@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 SAPGUISCRIPTING SH 1404 OK 
+SCRIPTING_SCRIPTISOPENING       150 "Script otvara vezu sa sistemom: %s"
+SCRIPTING_SCRIPTNOTINST         150 "Podrška za skriptovanje nije instalirana"
+SCRIPTING_SCRIPTNOTENABLED      150 "Podršku za skriptovanje je deaktivirao korisnik"
+<#007>SCRIPTING_OK_BTN          016 "OK"
+<#007>SCRIPTING_CANCEL_BTN      016 "Odustani"
+SCRIPTING_DO_NOT_SHOW_AGAIN     150 "Nemoj pokazivati ovaj popup kada skript otvara vezu"
+<#007>SCRIPTING_ALLOW_BTN       016 "Dozvoli"
+<#007>SCRIPTING_DENY_BTN        016 "Odbij"
+<#007>SCRIPTING_HELP_BTN        016 "Pomoæ"

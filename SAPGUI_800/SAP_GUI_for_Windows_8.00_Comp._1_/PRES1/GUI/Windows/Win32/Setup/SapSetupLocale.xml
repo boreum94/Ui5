@@ -1,0 +1,1187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE SapSetup SYSTEM "../Setup/ProductLocales.dtd">
+<SapSetup Context="Locale" Version="900.13">
+  <!-- Wiz Ui General -->
+  <String Name="StrWindowCaption">
+    <En>SAP Front End Installer</En>
+    <De>SAP Front-End Installer</De>
+  </String>
+  <String Name="StrBtnNext">
+    <En><![CDATA[&Next]]></En>
+    <De><![CDATA[&Weiter]]></De>
+  </String>
+  <String Name="StrBtnCheck">
+    <En><![CDATA[Chec&k]]></En>
+    <De><![CDATA[&Prüfen]]></De>
+  </String>
+  <String Name="StrBtnVerify">
+    <En><![CDATA[&Verify]]></En>
+    <De><![CDATA[&Verifizieren]]></De>
+  </String>
+  <String Name="StrBtnBack">
+    <En><![CDATA[&Back]]></En>
+    <De><![CDATA[Zurück]]></De>
+  </String>
+  <String Name="StrBtnRecalculate">
+    <En><![CDATA[&Recalculate]]></En>
+    <De><![CDATA[Neu Berechnen]]></De>
+  </String>
+  <String Name="StrBtnFinish">
+    <En>Done</En>
+    <De>Fertig</De>
+  </String>
+  <String Name="StrBtnBrowse">
+    <En>Browse</En>
+    <De>Suchen</De>
+  </String>
+  <String Name="StrBtnCancel">
+    <En>Cancel</En>
+    <De>Abbrechen</De>
+  </String>
+  <String Name="StrBtnClose">
+    <En>Close</En>
+    <De>Beenden</De>
+  </String>
+  <String Name="StrBtnShare">
+    <En>Share</En>
+    <De>Freigeben</De>
+  </String>
+  <String Name="StrBtnContinue">
+    <En>Continue</En>
+    <De>Fortfahren</De>
+  </String>
+  <String Name="StrBtnIgnore">
+    <En><![CDATA[Ignore]]></En>
+    <De><![CDATA[Ignorieren]]></De>
+  </String>
+  <String Name="StrVerificationSuccess">
+    <En>Verification successful. Choose "Next".</En>
+    <De>Verifikation erfolgreich. Wählen Sie "Weiter".</De>
+  </String>
+  <String Name="StrVerificationFailRecommendReboot">
+    <En>A reboot is pending for the specified computer. It is strongly recommended that you first reboot the relevant computer before continuing.</En>
+    <De>Der angegebene Computer muss neu gestartet werden. Führen Sie dies zuvor aus.</De>
+  </String>
+  <String Name="StrVerificationFailInvalidPath">
+    <En>The specified path is not valid or does not exist.</En>
+    <De>Der angegebene Pfad ist ungültig oder nicht vorhanden.</De>
+  </String>
+  <String Name="StrVerificationFailAccessDenied">
+    <En>Access to the specified path is denied.</En>
+    <De>Zugriff auf den angegebenen Pfad ist nicht möglich.</De>
+  </String>
+  <String Name="StrVerificationFailSharedDenied">
+    <En>Access to the specified UNC path is denied.</En>
+    <De>Zugriff auf den angegeben UNC-Pfad ist nicht möglich.</De>
+  </String>
+  <String Name="StrVerificationFailNotAServerPath">
+    <En>The specified path is not a valid installation server.</En>
+    <De>Der angegebene Pfad ist kein Installationsserver.</De>
+  </String>
+  <String Name="StrVerificationUserNameEmpty">
+    <En>Enter the user name.</En>
+    <De>Benutzernamen eingeben.</De>
+  </String>
+  <String Name="StrVerificationPasswordEmpty">
+    <En>Enter password</En>
+    <De>Passwort eingeben</De>
+  </String>
+  <String Name="StrVerificationPasswordsDiffer">
+    <En>The passwords do not match.</En>
+    <De>Die eingegebenen Passwörter sind verschieden.</De>
+  </String>
+  <String Name="CancelConfirmationMsg">
+    <En>Do you really want to abort the installation process?</En>
+    <De>Möchten Sie die Installation wirklich abbrechen?</De>
+  </String>
+  <String Name="StrPackageIsIncomplete">
+    <En><![CDATA[<font color="Red">This package cannot be installed as it is incomplete on the installation source.</font>]]></En>
+    <De><![CDATA[<font color="Red">Dieses Paket kann nicht installiert werden, da es nicht vollständig in der Installationsquelle vorhanden ist.</font>]]></De>
+  </String>
+  <String Name="StrPackageIsDisabled">
+    <En><![CDATA[<font color="Red">Not all package prerequisits are fulfilled.</font>]]></En>
+    <De><![CDATA[<font color="Red">Nicht alle Voraussetzungen für dieses Paket sind erfüllt.</font>]]></De>
+  </String>
+  <String Name="StrRequiredNodeDeselected">
+    <En><![CDATA[<font color="Red">Product %PRODUCTNODE% is no longer required and will be uninstalled.</font>]]></En>
+    <De><![CDATA[<font color="Red">Produkt %PRODUCTNODE% wird nicht mehr benötigt und wird deinstalliert.</font>]]></De>
+  </String>
+  <String Name="StrExcludedNodeDeselected">
+    <En><![CDATA[<font color="Red">Product %PRODUCTNODE% is incompatible with a product that is being updated and will be uninstalled.</font>]]></En>
+    <De><![CDATA[<font color="Red">Produkt %PRODUCTNODE% ist inkompatibel mit einem neueren Produkt und wird deinstalliert.</font>]]></De>
+  </String>
+  <String Name="StrExcludedNodeCantBeDeselected">
+    <En><![CDATA[<font color="Red">Product %PRODUCTNODE% is incompatible with a product that is being updated but it cannot be uninstalled.</font>]]></En>
+    <De><![CDATA[<font color="Red">Produkt %PRODUCTNODE% ist inkompatibel mit einem neueren Produkt, kann aber nicht deinstalliert werden.</font>]]></De>
+  </String>
+  <String Name="StrExcludedNodeCantBeUpdated">
+    <En><![CDATA[<font color="Red">The new version of product %PRODUCTNODE% is incompatible with an installed product. Update will be skipped.</font>]]></En>
+    <De><![CDATA[<font color="Red">Die neue Version von Produkt %PRODUCTNODE% ist inkompatibel mit einem installierten Produkt. Die neue Version wird nicht installiert.</font>]]></De>
+  </String>
+
+  <String Name="RebootBalloonTitle">
+    <En>Confirm Reboot</En>
+    <De>Neustart bestätigen</De>
+  </String>
+  <String Name="RebootBalloonText">
+    <En>Click this button to reboot your computer now.</En>
+    <De>Klicken Sie hier, um den Computer neu zu starten.</De>
+  </String>
+  <String Name="RebootMachineBalloonText">
+    <En>Click this button to reboot %MACHINE% now.</En>
+    <De>Klicken Sie hier, um den Computer %MACHINE% neu zu starten.</De>
+  </String>
+  <String Name="StrReboot">
+    <En>Reboot</En>
+    <De>Neustart</De>
+  </String>
+  <String Name="StrRebootMachine">
+    <En>Reboot %MACHINE%</En>
+    <De>Neustart von %MACHINE%</De>
+  </String>
+  <String Name="StrBtnReboot">
+    <En>Reboot Now</En>
+    <De>Neustart</De>
+  </String>
+  <String Name="RebootMessage">
+    <En>System reboot for completion of an installation procedure initiated.</En>
+    <De>System wird neu gestartet, um eine Installation fertig zu stellen.</De>
+  </String>
+
+
+  <!--Message Page -->
+  <String Name="StrMessageTitle">
+    <En>Information</En>
+    <De>Information</De>
+  </String>
+
+  <String Name="StrMessageDescription">
+    <En>Error message</En>
+    <De>Fehlermeldung</De>
+  </String>
+  <String Name="strOverrideConditionFailureOnLSH">
+    <En><![CDATA[<a style="color:red;">Item cannot be installed because of failing prerequisites. Contact your administrator.</a>]]></En>
+    <De><![CDATA[<a style="color:red;">Diese Komponente kann wegen fehlender Installationsvoraussetzung nicht installiert werden. Kontaktieren Sie ihren Administrator.</a>]]></De>
+  </String>
+  <String Name="strLinkClickToCopy">
+    <En>Copy to clipboard</En>
+    <De>In die Zwischenablage kopieren</De>
+  </String>
+  <String Name="StrMsgProductInvalid">
+    <En>The specified product is not available.</En>
+    <De>Das angegebene Produkt ist nicht verfügbar.</De>
+  </String>
+
+  <!--Welcome Page -->
+
+  <String Name="StrWelcomeTitle">
+    <En>Welcome to the SAP Front End Installation Wizard</En>
+    <De>Willkommen zum SAP Front-End Installationsassistenten</De>
+  </String>
+  <String Name="StrWelcomeSubTitle">
+    <En>Copyright 2002-2011 SAP AG. All Rights Reserved</En>
+    <De>Copyright 2002-2011 SAP AG. Alle Rechte vorbehalten</De>
+  </String>
+  <String Name="StrWelcomeDescription">
+    <En>This wizard helps you to configure your SAP Front End installation. Close all SAP applications and press 'Next' to continue.</En>
+    <De>Dieser Assistent führt Sie durch die Konfiguration ihrer SAP Front-End Installation. Schließen Sie alle SAP Anwendungen und wählen Sie 'Weiter', um fortzufahren.</De>
+  </String>
+  <String Name="StrWelcomeUninstallDescription">
+    <En>will be uninstalled completely. Close all SAP applications. Press 'Next' to start the uninstallation process.</En>
+    <De>wird vollständig deinstalliert. Schließen Sie alle SAP Anwendungen. Wählen Sie 'Weiter', um die Deinstallation zu starten.</De>
+  </String>
+  <String Name="StrWelcomeFailedUninstall">
+    <En>The command line parameter /uninstall must always be accompanied by /product or /package.</En>
+    <De>Der Kommandozeilenparameter /uninstall muss immer zusammen mit /product oder /package angegeben werden.</De>
+  </String>
+  <String Name="StrWelcomePageFailedRepair">
+    <En>The repair process cannot be carried out.</En>
+    <De>Die Reparatur kann nicht durchgeführt werden.</De>
+  </String>
+  <String Name="StrWelcomePageUninstallRequiredProduct">
+    <En>The specified product can't be uninstalled as it is required by other products:</En>
+    <De>Das angegebene Produkt kann nicht deinstalliert werden. Es wird von anderen Produkten gebraucht:</De>
+  </String>
+  <String Name="StrWelcomeFailedProductDescription">
+    <En>The specified product is not available:</En>
+    <De>Das angegebene Produkt ist nicht vorhanden:</De>
+  </String>
+  <String Name="StrWelcomeFailedPackageDescription">
+    <En>The specified package is not available:</En>
+    <De>Das angegebene Paket ist nicht vorhanden:</De>
+  </String>
+  <String Name="StrRebootRecommended">
+    <En>A reboot is pending for your system. It is recommended to reboot before continuing.</En>
+    <De>Ein Neustart für Ihr System steht aus. Sie sollten den Computer neu starten, bevor Sie fortfahren.</De>
+  </String>
+  <String Name="StrRebootOnFinishRecommended">
+    <En>Reboot your computer now to complete the process.</En>
+    <De>Starten Sie den Computer neu, um die Konfiguration abzuschließen.</De>
+  </String>
+  <String Name="StrRebootOtherMachineRecommended">
+    <En>Reboot the computer %MACHINE% now to complete the process.</En>
+    <De>Starten Sie den Computer %MACHINE% neu, um die Konfiguration abzuschließen.</De>
+  </String>
+
+  <!--Welcome Page : Modifications for local Patching -->
+  <String Name="PatchWelcomeTitle">
+    <En>Welcome to the SAP Front End patch wizard</En>
+    <De>Willkommen zum SAP Front-End Patch Assistenten</De>
+  </String>
+
+  <String Name="PatchWelcomeDescription">
+    <En>This SAP Front End patch is ready to install. Close all SAP applications and press 'Next' to continue.</En>
+    <De>Dieser SAP Front-End Patch ist bereit zur Installation. Schließen Sie alle SAP Anwendungen und wählen Sie 'Weiter'.</De>
+  </String>
+
+  <String Name="PatchWelcomeMessage">
+    <En>This SAP Front End patch cannot be applied. Either the installed components are already on the same patchlevel or the components to be patched are not installed.</En>
+    <De>Dieser SAP Front-End Patch kann nicht installiert werden. Entweder sind die installierten Komponenten bereits auf diesem Patchlevel oder die zu aktualisierenden Komponenten sind nicht installiert.</De>
+  </String>
+
+  <String Name="PatchWorkstationBaseVersion">
+    <En>This SAP Front End patch requires a higher base version of the installed products. Update to a higher version of the product before applying this patch.</En>
+    <De>Dieser SAP Front-End Patch benötigt eine höhere Version der installierten Produkte. Sie müssen zunächst eine höhere Version des Produktes installieren, bevor dieser Patch installiert werden kann.</De>
+  </String>
+  <String Name="RepairFailedServerTooOld">
+    <En>Some products on the workstation have a higher version than on the installation server.</En>
+    <De>Einige Produkte auf diesem Rechner haben eine höhere Version als auf dem Installationsserver.</De>
+  </String>
+  <String Name="RepairFailedPatchMode">
+    <En>The installation source contains a patch, not an installation.</En>
+    <De>Die Installationsquelle enthält einen Patch, keine Installation.</De>
+  </String>
+
+  <!-- Tree Page -->
+  <String Name="StrTreeTitle">
+    <En>SAP Product Selection</En>
+    <De>SAP Produktauswahl</De>
+  </String>
+  <String Name="StrTreeTitlePackageView">
+    <En>SAP Package Selection</En>
+    <De>SAP Paketauswahl</De>
+  </String>
+  <String Name="TreePageDescription">
+    <En>Select to install or deselect to uninstall.</En>
+    <De>Wählen Sie Komponenten zur Installation oder deselektieren Sie Komponenten zur Deinstallation.</De>
+  </String>
+  <String Name="TreePageSelectionStatusUnchanged">
+    <En>The selection status has not been changed.</En>
+    <De>Die Auswahl der Komponenten hat sich nicht geändert.</De>
+  </String>
+  <String Name="SwitchToPackages">
+    <En>Predefined packages</En>
+    <De>Vordefinierte Pakete</De>
+  </String>
+  <String Name="SwitchToComponents">
+    <En>All available products</En>
+    <De>Alle verfügbare Produkte</De>
+  </String>
+  <String Name="StrTargetDrive">
+    <En><![CDATA[On target drive:&nbsp;]]></En>
+    <De><![CDATA[Auf dem Ziellaufwerk:&nbsp;]]></De>
+  </String>
+  <String Name="StrSystemDrive">
+    <En><![CDATA[On system drive:&nbsp;]]></En>
+    <De><![CDATA[Auf dem Systemlaufwerk:&nbsp;]]></De>
+  </String>
+  <String Name="StrTotalSpace">
+    <En><![CDATA[Total:&nbsp;]]></En>
+    <De><![CDATA[Gesamt:&nbsp;]]></De>
+  </String>
+  <String Name="StrFreed">
+    <En><![CDATA[&nbsp;(freed)]]></En>
+    <De><![CDATA[&nbsp;(werden frei)]]></De>
+  </String>
+  <String Name="StrRequired">
+    <En><![CDATA[&nbsp;(required)]]></En>
+    <De><![CDATA[&nbsp;(benötigt)]]></De>
+  </String>
+  <String Name="StrNoChange">
+    <En>no change</En>
+    <De>unverändert</De>
+  </String>
+  <String Name="StrDiskSpaceConsumption">
+    <En>Disk space usage</En>
+    <De>Speicherplatzverbrauch</De>
+  </String>
+
+  <String Name="UpdateIsAvailableTitle">
+    <En>This installation updates parts of your installed components.</En>
+    <De>Diese Installation enthält ein Update für bereits installierte Komponenten.</De>
+  </String>
+
+  <String Name="UpdateIsAvailableContent">
+    <En>Choose 'Next' to update your computer.</En>
+    <De>Wählen Sie 'Weiter', um Ihren Computer zu aktualisieren.</De>
+  </String>
+
+  <String Name="StrForceBalloonTitle">
+    <En>Update in force mode</En>
+    <De>Update im Force-Modus</De>
+  </String>
+
+  <String Name="StrForceBalloonText">
+    <En>Override the existing installation.</En>
+    <De>Bestehende Installation überschreiben.</De>
+  </String>
+
+  <String Name="StrHideSelectionField">
+    <En>Force mode: Only reinstallation permitted</En>
+    <De>Force-Modus: Ausschließlich Neuinstallation möglich</De>
+  </String>
+
+  <String Name="StrLinkSelectAll">
+    <En>Select all</En>
+    <De>Alles auswählen</De>
+  </String>
+
+  <String Name="StrLinkDeSelectAll">
+    <En>Deselect all</En>
+    <De>Auswahl aufheben</De>
+  </String>
+
+  <String Name="StrLinkUndoChanges">
+    <En>Undo changes</En>
+    <De>Zurücksetzen</De>
+  </String>
+
+  <String Name="StrStatusComponentIsInstalled">
+    <En><![CDATA[<font color="blue">This item is already installed</font>]]></En>
+    <De><![CDATA[<font color="blue">Diese Komponente ist bereits installiert</font>]]></De>
+  </String>
+  <String Name="StrStatusComponentToBeInstalled">
+    <En><![CDATA[<font color="green">This item will be installed</font>]]></En>
+    <De><![CDATA[<font color="green">Diese Komponente wird installiert</font>]]></De>
+  </String>
+  <String Name="StrStatusComponentToBeUpdated">
+    <En><![CDATA[<font color="green">This item will be updated</font>]]></En>
+    <De><![CDATA[<font color="green">Diese Komponente wird aktualisiert</font>]]></De>
+  </String>
+  <String Name="StrStatusComponentToBeUninstalled">
+    <En><![CDATA[<font color="red">This item will be uninstalled</font>]]></En>
+    <De><![CDATA[<font color="red">Diese Komponente wird deinstalliert</font>]]></De>
+  </String>
+
+
+  <!-- FolderPathPage -->
+  <String Name="StrSelectTargetDir">
+    <En>Select the target directory</En>
+    <De>Wählen Sie das Zielverzeichnis</De>
+  </String>
+
+  <!-- Progress Page -->
+  <String Name="ProgressPageTitleInstall">
+    <En>Installing</En>
+    <De>Installation von</De>
+  </String>
+  <String Name="ProgressPageTitleUnInstall">
+    <En>Uninstalling</En>
+    <De>Deinstallation von</De>
+  </String>
+  <String Name="ProgressPageTitleUninstallUnusedItems">
+    <En>Cleaning up</En>
+    <De>Deinstallation von</De>
+  </String>
+  <String Name="ProgressPageTitleUpdate">
+    <En>Updating</En>
+    <De>Aktualisierung von</De>
+  </String>
+  <String Name="ProgressPageTitleRepair">
+    <En>Repairing</En>
+    <De>Wiederherstellen von</De>
+  </String>
+  <String Name="ProgressPageTitlePatch">
+    <En>Patching</En>
+    <De>Aktualisierung von</De>
+  </String>
+  <String Name="ProgressPageTitleCheck">
+    <En>Checking</En>
+    <De>Überprüfung von</De>
+  </String>
+  <String Name="ProgressPageTitleKeepItems">
+    <En>Scanning installation data</En>
+    <De>Einlesen von Installationsdaten</De>
+  </String>
+  <String Name="ProgressPageTitleCreateMetadata">
+    <En>Calculating file metadata</En>
+    <De>Aktualisieren der Metadaten</De>
+  </String>
+
+  <String Name="ProgressPageDescriptionInstall">
+    <En>Please wait while your component selection is being processed. This may take a few minutes.</En>
+    <De>Bitte haben Sie ein paar Minuten Geduld. Ihre Komponentenauswahl wird bearbeitet.</De>
+  </String>
+  <String Name="ProgressPageDescriptionAWUSIsRunning">
+    <En>A Software update is in progress. Do not start any applications.</En>
+    <De>Ihre Software wird gerade aktualisiert. Starten Sie keine Anwendungen.</De>
+  </String>
+
+
+  <!--Finish Page -->
+
+  <String Name="FinishPageDescriptionReboot">
+    <En>The installation finished successfully. Choose 'Finish' to reboot your computer in order to use the installed applications.</En>
+    <De>Die Installation wurde erfolgreich beendet. Wählen Sie 'Beenden' um den Computer neu zu starten, damit die installierten Anwendungen verwendet werden können.</De>
+  </String>
+  <String Name="FinishPageDescriptionDefault">
+    <En>The process was completed successfully.</En>
+    <De>Der Vorgang wurde erfolgreich abgeschlossen.</De>
+  </String>
+  <String Name="FinishPageDescriptionSuccess">
+    <En>Your computer was configured successfully.</En>
+    <De>Ihr Computer wurde erfolgreich konfiguriert.</De>
+  </String>
+  <String Name="FinishPageDescriptionFailed">
+    <En>The process has finished with errors.</En>
+    <De>Der Vorgang wurde mit Fehlern abgeschlossen.</De>
+  </String>
+
+  <String Name="StrFailedConditionDotNetv11">
+    <En><![CDATA[<a style="COLOR:red">Install </a><a style="text-decoration:underline" target="blank" href="http://www.microsoft.com/downloads/details.aspx?familyid=262D25E3-F589-4842-8157-034D1E7CF3A3">Microsoft .NET Framework 1.1</a><a style="COLOR:red"> first and then restart this installation.</a>]]></En>
+    <De><![CDATA[<a style="COLOR:red">Installieren Sie zunächst </a><a target="blank" href="http://www.microsoft.com/downloads/details.aspx?familyid=262D25E3-F589-4842-8157-034D1E7CF3A3">Microsoft .NET Framework 1.1</a><a style="COLOR:red"> und starten Sie diese Installation erneut.</a>]]></De>
+  </String>
+
+  <String Name="StrFailedConditionDotNetv11SP1">
+    <En><![CDATA[<a style="COLOR:red">Install </a><a style="text-decoration:underline" target="blank" href="http://www.microsoft.com/downloads/details.aspx?familyid=262D25E3-F589-4842-8157-034D1E7CF3A3">Microsoft .NET Framework 1.1</a><a style="COLOR:red"> with the <a style="text-decoration:underline" target="blank" href="http://www.microsoft.com/downloads/details.aspx?FamilyID=a8f5654f-088e-40b2-bbdb-a83353618b38">Service Pack 1</a><a style="COLOR:red"> first and then restart this installation.</a>]]></En>
+    <De><![CDATA[<a style="COLOR:red">Installieren Sie zunächst </a><a style="text-decoration:underline" target="blank" href="http://www.microsoft.com/downloads/details.aspx?familyid=262D25E3-F589-4842-8157-034D1E7CF3A3">Microsoft .NET Framework 1.1</a><a style="COLOR:red"> mit dem <a style="text-decoration:underline" target="blank" href="http://www.microsoft.com/downloads/details.aspx?FamilyID=a8f5654f-088e-40b2-bbdb-a83353618b38">Service Pack 1</a><a style="COLOR:red"> und starten Sie diese Installation erneut.</a>]]></De>
+  </String>
+
+  <String Name="StrFailedConditionDotNetv20">
+    <En><![CDATA[<a style="COLOR:red">Install </a><a style="text-decoration:underline" target="blank" href="http://www.microsoft.com/en-us/download/details.aspx?id=1639">Microsoft .NET Framework 2.0</a><a style="COLOR:red"> first and then restart this installation.</a>]]></En>
+    <De><![CDATA[<a style="COLOR:red">Installieren Sie zunächst </a><a style="text-decoration:underline" target="blank" href="http://www.microsoft.com/en-us/download/details.aspx?id=1639">Microsoft .NET Framework 2.0</a><a style="COLOR:red"> und starten Sie diese Installation erneut.</a>]]></De>
+  </String>
+
+  <String Name="StrFailedConditionDotNetv30">
+    <En><![CDATA[<a style="COLOR:red">Install the </a><a style="text-decoration:underline" target="blank" href="http://www.microsoft.com/downloads/details.aspx?familyid=10CC340B-F857-4A14-83F5-25634C3BF043">Microsoft .NET Framework 3.0</a><a style="COLOR:red"> first and then restart this installation.</a>]]></En>
+    <De><![CDATA[<a style="COLOR:red">Installieren Sie zunächst </a><a target="blank" href="http://www.microsoft.com/downloads/details.aspx?familyid=10CC340B-F857-4A14-83F5-25634C3BF043">Microsoft .NET Framework 3.0</a><a style="COLOR:red"> und starten Sie diese SAP Installation erneut.</a>]]></De>
+  </String>
+
+  <String Name="StrFailedConditionJDK">
+    <En><![CDATA[<a style="COLOR:red">Install the </a><a style="text-decoration:underline" target="blank" href="http://java.sun.com/javase/downloads/index.jsp">Java SE Development Kit (JDK)</a><a style="COLOR:red"> first and then restart this installation.</a>]]></En>
+    <De><![CDATA[<a style="COLOR:red">Installieren Sie zunächst </a><a target="blank" href="http://java.sun.com/javase/downloads/index.jsp">Java SE Development Kit (JDK)</a><a style="COLOR:red"> und starten Sie diese Installation erneut.</a>]]></De>
+  </String>
+
+  <String Name="StrRunVcRedistMsi">
+    <En>Installing Microsoft Visual C++ 2005 Runtime Libraries</En>
+    <De>Installation der Microsoft Visual C++ 2005 Laufzeitbibliotheken</De>
+  </String>
+  
+  <String Name="StrRunVc9RedistMsi">
+    <En>Installing Microsoft Visual C++ 2008 SP1 Runtime Libraries</En>
+    <De>Installation der Microsoft Visual C++ 2008 SP 1 Laufzeitbibliotheken</De>
+  </String>
+
+  <String Name="StrRunMsXml4Msi">
+    <En>Installing MSXML 4.0 Libraries</En>
+    <De>Installation der MSXML 4.0 Bibliotheken</De>
+  </String>
+
+  <String Name="StrModifying">
+    <En>Modifying</En>
+    <De>Modifizieren von</De>
+  </String>
+
+  <String Name="StrExecutingScript">
+    <En>Executing script action.</En>
+    <De>Script-Aktion wird durchgeführt.</De>
+  </String>
+
+  <!-- CreateServer Pages -->
+  <String Name="CreateServerCaption">
+    <En>SAP Installation Server Creation</En>
+    <De>SAP Installationsserver einrichten</De>
+  </String>
+
+  <String Name="CreateServerWelcomePageDescription">
+    <En>This wizard helps you to create a SAP Installation Server on a network share or on this computer.</En>
+    <De>Mit diesem Assistenten können Sie einen SAP Installationsserver auf einem Netzwerkpfad oder auf Ihrer Festplatte einrichten.</De>
+  </String>
+
+  <String Name="CreateServerProgressPageDescription">
+    <En>Please wait while your installation server is created.</En>
+    <De>Ihr Installationsserver wird angelegt. Bitte warten Sie einen Augenblick.</De>
+  </String>
+
+  <String Name="CreateServerFinishPageSuccess">
+    <En>Your installation server was created. Choose 'Next' to import SAP Products into your installation server.</En>
+    <De>Der Installationsserver wurde angelegt. Wählen Sie 'Weiter', um SAP Produkte in Ihren Installationsserver zu importieren.</De>
+  </String>
+
+  <String Name="CreateServerFinishPageSuccessNoServerUpdate">
+    <En>Your installation server was created.</En>
+    <De>Der Installationsserver wurde angelegt.</De>
+  </String>
+
+  <String Name="CreateServerFinishPageFailed">
+    <En>The creation of your installation server has completed with errors.</En>
+    <De>Das Anlegen Ihres Installationsservers wurde mit Fehlern abgeschlossen.</De>
+  </String>
+
+  <String Name="CreateServerFolderPagePrompt">
+    <En>Browse to a shared network directory or to an empty directory on your hard drive that can be shared.</En>
+    <De>Suchen Sie nach einem Netzwerkverzeichnis oder nach einem Verzeichnis auf Ihrer Festplatte, welches Sie freigeben können.</De>
+  </String>
+
+  <String Name="ClickBrowseToNavigate">
+    <En>Choose 'Browse' to navigate</En>
+    <De>Wählen Sie 'Suchen' um zu navigieren</De>
+  </String>
+
+
+  <!-- ServerUpdate Pages -->
+  <String Name="ServerUpdateCaption">
+    <En>SAP Installation Server Update</En>
+    <De>SAP Installationsserver aktualisieren</De>
+  </String>
+
+  <String Name="ServerUpdatePageTitle">
+    <En>SAP Installation Server Update</En>
+    <De>SAP Installationsserver aktualisieren</De>
+  </String>
+
+  <String Name="ServerUpdateWelcomePageDescription">
+    <En>This wizard helps you to update an installation server.</En>
+    <De>Mit diesem Assistenten können Sie einen Installationsserver aktualisieren.</De>
+  </String>
+
+  <String Name="ServerUpdateFolderPagePrompt">
+    <En>Navigate to the installation server you want to update.</En>
+    <De>Wählen Sie das Verzeichnis des Installationsservers, den Sie aktualisieren wollen.</De>
+  </String>
+
+  <String Name="ServerUpdateFolderPagePromptImport">
+    <En>Navigate to the installation server you want to import from.</En>
+    <De>Wählen Sie das Verzeichnis des Installationsservers, aus dem Sie importieren wollen.</De>
+  </String>
+
+  <String Name="ServerUpdateProgressPageDescription">
+    <En>Updating your installation server. This might take a few minutes.</En>
+    <De>Der Installationsserver wird aktualisiert. Bitte haben Sie einen Moment Geduld.</De>
+  </String>
+
+  <String Name="ServerUpdateFinishPageSuccess">
+    <En>Your installation server was updated.</En>
+    <De>Ihr Installationsserver wurde aktualisiert.</De>
+  </String>
+
+  <String Name="ServerUpdateFinishPageFailed">
+    <En>The update of your installation server has completed with errors. </En>
+    <De>Die Aktualisierung Ihres Installationsserver wurde mit Fehlern abgeschlossen. </De>
+  </String>
+
+  <String Name="StartSapAdmin">
+    <En>Start the SAP Installation Server Administration Tool</En>
+    <De>SAP Installationsserver Administration Tool starten</De>
+  </String>
+
+  <!-- SapSetupAdmin Pages -->
+  <String Name="SapAdminPageCaption">
+    <En>SAP Installation Server Administration</En>
+    <De>SAP Installationsserver Administration</De>
+  </String>
+
+  <!-- SapSetupAdmin Product Import Pages -->
+  <String Name="ProductImportPageTitle">
+    <En>Product Import Wizard</En>
+    <De>Assistent für Produktimporte</De>
+  </String>
+
+  <String Name="ProductImportWelcomePageDescription">
+    <En>This wizard helps you to import SAP products from an installation source.</En>
+    <De>Mit diesem Assistenten können Sie SAP-Produkte aus einer Installationsquelle importieren.</De>
+  </String>
+
+  <String Name="ProductImportFolderPagePrompt">
+    <En>Browse to the setup directory of a SAP installation source (for example, a CD, another installation server, or an unpacked single file installer) or accept the proposed directory.</En>
+    <De>Wählen Sie das Setup-Verzeichnis einer SAP-Installationsquelle (beispielsweise eine CD, ein anderer Installationsserver oder ein ausgepacktes Single-File-Installer) oder übernehmen Sie das vorgeschlagene Verzeichnis.</De>
+  </String>
+
+  <String Name="ProductImportFolderPageNoNewProduct">
+    <En><![CDATA[<Font Color="Red">The selected installation source does not contain new products to be imported.</Font>]]></En>
+    <De><![CDATA[<Font Color="Red">Die gewählte Installationsquelle enthält keine neuen Produkte zum Importieren.</Font>]]></De>
+  </String>
+  
+  <String Name="ProductImportProgressPageDescription">
+    <En>Importing new products into your installation server. This may take a few minutes.</En>
+    <De>Neue Produkte werden in Ihren Installationsserver importiert. Dies kann einige Minuten dauern.</De>
+  </String>
+
+  <String Name="ProductImportFinishPageSuccess">
+    <En>Product import completed.</En>
+    <De>Produktimport abgeschlossen.</De>
+  </String>
+
+  <String Name="ProductImportFinishPageFailed">
+    <En>Product import has completed with errors.</En>
+    <De>Producktimport wurde mit Fehlern abgeschlossen.</De>
+  </String>
+
+  <String Name="ProductImportFinishPageDescriptionSelfUpdate">
+    <En><![CDATA[The remote installation source contains a newer version of the SAPSetup server tools. NwSapSetupAdmin will update itself in a first step. Ensure that the installation server is not in use. <br/><br/> Choose 'Next' to start the update of the server tools. NwSapSetupAdmin will close and restart. Repeat the import step after the restart.]]></En>
+    <De><![CDATA[Die Installationsquelle enthält eine neuere Version der SAPSetup Server Tools. NwSapSetupAdmin spielt zunächst eine neuere Version der Server Tools auf den Installationserver ein. Stellen Sie sicher, dass der Installationserver nicht in Gebrauch ist.<br/><br/>Wählen Sie 'Weiter' um die Aktualisierung zu starten. Danach beendet sich NwSapSetupAdmin und startet erneut. Wiederholen Sie danach den Importschritt.]]></De>
+  </String>
+
+  <!-- SapSetupAdmin Product Export Pages -->
+  <String Name="ProductExportPageTitle">
+    <En>Product Export Wizard</En>
+    <De>Assistent für Produktexporte</De>
+  </String>
+
+  <String Name="ProductExportWelcomePageDescription">
+    <En>This wizard helps you to copy SAP products from this installation server to another.</En>
+    <De>Mit diesem Assistenten können Sie SAP-Produkte von diesem Installationsserver in einen anderen kopieren.</De>
+  </String>
+
+  <String Name="ProductExportFolderPagePrompt">
+    <En>Browse to the setup directory of the installation server to which you want to export the products.</En>
+    <De>Wählen Sie das Setup-Verzeichnis des Installationsservers, in den sie die Produkte exportieren möchten.</De>
+  </String>
+
+  <String Name="ProductExportProgressPageDescription">
+    <En>Please wait for the product export to complete. This might take a few minutes.</En>
+    <De>Bitte warten Sie, bis der Produktexport abgeschlossen ist. Dies kann einige Minuten dauern.</De>
+  </String>
+
+  <String Name="ProductExportFinishPageSuccess">
+    <En>The products from your installation server have been exported.</En>
+    <De>Die Produkte aus Ihrem Installationsserver wurden exportiert.</De>
+  </String>
+
+  <String Name="ProductExportFinishPageFailed">
+    <En>The product export has completed with errors.</En>
+    <De>Der Produktexport wurde mit Fehlern abgeschlossen.</De>
+  </String>
+
+  <String Name="ProductExportFinishPageDescriptionSelfUpdate">
+    <En><![CDATA[The export location contains a newer version of the SAPSetup server tools. NwSapSetupAdmin will update itself in a first step. Ensure that the installation server is not in use. <br/><br/> Choose 'Next' to start the update of the server tools. NwSapSetupAdmin will close and restart. Repeat the export step after the restart.]]></En>
+    <De><![CDATA[Das Exportzielverzeichnis enthält eine neuere Version der SAPSetup Server Tools. NwSapSetupAdmin spielt zunächst eine neuere Version der Server Tools auf den Installationserver ein. Stellen Sie sicher, dass der Installationserver nicht in Gebrauch ist.<br/><br/>Wählen Sie 'Weiter' um die Aktualisierung zu starten. Danach beendet sich NwSapSetupAdmin und startet erneut. Wiederholen Sie danach den Exportschritt.]]></De>
+  </String>
+
+  <String Name="ProductExportFolderPageNoNewProduct">
+    <En><![CDATA[<Font Color="Red">The installation server does not contain products that are not available in the export location.</Font>]]></En>
+    <De><![CDATA[<Font Color="Red">Der Installationsserver enthält keine Produkte, die noch nicht im Zielverzeichnis vorhanden sind.</Font>]]></De>
+  </String>
+
+  <!-- SapSetupAdmin Server Check Pages -->
+  <String Name="ServerCheckPageTitle">
+    <En>Installation Server Check</En>
+    <De>Überprüfung des Installationsservers</De>
+  </String>
+
+  <String Name="ServerCheckWelcomePageDescription">
+    <En><![CDATA[The check utility verifies that the files belonging to the products available on this installation server are available. <br/> <br/>Choose 'Check' to check this installation server.]]></En>
+    <De><![CDATA[Das Server Check Tool überprüft das Vorhandensein der Dateien aller Produkte, die auf diesem Installationsserver verfügbar sind.<br/>Wählen Sie 'Prüfen', um den Installationsserver zu überprüfen.]]></De>
+  </String>
+
+  <String Name="ServerCheckProgressPageDescription">
+    <En>Checking for missing and modified files. This process may take some time.</En>
+    <De>Überprüfung wird ausgeführt. Dies kann einen Moment dauern.</De>
+  </String>
+
+  <String Name="ServerCheckFinishPageSuccess">
+    <En>The check process has completed. All required files are available on this installation server and have not been modified.</En>
+    <De>Die Überprüfung des Installationsservers wurde beendet. Sämtliche benötigten Dateien sind vorhanden.</De>
+  </String>
+
+  <String Name="ServerCheckFinishPageFailed1">
+    <En><![CDATA[Server check has detected ]]></En>
+    <De><![CDATA[Die Überprüfung des Installationsservers hat ]]></De>
+  </String>
+
+  <String Name="ServerCheckFinishPageFailed2">
+    <En><![CDATA[ error(s) on the installation server.<br/>]]></En>
+    <De><![CDATA[ Fehler auf dem Server festgestellt.<br/>]]></De>
+  </String>
+
+  <!-- SapSetupAdmin Metadata Update Pages -->
+  <String Name="UpdateMetadataPageTitle">
+    <En>Recalculating file metadata</En>
+    <De>Aktualisierung der Metadaten</De>
+  </String>
+
+  <String Name="UpdateMetadataWelcomePageDescription">
+    <En><![CDATA[If the check utility has indicated that there are files with invalid file metadata on this installation server, you can recalculate the metadata with this utility.<br/><br/>Choose 'Recalculate' to start this process.]]></En>
+    <De><![CDATA[Falls das Server Check Tool ungültige Metadaten gefunden hat, können Sie die Metadaten mit diesem Tool neu berechnen lassen<br/>Wählen Sie 'Neu Berchnen', um den Prozess zu staten.]]></De>
+  </String>
+
+  <String Name="UpdateMetadataProgressPageDescription">
+    <En>Recalculating metadata. This process may take some time.</En>
+    <De>Aktualisierung der Metadaten. Dies kann einen Moment dauern.</De>
+  </String>
+
+  <String Name="UpdateMetadataFinishPageSuccess">
+    <En>Recalculation of metadata was successful.</En>
+    <De>Die Metadaten wurden erfolgreich aktualisiert.</De>
+  </String>
+
+  <String Name="UpdateMetadataFinishPageFailed">
+    <En>Recalculation of metadata has failed.</En>
+    <De>Bei der Aktualisierung der Metadaten sind Fehler aufgetreten.</De>
+  </String>
+
+  <!-- SapSetupAdmin Product Deletion Pages -->
+  <String Name="ProductDeletionPageTitle">
+    <En>Product Deletion Wizard</En>
+    <De>Assistent zum Entfernen von Produkten</De>
+  </String>
+
+  <String Name="ProductDeletionWelcomePageDescription1">
+    <En>Choose 'Next' to delete the product '</En>
+    <De>Wählen Sie 'Weiter', um das Produkt '</De>
+  </String>
+
+  <String Name="ProductDeletionWelcomePageDescription2">
+    <En>' from your installation server.</En>
+    <De>' von Ihrem Installationsserver zu entfernen.</De>
+  </String>
+
+  <String Name="ProductDeletionProgressPageDescription1">
+    <En>Please wait while the product '</En>
+    <De>Bitte warten Sie, bis das Produkt '</De>
+  </String>
+
+  <String Name="ProductDeletionProgressPageDescription2">
+    <En>' is deleted from your installation server.</En>
+    <De>' von Ihrem Installationsserver entfernt wurde.</De>
+  </String>
+
+  <String Name="ProductDeletionFinishPageSuccess">
+    <En>The product was deleted.</En>
+    <De>Das Produkt wurde entfernt.</De>
+  </String>
+
+  <String Name="ProductDeletionFinishPageFailed">
+    <En>Product deletion completed with errors. </En>
+    <De>Das Entfernen des Produkts wurde mit Fehlern abgeschlossen. </De>
+  </String>
+
+  <!-- Create NewPackagePage Strings -->
+  <String Name="NewPackagePageTitle">
+    <En>Package Creation Wizard</En>
+    <De>Assistent für Paketerstellung</De>
+  </String>
+
+  <String Name="NewPackageWelcomePageDescription">
+    <En>This wizard helps you to create a new installation package from a list of SAP products. Choose 'Next' to make your selection.</En>
+    <De>Mit diesem Assistenten können Sie ein neues Installationspaket aus einer Liste von SAP-Produkten zusammenstellen. Wählen Sie 'Weiter', um Ihre Auswahl zu treffen.</De>
+  </String>
+
+  <String Name="NewPackageTreePageDescription">
+    <En>Select the checkboxes of the products or subcomponents you want to include in your package.</En>
+    <De>Aktivieren Sie die Ankreuzfelder der gewünschten Produkte oder Subkomponenten für Ihr Paket.</De>
+  </String>
+
+  <String Name="NewPackageInputStringPagePrompt">
+    <En>Enter a display name for the new package. The package name will be displayed on the package selection page.</En>
+    <De>Geben Sie einen Namen für das neue Paket ein. Der Paketname wird in der Paketauswahl angezeigt.</De>
+  </String>
+
+  <String Name="NewPackageCmdLineInputStringPagePrompt">
+    <En>Enter a command line name for the new package. This cannot be modified subsequently. The command line name must be unique because it can be used in conjunction with the parameter '/package' for silent installations.</En>
+    <De>Geben Sie einen Kommandozeilennamen für das neue Paket ein. Dieser kann nicht nachträglich geändert werden. Der Name muss eindeutig sein, da er zusammen mit dem Parameter /package für Installationen im Hintergrund verwendet werden kann.</De>
+  </String>
+
+  <String Name="NewPackageCmdLineNotUnique">
+    <En>A package with this command line name already exists. Create a new package and choose another command line name.</En>
+    <De>Es gibt bereits ein anderes Paket mit diesem Kommandozeilennamen. Wählen Sie für das neue Paket einen anderen Kommandozeilennamen.</De>
+  </String>
+
+  <String Name="NewPackageFinishPageSuccess">
+    <En><![CDATA[The new package was created.<br/><br/>The installation parameters for this package can be customized on the 'Configure Packages' tab.]]></En>
+    <De><![CDATA[Das neue Paket wurde erfolgreich angelegt.<br/><br/>Sie können die Installationsparameter des Pakets unter 'Configure Packages' anpassen.]]></De>
+  </String>
+
+  <String Name="NewPackageFinishPageFailed">
+    <En>Creation of the new package was completed with errors. </En>
+    <De>Das Anlegen des neuen Pakets wurde mit Fehlern abgeschlossen. </De>
+  </String>
+
+  <!-- SapSetupAdmin Patch Server Pages -->
+  <String Name="PatchServerPageTitle">
+    <En>Patch Installation Wizard</En>
+    <De>Assistent für Patch-Installation</De>
+  </String>
+
+  <String Name="PatchServerWelcomePageDescription">
+    <En>This wizard helps you to install a patch on your installation server.</En>
+    <De>Mit diesem Assistenten können Sie einen Patch auf Ihrem Installationsserver installieren.</De>
+  </String>
+
+  <String Name="PatchServerFolderPagePrompt">
+    <En>Choose the directory that contains the patch.</En>
+    <De>Wählen Sie das Verzeichnis, welches den Patch enthält.</De>
+  </String>
+
+  <String Name="PatchServerPatchExeIsInvalid">
+    <En><![CDATA[<a style="color:red;font-weight:bold">Choose a valid patch file supplied by SAP.</a>]]></En>
+    <De><![CDATA[<a style="color:red;font-weight:bold">Wählen Sie eine gültige Patch-Datei, die von SAP zur Verfügung gestellt wurde.</a>]]></De>
+  </String>
+
+  <String Name="PatchServerProgressPageDescription">
+    <En>Validating the patch...</En>
+    <De>Patch-Datei wird überprüft...</De>
+  </String>
+
+  <String Name="PatchServerFinishPageDescriptionSuccess">
+    <En><![CDATA[The patch is valid. Ensure that the installation server is not in use. <br/><br/>Choose 'Next' to apply the patch. NwSapSetupAdmin will close and restart.]]></En>
+    <De><![CDATA[Die Datei enthält einen gültigen Patch. Stellen Sie sicher, dass der Installationserver nicht in Gebrauch ist.<br/><br/>Wählen Sie 'Weiter', um den Patch-Prozess zu starten. Danach beendet sich NwSapSetupAdmin und startet erneut.]]></De>
+  </String>
+
+  <String Name="PatchServerFinishPageDescriptionFailed">
+    <En>The patch either belongs to a product that is not available on the installation server or it does not contain updated products.</En>
+    <De>Die Patch-Datei enthält entweder kein Produkt, welches auf dem Installationsserver verfügbar ist, oder sie enthält keine neueren Produkte.</De>
+  </String>
+
+  <String Name="PatchServerFinishPageDescriptionBaseVersion">
+    <En>The patch requires base versions for some products. These base versions are not present on this installation server.</En>
+    <De>Die Patch-Datei die Basisversion einiger Produkte. Diese Basisversion ist nicht auf dem Installationsserver verfügbar.</De>
+  </String>
+
+  <!-- SapSetupAdmin Package Compression Pages -->
+  <String Name="PackageCompressionPageTitle">
+    <En>Single File Installer Wizard</En>
+    <De>Assistent für Single-File-Installer</De>
+  </String>
+
+  <String Name="PackageCompressionWelcomePageDescription">
+    <En>This wizard helps you to create a single file installer for package</En>
+    <De>Mit diesem Assistenten können Sie ein Single-File-Installer für folgendes Paket erstellen:</De>
+  </String>
+
+  <String Name="PackageCompressionFolderPagePrompt">
+    <En>Choose the directory in which you want to create the single file installer. It is highly recommended that you choose a directory on your local hard drive.</En>
+    <De>Wählen Sie das Verzeichnis, in dem der Single-File-Installer abgelegt werden soll. Es ist empfehlenswert, ein Verzeichnis auf Ihrer lokalen Festplatte zu wählen.</De>
+  </String>
+
+  <String Name="PackageCompressionProgressPageDescription">
+    <En>The package is being compressed...</En>
+    <De>Das Installationspaket wird gepackt...</De>
+  </String>
+
+  <!-- Configure DS Strings -->
+  <String Name="ConfigureDSPageTitle">
+    <En>Local Security Handling (LSH) Wizard</En>
+    <De>Assistent für Local Security Handling (LSH)</De>
+  </String>
+
+  <String Name="ConfigureDSWelcomePageDescription">
+    <En><![CDATA[This wizard helps you to configure the Local Security Handling (LSH).<br/> <br/> LSH allows users who do not have local administrator privileges to install SAP products from this installation server. <br/> <br/> Choose 'Next' to continue.]]></En>
+    <De><![CDATA[Mit diesem Assistenten können Sie Local Security Handling (LSH) konfigurieren. <br/> <br/> LSH ermöglicht Benutzern ohne lokale Administrationsrechte die Installation von SAP-Produkten von diesem Installationsserver.<br/> <br/> Wählen Sie 'Weiter'.]]></De>
+  </String>
+
+  <String Name="ConfigureDSInputStringPageTitle">
+    <En>Distribution Service (DS) Account</En>
+    <De>Benutzerkonto für den Distributionsservice (DS)</De>
+  </String>
+
+  <String Name="ConfigureDSInputStringPagePrompt">
+    <En>DS account: enter the username and password of a domain user (DOMAINNAME\Username) who has administrator privileges on all workstations on which you want to enable LSH.</En>
+    <De>DS-Benutzerkonto: Geben Sie Benutzername und Passwort eines Domänenbenutzers (DOMAINNAME\Username) ein, der lokale Administratorrechte auf allen Rechnern hat, auf denen Sie LSH verfügbar machen wollen.</De>
+  </String>
+
+  <String Name="ConfigureISInputStringPageTitle">
+    <En>Installation Service (IS) Account</En>
+    <De>Benutzerkonto für den Installationsservice (IS)</De>
+  </String>
+
+  <String Name="ConfigureISInputStringPagePrompt">
+    <En>IS account: enter the username and password of a standard domain user (DOMAINNAME\Username). You can use the same account as for the DS.</En>
+    <De>IS-Benutzer: Geben Sie Benutzername und Passwort eines einfachen Domänenbenutzers (DOMAINNAME\Username) ein. Sie können dafür dasselbe Benutzerkonto wie für den DS verwenden.</De>
+  </String>
+
+  <String Name="ConfigureDSFinishPageSuccess">
+    <En>Local Security Handling (LSH) configured.</En>
+    <De>Local Security Handling (LSH) konfiguriert.</De>
+  </String>
+
+  <String Name="ConfigureDSFinishPageFailed">
+    <En>Failed to configure Local Security Handling (LSH).</En>
+    <De>Konfigurieren des Local Security Handling (LSH) ist fehlgeschlagen.</De>
+  </String>
+
+  <String Name="StrWelcomePageFailedPrerequisites">
+    <En><![CDATA[Your system does not fulfill the prerequisites for the chosen components:<br/>]]></En>
+    <De><![CDATA[Die folgenden Installationsvoraussetzungen sind nicht erfüllt:<br/>]]></De>
+  </String>
+  <String Name="StrWelcomePageIncompatibleUpdate">
+    <En><![CDATA[The installation source contains updates that are incompatible with the products installed on your system:<br/>]]></En>
+    <De><![CDATA[Die Installationsquelle enthält Updates, die mit den Produkten auf dem System nicht kompatiblel sind:<br/>]]></De>
+  </String>
+
+  <String Name="StrWelcomeFailedUninstallProduct">
+    <En><![CDATA[Specify a product to uninstall<br/>]]></En>
+    <De><![CDATA[Geben sie das zu deinstallierende Produkt an<br/>]]></De>
+  </String>
+
+  <!-- Welcome Page case-specific texts-->
+  <String Name="StrWelcomePageInstallComponents">
+    <En><![CDATA[This wizard helps you to install SAP products. <br/><br/>Choose 'Next'.]]></En>
+    <De><![CDATA[Mit diesem Assistenten können Sie SAP-Produkte installieren. Wählen Sie 'Weiter'.]]></De>
+  </String>
+  <String Name="StrWelcomePageNothingToRepair">
+    <En><![CDATA[There are no products to repair on the workstation.]]></En>
+    <De><![CDATA[Auf diesem Computer sind keine Produkte installiert, die repariert werden können.]]></De>
+  </String>
+  <String Name="StrWelcomePageRepairComponents">
+    <En><![CDATA[This wizard helps you to repair installed SAP products. <br/><br/>Choose 'Next'.]]></En>
+    <De><![CDATA[Mit diesem Assistenten können Sie installierte SAP-Produkte reparieren.<br/><br/>Wählen Sie 'Weiter'.]]></De>
+  </String>
+  <String Name="StrWelcomePageInstallPackages">
+    <En><![CDATA[This wizard helps you to install packages of SAP products. <br/><br/>Choose 'Next'.]]></En>
+    <De><![CDATA[Mit diesem Assistenten können Sie SAP-Produktpakete installieren. Wählen Sie 'Weiter'.]]></De>
+  </String>
+  <String Name="StrWelcomePageInstallSpecificProduct">
+    <En><![CDATA[This wizard helps you to install <b>%%s</b>. <br/><br/>Close all SAP applications and choose 'Next'.]]></En>
+    <De><![CDATA[Mit diesem Assistenten können Sie <b>%%s</b> installieren. <br/><br/>Schließen Sie alle SAP-Anwendungen und wählen Sie 'Weiter'.]]></De>
+  </String>
+  <String Name="StrWelcomePageInstallSpecificPackage">
+    <En><![CDATA[This wizard helps you to install package <b>%%s</b>. <br/><br/>Close all SAP applications and choose 'Next'.]]></En>
+    <De><![CDATA[Mit diesem Assistenten können Sie das Paket <b>%%s</b> installieren. <br/><br/>Schließen Sie alle SAP-Anwendungen und wählen Sie 'Weiter'.]]></De>
+  </String>
+  <String Name="StrWelcomePageUninstallSpecificProduct">
+    <En>Close all SAP applications and choose 'Next' to uninstall </En>
+    <De>Schließen Sie alle SAP-Anwendungen und wählen Sie 'Weiter' zur Deinstallation von </De>
+  </String>
+  <String Name="StrWelcomePageUninstallSpecificPackage">
+    <En>Close all SAP applications and choose 'Next' to uninstall package </En>
+    <De>Schließen Sie alle SAP-Anwendungen und wählen Sie 'Weiter' zur Deinstallation von </De>
+  </String>
+  <String Name="StrWelcomePageUpdateComponents">
+    <En><![CDATA[This wizard helps you to update SAP products. <br/><br/>Close all SAP applications and choose 'Next'.]]></En>
+    <De><![CDATA[Mit diesem Assistenten können Sie SAP-Produkte aktualisieren. <br/><br/>Schließen Sie alle SAP-Anwendungen und wählen Sie 'Weiter'.]]></De>
+  </String>
+  <String Name="StrWelcomePageUpdatePackages">
+    <En><![CDATA[This wizard helps you to update packages of SAP products. <br/><br/>Close all SAP applications and choose 'Next'.]]></En>
+    <De><![CDATA[Mit diesem Assistenten können Sie SAP-Produktpakete aktualisieren. <br/><br/>Schließen Sie alle SAP-Anwendungen und wählen Sie 'Weiter'.]]></De>
+  </String>
+  <String Name="StrWelcomePageSpecificProductIsUptodate">
+    <En><![CDATA[The latest version of <b>%%s</b> is installed on your computer. <br/><br/>Choose 'Next' if you wish to uninstall specific SAP products.]]></En>
+    <De><![CDATA[Auf Ihrem Computer ist die aktuelle Version von <b>%%s</b> installiert. <br/><br/>Wählen Sie 'Weiter', wenn Sie bestimmte SAP-Produkte deinstallieren möchten.]]></De>
+  </String>
+  <String Name="StrWelcomePageSpecificPackageIsUptodate">
+    <En><![CDATA[The latest version of package <b>%%s</b> is installed on your computer. <br/><br/>Choose 'Next' only if you wish to uninstall it.]]></En>
+    <De><![CDATA[Auf Ihrem Computer ist die aktuelle Version von Paket <b>%%s</b> installiert. <br/><br/>Wählen Sie 'Weiter', wenn Sie es deinstallieren möchten.]]></De>
+  </String>
+  <String Name="StrWelcomePageAllComponentsLatest">
+    <En><![CDATA[The SAP products installed on your computer are up to date. <br/><br/>Choose 'Next' if you wish to uninstall specific SAP products.]]></En>
+    <De><![CDATA[Die auf Ihrem Computer installierten SAP-Produkte haben die aktuellste Version. <br/><br/>Wählen Sie 'Weiter', wenn Sie bestimmte SAP Produkte deinstallieren möchten.]]></De>
+  </String>
+  <String Name="StrWelcomePageAllPackagesLatest">
+    <En><![CDATA[The packages of SAP products installed on your computer are up to date.<br/><br/>Choose 'Next' if you wish to uninstall a specific package.]]></En>
+    <De><![CDATA[Die auf Ihrem Computer installierten SAP-Produktpakete haben die aktuellste Version.<br/><br/>Wählen Sie 'Weiter', wenn Sie bestimmte Pakete deinstallieren möchten.]]></De>
+  </String>
+  <String Name="StrWelcomePageGenericUninstallMessage">
+    <En><![CDATA[You have chosen to uninstall SAP products.<br/><br/>Close all SAP applications and choose 'Next'.]]></En>
+    <De><![CDATA[Sie möchten SAP-Produkte deinstallieren.<br/><br/>Schließen Sie alle SAP-Anwendungen und wählen Sie 'Weiter'.]]></De>
+  </String>
+  <String Name="StrWelcomePageUninstallAllMessage">
+    <En><![CDATA[You have chosen to uninstall all SAP products.<br/><br/>If you really want to uninstall all SAP products, close all SAP applications and choose 'Next'.]]></En>
+    <De><![CDATA[Sie möchten alle SAP-Produkte von Ihrem Computer deinstallieren.<br/><br/>Wenn Sie wirklich alle SAP-Produkte deinstallieren möchten, schließen Sie alle SAP-Anwendungen und wählen Sie 'Weiter'.]]></De>
+  </String>
+  <String Name="StrWelcomePageCheckWksta">
+    <En><![CDATA[Choose 'Next' to start checking the installed SAP products on this computer. <br/><br/>This process will take a few minutes.]]></En>
+    <De><![CDATA[Wählen Sie 'Weiter', um die installierten SAP-Produkte auf diesem Computer zu überprüfen. <br/><br/>Dieser Vorgang kann einige Minuten in Anspruch nehmen.]]></De>
+  </String>
+
+  <String Name="StrConditionFailedInstallationServerNeedsDotNet20">
+    <En><![CDATA[<a style="COLOR:red">The Installation Server Administration Tool requires Microsoft .NET Framework 2.0. Install the </a><ul><li><a style="text-decoration:underline" target="blank" href="http://www.microsoft.com/downloads/details.aspx?FamilyID=0856EACB-4362-4B0D-8EDD-AAB15C5E04F5">x86 Version</a></li> <a style="COLOR:red">or the </a> <li><a style="text-decoration:underline" target="blank" href="http://www.microsoft.com/downloads/details.aspx?familyid=B44A0000-ACF8-4FA1-AFFB-40E78D788B00">x64 Version</a></li></ul>]]></En>
+    <De><![CDATA[<a style="COLOR:red">Das Installationsserver Administration Tool benötigt Microsoft .NET Framework 2.0. Installieren Sie zunächst </a><ul><li><a style="text-decoration:underline" target="blank" href="http://www.microsoft.com/downloads/details.aspx?FamilyID=0856EACB-4362-4B0D-8EDD-AAB15C5E04F5">x86 Version</a></li> <a style="COLOR:red">oder </a> <li><a style="text-decoration:underline" target="blank" href="http://www.microsoft.com/downloads/details.aspx?familyid=B44A0000-ACF8-4FA1-AFFB-40E78D788B00">x64 Version</a></li></ul>]]></De>
+  </String>
+  <String Name="StrConditionFailedInstallationServerNeedsDotNet40">
+    <En><![CDATA[<a style="COLOR:red">The Installation Server Administration Tool requiresMicrosoft .NET Framework 4.0. Install the </a><ul><li><a style="text-decoration:underline" target="blank" href="http://www.microsoft.com/download/en/details.aspx?id=17113">.NET Framework 4.0 Client Profile</a></li><a style="COLOR:red"> or the </a> <li><a style="text-decoration:underline" target="blank" href="http://www.microsoft.com/download/en/details.aspx?id=17851">.NET Framework 4.0 Full Profile</a></li></ul>]]></En>
+    <De><![CDATA[<a style="COLOR:red">Das Installationsserver Administration Tool benötigt Microsoft .NET Framework 4.0. Installieren Sie zunächst </a><ul><li><a style="text-decoration:underline" target="blank" href="http://www.microsoft.com/download/en/details.aspx?id=17113">.NET Framework 4.0 Client Profile</a></li><a style="COLOR:red"> oder </a><li><a style="text-decoration:underline" target="blank" href="http://www.microsoft.com/download/en/details.aspx?id=17851">.NET Framework 4.0 Full Profile</a></li> </ul>]]></De>
+  </String>
+
+  <!-- Finish Page case-specific texts-->
+  <String Name="StrFinishPageComponentInstallSuccessful">
+    <En>The installation of SAP products completed successfully.</En>
+    <De>Die Installation der SAP-Produkte wurde erfolgreich abgeschlossen.</De>
+  </String>
+  <String Name="StrFinishPageComponentInstallFailedWithKnownErrors">
+    <En>The installation of SAP products failed with %%d error(s).</En>
+    <De>Die Installation der SAP-Produkte ist aufgrund von %%d Fehler(n) fehlgeschlagen.</De>
+  </String>
+  <String Name="StrFinishPageComponentInstallNeedsReboot">
+    <En>This installation will be completed when you reboot your computer. The installed SAP products may not function correctly before you reboot.</En>
+    <De>Die Installation ist erst abgeschlossen, wenn Sie Ihren Computer neu starten. Die installierten SAP-Produkte funktionieren erst nach dem Neustart des Computers richtig.</De>
+  </String>
+  <String Name="StrFinishPageComponentUninstallSuccessful">
+    <En>The uninstallation of SAP products completed successfully.</En>
+    <De>Die Deinstallation der SAP-Produkte wurde erfolgreich abgeschlossen.</De>
+  </String>
+  <String Name="StrFinishPageComponenUninstallFailedWithKnownErrors">
+    <En>The uninstallation of SAP products failed with %%d error(s).</En>
+    <De>Die Deinstallation der SAP-Produkte ist aufgrund von %%d Fehler(n) fehlgeschlagen.</De>
+  </String>
+  <String Name="StrFinishPageComponentUninstallNeedsReboot">
+    <En>This uninstallation will be completed when you reboot your computer.</En>
+    <De>Die Deinstallation ist erst abgeschlossen, wenn Sie Ihren Computer neu starten.</De>
+  </String>
+  <String Name="StrFinishPageComponentUpdateSuccessful">
+    <En>The update of SAP products completed successfully.</En>
+    <De>Die Aktualisierung der SAP-Produkte wurde erfolgreich abgeschlossen.</De>
+  </String>
+  <String Name="StrFinishPageComponentUpdateFailedWithKnownErrors">
+    <En>The update of SAP products failed with %%d error(s).</En>
+    <De>Die Aktualisierung der SAP-Produkte ist aufgrund von %%d Fehler(n) fehlgeschlagen.</De>
+  </String>
+  <String Name="StrFinishPageComponentUpdateNeedsReboot">
+    <En>This update will be completed when you reboot your computer. The SAP products may not function correctly before you reboot.</En>
+    <De>Die Aktualisierung ist erst abgeschlossen, wenn Sie Ihren Computer neu starten. Die SAP-Produkte funktionieren erst nach dem Neustart des Computers richtig.</De>
+  </String>
+  <String Name="StrFinishPageComponentRepairSuccessful">
+    <En>The repair installation of SAP products completed successfully.</En>
+    <De>Die Reparatur der SAP-Produkte wurde erfolgreich abgeschlossen.</De>
+  </String>
+  <String Name="StrFinishPageComponentRepairFailedWithKnownErrors">
+    <En>The repair installation of SAP products failed with %%d error(s).</En>
+    <De>Die Reparatur der SAP-Produkte ist aufgrund von %%d Fehler(n) fehlgeschlagen.</De>
+  </String>
+  <String Name="StrFinishPageComponentRepairNeedsReboot">
+    <En>This repair installation will be completed when you reboot your computer. The SAP products may not function correctly before you reboot.</En>
+    <De>Die Reparatur ist erst abgeschlossen, wenn Sie Ihren Computer neu starten. Die SAP-Produkte funktionieren erst nach dem Neustart des Computers richtig.</De>
+  </String>
+  <String Name="StrFinishPageReconfigurationSuccessful">
+    <En>The deployment and reconfiguration of SAP products was successful.</En>
+    <De>Die Neukonfiguration der SAP-Produkte wurde erfolgreich abgeschlossen.</De>
+  </String>
+  <String Name="StrFinishPageReconfigurationFailedWithKnownErrors">
+    <En>The deployment and reconfiguration of SAP products failed with %%d error(s).</En>
+    <De>Die Neukonfiguration der SAP-Produkte ist aufgrund von %%d Fehler(n) fehlgeschlagen.</De>
+  </String>
+  <String Name="StrFinishPageReconfigurationNeedsReboot">
+    <En>The deployment and reconfiguration of SAP products will be completed when you reboot your computer. The SAP products may not function correctly before you reboot.</En>
+    <De>Die Neukonfiguration ist erst abgeschlossen, wenn Sie Ihren Computer neu starten. Die SAP-Produkte funktionieren erst nach dem Neustart des Computers richtig.</De>
+  </String>
+  <String Name="StrFinishPageCheckCompletedNoErrors">
+    <En>The SAP products on this workstation are correctly installed. No errors detected.</En>
+    <De>Die SAP-Produkte sind korrekt auf dem Computer installiert. Es wurden keine Fehler festgestellt.</De>
+  </String>
+  <String Name="StrFinishPageCheckCompletedWithKnownErros">
+    <En>Workstation check has detected %%d error(s) in the installation of SAP products on this computer.</En>
+    <De>Die Prüfung hat %%d Fehler bei den auf diesem Computer installierten SAP-Produkten festgestellt.</De>
+  </String>
+  <String Name="SapSetupTooOld">
+    <En>The SAP Front End Installer executable is unable to process the XML files. Restart the uninstallation with the NwSapSetup executable installed on the computer.</En>
+    <De>Der SAP Front-End Installer kann die XML-Dateien nicht verarbeiten. Starten Sie die Deinstallation erneut mit dem NwSapSetup, der auf dem Computer installiert ist.</De>
+  </String>
+
+  <!-- Strings for Sap WUS -->
+  <String Name="strSapWUSSapSoftwareUpdateRebootPending">
+    <En>SAP software update: reboot pending</En>
+    <De>SAP Software Update: Der Computer sollte neu gestartet werden.</De>
+  </String>
+  <String Name="strSapWUSDoYouWishToRebootComputer">
+    <En>Do you want to reboot your computer to complete the SAP software update?</En>
+    <De>Möchten Sie Ihren Computer neu starten, um die Aktualisierung abzuschließen?</De>
+  </String>
+  <String Name="strSapWUSSoftwareUpdateCompletedRebootPending">
+    <En>Software update completed. Reboot pending...</En>
+    <De>Die Softwareaktualisierung wurde durchgeführt. Der Computer sollte neu gestartet werden.</De>
+  </String>
+  <String Name="strSapWUSSAPSoftwareUpdateTool">
+    <En>SAP Software Update Tool</En>
+    <De>SAP Software Update Tool</De>
+  </String>
+  <String Name="strSapWUSSAPSoftwareUpdate">
+    <En>SAP Software Update</En>
+    <De>SAP Software Update</De>
+  </String>
+  <String Name="strSapWUSUpdatesHaveBeenCompletelyInstalled">
+    <En>The updates have been installed successfully... </En>
+    <De>Die Aktualisierungen wurden erfolgreich durchgeführt... </De>
+  </String>
+  <String Name="strSapWUSSAPSoftwareUpdateToolUpdateCompleted">
+    <En>SAP Software Update Tool - Update completed</En>
+    <De>SAP Software Update Tool - Aktualisierung abgeschlossen</De>
+  </String>
+  <String Name="strSapWUSRebootImminent">
+    <En>The updates have been installed successfully. Rebooting...</En>
+    <De>Die Aktualisierungen wurden erfolgreich durchgeführt. Der Computer wird neu gestartet.</De>
+  </String>
+  <String Name="strSapWUSSAPSoftwareUpdateToolRebooting">
+    <En>SAP Software Update Tool - Update completed. Rebooting</En>
+    <De>SAP Software Update Tool - Aktualisierung abgeschlossen. Neustart.</De>
+  </String>
+  <String Name="strSapWUSUpdatesCouldNotBeInstalled">
+    <En>Updates could not be installed. Contact your system administrator.</En>
+    <De>Aktualisierungen konnten nicht durchgeführt werden. Wenden Sie sich an Ihren Administrator</De>
+  </String>
+  <String Name="strSapWUSSAPSoftwareUpdateToolUpdateFailed">
+    <En>SAP Software Update Tool - Update Failed</En>
+    <De>SAP Software Update Tool - Aktualisierung fehlgeschlagen</De>
+  </String>
+  <String Name="strSapWUSUpdatesAreBeingInstalled">
+    <En>SAP software updates are being installed in the background.</En>
+    <De>SAP Software Updates werden im Hintergrund installiert.</De>
+  </String>
+  <String Name="strSapWUSUpdateInProgress">
+    <En>SAP Software Update Tool - Update in progress</En>
+    <De>SAP Software Update Tool - Aktualisierungen werden durchgeführt</De>
+  </String>
+  <String Name="strSapWUSDoYouWishToUpdateComponents">
+    <En>Do you wish to update the SAP products installed on your computer?</En>
+    <De>Möchten sie die installierten SAP-Produkte aktualisieren?</De>
+  </String>
+  <String Name="strSapWUSAnUpdateIsAvailable">
+    <En>An update is available...</En>
+    <De>Aktualisierungen sind verfügbar...</De>
+  </String>
+  <String Name="strSapWUSSAPSetupHasDetectedAnUpdate">
+    <En>SAPSetup has detected an available update...</En>
+    <De>SAPSetup hat erkannt, dass eine Aktualisierung verfügbar ist...</De>
+  </String>
+  <String Name="strSapWUSUpdateIsReady">
+    <En>Update is completed... </En>
+    <De>Aktualisierung ist abgeschlossen...</De>
+  </String>
+  <String Name="StrProductNeeds64BitOs">
+    <En>This product can be installed on a 64-bit operating system only.</En>
+    <De>Dieses Produkt kann nur auf einem 64-Bit-Betriebssystem installiert werden.</De>
+  </String>
+  <String Name="StrProductNeeds32BitOs">
+    <En>This product can be installed on a 32-bit operating system only.</En>
+    <De>Dieses Produkt kann nur auf einem 32-Bit-Betriebssystem installiert werden.</De>
+  </String>
+  <String Name="StrDiskFull">
+    <En>There is not enough free disk space available in directory %FOLDER%. Do you want to retry after manually freeing disk space or do you want to cancel the installation?</En>
+    <De>Im Verzeichnis %FOLDER% ist nicht genug Speicherplatz vorhanden. Wollen Sie die Aktion noch einmal ausführen, nachdem Sie Platz geschaffen haben, oder wollen Sie die Installation abbrechen?</De>
+  </String>
+  <String Name="strFileInUseDlgName">
+    <En>SAP Installer: file in use.</En>
+    <De>SAP Installer: Datei wird benutzt.</De>
+  </String>
+  <String Name="strFileInUseRetry">
+    <En>Retry (recommended; continue after closing the application)</En>
+    <De>Erneut versuchen (schließen Sie zuvor die betroffene Anwendung)</De>
+  </String>
+  <String Name="strTerminateApplicationFormatstring">
+    <En>Terminate %%s (you may lose unsaved data)?</En>
+    <De>%%s beenden (ungesicherte Daten gehen verloren)?</De>
+  </String>
+  <String Name="strIgnoreApplicationTextFormat">
+    <En>Ignore %%s (reboot to complete this process)</En>
+    <De>%%s ignorieren (starten Sie den Computer neu, um den Prozess abzuschließen)</De>
+  </String>
+  <String Name="strIgnoreAllApplicationsText">
+    <En>Ignore and do not ask me again (reboot to complete this process)</En>
+    <De>Alle ignorieren und nicht mehr nachfragen (starten Sie den Computer neu, um den Prozess abzuschließen)</De>
+  </String>
+  <String Name="strFormatFileInUseDlgHead1">
+    <En>SAP Setup cannot replace file '%%s', as it is in use by '%%s'. It is highly recommended that you end '%%s' to avoid a reboot.</En>
+    <De>SAP Setup kann die Datei '%%s' nicht ersetzen, da sie von '%%s' benutzt wird. Beenden Sie '%%s', um einen Neustart zu vermeiden.</De>
+  </String>
+  <String Name="strFormatFileInUseDlgHead2">
+    <En>SAP Setup cannot replace file '%%s', as it is in use. It is highly recommended that you end '%%s' to avoid a reboot.</En>
+    <De>Sap Setup kann die Datei '%%s' nicht ersetzen, da sie benutzt wird. Wir empfehlen dringend, den Prozess '%%s' zu beenden, um einen Neustart zu vermeiden.</De>
+  </String>
+  <String Name="strFormatFileInUseDlgHead3">
+    <En>It is highly recommended that you end '%%s' to avoid a reboot.</En>
+    <De>Wir empfehlen dringend, '%%s' zu beenden, um einen Neustart zu vermeiden.</De>
+  </String>
+  <String Name="strChooseActionGroupBoxText">
+    <En>Choose an action for the installer to perform.</En>
+    <De>Wählen Sie die Aktion, die der Installer ausführen soll.</De>
+  </String>
+</SapSetup>

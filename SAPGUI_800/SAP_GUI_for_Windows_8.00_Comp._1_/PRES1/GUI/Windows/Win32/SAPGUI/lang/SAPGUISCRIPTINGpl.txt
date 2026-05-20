@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 SAPGUISCRIPTING PL 1404 OK 
+SCRIPTING_SCRIPTISOPENING       150 "Skrypt otwiera po³¹czenie z systemem: %s"
+SCRIPTING_SCRIPTNOTINST         150 "Nie zainstalowano obs³ugi skryptów"
+SCRIPTING_SCRIPTNOTENABLED      150 "Obs³uga skryptów zosta³a zdezaktywowana przez u¿ytkownika"
+<#007>SCRIPTING_OK_BTN          016 "OK"
+<#007>SCRIPTING_CANCEL_BTN      016 "Zaniechanie"
+SCRIPTING_DO_NOT_SHOW_AGAIN     150 "Bez wyœwietlania okna dialogowgo przy próbie otwarcia po³¹czenia przez skrypt"
+<#007>SCRIPTING_ALLOW_BTN       016 "Zezwalanie"
+<#007>SCRIPTING_DENY_BTN        016 "Odrzucanie"
+<#007>SCRIPTING_HELP_BTN        016 "Pomoc"

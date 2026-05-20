@@ -1,0 +1,35 @@
+# @(#)gxsc.dat  	20.3	SAP	95/12/08*/
+
+/$DIM
+: 0
+: 0
+: 0
+: 0
+: 23
+: 60
+: 0
+: 0
+
+
+/$TEXT
+:                This is the First Title
+:
+:           Column_1      Column_2     Column_3
+:
+:Row_1      3.456,67            34-        0,00
+:Row_2          0,34  1.234.567,89       123,45-
+:
+:
+:                This is the Second Title
+:
+:           Column_1      Column_2     Column_3
+:Row_1            67            34-           0
+:Row_2           234            89           45-
+:
+:
+:                This is the Third Title
+:
+:           Column_1      Column_2     Column_3
+:
+:Row_1      3,456.67            34-        0.00
+:Row_2          0.34  1,234,567.89       123.45-

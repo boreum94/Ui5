@@ -1,0 +1,25 @@
+<mvc:View controllerName="code.d22.mentoringsy02.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <Table id="customerTable"
+            items="{/Customers}" >
+            <columns>
+            <!-- 여기 얘네들이 컬럼명이 된다 이거야.. -->
+                <Column ><header><Text text="Customerid" /> </header> </Column>
+                <Column ><header><Text text="Customerid" /> </header> </Column>
+                <Column ><header><Text text="Customerid" /> </header> </Column>
+                <Column ><header><Text text="Customerid" /> </header> </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem >
+                    <ObjectIdentifier title="{CustomerID}" >
+                    
+                    
+                    </ObjectIdentifier>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Page>
+</mvc:View>

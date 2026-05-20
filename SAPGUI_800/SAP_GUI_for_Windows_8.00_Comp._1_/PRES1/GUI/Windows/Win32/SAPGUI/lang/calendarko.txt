@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR KO 8500 OK 
+PREVIOUS_YEAR                   255 "전년도"
+PREVIOUS_MONTH                  255 "전월"
+NEXT_YEAR                       255 "다음 연도"
+NEXT_MONTH                      255 "다음 달"
+WEEK_NUMBER                     255 "주수"
+WEEK_NUM_STR                    255 "WN"
+CALENDAR_BTN                    255 "달력 열기/닫기"
+DT_PICKER                       255 "일자 선택: 일, 월 또는 연도 변경"

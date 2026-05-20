@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR EL 1704 OK 
+PREVIOUS_YEAR                   255 "Προηγούμ.Ετος"
+PREVIOUS_MONTH                  255 "Προηγ.Μήνας"
+NEXT_YEAR                       255 "Επόμενο Ετος"
+NEXT_MONTH                      255 "Επόμενος Μήνας"
+WEEK_NUMBER                     255 "Αριθμός Εβδομάδας"
+WEEK_NUM_STR                    255 "WN"
+CALENDAR_BTN                    255 "Ανοιγμα/Κλείσιμο Πλοηγού Ημ/νίας"
+DT_PICKER                       255 "Επιλογή ημ/νίας: Αλλαγή ημέρας, μήνα ή έτους"

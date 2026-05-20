@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 FEWUIMSG ZH 8400 OK 
+<#001>UIMSG_YNA_DLG_REMEMBER    100 "记住我的决定"
+<#001>UIMSG_YNA_DLG_YES         100 "是"
+<#001>UIMSG_YNA_DLG_NO          100 "否"
+LGN_POP_DTF_TITLE               200 "SAP Logon 清理"
+LGN_POP_DTF_MESSAGE             200 "是否要清理文档目录 %s？"

@@ -1,0 +1,158 @@
+$VERSION(1.0)
+;=========================================================================
+; Layout Part
+;=========================================================================
+$LAYOUT(WizGrp)
+
+Begin Dialog BenutzerDialog 610, 541, "001", .evalDlg
+
+	GroupBox 12, 12, 585, 65, "004", .grpMain
+	TextBox 25, 30, 355, 18, .txtDescr
+	TextBox 400, 30, 180, 18, .txtGrpKey
+	CheckBox 25, 55, 149, 16, "003", .chkHead
+
+;AG2304	added to select the group insertion format
+	CheckBox 180, 55, 200, 16, "016", .chkNewStyle
+
+	GroupBox 12, 85, 585, 112, "015", .grpHead
+	Text 25, 105, 29, 16, "002", .tFilter
+	TextBox 92, 104, 385, 18, .txtFilter
+	TextBox 92, 104, 385, 18, .txtCat
+	TextBox 92, 104, 385, 18, .txtPhrGrp
+	TextBox 92, 104, 385, 18, .txtPhrNam
+	ListBox 25, 133, 560, 78, ListBox2$(), .lstPhSrchResult
+	PushButton 493, 103, 88, 21, "011", .pbPhSrch
+
+	GroupBox 12, 210, 585, 194, "013", .grpSymbols
+	CheckListBox 25, 230, 455, 170, ListBox1$(), .ChkLstSymPhr
+
+	PushButton 495, 230, 88, 21, "005", .pbDelete
+	PushButton 495, 255, 88, 21, "006", .pbUp
+	PushButton 495, 280, 88, 21, "007", .pbDown
+	Text 495, 310, 29, 17, "010", .tSep
+	TextBox 495, 330, 21, 19, .txtSep
+
+	GroupBox 12, 414, 585, 80, "014", .grpStyles
+	Text 25, 434, 29, 16, "012", .tHeadStyle
+	DropListBox 25, 454, 125, 75, DropListBox1$(), .drpHeadStyle
+	Text 203, 434, 29, 19, "009", .tPhrStyle
+	DropListBox 204, 454, 125, 65, DropListBox2$(), .drpPhrStyle
+	Text 394, 434, 29, 16, "008", .tSymStyle
+	DropListBox 395, 454, 125, 75, DropListBox2$(), .drpSymStyle
+
+	OKButton 177, 506, 110, 20
+	CancelButton 318, 506, 110, 20
+End Dialog 
+
+
+;=========================================================================
+; Value Part
+;=========================================================================
+$VALUES
+
+drpHeadStyle=FILLEDBY:"wwi","wwiListFromIniStart","wwiListFromIniNext","StyleHeadKey"
+drpPhrStyle=FILLEDBY:"wwi","wwiListFromIniStart","wwiListFromIniNext","StylePhrKey"
+drpSymStyle=FILLEDBY:"wwi","wwiListFromIniStart","wwiListFromIniNext","StyleSymKey"
+
+txtGrpKey = DISPLAYONLY
+txtDescr  = DISPLAYONLY
+txtCat    = HIDDEN
+txtPhrGrp = HIDDEN
+txtPhrNam = HIDDEN
+
+chkHead= ON:1
+chkHead= OFF:0
+chkHead=1
+
+;AG2304	added to select the group insertion format
+chkNewStyle= ON :New
+chkNewStyle= OFF:Old
+
+;default group insertion format
+chkNewStyle= Old
+
+
+;txtSep=":"
+txtSep=FILLEDBY:"wwi","wwiGetTextFromIniFile",,"GetSepFromIni"
+
+lstPhSrchResult = FILLEDBY:"wwiehs","wwiPhraseStart","wwiPhraseNext","SearchParam"
+
+pbPhSrch=FILL:lstPhSrchResult
+
+ChkLstSymPhr = FILLEDBY:"wwi","wwiTreeStartChildNode","wwiTreeReadChildNode"
+
+pbDelete=DELETE:ChkLstSymPhr
+pbUp    =UP    :ChkLstSymPhr
+pbDown  =DOWN  :ChkLstSymPhr
+
+txtCat=FILLEDBY:"wwi","wwiGetTextFromIniFile",,"GetCatFromIni"
+txtPhrNam=FILLEDBY:"wwi","wwiGetTextFromIniFile",,"GetNamFromIni"
+txtPhrGrp=FILLEDBY:"wwi","wwiGetTextFromIniFile",,"GetGrpFromIni"
+;=========================================================================
+; Dependance Part
+;=========================================================================
+$DEPENDANCES
+
+pbPhSrch/DEFBUTTON=txtFilter
+grpHead/ACTIVE=chkHead(1)
+
+tFilter        /ACTIVE=grpHead
+txtFilter      /ACTIVE=grpHead
+lstPhSrchResult/ACTIVE=grpHead
+pbPhSrch       /ACTIVE=grpHead
+tHeadStyle     /ACTIVE=grpHead
+drpHeadStyle   /ACTIVE=grpHead
+
+pbDelete/ACTIVE=ChkLstSymPhr(NOTNULL)
+pbUp    /ACTIVE=ChkLstSymPhr(NOTNULL)
+pbDown  /ACTIVE=ChkLstSymPhr(NOTNULL)
+
+
+;=========================================================================
+; Evaluation Part
+;=========================================================================
+$EVALUATION(MsgBox)
+
+lstPhSrchResult=NULL:232
+
+;=========================================================================
+; Input Part
+;=========================================================================
+$INPUT
+
+Start:("/":GetGroupPhr=txtGrpKey,txtCat(FILL),txtPhrNam(FILL),txtPhrGrp(FILL),txtSep(FILL),drpHeadStyle(FILL),drpPhrStyle(FILL),drpSymStyle(FILL))
+GetGroupPhr:("Rest":END=txtFilter,txtDescr,ChkLstSymPhr(FILL),lstPhSrchResult(FILL))
+
+;=========================================================================
+; Output Part
+;=========================================================================
+$OUTPUT
+;AG2304	modified to select the group insertion format
+chkHead(1)=("GROUP =%s \n    /HEAD/STYLE = %s /TEXT = 03%s(%s-%s) \n    /FIELDS/STYLE = %s /LABEL/STYLE = %s /SEP =%s \n /INSERTSTYLE = %s \n  /LIST = %s",txtGrpKey,drpHeadStyle,txtPhrNam,txtCat,lstPhSrchResult,drpPhrStyle,drpSymStyle,txtSep,chkNewStyle,ChkLstSymPhr(CONCAT(|,{,})) )
+chkHead(0)=("GROUP =%s \n    /FIELDS/STYLE = %s /LABEL/STYLE = %s /SEP =%s \n /INSERTSTYLE = %s  \n    /LIST = %s",txtGrpKey,drpPhrStyle,drpSymStyle,txtSep,chkNewStyle,ChkLstSymPhr(CONCAT(|,{,})) )
+
+$OUTPUT(SearchParam)
+("%s/%s/%s",txtCat,txtPhrGrp,txtFilter)
+
+$OUTPUT(GetCatFromIni)
+("Template/Catalog")
+
+$OUTPUT(GetNamFromIni)
+("Template/PhraseName")
+
+$OUTPUT(GetGrpFromIni)
+("Template/PhraseGrp")
+
+$OUTPUT(GetSepFromIni)
+("Template/Separator")
+
+$OUTPUT(StyleHeadKey)
+("Template/StyleHeading")
+
+$OUTPUT(StylePhrKey)
+("Template/StyleLabel")
+
+$OUTPUT(StyleSymKey)
+("Template/StyleSymbol")
+
+$END

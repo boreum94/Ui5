@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context='Variables' Version='800.3' ConnectedId='{1460620D-C8BC-44c2-86EC-F00000000020}'>
+    <Variable Name='varSapRFC64SrcDir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>SAPGUI64</Value>
+    </Variable>
+	<Variable Description="strSapRFC64DestDir" DisplayInSapAdmin="true" Name="SapFrontEnd64Dir" Persistent="true">
+		<Value>%ProgramFiles64%\SAP\FrontEnd</Value>
+	</Variable>
+    <Variable Name='varSapRFC64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>8.00</Value>
+    </Variable>
+</SapSetup>

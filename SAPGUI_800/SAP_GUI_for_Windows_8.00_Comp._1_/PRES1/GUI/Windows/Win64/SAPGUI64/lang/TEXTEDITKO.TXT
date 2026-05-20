@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 TEXTEDIT KO 8500 OK 
+TEXTEDIT_HE_LANG_BUTTON         255 "키보드 레이아웃을 히브리어로 전환"
+TEXTEDIT_EN_LANG_BUTTON         255 "키보드 레이아웃을 영어로 전환"
+TEXTEDIT_DISABLE_LANG_BUTTON    255 "언어 사용 안 함 버튼"
+TEXTEDIT_ENABLE_LANG_BUTTON     255 "언어 사용 버튼"
+TEXTEDIT_PROMPT_TEXT            255 "여기에 텍스트 입력..."

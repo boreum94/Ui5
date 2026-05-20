@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="VCRuntimeWksta.xml">
+	<Component BuildTime="0x907D26B05B30D901" Guid="{34DF7CBB-1753-4582-815C-B21A590F06B5}" Name="VCRuntimes Script" Order="PreInstall" SysSize="7" Version="900.7">
+		<Action Dst="%SAPSetupDir%\Setup" Type="File">
+			<Src Hash="SHA-256:a6364c5f2064b6998b20f57bafae13159eb65c98d80fd20b21cb9000165dbf9f" Timestamp="0x0037BEBDC2C8D801">%SapSrcDir%\Setup\VCRuntime.inc</Src>
+		</Action>
+	</Component>
+</SapSetup>

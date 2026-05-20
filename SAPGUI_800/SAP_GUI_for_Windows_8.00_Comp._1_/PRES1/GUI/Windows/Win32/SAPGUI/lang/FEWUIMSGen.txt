@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 FEWUIMSG EN 1100 OK 
+<#001>UIMSG_YNA_DLG_REMEMBER    100 "Remember my decision"
+<#001>UIMSG_YNA_DLG_YES         100 "Yes"
+<#001>UIMSG_YNA_DLG_NO          100 "No"
+LGN_POP_DTF_TITLE               200 "SAP Logon Cleanup"
+LGN_POP_DTF_MESSAGE             200 "Do you want to clean up the document directory %s?"

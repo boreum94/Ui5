@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR FI 1100 OK 
+PREVIOUS_YEAR                   255 "Edellinen vuosi"
+PREVIOUS_MONTH                  255 "Edellinen kuukausi"
+NEXT_YEAR                       255 "Seuraava vuosi"
+NEXT_MONTH                      255 "Seuraava kuukausi"
+WEEK_NUMBER                     255 "Viikon numero"
+WEEK_NUM_STR                    255 "VN"
+CALENDAR_BTN                    255 "Avaa/sulje p‰iv‰m‰‰r‰navigaattori"
+DT_PICKER                       255 "P‰iv‰m‰‰r‰valinta: muuta p‰iv‰‰, kuukautta tai vuotta"

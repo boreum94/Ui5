@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 PLUGINFRAMEWORK LV 1904 OK 
+CP_SERVICE_MENUITEM             030 "Pakalpojumi"
+MENU_ITEM_EXCEL                 030 "Excel"
+MENU_ITEM_SEARCH                030 "Meklçt"
+MENU_ITEM_CONTEXTSEARCH         120 "Meklçt SAP Help Portal resursos"
+MENU_ITEM_SPELLCHECK            030 "Pareizrakstîbas pârbaude"
+MENU_ITEM_MAIL                  020 "E-pasts"
+MENU_ITEM_PRINT                 020 "Drukât"
+CP_TREE_PRINT                   060 "Drukât koku"
+CP_SPELLCHECK_COMPLETE          128 "Pareizrakstîbas pârbaude pabeigta"

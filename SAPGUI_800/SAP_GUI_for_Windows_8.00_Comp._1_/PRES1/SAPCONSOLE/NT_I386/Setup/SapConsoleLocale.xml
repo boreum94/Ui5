@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Locale" Version="3001">
+	<!-- FolderPathPage -->
+	<String name="SapConsoleProductName">
+		<En>SAP Console 7.30</En>
+		<De>SAP Console 7.30</De>
+	</String>
+
+	<String name="SapConsoleProductDescription">
+		<En>SAP Console is a framework in which several components work together enabling users to access and execute R/3 from character based device or web enabled handled device. SAP Console supports character-cell terminals, including radio frequency (RF) devices, and web-equipped devices. The main components involved are &quot;SAP Console&quot; and &quot;SAP Console Administrator&quot;.</En>
+		<De>SAP Console is a framework in which several components work together enabling users to access and execute R/3 from character based device or web enabled handled device. SAP Console supports character-cell terminals, including radio frequency (RF) devices, and web-equipped devices. The main components involved are &quot;SAP Console&quot; and &quot;SAP Console Administrator&quot;.</De>
+	</String>
+
+	<String name="SapConsoleDestDirPrompt">
+		<En>Choose the path to the SAP Console installation directory</En>
+		<De>W&#228;hlen Sie das SAP Console Zielverzeichnis aus</De>
+	</String>
+
+	<String name="DscrSapConsoleDestDir">
+		<En>SAP Console installation directory</En>
+		<De>SAP Console Installationsverzeichnis</De>
+	</String>
+
+</SapSetup>

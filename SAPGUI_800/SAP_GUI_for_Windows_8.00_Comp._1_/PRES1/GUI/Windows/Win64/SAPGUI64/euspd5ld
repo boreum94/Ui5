@@ -1,0 +1,128 @@
+# @(#) $Id: //fes/800_REL/src/dwb/eusp/euspd5ld#1 $ SAP
+#23456789012345678901234567890123456789012345678901234567890123456789012345
+.
+.                         Dict/Programmfelder
+.
+. Dieses Fenster erlaubt die Übernahme von Tabellenfeldern aus dem Data
+. Dictionary bzw. von Feldern aus der generierten Fassung des zugehörigen
+. Programms (Modulpool oder Report).
+.
+. Felder aus dem Data Dictionary können als Ein/Ausgabefeld (Schablone)
+. und/oder Textfeld (Schlüsselwort) in das Dynpro übernommen werden. 
+. Felder aus dem Programm können nur als Ein/Ausgabefeld übernommen
+. werden.
+.
+.
+. Auswahl der Tabelle
+. -------------------
+. In der Kopfzeile des Fensters spezifiziert man zunächst den Tabellen-
+. bzw. Feldnamen. Feldnamen können generisch sein, Tabellennamen nicht.
+.
+. Die Drucktasten "Holen aus Dict" und "Holen aus Programm" lösen die
+. Suche nach der Tabelle bzw. dem Feld im Data Dictionary bzw. im
+. Programm aus.
+.
+.
+. Darstellung der Felder
+. ----------------------
+. In der tabellarischen Liste werden die gefundenen Felder angezeigt,
+. und zwar mit
+.        - Feldnamen,
+.        - Kurzbeschreibung (nur bei Data Dictionary-Feldern),
+.        - Format und Länge der Ein/Ausgabe-Schablone,
+.        - Längen der 4 Texte (kurz, mittel, lang und Überschrift, 
+.          nur bei Data Dictionary-Feldern),
+.        - momentan ausgewählter Text.
+.
+. Wenn der Feldname eines Feldes in der Liste nicht komplett angezeigt 
+. werden kann, ist eine Anzeige des gesamten Feldnamens durch Mausklick
+. auf den Feldnamen möglich. Das gleiche gilt für die Kurzbeschreibung
+. und den Feldtext.
+.   
+. Hinweis: Zum Suchen von Tabellenfeldern in der Liste kann man den
+.          Feldnamen in das Eingabefeld eingeben. Nach jedem einge-
+.          gebenen Zeichen wird die Liste auf den ersten Eintrag
+.          positioniert, dessen Feldname mit der eingegebenen 
+.          Zeichenkette beginnt.
+.
+.
+. Markierung und Übernahme von Feldern
+. ------------------------------------
+. Felder können nur im Änderungsmodus markiert und übernommen werden,
+. nicht im Anzeigemodus.
+.
+. Mit Hilfe der Ankreuzfelder und Auswahlknöpfe in den Zeilen lassen sich
+. die gewünschten Feldanteile für jede Zeile individuell auswählen.
+. Falls ein Ein/Ausgabefeld vom Typ CHAR und Länge 1 ausgewählt wird, kann 
+. man mit den drei letzten Auswahlknöpfen "Übernehmen als Text/AnkrF/AuswK"
+. zusätzlich bestimmen, ob das Feld als Ein/Ausgabe-Schablone oder als 
+. Ankreuzfeld bzw. Auswahlknopf - ggf. zusammen mit seinem Text - in das
+. Dynpro übernommen werden soll. 
+
+. Ist ein Ein/Ausgabefeld bereits auf dem Dynpro vorhanden, so ist das 
+. betreffende Ankreuzfeld angekreuzt und nicht eingabebereit. Befindet
+. sich einer der zugehörigen Texte bereits auf dem Dynpro, so ist ebenfalls 
+. der betreffende Auswahlknopf eingestellt. 
+. 
+. In der Markierspalte am linken Rand können einzelne oder mehrere Zeilen
+. für die Übernahme ins Dynpro markiert werden. Ein gedrückter Markier-
+. knopf einer Zeile zeigt ein rotes Kreuz, wenn in der Zeile nicht 
+. wenigstens ein Feldanteil ausgewählt ist. Solange derartige Zeilen 
+. markiert sind, ist eine Feldübernahme nicht möglich.
+.
+. Felder, die
+.         - leer (d.h. ohne Text),
+.         - in Dynpros nicht erlaubt oder
+.         - im Dynpro schon vorhanden sind (Ein/Ausgabefeld und Text),
+. werden in der Liste inaktiviert und können nicht markiert und ins
+. Dynpro übernommen werden. Der Markierknopf zeigt in diesem Fall ein 
+. Schloß.
+.
+. Beim Drücken der Taste "Übernehmen" werden die in den markierten 
+. Zeilen ausgewählten Feldanteile ins Dynpro übernommen. Durch Klicken 
+. (und eventuell Verschieben) im Fullscreen-Fenster legt man fest, 
+. wo die übernommenen Felder plaziert werden sollen. Wurden mehrere 
+. Felder übernommen, werden diese als kompakte Gruppe plaziert. Sie 
+. müssen anschließend ggf. auseinandergeschoben werden.
+.
+. Können Felder nicht kollisionsfrei plaziert werden, erscheint eine
+. Meldung. Die Übernahme dieser Felder ist dann an anderer Stelle im
+. Fullscreen-Fenster zu wiederholen.
+.
+. Hinweis: Mit der Reset-Taste in der "Anlegen"-Palette des Fullscreen-
+.          Fensters kann man die Übernahme der Dict/Programmfelder
+.          vor dem Plazieren abbrechen.
+.
+.
+. Sortieren einer Tabelle nach den Feldnamen
+. ------------------------------------------
+. Die Spalte der Feldnamen kann durch Mausklick auf den Knopf unter-
+. halb der Überschrift markiert werden. Das Sortieren wird durch den 
+. linken Knopf der Drucktastenleiste unterhalb der Tabelle ausgelöst.
+.
+.
+. Schalten der Ankreuzfelder / Auswahlknöpfe einer Spalte
+. -------------------------------------------------------
+. Die  Auswahlknöpfe (Ankreuzfelder) einer Tabellenspalte können in einem
+. Schritt eingeschaltet (Ankreuzfelder auch ausgeschaltet) werden.
+. Hierzu markiert man die entsprechende Spalte durch Mausklick auf den 
+. Knopf unterhalb der Überschrift. Das Einschalten (Ausschalten) wird mit
+. Knöpfen in der Drucktastenleiste vorgenommen. 
+. Ist keine Zeile markiert, so bezieht sich der Schaltvorgang auf die 
+. gesamte Spalte, ansonsten nur auf die Einträge der Spalte, deren Zeilen
+. markiert sind.
+.
+.
+. Eingabefokus und Tastennavigation
+. ---------------------------------
+. Der Eingabefokus wird durch ein gepunktetes Rechteck angezeigt. 
+. Man kann den Eingabefokus nicht nur durch Mausklick, sondern auch mit
+. Hilfe der Tastatur umsetzen:
+.        - "Tab" wechselt in das nächste eingabebereite Feld nach rechts; 
+.        - "Shift & Tab" wechselt in das nächste eingabebereite Feld nach 
+.          links;
+.        - "Ctrl & Tab" wechselt zum Anfang der nächsten Gruppe;
+.        - "Shift & Ctrl & Tab" wechselt zum nächsten Element.
+.
+. Innerhalb der Tabelle können zusätzlich die Pfeiltasten verwendet 
+. werden.

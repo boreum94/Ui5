@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 OFFICEINTEGRATION AR 8704 OK 
+OI_LOADING_CUSTOM_MENU          080 "Ã«—Ú  Õ„Ì· «·ﬁ«∆„… «·„Œ’’…. Ìı—ÃÏ «·«‰ Ÿ«—..."
+OI_FILE                         060 "«·„·›"
+OI_SAVE                         060 "Õ›Ÿ"
+OI_SAVE_AS                      060 "Õ›Ÿ »«”„"
+OI_PRINT_PREVIEW                080 "„⁄«Ì‰… ﬁ»· «·ÿ»«⁄…"
+OI_PROPERTIES                   060 "«·Œ’«∆’"
+OI_PRINT                        060 "ÿ»«⁄…"

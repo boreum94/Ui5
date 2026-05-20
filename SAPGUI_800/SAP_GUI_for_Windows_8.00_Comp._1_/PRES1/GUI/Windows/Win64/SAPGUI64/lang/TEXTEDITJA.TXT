@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 TEXTEDIT JA 8000 OK 
+TEXTEDIT_HE_LANG_BUTTON         255 "キーボードレイアウトをヘブライ語に変更"
+TEXTEDIT_EN_LANG_BUTTON         255 "キーボードレイアウトを英語に変更"
+TEXTEDIT_DISABLE_LANG_BUTTON    255 "言語ボタンの無効化"
+TEXTEDIT_ENABLE_LANG_BUTTON     255 "言語ボタンの有効化"
+TEXTEDIT_PROMPT_TEXT            255 "テキストをここに入力..."

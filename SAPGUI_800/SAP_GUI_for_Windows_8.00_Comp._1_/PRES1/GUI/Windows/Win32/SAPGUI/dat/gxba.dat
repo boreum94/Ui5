@@ -1,0 +1,3640 @@
+#@(#)gxba.dat  	%I%	SAP	%E%
+/ $OPTS 3
+: SET NUMERR 50
+: SET NOSTLIN 0
+: SET SHIFTPHANT 1
+: SET OPTCLWD 1
+: SET PORTSIZE 200
+: SET CLRTBUPD 0
+#: SET CUSTOMIZE 1
+: SET TOOLTIP 1
+: SET SWPCLMNS 1
+: SET SNDSLMV 0
+# : SET TIMELIN 1
+: SET VCPRCTRL 1
+: SET MERGEICOS 1
+: SET ENLARGE 1
+: SET LEGEND 1
+: SET DRAGDROP 0
+#: SET CMREDUCE 7
+: SET ROWMARGIN 100
+: SET MSPOPUP   15
+#: SET MSPOPUP   7
+: SET SLIDEMODE 0
+: SET NODELMSG 10
+#: SET ZOOMFAC 3000
+: SET CONFIRM 0
+: SET MARKTYPE 5
+: SET NOWARN 0
+: SET BITSCROLL 0
+: SET OBJMARK 3
+: SET NUMHSBS 3
+: SET COLWIDTH 200
+: SET BITSCROLL 1
+: SET INFOTEXTS 1
+: SET DBCLICK 1
+: SET DEFLAYER 4
+: SET SELTYPE 2
+: SET BORDERLINE 1
+: SET TERMINATE 0
+: SET SOLVEROWS 0
+: SET SELCHARTS 1
+#: SET PROOF  1
+#: SET TIMER 10
+: SET AUTOSCROLL 30
+: SET GRANULAT 6
+: SET GRANULAT 0
+: SET CREORG     1
+: SET CSELECT    1
+: SET CMOVE      1
+: SET HORLINE   1
+: SET CHECKDATE   0
+: SET EDITINLINE   1
+: SET ALIVE   0
+: SET TBXZOOM   1
+#: SET OPMODE   2
+: SET MARKCOL   YELLOW
+#: SET PHANTCOL   GREEN
+
+#######################################################################
+################# Neue wichtige Features zum Testen ###################
+#######################################################################
+#                                    
+#  1. Texte in Layern: (4. Juli 94)
+#         $FMT   (neues Format, Layerformat)
+#         $LVALS Format an Layer zuweisen. Nicht vergessen, Texte kommen
+#                nur, wenn auch was vernuenftiges im Textcontainer des Knotens steht !!!
+#         $FMTS  Minfieldwidth und Fonthoehe setzen, Defaults sind nicht in Ordnung !!!
+#
+#  2. Kalenderribbon: (4. Juli 94)
+#         $RIBBON (neue Zeiteinheit, Kalender)
+#         $RVALS  (Kalender an Ribbon zuweisen)
+#         $HLTS   Farben setzen sich Background- und Patterbackgroundcolor zusammen.
+#
+#  3. Verschieben von Knoten und Layern (4. Juli 94)
+#     Beim Verschieben von Knoten und Layern sollte jetzt eigentlich die Anfangszeit
+#     kommen und nicht mehr die Zeit, die durch den Mauscursor angezeigt wird.
+#     Beim Rueckmelden wird jetzt auch die *exakte* Zeit in Sekunden angegeben, ganz
+#     egal, welche Granularitaet eingestellt ist.
+#
+#  4. Neue Zeiteinheiten fuer Grids, Ribbons und Sections (4. Juli 94)
+#     Ausser den bisher gueltigen Tagen als Zeiteinheit sollten jetzt auch
+#     die anderen Einheiten gehen. (Bis auf Quartal und Woche !)
+#
+#  5. Kanten zum Verbinden von Knoten (4. Juli 94)
+#     Siehe Tabellen $LINKS und $LKVALS
+#
+#  6. Art der Kanten, (Orthogonal oder Straight) (15. Juli 94)
+#     Siehe Tabelle $LKVALS
+#
+#  7. CUA-Information via CUA-Painter nutzen (19. August 94)
+#     Siehe Tabelle $CUABAR, $CUAHELP
+#
+#  8. Vertikale Borderline im Tabellenteil ein-aus-schalten (19. August 94)
+#     Siehe Tabelle $OPTS, SET BORDERLINE (0/1)
+#
+#  9. Markieren von Kanten (23. August 94)
+#     Siehe Tabelle $CVALS, Option (lL) fuer Setzen eines Highlights zur
+#     Linkmarkierung
+#     Tabelle $LINKS hat einen extra Parameter (Format=Spalte 5) bekommen !!!  
+#
+#  10. Vorwaerts- und Rueckwaertsterminierung ein-aus-schalten (23. August 94)
+#      Siehe Tabelle $OPTS, SET TERMINATE (0 = Vorwaerts / 1 = Rueckwaerts)
+#
+#  11. Erweitern des Lademechanismus um Anzahl der Spalten pro Tabelle (25. August 94)
+#      Aus /$NVALS wird /$NVALS 4, da diese Tabelle vier Spalten hat.
+#      Diese Spaltenangabe ist optional, sollte aber, wann immer moeglich, aktiv sein.
+#      Ausgenommen sind die Tabellen $CUABAR, $CUATEXT und $CUAHELP, da diese
+#      an dieser Stelle CUA-Information enthalten koennen.
+#
+#  12. Profile koennen mit positiven Arbeitszeiten belegt werden. (26. August 94)
+#      Wichtig dafuer ist die Angabe des Profiltyps !!!
+#      In der Tabelle $PROFILE wird in der zweiten Spalte durch e=Empty, f=Full
+#      angegeben, ob es sich um ein leeres Profil (dann und nur dann koennen
+#      Arbeitszeiten addiert werden) handelt oder ob es ein volles Profil
+#      ist, von dem Arbeitszeiten subtrahiert werden. (So ist es bisher !!!)
+#      Das ganze scheint noch nicht so richtig zu funktionieren, da es bei Netronic
+#      in der Kalenderberechnung Endlosschleifen gibt, wenn von einem leeren 
+#      Profil noch Arbeitszeiten abgezogen werden.
+#
+#  13. Interaktives Verbinden von Balken (26. August 94)
+#      Siehe Tabelle $CMDS, SET CONNECT (0/1) 
+#
+#  14. Setzen der Kantenports. (12. September 94)
+#      Tabelle $LKVALS, Option Y (0-15). Siehe auch Netzplan, wie die Sache in
+#      der Tabelle $LVALS dort behandelt wird.
+#
+#  15. Setzen neuer Layerarten. (13. September 94)
+#      Siehe Tabelle $LVALS, Option t. Es gibt nun 19 verschiedene Layertypen
+#
+#  16. Loeschen der Tabelle $CMDS. (14. September 94)
+#      Die Optionen SELECT, MOVE und REORG kommen in die OPTS-Tabelle
+#      Der Rest wird aus dem CUABAR abgeleitet !!!
+#      Dazu ist es aber unbedingt noetig, dass $CUABAR vor $CUAHELP kommt !!!!!!!!!!!!
+#
+#  17. Neue Tabelle $LINE. (14. September 94)
+#      Die in dieser Tabelle angegeben Zeilen (fuer jedes Chart extra) werden pro
+#      Chart dargestellt. 
+#      Zu beachten ist fuer diesen Fall der Wert von HORLINE in $OPTS !!!
+#        HORLINE = 0  (alles wird in jedem Chart nicht dargestellt
+#                = 1   die Tabellenwerte sind aktiv
+#                > 1   Falls fuer ein Chart keine Zeilenwerte in $LINE angegeben sind, 
+#                      wird jede (HORLINE-1) Zeile dargestellt. Sonst gilt der Wert von $LINE.
+#
+#  18. Bezeichner in $OPTS geaendert (15. September 94)
+#           REORG  --> CREORG
+#           SELECT --> CSELECT
+#           MOVE   --> CMOVE
+#
+#  19. Rueckmeldung vom Doppelklick erweitert (16. September 94)
+#      Bei Boxen wird jetzt auch die Feldid mitgeliefert.
+#
+#  20. Checken aller Eingabedatuemer (23. September 94)
+#      Falls die Option CHECKDATE aktiv ist (Default) werden alle Datuemer mit den
+#      Werten aus der Tabelle $TIME abgeglichen.
+#      Falls im Oktober die endgueltige Version von Netronic kommt, sollen auch Datuemer
+#  	   ausserhalb dieses Bereichs erlaubt sein, geht aber momentan noch nicht !!!
+#      Deswegen werden jetzt die Datuemer auf legale Werte (sprich Werte innerhalb des 
+#      Intervalls, und zwar obere oder untere Grenze) gesetzt !!!
+#
+#  21. Gueltigkeitsbereiche fuer Profile (26. September 94)
+#      Ab sofort kann in der Tabelle /$CALVALS beim Hinzufuegen von Profilen
+#      ein Gueltigkeitsinterval mitgegeben werden. Syntax wie folgt:
+#         bisher             1 a 3     Meint Profil 3 wird zu Kalender 1 addiert.
+#         jetzt              1 a 3     wie oben oder
+#                            1 a 3/6   Profile 3 auf Kalender 1, ist aber nur gueltig im
+#                                      Interval 6.
+#
+#  22. Linklayouter fuer Kanten (5. Oktober 94)
+#      In Tabelle $LKVALS koennen jetzt nicht nur einzelne Ports sondern auch ganze AOB-Typen
+#      Typen wie Anfangsfolgen, Endfolgen und Sprungfolgen gesetzt werden.
+#
+#  23. Intervallangaben fuer Grids (6. Oktober 94)
+#      In Tabelle $GVALS koennen jetzt auch Zeilenintervalle angegeben werden, in denen     
+#      Grids dargestellt werden sollen. (Option A (Anfang) und E (Ende). Dazu kann es
+#      sinnvoll sein, die Tabelle $GVALS nach Tabelle $POSITION zu schicken, damit
+#      schon genuegend Zeilen da sind !!!
+#      Somit koennen nun auch Kalender fuer einzelne Zeilen dargestellt werden, indem
+#      man Anfangs- und Endwert auf die Position setzt, die Box und Knoten in $POSITION
+#      bekommen haben. Die Probleme, die beim Verschieben von Knoten und so auftreten, bitte
+#      ich aber im ABAP zu loesen, da die Applikation sonst total ueberfordert ist.
+#
+#  24. Verschieben von Boxen (10. Oktober 94)
+# 	   Ist nun innerhalb des Tabellenteils (der Tabellenteile) moeglich. Siehe dazu 
+#	   auch die Rueckmeldungen im uebernaechsten Abschnitt.
+#
+#  25. Einbau von Zeitstreckungsfaktoren (11. Oktober 94)
+#      Siehe Tabelle $IVALS, Operation Z, Wert in Prozent. Wert ist sinnvollerweise groesser 
+#      als 0, nach oben hin gibts eigentlich nur 32767 als Grenze, aber eine Auslastung von
+#      mehr als 100 Prozent habe ich persoenlich eh noch nie verstanden.
+#      Wichtig: Intervalle, die Zeitstreckungsfaktoren enthalten sollen, brauchen einen
+#      besonderen Typ ! Siehe dazu auch Tabelle $INTERVAL.
+#
+#  26. Gueltigkeitszeitraum (11. Oktober 94)
+#      Falls die Option CHECKDATE nicht aktiv ist, sollte es ab sofort moeglich sein,
+#      in $TIME ein Intervall anzugeben, dass kleiner ist als der maximale Zeitraum, der von den
+#      Layern umschlossen wird. Bis zur endgueltigen Version kann es dabei im Tabellenteil noch zu
+#      Schmutzeffekten kommen, da das Clip- und Redrawverhalten noch nicht so ganz ok ist. Soll
+#      bis Ende Oktober laut Netronic behoben sein.
+#
+###    Damit sollte fuer Release 3.0 alle Funktionalitaet vorhanden sein !!!
+###    Beschwerden, Reklamationen, Aenderungswuensche und aehnliche Dinge 
+###    koennen nur noch sehr kurzfristig eingebaut werden. Alles andere kommt erst
+###    ab Release 3.1. Deswegen Aenderungen bitte unverzueglich anfordern.
+#
+#  27. Linklayout (14. Oktober 94)
+#      In der Tabelle $LKVALS gibt es jetzt die korrigierte Anfangsfolgenbeziehung und
+#      noch zusatzliche EA und AE-Beziehungen. Siehe $LKVALS.
+#
+#  28. Linklayout (21. Oktober 94)
+#      Falls F11 gedrueckt wird, kommt ein SAVE zurueck.
+#
+#  29. Linklayout (4. November 94)
+#      Neue Layer eingefuegt. Quadrat und umrandetes Quadrat, siehe $LVALS
+#
+#  30. Farben angepasst. Nun auch Saptemu-Farben erlaubt (Listfarben) (7. November 94)
+#      LISTCOL1 bis LISTCOL7 fuer normale Listfarben,
+#      INVLISTCOL1 - INVLISTCOL7 fuer invertierte Listfarben und
+#      INTLISTCOL1 - INTLISTCOL7 fuer intensivierte Listfarben.
+#
+#  31. Pro Chart nur so und soviel leere Zeilen hintendran ($CVALS) (8. November 94)
+#
+#  32. Selektion von Layern erlauben (auch Layer !!!) ($OPTS, SELTYPE) (8. November 94)
+#      IM CUABAR, CUAHELP kriegt es die Abkuerzung SNLY.
+#
+#  33. Benutzeroberflaeche aendern (8-10. November 94)
+#      Jegliches Haendling geht jetzt nur noch ueber die linke Maustaste. Ausgenommen
+#      ist die additive Selektion (geht mit Shift-Maus).
+#
+#  34. Editieren innerhalb des Charts (10. November 94)
+#      Kann eingeschaltet werden ueber SET EDITINLINE (0/1), Default 0 in Tabelle $OPTS.
+#
+#  35. Setzen des Modus ueber ABAP (10. November 94)
+#      Kann eingeschaltet werden ueber SET OPMODE (0/1), Default 0 in Tabelle $OPTS.
+#             0 = Selektieren
+#             1 = Aendern
+#             2 = Verbinden
+#
+#  36. Neue Layerverwaltung !!! (11. November 94)
+#      Die Viecher werden jetzt einfach durchgezaehlt. Nummernzuordnung wie folgt:
+#             0  = Rechtecklayer
+#             1  = Linienlayer
+#             2  = Zeiger runter
+#             3  = Dreieck runter
+#             4  = Pfeil rechts
+#                  ...
+#             11 = Quadrat
+#             12 = Leerer Kreis  (CUA-Status-Code = LA32)  (neu !!!)
+#             13 = Zeiger runter im Kreis
+#                  ...
+#             22 = Quadrat im Kreis
+#
+#  37. Prioritaeten fuer Layer (11. November 94)
+#      Attribut p in Tabelle $LVALS
+#
+#  38. Aendern der Spaltengroesse (15. November 94)
+#      Diese kann jetzt interaktiv geaendert werden. Rueckmeldung CREORG
+#
+#  39. Einbauen der Labels (21. November 94)
+#      Siehe Tabelle $LABELS
+#
+#  40. Setzen der Views auf Zeile und Datum (22. November 94)
+#      Siehe Tabelle $CVALS, Attribut C fuer vertikale Ausrichtung der Views
+#      Siehe Tabelle $START fuer horizontale Ausrichtung
+#
+#  41. Aendern der Profile (28. November 94)
+#      Es gibt einen neuen Profiltyp (Variabel, siehe $PROFILE)
+#      Es gibt ein neues Zeitobjekt fuer sich wiederholende Tage ($TIMEOBJ, Typ D)
+#      Auf Profile koennen jetzt andere Profile aufaddiert werden. ($PVALS, Attribut P)
+#
+#      Beispiel 1:
+#      Innerhalb der Zeit von Mitte September bis Mitte Oktober soll immer von 8:00 - 17:00 Uhr,
+#      abzueglich einer Stunde Mittag von 12:00 - 13:00 Uhr gearbeitet werden.
+#      Vorgehensweise. Variables Profil erzeugen, Tagesprofil mit obigen Eigenschaften erstellen
+#      und an variables Profil zuweisen. ($PVALS, Attribut p (plus)).
+#      Bei Zuweisung des variablen Profils an den Kalender noch ein Gueltigkeitsintervall von
+#      Mitte September bis Mitte Oktober mitgeben. Fertig.
+#
+#      Beispiel 2:
+#      Moechte man beispielsweise ein 10-taegig rollierendes Profil haben, benoetigt man
+#      10 Tagesprofile, die man auf ein variables Profil addiert. $PVALS, Attribut p (plus).
+#      Damit dieses 3 mal ablaeuft, addiert man das variable Profil auf den Kalender und
+#      setzt ein Intervall (Gueltigkeitsbereich) von 30 Tagen.
+#      (Koennten aber auch 28 oder 42 Tage sein, das Profil rolliert immer bis
+#      zum Ende des Intervalls. Wichtig: Momentan geht das nur mit Tagesprofilen !!!.
+#
+#  42. Neue Markierungsarten fuer Boxen und Knoten  (30. November 94)
+#      Die bisherige Markierungsart (fuer Knoten und Boxen) wird aufgespalten in
+#      Markierungsart fuer Boxen (wie bisher) aber erweitert um Farbmarkierung
+#      Code MPCL.
+#      Fuer die Knoten gibt es die Codes MOUR, MONV, MOCK und MOCL entsprechend der
+#      Funktionalitaet der Boxmarkierung. In der $OPTS - Tabelle heisst die
+#      Markierungsart fuer Boxen weiterhin MARKTYPE (0-3) und fuer die 
+#      anderen Objekte (i.a. Knoten OBJMARK (0-3).
+#      Die Farbe fuer markierte Objekte wird in $OPTS gesetzt, Attribut MARKCOL.
+#      Wert ist eine Zeichenkette wie Gruen, Blau, Rot, siehe auch Farben fuer Highlights.
+#
+#  43. Neue Werte fuer Ribbons (30. November 94)
+#        Siehe Tabelle RVALS, Attribute
+#              m: Major Ticks. Gilt nur fuer Stunden und Tagesribbon. 
+#                                       Wert = 4 macht alle vier Stunden einen dicken Strich
+#                                       im Tagesribbon.
+#              t: Textsetzen in Ribbons 
+#                    Tagesribbon:  0 = Tag in Monat (in Ziffern)
+#                                  1 = Erster Buchstabe des Tages
+#                                  2 = Tag als String
+#                    Wochenribbon: 0 = Wochennummer
+#                                  1 = Kalenderwochennummer
+#                    Monatsribbon: 0 = Monatsname
+#                                  1 = Monatsname und Jahr
+#               
+#
+#  44. Highlightattribute erweitert (1. Dezember 94)
+#      In der Tabelle $HVALS kann man ein Highlight als transparent definieren. 
+#      Die Hintergrundfarbe des Highlights entspricht dann der Hintergrundfarbe der View,
+#      auf der das Objekt dargestellt wird. Sinnvolle Anwendung siehe Tabelle $HBANDS, 
+#      spaeter auch mal $VBANDS.
+#      Tabelle $HVALS, Attribut z. Scheint aber nur bei Baendern richtig zu funktionieren.
+#
+#  45. Manipulieren von Zeilen (1. Dezember 94)
+#      Siehe Tabelle $HBANDS, die nach Tabelle $POSITION kommen sollte !!!
+#
+#  46. Manipulieren von Spalten (1. Dezember 94)
+#      Siehe Tabelle $VBANDS, die nach Tabelle $POSITION kommen sollte !!!
+#
+#  47. Zurueckschicken der zu erweiternden Zeilen (1. Dezember 94)
+#      Siehe OVERLAP, $OVERLAP
+#
+#  48. Zurueckschicken der zu erweiternden Zeilen (2. Dezember 94)
+#      Erweitern der Doppelklick-Meldung um Positionen (Zeilen) Argument 'p'.
+#      Klickt man auf eine Zeile (Doppelklick), die der Ausweitung bedarf,
+#      so wird diese ausgeweitet oder im umgekehrten Fall kollabiert.
+#      Funktinoniert nur, wenn CONFIRM = 0 ($OPTS).
+#      Sonst muss eben der ABAP in $HBANDS eine Operation 'e' runterschicken.
+#
+#  49. Verbieten der Eingabe in Spalten (6. Dezember 94)
+#      Wird in $VBANDS mit 'M' Modify enabled/disabled. Wird versucht, ein Feld zu 
+#      modifizieren, dass nicht enabled ist, kommt ein Fehlerpopup.
+#
+#  50. Anstossen des Edit-Ctrls vom ABAP aus (6. Dezember 94)
+#      Siehe dazu Tabelle $EDIT. Zu beachten. Dieses Feature sollte nur verwendet werden,
+#      wenn vorher ein Modify fehlgeschlagen ist (aus welchen Gruenden auch immer). Es
+#      anders aufzurufen (nur beim Nachladen) ist zwar moeglich, scheint mir aber nicht
+#      sinnvoll !!! Bitte unterlassen, schlechter Stil !!!
+#
+#  51. Ein-Ausschalten einiger Optionen aus $OPTS via Menuleiste (8. Dezember 94)
+#      Dazu sollten folgende CUA-Codes noch eingebaut werden.
+#        INON   = Enable Infotexts       $OPTS, INFOTEXT
+#        INOF   = Disable Infotexts
+#        BOON   = Enable Infotexts       $OPTS, BORDERLINE
+#        BOOF   = Disable Infotexts
+#        TLFT   = Lefttermination        $OPTS, TERMINATE
+#        TRGT   = Righttermination
+#        TLFW   = Lefttermination with line-phantom
+#        TRGW   = Righttermination with line-phantom
+#        Dies erfordert eine Erhoehung von TERMINATE im Customize (ABAP) 0..3 !
+#
+#  52. Zoomfaktor einstellen eingebaut (9. Dezember 94)
+#      Tabelle $OPTS, ZOOMFAC 500 <= 3000 = Default <= 10000.
+#
+#  53. "Farbe" des Phantomobjekts einstellbar (20. Dezember 94)
+#      Tabelle $OPTS, PHANTCOL <Farbe>, Default = GREEN
+#
+#  54. Neuer Intervaltyp (16. Januar 95)
+#      Um das Problem mit den ueberlagerten Profilen zu Loesen, kann fuer die
+#      Intervalle, die den Gueltigkeitsbereich von Profilen festlegen, ein 
+#      neuer Typ 'V' festgelegt werden. Siehe dazu auch $INTERVAL.
+#      Intervalle dieses Typs koennen drei Auspraegungen bekommen, sieh $IVAL.
+#
+#  55. Farbeinstellungsmoeglichkeit (24. Januar 95)
+#	   Eine Tabelle $CLRS (dreispaltig), die einen Text sowie aktuelle Farbe und
+#      Defaultfarbe enthaelt, fuehrt zum Aufruf eines Popups, in dem die 
+#      Farben eingestellt werden koennen. 
+#      Rueckmeldung siehe CLRS.
+#
+#  56. Selektieren von Boxen (30. Januar 95)
+#      Tabelle $BVALS, Option S = 0/1 (0 = Default, 1 = Selektiert)
+#
+#  57. Margins fuer Baender einstellen (1. Februar 95)
+#      Sinnvoll, falls Kanten zwischen Knoten existieren
+#      Tabelle $OPTS, SET ROWMARGIN (10 = Default, 0 = Minimum, 200 = Maximum)
+#
+#  58. Knotenformate aktiv gemacht (1. Februar 95)
+#      Wichtig, das Format muss vom Typ L sein, siehe $FMTS
+#
+#  59. Einiger Kleinkram (2. Februar 95)
+#        - Knotenformate interaktiv umsetzen $NVALS, Option F
+#        - Knoten/Boxenselektion reparieren
+#
+#  60. Noch mehr Kleinkram (6. Februar 95)
+#      In der Tabelle $RVALS kann fuer Ribbons jetzt ein 3D-Effekt eingestellt 
+#      werden sowie der Fonttyp und Fontname. Die Hoehe des Fonts wird weiterhin
+#      ueber die Ribbonhoehe eingestellt.
+#
+#  61. Priority fuer Grids (7. Februar 95)
+#
+#  62. Rueckmelden der aktuellen Positionen der einzelnen Views (22. Februar 95)
+#      Siehe Rueckmeldungen des Balkenplans (VIEWPOS)
+#
+#  63. Fontwidth fuer Ribbons (13. Maerz 95)
+#      Siehe Tabelle $RVALS, Option w, 5 < value < 200
+#
+#  64. Zoomen in der Toolbar (20. Maerz 95)
+#
+#  65. Makrotabelle eingebaut (31. Maerz 95)
+#      Siehe $MAKRO. Ist alles noch ein mieser Hack, mal schauen, ob man das nicht
+#      noch verschoenern kann. Bis dahin bleibt es aber erst mal so wie es ist.
+#      Aber bitte nicht zu viele Makros anlegen, ich hab da momentan noch etwas
+#      Speicherprobleme.
+#      Wie die Makros verwendet werden koennen, steht in den Tabellen $LVALS und
+#      $NVALS jeweils in den Zeilen mit Attribut 'm'.
+#
+#  66. Toolbar (6. April 95)
+#      In der Opts-Tabelle gibt es jetzt noch den Parameter ALIVE, der einen
+#      Timer setzt und nach der gesetzten Zeit jeweils ein "ALIVE" zurueckschickt.
+#      Default = 300sec, Werte 0, 10-3600. Werte von 1-9 sind unsinnig und werden
+#      deswegen auf 10 abgebildet.
+#
+#  67. Abschalten der Warnungen (12. Mai 95)
+#      Tabelle $OPTS, Option NOWARN (0,1) Default 0. Falls Wert = 1 werden
+#      keine Warnungen ausgegeben, nur fatale Fehler
+#
+#  68. Kanten mit Endungen versehen (19. Mai 95)
+#      Tabelle $LKVALS, Option 'b' (Beginn) und 'e' (Ende).
+#      Die Symbole und deren Nummern sind die gleichen wie im Netzplan
+#
+#  69. Fehlermeldungen vom ABAP aus $OUTPUT erst nach einer gewissen Zeit durch
+#      Mausbewegungen auf Infotext ueberschreiben. Siehe $OPTS, Option NODELMSG,
+#      die mit Werten zwischen 0 und 30 Sekunden, Default 5 Sekunden gefuettert
+#      werden kann.
+#
+#  70. Das Scrollverhalten soll sich so einstellen lassen, dass erst am Ende
+#      einer Scrollbar-Sliderbewegung der Scrollvorgang im Fenster ausgefuehrt
+#      wird. Unter Umstaenden noetig, wenn viele Objekte und Kalender 
+#      im Balkenplan sind. $OPTS, SLIDEMODE 0/1 (0=sofort reagieren 1=am Ende).
+#
+#  71. Markieren der Boxen ueber 3D-Effekt. Dazu ist in $CVALS ein Formatfeld
+#      anzugeben, mittels dessen Selektion aktiviert und dargestellt wird.
+#      Siehe $CVALS, Option 'D'.
+#      Damit diese Option greift, muss auch in der Tabelle $OPTS der Wert
+#      fuer MARKTYPE auf 4 stehen. CUA-Code fuer diesen Wert MP3D.
+#      Zusaetzlich zum 3D-Effekt der Selektion kann auch noch ein Text angegeben
+#      werden, der im Selektionsfall ($CVALS, Option 'E') und
+#      Deselektionsfall ($CVALS, Option 'K') ausgegeben wird.
+#
+#  72. Prioritaet fuer Kanten, siehe Tabelle $LKVALS, Option 'L'
+#
+#  73. Beim 3D-Effekt Markieren auch Highlight mitgebbar, mit dem die Zeilen
+#      bei Selektion farblich hinterlegt werden. Siehe $CVALS, Attribut M
+#      WICHTIG: Diese Highlights muessen aussehen wie in $HBANDS, also
+#               transparent sein !
+#
+#  74. Einbau von Prototypen fuer Knoten und Boxen. Diese werden in der
+#      Tabelle $PROTO deklariert. Wichtig: Prototypen werden zum
+#      Anlegen von Objekten benutzt. Doppelte Zuweisung an ein Objekt
+#      ist nicht erlaubt.
+#      Fuer Boxen :
+#      In der Tabelle $BOXES werden dann die Prototypen (Boxen) zugewiesen.
+#      Siehe dazu Boxen 4 und 5. Der Wert fuer das Highlight kann dabei
+#      leer sein (oder irgendeine Zahl).
+#      Fuer Knoten:
+#      In der Tabelle $NODES werden dann die Prototypen (Knoten) zugewiesen.
+#      Siehe dazu Knoten 1 . Der Wert fuer das Highlight sollte dabei 0 sein.
+#
+#  75. Einbau von Prioritaeten fuer Knoten. Diese koennen verwendet werden, wenn
+#      beim Expandieren einer Zeile die Reihenfolge der Knoten festgelegt werden
+#      soll. (Siehe $NVALS, Option p).
+#      ABER: Dieses Feature kostet sehr viel Performance. Bitte nur
+#            verwenden, wenn's wirklich noetig ist. Und dann auch nur fuer
+#            die Knoten, deren Prio ungleich 0 ist !!!
+#
+#  76. Darstellung der Ausfallzeiten einstellbar machen. Diese Einstellung kann fuer
+#      jeden Layer einzeln gemacht werden und findet sich somit in $LVALS.
+#      Eingestellt werden kann fuer die Ausfallzeit
+#          - unsichtbar, Linie, Rechteck (LVALS, 'g') und
+#          - ein Highlight, fuer Hintergrund, Strichdicke... (LVALS, 'b')
+#
+#  77. Alles im selektierten Chart oder der selektierten Zeile markieren.
+#      Um Charts zu selektieren, muss in $OPTS SELCHARTS gleich 1 sein, 
+#      Default = 0.
+#      CUA-Code fuer Markieren von Objekten im selektierten Chart : SCHT
+#      CUA-Code fuer Markieren von Objekten in selektierten Zeilen: SLIN
+#
+#  78. Textlaenge im Format fuer Felder auf variabel stellen, damit
+#      Texte, die ausserhalb des Formats liegen, groessser als das 
+#      Format selbst sein koennen.
+#      Anzusteuern ueber $FVALS, L, aktivieren mit X.
+#      Default ist konstante Textlaenge !
+#
+#  79. Datum fuer Knoten als Zahl uebergeben (nicht als Datum in TTMMYY:SSMMHH)
+#      Dazu brauche ich die Tabelle $NDVALS (Node-Date-Vals).
+#      Aufbau genauso wie NVALS, allerdings duerfen nur Zahlen zwischen 
+#      0-99 drinne stehen. Das Zeug in $NVALS reinzuhauen geht nicht, 
+#      weil im ABAP die Spalte fuer die Aktion nur aus 2 Zeichen besteht.
+#
+#      Zu Testzwecken kommt noch eine Spalte dazu, die nicht nur die 
+#      Zahl sondern auch das Datum enthaelt. Das fliegt natuerlich
+#      spaeter wieder raus, aber so wird das Testen erst mal viel einfacher.
+#
+#  80. Bei Boxen auch die Felder einzeln faerben. Tabelle $BVALS, Option
+#      C, danach muss (Fieldname, Fieldcolor) in einer Spalte wie
+#      folgt angegeben werden.  
+#      <boxid> C  a/CYAN
+#
+#  81. Exlude-Tab eingebaut, die in Menu- und Buttonleiste Items
+#      disabled oder enabled.
+#
+#  82. $USRPOP eingebaut. Ueber Option '?' in $NVALS, $BVALS, $LKVALS kann die 
+#      Nummer des User-Menu angegeben werden, welches bei Klick mit rechter 
+#      Maustaste hochkommen soll.
+#
+#  83. Extra Popup beim Verschieben oder Scalen von Layern eingebaut.
+#      Zu setzen ueber $OPTS, SET MSPOPUP <value> mit 0-3, Default 0.
+#      Falls value = 0      kein Popup
+#      Falls value = 1      Nur Popup beim Verschieben
+#      Falls value = 2      Nur Popup beim Scalen
+#      Falls value = 3      Popup beim Schieben und Scalen
+#
+#  84. Ausgabe der Datuemer gemaess Benutzerstamm anpassen. Dies erfolgt mittels
+#      Tabelle $DATELAY in zwei Feldern.
+#      Das erste Feld betrifft die Tage, Monate, Jahre, die jeweils durch
+#      ein beliebiges Trennzeichnen separiert in beliebiger Reihenfolge
+#      dargestellt werden koennen.
+#               YY oder YYYY beschreiben Jahre,
+#               MM oder MMM  beschreiben Monate,
+#               DD           beschreibt Tage
+#      Ein Layoutstring koennte also beispielsweise lauten:
+#        YY-MM-DD 
+#        MMM:YY DD 
+#        YYYY:MMM-DD;
+#     
+#      Das zweite Feld beschreibt Stunden, Minuten, Sekunden (Kleinbuchstaben !!!)
+#      mit (hh-mm-ss) oder (ss:mm;hh) oder (hh:mm)
+#
+#  85. Neue Kategorie von Grids vereinbaren. Diese sind in $GRIDS definiert.
+#      D steht fuer Linegrid global (vorher GL)
+#      M steht fuer Calendergrid global (vorher GC).
+#
+#  86. Datelines um Anfang-Ende Position erweitern, analog zu den Grids
+#      siehe $DVALS
+#
+#  87. Ausweiten von Baendern so parametrisieren, dass bei gleichen End-
+#      Anfangswerten entweder ausgeweitet wird oder nicht.
+#      Default: Keine Ausweitung. Wird in $OPTS mit ENLARGE gesetzt.
+#
+#  88. Fuer Datumslayout und Zeitribbons werden je nach Benutzerstamm und
+#      Sprache noch Bezeichnungen fuer die einzelnen Zeiteinheiten benoetigt.
+#      Diese finden sich in den Tabellen $DQUART, $DMONTH, $DWEEK und $DDAY.
+#      Siehe dazu die einzelnen Tabellen.
+#
+#      Eine erste Anwendung fuer diese Texte ist in den Ribbons, $RVALS, Option T.
+#      Falls Tagesribbon:      4  (Von Netronic noch nicht implementiert)
+#      Falls Wochenribbon:     2
+#      Falls Monatsribbon:     2
+#      Falls Quartalsribbon:   0
+#      Falls Jahresribbon:     0  (Von Netronic noch nicht implementiert)
+#
+#  89. Fuer die Ribbons kann auch noch ein Zeitoffset fuer die verschiedenen
+#      Zeitzonen angegeben werden. Beispielsweise koennte man sich zwei Ribbons
+#      definieren, eins mit deutscher und eins mit amerikanischer Zeitzone,
+#      wobei fuer die amerikanische Zeitzone einfach Option 'z' und ein
+#      Wert von -43200 bis 43200 sec Offset angegeben wird.
+#
+#  90. Neue Art, Intervalle direkt in die Kalender einzutragen, um 
+#      performanter zu sein und interne Objekte zu sparen. Siehe $CALVALS
+#
+#  91. Legenden in den einzelnen Charts. Dazu muessen, wie im Netzplan,
+#      sogenannte Legendenknoten erzeugt werden, siehe $LNODES.
+#      Diese $LNODES koennen wie normale Knoten attributiert werden, allerdings
+#      ist das Setzen der Datumswerte nicht notwendig. Stattdessen muss den
+#      Layern des Knotens in der Tabelle $LVALS die Option w (LayerWidth)
+#      gesetzt werden. (Ein guter Wert ist 2000).
+#      Die Legende kann ein- und ausgeschaltet werden ueber $OPTS, LEGEND 0/1
+#      oder ueber CUA ,mit den Kuerzeln { "NLGD", KWABNoLegend }
+#      und { "BLGD", KWABBottomLegend }.
+#      Die Legende selbst wird mit $LEGEND angesprochen.
+#
+#  92. Zu $DATELAY gibt es jetzt auch ein $RIBLAY, siehe auch 84.
+#      $RIBLAY (ist optional) und enthaelt das Format fuer die Ribbons.
+#      Dieses kann aber durchaus anders gewuenscht sein als das in $DATELAY.
+#      Damit beides geht, sind die beiden Sachen jetzt getrennt. Wird
+#      $RIBLAY nicht angegeben, die Ribbons aber mit Datumsstring angesteuert,
+#      zieht statt dessen $DATELAY.
+#
+#  93. Einbau von Summierungsdiagrammen  
+#      Die Kurven werden in $CURVE definiert. Attribute in $CURVALS gesetzt.
+#      Geloescht wird in $DELETE mit Option vV
+#      Zusatzlich zu einer Kurve braucht man noch eine Y-Achse ($AXIS), damit man
+#      den Bereich kennt, in dem die Kurve dargestellt werden soll. Diese
+#      Y-Achse kann, (wie die Zeitachse), in verschiedene Sektionen unterteilt
+#      werden. ($SECTION). Sektionen der Zeitachse sind vom Typ 0 !!!
+#      Sektionen werden dann einer Zeitachse zugeordnet ($AVALS).
+#      Die farbliche Absetzung der Sections erfolgt wiederum mit Ribbons,
+#      die in $RIBBON erzeugt werden koennen (Typ 152).
+#      Falls der Wunsch nach mehreren Ribbons besteht, ist das auch kein
+#      Problem, denn mit 's' koennen in $AVALS einer Axe/Section mehrere Ribbons
+#      zugeordnet werden.
+#      Soll der Hintergrund der Axe gesetzt werden, geht das mit $HBANDS, Option
+#      'h' fuer Highlight.
+#      Die Breite dieser Ribbons kann mit Option 'e' (in $RVALS) gesetzt werden.
+#      Sinnvoll (aber nicht notwendig) ist die Breite der letzten Spalte im 
+#      Tabellenteil ! (sieh dazu auch $CLMWD).
+#      Positioniert wird in $POSITION mit Option aA und cC. Es muss gewaehrleistet
+#      sein, dass diese Zeile ansonsten leer ist !!! (Restriktion in Varchart)
+#      Weiterhin muﬂ die Achse (Y-Achsis) (aA) vor der Kurve (cC) gesetzt werden, sonst 
+#      kommt Varchart durcheinander.
+#      Moechte man angeben, in welcher Spalte der Tabelle die Ribbons stehen sollen,
+#      erfolgt dies auch in $POSITION mit <chartid> A <id>  <row>[/<column>]
+#
+#  94. Markierung mit Ikonen
+#      Sollen die Boxen vorne mit einem Haekchen oder aehnlichem versehen werden,
+#      um sich fuer Selektion/Deselektion besser abzuheben, muss in $FVALS mit
+#      Option pP (Markiert) qQ (Unmarkiert) jeweils ein Bitmap angegeben werden.   
+#      Dies sollte fuer Windows ein .bmp sein, sonst ein .tif.
+#      Andere Moeglichkeit ist, ein vcCreateSymbol zu machen und die Dinger wie im
+#      MLP (Eingang) nachzubauen. Das ist zumindest Klassen schneller ! Vielleicht
+#      geht auch beides, dass mit rR keine Ikonen sondern von mir gestrickte 
+#      Symbole kommen (die auch gleich auf allen Plattformen verfuegbar sind !
+#      Weiterhin muss der MARKTYPE in $OPTS auf 5 stehen, CUA-Code fuer diesen Wert MPFD.
+#
+#  95. Feststehende Markierspalte
+#      Siehe $CHARTS, Feld 2, in dem die feste Markierspalte eingeschaltet werden kann. 
+#      Fuer ein "komplett-Chart" braucht es jetzt den Wert 127 = 1+2+4+8+16+32+64
+#
+#  96. Aenderungsrmodus abspecken
+#      In $OPTS kann CMREDUCE auf Werte zwischen 0 und 7 gesetzt werden.
+#        1 = Kein Insert
+#        2 = Kein Scaling von Knoten/Layern
+#        4 = Kein Verschieben von Knoten/Layern
+#      CMREDUCE = 3 heisst also, weder Einfuegen noch Scaling ist erlaubt.
+#      CMREDUCE = 7 nichts geht mehr
+#      CMREDUCE = 0 alles geht (Default)
+#
+#  97. Verbinden von Knoten / Layern
+#      Ab sofort wird beim Rueckmelden auch die Layerid mitgemeldet. Siehe CON.
+#      Beim Attributieren der Kanten muss dann nur noch diese Layerid mitkommen,
+#      und schon klappt die Sache.
+#
+#  98. Schicht-Ribbons / Schicht-Grids (Siehe E-Antrag 444120)
+#      Um Schichten im Balkenplan mit "vernuenftigem Aufwand" anzeigen zu
+#      koennen, bedarf es der Schicht-Ribbons und Grids. Diese werden
+#      praktisch analog zu Kalender-Grids verarbeitet.
+#      Siehe dazu auch $RIBBON (Erzeugung von Ribbons, Typ 12), $RVALS (Attribut 1-9)
+#      fuer die Texte, die angezeigt werden sollen (pro Schicht respektive 
+#      Profil), Kalender wird wie gewohnt eingetragen)
+#      Weterhin muss ein Schicht-Grid erzeugt werden ($GRIDS, Typ S), dem wiederum
+#      der Kalender zuzuordnen ist. Siehe Grid 6 in $GRIDS, $GVALS.
+#      Eine Kleinigkeit fehlt noch, und zwar muss in $IVALS zu einem Interval der
+#      Textcontainer-Eintrag gesetzt werden (mit 't'), der in $RVALS gesetzt wird.
+#      Etwas umstaendlich leider, aber anderst scheint es nicht zu gehen.
+#
+# 99.  Rueckmelden von Layern beim Verbinden nur auf Anfrage
+#      wird ueber $OPTS, Attribut LAYCON 0-1 (Default 0, keine Layer) gesetzt.
+#      
+# 100. Verschieben von Knoten in Pausenzeiten.
+#      Kann global aktiviert werden in $OPTS, DRAGDROP = 0/1, Default 0.
+#      Falls Wert = 1, kann auch in Pausen verschoben werden.
+#      Um dies ueber CUA Ansteuern zu koennen, gibt es die Codes
+#      UWTO (Use Worktime only - wie bisher) und
+#      UNWT (Use NonWorkTime   - DRAGDROP = 1).
+#
+# 101. Bitmaps in Symbol-Layern
+#      Diese Layer werden wie alle anderen Symbol-Layer auch behandelt.
+#      Einziger Unterschied ist die Option i in der Tabelle $LVALS,
+#      in der die Bitmap-Datei angegeben wird.
+#
+# 102. Aendern- und Verbinden-Ikone auf einen Toggle-Button legen
+#      Dazu muss in $OPTS MERGEICOS auf 1, Default 0.
+#
+# 103. Fuer die Grids angeben, zu welchem Offset sie beginnen sollen,
+#      falls Offset nicht der Section entsprechen soll.
+#      Falls man also moechte, dass ein Wochengrid immer Mittwochs 
+#      gemalt wird, muss als Referenz ein Mittwochsdatum angegeben werden.
+#      Siehe $GVALS, Attribut D. Das Datum kann als String oder in 
+#      Sekunden seit 1900 uebergeben werden.
+#      Das ganze klappt so allerdings nur bei Wochengrids. Bei allen
+#      anderen Grids kann beeinflusst werden, (falls Periode gesetzt
+#      ist), an welchem Tag, Monat, Jahr die Periode angezeigt werden soll.
+#
+# 104. Fuer jedes Chart kann in $CVALS mit 'w'  eine Default-Bandhoehe angegeben
+#      werden. Das spart unter anderem die Tabelle $ROWWD, wenn dort nur
+#      gleiche Groessen eingetragen werden. 
+#      Aber: Umsetzen der Default-Hoehe greift nur fuer neu einzufuegende Zeilen !!!
+#
+# 105. Im CUA-Menu kann man mit dem Button DIAG eine Konsistenzpruefung des
+#      Balkenplans machen. Einfach auf DIAG gehen (irgendwelche Selektionen sind 
+#      nicht noetig, und dann wird verprobt auf Teufel und komm raus.
+#      Wem eine nette Konsistenzpruefung einfaellt, immer her damit.
+#
+# 106. Objektbezogene Hilfe (momentan nur Windows) kann in $OPTS ueber Schalter
+#      TOOLTIP 0/1 (Default 0) disabled/enabled werden.
+#      Werden keine expliziten Hilfsobjekte angegeben, so wird der Text der
+#      Statuszeile als Tooltip angezeigt.
+#      Ist ausfuehrlicher Text gewuenscht, so kann dies mit den Tabellen
+#      $OBJTIP (Anlegen), $OBTVAL (Attributieren) und $TOOLTIP (Zuordnen) erfolgen.
+#
+# 107. Unter Windows 3.1, NT und Windows 95 gibt es ein neues Printcontrol,
+#      dass die Fenstersystemcontrols benutzt (groesstenteils). 
+#      Dieses kann mit $OPTS, VCPRCTRL 0/1 aktiviert werden, siehe dazu auch
+#      E-Antrag 64228-1996.
+#
+# 108. Kollabieren der Pausenzeiten erfolgt mittels eines zentralen Kalenders, der an
+#      die einzelnen Sections weiterzugeben ist. (wichtig ist, $SVALS muss nach $CALVALS
+#      kommen, sonst klappt das nicht !!!).
+#      Zuerst muss ein Kalender vom Typ W (Merge Worktime) oder Typ N (Merge
+#      Nonworktime) erzeugt werden. Dieser wird dann
+#      in $CALVALS aus bestehenden Kalendern zusammengemischt, wobei Kalender
+#      entweder addiert oder subtrahiert werden koennen (Attribut D,E).
+#      Danach wird der Merge-Kalender der jeweiligen Section zugeordnet oder
+#      wieder weggenommen, ($SVALS, Attribut A,R).
+#      Soll nur ein Kalender ausgeblendet werden, kann man auf den Merge-Kalender
+#      verzichten und einen normalen Kalender verwenden.
+#      Wichtig: Mergen der Kalender ist sehr teuer !!!
+#      Wichtig: Wird im Laufe der Anwendung ein Mergekalender geaendert, muss
+#               dieser der Section neu zugeordnet werden !!! 
+#
+# 109. Bereichs-Grids sind mit Varchart-Version 3.9 verfuegbar. Statt in 
+#      $GVALS mit den Optionen 'a' und 'e' Anfang und Ende eines Grids zu
+#      setzen, koennen mit den Optionen 'b' (Bereich setzen) und
+#      'f' (Bereich entfernen) mehrere Intervalle angezeigt und somit
+#      Grids gespart werden. (Siehe $GVALS, Grid 4).
+#      Es duerfen jedoch nur Bereiche subtrahiert werden, die auch vorher addiert
+#      wurden, und zwar im genau gleichen Bereich.
+#      Sollen alle Bereiche subtrahiert werden, ist die Option 'x' zu verwenden.
+#      Beispiel:  Add 2/10, Remove 2/10 ist erlaubt, aber
+#                 Add 2/10, Remove 5/8 ist nicht erlaubt
+#      
+# 110. Verschieben mehrerer Knoten gleichzeitig. Dieses Feature setzt voraus,
+#      dass in $OPTS der Wert fuer MULTMOVE = 1, Default 0. Selektieren mehrerer
+#      Knoten (mit Shift-Taste) und Verschieben ergibt eine Meldung MOVEMULTI,
+#      die wie MOVENODE aussieht, allerdings fuer jeden Knoten wiederholt, siehe
+#      auch "Rueckmeldungen des Balkenplans", ein paar Zeilen weiter unten.
+#      In Tabelle $CVALS kann fuer jedes Chart noch entschieden werden, ob die Knoten
+#      auf eine Zeile (Arbeitsplatz) rueckgemeldet werden oder nicht, siehe Option 'a' 
+#      
+# 111. Einrichten eines Zeitlots.
+#      Dieses kann mit SET TIMELIN 1 (Default 0) in $OPTS aktiviert werden. 
+#      Der Effekt ist, dass bei einem Mouse-Move der Cursor von einem vertikalen
+#      Phantomobjekt ueberdeckt wird.
+#      
+# 112. Beim Senden von Knoten mitschicken, ob Knoten selektiert ist oder nicht.
+#      Dies wird in $OPTS ueber SNDSLMV gesteuert, Default = 0.
+#      
+# 113. Zu markierten Knoten die zugehoerigen Boxen markieren, siehe dazu auch
+#      E-Antrag 183458-1996. Angesteuert wird das ganze ueber CUA-Menu, 'SBIL'
+#      
+# 114. Den Ribbons kann ueber Option P in $RVALS mitgegeben werden, ob der Text
+#      zentriert, links, rechts oder At_Tick stehen soll. Werte sind
+#      entsprechend 0 bis 3.
+#      
+# 115. Bei Milestones, die als Symbollayer mit Bitmap realisiert sind, kann
+#      mitgegeben werden, ob der Milestone mittig ueber seinem Datum oder
+#      nach links oder rechts verschoben sein soll.
+#      negative Werte sind eine prozentuale Verschiebung nach links, 
+#      positive Werte entsprechend eine prozentuale Verschiebung nach rechts. 
+#      Angesteuert wird das ganze in den $LVALS, Attribut 'r', Werte von -50..50. 
+#      
+# 116. Grids koennen sichtbar oder unsichtbar gesetzt werden, wenn man in $GVALS
+#      das Attribut V auf 0 (unsichtbar) oder 1 (sichtbar) setzt.
+#      
+# 117. Definieren von "Summenknoten", deren Ausdehnung vom Anfang des ersten     
+#      bis zum Ende des letzten Knotens geht, wobei diese Knoten
+#      auch geschachtelt werden koennen. Erzeugt werden die Objekte mit 
+#      $SNODES, attributiert mit $SNVALS, geloescht in $DELETE (s), positioniert
+#      in $POSITION (s).
+#      
+# 118. Ausgabe des Datums in Statuszeile unterdruecken. Wird fuer Automotive benoetigt.
+#      $OPTS  NOSTLIN  0 = Default = Anzeige, 1 = Ausblenden
+#
+# 119. Automatisches Anpassen der Windows-Farbtabelle, falls andere Applikationen die  
+#      Farbtabelle zerschossen haben. Wird alle 2 Sekunden wiederholt. 
+#      $OPTS  CLRTBUPD  0 = Default = Nix tun, 1 = Alle zwei Sekunden Farbtabelle pruefen
+#
+# 120. Grafisches Verschieben von Spalten im Tabellenteil
+#      Ansteuerbar ueber $OPTS SWPCLMNS (0 = Aus = Default, 1 = An)
+#      In der Titelbox des Tabellenteils aendert sich der Mauscursor, falls obige
+#      Option an ist. Dann kann durch Mausklick von einer Spalte zur anderen 
+#      geschoben werden. Rueckgemeldet wird:
+#
+#      CMOVTABCOL <chartid> <columnid_from> <columnid_to> <format_id>
+# 
+# 121. Anzahl fixer Spalten im Tabellenteil (E-Antrag 209931-1996)
+#      Kann ueber Option 'g' in Tabelle $CVALS gesetzt werden. Diese Option zieht aber nur,
+#      falls in $CHARTS die feststehende Markierspalte aktiviert ist !!!
+#
+# 122. Loeschen von Kalendern erlauben
+#      Siehe $DELETE, Option 'a'
+#
+# 123. Markieren von Knoten (mit und ohne aussenliegenden Texten, siehe E-Antrag 238735-1996
+#      Siehe $CVALS, Option 'o'
+#
+# 124. Ueberlappen von Layern gemaess E-Antrag 203367-1994
+#      Das ganze funktioniert wie folgt. Man kann einem Chart in der Tabelle $CVALS, Option 'u'
+#      einen Layer zuweisen, (inklusive Highlight), der dann als Ueberlappungslayer
+#      angezeigt wird. Setzen des Layers 0 (oder Leerzeichen) loescht diese Geschichte
+#      wieder. 
+#      Der Layer kann entweder wie bisher ueber ein vertikales Offset gesetzt werden,
+#      oder ganz nach unten oder oben (gilt fuer alle Layer, nicht nur den
+#      Ueberlappungslayer). Wichtig ist dann jedoch, dass die ROWMARGIN in $OPT
+#      gross genug ist, damit der Layer reinpasst.
+#      Siehe Attribut 'y' in $LVALS.
+#      WICHTIG: $LAYER muss vor $CVALS kommen, sonst klappt das ganze nicht !!!
+#
+# 125. Optimale Spaltenbreite gemaess E-Antrag 67732-1996
+#      Wird gesetzt ueber $OPTS, OPTCLWD  (0 = Default = passiert nix, 1 = Anpassen minimal)
+#
+# 126. Optimale Zeilenhoehe gemaess E-Antrag 206854-1996
+#      Wird gesetzt ueber $OPTS, OPTROWWD  (0 = Default = passiert nix, 1 = Anpassen maximal)
+# 
+# 127. Fuer die Kurvendiagramme Nachkommastellen setzen. Dies wird in $RVALS gemacht,
+#      Attribut 'y'. Erlaubte Werte sind 1, 10, 100, 1000.
+#
+# 128. Selektion gemaess E-Antrag 238635-1997. Implizit soll immer die Shift-Taste
+#      gedrueckt sein, damit die Selektion von Objekten wie im Dynpro funktioniert.
+#
+# 129. Setzen der CUA-Texte fuer OCX bei objektsensitiven Popups.
+#      Wird benoetigt, falls, falls OCX aktiv
+#      $MNEMONIC nicht notwendig, falls $CUABAR gesetzt.
+#      Aufbau: 1. Mnemonic (4 Zeichen), 2. Langtext 
+#
+# 130  Springen des Phantoms mit Beruecksichtigung der Schichten 
+#      gemaess E-Antrag 444120-1996. Gesetzt wird in $OPTS der Wert
+#      SHIFTPHANT = 0 = Default = inaktiv, 1 = aktiv. 
+#      Genommen wird das Shiftgrid, dass sich in der Zeile befindet.
+#
+# 131. Relevante Layer fuer Phantomobjekt spezifizieren gemaess E-Antrag 77171-1997
+#      Damit der Kram wie immmer kompatibel ist, wird in der $LVALS fuer einen Layer
+#      definiert, ob er verschiebbar ist oder nicht, (Option 'z').
+#
+# 132. Hintergruende setzen gemaess E-Antrag 442933-1996
+#      Diese Hintergruende koennen Bitmaps, Tifs-, WMF- oder GMF-Files sein.
+#      Zu beachten ist, dass diese nicht unbedingt auf allen Plattformen verfuegbar sind.
+#      $CVALS, Option y setzt Hintergrund fuer den Tabellenbereich. Bild scrollt nicht mit !
+#      $CVALS, Option y setzt Hintergrund fuer den Diagrammbereich. Bild scrollt nicht mit !
+#      $CVALS, Option z setzt Hintergrund fuer das ganze Chart. Bild scrollt mit !
+#
+# 133. Timescale-Wizard und Tabellen-Wizard einbauen
+#      Dazu muessen zuerst die Namen der Objekte gesetzt werden, damit diese in der
+#      Hierarchie-Darstellung auf der linken Seite des Wizards ordentlich gekennzeichnet
+#      sind. Dies erfolgt immer mit der Option '!' in 
+#      $GVALS, $RVALS, $SVALS, $CVALS
+#      Fuer die anderen Wizards wird das dann nachgezogen.
+#      Aufruf des Wizards ueber Doppelklick auf Zeitachse, Vorraussetzung: 
+#      32-Bit-GUI und in $OPTS muss CUSTOMIZE auf 1 stehen.
+#      Die Rueckmeldung der Wizards sieht wie folgt aus. Es kommt jweils die Liste der
+#      geloeschten, neuen und geaenderten Objekte. 
+#      Syntax etwa wie folgt:
+#
+#      d { ; Objekttyp Objektid ;  Objekttyp Objektid }
+#      wobei d fuer geloeschte Objekte steht, das Semikolon als Separator die Objekte 
+#      voneinander trennt, (macht erst bei modifizierten Objekten so richtig Sinn), und
+#      die Objektid ja schon bekannt ist. Objekttypen sind 'r' fuer Ribbon, 's' fuer
+#      Section, 'g' fuer Grid ...
+#
+#      n { ; Objekttyp Neue_Objektid ;  Objekttyp Neue_Objektid }
+#      Wie das mit den neuen Objektids funktioniert, weiss ich noch nicht, aber bei den
+#      Wizards kann man auch noch nichts Neues angeben....
+#
+#      m { ; Objekttyp Objektid (Attribute)
+#          ; Objekttyp Objektid 
+#        }
+#      Modififizierte Objekte werden wie die anderen Mengen angegeben, wobei die 
+#      Attribute in Aufzaehlungsform hinten angehaengt werden. Das hier aufzuschreiben
+#      ist mir eigentlich zu lang, ich verweise dazu auf /bas/BIN/src/gxvactrl.c,
+#      Zeile 96ff.
+#
+# 134. Tabellenteil-Wizard einbauen
+#      Da zum Customizen bei grossen Plaenen viel zu viele Boxen kommen, kann man
+#      in der Tabelle $BOXWZD mit Option 'a' Boxen fuer den Wizard mit aufnehmen, mit
+#      Option 'r' wieder loeschen. Ist $BOXWZD nicht gesetzt oder sind keine
+#      Boxen mehr vorgegeben, werden alle Boxen angezeigt.
+#
+# 135. Neue Farbtabelle fuer Drucker setzen. E-Antrag 13618-1997
+#      Die neue Tabelle heisst $PRNTCLRS und hat 4 Spalten, in denen
+#      erst der Farbtabellenindex (0-63), dann die Farbwerte (rgb) im Bereich von
+#      0 bis 255 angegeben werden koennen.
+#
+# 136. Auch Kanten in der Legende setzen, gemaess E-Antrag 125104-1996   
+#      Erforderlich ist dazu, Legendenkanten zu erzeugen (siehe $LLINKS, analog $LNODES).
+#      Diese werden dann auch in $LEGEND angegeben.
+#
+# 137. Typ eines Layers in vollem Galopp umsetzen. Angefordert von Bettina Dupper
+#      Geschieht mit Option 'a' in $LVALS
+#
+# 138. Feststehende rechte Spalte(n) im Tabellenteil, gemaess E-Antrag 300805-1997
+#      Geschieht mit Option 'g' in $CVALS. Nicht vergessen, den Charttyp in $CHARTS
+#      richtig zu setzen !!!
+#
+# 139. Manipulation chartabhaengig gemaess E-Antrag 77171-1997
+#      Beschreibung siehe $CVALS, Option 'q'.
+#
+# 140. Rueckgabe Prozentzahl bei Diag-Zoom-In-Out gemaess E-Antrag 925955-1997
+#      Wenn in $OPTS der Wert fuer SNDDZIOFAC auf 1 steht, (Default 0), wird beim
+#      Einpassen auf eine komplette Seite auch mitgegeben, auf wieviel Prozent 
+#      der Screen verkleinert wurde, damit er komplett eingepasst wird.
+#      Dies wird auch mit SNDDZIOFAC (value) zurueckgeschickt.
+#      Dieser Wert sollte nicht im allgemeinen Customizing stehen, 
+#      da Plantafel-spezifisch.
+#
+# 141. Dimensionslose X-Achse im Ribbon gemaess E-Antrag 203366-1994
+#      Wird aktiviert, falls im Ribbon mit Attribut 's' 
+#              v: Aktivieren/Deaktivieren der "Serial numbers" im Ribbon
+#                               0 = Aus
+#                               1 = Ohne Null, also -3 -2 -1 1 2 3 
+#                               2 = Mit Null, also -3 -2 -1 0 1 2 3
+#              r: Referenz-Datum fuer Ribbon. Muss nicht gesetzt werden. Default sitzt
+#                 am Anfang der Section.
+#
+# 142. Doppelklick auf Kurven (plus Userpopup) gemaess E-Antrag 473867-1997
+#      Der Doppelklick ist realisiert, die User-Popups werden in $USERPOP definiert
+#      und in $CURVALS ueber die Option '?' angesteuert. Genauso wie auch bei
+#      den Knoten und Boxen.
+#
+# 143. Beschriftung an numerischen Ribbons gemaess E-Antrag 473739-1997
+#      Fuer jede vertikale Achse soll es moeglich sein, eine Beschriftung in Form
+#      einer Masseinheit oder aehnlichem anzugeben. Dies erfolgt in der Tabelle
+#      $RVALS, Attribut 'a'. Zu beachten ist, dass das Ribbon breit genug sein
+#      muss (Attribut 'e'), damit der Text auch reinpasst, sonst wird er naemlich
+#      nicht dargestellt.
+#
+# 144. Typ eines Ribbons umsetzen (also beispielsweise von Tag auf Woche)
+#      Erfolgt in $RVALS, Option 'f'. Der dritte Parameter ist der Typ des
+#      Ribbons, wie er auch in $RIBBON benutzt wird.
+#
+# 145. Einbau von numerischen Grids, die bei Kurven die horizontalen Unterteilungen 
+#      machen. Zu erzeugen in $GRID mit Typ 'r'.
+#      Weiterhin gesetzt werden muss die numerische Section (Parameter 4), als 5.
+#      Parameter eine Zahl, die den Abstand zweier Linien des Grids angibt und
+#      als 6. Parameter das Highlight.
+#      In $GVALS muss dann noch die Zeile gesetzt werden, in der das Grid angezeigt
+#      werden soll. Numerische Grids koennen immer nur in einer Zeile (!!!!) plaziert
+#      werden, also Option 'a' und 'e' in $GVALS nicht vergessen.
+#
+# 146. Zusatzverprobung von Zahlen im Datenstrom. Benutzt wird in $OPTS das
+#      Attribut DGTSEPARAT mit Werten zwischen 0 = Default <= 2.
+#      0 : Keine Separatoren erlaubt
+#      1 : Nur Punkte erlaubt
+#      2 : Nur Kommata erlaubt
+#
+# 147. Objektspezifische Popups fuer Ribbons gemaess E-Antrag 3318110-1997
+#      Werden mit '?' aktiviert, wie die anderen Popups auch.
+#
+# 148. Anfangs- und Endwerte von Achsen umsetzen. (Antrag Bettina)
+#      Dies erfolgt mit den Attributen 'b' und 'e' (Beginn, Ende) in $AVALS.
+#      Nicht vergessen, dass der Anfangswert der Section auch richtig sitzen muss.
+#      Dies passiert (fuer numerische Sections) mit Option 'v' in $SVALS.
+
+# 149. Dynamisches ausweiten von Spalten im Tabellenteil gemaess E-Antrag 3334081-1997
+#      Hat man mehrere Charts uebereinander, werden die Spalten in den "schmaleren"
+#      Charts automatisch ausgeweitet. Mit dem Schalter ADJWCHCOLM in der $OPTS
+#      kann angegeben werden, welche Spalte ausgeweitet wird.
+#
+#      Wert  |   Bedeutung
+#      ------+-------------
+#        0   |   erste Spalte 
+#        1   |   erste nach den fixen linken Spalten
+#        2   |   Spalte in der Mitte
+#        3   |   letzte vor den fixen rechten Spalten (Default)
+#        4   |   letzte Spalte
+#
+# 150. Automatisches Anpassen der Breite von numerischen Ribbons gemaess E-Antrag 3334906-1997 
+#      Da es ziemlich schwierig ist, nach einem Resize von Spalten im Tabellenteil die 
+#      Breite von Ribbons im ABAP zu ermitteln, mache ich das hier lokal. 
+#      Wird aktiviert ueber ADJNUMRIBS in $OPTS, 0 = Default = Aus, 1 = An
+#
+# 151. Unabhaengige Zeitraster gemaess E-Antrag 277638-1996
+#      Um unabhaengige Zeitraster in X- und Y-Richtung aufzubauen, muessen folgende
+#      Schritte erledigt werden. 
+#       1. Anlegen eines speziellen Grids fuer die Zeile, in der die vertikale
+#          Zeitachse liegen soll. $GRIDS, Typ 'bB' oder 'aA'.
+#       2. Die Zeilenhoehe kann leider momentan nur ueber das Grid gesetzt werden,
+#          (da es sich ja um Zeilen in Zeilen handelt. In einer spaeteren Ausbaustufe
+#           soll die Zeilenhoehe aus dem Format abgeleitet werden).
+#           siehe $GVALS, Option 'wW'.
+#       3. Weiterhin muss der/den Section/s mitgeteilt werden, wie die Aufteilung 
+#          innerhalb der Section erfolgen soll. Dazu gibt es zwei Attribute in $SVALS:
+#          pP fuer die Periodenlaenge (beispielsweise 3600 entspricht 1 Stunde).
+#          nN fuer die Anzahl der Perioden (beispielsweise 24).
+#          Beides zusammen, also Periodenlaenge * Anzahl_Perioden = Periode
+#          Die minimale Periodenlaenge ist auf 60 Sekunden festgelegt !
+#          Siehe dazu auch $SVALS.
+#
+#          W I C H T I G: Wenn man die Section so umhaengt, duerfen nur Zeilen 
+#                         mit diesen GRIDS verwendeet werden, da sonst die
+#                         Aufloesung in X-Richtung nicht stimmt (verschiedene Massstaebe !!!).
+#          In diesem Datenfile kann dieses Feature deshalb auch nicht getestet werden.
+#          Siehe deshalb ~d002449/bink/ivoneu.dat
+#
+#       4. Setzen des Grids in die richtige Zeile
+#          Dies erfolgt in $POSITION, Option 'g'
+#
+#       5. Last but not least stellt sich die Frage der Formate.
+#          In einem ersten Schritt muss das Format von der Anwendung selbst definiert werden.
+#          Wenn beispielsweise der Tabellenteil 2 Spalten hat und die Periodenzahl auf 
+#          4 gesetzt wird, muss das Format zwei Spalten und 4 Zeilen haben.
+#          Beispiel [$a//($b--$c--$d--$e)]
+#
+# 152. Sperrbarkeit von Tabellenzellen gemaess E-Antrag 3344371-1997
+#      Die Sperrbarkeit wird ueber Edit-Objekte gesteuert, Tabelle $EDITOBJS.
+#      Diese muessen dann den Boxen in $BVALS zugeordnet werden, Attribut '@'.
+#
+# 153. Partielles Laden von Daten "on-demand" gemaess E-Antrag 35134951-1997
+#      Beim partiellen Laden wird die Darstellungsflaeche (pro Chart) in X- und
+#      Y-Richtung in ein Raster aufgeteilt. Dieses Raster ist beliebig aufteilbar,
+#      Die Stuetzpunkte, die in $XSECTS, $YSECTS angegeben werden, beschreiben
+#      jeweils den linken oberen Punkt im Raster.
+#      Nachdem die Rasterpunkte definiert wurden, muessen sie jetzt noch dem 
+#      den einzelnen Charts zugewiesen werden. Die Aufteilung pro Chart ist
+#      beliebig (solange die regulaeren Stuetzpunkte verwendet werden), und 
+#      es koennen sowohl X-, Y-, als auch (X,Y) Stuetzpunkte festgelegt werden.
+#      Es muss also nicht ein XY-Raster definiert werden, eine Aufteilung in X-
+#      oder Y-Richtung kann ebenso ausgewaehlt werden, siehe dazu auch $XYVALS.
+#      Mit Operation 'a' werden Stuetzpunkte fuer ein Chart gesetzt, mit 's'
+#      koennen Segmente als bereits geladen definiert werden, so dass keine Meldung
+#      mehr zurueckgeschickt wird, falls in dieses Segment gescrollt wird.
+#
+#      Die Rueckmeldung lautet wie folgt, falls Daten nachgeladen werden sollen.
+#      
+#      CPARTLOAD 
+#      C[1, 5, 1]         Chart 1, X-Segment 5, Y-Segment 1
+#      C[1, 4, 1]         Chart 1, X-Segment 4, Y-Segment 1
+#       ...
+#    
+#      Werden nur Intervalle in X- oder Y-Richtung definiert, sehen die Tupel
+#      wie folgt aus: 
+#          X-Richtung  C[1, 4, -1]         Y-Richtung C[1, -1, 2]
+#
+# 154. Aufruf Customizing-Wizard gemaess E-Antrag 3688454-1997
+#      Die Anwendung kann ueber Tabelle $WIZARD einen Customizing-Wizard
+#      aufrufen. Dies geht momentan nur fuer Zeitskalen- und Tabellenwizard
+#
+# 155. Zerkluefteter Summenbalken gemaess E-Antrag 3771565-1997
+#      Ein Summenbalken soll nicht nur, (wie in Punkt 117) einen Layer enthalten,
+#      der vom fruehesten bis zum spaetesten Termin geht, sondern in diesem
+#      Fall nur die "Arbeitszeiten". Dies kann in $SNVALS mit Option 'y' gesetzt
+#      werden. (0 = ein Layer von Anfang bis Ende, 1 = Zerklueftet).
+#      Sollen die "ueberlappten Arbeitszeiten" separat (mit anderem Layer) dargestellt 
+#      werden, kann dieser ebenfalls in $SNVALS mit 'w' gesetzt werden.
+#
+# 156. Steuerung des Zeitskaleneditors (PS und KAPA)
+#      Mit TSEWZADAPT (0 = Aus = Default, 1 = An) kann gesteuert werden, ob sich 
+#      die Zeitachse (in $TIME definiert) und die Sektionswerte an einander
+#      automatisch anpassen oder nicht. 
+#      Mit TSEWZOPS (0 <= 2 = Default <= 7) kann gesteuert werden, welche
+#      Operationen im Zeitskalenwizzard aktiv sind.
+#      Einfuegen = 1
+#      Aendern   = 2
+#      Loeschen  = 4
+#      Alles     = 7 (also bitweise addieren)
+#
+# 157. Kombination unabhaengiger Zeitraster gemaess E-Antrag 2777638-1997
+#      Fuer den zweiten Teil dieses E-Antrages muss wiederum eine spezielle
+#      Achse definiert werden. Dies erfolgt in $AUTOAXIS. Die Achsen, die dort
+#      erzeugt werden, koennen genauso attributiert, positioniert und geloescht
+#      werden wie die Achsen fuer die Kurven.
+#      Zu dieser Achse gehoert natuerlich auch noch ein Ribbon, das vom Typ 138
+#      sein muss. Das Ribbon wird in $AVALS mit Attribut 's' mit der Achse 
+#      verknuepft. Eine Section fuer das Ribbon muss nicht angegeben werden,
+#      weder in $RIBBON noch in $AVALS. Allerdings koennen dem Ribbon noch
+#      beliebige Texte mitgegeben werden.
+#
+#      Da wegen verschiedener Zeitachsen und Massstaeben dieses Datenfile nicht
+#      verwendet werden kann, bitte unter /bas/BIN/src/automot.dat nachschauen.
+#      Die interessanten Stellen sind mit "Changed for Automotive" gekennzeichnet.
+#
+# 158. Verschieben ganzer Zeilen im Balkenplan gemaess E-Antrag 3335000-1997
+#      Da es sehr aufwendig ist, alle Objekte einer Zeile von a nach b zu schieben,
+#      gibt es ab ab sofort (Varchart 3.11.1) die Moeglichkeit, 
+#      eine komplette Zeile mitsamt all ihren Objekten zu verschieben.
+#      Siehe $POSITION, Attribute 'x', 'y' und 'z'. 
+#
+# 159. Hoehe auf Null setzen, falls Zeile leer ist. Gemaess E-Antrag 260267-1996
+#      Dieses Feature kann in $OPTS mit SHRINKROWS = 1 (Default = 0) aktiviert
+#      werden. Werden alle Objekte einer Zeile geloescht, so wird die Zeilenhoehe
+#      auf Null gesetzt. Die Zeile selbst wird nicht geloescht !
+#
+# 160. Manipulation von Kurvenpunkten aendern gemaess E-Antrag 445237-1997
+#      Beim Rueckmelden der Punkte soll auch die Kurve mit zurueckgegeben werden
+#      und ausserdem soll das Feature abschaltbar sein.
+#      In $OPTS kann CMREDUCE auf Werte zwischen 0 und 15 gesetzt werden.
+#        1 = Kein Insert
+#        2 = Kein Scaling von Knoten/Layern
+#        4 = Kein Verschieben von Knoten/Layern
+#        8 = Kein Verschieben von Kurven einer Kante
+#      CMREDUCE = 8 Kurvenpunkte verschieben geht nicht
+#      CMREDUCE = 0 alles geht (Default)
+#
+# 161. Highlighten alternativer Arbeitsplaetze gemaess E-Antrag 78115-1998
+#      In der Tabelle $RESOURCE kann einem Knoten eine Reihe von Boxen 
+#      (mit Option 'a' hinzufuegen, 'r' loeschen) zugeordnet werden. Beim
+#      Verschieben dieser Knoten werden dann die Zeilen, in denen die 
+#      zugeordneten Boxen sind, farblich abgehoben.
+#
+# 162. Rueckmeldung nach jedem Scrollen gemaess E-Antrag 113401-1998
+#      Nach jedem Scrollen soll der aktuelle Bildausschnitt des Diagrammbereichs
+#      ans Backend geliefert werden, damit in diesem Bereich die Vorgaenge aktualisiert
+#      werden koennen.
+#      Anzusteuern ueber $OPTS, SET VIEWLIMITS, (0 = Default = Aus, 1 = An)
+#      Rueckgabe: VIEWLIMIT <from_date> <to_date>
+#
+# 163. Reduzieren von Ladezeiten durch Gruppieren von Erzeugungsbefehlen.
+#      Siehe dazu $RBOXES, $RNODES. 
+#
+# 164. Verschieben von Zeilen, damit Umsortieren innerhalb von Charts einfacher ist
+#      Siehe dazu $POSITION, Attribut 'v'
+#      Das ganze funktioniert aber nur richtig, wenn wirklich alle Zeilen eines Charts
+#      umsortiert werden. Werden im gleichen Durchgang noch Objekte neu positioniert 
+#      (also nicht Attriut 'v' verwendet) kann es zu ernsthaften Problemen kommen.
+#
+# 165. Fusszeile beim Drucken gemaess E-Antrag 1000061-1998
+#      Es ist eine Borderbox in $BOXES zu erzeugen, die genauso wie die Titelbox
+#      in $CVALS zu uebergeben ist. Diese BOX ist nur waehrend des Druckens 
+#      sichtbar und ist sonst ausgeblendet !
+#
+# 166. Aendern der Hoehe von Zeilen gemaess E-Antrag 990072-1998
+#      Damit wir abwaertskompatibel sind, wird dieses Feature ueber SCALEROWS
+#      in $OPTS aktiviert. Dabei bedeutet:
+#         0 : Zeilenhoehe nicht aendern  (Default)
+#         1 : Nur Zeilenhoehe von Auslastungsdiagrammen aendern
+#         2 : Nur Zeilenhoehe von normalen Zeilen (mit Balken) aendern
+#         3 : Von beiden Zeilenarten die Hoehe aendern  
+#      Dieses Feature kann noch pro Chart (in $CVALS, Attribut 'q') ausgeblendet werden.
+#
+#      Zurueckgeschickt wird dann RREORG <chartid> <rowid> <height>
+#
+# 167. Loeschen von Zeilen gemaess E-Antrag 1033152-1998
+#      Statt Objekte einzeln zu loeschen sollen alle Objekte innerhalb einer Zeile
+#      geloescht werden koennen. Die Zeilen werden ueber die Box in dieser Zeile
+#      adressiert, es kann weiterhin definiert werden, ob die Zeile anschliessen leer
+#      (und mit Hoehe 0) oder die Folgezeilen aufgeschoben werden sollen.
+#      Siehe $DELETE, Optionen 'z' oder 'm'.
+#      ACHTUNG: Grids und Datelines, die sich innerhalb der Zeile befinden oder
+#               diese Zeile ueberstreichen werden nicht geloescht aber umpositioniert !!!
+#               Gleiches gilt fuer die Sections, da diese ja auch geshared werden koennten.
+#
+# 168. Erzeugen von Datentabellen (fuer Kurven) gemaess E-Antrag 100068-1998
+#      Datentabellen werden ueber die Tabelle $DATATAB erzeugt. 
+#      Gesetzt wird einem Datatab-Objekt jeweils ein Ribbon vom Typ Annotation, (siehe
+#      dazu $RIBBON (Typ=1032)) und eine Kurve (siehe dazu auch $DATVALS).
+#      Positioniert wird das ganze in $POSITION, Attribut 'd'.
+#      Geloescht wird das ganze in $DELETE, Attribut 'w'.
+#
+# 169. Farbiges Markieren der Editierbarkeit im Tabellenteil  gemaess E-Antrag 1198698-1998
+#      Highlights koennen (muessen aber nicht) in $CVALS, Attribut i,v gesetzt werden.
+#      Leere Eingaben fuehren zum Ruecksetzen der Werte. Genutzt wird momentan nur
+#      die Hintergrundfarbe eines Highlights.
+#
+# 170. Autoscroll unterbinden gemaess E-Antrag 243097-1998
+#      Gewuenscht (von Schoeller) war die Moeglichkeit, beim vertikalen Scrollen erst
+#      mal eine Zeitverzoegerung zu haben, damit beim Verschieben eines Vorgangs ueber
+#      Chartgrenzen hinweg nicht auf jeden Fall ein Scroll vorgenommen wird.
+#      Folge: Chart 2 wuerde gescrollt, wenn von Chart 3 nach Chart 1 ein Knoten
+#      verschoben wird.
+#      Eingeschaltet wird der Kram ueber die $OPTS, SCROLLTIM = 0..3,
+#      wobei die Zahl die Anzahl der Sekunden bis zum Scroll ist. (Default = 0)
+#
+# 171. Layer mit Dauer null sichtbar/unsichtbar setzen gemaess E-Antrag 1412498-1998
+#      Hat ein Layer die Laenge null, soll er (optional) trotzdem angezeigt werden.
+#      Dies kann pro Layer in den $LVALS mit Attribut 'v' gesetzt werden.
+#      xX = Sichtbar, sonst unsichtbar.
+#
+# 172. Ribbons ohne Highlight faerben gemaess E-Antrag 1412747-1998
+#      Um Highlights zu sparen, soll ein Ribbon nur mit einer Farbe gefuettert werden.
+#      Der Balkenplan erzeugt dann intern ein Highlight mit ID -999.
+#      Gesetzt wird die Farbe mit Option 'g' in $RVALS. 
+#      Wichtig: Im Wizard muss geprueft werden, welche Sorte dieses Highlight ist
+#      (ob intern oder extern) und dementsprechend muss der Kram gesetzt werden).
+#      Damit das richtig funktioniert (gemaess Spec von Uwe), sollte in $OPTS noch
+#      NORIBHLTS (0 = Aus = Default, 1 = An) gesetzt sein.
+#
+# 173. Popups fuer Spalten des Tabellenteils gemaess E-Antrag 1570584-1998
+#      Fuer die Spalten kann in $VBANDS ein Menu gesetzt werden (Option '?'), dass
+#      dann bei Klick auf den Tabellenheader aktiviert wird, so es gesetzt ist.
+#
+# 174. Hotspots in Formaten gemaess E-Antrag 1048258-1998
+#      Innerhalb von Formaten sollen Hotspots definiert werden koennen. Diese 
+#      werden in $FVALS (fuer jedes Feld moeglich !) mit folgenden Attributen gesetzt:
+#        fmtid fieldid 'x' bitmapid
+#                          wobei 0  = Expand (Tree), 
+#                                1  = Collapse (Tree)
+#                                2  = Expand (MDI-Window)
+#                                3  = Collapse (MDI-Window)
+#                                4  = Close (MDI-Window)
+#                                5  = Expand Complete(MDI-Window)
+#                                6  = ICON_SELECT_ALL
+#                                7  = ICON_DESELECT_ALL
+#                                8  = ICON_SELECT_DETAIL
+#                                9  = ICON_LIST
+#                                10 = ICON_DELETE
+#                                11 = ICON_SORT_UP
+#                                12 = ICON_GRAPHICS
+#                                13 = ICON_DELETE_FILTER (not yet available)
+#                                14 = ICON_ANNOTATION
+#                                15 = ICON_HISTORY
+#                                16 = ICON_DOCUMENT
+#                                17 = ICON_ERROR_PROTOCOL (not yet available)
+#                                18 = ICON_WORKPLACE
+#                                19 = ICON_OVERVIEW
+#                                20 = ICON_MOVE
+#                                21 = ICON_SET_SUM
+#                                22 = Uebersicht
+#                                23 = Trend
+#                                24 = Ausplanen
+#                                25 = Einplanen
+#                                26 = Pfeil runter
+#                                27 = Pfeil rauf
+#                                28 = ICON_FILTER               
+#                                29 = ICON_SYSTEM_UNDO          
+#                                30 = ICON_CHECK                
+#                                31 = ICON_SUM                  
+#                                32 = ICON_MATERIAL             
+#                                33 = ICON_BOM                  
+#                                34 = ICON_ICON_LIST            
+#                                35 = ICON_PLANT                
+#                                36 = ICON_WORK_CENTER          
+#                                37 = ICON_PM_ORDER             
+#                                38 = ICON_PS_PROJECT_DEFINITION
+#                                39 = ICON_PS_WBS_ELEMENT       
+#                                40 = ICON_PS_NETWORK_HEADER    
+#                                41 = ICON_PS_NETWORK_ACTIVITY  
+#                                42 = ICON_PS_ACTIVITY_ELEMENT  
+#                                43 = ICON_PS_RELATIONSHIP      
+#                                44 = ICON_PS_MILESTONE         
+#                                45 = ICON_REFRESH              
+#                                46 = ICON_PLANNING_TABLE       
+#                                47 = ICON_TREE               
+#                                48 = ICON_NET_GRAPHIC        
+#                                49 = ICON_NEXT_NODE          
+#                                50 = ICON_QUERY              
+#                                51 = ICON_ZOOM_IN            
+#                                52 = ICON_ZOOM_OUT           
+#                                53 = ICON_COST_CENTER        
+#                          Andere Bitmaps kommen noch...
+#      Das Einrueckungslevel steht im Textcontainer, die Eintragsnummer wird mit '@'
+#      gesetzt. An dieser Stelle sollten im Textcontainer also Werte zwischen 0 und 50
+#      stehen (mehr als 50 Einrueckungslevel scheinen nicht sinnvoll).
+#      Wie weit pro Schritt eingerueckt werden soll, wird in $OPTS mit 
+#      SET INDENTWD xxx gesetzt, wobei (100 <= xxx < 300 = Default <= 3000) in 1/100 mm
+#      gesetzt wird.
+#      Die Rueckmeldung erfolgt als HOTSPOT <chartid> <boxid> <fieldid> <symbol>
+#      Ein adretteres Beispiel findet sich in f3388.dat
+#
+# 175. Markierungen erweitern mit Shift-Click bzw. Crtl-Click gemaess E-Antrag 1289209-1998
+#      Ueber den Schalter MSSELECT in $OPTS kann das Markier-Verhalten eingestellt werden.
+#      $OPTS SET MSSELECT  (0 = Default = wie bisher, 1 = An = Wie bei Microsoft)
+#
+# 176. Positionieren vieler Objekte gemaess E-Antrag von Frank (muendlich am 5.8.1998)
+#      Siehe dazu auch $RPOSITION
+#
+# 177. Ribbonhoehe an Fonthoehe automatisch anpassen gemaess E-Antrag 74028-1997
+#      Wird in $OPTS ADPTRIBSZ (Default = 0 = Aus, 1 = Aktiv) gesetzt, so passt sich
+#      beim Verringern der Fonthoehe 'w' in $RVALS die Ribbonhoehe entweder an (oder nicht).
+#
+# 178. Scrollbars hinter Diagrammteil positionieren gemaess E-Antrag 2080836-1998
+#      Setzt man in $OPTS den Wert von NOSBINCHT (NOScrollBarINCHarT) auf 1, (Default = 0)
+#      so wird die Scrollbar nicht am Ende des Diagrammteils sondern hinter dem Diagrammteil
+#      positioniert.
+#
+# 179. Datumslinien beschriften gemaess schriftlichem E-Antrag von Bettina und Frank
+#      Einer Datumslinie sollen Texte mitgegeben werden koennen. Diese werden mit den
+#      Werten 0-99 gesetzt (wie bei Knoten oder Boxen), die Aufteilung der Texte erfolgt
+#      mit einem Format (vom Typ Box). Dieses darf aber nicht das gleiche sein wie fuer den
+#      Charttitel.  Positionieren und rotieren der Beschriftung ist ebenfalls moeglich. 
+#      Siehe $DVALS. Wichtig, $FMT muss vor $DVALS kommen !!!
+#
+# 180. Rueckgabe des Anzeigebereichs (Datumswerte) gemaess E-Antrag 2262818-1998
+#      Setzt man $VIEWRANGE wird der sichtbare Ausschnitt in X-Richtung als
+#      Datumswert zurueckgegeben.
+#
+# 181. Zusaetzliche Datentabellen zur Performance-Steigerung im OCX-Fall
+#      Siehe "$DP1NVALS", "$DP2NVALS", "$DP1BVALS", "$DP2BVALS", "$DPCURVALS", "$DPCALVALS"
+#
+# 182. "Drag-Drop"-Verhalten gemaess E-Antrag 2248565-1998
+#      Beim Verschieben, Skalieren (was auch immer von Objekten) kann mit Ctrl-A (Append)
+#      das Anhaengen des/der Objekte an die Maus simuliert werden. Erst mit dem
+#      naechsten Ctrl-A (Apply) wird der Button-Up-Klick simuliert. Bis dahin kann man
+#      die Maus loslassen und an die Stelle scrollen, die gewuenscht ist.
+#
+# 183. Gruppierung gemaess E-Antrag 2248032-1998
+#      Gruppen werden in der $NVALS gestzt. (Attribut '&'). Die Gruppen werden
+#      also nur implizit gehandelt. Auswirkungen gibt's nur beim Markieren
+#      und beim Verschieben (sofern MULTMOVE != 0).
+#
+# 184. Mehrere Schriftarten im Tabellenteil gemaess E-Antrag 1970321-1998
+#      In der Tabelle $FVALS kann einem Feld ueber das Attribut 'x' ein Fontname
+#      gegeben werden, beispielsweise Arial. Dieses Flag loest zu 4.6A den Schalter 'f'
+#      ab, der aus Kompatibilitaetsgruenden aber noch weiter unterstuetzt wird.
+#
+# 185. Ausrichten der Charthoehen gemaess E-Antrag 551208-1998
+#      Ruft man im Datenstrom $ALIGN auf, so werden alle sichtbaren Charts (Hoehe > 0) 
+#      gleichmaessig auf die Fensterhoehe verteilt. 
+#
+# 186. Erweiterung der $OBJTIP (siehe Top 106). Statt feste Hilfstexte anzugeben waere
+#      es ja auch schoen, eine Liste von Textcontainerindizes angeben zu koennen.
+#      Dazu muss beim Erzeugen der Object-Tips ein Typ (1) angegeben werden, der 
+#      sich dann bei der Anzeige die aktuellen Werte aus dem Textcontainer des
+#      Objekts holt.
+#
+# 187. Visualisierung Alt/Neu bei Terminierung gemaess E-Antrag 2601990-1998
+#      Werden beim Nachladen Knoten geaendert, so sollen die geaenderten Knoten 
+#      dupliziert werden. Nach den Aenderungen sollen die Aenderungen entweder
+#      uebernommen oder rueckgaengig gemacht werden.
+#      Die Geschichte wird ueber Tabelle $SHADOW angesteuert, siehe dort.
+#
+# 188. Fixe Spalten in der Groesse nicht aenderbar gemaess E-Antrag 2647423-1998
+#      Seit 4.0B sind fixe Spalten in der Groesse nicht mehr aenderbar. Dies wurde
+#      in der Projektplantafel so gewuenscht, ist aber nicht immer richtig.
+#      Damit beides geht, gibt es in der $OPTS die Option FIXCOLMOD (0 = Default <= 3) mit
+#         0 = Nix darf geaendert/skaliert werden
+#         1 = Linke fixe Spalten duerfen geaendert/skaliert werden
+#         2 = Rechte fixe Spalten duerfen geaendert/skaliert werden
+#         3 = 1 + 2 = Beide duerfen....
+#
+# 189. Rueckmeldung Grafikobjekt bei rechter Maustaste gemaess E-Antrag 2420210-1998
+#      Beim normalen Klick mit rechter Maustaste wird das Objekt noralerweise nicht
+#      selektiert. Dadurch wird es auch nicht zurueckgemeldet, wenn der CuaCode mit
+#      einem S beginnt.
+#      Mit dem Schalter MENUMARK in $OPTS kann dieses Verhalten aktiviert werden.
+#         0 = Wie bisher, keine Selektion
+#         1 = Objekt wird additiv markiert und damit auch gemeldet.
+#
+# 190. Automatischer Zeilenumbruch fuer Automotive gemaess E-Antrag 2262920-1998
+#      Dieses Feature kann Chartweise gesteuert werden (Tabelle $AUTOFIT).
+#      Uebergeben werden muss pro Chart ein Knoten (dessen Laenge wird als 
+#      Schrittweite genommen, eine Offsetangabe (in Prozent der Schrittweite),
+#      und ein Schalter fuer aktiv/inaktiv. Sortiert wird nach einem (numerischen !)
+#      Textcontainereintrag, dessen Nummer auch angegeben werden muss.
+#
+# 191. Beibehalten des Verbindemodus gemaess E-Antrag 27232477-1998-1998
+#      Wird in $OPTS das Attribut KEEPOPMOD (0 = Aus = Default, 1 = An) 
+#      gesetzt, kann der Verbindemodus nur ueber die Ikonen beendet werden,
+#      nicht aber sonstige Mausaktionen.
+#
+# 192. Einpassen Projekt gemaess E-Antrag 2682417-1998
+#      Handelt es sich um eine Zeitachse mit drei Sections, so kann ein Projekt 
+#      neu eingepasst werden. Dies bedeutet, dass die mittlere Section genau
+#      vom Anfang bis zum Ende des Projekts geht. Vorlauf und Nachlauf haben eine
+#      Laenge, die in Prozent der Projektlaenge angegeben werden. Der prozentuale 
+#      Wert kann in den $OPTS ueber das Attribut RANGEPROJ gesetzt werden.
+#      Wertebereich von 0-50 %, Default ist 10 %.
+#      Aktiviert wird das Einpassen mittels CUA-Code RPRJ.
+#
+# 193. Positionierung der Customizing-Wizards auf spezielles Tab gemaess E-Antrag 74021-1997
+#      In $WIZARD wird nicht nur der Typ des Editors aufgerufen sondern es werden auch
+#      noch die Objekte mitgegeben, auf denen der Focus stehen soll. Gibt es an dieser
+#      Stelle mehr als ein Tab, kann dieses auch noch gesetzt werden.
+#
+# 194. Hotspots mit Tooltip versehen gemaess E-Antrag 2629120-1998
+#      In $OBJTIP und $OBJVAL werden objektspezifische (mehrzeilige) Tooltips 
+#      definiert und mit Text versehen.
+#      Die Zuordnung erfolgt in $TOOLTIP, Option h, wobei die Objektid
+#      die Nummer des Hotspotsymbols ist.
+#
+# 195. Layerspezifische AOB's gemaess E-Antrag 1987282-1998
+#      Wird gesteuert ueber Schalter LAYCON in $OPTS.
+#         0 = nur Knoten verbinden (AA,AE,EA,EE)  (wie bisher)
+#         1 = wie 0, aber es werden noch zusaetzlich die Layer mitgeschickt,
+#             die beim Verbinden unter der Maus lagen. (wie bisher)
+#         2 = Anfang und Ende wird pro Layer, nicht pro Knoten bestimmt, sonst wie 1
+#
+# 196. Feldhintergrundfarbe ueber $FVALS einstellbar gemaess E-Antrag 269475-1998
+#      Fuer ein Format (nicht Knoten oder Box) soll die Hintergrundfarbe eines
+#      Feldes gesetzt und wieder rueckgesetzt werden koennen. Dies erfolgt in 
+#      $FVALS mit 
+#             Format Feldname '1' Color   // setzen
+#             Format Feldname '2'         // ruecksetzen
+#
+# 197. Spalten selektierbar machen gemaess E-Antrag 2329373-1998
+#      Damit wir abwaertskompatibel bleiben, muessen Spalten in $VBANDS auf
+#      markierbar gestellt werden. Dies erfolgt mit dem Attribut 's'.
+#      s = Selection:  0 = Unselected                      1 = Selected
+#                      2 = No selection allowed (Default), 3 = Selection allowed
+#      Momentan kann man leider nur eine Spalte gleichzeitig markieren 
+#      (Restriktion in Varchart). Diese Spalte wird dann mit dem Schluessel 'm' 
+#      zurueckgemeldet, wenn der CUA-Code mit einem "S" beginnt.
+#      Markierarten: Da momentan nur ein Feld einer Box markiert werden
+#      kann, sind nicht alle Markierarten verfuegbar ($OPTS, MARKTYPE).
+#      Nur 1 (=Invertiert), 3 (=Markiert mit Farbe) und 4 (=Pressed-Button-artig)
+#      werden auf diese Art dargestellt, der Rest kriegt innenliegende Pickmarks.
+#
+# 198. F1- und F4-Hilfe im Editcontrol gemaess E-Antrag 2962340-1998
+#      Wird im OCX der Tabellenteil editiert und F1 oder F4 gedrueckt, so
+#      erfolgt eine Rueckmeldung ans Backend. Diese hat den Aufbau
+#         FCODE b <boxid> <feldname> <Funktionstaste 1 oder 4> 
+#        
+# 199. Blaetterverhalten gemaess E-Antrag 2685465-1998
+#      Setzt man in den $OPTS den Wert LINESCROLL (0 = Default = Aus, 1 = An), so
+#      wird nicht mehr prozentual gescrollt sondern Zeile fuer Zeile.
+#      Im OCX-Fall erscheint ein Tooltip am Scrollbar, der die aktuelle Zeile angibt.
+#
+# 200. Bei Doppelklick alle markierten Werte schicken gemaess E-Antrag 2991103-1998
+#      Wird in den $OPTS der Wert von DBCLICK (0 = Aus, 1 = An = Default, 2 = 1 + Liste
+#      der markierten Objekte) auf zwei gesetzt, kommt die Liste aller markierten Objekte.
+#      Das erste Element der Liste ist das doppelt geklickte. 
+#
+# 201. Mehrfachbelegung fuer einzelne Zeilen abschaltbar gemaess  E-Antrag 154440-1999
+#      In $HBANDS kann mit Operation 'p' ein Overlap-Layer gesetzt werden, mit 'q' wird
+#      der aktuelle Overlaplayer geloescht.
+#
+# 202. Kurvenwerte ueber die Zeit addieren gemaess E-Antrag 473797-1997
+#      Die Kurvenwerte werden in Y-Richtung kumuliert. Aktiviert/Deaktiviert
+#      wird die Kumulation in $CURVALS, Schalter 'k'.
+#
+# 203. Balkenbegrenzung anzeigen gemaess E-Antrag 115404-1998
+#      Werden Balken angezeigt, die ueber den definierten Bereich der
+#      Zeitachse gehen, ist nicht erkennbar, ob Start/Ende des Balkens
+#      vor/nach dem Zeitraum liegen.
+#      In $OPTS kann mit Schalter OUTSYMS (0 = Aus = Default, 1 = An) dieses
+#      Feature aktiviert werden, wobei Default-Layer genommen werden. In den
+#      $CVALS koennen diese dann noch ueberdefiniert werden. (Attribute '8' und '9').
+#
+# 204. Anzeigen der positiven/negativen Differenz zweier Kurven gemaess E-Antrag 473766-1997
+#      In $CURVALS kann man mit 'm' die Referenzkurve angeben, die zur Differenzbildung
+#      hinzugezogen wird, mit 'z' kann ein Higlight angegeben werden, mit dem die
+#      negative Differenz angezeigt wird (die positive Differenz erfolgt mit dem
+#      Highlight der Kurve).
+#
+# 205. Drag&Drop im Balkenplan 
+#      In der Tabelle Drag&Drop koennen Objekten Drag-Drop-Handle zugewiesen
+#      werden, die die DD-Mimik bestimmen. 
+#      Unterstuetzt werden momentan nur Knoten, Boxen und Charts, aber das 
+#      sollte vielleicht noch ausgedehnt werden. (--> siehe $DRGDRP, $DPDRGDRP)
+#
+# 206. Teile des Diagrammteils immer sichtbar halten
+#      Setzt man in den $OPTS TRCKTBLSEC auf 1, wird bei jedem Resize ein kleiner
+#      Teil des Diagrammteils sichtbar bleiben. 
+#      TRCKTBLSEC = 0 = Default = Verhalten wie bisher
+#      TRCKTBLSEC = 1 = Immer ein paar Pixel sichtbar
+#
+# 207. Treestruktur im Tabellenteil gemaess E-Antrag 787307-1999
+#      Im Boxformat des Tabellenteils muss folgendes gesetzt werden.
+#        Textcontainereintrag fuer Einruecktiefe  (Id, Feld, @, DC-Eintrag)
+#        Hierachie-Anzeige aktivieren  (Id, Feld, +, x = An, Rest = Aus)
+#        Optional horizontale Linien aktivieren  (Id, Feld, -, x = An, Rest = Aus)
+#      In den Boxen des Tabellenteils muss folgendes gesetzt werden.
+#        Eintrag im DC fuer Einruecktiefe
+#        Expand-Collapse mit (Id, +, x = An, Rest = Aus). Geht aber nur, wenn die
+#        Boxen vorher schon positioniert sind.
+#
+# 208. Suchen-Popup erweitern um Anzeige des gefundenen Objekts
+#      in den Optionen kann mit SET MARKLABL (Default = 0 = wie bisher) folgendes
+#      geschaltet werden:
+#         0 = Aus = Default
+#         1 = Zeilenhintergrund im Diagrammteil invertieren
+#         2 = Box blinken lassen
+#
+# 209. Kantensymbolgroessen setzen (wie im Netzplan) gemaess E-Antrag 718183-1999
+#      In den $OPTS mit PORTSIZE, (0 < Default = 200 <= 5000).
+#
+# 210. Ausfragen der Spaltenbreite gemaess E-Antrag 730802-1999
+#      Wenn in den Daten $SNDCLMWD aufgerufen wird, so erfolgt am Ende des
+#      Datenladens die Rueckmeldung an das Backend, welche Charts (nur die aktiven)
+#      in welcher Spalte welche Breite haben. 
+#      SNDCOLWDTH (chart, column, width)*
+#
+# 211. Skalieren von Layern wenn SELTYPE = (0,2) statt 3 (Torsten Lang)
+#      Wird in $OPTS mit SCALNODS (0 = Aus = Default, 1 = An) aktiviert.
+#      Beim Verschieben von Knoten wird ein MoveNode (fuer alle Layer) geschickt,
+#      sonst nur ein ScaleLayer.
+#
+# 212. Verbesserter Autoscroll beim Verschieben von Objekten
+#      Ist per Default in $OPTS aktiv (SLFSCRLTIM = 1 = An = Default, 0 = Aus),
+#      Autoscrollgeschwindigkeit ist hart verdrahtet, zu haben ab 4.6B.
+#
+# 213. Optimale Spaltenbreite fuer einzelne Spalten gemaess E-Antrag 914799-1999
+#      In den $VBANDS (Attribut o) kann fuer jede Spalte einzeln die optimale
+#      Spaltenbreite gesetzt werden. Diese gilt, solange in den $CLMWD kein anderer
+#      Wert gesetzt wird (also $VBAND nach $CLMWD).
+#
+# 214. Zurueckgeben, ob Spaltenbreite manuell oder durch Doppelklick angepasst
+#      wurde (gemaess E-Antrag 1304679-1999). Falls von Hand, kommt "manual", sonst
+#      "optimized" als Zusatzwert nach der Spaltenbreite zurueck.
+#
+# 215. Letztes markiertes Objekt zuerst verschicken gemaess E-Antrag 1758978-1999
+#      Passiert ab 4.6B automatisch ohne Einwirkung des Backends. Die Variablen 
+#      lastmarkedcurrentobject(type) merken sich das letzte markierte Objekt und 
+#      geben dieses zuerst zurueck.
+#
+# 216. Blinkendes Highlight gemaess E-Antrag 785258-1999
+#      Damit Objekte blinken koennen, wird ein zweites Highlight definiert. Dieses
+#      wird dann mit '%' in den $BVALS oder $LVALS zugewiesen.
+#      Knoten koennen nur im Netzplan blinken, nicht aber im Balkenplan, da dort nur
+#      Layer sichtbar sind und somit blinken koennen.
+#      Damit klar ist, welcher Layer in welchem Knoten blinken soll, muss das Blinken
+#      dann noch im Knoten mit $NVALS Option 'b' aktiviert ('x') oder deaktiviert (' ')
+#      werden.
+#
+# 217. Horizontallinien einfaerbbar (alle auf einmal !) gemaess E-Antrag 787482-1999
+#      Statt die Horizontallinien muehsam in den $HBANDS pro Linie zu setzen kann das
+#      jetzt auch pro Chart durchgefuehrt werden. Wird erledigt in $CVALS, Attribut 'j'
+#      und dann noch ein Highlight hintendran.
+#
+# 218. Verwendung von englischer (12 AM/PM) Zeitdarstellung gemaess E-Antrag 787395-1999
+#      In $DATELAY oder $RIBLAY statt "hh:mm:ss" die Stunden gross schreiben und
+#      damit auf 12-Stunden umschalten ("HH:mm:ss").
+#
+# 219. 3-D-Markierung mit Durchnummerierung gemaess E-Antrag 787526-1999
+#      Soll in einer Box die aktuelle Zeile angezeigt werden, erfolgt dies in den
+#      $FVALS <fmtid> <fieldid> '%' ..
+#      Wichtig: Feld <fieldid> muss vom Typ '$' (also Text) sein.
+#      Wenn 3D-Markiert werden soll, ist der MARKTYPE in den $OPTS auf 6 zu setzen.
+#
+# 220. Ausgabe des aktuellen Status als Bitmap-Datei 
+#      Erfolgt mittels Tabelle $DUMPCHART. Siehe auch dort. Funktioniert aber
+#      nur unter WIN-32.
+#
+# 221. Startdatum setzen gemaess E-Antrag 778106-1999
+#      Direkt nach $INIT kann ein neues Startdatum fuer den Balkenplan gesetzt werden.
+#      Beispielsweise /$SYEAR 1950. Dann duerfen allerdings keine Startwerte vor 1950 
+#      eingegeben werden. Gueltiger Bereich ist 1901 bis 2035
+#
+# 222. Knoten aus der automatischen Positionierung PFST entfernen gemaess Antrag von Uwe 14.2.00
+#      Damit beim Positionieren ueber PFST, PLST besser unterschieden werden kann, ob ein Objekt
+# 	   relevant ist oder nicht, kann in $NVALS ueber Attribute '+' und '-' dieser Knoten
+#      ein/ausgeblendet werden.
+#
+# XXX. Suelz-Laber-Schwaetz gemaess E-Antrag xxx-199y
+#      Da fehlt noch die Spezifikation !!!
+#
+
+#######################################################################
+#######################################################################
+#######################################################################
+
+#############################################
+# Tabellen zum Anfordern von Rueckmeldungen #
+#############################################
+
+# / $SELECT 1
+# Returns all selected nodes
+
+# / $CUSTOM 1
+# Returns all values in Opts-Tabelle
+
+# / $OVERLAP 1
+# Returns all rows which could be enlarged
+
+
+#######################################################################
+#######################################################################
+#######################################################################
+
+
+##################################
+# Rueckmeldungen des Balkenplans #
+##################################
+#
+# Selektion
+#   SEL ((n|b) <chartid> <id>)*
+#
+# Doppelklick
+#   DBCL ((n|b|k|p) <chartid> <id>) [Feldid (nur bei Boxen]
+#
+# Timer-Meldung
+#   TIMER
+#
+# Meldung, dass Daten und Status gesichert werden soll.
+#   SAVE
+#
+# Eingabe einer Box
+#   INS b <chartid> <objid> <row>
+#
+# Eingabe eines Knoten
+#   INS n <chartid> <nodeid> <row> l <chartid> <layerid> <layertype> <startdate> <enddate>
+#
+# Eingabe von Layern 
+#   INS l <chartid> <nodeid> <layerid> <layertype> <startdate> <enddate>
+#
+# Modifizieren eines Objektes
+#   MOD (n|b) <chartid> <id> <fieldid> <string>
+#
+# Loeschen von Objekten
+#   DEL ((n|b) <chartid> <id>)*
+#
+# Duplizieren von Objekten
+#   DUP ((n|b) <chartid> <id>)*
+#
+# Verbinden von Knoten
+#   CON n <chartid> <id> n <chartid> <id> (AA|AE|EA|EE) l <layerid1> l <layerid2>
+#   
+# Reorg horizontal, vertikal wird nicht geschickt !!!
+#
+# Customizing
+#   CUSTOM  (<option> <wert>)*
+#
+# Sizen eines Layers nach links
+#   SCALELEFT <chartid> <nodeid> <layerid> <textindex> <startdatum>
+#
+# Sizen eines Layers nach rechts
+#   SCALERIGHT <chartid> <nodeid> <layerid> <textindex> <enddatum>
+#
+# Verschieben eines Layers
+#   MOVELAYER <chartid> <nodeid> <layerid> <textindex> <startdatum> <textindex> <enddatum>
+#
+# Verschieben eines Knotens 
+#   MOVENODE <chartid> <nodeid> <chartid> <row> (<layerid> 
+#                                   <textindex> <startdatum> <textindex> <enddatum>)*
+#
+# Verschieben eines Kurvenpunkts
+#   MOVECURVE <curveid> <Textcontainer-Eintrag> <X-Wert> <Y-Wert vorher> <Y-Wert nachher>
+#
+# Verschieben mehrerer Knoten 
+#   MOVEMULTI [<chartid> <nodeid> <chartid> <row> (<layerid> 
+#                                    <textindex> <startdatum> <textindex> <enddatum>)*]*
+#
+# Verschieben einer Box
+#   MOVEBOX <chartid> <boxid> <chartid> <row> 
+#
+# Aendern der Groesse einer Tabellenspalte
+#   CREORG <chartid> <columnid> <size>
+#
+# Grafisches Verschieben von Tabellenspalten
+#   CMOVTABCOL <chartid> <columnid_from> <columnid_to> <format_id>
+#
+# Melden der ueberlappten Zeilen eines Balkenplans 
+#   OVERLAP (<chartid> <row>)*
+#
+# Rueckmelden von Eintraegen aus Menuleiste
+#   ACTBAR <id>
+#
+# Rueckmelden der geaenderten Farben
+#   CLRS <color>*
+#
+# Rueckmelden der Positionen der Views
+#   VIEWPOS <datum> <current-row-first-chart> ... <current-row-last-chart>
+#
+# Rueckmelden aktueller View-Ausschnitt gemaess E-Antrag 113401-1998
+#   VIEWLIMIT <from_date> <to_date>
+#
+# Verlassen des Programmes
+#   AEXIT, ABACK, AQUIT
+ 
+
+#######################################################################
+#######################################################################
+#######################################################################
+
+
+/$TITLE 1
+: It is me to be the new famous title
+
+/$STATUS 3
+:SET SYSID B20
+:SET SAPSYS R/3
+:SET SAPRL 30A
+
+/$DQUART 1
+:Quartal 1
+:Quartal 2
+:Quartal 3
+:Quartal 4
+
+/$DMONTH 1
+:Januar
+:Februar
+:Maerz fuers Herz
+:April tut was er will
+:Mai macht Hei
+:Juni
+:Juli
+:August macht Lust
+:September
+:Oktober
+:November
+:Dezember
+
+/$DWEEK 1
+:Kalenderwoche
+
+/$DDAY 1
+:Montag
+:Dienstag
+:Mittwoch
+:Donnerstag
+:Freitag
+:Samstag
+:Sonntag
+
+/ $INIT 3
+: SET MAXCHARTS    2
+#:SET MAXFMTS      (value)
+#:SET MAXHLTS      (value)
+#:SET MAXRIB       (value)
+#:SET MAXNODES     Wird nicht mehr gebraucht
+#:SET MAXBOX       Wird nicht mehr gebraucht
+#:SET MAXLAYER     Wird nicht mehr gebraucht
+#:SET MAXGRID      Wird nicht mehr gebraucht
+#:SET MAXDATLINS   Wird nicht mehr gebraucht
+#:SET MAXCALENDARS Wird nicht mehr gebraucht
+#:SET MAXPROFILES  Wird nicht mehr gebraucht
+#:SET MAXINTERVALS Wird nicht mehr gebraucht
+#:SET MAXTIMEOBJS  Wird nicht mehr gebraucht
+#:SET MAXSECT      Wird nicht mehr gebraucht
+
+
+# Tabelle fuer die Angabe der Jahresstartzahl
+# Aufbau: 1. Jahreszahl
+/$SYEAR 1
+:1950
+
+# Tabelle fuer Breite von Spalten
+# Aufbau: 1. Chartid
+#         2. Spaltennummer (beginnend mit 1)
+#         3. Wert in hunderstel mm
+/$CLMWD 3
++ V  V  V   
+: 1  1  1500
+: 1  2  900
+#: 1  2  0
+: 1  3  2000
+: 1  4  1000
+: 2  1  1700
+: 2  2  1200
+: 2  2  2200
+: 2  3  2500
+
+# In welcher Einheit soll beim Skalieren von Layern die Laenge eines 
+# Layers angegeben werden ? Die erste Spalte gibt die Einheit als String
+# an, die naechste die Lange der Einheit in Sekunden. In diesem Beispiel
+# ist eine SAP-Einheit 1 Tag = 24 Stunden = 86400 Sekunden
+/ $SAPUNIT 2
++ V              V      
+#: SAP-Einheiten  86400
+: SAP-Einheiten  7200
+
+# Anfangs- und Endwert der globalen Zeitachse
+# Datum muss in genau diesem Format angegeben werden, sonst Fehler in BarChart
+/ $TIME 2
++ V            V      
+#: 11.03.1993;  12.08.1993;
+#: 1.10.1993;   11.6.1994;
+: 1.01.1993;   11.6.1994;
+
+
+# Layoutstrings fuer Tage bis Jahr und Sekunde bis Tag. Beim ersten Layoutstring 
+# brauche ich am Ende auf jeden Fall ein Trennzeichnen, hier ein ;
+# Beim zweiten String muss das nicht sein.
+#/ $DATELAY 2
+#: YY+MM-DD;
+#: hh-mm/ss
+
+# Gleiches Spiel wie oben, allerdings nicht fuer die Ausgabe der Statuszeile
+# sondern fuer die Ribbons. Falls $RIBLAY nicht angegeben wird, zieht $DATELAY.
+/$RIBLAY 2
+:MM/DD/YYYY
+:
+
+
+# Tabelle fuer Sektionen
+# Aufbau: 1. Id
+#         2. Anfangsdatum
+#         3. Einheit 1 = Jahr, 2 = Quartal, 3 = Monat, 4 = Woche, 5 = Tag,
+#                    6 = Stunde, 7 = Minute, 8 = Sekunde
+#            Einheit = 0  --> Sektion fuer Kurven (CURVES/AXIS) !!!
+#         4. Breite der Einheit (in Pixeln ???)
+/ $SECTION 4
++ V     V           V      V
+: 1     1.01.1993;  5      70
+: 2     17.02.1993; 5      50
+: 3     17.03.1994; 5      60
+: 5     0           0      30
+: 6     20          0      15
+
+# Anlegen von Highlights
+# Aufbau: 1. Id
+#         2. Linienfarbe (fuer Umrandung)
+#         3. Hintergrundfarbe
+#         4. Trennlinienfarbe (innerhalb eines Knotens oder Layers zum Abtrennen von Feldern)
+/ $HLTS 4
++ V            V         V           V
+: 32           black     gray        red
+: 33           black     green       red 
+: 34           black     blue        blue
+: 35           black     blue        blue
+: 36           green     darkgray    blue
+: 37           black     white       red
+: 38           blue      gray        red
+: 39           black     GRAY_2      white
+: 40           red       blue        blue
+: 41           black     black       black
+: 42           yellow    yellow      yellow
+: 77           black     brown_1     red
+: 88           green     green       green
+
+# Fuellen von Highlights
+# Aufbau 1. Id des Highlights
+#        2. Typ des Attributs
+#             b = Fillpatternbackgroundcolor
+#             z = Transparentmode
+#             f = Highlightcolor
+#             f = Fill pattern
+#             k = Strikethrough
+#             l = Linecolor
+#             p = Priority
+#             s = Separationlinecolor
+#             t = Linethickness
+#             y = Linetype
+#             c = Strikethroughcolor
+#        3. Wert des Attributs
+/ $HVALS 3
++ V            V         V   
+: 33           k         1
+: 34           b         green
+: 34           f         1
+: 41           b         black
+: 41           h         white
+#: 77           z         
+
+# Anlegen von Charts
+# Aufbau: 1. Id des Charts
+#         2. Typ des Charts  + 1   = Title
+#                            + 2   = Tabletitle
+#                            + 4   = Diagramtitle
+#                            + 8   = Tablesection
+#                            + 16  = Diagramsection
+#                            + 32  = Feststehende Markierspaltentabellentitel (links)
+#                            + 64  = Feststehende Markierspaltentabellenteil (links)
+#                            + 128 = Feststehende Markierspaltentabellentitel (rechts)
+#                            + 256 = Feststehende Markierspaltentabellenteil (rechts)
+#               32 + 64 muss gleichzeitig kommen !!
+#               128 + 256 muss gleichzeitig kommen !!
+#         3. Anzahl von Spalten im Tabellenteil des Charts
+#         4. Relative Reihenfolge der Charts  
+#         5. Vertikale Hoehe   (in Pixeln)
+/ $CHARTS 5
++ V            V          V   V          V
+: 1            127        4   1          400
+: 2            31         3   2          400
+
+
+# Tabelle fuer Hoehe von Zeilen
+# Aufbau: 1. Chartid
+#         2. Zeilennummer (beginnend mit 0 = Tabellenueberschrift, n >= 1 sind Zeilen...
+#         3. Wert in hunderstel mm
+/$ROWWD 3
++ V  V  V   
+: 1  1  300
+: 1  2  1000
+: 1  5  300
+: 2  0  1000
+
+# Anlegen von Kalendern
+# Aufbau: 1. Id des Kalenders
+#         2. Typ des Kalenders, 
+#              wW = Mergekalender, addiere alle Worktimes
+#              nN = Mergekalender, addiere alle Nonworktimes
+#              alles andere ist normaler Kalender
+/ $CALENDAR 2
++ V   V     
+: 1   dummy
+: 2   auch dummy
+: 3   erst recht dummy
+: 4   w
+: 5   dummy
+
+# Anlegen von Ribbons fuer die Sektionen der Zeitachse
+# Aufbau: 1. Id des Ribbons
+#         2. Id des Charts
+#         3. Id der Section
+#         4. Typ des Ribbons
+#                    1 = Jahr, 2 = Quartal(3 Monate), 3 = Monat, 4 = Woche, 5 = Tag,
+#                    6 = Stunde, 7 = Minute, 8 = Sekunde, 139 = Calendar 
+#                    152 = Numerisches Ribbon fuer Summierungsdiagramm
+#                    12 = Shift-Ribbon fuer Zeitachse
+#                    138 = Ribbon fuer Automotive-Y-Achse
+#                    1032 = Ribbon fuer Datentabelle. Bloederweise muss dieses Ribbon
+#                                  fuer jede Section angegeben werden !!!
+#         5. Id des Highlights
+/ $RIBBON 5
++ V            V          V          V    V
+#: 1            1          1          5    33
+: 1            1          1          4    33
+: 2            1          1          3    34
+: 3            1          2          3    32
+: 4            1          2          5    34
+: 5            2          1          5    33
+: 7            1          3          5    33
+: 8            1          3          3    34
+: 9            2          3          5    33
+: 10           2          3          3    32
+: 11           2          1          139  41
+: 22           1          6          152  41
+: 23           1          6          152  33
+: 24           1          6          152  77
+: 25           2          2          12   33
+: 6            2          2          3    34
+: 94           2          1          1032 33
+: 95           2          2          1032 34
+: 96           2          3          1032 77
+: 97           2          1          1032 77
+: 98           2          2          1032 33
+: 99           2          3          1032 34
+
+# Attribute fuer Ribbons
+# Aufbau 1. Id des Ribbon
+#        2. Typ des Attributs
+#              c: Font color
+#              h: Highlight
+#              g: Ribbonhintergrundfarbe direkt setzen, ohne Highlight
+#              u: Unit separation  1 = no ticks, 2 ticks above, 3 ticks below, 4 full line
+#              s: Set Calendar
+#              w: Set Fontwidth in 1/72 Inch, not for calendar ribbons !!!
+#              i: Minor Tick Annotation  (Every (value)-tick is bigger) (days, hours, numeric)
+#              m: Major Tick Annotation  (Every (value)-tick is bigger) (days, hours, numeric)
+#              x: Minor Tick Threshold   (Minor ticks only all <value> pixels
+#              y: Set decimal fraction. Allowed values are 1, 10, 100, 1000, ...
+#            
+#              t: Tagesribbon:  0 = Tag in Monat (in Ziffern)
+#                               1 = Erster Buchstabe des Tages
+#                               2 = Tag als String
+#                               3 = Tag als String gemaess gesetztem Datumsformat
+#                               4 = Datum als String aus $DDAY
+#                 Wochenribbon: 0 = Wochennummer
+#                               1 = Kalenderwochennummer mit Deutsch/Englisch 
+#                               2 = Datum als String aus $DWEEK (also auch andere Sprachen)
+#                 Monatsribbon: 0 = Monatsname
+#                               1 = Monatsname und Jahr
+#                               2 = Datum als String aus $DMONTH
+#                               3 = Datum als String aus $DMONTH und $DDAY, wobei aus
+#                                   $DDAY nur der erste Buchstabe genommen wird.
+#
+#              l: Loest die Option t ab. Es kann jetzt einfach ein Formatstring 
+#                 angegeben werden, wie er im Papier von Netronic (1.Oktober 96)
+#                 beschrieben ist.
+#              d: 3D-Effekt   0=Aus, 1=An, Default=0
+#              v: Aktivieren/Deaktivieren der "Serial numbers" im Ribbon
+#                               0 = Aus
+#                               1 = Ohne Null, also -3 -2 -1 1 2 3 
+#                               2 = Mit Null, also -3 -2 -1 0 1 2 3
+#              r: Referenz-Datum fuer Ribbon. Muss nicht gesetzt werden. Default sitzt
+#                 am Anfang der Section.
+#              e: Breite eines Ribbons (im Tabellenteil)
+#              n: Fontname h=Helvetica, c=Courier, t=Times
+#              b: Fontbody 0=Regular, 1=bold, 2=italic, 3=bolditalic, Default=0
+#              z: -43200 <= Timezoneoffset <= 43200
+#              p: Positionierung der Texte im Ribbon
+#                               0 = Zentriert
+#                               1 = Linksbuendig
+#                               2 = Rechtsbuendig
+#                               3 = Am Strich
+#              a: M_a_sseinheit fuer numerische Ribbons. Argument ist ein String
+#              f: Typ eines Ribbons wechseln. Dritter Parameter ist der Typ
+#              0-99: Texte pro Section fuer Schichtribbon
+#              !: Interner Name des Ribbons fuer Wizzard
+#              ?: Setzen einer User-Popup-Id
+#        3. Wert des Attributs
+/ $RVALS  3
++ V      V        V
+#: 1      h        34
+: 1      g        red
+: 1      c        yellow
+: 1      w        50
+: 1      u        4
+: 1      d        1
+: 1      b        1
+: 1      n        t
+: 1      z        -24000
+#: 1      m        2
+: 4      m        7
+: 4      t        0
+: 4      v        1
+: 5      t        1
+: 11     s        2
+: 3      t        2
+: 10     t        2
+: 22     e        1800
+: 23     e        2000
+: 24     e        1000
+: 25     s        2
+: 25     1        Schicht 1
+: 25     2        Schicht 2
+: 1      p        0
+: 4      p        2
+: 5      p        3
+
+# Anlegen eines Zeitobjektes
+# Aufbau: 1. Id des Zeitobjektes
+#         2. Typ des Zeitobjektes  (uU = Unique, rR = Recurrent, dD = Daily)
+#         3a: (Unique)          Leer
+#         4a: (Unique)          Datum, (Beispiel 27.4.1994)
+#         3b: (Recurrent)       0 = VC_DAY_IN_WEEK, 1 = VC_DAY_IN_MONTH 
+#         4b: (Recurrent)       1 = VC_MONDAY, ..., 7 = VC_SUNDAY
+#         3c: (Daily reccurent) Leer
+#         4c: (Daily reccurent) Datum, (Beispiel 07:30:00;)
+/ $TIMEOBJ 4
++ V   V     V   V
+: 2   r     0   3
+: 3   r     0   6
+: 1   u         24.12.1993
+: 4   u         27.2.1994
+: 5   d         07:30:00;
+
+# Anlegen eines Tooltip-Textobjektes
+# Aufbau: 1. Id des Textobjektes
+#         2. Typ des Textobjektes (siehe Top 186)
+/ $OBJTIP 2
++ V   V     
+: 5    
+: 8   0
+: 9   1
+
+# Attribute fuer Tooltip-Textobjekte 
+# Aufbau 1. Id des Textobjektes
+#        2. Typ des Attributs
+#              0-99 = Textvalue
+/ $OBTVAL  3
++ V      V        V
+: 5      0        Hilfstext 1
+: 5      1        Hilfstext 2
+: 5      2        Hilfstext 3
+: 8      0        Noch ein Hilfstext 1
+: 8      1        Noch ein Hilfstext 2
+: 8      2        Noch ein Hilfstext 3
+: 9      0        0
+: 9      1        1
+: 9      2        2
+
+# Anlegen eines Intervals
+# Aufbau: 1. Id des Intervals
+#         2. Typ des Intervals  Z = Zeitstreckungsinterval (Workinterval)
+#                               V = Validityinterval
+#                               N oder gar nichts = (Nonworkinterval)
+/ $INTERVAL 2
++ V   V     
+: 7   z
+: 8   
+
+# Attribute fuer Intervalle 
+# Aufbau 1. Id des Intervalls
+#        2. Typ des Attributs
+#              sS: Startzeitobjekt
+#              eE: Endzeitobjekt
+#              zZ: Zeitstreckungsfaktoren in Prozent
+#              tT: Textcontainer-Nummer des Intervals, der auf Text des 
+#                  Schichtribbons verweist. Fuer andere Intervalle nicht
+#                  noetig.
+#              vV: Art des Validityintervals            
+#                  1 = VC_NON_WORK_INTERVAL
+#                  2 = VC_WORK_INTERVAL
+#                  3 = VC_WORK_AND_NON_WORK_INTERVAL (Default)
+#        3. Wert des Attributs
+/ $IVALS  3
++ V      V        V
+: 7      s        2
+: 7      e        3
+: 7      t        1
+: 8      s        1
+: 8      e        4
+: 7      z        66
+
+# Anlegen eines Profils
+# Aufbau: 1. Id des Profils
+#         2a. Typ des Profils  (eE = Emtpy, fF = Full)(dD = Day, wW = Week, yY = Year, vV = Variable)
+/ $PROFILE 2
++ V   V     
+: 1   fw
+: 2   w
+: 3   fw
+: 4   ew
+
+# Attribute fuer Profile
+# Aufbau 1. Id des Profiles
+#        2. Typ des Attributs
+#              a: Add non_work_time 
+#              r: Remove non_work_time 
+#              b: Add non_work_interval (recurrent time objects only)
+#              s: Remove non_work_interval (recurrent time objects only)
+#              c: Add work_time 
+#              t: Remove work_time 
+#              d: Add work_interval (recurrent time objects only)
+#              u: Remove work_interval (recurrent time objects only)
+#              p: Add Profile (Plus)                                 
+#              m: Remove Profile (Minus)                                 
+#        3. Wert des Attributs
+/ $PVALS  3
++ V      V        V
+: 1      a        2
+: 2      a        2
+: 2      a        3
+: 3      b        7
+: 4      d        7
+
+# Attribute fuer Kalender
+# Aufbau 1. Id des Kalenders
+#        2. Typ des Attributs
+#              a: Add Profile
+#              r: Remove Profile
+#              u: Unique Interval abziehen, (zum Beispiel fuer Ferien...)
+#                 Entspricht Nichtarbeitszeit addieren...
+#              t: Unique Interval addieren, 
+#                 Entspricht Nichtarbeitszeit subtrahieren, oder Arbeitszeit addieren...
+#              x: Add interval-start
+#              y: Add interval-end  (as nonwork-time)
+#              z: Add interval-end  (as work-time)
+#              w: Add Profile (needed, if other intervals are set with options x, y
+#              d: Add Calendar to Mergecalendar 
+#              e: Remove Calendar from Mergecalendar 
+#        3. Wert des Attributs
+/ $CALVALS  3
++ V      V        V
+: 1      a        1
+: 1      a        2
+: 2      a        3
+: 3      u        8
+: 3      a        4
+: 4      d        1
+: 4      d        3
+
+# Attribute fuer Sections
+# Aufbau 1. Id der Section
+#        2. Typ des Attributs
+#              t: Start time
+#              v: Start value (for numeric sections only)
+#              u: time unit 
+#              w: time unit width
+#              a: Add Merge-Calendar 
+#              r: Remove Merge-Calendar 
+#              s: Show collapsed objects (X = yes, else don't show !)
+#              p: Periodwidth (should be greater 60 seconds)
+#              n: number of periods (should be greater 1)
+#        3. Wert des Attributs
+/ $SVALS  3
++ V      V        V
+: 1      w        55
+#: 1      a        1
+: 2      a        4
+: 2      s         
+
+# Anlegen von Grids fuer die Sektionen der Zeitachse
+# Aufbau: 1. Id des Grids
+#         2. Id des Charts
+#         3. Typ des Grids
+#                lL = Grid mit Linien
+#                dD = Globales Grid mit Linien
+#                mM = Globales Grid mit Calendar
+#                cC = Grid mit Calendar
+#                nN = Globales Schicht-Grid (mit Calendar)
+#                sS = Schicht-Grid (mit Calendar)
+#                rR = Grid fuer numerische Ribbons (nicht vertikal sondern horizontal)
+#                bB = Grid fuer vertikale Zeitachsen
+#                aA = Grid fuer vertikale Zeitachsen (alle Sections)
+#            Wird dem Typ des Grids ein dD oder mM oder nN vorangestellt, so handelt
+#            es sich um ein 'globales' Grid, es muss keine Section
+#            angegeben werden.
+#         4a. (Line) Id der Section
+#         5a. (Line) Wert der Zeiteinheit, siehe Sektionstabelle Spalte 3
+#         6a. (Line) Id des Highlights
+#         4b. (Calendar) Section
+#         5b. (Calendar) Id des Kalenders
+#         6b. (Calendar) Id des Highlights
+/ $GRIDS 6
++ V            V   V      V          V          V
+#: 1            1   l      1          5          35
+: 2            1   D      2          3          35
+: 3            2   c      1          2          35
+: 4            1   c      1          1          35
+: 5            2   c      2          3          37
+: 6            2   n      2          2          35
+
+# Attribute fuer Grids
+# Aufbau 1. Id des Grids
+#        2. Typ des Attributs
+#           c   Calendar des Grids  
+#           m   Merge-Calendar des Grids. Kann nur fuer Bandgrids im 
+#               Automotive benutzt werden. Dient zum Kollabieren der Zeitachsen
+#           h   Highlight des Grids
+#           p   Periode des Grids
+#           s   Section des Grids  
+#           t   Timeunit des Grids 
+#           a   Anfangszeile des Grids
+#           e   Endzeile des Grids
+#           b   Addiere Bereichsintervall
+#           f   Loesche Bereichsintervall
+#           x   Loesche alle Bereichsintervalle
+#           r   Prioritaet -128 < p < 128, Default = 0
+#           d   Referenz-Datum fuer Grid
+#           v   Visibilitaet (1 = ja, 0 = nein)
+#        3. Wert des Attributs
+/ $GVALS 3
++ V     V       V      
+#: 1     h       34
+#: 1     p       5
+#: 1     s       1
+#: 2     t       2
+: 5     a       2
+: 5     e       5
+: 5     r       7
+#: 2     d       /728.839;86.400/
+: 2     p       2
+: 2     d       1.6.1993;0:00:00;
+: 4     h       40
+# : 4     a       1
+# : 4     e       8
+: 4     b       1/2
+: 4     b       4/4
+: 4     b       6/8
+# : 4     v       0
+
+# Formate fuer Knoten, Boxes und Layers
+# Aufbau: 1. Id des Formats
+#         2. Formattyp   (nN Node, bB Box, tT, Tablebox, lL Layer)
+#         3. Formatstring
+/ $FMTS 3
++ V     V       V      
+: 22    n       [$a]
+: 23    b       [[$a-$b]]
+: 24    t       [[$a/$b/$c]]
+: 25    t       [[@a/$b/$c/$d]]
+: 26    l       [$a]
+: 30    L       [$a/$b]
+: 29    t       [[$a/$b]]
+: 31    t       [[$a/$b/$c/$d]]
+: 99    b       [[$a-$b]]
+
+# Fuellen von Formaten
+# Aufbau 1. Id des Formats
+#        2. Feld  (leer falls globales Attribut
+#        3. Typ des Attributs
+#        4. Wert des Attributs
+/ $FVALS 4
++ V     V       V        V
+: 22    a       t        0
+: 23            s        n
+: 23    a       b        0
+: 23    a       f        c
+: 23    a       l        2
+: 23    a       t        1
+: 23    a       w        500
+: 23    b       f        c
+: 23    b       l        2
+: 23    b       t        2
+: 23    b       w        500
+: 24            s        n
+: 24    a       t        1
+: 24    a       f        c
+: 24    a       l        2
+: 24    b       t        2
+: 24    b       f        c
+: 24    b       l        2
+: 24    b       w        500
+: 24    c       t        3
+: 24    c       f        c
+: 24    c       x        Arial
+: 24    c       l        2
+: 24    c       c        yellow
+: 24    b       c        green
+: 25            s        n
+: 25            e        x
+: 25    a       t        1
+: 25    a       f        c
+#: 25    a       l        2
+#: 25    a       p        gxvalogo.gmf
+#: 25    a       q        gxvasap1.gmf
+: 25    a       r        
+: 25    a       y        500
+: 25    a       z        500
+: 25    b       t        2
+: 25    b       f        c
+: 25    b       l        2
+: 25    b       w        500
+: 25    b       c        green
+: 25    b       @        22/33
+: 25    c       t        3
+: 25    c       f        c
+: 25    c       l        2
+: 25    c       c        yellow
+: 25    d       t        4
+: 25    d       f        c
+: 25    d       l        2
+: 25    d       c        red
+: 26            s        n
+: 26    a       t        5
+: 26    a       f        c
+: 26    a       l        1
+: 26    a       w        1000
+: 26    a       h        8
+: 29            s        n
+: 29    a       t        1
+: 29    a       f        c
+: 29    a       l        2
+: 29    b       t        2
+: 29    b       f        c
+: 29    b       l        2
+: 29    b       w        500
+: 99            s        n
+: 99    a       b        0
+: 99    a       f        c
+: 99    a       l        2
+: 99    a       t        1
+: 99    a       w        3000
+: 99    b       f        c
+: 99    b       l        2
+: 99    b       t        2
+: 99    b       w        3000
+
+
+# Anlegen von Datelines
+# Aufbau: 1. Id der Dateline
+#         2. Id des Charts
+#         3. Zeitpunkt 
+#         4. Id des Highlights
+/ $DATELIN 4
++ V   V     V             V
+: 4   1     11.04.1993;   35
+: 5   1     11.04.1993;   35
+
+# Attribute fuer Datelines
+# Aufbau 1. Id der Dateline
+#        2. Typ des Attributs
+#              d: Datumseintrag
+#              h: Highlight
+#              p: Prioritaet
+#              a: Anfangszeile
+#              e: Endzeile
+#              f: Format fuer Beschriftung (vom Typ Boxformat)
+#              r: Rotieren der Beschriftung (0 = Nein, 1 = Ja (vertikal))
+#              t: Textposition 0 = Kein Text
+#                              1 = Oben links
+#                              2 = Oben mitte
+#                              3 = Oben rechts
+#                              4 = Mitte links
+#                              5 = Mitte mitte
+#                              6 = Mitte rechts
+#                              7 = Unten links
+#                              8 = Unten mitte
+#                              9 = Unten rechts
+#              0-99: Texte fuer Beschriftung
+#        3. Wert des Attributs
+/ $DVALS  3
++ V      V        V
+: 4      d        11.05.1993;
+: 4      h        34
+: 4      f        99
+: 4      1        Text 1
+: 4      2        Text 2
+: 5      d        15.05.1993;
+: 5      a        2
+: 5      e        4
+
+# Tabelle fuer Makros, die zur Beschleunigung dienen
+# Aufbau 1. Id des Makros
+#        2. Typ des Makros  (lL = Layermakro)
+#           lL : Es werden einfach Tuppel gebildet, die auch normal in der Tabelle
+#                $LVALS angegeben werden koennten.
+#           nN : Es werden einfach Tuppel gebildet, die auch normal in der Tabelle
+#                $NVALS angegeben werden koennten.
+#           bB : Es werden einfach Tuppel gebildet, die auch normal in der Tabelle
+#                $BVALS angegeben werden koennten.
+#        3. Makro selbst, wobei das erste und letzte Zeichen der Delimiter ist !!!
+/ $MAKRO 3
++ V     V  V   
+: 1     l  /f/13/s/14/h/300/o/-50/p/7/
+: 13    n  /a/42/a/43/a/44/a/45/a/46/a/47/a/4/
+: 7     b  /f/25/h/36/
+: 8     n  /f/30/
+
+# Tabelle fuer Prototypen, die zur Beschleunigung dienen
+# Aufbau 1. Id des Prototyps
+#        2. Typ des Prototyps  
+#           bB : Borderbox
+#           rR : Rowbox
+#           cC : Columnbox
+#           nN : Node
+#        3. Chart, fuer das der Prototyp gelten soll
+#        4. Makroid, der fuer Initialisierung genommen werden soll.
+/ $PROTO 4
++ V     V  V    V
+#: 1     r  1    7
+: 2     n  1    8
+
+# Anlegen von Boxes fuer Titel und Tabellenteil
+# Aufbau: 1. Id der Box
+#         2. Typ der Box  bB = Borderbox, rR = Rowbox, cC = Columnbox, pP = Prototyp
+#         3. Id des Charts
+#         4. Id des Formats
+#         5. Id des Highlights, aus dem Boxvordergrundfarbe und Boxhintergrundfarbe
+#            abeleitet werden.
+/ $BOXES 5
++ V     V  V       V      V     
+: 1     b  1       23     39
+: 2     r  1       31     38
+: 3     r  1       25     36
+: 4     r  1       25     36
+: 5     r  1       25     36
+#: 4     p  1       1
+#: 5     p  1       1
+: 6     r  1       25     36
+: 7     r  1       25     36
+: 11    b  2       23     37
+#: 12    r  2       24     40
+#: 13    r  2       24     38
+: 14    r  2       29     38
+
+# Anlegen von Boxes fuer Titel und Tabellenteil
+# Aufbau: 1. Erste Id der Box
+#         2. Letzte Id der Box
+#         3. Typ der Box  bB = Borderbox, rR = Rowbox, cC = Columnbox, pP = Prototyp
+#         4. Id des Charts
+#         5. Id des Formats
+#         6. Id des Highlights, aus dem Boxvordergrundfarbe und Boxhintergrundfarbe
+#            abeleitet werden.
+/ $RBOXES 6
++ V  V     V  V       V      V     
+: 12 13    r  2       24     38
+
+# Erzeugen von Editobjects. Diese sperren Formatfelder
+# Aufbau 1. Id der Box
+# Liste von Feldern a-z, die nicht editiert werden duerfen.
+/ $EDITOBJS 2
++ V     V  
+: 1     abe
+: 2     b
+
+# Fuellen der Box
+# Aufbau 1. Id der Box
+#        2. Typ des Attributs
+#            0-99 Textindex 
+#			lL    Linecolor
+#			bB    Backgroundcolor
+#			fF    Format
+#			hH    Highlight
+#			cC    Fieldcolor
+#           sS    Selektion von Boxen (0 = nein, 1, ja)
+#           iI    Indention-Objekts 0 = Expand, 1 = Collapse, Rest noch nicht
+#                 definiert.
+#           %     Flash-Highlight
+#           @     Eingabe eines Edit-Objects
+#        3. Wert des Attributs
+/ $BVALS  3
++ V      V        V
+: 3      h        37
+: 1      0        Infotext fuer Box 1
+: 1      1        Testbalkenplan Version 0.01 
+: 1      2        Ende 1993                            BarChart + W
+: 2      0        Infotext fuer Box 2
+: 2      1        Rechner
+: 2      2        Ort
+: 2      3        Typ
+: 2      4        Attr.
+: 3      0        Infotext fuer Box 3
+: 3      1        hs0011
+: 3      2        RZ-EVZ
+: 3      3        HP-870
+: 3      4        X
+: 3      i        33/1
+: 4      0        Infotext fuer Box 4
+: 4      1        hw1368
+: 4      2        A5.66
+: 4      3        ...HP-715
+: 5      0        Infotext fuer Box 5
+: 5      1        dw1016
+: 5      2        A5.62
+: 5      3           DEC-5200
+: 5      4        -
+: 5      @        2
+: 6      C        a/   BLUE
+: 6      0        Infotext fuer Box 6
+: 6      1        hw1125
+: 6      2        A5.62
+: 6      3        HP-710
+: 7      0        Infotext fuer Box 7
+: 7      1        da1203
+: 7      2        A5.62
+: 7      3        DEC-3000
+: 7      4        x
+: 11     0        Infotext fuer Box 11
+: 11     1        Zweiter Testbalkenplan 
+: 11     2        Immer noch zweiter Testbalkenplan 
+: 12     0        Infotext fuer Box 12
+: 12     1        Arbeit
+: 12     2        Bearbeiter
+: 12     3        Prioritaet
+: 13     0        Infotext fuer Box 13
+: 13     1        Irgendwas
+: 13     2        Weiss nicht
+: 13     3        Sehr hoch
+: 3      s        1
+: 2      s        1
+: 1      ?        1
+: 2      ?        2
+: 3      ?        1
+: 4      ?        2
+: 5      ?        1
+: 6      ?        2
+: 7      ?        1
+: 11     ?        2
+: 12     ?        1
+: 13     ?        2
+
+# Anlegen von Layern
+# Aufbau: 1. Id des Layers
+#         2. Id des Charts
+#         3. Typ des Layers (rR = Rectangle, sS = Symbol, lL = Line)
+#         4. Id des Highlights
+/ $LAYERS 4
++ V     V            V             V
+: 7     1            r             33
+: 9     1            r             34
+: 8     1            r             34
+: 10    1            l             33
+: 11    1            s             33
+: 12    1            r             34
+: 18    1            r             33
+: 28    1            r             34
+: 42    1            s             33
+: 43    1            s             33
+: 44    1            s             33
+: 45    1            s             33
+: 46    1            s             33
+: 47    1            s             33
+: 4     2            r             34
+: 15    1            r             34
+: 33    1            r             36
+: 34    1            r             42
+: 35    1            r             40
+: 55    1            r             88
+
+# Attribute fuer Charts
+# Aufbau 1. Id des Charts
+#        2. Typ des Attributs
+#               a         Falls 'x', dann werden Knoten in verschiedene Zeilen rueckgemeldet.
+#               b         Borderbox-Id
+#               c         Center chart to this box. Similar to labels
+#               p         Printbox-Id, (needed for trailer-box)
+#               t         Titlebox-Id
+#               f         Default-Format fuer Einfuegen von Boxen
+#               n         Default-Format fuer Einfuegen von Knoten
+#               l         Default-Highlight fuer Kanten-Markierung
+#               h         Default-Highlight fuer Einfuegen
+#               w         Default-Bandhoehe beim Einfuegen neuer Knoten oder Boxen
+#               r         Empty rows to be inserted after last row 
+#               s         New size for chart (vertical size only !!!)
+#               d         3D-Field in Format for selection
+#                         MARKTYPE in $OPTS muss 4 sein.
+#               e         Text falls Selektion enabled 
+#               k         Text falls Selektion disabled
+#               L         Link-Highlight, falls Link-Markierung aktiv ist
+#               m         Line-Highlight, falls 3D-Markierung aktiv ist
+#               1         Highlight, backgroundcolor of tabletitle is selected from
+#               2         Highlight, backgroundcolor of timescale is selected from
+#               3         Highlight, backgroundcolor of tablesection is selected from
+#               4         Highlight, backgroundcolor of diagramsection is selected from
+#               8         Layer fuer linkes Ende eines Knotens, der aus dem Zeitbereich faellt.
+#               9         Layer fuer rechtes Ende eines Knotens, der aus dem Zeitbereich faellt.
+#               o         Falls 'x', dann werden bei Pickmarkierung auch aussenliegende
+#                         Texte mitmarkiert. Default ist das Gegenteil, also Texte nicht markieren.
+#               u         Ueberlappungslayer. Leerzeichen oder 0 setzt keinen Layer !
+#               g         Anzahl Spalten, die fix sein sollen (links, rechts). Diese 
+#                         Option zieht nur, falls in $CHARTS die feststehenden
+#                         Markierspalten aktiviert sind !!!
+#                         Linke Spalte setzen            1 
+#                         2 Linke und 3 rechte Spalten   2/3
+#               v         Highlight fuer editierbare Felder (fuer $EDITOBJ)
+#               i         Highlight fuer nichteditierbare Felder (fuer $EDITOBJ)
+#               w         Default-Zeilenhoehe
+#               x         Bitmap fuer Tabellen-View-Hintergrund
+#               y         Bitmap fuer Diagramm-View-Hintergrund
+#               z         Bitmap fuer Chart-Hintergrund
+#               !         Text fuer die Wizards (Beschriftung Zeitachse)
+#               q         Aktionen, die unterdrueckt werden sollen. Das ganze ist als
+#                         eine Art Bitleiste definiert, wie beispielsweise in $CHARTS, um
+#                         den Typ des Charts festzulegen.
+#
+#                         Bit = Zahl      Operation 
+#                         --------------------------------------------------------
+#                          1  = 1         Einfuegen Knoten und Layer
+#                          2  = 2         Einfuegen Boxen
+#                          3  = 4         Modifizieren Boxen
+#                          4  = 8         Verschieben Knoten und Layer
+#                          5  = 16        Verschieben Boxen
+#                          6  = 32        Skalieren Knoten und Layer
+#                          7  = 64        Verbinden Knoten
+#                          8  = 128       Charthoehe/Chartbreite aendern
+#                          9  = 256       Spaltenbreite aendern
+#                          10 = 512       Spalten vertauschen
+#                          11 = 1024      Hoehe der Zeilen aendern
+#
+#                          Will man alle Optionen ausschalten, muss 2047 gesetzt werden,
+#                          was der Summe aller Einzelwerte entspricht.
+#
+#        3. Wert des Attributs
+/ $CVALS  3
++ V      V        V
+: 1      b        1
+#: 2      q        1023
+: 1      t        2
+: 1      f        24
+: 1      n        22
+: 1      h        34
+#: 1      l        42
+#: 1      4        38
+: 2      b        11
+: 2      t        12
+: 2      3        36
+: 2      4        36
+: 2      f        24
+: 2      n        22
+: 2      h        33
+: 2      l        42
+#: 1      s        200
+: 1      r        3
+: 2      r        5
+: 2      c        13
+: 1      d        d
+: 2      d        c
+: 1      m        77
+: 2      w        950
+: 1      u        55
+: 1      q        128
+#: 1      y        gxvalogo.gmf
+
+# Attribute fuer Layers
+# Aufbau 1. Id des Layers
+#        2. Typ des Attributs
+#           f   first value, (pointer to textcontainer of node)
+#           s   second value, (pointer to textcontainer of node)
+#           d   duration value, (pointer to textcontainer of node). Important. Must exist !!!
+#           h   height of layer
+#           o   offset of layer
+#           c   Color for layer (highlight)
+#           l   Layerformat (muss vom richtigen Typ sein)
+#           w   Layerwidth, wird fuer Legende benoetigt (100 < w < 20000)
+#           t   type of layer, only valid for symbol layers !!!
+#                              described above...
+#           p   Prioritaet 0 < p < 128, Default = 0
+#           m   Makro vom Typ (lL)
+#           g   Gaptype (0 = INVISIBLE, 1 = RECT, 2 = LINE
+#           b   Background-Highligh fuer Gap 
+#           i   Icon fuer Layer
+#           r   Relative Verschiebung zum Termin des Layers (nur Icon-Layer).
+#           v   Zero-Layer is visible or invisible (xX = Visible)
+#           y   Positioning of layers in band (bottom = bB, top =tT)
+#           z   Disable Layer from moving with phantom object (x = disable, else enable)
+#           a   Change type of layer, for example from Line-Layer to Symbol-Layer 
+#           %   Flash-Highlight
+#        3. Wert des Attributs
+/ $LVALS  3
++ V      V        V
+: 55     y        b
+: 55     h        50
+: 7      g        1
+: 7      b        40
+: 7      p        5
+: 7      f        1
+: 7      s        2
+: 8      f        1
+: 8      s        2
+: 8      h        200
+: 9      o        -100
+: 9      l        26
+: 9      h        300
+: 9      f        3
+: 9      s        4
+: 10     f        3
+: 10     s        4
+: 11     h        300
+: 11     f        1
+: 11     s        2
+: 11     t        22
+: 12     f        1
+: 12     s        2
+: 18     f        5
+: 18     s        6
+: 28     f        1
+: 28     s        2
+: 42     f        1
+: 42     s        2
+#: 42     t        1
+: 42     i        gxvalogo.gmf
+: 42     r        50
+: 43     f        3
+: 43     s        4
+: 43     t        2
+: 44     f        5
+: 44     s        6
+: 44     t        3
+: 45     f        7
+: 45     s        8
+: 45     t        22
+: 46     f        9
+: 46     s        10
+: 46     t        5
+: 47     f        11
+: 47     s        12
+: 47     t        6
+: 4      m        1
+: 15     o        -100
+: 15     l        26
+: 15     h        300
+: 15     w        4000
+: 7      a        l
+
+# Anlegen von Knoten
+# Aufbau: 1. Id des Knotens
+#         2. Id des Charts
+#         3. Id des Formats
+#         4. Id des Highlights
+/ $NODES 4
++ V     V            V             V
+#: 30000 2            30            42
+#: 11    1            30            33
+: 11    1            2             0    
+: 21    1            30            34
+: 12    1            30            34
+: 13    1            30            33
+: 28    2            30            34
+#: 31    1            30            34
+#: 32    2            30            34
+: 41    2            30            33
+
+# Anlegen von Knoten
+# Aufbau: 1. Erste Id der Knotens
+#         2. Letzte Id der Knotens
+#         3. Id des Charts
+#         4. Id des Formats
+#         5. Id des Highlights
+/ $RNODES 5
++ V  V     V   V  V
+: 31 32    1   30 34
+
+
+# Anlegen von Knoten
+# Aufbau: 1. Id des Knotens
+#         2. Id des Charts
+#         3. Id des Formats
+#         4. Id des Highlights
+/ $LNODES 4
++ V     V            V             V
+: 80    2            30            34
+: 81    2            30            39
+: 82    2            30            32
+
+# Anlegen von Summary-Knoten
+# Aufbau: 1. Id des Knotens
+#         2. Id des Charts
+#         3. Id des Formats
+#         4. Id des Highlights
+/ $SNODES 4
++ V     V            V             V
+: 99    1            30            34
+: 91    1            30            42
+: 95    2            30            42
+
+# Attribute von Knoten
+# Aufbau: 1. Id des Knotens
+#         2. Id des Charts
+#         3. Typ des Attributs
+#             aA = Add Layer 
+#             rR = Remove Layer 
+#             cC = Set Calendar
+#             dD = Delete Calendar
+#             sS = Selektion von Knoten (0 = nein, 1, ja)
+#             0-99 = Textvalue
+#             fF = Format setzen
+#             pP = Knoten Prioritaet (0-999, Default 0)
+#             m  = Makro vom Typ (mM)
+#             %  = Flash-Highlight
+#             b  = Blinken (x = an, Rest aus)
+#             &  = Gruppenid (Integer)
+#         4. Attributwert
+/ $NVALS 4
++ V     V            V             V
+#: 11    1            a             7
+: 11    1            a             9 
+: 11    1            0             Infotext Knoten 11
+: 11    1            1             18.1.1993;0:00:00;
+: 11    1            2             17.2.1993;0:00:00;
+: 11    1            3             18.2.1993;0:00:00;
+: 11    1            4             1.3.1993;0:00:00;
+: 11    1            5             Text
+: 12    1            a             7
+: 12    1            a             9 
+: 12    1            0             Infotext Knoten 12
+: 12    1            1             18.1.1993;0:00:00;
+: 12    1            2             17.2.1993;0:00:00;
+: 12    1            3             18.2.1993;0:00:00;
+: 12    1            4             1.3.1993;0:00:00;
+: 12    1            5             Text
+: 21    1            a             8
+: 21    1            0             Infotext Knoten 21
+: 21    1            1             15.2.1993;0:00:00;
+: 21    1            2             15.3.1993;23:59:59;
+: 21    1            a             10
+: 21    1            3             16.3.1993;0:00:00;
+: 21    1            4             21.3.1993;0:00:00;
+: 21    1            a             18
+: 21    1            5             21.3.1993;0:00:01;
+: 21    1            6             21.4.1993;0:00:00;
+: 13    1            a             7
+: 13    1            0             Infotext Knoten 13
+: 13    1            1             1.3.1993;0:00:00;
+: 13    1            2             10.3.1993;0:00:00;
+: 31    1            a             11
+: 31    1            0             Infotext Knoten 31
+: 31    1            1             12.3.1993;0:00:00;
+: 31    1            2             30.4.1993;0:00:00;
+: 28    2            a             28
+: 28    1            0             Infotext Knoten 28
+: 28    2            1             12.2.1994;0:00:00;
+: 28    2            2             31.5.1994;0:00:00;
+: 32    2            a             7
+: 32    1            0             Infotext Knoten 32
+: 32    2            1             12.2.1993;0:00:00;
+: 32    2            2             31.5.1993;0:00:00;
+#: 41    2            a             42
+#: 41    2            a             43
+#: 41    2            a             44
+#: 41    2            a             45
+#: 41    2            a             46
+#: 41    2            a             47
+#: 41    2            a             4 
+# Statt obiger 7 Zeilen gibt es jetzt nur noch eine mit dem Makro 13
+: 41    2            m             13
+: 41    1            0             Infotext Knoten 41
+: 41    2            1             12.3.1993;0:00:00;
+: 41    2            2             13.3.1993;0:00:00;
+: 41    2            3             27.3.1993;0:00:00;
+: 41    2            4             28.3.1993;0:00:00;
+: 41    2            5             12.4.1993;0:00:00;
+: 41    2            6             13.4.1993;0:00:00;
+: 41    2            7             27.4.1993;0:00:00;
+: 41    2            8             28.4.1993;0:00:00;
+: 41    2            9             12.5.1993;0:00:00;
+: 41    2            10            13.5.1993;0:00:00;
+: 41    2            11            27.5.1993;0:00:00;
+: 41    2            12            28.5.1993;0:00:00;
+: 41    2            13            27.6.1993;0:00:00;
+: 41    2            14            28.7.1993;0:00:00;
+: 11    1            s             1
+: 41    2            s             1
+: 21    1            c             1
+: 28    2            c             3
+: 32    2            c             2
+: 41    2            c             2
+#: 41    2            d             1
+: 12    1            p             10
+: 21    1            p             5
+: 11    1            ?             1    
+: 21    1            ?             2
+: 12    1            ?             1
+: 13    1            ?             2
+: 28    2            ?             1
+: 31    1            ?             2
+: 32    2            ?             1
+: 41    2            ?             2
+
+: 80    1            a             15 
+: 80    1            5             Test 1
+: 81    1            a             15 
+: 81    1            5             Test 2
+: 82    1            a             15 
+: 82    1            5             Test 3
+: 13    1            r             44
+: 11    1            &             1
+: 12    1            &             1
+: 13    1            &             1
+
+# Attribute von Summary-Knoten
+# Aufbau: 1. Id des Knotens
+#         2. Id des Charts
+#         3. Typ des Attributs. Alle Optionen wie in $NVALS, aber zusatzlich:
+#               z: Assign layer to snode
+#               w: Assign second-layer to snode (used for overlap-worktimes) 
+#               o: Add node to snode
+#               q: Remove node from snode
+#               t: Add snode to snode        
+#               u: Remove snode from snode  
+#               y: Set Style of snode 0 = Default (one layer), 1 (separated layers)
+#
+/ $SNVALS 4
++ V     V            V             V
+: 99    1            0             Infotext Knoten 99
+: 99    1            o             11
+: 99    1            o             12         
+: 99    1            z             33         
+: 91    1            0             Infotext Knoten 91
+: 91    1            o             11         
+: 91    1            o             31         
+: 91    1            z             34         
+: 95    1            0             Infotext Knoten 95
+: 95    2            o             31         
+: 95    2            t             99
+: 95    2            z             35         
+#: 99    2            t             95
+
+#
+# Datumswerte von Knoten (war nur ein Test, wird nicht
+# produktiv benutzt.
+#
+# Aufbau: 1. Id des Knotens
+#         2. Id des Charts
+#         3. Typ des Attributs
+#             0-99 = Textvalue
+#         4. Attributwert nur als Integer !!!
+/ $NDVALS 5
++ V     V            V             V      V
+: 11    1            99            4711A  28.7.1993;0:00:00;
+
+# Anlegen von Kanten
+# Aufbau: 1. Id der Kante
+#         2. Id des Charts
+#         3. Id des Vorgaengers
+#         4. Id des Nachfolgers
+#         5. Id des Formats
+#         6. Id des Highlights
+/ $LINKS 6
++ V     V            V    V     V        V
+: 7     1            11   21    22       33
+: 8     1            21   13    22       34
+
+# Anlegen von Legenden-Kanten
+# Aufbau: 1. Id der Kante
+#         2. Id des Charts
+#         3. Id des Vorgaengers
+#         4. Id des Nachfolgers
+#         5. Id des Formats
+#         6. Id des Highlights
+/ $LLINKS 6
++ V     V            V    V     V        V
+#: 71    1                       22       33
+: 81    1            21   13    22       34
+
+# Anlegen von Summierungsdiagrammen
+# Aufbau: 1. Id der Kurve
+#         2. Id des Charts
+#         3. Id des Hlts
+#         4. Typ der Kurve
+#            lL = Line-Curve
+#            cC = Capacity-Curve
+#            sS = Step-Curve
+/ $CURVE 4
++ V     V      V    V     
+: 3     2      32   c
+: 4     2      33   l
+
+# Attribute von Kurven
+# Aufbau: 1. Id der Kurve
+#         2. Typ des/der Attribute
+#           hH: Highlight aendern
+#           zZ: Zusatzhighlight (fuer Differenzen zwischen zwei Kurven) setzen/aendern
+#           pP: Drawing priority (0..1000)
+#              0-1000: Datenwerte x=Datum, y=Hoehe
+#           fF: Fuellen der Flaeche zwischen X-Achse und Kurve (xX=Ja, Blank=Nein) 
+#           kK: Kumulieren der Kurvenwerte (xX=Ja, Blank=Nein) 
+#           dD: Fuellen des Deltas zwischen zwei Kurven
+#           mM: Fuellen des Deltas zwischen zwei Kurven, so dass Werte kleiner Kurve 1
+#               in der Farbe der Kurve,  Werte groesser der Kurve in der Farbe des
+#               mit z gesetzten Highlights angezeigt werden.
+#           aA: Addieren zweier Kurven (nur grafisch !). 
+#           ? : Aktivieren eines Userpopups. Die Id ist in der dritten Spalte einzutragen.
+#         3. Wert 1
+#         4. Wert 2
+/ $CURVALS 4
++ V     V      V                   V     
+: 3     h      33                   
+: 3     f      x                         
+: 3     1      12.3.1993;0:00:00;  56
+: 3     2      12.6.1993;0:00:00;  156
+: 3     3      12.9.1993;0:00:00;  99
+: 3     4      12.1.1994;0:00:00;  199
+: 3     5      12.3.1994;0:00:00;  33
+: 3     6      12.5.1994;0:00:00;  233
+: 4     h      39                   
+: 4     d      3
+#: 4     a      3
+: 4     p      2
+: 4     1      18.3.1993;0:00:00;  242
+: 4     2      18.6.1993;0:00:00;  56
+: 4     3      18.9.1993;0:00:00;  199
+: 4     4      18.1.1994;0:00:00;  99
+: 4     5      18.3.1994;0:00:00;  233
+: 4     6      18.5.1994;0:00:00;  33
+
+
+# Anlegen von Y-Achsen fuer Automotiv-Anwendungen
+# Aufbau: 1. Id der Axe
+#         2. Id des Charts
+/ $AUTOAXIS 2
++ V       V      
+: 9       2     
+
+/ $AXIS 4
+# Anlegen von Y-Achsen fuer Kurven
+# Aufbau: 1. Id der Axe
+#         2. Id des Charts
+#         3. Y-Achsen-Start
+#         4. Y-Achsen-Ende
+/ $AXIS 4
++ V       V      V    V     
+: 7       2      0    250
+
+# Attribute von Axen
+# Aufbau: 1. Id der Achse
+#         2. Typ des Attributs
+#             aA = Add Section 
+#             rR = Remove Section 
+#             sS = Set Ribbon/Set Section
+#             bB = Beginn der Achse
+#             eE = Beginn der Achse
+/ $AVALS 3
++ V     V      V  
+: 7     a      5
+: 7     a      6
+: 7     s      22/5
+: 7     s      23/6
+: 7     s      24/6
+
+
+# Attribute von Kanten
+# Aufbau: 1. Id des Kantens
+#         2. Id des Charts
+#         3. Typ des Attributs
+#             sS = Nachfolger (Successor)
+#             pP = Vorgaenger (Predecessor)
+#             hH = Highlight
+#             vV = Sichtbarkeit von Kanten (0 = nein, 1, ja)
+#             yY = Setzen der Ports fuer die einzelnen Kanten (0-15).
+#                    16 = Anfangsfolgenbeziehung 1
+#                    17 = Anfangsfolgenbeziehung 2
+#                    18 = Endfolgenbeziehung 1
+#                    19 = Endfolgenbeziehung 2
+#                    20 = EA-Beziehung 1
+#                    21 = EA-Beziehung 2
+#                    22 = AE-Beziehung 1
+#                    23 = AE-Beziehung 2 entspricht 24
+#                    24 = Sprungfolgenbeziehung 
+#             tT = Typ der Kante (0 = diagonal, 1 = orthogonal)
+#             bB = Symbol fuer Beginn einer Kante
+#             eE = Symbol fuer Ende einer Kante
+#             lL = Linkprioritaet (0 <= val <= 128)
+#             aA = Anfangs-Layer der Kante
+#             zZ = End-Layer der Kante
+#             mM = Markieren einer Kante (0 = nein, 1 = ja)
+#         4. Attributwert
+/ $LKVALS 4
++ V     V   V            V    
+: 7     1   t            1
+: 8     1   t            0
+#: 8     1   h            42
+: 8     1   y            7
+: 7     1   b            5
+: 7     1   e            35
+: 7     1   l            10
+: 7     1   ?            2
+: 8     1   ?            1
+
+# Anlegen von Datentabellen (fuer Kurven)
+# Aufbau: 1. Id der Datentabelle
+#         2. Id des Charts
+/ $DATATAB 2
++ V  V      
+: 1  2     
+: 2  2     
+
+
+# Tabelle zum Setzen der Ribbons und Kurven fuer die Datentabelle
+# Aufbau: 1. Id der Datentabelle 
+#         2. Id des Charts
+#         3. Operation 'a' = append
+#                      'b' = remove (yet not implemented)
+#         4. Ribbon
+#         5. Kurve, deren Werte angezeigt werden soll
+/ $DATVALS 5
++ V    V   V   V    V
+: 1    2   a   94   3
+: 1    2   a   95   3
+: 1    2   a   96   3
+: 1    2   a   97   4
+: 1    2   a   98   4
+: 1    2   a   99   4
+
+
+# Tabelle fuer Positionen(Zeilen) von Boxen und Knoten
+# Aufbau: 1. Id des Charts
+#         2. Typ des Elements (bb = Box, nN = Node, aA = Axis, gG = Grid, 
+#                              cC = Curve, sS = Summary-Node, 
+#                              xX = vor Zeile, yY = nach Zeile, zZ = Zeilen tauschen)
+#                              vV = Box in Zeile, dD = DataTab
+#         3. Id des Elements
+#         4. Zeilennummer
+# Wichtig: Falls Kurven positioniert werden sollen: Immer erst die Achse 'a' setzen , dann
+#          die Kurve 'c'.
+/ $POSITION 4
++ V     V           V      V
+: 1     n           11     1
+: 1     n           21     4
+: 1     n           12     4
+: 1     n           13     6
+: 1     n           31     2
+: 1     s           99     2
+: 1     s           91     3
+: 2     s           95     1
+: 1     b           3      1
+: 1     b           4      2
+: 1     b           5      3
+: 1     b           6      4
+: 1     b           7      5
+: 2     b           13     3
+: 2     n           28     5
+: 2     n           32     3
+: 2     n           41     4
+: 2     a           7      6/1
+: 2     b           14     6
+: 2     c           3      6
+: 2     c           4      6
+: 2     d           1      7
+
+# Tabelle fuer Positionen(Zeilen) von Boxen und Knoten
+# Aufbau: 1. Id des Charts
+#         2. Typ des Elements (bb = Box, nN = Node, (mehr gibt's noch nicht...))
+#         3. Id des ersten Elements
+#         4. Id des letzten Elements
+#         5. Zeilennummer, ab der aufsteigend positioniert werden soll
+/ $RPOSITION 5
++ V     V           V      V    V
+: 1     n           11     11   1
+
+
+# Tabelle zum Setzen der Tooltip-Hilfe fuer Objekte
+/ $TOOLTIP 
+# Aufbau: 1. Id des Charts
+#         2. Typ des Elements (bb = Box, nN = Node, hH = Hotspot)
+#         3. Id des Elements
+#         4. Id des Textobjektes
++ V     V           V      V
+: 1     n           11     5
+: 1     n           21     8
+: 1     n           31     9
+
+
+
+# Tabelle zum Setzen von Zeilenattributen und Operationen
+# Aufbau: 1. Id des Charts
+#         2. Nummer der Zeile
+#         3. Operation
+#             h = Highlight  : Dieses Highlight wird fuer die Borderlines verwendet,
+#                              (um Strichstaerke, Farbe und Typ festzulegen. Dazu
+#                              empfiehlt es sich auch, den Transparentmodus festzulegen.
+#                              Moechte man die Zeile zusaetzlich einfaerben, auf
+#                              Transparentmodus verzichten und normales Highlight verwenden.
+#             e = Enlarge    : 0 = Kollabieren 1 = Ausweiten
+#             s = Selektieren: 0 = Nein, 1 = Ja
+#                              Selektion erfolgt momentan invertiert (noch leichte
+#                              Fehler in der Darstellung). Dieses Feature
+#                              kann man beispielsweise zusammen mit $OVERLAP verwenden. Alle 
+#                              Zeilen ausfragen, die ausgeweitet werden koennten. Danach 
+#                              beispielsweise markieren (und/oder) gleich ausweiten.
+#             w = Width      : Hoehe des Bandes. Sinnvoll zum Kollabieren, falls Knoten
+#                              oder Boxen aus dem Band geloescht wurden.
+#             p              : Setzen eines Overlap-Layers, der den Chartabhaengigen
+#                              Layer ueberdefiniert.
+#             q              : Loeschen des Overlap-Layers, es wird keine Ueberlappung angezeigt.
+#         4. Wert der Operation
+/ $HBANDS 4
++ V   V       V        V
+: 1   4       h        77
+#: 1   4       e        1
+: 1   5       s        1
+#: 1   6       s        0
+#: 2   1       w        1
+#: 2   2       w        1
+: 2   6       h        77
+: 1   3       p        10
+: 1   4       q        
+
+# Tabelle zum Setzen von Spaltenattributen
+# Aufbau: 1. Id des Charts
+#         2. Nummer der Spalte
+#         3. Operation
+#             h = Highlight: Siehe $HBANDS
+#             m = Modify:     0 = No changes allowed, 1 = Allowed (Default)
+#             s = Selection:  0 = Unselected                      1 = Selected
+#                             2 = No selection allowed (Default), 3 = Selection allowed
+#             o = Optimize width of this specific column (0 = no, else yes)
+#             ? = Column-specific user-popup
+#         4. Wert der Operation
+/ $VBANDS 4
++ V   V       V        V
+: 2   2       h        77
+: 1   1       m        1
+: 1   3       m        0
+: 2   2       m        0
+: 1   1       ?        1
+: 1   2       ?        2
+: 1   3       ?        1
+: 1   4       ?        2
+
+# Tabelle zum Loeschen von Objekten. (Momentan Boxen und Knoten)
+# Aufbau: 1. Id des Charts
+#         2. Typ des Elements (bb = Box, nN = Node, cC = Chart, aA = Kalender
+#                              gG = Grid, dD = Dateline, rR = Ribbon, xX = Axis,
+#                              kK = Kante, vV = Curve, sS = Summary-Node, tT = Section,
+#                              oO = Objektcontainer, zZ = Zeile (Hoehe danach 0), 
+#                              mM = Zeile (Folgezeilen 'moven'))
+#                              wW = Wertereihe (Datentabelle) loeschen
+#         3. Id des Elements
+/ $DELETE 3
++ V     V           V  
+#: 1     o           1   
+#: 1     n           11
+#: 1     b           7   
+#: 2     c           2   
+#: 2     g           2   
+#: 1     d           4   
+#: 1     r           2   
+#: 1     l           8   
+#: 1     v           4   
+#: 1     a           5   
+#: 1     x           9   
+#: 2     w           2   
+
+# Tabelle zum Setzen von Zeilenmarkierungen
+# Aufbau: 1. Id des Charts
+#         2. Nummer der Zeile, fuer die die Markierung geaendert werden soll.
+#         3. Typ der Markierung (aA=Add rR=Remove)
+/ $LINE 3
++ V     V           V  
+: 1     3           a
+: 1     8           a
+: 1     9           a
+: 1     9           r
+#: 2     3           a
+
+/ $CUABAR 4711 
++ V     V     V   V  V     V
+: 0     1     99  1  GRAF  Grafik
+: 0     2     99  1  EDIT  Bearbeiten
+: 0     3     99  1  OPTS  Einstellungen
+: 0     4     99  1  HELP  Hilfe
+
+: 1     0     99  0  OPEN  Holen
+: 1     0     99  1  SAVE  Sichern
+: 1     0     99  1  UPLD  Mail-Upload
+: 1     0     99  1  PRN1  Drucken 1
+: 1     0     99  1  PRN2  Drucken 2
+: 1     0     99  1  EXIT  Beenden
+
+#: 2     0     99  1  OINS  Eingeben
+: 2     0     99  1  OMOD  Modifizieren
+: 2     0     99  1  ODEL  Loeschen
+: 2     0     99  1  ODUP  Duplizieren
+: 2     0     99  1  OCON  Verbinden
+: 2     0     99  1  OSEL  Markiermodus
+: 2     5     99  1  OSSL  Markierart
+: 2     0     99  1  OZIN  Vergroessern
+: 2     0     99  1  OZOU  Verkleinern
+: 2     0     99  1  OLAB  Labeln...
+: 2     0     99  1  TOGS  ~Toggle ~selection
+: 2     0     99  0  OUND  Undo
+: 2     6     99  1  OSET  Einstellungen
+: 2     0     99  1  TEST  Testbutton
+: 2     0     99  1  QUIT  Abbrechen
+
+: 5     0     99  1  SALL  Alles markieren
+: 5     0     99  1  UALL  Alles entmarkieren
+: 5     0     99  1  SCMP  Komplement markieren
+: 5     0     99  1  SCHT  Alles im Chart markieren
+: 5     0     99  1  SLIN  MarkBox weitermarkieren
+
+: 6     7     99  1  SLAY  Layertyp
+: 6     8     99  1  SSEL  Selektionstyp
+
+: 7     0     99  1  RLAY  Rechtecklayer
+: 7     0     99  1  LLAY  Linienlayer
+: 7     0     99  1  LAY1  Symbollayer 1
+: 7     0     99  1  LAY2  Symbollayer 2
+: 7     0     99  1  LAY3  Symbollayer 3
+: 7     0     99  1  LAY4  Symbollayer 4
+: 7     0     99  1  LAY5  Symbollayer 5
+: 7     0     99  1  LAY6  Symbollayer 6
+
+: 8     0     99  1  SNOD  Knoten
+: 8     0     99  1  SBOX  Boxen
+: 8     0     99  1  SNUB  Knoten und Boxen
+: 8     0     99  1  SNLY  Layer
+
+: 3     9     99  1  MARK  Objekt markieren
+: 3     10    99  1  GRAN  Granularitaet
+: 3     11    99  1  TERM  Terminierung
+: 3     12    99  1  MABC  Borderline
+: 3     13    99  1  MABL  Legende
+: 3     0     99  0  SASE  Aktuelle Einstl. sichern...
+: 3     0     99  0  RESE  Voreinstellung aktivieren...
+
+: 9     0     99  1  MSUR  Umrandet
+: 9     0     99  1  MINV  Invertiert
+: 9     0     99  1  MPCK  Mit Pickmarks
+: 9     0     99  1  MPCL  Mit Farbe
+: 9     0     99  1  MPFD  Mit Feldbitmap
+
+: 10    0     99  1  JEAR  Jahr
+: 10    0     99  1  QURT  Quartal
+: 10    0     99  1  MONT  Monat
+: 10    0     99  1  WEEK  Woche
+: 10    0     99  1  GDAY  Tag
+: 10    0     99  1  HOUR  Stunde
+: 10    0     99  1  MINT  Minute
+: 10    0     99  1  SECD  Sekunde
+
+: 11    0     99  1  TLFT  Links
+: 11    0     99  1  TRGT  Rechts
+: 11    0     99  1  TLFW  Links mit Rubber
+: 11    0     99  1  TRGW  Rechts mit Rubber
+
+: 12    0     99  1  BOON  On
+: 12    0     99  1  BOOF  Off
+
+: 13    0     99  1  BLGD  An
+: 13    0     99  1  NLGD  Aus
+
+: 4     0     99  0  FHLP  Hilfe zur Hilfe
+: 4     0     99  0  EXTH  Erweiterte Hilfe
+: 4     0     99  0  FKEY  Funktionstasten
+: 4     0     99  0  GLOS  Glossar
+: 4     0     99  1  INFO  Produktinformation
+
+/ $CUAHELP
++ V   V   V              V    V
+: 1   1   F1=Help        S    HELP
+: 3   1   F3=Back        S    BACK
+: 5   1   F5=Zoom In     S    OZIN
+: 6   1   F6=Zoom Out    S    OZOU
+: 20  1   F20=Diagnose   S    DIAG
+: 7   1   F7=InternLabel S    ILAB
+: 8   1   F8=~Selected   O    seli
+: 9   1   F9=~Nachladen  L    cuabex.dat
+: 11  1   F11=~Save      S    SAVE
+: 12  1   F12=Cancel     S    QUIT
+: 15  1   F15=Quit       S    EXIT
+
+# Tabelle zum Positionieren der Views auf Boxzeilen
+# Aufbau: 1. Id der Box, 
+#         2. Zeichenkette fuer das Datum                  
+#         3. Zeichenkette, mit der die Box identifiziert werden kann. 
+# Sowohl Argument 2 als auch Argument 3 sind optional und muessen nicht angeben werden.
+/ $LABELS  3
++ V        V           V   
+: 2        27.9.1993;  Label fuer Box 2
+: 3        27.1.1994;  Label fuer Box 3
+: 4        27.2.1994;  Label fuer Box 4
+: 5        27.3.1994;  Label fuer Box 5
+: 6        27.4.1994;  Label fuer Box 6
+: 7                    Label fuer Box 7
+#: 12                   Label fuer Box 12
+: 13                   Label fuer Box 13
+
+# Tabelle zum Positionieren der Views auf ein Anfangsdatum
+# Aufbau: 1. Datum
+#/ $START 1
+#: 27.3.1993
+
+# Tabelle zum Setzen des Edit-Ctrls vom ABAP aus
+# Aufbau: 1. Id des Charts
+#         2. Typ des Objekts, das editiert werden soll
+#            bB = Box, alles andere geht noch nicht.
+#         3. Objektid
+#         3. Feldid
+#/ $EDIT 4
+#+ V       V       V       V
+#: 1       b       4       c
+
+#/ $CLRS 3
+#+ V              V            V
+#: Vordergrund    Black        Gray
+#: Hintergrund    White        Yellow
+
+/ $CUAEXCL 2
++ V     V
+: OZIN  0
+: OZOU  0
+: INFO  0
+
+/ $USRPOP 4
++ V     V   V       V
+: 1     x
+: 2     x
+: 1     a   OZIN    Mytext Zoomin
+: 1     a   OZOU           
+: 1     a   INFO           
+: 1     a   ODEL    Mytext Loeschen
+: 1     a   OCON           
+: 1     a   $123
+: 1     a   TEST           
+: 2     a   TEST           
+: 2     a   INFO    Mytext Info
+: 1     r   INFO           
+
+# Tabelle zum Setzen der Legenden in den einzelnen Charts
+# Aufbau: 1. Id des Charts
+#         2. Typ des Objekts
+#            nN = Node 
+#            lL = Link
+#            hH = Legendenheader
+#            tT = Legendentrailer
+#         3. nN Legendenknoten
+#            hH Highlight
+#            tT Highlight
+#         4. Beschriftung
+/ $LEGEND 4
++ V     V   V       V
+: 1     h   77      Header...
+: 1     t   38      Trailer...
+: 1     n   80      Beispieltext 1
+: 1     n   81      Beispieltext 2
+: 1     n   82      Beispieltext 3
+#: 1     l   71      Text 4
+: 1     l   81      Text 5
+#: 1     l   8       Der hier klappt nicht, kein Legendlink
+#: 1     n   31      Der hier klappt nicht, kein Legendnode
+
+/ $MNEMONIC 2
+# Tabelle zum Setzen der Langtexte fuer Objektsensitive Popups, falls OCX aktiv
+# ist. Diese Tabelle ist nicht notwendig, falls $CUABAR gesetzt.
+# Aufbau: 1. Mnemonic (4 Zeichen)
+#         2. Langtext
++ V    V
+: ABCD Ich bin der Langtext fuer ABCD
+
+# Tabelle zum Setzen der Boxen fuer den Box-Wizzard
+# Aufbau: 1. Operation (a = Setzen)
+#         2. Box-Id
+/ $BOXWZD  2
++ V    V
+: a    6
+
+/ $PRNTCLRS  4
++ V    V    V     V
+: 0     14  44    150
+: 1     11  41    151
+: 2     12  42    152
+: 33    13  43    152
+: 45    15  45    155
+
+# Tabelle zum Erzeugen von Containern, die zur freien Beschriftung
+# von Objekten genutzt werden koennen. Spalte 1 beinhaltet die ID,
+# Spalte 2 das Chart, in das der Objektcontainer eingebettet werden soll,
+# in Spalte drei kann (optional) ein Highlight fuer den Rahmen gesetzt
+# werden.
+/ $OBJCONT   
++ V         V          V
+#: 1         1          88
+: 1         1          
+#: 2         1
+#: 1         2
+
+# Tabelle zum Attributieren der Objektcontainer
+# Spalte 1        Spalte 2             Spalte 3      Spalte 4
+# -------------------------------------------------------------------
+#   ID          h (add highlight)      unused        Highlight-Id
+#   ID          r (remove highlight)   unused        Highlight-Id
+# -------------------------------------------------------------------
+#   ID          p (drawing priority)   unused        Zeichenprioritaet
+# -------------------------------------------------------------------
+#   ID          v (visibility)         unused        0-1 
+# -------------------------------------------------------------------
+#   Hier wird die Entfernung zum Relativ-Objekt festgelegt
+#   ID          d (distance to object) xdist         ydist
+# -------------------------------------------------------------------
+#   Hier wird die Groesse des Objektcontainers gesetzt. 
+#   Tut momentan nicht !!!
+#   ID          z (size of object)     xsize         ysize
+# -------------------------------------------------------------------
+#
+#   Hier wird das Objekt gesetzt, zu dem relativ der Objektcontainer
+#   positioniert werden soll. Als Relativ-Objekte sind momentan
+#   Knoten und Boxen erlaubt.
+#
+#   ID          s (set ref-object)     b (box)       Object-Id
+#   ID          s (set ref-object)     n (node)      Object-Id
+#   ID          m (remove ref-object)  b (box)       Object-Id
+#   ID          m (remove ref-object)  n (node)      Object-Id
+# -------------------------------------------------------------------
+#
+#   Hier wird das Objekt gesetzt, das im Objektcontainer
+#   positioniert werden soll. Als Objekte sind momentan
+#   Knoten und Boxen erlaubt.
+#
+#   ID          o (set object)         b (box)       Object-Id
+#   ID          o (set object)         n (node)      Object-Id
+# -------------------------------------------------------------------
+#   Positionieren von Referenz-Objekten und Objektcontainer
+#   relativ zueinander erfolgt ueber die sogenannten Referenzpunkte.
+#   Jedes Objekt hat die Punkte
+#
+#        1------2------3
+#        |             |
+#        4      5      6
+#        |             |
+#        7------8------9
+#
+#   Durch ein Wertepaar wird die relative Position der beiden Objekte
+#   zueinander beschrieben. (1,9) bedeutet, dass die linke obere Ecke
+#   des Objektcontainers an der rechten unteren Ecke des Referenzobjekts
+#   angehaengt wird.
+#
+#   ID          l (layout object)      Pos 1 (OC)    Pos 2 (Ref-Objekt)
+# -------------------------------------------------------------------
+#                 
+/ $OBJVALS
++ V         V         V      V
+#: 1         h                88
+: 1         s         b      2
+: 1         o         b      5
+: 1         d         500    400
+: 1         p                5
+: 1         v                1
+#: 1         z         100    100
+
+# Tabelle zum Setzen der Intervallstuetzpunkte in X-Richtung 
+/ $XSECTS  2
++ V         V    
+: 5         1.1.1993;
+: 4         1.6.1993;
+: 3         1.9.1993;
+: 1         11.4.1994;
+: 2         11.5.1994;
+
+# Tabelle zum Setzen der Intervallstuetzpunkte in Y-Richtung 
+/ $YSECTS  2
++ V         V    
+: 1         1
+: 2         5
+: 3         9
+
+# Tabelle zum Setzen der Intervalle 
+# Aufbau: 1. Id des Charts, fuer das Operation gelten soll
+#         2. Operation
+#            aA = Add Intervallstuetzpunkt (X-, Y- oder beides erlaubt)
+#            rR = Remove Intervallstuetzpunkt (X-, Y- oder beides erlaubt)
+#            sS = Set Intervall as filled 1 or initial 0
+#                 Fuellen der Werte ist erst sinnvoll und erlaubt, wenn
+#                 alle Intervallstuetzpunkte gesetzt sind, da sonst durch
+#                 Umsortierung Fehlzuordnung erfolgen kann.
+#/ $XYVALS  5
+#+ V  V    V  V  V
+#: 1  a    1  1
+#: 1  a    2     
+#: 1  a    3     
+#: 1  a    4     
+#: 1  a    5     
+#: 1  a       2     
+#: 1  a       3     
+#: 1  s    1  1  1
+
+# Tabelle zum Aufruf der Wizards
+# Aufbau: 1. Art des Wizards
+#              'z': Zeitskalenwizard
+#              't': Tabellenwizard
+#         2. Chart-Id, fuer das der Wizard aufgerufen werden soll
+/ $WIZARD  2
++ V    V
+: z    1
+: s    2
+: r    4
+: b    7
+: i    2
+
+# Tabelle zum Setzen von Resourcen
+# Aufbau: 1. Id des Knotens, dem eine Box zugeordnet werden soll
+#         2. Typ der Zuordnung
+#              'aA': Hinzufuegen
+#              'rR': Loeschen
+#              'hH': Highlight setzen, mit dem Zeilen markiert werden sollen
+#         3. Id der Box
+/ $RESOURCE  3
++ V     V      V
+:       h      77
+: 28    a      12
+: 28    a      13
+
+
+# Tabelle zum Setzen des Shadow-Modes. Diese Tabelle sollte vor $NVALS kommen !!!
+# Aufbau: 1. Modus
+#              h = Highlight in dem die Schattenknoten angezeigt werden sollen
+#              p = Prioritaet, mit denen die Schattenknoten angezeigt werden sollen
+#              v = Vertical offset (Default 0)
+#              o = Operationsmodus
+#                    0 = Remove contents of dictionary. Do not copy back values
+#                        of shadow-nodes to original nodes
+#                    1 = Copy shadow values back to originals. Remove contents of dictionary
+#                    2 = Make copies of all modified objects
+#                    3 = Set shadow objects invisible
+#                    4 = Set shadow objects visible
+#/ $SHADOW  2
+#+ V     V      
+#: h     2
+#: p     11
+#: o     2
+
+# Tabelle zum Setzen des automatischen Zeilenumbruchs
+# Aufbau: 1. Chartid
+# Aufbau: 2. Operation
+#              a = Aktivieren (0 = nein = Default, 1 = ja)
+#              d = Defaultknoten, dessen Laenge als Schrittweite dient
+#              o = Offset in Prozent der Schrittweite (0-100 %)
+#              s = DC-Eintrag fuer Sortierreihenfolge (0-99)
+# Aufbau: 3. Wert fuer Operation
+#/ $AUTOFIT  3
+#+ V     V      V
+#: 1     a      1
+#: 1     s      10
+#: 1     o      25
+#: 1     d      1
+
+# Tabelle zum Setzen der Drag&Drop-Handle
+# Aufbau: 1. Objektid
+# Aufbau: 2. Objekttyp
+#           b = Box
+#           c = Chart
+#           n = Node
+# Aufbau: 3. DragDrop-Handle
+/ $DRGDRP  3
++ V     V      V
+: 4     b      1
+: 5     b      2
+: 6     b      3
+: 6     b      0
+: 21    n      4
+: 1     c      1
+
+# Tabelle zum Ausgeben von Dumps auf Datei
+# Aufbau: 1. Chartid    : 0 = Alle Charts, > 0 ist das entsprechende Chart
+# Aufbau: 2. Ausgabetyp : 
+#           w = Width of image
+#           h = Height of image
+#           j = JPEG
+#           b = BMP
+#           t = TIF
+#           g = GIF
+#           x = PCX
+#           p = PNG
+#           ? = Rest noch nicht definiert
+# Aufbau: 3. Dateinamen, in den die Ausgabe geschrieben werden soll
+/ $DUMPCHART  3
++ V     V      V
+#: 0     w      200
+#: 0     h      100
+: 0     j      dump.jpg
+
+/ $OUTPUT 1
+: Bin mit Laden fertig !!!

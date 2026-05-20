@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapRFC64WrapperUSharedx64Wksta.xml">&gt;
+	<Component Arch="X64" BuildTime="0x907D26B05B30D901" Guid="{A8C630AF-2382-4BC9-AC65-3CBDFEFEDA41}" Min_Compliant_Version="800.0" Name="RFC64 Unicode Wrapper Shared" Size="228" Version="800.50">
+		<Requires Guid="{BC20379A-C5F9-469D-ABAA-381AB0A01FD4}"/>
+		<Requires Guid="{D461F1B1-BAC8-4010-9B9E-728130B25496}"/>
+		<ComFileAction Dst="%CommonProgramFiles64%\SAP Shared">
+			<File FileVersion="8000.1.0.11" Hash="SHA-256:b96d2826f038ecfd71f9a6ebc431da4e8180be1380f4ee6d8a6f69a31b894dfa" Timestamp="0xD8736F5E5B30D901">%SapSrcDir%\%varSapRFC64SrcDir%\SAPRfcWrapperU.dll</File>
+			<Clsid>{6678D15A-203A-40AD-9B4F-FF126479E481}</Clsid>
+		</ComFileAction>
+	</Component>
+</SapSetup>

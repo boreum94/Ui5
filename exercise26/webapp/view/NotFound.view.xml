@@ -1,0 +1,27 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+
+    <Page 
+        id="notFoundPage"
+        title="{i18n>notFoundPageTitle}"
+        descripttion="{i18n>illMessageDescription}"
+    >
+        <IllustratedMessage
+            title="{i18n>illMessageTitle}"
+            >
+        
+            <additionalContent>
+                <Button 
+                    text="{i18n>buttonTextNavView1}"
+                    press=".onNavView1" 
+                />
+                <Button
+                    text="{i18n>buttonTextNavView1}"
+                    press=".onNavView1" 
+                />
+            </additionalContent>
+        </IllustratedMessage>
+    </Page>
+</mvc:View>

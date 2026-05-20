@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Locale" Version="800.2" ConnectedId="{1460620D-C8BC-44c2-86ED-000000000050}">
+	<!-- FolderPathPage -->
+	<String name="SapPdfPrintGui64ProductName">
+		<En>SAP PDFPRINT for SAP GUI 8.00 64bit</En>
+		<De>SAP PDFPRINT für SAP GUI 8.00 64bit</De>
+	</String>
+	<String name="SapPdfPrintGui64ProductDescription">
+		<En>PDF print library for SAP Front End 64bit</En>
+		<De>PDF Druck Funktionalität für SAP Front End 64bit</De>
+	</String>
+</SapSetup>
+

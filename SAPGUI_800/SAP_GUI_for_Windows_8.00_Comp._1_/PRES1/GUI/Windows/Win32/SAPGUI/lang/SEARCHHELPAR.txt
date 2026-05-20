@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 SEARCHHELP AR 8704 OK 
+SEARCH_HELP_FIND                080 "ศอห (Enter)"
+SEARCH_HELP_CANCEL              080 "ลแÛวม (F12)"
+F4HELP_BUTTON_TOOLTIP           050 "อÞแ วแสอฯํฯ (Þํใ วแอฯๆฯ)"
+SEARCH_HELP_SORTA               050 "(วแไÞั แแสัสํศ ศสัสํศ สีวฺฯํ)"
+SEARCH_HELP_SORTD               050 "(วแไÞั แแสัสํศ ศสัสํศ สไวาแํ)"
+<#001>FEW_MENU_NEWMODE          032 "ลไิวม ฬแำษ ฺใแ"
+<#001>FEW_MENU_STOPMODE         032 "ลํÞวÝ วแใฺวใแษ"

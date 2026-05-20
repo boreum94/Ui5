@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapRFC64Wksta.xml">
+	<Component Arch="X64" BuildTime="0x90437C837B30D901" Guid="{B36A9BED-33EA-411B-AB69-CE65648D55A6}" Min_Compliant_Version="770.0" Name="SAP 64Bit RFC Controls ARP" Update="Always" Version="800.2">
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\64Bit RFC Controls" Type="Registry">
+			<RegValue Name="DisplayName" Type="String">64Bit RFC Controls</RegValue>
+			<RegValue Name="DisplayVersion" Type="String">%varSapRFC64Version%</RegValue>
+			<RegValue Name="InstallLocation" Type="String">%SapFrontEnd64Dir%</RegValue>
+			<RegValue Name="InstallDate" Type="String">%SapSetupInstallDate%</RegValue>
+			<RegValue Name="Publisher" Type="String">SAP SE</RegValue>
+			<RegValue Name="URLUpdateInfo" Type="String">http://service.sap.com</RegValue>
+			<RegValue Name="UninstallString" Type="String">&quot;%SAPSetupDir%\setup\NwSapSetup.exe&quot; /Product:RFC64 /IgnoreMissingComponents /Uninstall</RegValue>
+		</Action>
+	</Component>
+</SapSetup>

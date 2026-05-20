@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 OFFICEINTEGRATION ET 1904 OK 
+OI_LOADING_CUSTOM_MENU          080 "Kohandatud menüü laadimine. Palun oodake..."
+OI_FILE                         060 "Fail"
+OI_SAVE                         060 "Salvesta"
+OI_SAVE_AS                      060 "Salvesta nimega"
+OI_PRINT_PREVIEW                080 "Prindi eelvaade"
+OI_PROPERTIES                   060 "Atribuudid"
+OI_PRINT                        060 "Prindi"

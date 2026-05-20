@@ -1,0 +1,4370 @@
+<?xml version = "1.0"?>
+<DefaultTheme ID="Root">
+	<Title ID="Title">
+		<Logo ID="Logo">
+			<Top>0</Top>
+			<Left>0</Left>
+			<Right>68</Right>
+			<Bottom>31</Bottom>
+			<Url>file://.\saptlogo.bmp</Url>
+		</Logo>
+		<Bgnd ID="Bgnd">
+			<Top>0</Top>
+			<Left>0</Left>
+			<Right>2</Right>
+			<Bottom>31</Bottom>
+			<Url>file://.\saptbgnd.bmp</Url>
+		</Bgnd>
+	</Title>
+	<Caption ID="Caption">
+		<Bgnd ID="Bgnd">
+			<Top>78</Top>
+			<Left>2</Left>
+			<Right>4</Right>
+			<Bottom>80</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Bgnd>
+		<Logo ID="Logo">
+			<Top>80</Top>
+			<Left>9</Left>
+			<Right>24</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Logo>
+		<BtnIcon ID="BtnIcon">
+			<Top>80</Top>
+			<Left>9</Left>
+			<Right>24</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnIcon>
+		<BtnIconE ID="BtnIconE">
+			<Top>80</Top>
+			<Left>9</Left>
+			<Right>24</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnIconE>
+		<BtnIconEP ID="BtnIconEP">
+			<Top>80</Top>
+			<Left>103</Left>
+			<Right>118</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnIconEP>
+		<BtnIconEH ID="BtnIconEH">
+			<Top>80</Top>
+			<Left>103</Left>
+			<Right>118</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnIconEH>
+		<BtnIconEPH ID="BtnIconEPH">
+			<Top>80</Top>
+			<Left>103</Left>
+			<Right>118</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnIconEPH>
+		<BtnRest ID="BtnRest">
+			<Top>80</Top>
+			<Left>31</Left>
+			<Right>42</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnRest>
+		<BtnRestE ID="BtnRestE">
+			<Top>80</Top>
+			<Left>31</Left>
+			<Right>42</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnRestE>
+		<BtnRestEP ID="BtnRestEP">
+			<Top>80</Top>
+			<Left>125</Left>
+			<Right>136</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnRestEP>
+		<BtnRestEH ID="BtnRestEH">
+			<Top>80</Top>
+			<Left>125</Left>
+			<Right>136</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnRestEH>
+		<BtnRestEPH ID="BtnRestEPH">
+			<Top>80</Top>
+			<Left>125</Left>
+			<Right>136</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnRestEPH>
+		<BtnMini ID="BtnMini">
+			<Top>80</Top>
+			<Left>49</Left>
+			<Right>60</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnMini>
+		<BtnMiniE ID="BtnMiniE">
+			<Top>80</Top>
+			<Left>49</Left>
+			<Right>60</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnMiniE>
+		<BtnMiniEP ID="BtnMiniEP">
+			<Top>80</Top>
+			<Left>143</Left>
+			<Right>154</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnMiniEP>
+		<BtnMiniEH ID="BtnMiniEH">
+			<Top>80</Top>
+			<Left>143</Left>
+			<Right>154</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnMiniEH>
+		<BtnMiniEPH ID="BtnMiniEPH">
+			<Top>80</Top>
+			<Left>143</Left>
+			<Right>154</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnMiniEPH>
+		<BtnMaxi ID="BtnMaxi">
+			<Top>80</Top>
+			<Left>67</Left>
+			<Right>78</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnMaxi>
+		<BtnMaxiE ID="BtnMaxiE">
+			<Top>80</Top>
+			<Left>67</Left>
+			<Right>78</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnMaxiE>
+		<BtnMaxiEP ID="BtnMaxiEP">
+			<Top>80</Top>
+			<Left>161</Left>
+			<Right>172</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnMaxiEP>
+		<BtnMaxiEH ID="BtnMaxiEH">
+			<Top>80</Top>
+			<Left>161</Left>
+			<Right>172</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnMaxiEH>
+		<BtnMaxiEPH ID="BtnMaxiEPH">
+			<Top>80</Top>
+			<Left>161</Left>
+			<Right>172</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnMaxiEPH>
+		<BtnClose ID="BtnClose">
+			<Top>80</Top>
+			<Left>85</Left>
+			<Right>96</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnClose>
+		<BtnCloseE ID="BtnCloseE">
+			<Top>80</Top>
+			<Left>85</Left>
+			<Right>96</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnCloseE>
+		<BtnCloseEP ID="BtnCloseEP">
+			<Top>80</Top>
+			<Left>179</Left>
+			<Right>190</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnCloseEP>
+		<BtnCloseEH ID="BtnCloseEH">
+			<Top>80</Top>
+			<Left>179</Left>
+			<Right>190</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnCloseEH>
+		<BtnCloseEPH ID="BtnCloseEPH">
+			<Top>80</Top>
+			<Left>179</Left>
+			<Right>190</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnCloseEPH>
+		<BtnHelp ID="BtnHelp">
+			<Top>181</Top>
+			<Left>55</Left>
+			<Right>66</Right>
+			<Bottom>192</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnHelp>
+		<BtnHelpE ID="BtnHelpE">
+			<Top>181</Top>
+			<Left>55</Left>
+			<Right>66</Right>
+			<Bottom>192</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnHelpE>
+		<BtnHelpEP ID="BtnHelpEP">
+			<Top>181</Top>
+			<Left>40</Left>
+			<Right>51</Right>
+			<Bottom>192</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnHelpEP>
+		<BtnHelpEH ID="BtnHelpEH">
+			<Top>181</Top>
+			<Left>40</Left>
+			<Right>51</Right>
+			<Bottom>192</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnHelpEH>
+		<BtnHelpEPH ID="BtnHelpEPH">
+			<Top>181</Top>
+			<Left>40</Left>
+			<Right>51</Right>
+			<Bottom>192</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnHelpEPH>
+		<BtnBreakingRule ID="BtnBreakingRule">
+			<Top>270</Top>
+			<Left>57</Left>
+			<Right>74</Right>
+			<Bottom>283</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnBreakingRule>
+		<BtnBreakingRuleE ID="BtnBreakingRuleE">
+			<Top>270</Top>
+			<Left>1</Left>
+			<Right>18</Right>
+			<Bottom>282</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnBreakingRuleE>
+		<BtnBreakingRuleEP ID="BtnBreakingRuleEP">
+			<Top>270</Top>
+			<Left>20</Left>
+			<Right>37</Right>
+			<Bottom>283</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnBreakingRuleEP>
+		<BtnBreakingRuleEH ID="BtnBreakingRuleEH">
+			<Top>270</Top>
+			<Left>39</Left>
+			<Right>55</Right>
+			<Bottom>283</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnBreakingRuleEH>
+		<BtnBreakingRuleEPH ID="BtnBreakingRuleEPH">
+			<Top>270</Top>
+			<Left>57</Left>
+			<Right>74</Right>
+			<Bottom>283</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BtnBreakingRuleEPH>
+		<AnimationLo ID="AnimationLo">
+			<Top>0</Top>
+			<Left>0</Left>
+			<Right>4058</Right>
+			<Bottom>60</Bottom>
+			<Url>file://.\sapalogo.bmp</Url>
+		</AnimationLo>
+		<AnimationHi ID="AnimationHi">
+			<Top>0</Top>
+			<Left>0</Left>
+			<Right>4058</Right>
+			<Bottom>60</Bottom>
+			<Url>file://.\sapalogo.bmp</Url>
+		</AnimationHi>
+		<ShadowRight ID="ShadowRight">
+			<Top>70</Top>
+			<Left>2</Left>
+			<Right>4</Right>
+			<Bottom>71</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</ShadowRight>
+	</Caption>
+	<WindowBorder ID="WindowBorder">
+		<Border1 ID="Border1">
+			<LUC ID="LUC">
+				<Top>288</Top>
+				<Left>2</Left>
+				<Right>3</Right>
+				<Bottom>289</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LUC>
+			<UB ID="UB">
+				<Top>288</Top>
+				<Left>4</Left>
+				<Right>5</Right>
+				<Bottom>289</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</UB>
+			<RUC ID="RUC">
+				<Top>288</Top>
+				<Left>6</Left>
+				<Right>7</Right>
+				<Bottom>289</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RUC>
+			<RB ID="RB">
+				<Top>290</Top>
+				<Left>6</Left>
+				<Right>7</Right>
+				<Bottom>291</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB>
+			<RBC ID="RBC">
+				<Top>292</Top>
+				<Left>6</Left>
+				<Right>7</Right>
+				<Bottom>293</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RBC>
+			<BB ID="BB">
+				<Top>292</Top>
+				<Left>4</Left>
+				<Right>5</Right>
+				<Bottom>293</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</BB>
+			<LBC ID="LBC">
+				<Top>292</Top>
+				<Left>2</Left>
+				<Right>3</Right>
+				<Bottom>293</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LBC>
+			<LB ID="LB">
+				<Top>290</Top>
+				<Left>2</Left>
+				<Right>3</Right>
+				<Bottom>291</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LB>
+		</Border1>
+		<Border2 ID="Border2">
+			<LUC ID="LUC">
+				<Top>288</Top>
+				<Left>8</Left>
+				<Right>10</Right>
+				<Bottom>290</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LUC>
+			<UB ID="UB">
+				<Top>288</Top>
+				<Left>12</Left>
+				<Right>13</Right>
+				<Bottom>290</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</UB>
+			<RUC ID="RUC">
+				<Top>288</Top>
+				<Left>14</Left>
+				<Right>16</Right>
+				<Bottom>290</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RUC>
+			<RB ID="RB">
+				<Top>291</Top>
+				<Left>14</Left>
+				<Right>16</Right>
+				<Bottom>292</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB>
+			<RBC ID="RBC">
+				<Top>293</Top>
+				<Left>14</Left>
+				<Right>16</Right>
+				<Bottom>295</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RBC>
+			<BB ID="BB">
+				<Top>293</Top>
+				<Left>12</Left>
+				<Right>13</Right>
+				<Bottom>295</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</BB>
+			<LBC ID="LBC">
+				<Top>293</Top>
+				<Left>9</Left>
+				<Right>11</Right>
+				<Bottom>295</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LBC>
+			<LB ID="LB">
+				<Top>291</Top>
+				<Left>9</Left>
+				<Right>11</Right>
+				<Bottom>292</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LB>
+		</Border2>
+		<Border3 ID="Border3">
+			<LUC ID="LUC">
+				<Top>288</Top>
+				<Left>18</Left>
+				<Right>21</Right>
+				<Bottom>291</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LUC>
+			<UB ID="UB">
+				<Top>288</Top>
+				<Left>22</Left>
+				<Right>23</Right>
+				<Bottom>291</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</UB>
+			<RUC ID="RUC">
+				<Top>288</Top>
+				<Left>24</Left>
+				<Right>27</Right>
+				<Bottom>291</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RUC>
+			<RB ID="RB">
+				<Top>292</Top>
+				<Left>24</Left>
+				<Right>27</Right>
+				<Bottom>293</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB>
+			<RBC ID="RBC">
+				<Top>294</Top>
+				<Left>24</Left>
+				<Right>27</Right>
+				<Bottom>297</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RBC>
+			<BB ID="BB">
+				<Top>294</Top>
+				<Left>22</Left>
+				<Right>23</Right>
+				<Bottom>297</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</BB>
+			<LBC ID="LBC">
+				<Top>294</Top>
+				<Left>18</Left>
+				<Right>21</Right>
+				<Bottom>297</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LBC>
+			<LB ID="LB">
+				<Top>292</Top>
+				<Left>18</Left>
+				<Right>21</Right>
+				<Bottom>293</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LB>
+		</Border3>
+		<Border4 ID="Border4">
+			<LUC ID="LUC">
+				<Top>288</Top>
+				<Left>29</Left>
+				<Right>33</Right>
+				<Bottom>292</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LUC>
+			<UB ID="UB">
+				<Top>288</Top>
+				<Left>34</Left>
+				<Right>35</Right>
+				<Bottom>292</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</UB>
+			<RUC ID="RUC">
+				<Top>288</Top>
+				<Left>36</Left>
+				<Right>40</Right>
+				<Bottom>292</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RUC>
+			<RB ID="RB">
+				<Top>293</Top>
+				<Left>36</Left>
+				<Right>40</Right>
+				<Bottom>294</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB>
+			<RBC ID="RBC">
+				<Top>295</Top>
+				<Left>36</Left>
+				<Right>40</Right>
+				<Bottom>299</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RBC>
+			<BB ID="BB">
+				<Top>295</Top>
+				<Left>34</Left>
+				<Right>35</Right>
+				<Bottom>299</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</BB>
+			<LBC ID="LBC">
+				<Top>295</Top>
+				<Left>29</Left>
+				<Right>33</Right>
+				<Bottom>299</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LBC>
+			<LB ID="LB">
+				<Top>293</Top>
+				<Left>29</Left>
+				<Right>33</Right>
+				<Bottom>294</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LB>
+		</Border4>
+		<Border5 ID="Border5">
+			<LUC ID="LUC">
+				<Top>288</Top>
+				<Left>42</Left>
+				<Right>47</Right>
+				<Bottom>293</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LUC>
+			<UB ID="UB">
+				<Top>288</Top>
+				<Left>48</Left>
+				<Right>49</Right>
+				<Bottom>293</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</UB>
+			<RUC ID="RUC">
+				<Top>288</Top>
+				<Left>50</Left>
+				<Right>55</Right>
+				<Bottom>293</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RUC>
+			<RB ID="RB">
+				<Top>294</Top>
+				<Left>50</Left>
+				<Right>55</Right>
+				<Bottom>295</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB>
+			<RBC ID="RBC">
+				<Top>296</Top>
+				<Left>50</Left>
+				<Right>55</Right>
+				<Bottom>301</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RBC>
+			<BB ID="BB">
+				<Top>296</Top>
+				<Left>48</Left>
+				<Right>49</Right>
+				<Bottom>301</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</BB>
+			<LBC ID="LBC">
+				<Top>296</Top>
+				<Left>42</Left>
+				<Right>47</Right>
+				<Bottom>301</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LBC>
+			<LB ID="LB">
+				<Top>294</Top>
+				<Left>42</Left>
+				<Right>47</Right>
+				<Bottom>295</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LB>
+		</Border5>
+		<Border6 ID="Border6">
+			<LUC ID="LUC">
+				<Top>288</Top>
+				<Left>57</Left>
+				<Right>63</Right>
+				<Bottom>294</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LUC>
+			<UB ID="UB">
+				<Top>288</Top>
+				<Left>64</Left>
+				<Right>65</Right>
+				<Bottom>294</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</UB>
+			<RUC ID="RUC">
+				<Top>288</Top>
+				<Left>66</Left>
+				<Right>72</Right>
+				<Bottom>294</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RUC>
+			<RB ID="RB">
+				<Top>295</Top>
+				<Left>66</Left>
+				<Right>72</Right>
+				<Bottom>296</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB>
+			<RBC ID="RBC">
+				<Top>297</Top>
+				<Left>66</Left>
+				<Right>72</Right>
+				<Bottom>303</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RBC>
+			<BB ID="BB">
+				<Top>297</Top>
+				<Left>64</Left>
+				<Right>65</Right>
+				<Bottom>303</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</BB>
+			<LBC ID="LBC">
+				<Top>297</Top>
+				<Left>57</Left>
+				<Right>63</Right>
+				<Bottom>303</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LBC>
+			<LB ID="LB">
+				<Top>295</Top>
+				<Left>57</Left>
+				<Right>63</Right>
+				<Bottom>296</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LB>
+		</Border6>
+		<Border7 ID="Border7">
+			<LUC ID="LUC">
+				<Top>288</Top>
+				<Left>74</Left>
+				<Right>81</Right>
+				<Bottom>295</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LUC>
+			<UB ID="UB">
+				<Top>288</Top>
+				<Left>82</Left>
+				<Right>83</Right>
+				<Bottom>295</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</UB>
+			<RUC ID="RUC">
+				<Top>288</Top>
+				<Left>84</Left>
+				<Right>91</Right>
+				<Bottom>295</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RUC>
+			<RB ID="RB">
+				<Top>296</Top>
+				<Left>84</Left>
+				<Right>91</Right>
+				<Bottom>297</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB>
+			<RBC ID="RBC">
+				<Top>298</Top>
+				<Left>84</Left>
+				<Right>91</Right>
+				<Bottom>305</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RBC>
+			<BB ID="BB">
+				<Top>298</Top>
+				<Left>82</Left>
+				<Right>83</Right>
+				<Bottom>305</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</BB>
+			<LBC ID="LBC">
+				<Top>298</Top>
+				<Left>74</Left>
+				<Right>81</Right>
+				<Bottom>305</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LBC>
+			<LB ID="LB">
+				<Top>296</Top>
+				<Left>74</Left>
+				<Right>81</Right>
+				<Bottom>297</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LB>
+		</Border7>
+		<Border8 ID="Border8">
+			<LUC ID="LUC">
+				<Top>288</Top>
+				<Left>74</Left>
+				<Right>81</Right>
+				<Bottom>295</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LUC>
+			<UB ID="UB">
+				<Top>288</Top>
+				<Left>82</Left>
+				<Right>83</Right>
+				<Bottom>295</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</UB>
+			<RUC ID="RUC">
+				<Top>288</Top>
+				<Left>84</Left>
+				<Right>91</Right>
+				<Bottom>295</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RUC>
+			<RB ID="RB">
+				<Top>296</Top>
+				<Left>84</Left>
+				<Right>91</Right>
+				<Bottom>297</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB>
+			<RBC ID="RBC">
+				<Top>298</Top>
+				<Left>84</Left>
+				<Right>91</Right>
+				<Bottom>305</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RBC>
+			<BB ID="BB">
+				<Top>298</Top>
+				<Left>82</Left>
+				<Right>83</Right>
+				<Bottom>305</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</BB>
+			<LBC ID="LBC">
+				<Top>298</Top>
+				<Left>74</Left>
+				<Right>81</Right>
+				<Bottom>306</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LBC>
+			<LB ID="LB">
+				<Top>296</Top>
+				<Left>74</Left>
+				<Right>81</Right>
+				<Bottom>297</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LB>
+		</Border8>
+	</WindowBorder>
+	<Line ID="Line">
+		<HorSolid ID="HorSolid">
+			<Top>0</Top>
+			<Left>0</Left>
+			<Right>1</Right>
+			<Bottom>1</Bottom>
+			<Url>file://.\saplines.bmp</Url>
+		</HorSolid>
+		<VerSolid ID="VerSolid">
+			<Top>0</Top>
+			<Left>0</Left>
+			<Right>1</Right>
+			<Bottom>1</Bottom>
+			<Url>file://.\saplines.bmp</Url>
+		</VerSolid>
+		<HorDotted ID="HorDotted">
+			<Top>0</Top>
+			<Left>0</Left>
+			<Right>2</Right>
+			<Bottom>2</Bottom>
+			<Url>file://.\saplines.bmp</Url>
+		</HorDotted>
+		<VerDotted ID="VerDotted">
+			<Top>0</Top>
+			<Left>0</Left>
+			<Right>2</Right>
+			<Bottom>2</Bottom>
+			<Url>file://.\saplines.bmp</Url>
+		</VerDotted>
+	</Line>
+	<PButton ID="PButton">
+		<Bgnd ID="Bgnd">
+			<U ID="U">
+				<UE ID="UE">
+					<Top>41</Top>
+					<Left>147</Left>
+					<Right>148</Right>
+					<Bottom>48</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UE>
+				<PE ID="PE">
+					<Top>22</Top>
+					<Left>168</Left>
+					<Right>170</Right>
+					<Bottom>29</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PE>
+				<FE ID="FE">
+					<Top>41</Top>
+					<Left>164</Left>
+					<Right>166</Right>
+					<Bottom>48</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</FE>
+			</U>
+			<M ID="M">
+				<UE ID="UE">
+					<Top>49</Top>
+					<Left>147</Left>
+					<Right>148</Right>
+					<Bottom>50</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UE>
+				<PE ID="PE">
+					<Top>30</Top>
+					<Left>168</Left>
+					<Right>170</Right>
+					<Bottom>31</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PE>
+				<FE ID="FE">
+					<Top>49</Top>
+					<Left>164</Left>
+					<Right>166</Right>
+					<Bottom>50</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</FE>
+			</M>
+			<L ID="L">
+				<UE ID="UE">
+					<Top>51</Top>
+					<Left>147</Left>
+					<Right>149</Right>
+					<Bottom>58</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UE>
+				<PE ID="PE">
+					<Top>32</Top>
+					<Left>168</Left>
+					<Right>170</Right>
+					<Bottom>39</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PE>
+				<FE ID="FE">
+					<Top>51</Top>
+					<Left>164</Left>
+					<Right>166</Right>
+					<Bottom>58</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</FE>
+			</L>
+		</Bgnd>
+		<Bord ID="Bord">
+			<LUC ID="LUC">
+				<UE ID="UE">
+					<Top>41</Top>
+					<Left>134</Left>
+					<Right>136</Right>
+					<Bottom>43</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UE>
+				<PE ID="PE">
+					<Top>25</Top>
+					<Left>151</Left>
+					<Right>153</Right>
+					<Bottom>27</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PE>
+				<FL ID="FL">
+					<Top>25</Top>
+					<Left>136</Left>
+					<Right>137</Right>
+					<Bottom>27</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</FL>
+			</LUC>
+			<UB ID="UB">
+				<UE ID="UE">
+					<Top>41</Top>
+					<Left>139</Left>
+					<Right>140</Right>
+					<Bottom>43</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UE>
+				<PE ID="PE">
+					<Top>25</Top>
+					<Left>156</Left>
+					<Right>157</Right>
+					<Bottom>27</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PE>
+				<FL ID="FL">
+					<Top>25</Top>
+					<Left>141</Left>
+					<Right>142</Right>
+					<Bottom>26</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</FL>
+			</UB>
+			<RUC ID="RUC">
+				<UE ID="UE">
+					<Top>41</Top>
+					<Left>143</Left>
+					<Right>145</Right>
+					<Bottom>43</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UE>
+				<PE ID="PE">
+					<Top>25</Top>
+					<Left>160</Left>
+					<Right>162</Right>
+					<Bottom>27</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PE>
+				<FL ID="FL">
+					<Top>25</Top>
+					<Left>145</Left>
+					<Right>147</Right>
+					<Bottom>27</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</FL>
+			</RUC>
+			<RB ID="RB">
+				<UE ID="UE">
+					<Top>46</Top>
+					<Left>143</Left>
+					<Right>145</Right>
+					<Bottom>47</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UE>
+				<PE ID="PE">
+					<Top>30</Top>
+					<Left>160</Left>
+					<Right>162</Right>
+					<Bottom>31</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PE>
+				<FL ID="FL">
+					<Top>30</Top>
+					<Left>146</Left>
+					<Right>147</Right>
+					<Bottom>31</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</FL>
+			</RB>
+			<RBC ID="RBC">
+				<UE ID="UE">
+					<Top>56</Top>
+					<Left>143</Left>
+					<Right>145</Right>
+					<Bottom>58</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UE>
+				<PE ID="PE">
+					<Top>34</Top>
+					<Left>160</Left>
+					<Right>162</Right>
+					<Bottom>36</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PE>
+				<FL ID="FL">
+					<Top>34</Top>
+					<Left>145</Left>
+					<Right>147</Right>
+					<Bottom>36</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</FL>
+			</RBC>
+			<BB ID="BB">
+				<UE ID="UE">
+					<Top>56</Top>
+					<Left>139</Left>
+					<Right>140</Right>
+					<Bottom>58</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UE>
+				<PE ID="PE">
+					<Top>34</Top>
+					<Left>156</Left>
+					<Right>157</Right>
+					<Bottom>36</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PE>
+				<FL ID="FL">
+					<Top>35</Top>
+					<Left>141</Left>
+					<Right>142</Right>
+					<Bottom>36</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</FL>
+			</BB>
+			<LBC ID="LBC">
+				<UE ID="UE">
+					<Top>56</Top>
+					<Left>134</Left>
+					<Right>136</Right>
+					<Bottom>58</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UE>
+				<PE ID="PE">
+					<Top>34</Top>
+					<Left>151</Left>
+					<Right>153</Right>
+					<Bottom>36</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PE>
+				<FL ID="FL">
+					<Top>34</Top>
+					<Left>136</Left>
+					<Right>138</Right>
+					<Bottom>36</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</FL>
+			</LBC>
+			<LB ID="LB">
+				<UE ID="UE">
+					<Top>46</Top>
+					<Left>134</Left>
+					<Right>136</Right>
+					<Bottom>47</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UE>
+				<PE ID="PE">
+					<Top>30</Top>
+					<Left>151</Left>
+					<Right>153</Right>
+					<Bottom>31</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PE>
+				<FL ID="FL">
+					<Top>30</Top>
+					<Left>136</Left>
+					<Right>137</Right>
+					<Bottom>31</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</FL>
+			</LB>
+		</Bord>
+	</PButton>
+	<RButton ID="RButton">
+		<UE ID="UE">
+			<Top>2</Top>
+			<Left>107</Left>
+			<Right>121</Right>
+			<Bottom>16</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</UE>
+		<CE ID="CE">
+			<Top>2</Top>
+			<Left>123</Left>
+			<Right>137</Right>
+			<Bottom>16</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CE>
+		<UF ID="UF">
+			<Top>2</Top>
+			<Left>139</Left>
+			<Right>153</Right>
+			<Bottom>16</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</UF>
+		<CF ID="CF">
+			<Top>2</Top>
+			<Left>155</Left>
+			<Right>169</Right>
+			<Bottom>16</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CF>
+		<UD ID="UD">
+			<Top>2</Top>
+			<Left>171</Left>
+			<Right>185</Right>
+			<Bottom>16</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</UD>
+		<CD ID="CD">
+			<Top>2</Top>
+			<Left>187</Left>
+			<Right>201</Right>
+			<Bottom>16</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CD>
+	</RButton>
+	<Mainfrm ID="Mainfrm">
+		<Bord ID="Bord">
+			<LUC ID="LUC">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>0</Left>
+					<Right>5</Right>
+					<Bottom>67</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LUC>
+			<UB1 ID="UB1">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>6</Left>
+					<Right>8</Right>
+					<Bottom>66</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</UB1>
+			<UB2 ID="UB2">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>9</Left>
+					<Right>13</Right>
+					<Bottom>66</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</UB2>
+			<UB3 ID="UB3">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>14</Left>
+					<Right>16</Right>
+					<Bottom>66</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</UB3>
+			<UB4 ID="UB4">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>17</Left>
+					<Right>19</Right>
+					<Bottom>66</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</UB4>
+			<UB5 ID="UB5">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>20</Left>
+					<Right>22</Right>
+					<Bottom>66</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</UB5>
+			<RUC ID="RUC">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>23</Left>
+					<Right>28</Right>
+					<Bottom>67</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</RUC>
+			<RB1 ID="RB1">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>29</Left>
+					<Right>33</Right>
+					<Bottom>64</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</RB1>
+			<RB2 ID="RB2">
+				<A ID="A">
+					<Top>65</Top>
+					<Left>29</Left>
+					<Right>33</Right>
+					<Bottom>73</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</RB2>
+			<RB3 ID="RB3">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>34</Left>
+					<Right>38</Right>
+					<Bottom>64</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</RB3>
+			<RB4 ID="RB4">
+				<A ID="A">
+					<Top>65</Top>
+					<Left>34</Left>
+					<Right>38</Right>
+					<Bottom>68</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</RB4>
+			<RB5 ID="RB5">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>39</Left>
+					<Right>43</Right>
+					<Bottom>64</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</RB5>
+			<RB6 ID="RB6">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>44</Left>
+					<Right>48</Right>
+					<Bottom>67</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</RB6>
+			<RB7 ID="RB7">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>49</Left>
+					<Right>53</Right>
+					<Bottom>64</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</RB7>
+			<RBC ID="RBC">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>54</Left>
+					<Right>59</Right>
+					<Bottom>67</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</RBC>
+			<BB ID="BB">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>60</Left>
+					<Right>62</Right>
+					<Bottom>66</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</BB>
+			<LBC ID="LBC">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>63</Left>
+					<Right>68</Right>
+					<Bottom>67</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LBC>
+			<LB1 ID="LB1">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>69</Left>
+					<Right>73</Right>
+					<Bottom>64</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LB1>
+			<LB2 ID="LB2">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>74</Left>
+					<Right>78</Right>
+					<Bottom>67</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LB2>
+			<LB3 ID="LB3">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>79</Left>
+					<Right>83</Right>
+					<Bottom>64</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LB3>
+			<LB4 ID="LB4">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>84</Left>
+					<Right>88</Right>
+					<Bottom>65</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LB4>
+			<LB5 ID="LB5">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>89</Left>
+					<Right>93</Right>
+					<Bottom>64</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LB5>
+			<LB6 ID="LB6">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>94</Left>
+					<Right>98</Right>
+					<Bottom>70</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LB6>
+			<LB7 ID="LB7">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>99</Left>
+					<Right>103</Right>
+					<Bottom>64</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LB7>
+			<LB8 ID="LB8">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>104</Left>
+					<Right>108</Right>
+					<Bottom>68</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LB8>
+			<LB9 ID="LB9">
+				<A ID="A">
+					<Top>62</Top>
+					<Left>109</Left>
+					<Right>113</Right>
+					<Bottom>64</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LB9>
+		</Bord>
+	</Mainfrm>
+	<Dialog ID="Dialog">
+		<CaptionLogo ID="CaptionLogo">
+			<A ID="A">
+				<Top>180</Top>
+				<Left>140</Left>
+				<Right>158</Right>
+				<Bottom>199</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</A>
+			<P ID="P">
+				<Top>180</Top>
+				<Left>140</Left>
+				<Right>158</Right>
+				<Bottom>199</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</P>
+		</CaptionLogo>
+		<CaptionBknd ID="CaptionBknd">
+			<A ID="A">
+				<Top>180</Top>
+				<Left>137</Left>
+				<Right>138</Right>
+				<Bottom>199</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</A>
+			<P ID="P">
+				<Top>180</Top>
+				<Left>137</Left>
+				<Right>138</Right>
+				<Bottom>199</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</P>
+		</CaptionBknd>
+		<Bord ID="Bord">
+			<LUC ID="LUC">
+				<A ID="A">
+					<Top>180</Top>
+					<Left>160</Left>
+					<Right>163</Right>
+					<Bottom>183</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LUC>
+			<UB ID="UB">
+				<A ID="A">
+					<Top>180</Top>
+					<Left>165</Left>
+					<Right>167</Right>
+					<Bottom>182</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</UB>
+			<RUC ID="RUC">
+				<A ID="A">
+					<Top>180</Top>
+					<Left>169</Left>
+					<Right>172</Right>
+					<Bottom>183</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</RUC>
+			<RB ID="RB">
+				<A ID="A">
+					<Top>184</Top>
+					<Left>170</Left>
+					<Right>172</Right>
+					<Bottom>186</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</RB>
+			<RBC ID="RBC">
+				<A ID="A">
+					<Top>195</Top>
+					<Left>169</Left>
+					<Right>172</Right>
+					<Bottom>198</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</RBC>
+			<BB ID="BB">
+				<A ID="A">
+					<Top>196</Top>
+					<Left>165</Left>
+					<Right>167</Right>
+					<Bottom>198</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</BB>
+			<LBC ID="LBC">
+				<A ID="A">
+					<Top>195</Top>
+					<Left>160</Left>
+					<Right>163</Right>
+					<Bottom>198</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LBC>
+			<LB1 ID="LB1">
+				<A ID="A">
+					<Top>192</Top>
+					<Left>160</Left>
+					<Right>162</Right>
+					<Bottom>194</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LB1>
+			<LB2 ID="LB2">
+				<A ID="A">
+					<Top>187</Top>
+					<Left>160</Left>
+					<Right>162</Right>
+					<Bottom>191</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LB2>
+			<LB3 ID="LB3">
+				<A ID="A">
+					<Top>184</Top>
+					<Left>160</Left>
+					<Right>162</Right>
+					<Bottom>186</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LB3>
+		</Bord>
+		<Logo ID="Logo">
+			<Top>80</Top>
+			<Left>9</Left>
+			<Right>24</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Logo>
+		<CaptionBtnIcon ID="CaptionBtnIcon">
+			<Top>80</Top>
+			<Left>9</Left>
+			<Right>24</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnIcon>
+		<CaptionBtnIconE ID="CaptionBtnIconE">
+			<Top>80</Top>
+			<Left>9</Left>
+			<Right>24</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnIconE>
+		<CaptionBtnIconEP ID="CaptionBtnIconEP">
+			<Top>80</Top>
+			<Left>103</Left>
+			<Right>118</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnIconEP>
+		<CaptionBtnIconEH ID="CaptionBtnIconEH">
+			<Top>80</Top>
+			<Left>103</Left>
+			<Right>118</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnIconEH>
+		<CaptionBtnIconEPH ID="CaptionBtnIconEPH">
+			<Top>80</Top>
+			<Left>103</Left>
+			<Right>118</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnIconEPH>
+		<CaptionBtnRest ID="CaptionBtnRest">
+			<Top>80</Top>
+			<Left>31</Left>
+			<Right>42</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnRest>
+		<CaptionBtnRestE ID="CaptionBtnRestE">
+			<Top>80</Top>
+			<Left>31</Left>
+			<Right>42</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnRestE>
+		<CaptionBtnRestEP ID="CaptionBtnRestEP">
+			<Top>80</Top>
+			<Left>125</Left>
+			<Right>136</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnRestEP>
+		<CaptionBtnRestEH ID="CaptionBtnRestEH">
+			<Top>80</Top>
+			<Left>125</Left>
+			<Right>136</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnRestEH>
+		<CaptionBtnRestEPH ID="CaptionBtnRestEPH">
+			<Top>80</Top>
+			<Left>125</Left>
+			<Right>136</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnRestEPH>
+		<CaptionBtnMini ID="CaptionBtnMini">
+			<Top>80</Top>
+			<Left>49</Left>
+			<Right>60</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnMini>
+		<CaptionBtnMiniE ID="CaptionBtnMiniE">
+			<Top>80</Top>
+			<Left>49</Left>
+			<Right>60</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnMiniE>
+		<CaptionBtnMiniEP ID="CaptionBtnMiniEP">
+			<Top>80</Top>
+			<Left>143</Left>
+			<Right>154</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnMiniEP>
+		<CaptionBtnMiniEH ID="CaptionBtnMiniEH">
+			<Top>80</Top>
+			<Left>143</Left>
+			<Right>154</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnMiniEH>
+		<CaptionBtnMiniEPH ID="CaptionBtnMiniEPH">
+			<Top>80</Top>
+			<Left>143</Left>
+			<Right>154</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnMiniEPH>
+		<CaptionBtnMaxi ID="CaptionBtnMaxi">
+			<Top>80</Top>
+			<Left>67</Left>
+			<Right>78</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnMaxi>
+		<CaptionBtnMaxiE ID="CaptionBtnMaxiE">
+			<Top>80</Top>
+			<Left>67</Left>
+			<Right>78</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnMaxiE>
+		<CaptionBtnMaxiEP ID="CaptionBtnMaxiEP">
+			<Top>80</Top>
+			<Left>161</Left>
+			<Right>172</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnMaxiEP>
+		<CaptionBtnMaxiEH ID="CaptionBtnMaxiEH">
+			<Top>80</Top>
+			<Left>161</Left>
+			<Right>172</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnMaxiEH>
+		<CaptionBtnMaxiEPH ID="CaptionBtnMaxiEPH">
+			<Top>80</Top>
+			<Left>161</Left>
+			<Right>172</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnMaxiEPH>
+		<CaptionBtnClose ID="CaptionBtnClose">
+			<Top>80</Top>
+			<Left>85</Left>
+			<Right>96</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnClose>
+		<CaptionBtnCloseE ID="CaptionBtnCloseE">
+			<Top>80</Top>
+			<Left>85</Left>
+			<Right>96</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnCloseE>
+		<CaptionBtnCloseEP ID="CaptionBtnCloseEP">
+			<Top>80</Top>
+			<Left>179</Left>
+			<Right>190</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnCloseEP>
+		<CaptionBtnCloseEH ID="CaptionBtnCloseEH">
+			<Top>80</Top>
+			<Left>179</Left>
+			<Right>190</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnCloseEH>
+		<CaptionBtnCloseEPH ID="CaptionBtnCloseEPH">
+			<Top>80</Top>
+			<Left>179</Left>
+			<Right>190</Right>
+			<Bottom>91</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnCloseEPH>
+		<CaptionBtnHelp ID="CaptionBtnHelp">
+			<Top>181</Top>
+			<Left>190</Left>
+			<Right>201</Right>
+			<Bottom>192</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnHelp>
+		<CaptionBtnHelpE ID="CaptionBtnHelpE">
+			<Top>181</Top>
+			<Left>190</Left>
+			<Right>201</Right>
+			<Bottom>192</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnHelpE>
+		<CaptionBtnHelpEP ID="CaptionBtnHelpEP">
+			<Top>181</Top>
+			<Left>190</Left>
+			<Right>201</Right>
+			<Bottom>192</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnHelpEP>
+		<CaptionBtnHelpEH ID="CaptionBtnHelpEH">
+			<Top>181</Top>
+			<Left>175</Left>
+			<Right>186</Right>
+			<Bottom>192</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnHelpEH>
+		<CaptionBtnHelpEPH ID="CaptionBtnHelpEPH">
+			<Top>181</Top>
+			<Left>175</Left>
+			<Right>186</Right>
+			<Bottom>192</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CaptionBtnHelpEPH>
+	</Dialog>
+	<CButton ID="CButton">
+		<UE ID="UE">
+			<Top>2</Top>
+			<Left>2</Left>
+			<Right>17</Right>
+			<Bottom>17</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</UE>
+		<CE ID="CE">
+			<Top>2</Top>
+			<Left>19</Left>
+			<Right>34</Right>
+			<Bottom>17</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CE>
+		<UF ID="UF">
+			<Top>2</Top>
+			<Left>36</Left>
+			<Right>51</Right>
+			<Bottom>17</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</UF>
+		<CF ID="CF">
+			<Top>2</Top>
+			<Left>53</Left>
+			<Right>68</Right>
+			<Bottom>17</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CF>
+		<UD ID="UD">
+			<Top>2</Top>
+			<Left>70</Left>
+			<Right>85</Right>
+			<Bottom>17</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</UD>
+		<CD ID="CD">
+			<Top>2</Top>
+			<Left>87</Left>
+			<Right>102</Right>
+			<Bottom>17</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CD>
+	</CButton>
+	<SButton ID="SButton">
+		<HLUE ID="HLUE">
+			<Top>22</Top>
+			<Left>2</Left>
+			<Right>19</Right>
+			<Bottom>39</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</HLUE>
+		<HLDE ID="HLDE">
+			<Top>41</Top>
+			<Left>2</Left>
+			<Right>19</Right>
+			<Bottom>58</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</HLDE>
+		<HLUD ID="HLUD">
+			<Top>22</Top>
+			<Left>2</Left>
+			<Right>19</Right>
+			<Bottom>39</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</HLUD>
+		<HLDD ID="HLDD">
+			<Top>41</Top>
+			<Left>2</Left>
+			<Right>19</Right>
+			<Bottom>58</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</HLDD>
+		<HRUE ID="HRUE">
+			<Top>22</Top>
+			<Left>21</Left>
+			<Right>38</Right>
+			<Bottom>39</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</HRUE>
+		<HRDE ID="HRDE">
+			<Top>41</Top>
+			<Left>21</Left>
+			<Right>38</Right>
+			<Bottom>58</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</HRDE>
+		<HRUD ID="HRUD">
+			<Top>22</Top>
+			<Left>21</Left>
+			<Right>38</Right>
+			<Bottom>39</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</HRUD>
+		<HRDD ID="HRDD">
+			<Top>41</Top>
+			<Left>21</Left>
+			<Right>38</Right>
+			<Bottom>58</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</HRDD>
+		<VLUE ID="VLUE">
+			<Top>22</Top>
+			<Left>40</Left>
+			<Right>57</Right>
+			<Bottom>39</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</VLUE>
+		<VLDE ID="VLDE">
+			<Top>41</Top>
+			<Left>40</Left>
+			<Right>57</Right>
+			<Bottom>58</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</VLDE>
+		<VLUD ID="VLUD">
+			<Top>22</Top>
+			<Left>59</Left>
+			<Right>76</Right>
+			<Bottom>39</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</VLUD>
+		<VLDD ID="VLDD">
+			<Top>41</Top>
+			<Left>59</Left>
+			<Right>19</Right>
+			<Bottom>76</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</VLDD>
+		<VRUE ID="VRUE">
+			<Top>22</Top>
+			<Left>59</Left>
+			<Right>76</Right>
+			<Bottom>39</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</VRUE>
+		<VRDE ID="VRDE">
+			<Top>41</Top>
+			<Left>59</Left>
+			<Right>76</Right>
+			<Bottom>58</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</VRDE>
+		<VRUD ID="VRUD">
+			<Top>22</Top>
+			<Left>59</Left>
+			<Right>76</Right>
+			<Bottom>39</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</VRUD>
+		<VRDD ID="VRDD">
+			<Top>41</Top>
+			<Left>59</Left>
+			<Right>76</Right>
+			<Bottom>76</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</VRDD>
+	</SButton>
+	<MainMenu ID="MainMenu">
+		<MainBord ID="MainBord">
+			<LUC ID="LUC">
+				<Top>98</Top>
+				<Left>2</Left>
+				<Right>6</Right>
+				<Bottom>102</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LUC>
+			<UB ID="UB">
+				<Top>98</Top>
+				<Left>8</Left>
+				<Right>9</Right>
+				<Bottom>101</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</UB>
+			<RUC ID="RUC">
+				<Top>98</Top>
+				<Left>11</Left>
+				<Right>15</Right>
+				<Bottom>102</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RUC>
+			<RB ID="RB">
+				<Top>103</Top>
+				<Left>12</Left>
+				<Right>15</Right>
+				<Bottom>104</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB>
+			<RBC ID="RBC">
+				<Top>106</Top>
+				<Left>11</Left>
+				<Right>15</Right>
+				<Bottom>110</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RBC>
+			<BB ID="BB">
+				<Top>107</Top>
+				<Left>8</Left>
+				<Right>9</Right>
+				<Bottom>110</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</BB>
+			<LBC ID="LBC">
+				<Top>106</Top>
+				<Left>2</Left>
+				<Right>6</Right>
+				<Bottom>110</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LBC>
+			<LB ID="LB">
+				<Top>103</Top>
+				<Left>2</Left>
+				<Right>5</Right>
+				<Bottom>104</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LB>
+		</MainBord>
+		<Bord ID="Bord">
+			<LUC ID="LUC">
+				<A ID="A">
+					<Top>98</Top>
+					<Left>27</Left>
+					<Right>32</Right>
+					<Bottom>101</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LUC>
+			<UB ID="UB">
+				<A ID="A">
+					<Top>98</Top>
+					<Left>34</Left>
+					<Right>35</Right>
+					<Bottom>100</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</UB>
+			<RUC ID="RUC">
+				<A ID="A">
+					<Top>98</Top>
+					<Left>37</Left>
+					<Right>42</Right>
+					<Bottom>101</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</RUC>
+			<RB ID="RB">
+				<A ID="A">
+					<Top>103</Top>
+					<Left>38</Left>
+					<Right>42</Right>
+					<Bottom>104</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</RB>
+			<RBC ID="RBC">
+				<A ID="A">
+					<Top>107</Top>
+					<Left>37</Left>
+					<Right>42</Right>
+					<Bottom>109</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</RBC>
+			<BB ID="BB">
+				<A ID="A">
+					<Top>107</Top>
+					<Left>34</Left>
+					<Right>35</Right>
+					<Bottom>109</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</BB>
+			<LBC ID="LBC">
+				<A ID="A">
+					<Top>106</Top>
+					<Left>27</Left>
+					<Right>32</Right>
+					<Bottom>109</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LBC>
+			<LB ID="LB">
+				<A ID="A">
+					<Top>103</Top>
+					<Left>27</Left>
+					<Right>31</Right>
+					<Bottom>104</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LB>
+		</Bord>
+		<Pat ID="Pat">
+			<N ID="N">
+				<Top>103</Top>
+				<Left>8</Left>
+				<Right>9</Right>
+				<Bottom>105</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</N>
+			<A ID="A">
+				<Top>102</Top>
+				<Left>34</Left>
+				<Right>35</Right>
+				<Bottom>104</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</A>
+		</Pat>
+		<ArrowLeft ID="ArrowLeft">
+			<E ID="E">
+				<Top>105</Top>
+				<Left>22</Left>
+				<Right>25</Right>
+				<Bottom>110</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</E>
+			<D ID="D">
+				<Top>98</Top>
+				<Left>22</Left>
+				<Right>25</Right>
+				<Bottom>103</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</D>
+		</ArrowLeft>
+		<ArrowRight ID="ArrowRight">
+			<E ID="E">
+				<Top>105</Top>
+				<Left>17</Left>
+				<Right>20</Right>
+				<Bottom>110</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</E>
+			<D ID="D">
+				<Top>98</Top>
+				<Left>17</Left>
+				<Right>20</Right>
+				<Bottom>103</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</D>
+		</ArrowRight>
+		<Check ID="Check">
+			<E ID="E">
+				<Top>97</Top>
+				<Left>64</Left>
+				<Right>72</Right>
+				<Bottom>105</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</E>
+			<D ID="D">
+				<Top>97</Top>
+				<Left>74</Left>
+				<Right>82</Right>
+				<Bottom>105</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</D>
+		</Check>
+		<PopBord ID="PopBord">
+			<LUC ID="LUC">
+				<Top>98</Top>
+				<Left>49</Left>
+				<Right>53</Right>
+				<Bottom>102</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LUC>
+			<UB ID="UB">
+				<Top>98</Top>
+				<Left>55</Left>
+				<Right>56</Right>
+				<Bottom>101</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</UB>
+			<RUC ID="RUC">
+				<Top>98</Top>
+				<Left>58</Left>
+				<Right>62</Right>
+				<Bottom>102</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RUC>
+			<RB ID="RB">
+				<Top>103</Top>
+				<Left>59</Left>
+				<Right>62</Right>
+				<Bottom>104</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB>
+			<RBC ID="RBC">
+				<Top>106</Top>
+				<Left>58</Left>
+				<Right>62</Right>
+				<Bottom>110</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RBC>
+			<BB ID="BB">
+				<Top>107</Top>
+				<Left>55</Left>
+				<Right>56</Right>
+				<Bottom>110</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</BB>
+			<LBC ID="LBC">
+				<Top>106</Top>
+				<Left>49</Left>
+				<Right>53</Right>
+				<Bottom>110</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LBC>
+			<LB ID="LB">
+				<Top>103</Top>
+				<Left>49</Left>
+				<Right>52</Right>
+				<Bottom>104</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LB>
+		</PopBord>
+		<Separator ID="Separator">
+			<L ID="L">
+				<Top>98</Top>
+				<Left>43</Left>
+				<Right>44</Right>
+				<Bottom>100</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</L>
+			<M ID="M">
+				<Top>98</Top>
+				<Left>45</Left>
+				<Right>46</Right>
+				<Bottom>100</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</M>
+			<R ID="R">
+				<Top>98</Top>
+				<Left>47</Left>
+				<Right>48</Right>
+				<Bottom>100</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</R>
+		</Separator>
+		<Sound ID="Sound">
+			<Open ID="Open">
+				<Url>file://.\sapsnd06.wav</Url>
+			</Open>
+			<Close ID="Close">
+				<Url>file://.\sapsnd07.wav</Url>
+			</Close>
+		</Sound>
+	</MainMenu>
+	<PopupMenu ID="PopupMenu">
+		<Sound ID="Sound">
+			<Open ID="Open">
+				<Url>file://.\sapsnd06.wav</Url>
+			</Open>
+			<Close ID="Close">
+				<Url>file://.\sapsnd07.wav</Url>
+			</Close>
+		</Sound>
+		<MainBord ID="MainBord">
+			<LUC ID="LUC">
+				<Top>98</Top>
+				<Left>2</Left>
+				<Right>6</Right>
+				<Bottom>102</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LUC>
+			<UB ID="UB">
+				<Top>98</Top>
+				<Left>8</Left>
+				<Right>9</Right>
+				<Bottom>102</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</UB>
+			<RUC ID="RUC">
+				<Top>98</Top>
+				<Left>11</Left>
+				<Right>15</Right>
+				<Bottom>102</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RUC>
+			<RB ID="RB">
+				<Top>103</Top>
+				<Left>12</Left>
+				<Right>15</Right>
+				<Bottom>104</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB>
+			<RBC ID="RBC">
+				<Top>106</Top>
+				<Left>11</Left>
+				<Right>15</Right>
+				<Bottom>110</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RBC>
+			<BB ID="BB">
+				<Top>107</Top>
+				<Left>8</Left>
+				<Right>9</Right>
+				<Bottom>110</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</BB>
+			<LBC ID="LBC">
+				<Top>106</Top>
+				<Left>2</Left>
+				<Right>6</Right>
+				<Bottom>110</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LBC>
+			<LB ID="LB">
+				<Top>103</Top>
+				<Left>2</Left>
+				<Right>5</Right>
+				<Bottom>104</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LB>
+		</MainBord>
+		<Bord ID="Bord">
+			<LUC ID="LUC">
+				<A ID="A">
+					<Top>98</Top>
+					<Left>27</Left>
+					<Right>32</Right>
+					<Bottom>101</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LUC>
+			<UB ID="UB">
+				<A ID="A">
+					<Top>98</Top>
+					<Left>34</Left>
+					<Right>35</Right>
+					<Bottom>100</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</UB>
+			<RUC ID="RUC">
+				<A ID="A">
+					<Top>98</Top>
+					<Left>37</Left>
+					<Right>42</Right>
+					<Bottom>101</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</RUC>
+			<RB ID="RB">
+				<A ID="A">
+					<Top>103</Top>
+					<Left>38</Left>
+					<Right>42</Right>
+					<Bottom>104</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</RB>
+			<RBC ID="RBC">
+				<A ID="A">
+					<Top>107</Top>
+					<Left>37</Left>
+					<Right>42</Right>
+					<Bottom>109</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</RBC>
+			<BB ID="BB">
+				<A ID="A">
+					<Top>107</Top>
+					<Left>34</Left>
+					<Right>35</Right>
+					<Bottom>109</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</BB>
+			<LBC ID="LBC">
+				<A ID="A">
+					<Top>106</Top>
+					<Left>27</Left>
+					<Right>32</Right>
+					<Bottom>109</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LBC>
+			<LB ID="LB">
+				<A ID="A">
+					<Top>103</Top>
+					<Left>27</Left>
+					<Right>31</Right>
+					<Bottom>104</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</A>
+			</LB>
+		</Bord>
+		<Pat ID="Pat">
+			<N ID="N">
+				<Top>103</Top>
+				<Left>8</Left>
+				<Right>9</Right>
+				<Bottom>105</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</N>
+			<A ID="A">
+				<Top>102</Top>
+				<Left>34</Left>
+				<Right>35</Right>
+				<Bottom>104</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</A>
+		</Pat>
+		<ArrowLeft ID="ArrowLeft">
+			<E ID="E">
+				<Top>105</Top>
+				<Left>22</Left>
+				<Right>25</Right>
+				<Bottom>110</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</E>
+			<D ID="D">
+				<Top>98</Top>
+				<Left>22</Left>
+				<Right>25</Right>
+				<Bottom>103</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</D>
+		</ArrowLeft>
+		<ArrowRight ID="ArrowRight">
+			<E ID="E">
+				<Top>105</Top>
+				<Left>17</Left>
+				<Right>20</Right>
+				<Bottom>110</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</E>
+			<D ID="D">
+				<Top>98</Top>
+				<Left>17</Left>
+				<Right>20</Right>
+				<Bottom>103</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</D>
+		</ArrowRight>
+		<Check ID="Check">
+			<E ID="E">
+				<Top>97</Top>
+				<Left>64</Left>
+				<Right>72</Right>
+				<Bottom>105</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</E>
+			<D ID="D">
+				<Top>97</Top>
+				<Left>74</Left>
+				<Right>82</Right>
+				<Bottom>105</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</D>
+		</Check>
+		<PopBord ID="PopBord">
+			<LUC ID="LUC">
+				<Top>98</Top>
+				<Left>49</Left>
+				<Right>53</Right>
+				<Bottom>102</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LUC>
+			<UB ID="UB">
+				<Top>98</Top>
+				<Left>55</Left>
+				<Right>56</Right>
+				<Bottom>101</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</UB>
+			<RUC ID="RUC">
+				<Top>98</Top>
+				<Left>58</Left>
+				<Right>62</Right>
+				<Bottom>102</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RUC>
+			<RB ID="RB">
+				<Top>103</Top>
+				<Left>59</Left>
+				<Right>62</Right>
+				<Bottom>104</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB>
+			<RBC ID="RBC">
+				<Top>106</Top>
+				<Left>58</Left>
+				<Right>62</Right>
+				<Bottom>110</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RBC>
+			<BB ID="BB">
+				<Top>107</Top>
+				<Left>55</Left>
+				<Right>56</Right>
+				<Bottom>110</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</BB>
+			<LBC ID="LBC">
+				<Top>106</Top>
+				<Left>49</Left>
+				<Right>53</Right>
+				<Bottom>110</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LBC>
+			<LB ID="LB">
+				<Top>103</Top>
+				<Left>49</Left>
+				<Right>52</Right>
+				<Bottom>104</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LB>
+		</PopBord>
+		<Separator ID="Separator">
+			<L ID="L">
+				<Top>98</Top>
+				<Left>43</Left>
+				<Right>44</Right>
+				<Bottom>100</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</L>
+			<M ID="M">
+				<Top>98</Top>
+				<Left>45</Left>
+				<Right>46</Right>
+				<Bottom>100</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</M>
+			<R ID="R">
+				<Top>98</Top>
+				<Left>47</Left>
+				<Right>48</Right>
+				<Bottom>100</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</R>
+		</Separator>
+	</PopupMenu>
+	<Scrollbar ID="Scrollbar">
+		<HBgndLeft ID="HBgndLeft">
+			<Top>22</Top>
+			<Left>78</Left>
+			<Right>83</Right>
+			<Bottom>39</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</HBgndLeft>
+		<HBgndMiddle ID="HBgndMiddle">
+			<Top>22</Top>
+			<Left>86</Left>
+			<Right>87</Right>
+			<Bottom>39</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</HBgndMiddle>
+		<HBgndRight ID="HBgndRight">
+			<Top>22</Top>
+			<Left>120</Left>
+			<Right>122</Right>
+			<Bottom>39</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</HBgndRight>
+		<VBgndLeft ID="VBgndLeft">
+			<Top>41</Top>
+			<Left>78</Left>
+			<Right>95</Right>
+			<Bottom>46</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</VBgndLeft>
+		<VBgndMiddle ID="VBgndMiddle">
+			<Top>48</Top>
+			<Left>78</Left>
+			<Right>95</Right>
+			<Bottom>49</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</VBgndMiddle>
+		<VBgndRight ID="VBgndRight">
+			<Top>47</Top>
+			<Left>112</Left>
+			<Right>129</Right>
+			<Bottom>49</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</VBgndRight>
+	</Scrollbar>
+	<Scrollbox ID="Scrollbox">
+		<HBgndLeft ID="HBgndLeft">
+			<Top>24</Top>
+			<Left>90</Left>
+			<Right>93</Right>
+			<Bottom>37</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</HBgndLeft>
+		<HBgndMiddle ID="HBgndMiddle">
+			<Top>24</Top>
+			<Left>99</Left>
+			<Right>100</Right>
+			<Bottom>37</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</HBgndMiddle>
+		<HBgndRight ID="HBgndRight">
+			<Top>24</Top>
+			<Left>106</Left>
+			<Right>109</Right>
+			<Bottom>37</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</HBgndRight>
+		<VBgndLeft ID="VBgndLeft">
+			<Top>51</Top>
+			<Left>80</Left>
+			<Right>93</Right>
+			<Bottom>54</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</VBgndLeft>
+		<BgndTop ID="BgndTop">
+			<Top>63</Top>
+			<Left>116</Left>
+			<Right>118</Right>
+			<Bottom>67</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BgndTop>
+		<VBgndMiddle ID="VBgndMiddle">
+			<Top>41</Top>
+			<Left>97</Left>
+			<Right>110</Right>
+			<Bottom>42</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</VBgndMiddle>
+		<VBgndRight ID="VBgndRight">
+			<Top>49</Top>
+			<Left>97</Left>
+			<Right>110</Right>
+			<Bottom>52</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</VBgndRight>
+	</Scrollbox>
+	<Toolbar ID="Toolbar">
+		<Button ID="Button">
+			<Top>0</Top>
+			<Left>0</Left>
+			<Right>336</Right>
+			<Bottom>17</Bottom>
+			<Url>file://.\saptoolb.bmp</Url>
+		</Button>
+		<BgndTop ID="BgndTop">
+			<Top>63</Top>
+			<Left>116</Left>
+			<Right>118</Right>
+			<Bottom>67</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BgndTop>
+		<BgndMiddle ID="BgndMiddle">
+			<Top>68</Top>
+			<Left>116</Left>
+			<Right>118</Right>
+			<Bottom>70</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BgndMiddle>
+		<BgndBottom ID="BgndBottom">
+			<Top>71</Top>
+			<Left>116</Left>
+			<Right>118</Right>
+			<Bottom>73</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BgndBottom>
+		<CmdBgndTop ID="CmdBgndTop">
+			<Top>63</Top>
+			<Left>124</Left>
+			<Right>126</Right>
+			<Bottom>67</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CmdBgndTop>
+		<CmdBgndMiddle ID="CmdBgndMiddle">
+			<Top>68</Top>
+			<Left>124</Left>
+			<Right>126</Right>
+			<Bottom>70</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CmdBgndMiddle>
+		<CmdBgndBottom ID="CmdBgndBottom">
+			<Top>71</Top>
+			<Left>124</Left>
+			<Right>126</Right>
+			<Bottom>73</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CmdBgndBottom>
+		<CmdLBordTop ID="CmdLBordTop">
+			<Top>63</Top>
+			<Left>120</Left>
+			<Right>122</Right>
+			<Bottom>67</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CmdLBordTop>
+		<CmdLBordMiddle ID="CmdLBordMiddle">
+			<Top>68</Top>
+			<Left>120</Left>
+			<Right>122</Right>
+			<Bottom>70</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CmdLBordMiddle>
+		<CmdLBordBottom ID="CmdLBordBottom">
+			<Top>71</Top>
+			<Left>120</Left>
+			<Right>122</Right>
+			<Bottom>73</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CmdLBordBottom>
+		<CmdRBordTop ID="CmdRBordTop">
+			<Top>63</Top>
+			<Left>128</Left>
+			<Right>130</Right>
+			<Bottom>67</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CmdRBordTop>
+		<CmdRBordMiddle ID="CmdRBordMiddle">
+			<Top>68</Top>
+			<Left>128</Left>
+			<Right>130</Right>
+			<Bottom>70</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CmdRBordMiddle>
+		<CmdRBordBottom ID="CmdRBordBottom">
+			<Top>71</Top>
+			<Left>128</Left>
+			<Right>130</Right>
+			<Bottom>73</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</CmdRBordBottom>
+		<LeftBtn ID="LeftBtn">
+			<Top>62</Top>
+			<Left>132</Left>
+			<Right>141</Right>
+			<Bottom>74</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</LeftBtn>
+		<LeftBtnP ID="LeftBtnP">
+			<Top>62</Top>
+			<Left>142</Left>
+			<Right>151</Right>
+			<Bottom>74</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</LeftBtnP>
+		<RightBtn ID="RightBtn">
+			<Top>62</Top>
+			<Left>152</Left>
+			<Right>161</Right>
+			<Bottom>74</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</RightBtn>
+		<RightBtnP ID="RightBtnP">
+			<Top>62</Top>
+			<Left>162</Left>
+			<Right>171</Right>
+			<Bottom>74</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</RightBtnP>
+		<SeparatorHorz ID="SeparatorHorz">
+			<L ID="L">
+				<Top>98</Top>
+				<Left>43</Left>
+				<Right>44</Right>
+				<Bottom>100</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</L>
+			<M ID="M">
+				<Top>63</Top>
+				<Left>26</Left>
+				<Right>27</Right>
+				<Bottom>65</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</M>
+			<R ID="R">
+				<Top>98</Top>
+				<Left>47</Left>
+				<Right>48</Right>
+				<Bottom>100</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</R>
+		</SeparatorHorz>
+		<Separator ID="Separator">
+			<Top>62</Top>
+			<Left>173</Left>
+			<Right>175</Right>
+			<Bottom>75</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Separator>
+		<Btn ID="Btn">
+			<LUC ID="LUC">
+				<In ID="In">
+					<Top>77</Top>
+					<Left>196</Left>
+					<Right>198</Right>
+					<Bottom>79</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</In>
+				<Out ID="Out">
+					<Top>87</Top>
+					<Left>196</Left>
+					<Right>198</Right>
+					<Bottom>89</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</Out>
+			</LUC>
+			<MUB ID="MUB">
+				<In ID="In">
+					<Top>77</Top>
+					<Left>199</Left>
+					<Right>200</Right>
+					<Bottom>79</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</In>
+				<Out ID="Out">
+					<Top>87</Top>
+					<Left>199</Left>
+					<Right>200</Right>
+					<Bottom>89</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</Out>
+			</MUB>
+			<RUC ID="RUC">
+				<In ID="In">
+					<Top>77</Top>
+					<Left>201</Left>
+					<Right>203</Right>
+					<Bottom>79</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</In>
+				<Out ID="Out">
+					<Top>87</Top>
+					<Left>201</Left>
+					<Right>203</Right>
+					<Bottom>89</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</Out>
+			</RUC>
+			<RMB ID="RMB">
+				<In ID="In">
+					<Top>80</Top>
+					<Left>201</Left>
+					<Right>203</Right>
+					<Bottom>81</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</In>
+				<Out ID="Out">
+					<Top>90</Top>
+					<Left>201</Left>
+					<Right>203</Right>
+					<Bottom>91</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</Out>
+			</RMB>
+			<RLC ID="RLC">
+				<In ID="In">
+					<Top>82</Top>
+					<Left>201</Left>
+					<Right>203</Right>
+					<Bottom>84</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</In>
+				<Out ID="Out">
+					<Top>92</Top>
+					<Left>201</Left>
+					<Right>203</Right>
+					<Bottom>94</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</Out>
+			</RLC>
+			<MLB ID="MLB">
+				<In ID="In">
+					<Top>82</Top>
+					<Left>199</Left>
+					<Right>200</Right>
+					<Bottom>84</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</In>
+				<Out ID="Out">
+					<Top>92</Top>
+					<Left>199</Left>
+					<Right>200</Right>
+					<Bottom>94</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</Out>
+			</MLB>
+			<LLC ID="LLC">
+				<In ID="In">
+					<Top>82</Top>
+					<Left>196</Left>
+					<Right>198</Right>
+					<Bottom>84</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</In>
+				<Out ID="Out">
+					<Top>92</Top>
+					<Left>196</Left>
+					<Right>198</Right>
+					<Bottom>94</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</Out>
+			</LLC>
+			<LMB ID="LMB">
+				<In ID="In">
+					<Top>80</Top>
+					<Left>196</Left>
+					<Right>198</Right>
+					<Bottom>81</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</In>
+				<Out ID="Out">
+					<Top>90</Top>
+					<Left>196</Left>
+					<Right>198</Right>
+					<Bottom>91</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</Out>
+			</LMB>
+			<MMM ID="MMM">
+				<In ID="In">
+					<Top>80</Top>
+					<Left>199</Left>
+					<Right>200</Right>
+					<Bottom>81</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</In>
+				<Out ID="Out">
+					<Top>90</Top>
+					<Left>199</Left>
+					<Right>200</Right>
+					<Bottom>91</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</Out>
+			</MMM>
+		</Btn>
+	</Toolbar>
+	<Tree ID="Tree">
+		<OpenToggle ID="OpenToggle">
+			<Top>2</Top>
+			<Left>13</Left>
+			<Right>24</Right>
+			<Bottom>10</Bottom>
+			<Url>file://.\sapctree.bmp</Url>
+		</OpenToggle>
+		<CloseToggle ID="CloseToggle">
+			<Top>2</Top>
+			<Left>2</Left>
+			<Right>10</Right>
+			<Bottom>13</Bottom>
+			<Url>file://.\sapctree.bmp</Url>
+		</CloseToggle>
+		<CloseToggleRTL ID="CloseToggleRTL">
+			<Top>17</Top>
+			<Left>2</Left>
+			<Right>10</Right>
+			<Bottom>28</Bottom>
+			<Url>file://.\sapctree.bmp</Url>
+		</CloseToggleRTL>
+		<Folder ID="Folder">
+			<Top>2</Top>
+			<Left>29</Left>
+			<Right>44</Right>
+			<Bottom>15</Bottom>
+			<Url>file://.\sapctree.bmp</Url>
+		</Folder>
+		<Leaf ID="Leaf">
+			<Top>2</Top>
+			<Left>48</Left>
+			<Right>63</Right>
+			<Bottom>15</Bottom>
+			<Url>file://.\sapctree.bmp</Url>
+		</Leaf>
+		<OpenFolder ID="OpenFolder">
+			<Top>2</Top>
+			<Left>69</Left>
+			<Right>81</Right>
+			<Bottom>16</Bottom>
+			<Url>file://.\sapctree.bmp</Url>
+		</OpenFolder>
+		<TreeSounds ID="Sound">
+			<Open ID="Open">
+				<Url>file://.\treeopen.wav</Url>
+			</Open>
+			<Close ID="Close">
+				<Url>file://.\treeclse.wav</Url>
+			</Close>
+		</TreeSounds>
+	</Tree>
+	<ALVGrid ID="ALVGrid">
+		<TotalBelowExpanded ID="TotalBelowExpanded">
+			<Top>2</Top>
+			<Left>13</Left>
+			<Right>27</Right>
+			<Bottom>14</Bottom>
+			<Url>file://.\sapcgrid.bmp</Url>
+		</TotalBelowExpanded>
+		<TotalBelowCollapsed ID="TotalBelowCollapsed">
+			<Top>2</Top>
+			<Left>30</Left>
+			<Right>44</Right>
+			<Bottom>14</Bottom>
+			<Url>file://.\sapcgrid.bmp</Url>
+		</TotalBelowCollapsed>
+		<TotalAboveExpanded ID="TotalAboveExpanded">
+			<Top>2</Top>
+			<Left>48</Left>
+			<Right>62</Right>
+			<Bottom>14</Bottom>
+			<Url>file://.\sapcgrid.bmp</Url>
+		</TotalAboveExpanded>
+		<TotalAboveCollapsed ID="TotalAboveCollapsed">
+			<Top>2</Top>
+			<Left>66</Left>
+			<Right>80</Right>
+			<Bottom>14</Bottom>
+			<Url>file://.\sapcgrid.bmp</Url>
+		</TotalAboveCollapsed>
+		<TotalCrumb ID="TotalCrumb">
+			<Top>3</Top>
+			<Left>87</Left>
+			<Right>91</Right>
+			<Bottom>7</Bottom>
+			<Url>file://.\sapcgrid.bmp</Url>
+		</TotalCrumb>
+		<NextSubTotalLeftPart ID="NextSubTotalLeftPart">
+			<Top>3</Top>
+			<Left>95</Left>
+			<Right>112</Right>
+			<Bottom>8</Bottom>
+			<Url>file://.\sapcgrid.bmp</Url>
+		</NextSubTotalLeftPart>
+		<NextSubTotalRightPart ID="NextSubTotalRightPart">
+			<Top>10</Top>
+			<Left>95</Left>
+			<Right>112</Right>
+			<Bottom>15</Bottom>
+			<Url>file://.\sapcgrid.bmp</Url>
+		</NextSubTotalRightPart>
+		<HeaderIconTotal ID="HeaderIconTotal">
+			<Top>9</Top>
+			<Left>119</Left>
+			<Right>125</Right>
+			<Bottom>16</Bottom>
+			<Url>file://.\sapcgrid.bmp</Url>
+		</HeaderIconTotal>
+		<HeaderIconFilter ID="HeaderIconFilter">
+			<Top>9</Top>
+			<Left>126</Left>
+			<Right>133</Right>
+			<Bottom>14</Bottom>
+			<Url>file://.\sapcgrid.bmp</Url>
+		</HeaderIconFilter>
+		<HeaderIconSortedAscending ID="HeaderIconSortedAscending">
+			<Top>19</Top>
+			<Left>135</Left>
+			<Right>142</Right>
+			<Bottom>23</Bottom>
+			<Url>file://.\sapcgrid.bmp</Url>
+		</HeaderIconSortedAscending>
+		<HeaderIconSortedDescending ID="HeaderIconSortedDescending">
+			<Top>13</Top>
+			<Left>135</Left>
+			<Right>142</Right>
+			<Bottom>17</Bottom>
+			<Url>file://.\sapcgrid.bmp</Url>
+		</HeaderIconSortedDescending>
+	</ALVGrid>
+	<Statusbar ID="Statusbar">
+		<Sound ID="Sound">
+			<Expanded ID="Expanded">
+				<Url>file://.\sapsnd01.wav</Url>
+			</Expanded>
+			<Collapsed ID="Collapsed">
+				<Url>file://.\sapsnd02.wav</Url>
+			</Collapsed>
+		</Sound>
+		<Sizebox ID="Sizebox">
+			<Top>137</Top>
+			<Left>180</Left>
+			<Right>202</Right>
+			<Bottom>157</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Sizebox>
+		<Affirmative ID="Affirmative">
+			<Top>161</Top>
+			<Left>52</Left>
+			<Right>68</Right>
+			<Bottom>177</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Affirmative>
+		<Error ID="Error">
+			<Top>161</Top>
+			<Left>69</Left>
+			<Right>85</Right>
+			<Bottom>177</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Error>
+		<Warning ID="Warning">
+			<Top>161</Top>
+			<Left>86</Left>
+			<Right>102</Right>
+			<Bottom>177</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Warning>
+		<Waiting ID="Waiting">
+			<Top>161</Top>
+			<Left>103</Left>
+			<Right>121</Right>
+			<Bottom>182</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Waiting>
+		<HelpIcon ID="HelpIcon">
+			<Top>245</Top>
+			<Left>151</Left>
+			<Right>163</Right>
+			<Bottom>260</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</HelpIcon>
+		<LeftArrow ID="LeftArrow">
+			<Top>137</Top>
+			<Left>127</Left>
+			<Right>136</Right>
+			<Bottom>149</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</LeftArrow>
+		<RightArrow ID="RightArrow">
+			<Top>137</Top>
+			<Left>116</Left>
+			<Right>125</Right>
+			<Bottom>149</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</RightArrow>
+		<Bord ID="Bord">
+			<LUC ID="LUC">
+				<UE ID="UE">
+					<Top>137</Top>
+					<Left>158</Left>
+					<Right>160</Right>
+					<Bottom>139</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UE>
+				<PE ID="PE">
+					<Top>137</Top>
+					<Left>166</Left>
+					<Right>170</Right>
+					<Bottom>141</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PE>
+				<FE ID="FE">
+					<Top>137</Top>
+					<Left>176</Left>
+					<Right>178</Right>
+					<Bottom>142</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</FE>
+			</LUC>
+			<UB ID="UB">
+				<UE ID="UE">
+					<Top>137</Top>
+					<Left>162</Left>
+					<Right>163</Right>
+					<Bottom>139</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UE>
+				<PE ID="PE">
+					<Top>137</Top>
+					<Left>172</Left>
+					<Right>173</Right>
+					<Bottom>141</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PE>
+				<FE ID="FE">
+					<Top>137</Top>
+					<Left>172</Left>
+					<Right>173</Right>
+					<Bottom>141</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</FE>
+			</UB>
+			<BB ID="BB">
+				<UE ID="UE">
+					<Top>155</Top>
+					<Left>162</Left>
+					<Right>163</Right>
+					<Bottom>157</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UE>
+				<PE ID="PE">
+					<Top>153</Top>
+					<Left>172</Left>
+					<Right>173</Right>
+					<Bottom>157</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PE>
+				<FE ID="FE">
+					<Top>153</Top>
+					<Left>172</Left>
+					<Right>173</Right>
+					<Bottom>157</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</FE>
+			</BB>
+			<LBC ID="LBC">
+				<UE ID="UE">
+					<Top>155</Top>
+					<Left>158</Left>
+					<Right>160</Right>
+					<Bottom>157</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UE>
+				<PE ID="PE">
+					<Top>153</Top>
+					<Left>166</Left>
+					<Right>170</Right>
+					<Bottom>157</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PE>
+				<FE ID="FE">
+					<Top>153</Top>
+					<Left>176</Left>
+					<Right>178</Right>
+					<Bottom>157</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</FE>
+			</LBC>
+			<LB ID="LB">
+				<UE ID="UE">
+					<Top>145</Top>
+					<Left>158</Left>
+					<Right>160</Right>
+					<Bottom>147</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UE>
+				<PE ID="PE">
+					<Top>145</Top>
+					<Left>166</Left>
+					<Right>170</Right>
+					<Bottom>147</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PE>
+				<FE ID="FE">
+					<Top>145</Top>
+					<Left>176</Left>
+					<Right>178</Right>
+					<Bottom>147</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</FE>
+			</LB>
+			<RUC ID="RUC">
+				<UE ID="UE">
+					<Top>137</Top>
+					<Left>165</Left>
+					<Right>166</Right>
+					<Bottom>141</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UE>
+				<PE ID="PE">
+					<Top>137</Top>
+					<Left>175</Left>
+					<Right>176</Right>
+					<Bottom>141</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PE>
+				<FE ID="FE">
+					<Top>137</Top>
+					<Left>175</Left>
+					<Right>176</Right>
+					<Bottom>141</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</FE>
+			</RUC>
+			<RBC ID="RBC">
+				<UE ID="UE">
+					<Top>153</Top>
+					<Left>165</Left>
+					<Right>166</Right>
+					<Bottom>157</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UE>
+				<PE ID="PE">
+					<Top>153</Top>
+					<Left>175</Left>
+					<Right>176</Right>
+					<Bottom>157</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PE>
+				<FE ID="FE">
+					<Top>153</Top>
+					<Left>175</Left>
+					<Right>176</Right>
+					<Bottom>157</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</FE>
+			</RBC>
+		</Bord>
+		<Menu ID="Menu">
+			<Top>162</Top>
+			<Left>141</Left>
+			<Right>154</Right>
+			<Bottom>176</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Menu>
+	</Statusbar>
+	<StatusbarAlert ID="StatusbarAlert">
+		<Sound ID="Sound">
+			<Affirmativ ID="Affirmativ">
+				<Url>file://.\sapmsg.wav</Url>
+			</Affirmativ>
+			<Error ID="Error">
+				<Url>file://.\saperror.wav</Url>
+			</Error>
+			<Warning ID="Warning">
+				<Url>file://.\sapmsg.wav</Url>
+			</Warning>
+		</Sound>
+		<AffirmativFirst ID="AffirmativFirst">
+			<Top>161</Top>
+			<Left>1</Left>
+			<Right>17</Right>
+			<Bottom>177</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</AffirmativFirst>
+		<AffirmativScnd ID="AffirmativScnd">
+			<Top>179</Top>
+			<Left>1</Left>
+			<Right>25</Right>
+			<Bottom>202</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</AffirmativScnd>
+		<AffirmativLast ID="AffirmativLast">
+			<Top>204</Top>
+			<Left>1</Left>
+			<Right>34</Right>
+			<Bottom>237</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</AffirmativLast>
+		<ErrorFirst ID="ErrorFirst">
+			<Top>161</Top>
+			<Left>18</Left>
+			<Right>34</Right>
+			<Bottom>177</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</ErrorFirst>
+		<ErrorScnd ID="ErrorScnd">
+			<Top>179</Top>
+			<Left>26</Left>
+			<Right>49</Right>
+			<Bottom>202</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</ErrorScnd>
+		<ErrorLast ID="ErrorLast">
+			<Top>204</Top>
+			<Left>35</Left>
+			<Right>68</Right>
+			<Bottom>237</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</ErrorLast>
+		<WarningFirst ID="WarningFirst">
+			<Top>161</Top>
+			<Left>35</Left>
+			<Right>51</Right>
+			<Bottom>177</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</WarningFirst>
+		<WarningScnd ID="WarningScnd">
+			<Top>179</Top>
+			<Left>50</Left>
+			<Right>73</Right>
+			<Bottom>202</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</WarningScnd>
+		<WarningLast ID="WarningLast">
+			<Top>204</Top>
+			<Left>69</Left>
+			<Right>102</Right>
+			<Bottom>237</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</WarningLast>
+		<WaitingFirst ID="WaitingFirst">
+			<Top>161</Top>
+			<Left>103</Left>
+			<Right>121</Right>
+			<Bottom>182</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</WaitingFirst>
+		<WaitingScnd ID="WaitingScnd">
+			<Top>183</Top>
+			<Left>103</Left>
+			<Right>129</Right>
+			<Bottom>213</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</WaitingScnd>
+		<WaitingLast ID="WaitingLast">
+			<Top>202</Top>
+			<Left>131</Left>
+			<Right>166</Right>
+			<Bottom>240</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</WaitingLast>
+		<WaitEndFirst ID="WaitEndFirst">
+			<Top>179</Top>
+			<Left>81</Left>
+			<Right>99</Right>
+			<Bottom>200</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</WaitEndFirst>
+		<WaitEndScnd ID="WaitEndScnd">
+			<Top>214</Top>
+			<Left>103</Left>
+			<Right>129</Right>
+			<Bottom>244</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</WaitEndScnd>
+		<WaitEndLast ID="WaitEndLast">
+			<Top>202</Top>
+			<Left>168</Left>
+			<Right>203</Right>
+			<Bottom>240</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</WaitEndLast>
+		<ClockHand ID="ClockHand">
+			<Top>0</Top>
+			<Left>0</Left>
+			<Right>36</Right>
+			<Bottom>38</Bottom>
+			<Url>file://.\sapclokh.bmp</Url>
+		</ClockHand>
+		<LoadingClock ID="LoadingClock">
+			<Top>0</Top>
+			<Left>0</Left>
+			<Right>36</Right>
+			<Bottom>38</Bottom>
+			<Url>file://.\sapclokl.bmp</Url>
+		</LoadingClock>
+	</StatusbarAlert>
+	<Applbar ID="Applbar">
+		<Bgnd ID="Bgnd">
+			<Top ID="Top">
+				<Top>63</Top>
+				<Left>179</Left>
+				<Right>181</Right>
+				<Bottom>65</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</Top>
+			<Bottom ID="Bottom">
+				<Top>71</Top>
+				<Left>179</Left>
+				<Right>181</Right>
+				<Bottom>73</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</Bottom>
+			<Shadow ID="Shadow">
+				<Top>63</Top>
+				<Left>186</Left>
+				<Right>188</Right>
+				<Bottom>66</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</Shadow>
+		</Bgnd>
+	</Applbar>
+	<TabStripCtl ID="TabStripCtl">
+		<Bord ID="Bord">
+			<LUC ID="LUC">
+				<Top>114</Top>
+				<Left>196</Left>
+				<Right>198</Right>
+				<Bottom>116</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LUC>
+			<UB ID="UB">
+				<Top>114</Top>
+				<Left>199</Left>
+				<Right>200</Right>
+				<Bottom>116</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</UB>
+			<RUC ID="RUC">
+				<Top>114</Top>
+				<Left>201</Left>
+				<Right>203</Right>
+				<Bottom>116</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RUC>
+			<RB ID="RB">
+				<Top>117</Top>
+				<Left>201</Left>
+				<Right>203</Right>
+				<Bottom>118</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB>
+			<RBC ID="RBC">
+				<Top>119</Top>
+				<Left>201</Left>
+				<Right>203</Right>
+				<Bottom>121</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RBC>
+			<BB ID="BB">
+				<Top>119</Top>
+				<Left>199</Left>
+				<Right>200</Right>
+				<Bottom>121</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</BB>
+			<LBC ID="LBC">
+				<Top>119</Top>
+				<Left>196</Left>
+				<Right>198</Right>
+				<Bottom>121</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LBC>
+			<LB ID="LB">
+				<Top>117</Top>
+				<Left>196</Left>
+				<Right>198</Right>
+				<Bottom>118</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LB>
+			<FL ID="FL">
+				<Top>117</Top>
+				<Left>199</Left>
+				<Right>200</Right>
+				<Bottom>118</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</FL>
+		</Bord>
+		<PrimTab ID="PrimTab">
+			<FL ID="FL">
+				<Top>117</Top>
+				<Left>199</Left>
+				<Right>200</Right>
+				<Bottom>118</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</FL>
+			<LBC ID="LBC">
+				<Top>120</Top>
+				<Left>180</Left>
+				<Right>183</Right>
+				<Bottom>122</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LBC>
+			<LB ID="LB">
+				<Top>118</Top>
+				<Left>182</Left>
+				<Right>184</Right>
+				<Bottom>119</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LB>
+			<LUC ID="LUC">
+				<Top>114</Top>
+				<Left>183</Left>
+				<Right>188</Right>
+				<Bottom>117</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LUC>
+			<UB ID="UB">
+				<Top>114</Top>
+				<Left>189</Left>
+				<Right>190</Right>
+				<Bottom>116</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</UB>
+			<RUC ID="RUC">
+				<Top>114</Top>
+				<Left>191</Left>
+				<Right>194</Right>
+				<Bottom>116</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RUC>
+			<RB ID="RB">
+				<Top>118</Top>
+				<Left>191</Left>
+				<Right>194</Right>
+				<Bottom>119</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB>
+			<RBC ID="RBC">
+				<Top>120</Top>
+				<Left>191</Left>
+				<Right>194</Right>
+				<Bottom>122</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RBC>
+		</PrimTab>
+		<SecTab ID="SecTab">
+			<FL ID="FL">
+				<Top>118</Top>
+				<Left>161</Left>
+				<Right>162</Right>
+				<Bottom>119</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</FL>
+		</SecTab>
+		<SecTabBeh ID="SecTabBeh">
+			<LBC ID="LBC">
+				<Top>120</Top>
+				<Left>150</Left>
+				<Right>155</Right>
+				<Bottom>133</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LBC>
+			<LB ID="LB">
+				<Top>118</Top>
+				<Left>154</Left>
+				<Right>156</Right>
+				<Bottom>119</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LB>
+			<LUC ID="LUC">
+				<Top>114</Top>
+				<Left>155</Left>
+				<Right>160</Right>
+				<Bottom>117</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LUC>
+			<UB ID="UB">
+				<Top>114</Top>
+				<Left>161</Left>
+				<Right>162</Right>
+				<Bottom>116</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</UB>
+			<RUC ID="RUC">
+				<Top>114</Top>
+				<Left>163</Left>
+				<Right>166</Right>
+				<Bottom>116</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RUC>
+			<RB ID="RB">
+				<Top>118</Top>
+				<Left>163</Left>
+				<Right>166</Right>
+				<Bottom>119</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB>
+			<RBC ID="RBC">
+				<Top>131</Top>
+				<Left>163</Left>
+				<Right>166</Right>
+				<Bottom>133</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RBC>
+			<BB ID="BB">
+				<Top>131</Top>
+				<Left>156</Left>
+				<Right>157</Right>
+				<Bottom>133</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</BB>
+		</SecTabBeh>
+		<SecTabFst ID="SecTabFst">
+			<LBC ID="LBC">
+				<Top>120</Top>
+				<Left>167</Left>
+				<Right>170</Right>
+				<Bottom>122</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LBC>
+			<LB ID="LB">
+				<Top>118</Top>
+				<Left>169</Left>
+				<Right>171</Right>
+				<Bottom>119</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LB>
+			<LUC ID="LUC">
+				<Top>114</Top>
+				<Left>170</Left>
+				<Right>175</Right>
+				<Bottom>117</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LUC>
+			<UB ID="UB">
+				<Top>114</Top>
+				<Left>161</Left>
+				<Right>162</Right>
+				<Bottom>116</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</UB>
+			<RUC ID="RUC">
+				<Top>114</Top>
+				<Left>176</Left>
+				<Right>179</Right>
+				<Bottom>116</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RUC>
+			<RB ID="RB">
+				<Top>118</Top>
+				<Left>163</Left>
+				<Right>166</Right>
+				<Bottom>119</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB>
+		</SecTabFst>
+		<SecTabIFP ID="SecTabIFP">
+			<RB ID="RB">
+				<Top>120</Top>
+				<Left>176</Left>
+				<Right>179</Right>
+				<Bottom>121</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB>
+			<RB1 ID="RB1">
+				<Top>122</Top>
+				<Left>176</Left>
+				<Right>179</Right>
+				<Bottom>124</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB1>
+			<RB2 ID="RB2">
+				<Top>125</Top>
+				<Left>176</Left>
+				<Right>178</Right>
+				<Bottom>126</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB2>
+			<RBC ID="RBC">
+				<Top>127</Top>
+				<Left>175</Left>
+				<Right>177</Right>
+				<Bottom>129</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RBC>
+		</SecTabIFP>
+		<StackTab ID="StackTab">
+			<RUC ID="RUC">
+				<Top>97</Top>
+				<Left>173</Left>
+				<Right>186</Right>
+				<Bottom>107</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RUC>
+			<RB ID="RB">
+				<Top>108</Top>
+				<Left>173</Left>
+				<Right>186</Right>
+				<Bottom>109</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB>
+			<RBC ID="RBC">
+				<Top>110</Top>
+				<Left>173</Left>
+				<Right>186</Right>
+				<Bottom>112</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RBC>
+		</StackTab>
+		<LeadStackTab ID="LeadStackTab">
+			<LUC ID="LUC">
+				<Top>123</Top>
+				<Left>186</Left>
+				<Right>203</Right>
+				<Bottom>129</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LUC>
+			<LB ID="LB">
+				<Top>130</Top>
+				<Left>185</Left>
+				<Right>197</Right>
+				<Bottom>131</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LB>
+			<LBC ID="LBC">
+				<Top>132</Top>
+				<Left>183</Left>
+				<Right>196</Right>
+				<Bottom>134</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LBC>
+		</LeadStackTab>
+		<LeftScrl ID="LeftScrl">
+			<Top>114</Top>
+			<Left>1</Left>
+			<Right>19</Right>
+			<Bottom>132</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+			<DS ID="DS">
+				<Top>114</Top>
+				<Left>58</Left>
+				<Right>76</Right>
+				<Bottom>132</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</DS>
+			<PS ID="PS">
+				<Top>114</Top>
+				<Left>95</Left>
+				<Right>113</Right>
+				<Bottom>132</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</PS>
+			<HO ID="HO">
+				<Top>290</Top>
+				<Left>167</Left>
+				<Right>185</Right>
+				<Bottom>308</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</HO>
+		</LeftScrl>
+		<RightScrl ID="RightScrl">
+			<Top>114</Top>
+			<Left>20</Left>
+			<Right>38</Right>
+			<Bottom>132</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+			<DS ID="DS">
+				<Top>114</Top>
+				<Left>77</Left>
+				<Right>95</Right>
+				<Bottom>132</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</DS>
+			<PS ID="PS">
+				<Top>114</Top>
+				<Left>113</Left>
+				<Right>131</Right>
+				<Bottom>132</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</PS>
+			<HO ID="HO">
+				<Top>290</Top>
+				<Left>186</Left>
+				<Right>204</Right>
+				<Bottom>308</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</HO>
+		</RightScrl>
+		<TabList ID="TabList">
+			<Top>114</Top>
+			<Left>39</Left>
+			<Right>57</Right>
+			<Bottom>132</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+			<PS ID="PS">
+				<Top>114</Top>
+				<Left>131</Left>
+				<Right>149</Right>
+				<Bottom>132</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</PS>
+		</TabList>
+		<Sound ID="Sound">
+			<Click ID="Click">
+				<Url>file://.\sapsndtb.wav</Url>
+			</Click>
+		</Sound>
+	</TabStripCtl>
+	<Matchcode ID="Matchcode">
+		<Pattern ID="Pattern">
+			<UP ID="UP">
+				<Top>137</Top>
+				<Left>1</Left>
+				<Right>18</Right>
+				<Bottom>145</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+				<PS ID="PS">
+					<Top>137</Top>
+					<Left>53</Left>
+					<Right>70</Right>
+					<Bottom>145</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PS>
+			</UP>
+			<MI ID="MI">
+				<Top>147</Top>
+				<Left>1</Left>
+				<Right>18</Right>
+				<Bottom>148</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+				<PS ID="PS">
+					<Top>147</Top>
+					<Left>53</Left>
+					<Right>70</Right>
+					<Bottom>148</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PS>
+			</MI>
+			<BT ID="BT">
+				<Top>150</Top>
+				<Left>1</Left>
+				<Right>18</Right>
+				<Bottom>158</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+				<PS ID="PS">
+					<Top>150</Top>
+					<Left>53</Left>
+					<Right>70</Right>
+					<Bottom>158</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</PS>
+			</BT>
+		</Pattern>
+		<Button ID="Button">
+			<Top>137</Top>
+			<Left>40</Left>
+			<Right>49</Right>
+			<Bottom>145</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Button>
+		<ButtonTypeahead ID="ButtonTypeahead">
+			<Top>286</Top>
+			<Left>128</Left>
+			<Right>137</Right>
+			<Bottom>294</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</ButtonTypeahead>
+	</Matchcode>
+	<Frame ID="Frame">
+		<Bord ID="Bord">
+			<LUC ID="LUC">
+				<Top>62</Top>
+				<Left>193</Left>
+				<Right>195</Right>
+				<Bottom>64</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LUC>
+			<UB ID="UB">
+				<Top>62</Top>
+				<Left>196</Left>
+				<Right>197</Right>
+				<Bottom>63</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</UB>
+			<RUC ID="RUC">
+				<Top>62</Top>
+				<Left>198</Left>
+				<Right>200</Right>
+				<Bottom>64</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RUC>
+			<RB ID="RB">
+				<Top>65</Top>
+				<Left>199</Left>
+				<Right>200</Right>
+				<Bottom>66</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RB>
+			<RBC ID="RBC">
+				<Top>67</Top>
+				<Left>198</Left>
+				<Right>200</Right>
+				<Bottom>69</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</RBC>
+			<BB ID="BB">
+				<Top>68</Top>
+				<Left>196</Left>
+				<Right>197</Right>
+				<Bottom>69</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</BB>
+			<LBC ID="LBC">
+				<Top>67</Top>
+				<Left>193</Left>
+				<Right>195</Right>
+				<Bottom>69</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LBC>
+			<LB ID="LB">
+				<Top>65</Top>
+				<Left>193</Left>
+				<Right>194</Right>
+				<Bottom>66</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</LB>
+		</Bord>
+	</Frame>
+	<TableButton ID="TableButton">
+		<Default ID="Default">
+			<Bord ID="Bord">
+				<LUC ID="LUC">
+					<Top>22</Top>
+					<Left>191</Left>
+					<Right>194</Right>
+					<Bottom>25</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</LUC>
+				<LB ID="LB">
+					<Top>27</Top>
+					<Left>191</Left>
+					<Right>193</Right>
+					<Bottom>28</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</LB>
+				<LBC ID="LBC">
+					<Top>30</Top>
+					<Left>191</Left>
+					<Right>194</Right>
+					<Bottom>33</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</LBC>
+				<UB ID="UB">
+					<Top>22</Top>
+					<Left>196</Left>
+					<Right>197</Right>
+					<Bottom>24</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UB>
+				<BB ID="BB">
+					<Top>31</Top>
+					<Left>196</Left>
+					<Right>197</Right>
+					<Bottom>33</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</BB>
+				<RUC ID="RUC">
+					<Top>22</Top>
+					<Left>199</Left>
+					<Right>202</Right>
+					<Bottom>25</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</RUC>
+				<RB ID="RB">
+					<Top>27</Top>
+					<Left>200</Left>
+					<Right>202</Right>
+					<Bottom>28</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</RB>
+				<RBC ID="RBC">
+					<Top>30</Top>
+					<Left>199</Left>
+					<Right>202</Right>
+					<Bottom>33</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</RBC>
+			</Bord>
+			<Bgnd ID="Bgnd">
+				<Top>27</Top>
+				<Left>195</Left>
+				<Right>197</Right>
+				<Bottom>29</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</Bgnd>
+		</Default>
+		<Pushed ID="Pushed">
+			<Bord ID="Bord">
+				<LUC ID="LUC">
+					<Top>35</Top>
+					<Left>191</Left>
+					<Right>194</Right>
+					<Bottom>38</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</LUC>
+				<LB ID="LB">
+					<Top>40</Top>
+					<Left>191</Left>
+					<Right>193</Right>
+					<Bottom>41</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</LB>
+				<LBC ID="LBC">
+					<Top>43</Top>
+					<Left>191</Left>
+					<Right>194</Right>
+					<Bottom>46</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</LBC>
+				<UB ID="UB">
+					<Top>35</Top>
+					<Left>196</Left>
+					<Right>197</Right>
+					<Bottom>37</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UB>
+				<BB ID="BB">
+					<Top>44</Top>
+					<Left>196</Left>
+					<Right>197</Right>
+					<Bottom>46</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</BB>
+				<RUC ID="RUC">
+					<Top>35</Top>
+					<Left>199</Left>
+					<Right>202</Right>
+					<Bottom>38</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</RUC>
+				<RB ID="RB">
+					<Top>40</Top>
+					<Left>200</Left>
+					<Right>202</Right>
+					<Bottom>41</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</RB>
+				<RBC ID="RBC">
+					<Top>43</Top>
+					<Left>199</Left>
+					<Right>202</Right>
+					<Bottom>46</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</RBC>
+			</Bord>
+			<Bgnd ID="Bgnd">
+				<Top>40</Top>
+				<Left>195</Left>
+				<Right>197</Right>
+				<Bottom>42</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</Bgnd>
+		</Pushed>
+	</TableButton>
+	<TableIcon ID="TableIcon">
+		<TIcon ID="TIcon">
+			<Selection ID="Selection">
+				<Top>161</Top>
+				<Left>172</Left>
+				<Right>187</Right>
+				<Bottom>176</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</Selection>
+			<Settings ID="Settings">
+				<Top>161</Top>
+				<Left>188</Left>
+				<Right>203</Right>
+				<Bottom>176</Bottom>
+				<Url>file://.\sapfront.bmp</Url>
+			</Settings>
+		</TIcon>
+	</TableIcon>
+	<Fonts ID="Fonts">
+		<Fix ID="Fix">
+			<Size>12</Size>
+			<Bold>0</Bold>
+			<Charset>0</Charset>
+			<Pitch>1</Pitch>
+			<Italic>0</Italic>
+			<Facename>Arial Monospaced for SAP</Facename>
+		</Fix>
+		<Var ID="Var">
+			<Size>12</Size>
+			<Bold>0</Bold>
+			<Charset>0</Charset>
+			<Pitch>0</Pitch>
+			<Italic>0</Italic>
+			<Facename>Arial</Facename>
+		</Var>
+	</Fonts>
+	<Checkbox ID="Checkbox">
+		<Sound ID="Sound">
+			<Click ID="Click">
+				<Url>file://.\sapsnd03.wav</Url>
+			</Click>
+		</Sound>
+	</Checkbox>
+	<ProgressBar ID="ProgressBar">
+		<Left ID="Left">
+			<Top>162</Top>
+			<Left>124</Left>
+			<Right>125</Right>
+			<Bottom>177</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Left>
+		<Fill ID="Fill">
+			<Top>162</Top>
+			<Left>126</Left>
+			<Right>127</Right>
+			<Bottom>177</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Fill>
+		<Mid ID="Mid">
+			<Top>162</Top>
+			<Left>128</Left>
+			<Right>129</Right>
+			<Bottom>177</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Mid>
+		<Shadow1 ID="Shadow1">
+			<Top>162</Top>
+			<Left>130</Left>
+			<Right>131</Right>
+			<Bottom>177</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Shadow1>
+		<Shadow2 ID="Shadow2">
+			<Top>162</Top>
+			<Left>132</Left>
+			<Right>133</Right>
+			<Bottom>177</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Shadow2>
+		<Shadow3 ID="Shadow3">
+			<Top>162</Top>
+			<Left>134</Left>
+			<Right>135</Right>
+			<Bottom>177</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Shadow3>
+		<Right ID="Right">
+			<Top>162</Top>
+			<Left>136</Left>
+			<Right>137</Right>
+			<Bottom>177</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Right>
+		<Border ID="Border">
+			<Top>162</Top>
+			<Left>138</Left>
+			<Right>139</Right>
+			<Bottom>177</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Border>
+	</ProgressBar>
+	<Focusrect ID="Focusrect">
+		<ULC ID="ULC">
+			<Top>97</Top>
+			<Left>190</Left>
+			<Right>191</Right>
+			<Bottom>98</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</ULC>
+		<UB ID="UB">
+			<Top>97</Top>
+			<Left>194</Left>
+			<Right>198</Right>
+			<Bottom>98</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</UB>
+		<URC ID="URC">
+			<Top>97</Top>
+			<Left>202</Left>
+			<Right>203</Right>
+			<Bottom>98</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</URC>
+		<RB ID="RB">
+			<Top>102</Top>
+			<Left>202</Left>
+			<Right>203</Right>
+			<Bottom>105</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</RB>
+		<LRC ID="LRC">
+			<Top>108</Top>
+			<Left>202</Left>
+			<Right>203</Right>
+			<Bottom>109</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</LRC>
+		<BB ID="BB">
+			<Top>108</Top>
+			<Left>195</Left>
+			<Right>199</Right>
+			<Bottom>109</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</BB>
+		<LLC ID="LLC">
+			<Top>108</Top>
+			<Left>190</Left>
+			<Right>191</Right>
+			<Bottom>109</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</LLC>
+		<LB ID="LB">
+			<Top>101</Top>
+			<Left>190</Left>
+			<Right>191</Right>
+			<Bottom>104</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</LB>
+	</Focusrect>
+	<Combobox ID="Combobox">
+		<Button ID="Button">
+			<Top>137</Top>
+			<Left>106</Left>
+			<Right>115</Right>
+			<Bottom>148</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Button>
+	</Combobox>
+	<Radiobutton ID="Radiobutton">
+		<Sound ID="Sound">
+			<Click ID="Click">
+				<Url>file://.\sapsnd04.wav</Url>
+			</Click>
+		</Sound>
+	</Radiobutton>
+	<Pushbutton ID="Pushbutton">
+		<Sound ID="Sound">
+			<Click ID="Click">
+				<Url>file://.\sapsnd05.wav</Url>
+			</Click>
+		</Sound>
+	</Pushbutton>
+	<SpinButton ID="SpinButton">
+		<small ID="small">
+			<frame ID="frame">
+				<Pressed ID="Pressed">
+					<LeftUpperCorner ID="LeftUpperCorner">
+						<Top>240</Top>
+						<Left>1</Left>
+						<Right>4</Right>
+						<Bottom>243</Bottom>
+						<Url>file://.\sapfront.bmp</Url>
+					</LeftUpperCorner>
+					<UpperBorder ID="UpperBorder">
+						<Top>240</Top>
+						<Left>6</Left>
+						<Right>7</Right>
+						<Bottom>242</Bottom>
+						<Url>file://.\sapfront.bmp</Url>
+					</UpperBorder>
+					<RightBorder ID="RightBorder">
+						<Top>245</Top>
+						<Left>10</Left>
+						<Right>12</Right>
+						<Bottom>246</Bottom>
+						<Url>file://.\sapfront.bmp</Url>
+					</RightBorder>
+					<RightLowerCorner ID="RightLowerCorner">
+						<Top>248</Top>
+						<Left>9</Left>
+						<Right>12</Right>
+						<Bottom>251</Bottom>
+						<Url>file://.\sapfront.bmp</Url>
+					</RightLowerCorner>
+					<LowerBorder ID="LowerBorder">
+						<Top>249</Top>
+						<Left>6</Left>
+						<Right>7</Right>
+						<Bottom>251</Bottom>
+						<Url>file://.\sapfront.bmp</Url>
+					</LowerBorder>
+					<LeftLowerCorner ID="LeftLowerCorner">
+						<Top>248</Top>
+						<Left>1</Left>
+						<Right>4</Right>
+						<Bottom>251</Bottom>
+						<Url>file://.\sapfront.bmp</Url>
+					</LeftLowerCorner>
+					<FillPattern ID="FillPattern">
+						<Top>245</Top>
+						<Left>6</Left>
+						<Right>7</Right>
+						<Bottom>246</Bottom>
+						<Url>file://.\sapfront.bmp</Url>
+					</FillPattern>
+					<LeftBorder ID="LeftBorder">
+						<Top>245</Top>
+						<Left>1</Left>
+						<Right>3</Right>
+						<Bottom>246</Bottom>
+						<Url>file://.\sapfront.bmp</Url>
+					</LeftBorder>
+					<RightUpperCorner ID="RightUpperCorner">
+						<Top>240</Top>
+						<Left>9</Left>
+						<Right>12</Right>
+						<Bottom>243</Bottom>
+						<Url>file://.\sapfront.bmp</Url>
+					</RightUpperCorner>
+				</Pressed>
+				<Unpressed ID="Unpressed">
+					<FillPattern ID="FillPattern">
+						<Top>258</Top>
+						<Left>6</Left>
+						<Right>7</Right>
+						<Bottom>259</Bottom>
+						<Url>file://.\sapfront.bmp</Url>
+					</FillPattern>
+					<LeftUpperCorner ID="LeftUpperCorner">
+						<Top>253</Top>
+						<Left>1</Left>
+						<Right>4</Right>
+						<Bottom>256</Bottom>
+						<Url>file://.\sapfront.bmp</Url>
+					</LeftUpperCorner>
+					<UpperBorder ID="UpperBorder">
+						<Top>253</Top>
+						<Left>6</Left>
+						<Right>7</Right>
+						<Bottom>255</Bottom>
+						<Url>file://.\sapfront.bmp</Url>
+					</UpperBorder>
+					<RightUpperCorner ID="RightUpperCorner">
+						<Top>253</Top>
+						<Left>9</Left>
+						<Right>12</Right>
+						<Bottom>256</Bottom>
+						<Url>file://.\sapfront.bmp</Url>
+					</RightUpperCorner>
+					<RightBorder ID="RightBorder">
+						<Top>258</Top>
+						<Left>10</Left>
+						<Right>12</Right>
+						<Bottom>259</Bottom>
+						<Url>file://.\sapfront.bmp</Url>
+					</RightBorder>
+					<LeftBorder ID="LeftBorder">
+						<Top>258</Top>
+						<Left>1</Left>
+						<Right>3</Right>
+						<Bottom>259</Bottom>
+						<Url>file://.\sapfront.bmp</Url>
+					</LeftBorder>
+					<RightLowerCorner ID="RightLowerCorner">
+						<Top>261</Top>
+						<Left>9</Left>
+						<Right>12</Right>
+						<Bottom>264</Bottom>
+						<Url>file://.\sapfront.bmp</Url>
+					</RightLowerCorner>
+					<LowerBorder ID="LowerBorder">
+						<Top>262</Top>
+						<Left>6</Left>
+						<Right>7</Right>
+						<Bottom>264</Bottom>
+						<Url>file://.\sapfront.bmp</Url>
+					</LowerBorder>
+					<LeftLowerCorner ID="LeftLowerCorner">
+						<Top>261</Top>
+						<Left>1</Left>
+						<Right>4</Right>
+						<Bottom>264</Bottom>
+						<Url>file://.\sapfront.bmp</Url>
+					</LeftLowerCorner>
+				</Unpressed>
+			</frame>
+			<vertical ID="vertical">
+				<UpperBitmap ID="UpperBitmap">
+					<Top>240</Top>
+					<Left>71</Left>
+					<Right>76</Right>
+					<Bottom>243</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UpperBitmap>
+				<LowerBitmap ID="LowerBitmap">
+					<Top>244</Top>
+					<Left>71</Left>
+					<Right>76</Right>
+					<Bottom>247</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</LowerBitmap>
+				<UpperBitmapPressed ID="UpperBitmapPressed">
+					<Top>248</Top>
+					<Left>71</Left>
+					<Right>76</Right>
+					<Bottom>251</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</UpperBitmapPressed>
+				<LowerBitmapPressed ID="LowerBitmapPressed">
+					<Top>252</Top>
+					<Left>71</Left>
+					<Right>76</Right>
+					<Bottom>255</Bottom>
+					<Url>file://.\sapfront.bmp</Url>
+				</LowerBitmapPressed>
+			</vertical>
+			<horizontal ID="horizontal">
+			</horizontal>
+		</small>
+		<medium ID="medium">
+			<frame ID="frame">
+			</frame>
+			<vertical ID="vertical">
+			</vertical>
+			<horizontal ID="horizontal">
+			</horizontal>
+		</medium>
+		<large ID="large">
+			<frame ID="frame">
+			</frame>
+			<horizontal ID="horizontal">
+			</horizontal>
+			<vertical ID="vertical">
+			</vertical>
+		</large>
+	</SpinButton>
+	<Edit ID="Edit">
+		<Input ID="Input">
+			<Top>49</Top>
+			<Left>180</Left>
+			<Right>191</Right>
+			<Bottom>59</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Input>
+		<Typeahead ID="Typeahead">
+			<Top>286</Top>
+			<Left>139</Left>
+			<Right>149</Right>
+			<Bottom>296</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</Typeahead>
+		<TypeaheadRequired ID="TypeaheadRequired">
+			<Top>297</Top>
+			<Left>139</Left>
+			<Right>149</Right>
+			<Bottom>307</Bottom>
+			<Url>file://.\sapfront.bmp</Url>
+		</TypeaheadRequired>
+	</Edit>
+	<Progress ID="Progress">
+		<ProgressIcon ID="ProgressIcon">
+			<Top>0</Top>
+			<Left>0</Left>
+			<Right>192</Right>
+			<Bottom>12</Bottom>
+			<Url>file://.\sapprogress.bmp</Url>
+		</ProgressIcon>
+	</Progress>
+</DefaultTheme>

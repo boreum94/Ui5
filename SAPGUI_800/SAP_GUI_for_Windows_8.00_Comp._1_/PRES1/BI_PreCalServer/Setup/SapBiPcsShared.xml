@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapBiPcsWksta.xml">
+	<Component BuildTime="0xC0CF12A2FB2AD901" Guid="{D8889911-E100-4957-959C-A3CEC6A2E3D7}" Min_Compliant_Version="800.1" Name="$SAP BiPcs ARP" Update="Always" Version="800.1">
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\SAP_BiPcs" Type="Registry">
+			<RegValue Name="DisplayName">SAP BW Precalculation Service</RegValue>
+			<RegValue Name="DisplayIcon">&quot;%SAPBIDESTDIR%\BI_Prec\BExPreCalcWindowsServiceMulti.exe&quot;,0</RegValue>
+			<RegValue Name="Publisher">SAP SE</RegValue>
+			<RegValue Name="URLUpdateInfo">http://service.sap.com</RegValue>
+			<RegValue Name="UninstallString">&quot;%SAPSetupDir%\setup\NwSapSetup.exe&quot; /product:&quot;BiPcs&quot; /uninstall</RegValue>
+		</Action>
+	</Component>
+	<Component BuildTime="0xC0CF12A2FB2AD901" Guid="{454CD65C-CD3D-47B0-A21B-452015C9CA36}" Min_Compliant_Version="800.0" Name="$SAP BiPcs Shared Keys" Version="800.0">
+		<Action Dst="HKLM\SOFTWARE\SAP\SAP Shared\SAP_BiPcs" Type="Registry">
+			<RegValue>SAP BiPcs</RegValue>
+			<RegValue Name="SAPSourceDir">%SAPSrcDir%</RegValue>
+			<RegValue Name="SAPDestDir">%SAPBIDESTDIR%</RegValue>
+		</Action>
+	</Component>
+	<Component BuildTime="0xC0CF12A2FB2AD901" Guid="{C1184358-918B-456E-8FA5-4DBD2203A2DD}" Min_Compliant_Version="800.1" Name="$SAP BiPcs Files" Size="1207" Version="800.1">
+		<Requires Guid="{8E517890-8675-4F23-861F-45B568776C66}"/>
+		<Action Dst="%SAPBIDESTDIR%\BI_Prec" Type="File">
+			<Src Hash="SHA-256:30353a8b81b4199fd4202dce938665a602e5d3637c7f7972b11c48fb3500132f" Timestamp="0x621EADCF5E19D901">%SAPsrcDir%\BI_Prec\BExAnalyzer.xla</Src>
+			<Src FileVersion="8000.1.0.61" Hash="SHA-256:6b86eccbce31ba39e34918c3b6d516ca28aff38b587ce5163e711185b5559dfa" Timestamp="0xE0B1109DFB2AD901">%SAPsrcDir%\BI_Prec\BExPreCalcInstance.dll</Src>
+			<Src FileVersion="8000.1.0.55" Hash="SHA-256:5b5afbd26ee4a1b84a7efdab2d96ac3f71e39048e1b89f67234c8e70cbbe3995" Timestamp="0x0439779DFB2AD901">%SAPsrcDir%\BI_Prec\BExPreCalcRfcServer.dll</Src>
+			<Src FileVersion="8000.1.0.46" Hash="SHA-256:51523b68da45eb49b812c685ffabb343ddc5672cab1e857f75375b56de7845a0" Timestamp="0x4385E29DFB2AD901">%SAPsrcDir%\BI_Prec\BExPreCalcWindowsServiceMulti.exe</Src>
+			<Src FileVersion="8000.1.0.46" Hash="SHA-256:ece51cb08100046978726520e5cf8442dcec8a81e1e0635d025ab42c3b12fa16" Timestamp="0x540C499EFB2AD901">%SAPsrcDir%\BI_Prec\BExPrecalcWorker.exe</Src>
+			<Src FileVersion="8000.1.0.45" Hash="SHA-256:3064cabf9de75d49adbb561de6a67dc1524bd3daa9888edf7ca06b95cdf9b6e0" Timestamp="0x866BC79EFB2AD901">%SAPsrcDir%\BI_Prec\BExPrecConsoleDispatcher.exe</Src>
+		</Action>
+		<Action DisplayName="SAP BW Precalculation Service Multi Instance" Dst="%SAPBIDESTDIR%\BI_Prec" ExeName="&quot;%SAPBIDESTDIR%\BI_Prec\BExPreCalcWindowsServiceMulti.exe&quot;" ServiceName="SAP BW Precalculation Service Multi Instance" StartType="SERVICE_DEMAND_START" Type="NtService">
+			<Src FileVersion="8000.1.0.46" Hash="SHA-256:51523b68da45eb49b812c685ffabb343ddc5672cab1e857f75375b56de7845a0" Timestamp="0x4385E29DFB2AD901">%SAPsrcDir%\BI_Prec\BExPreCalcWindowsServiceMulti.exe</Src>
+		</Action>
+	</Component>
+</SapSetup>

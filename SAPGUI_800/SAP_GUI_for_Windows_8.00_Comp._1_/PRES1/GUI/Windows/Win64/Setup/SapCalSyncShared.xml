@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapCalSyncWksta.xml">
+	<Component BuildTime="0x907D26B05B30D901" Guid="{1759AECA-C093-43B0-A424-ABB48AFEE8A7}" Min_Compliant_Version="760.4" Name="$CalSync" Size="15" SysSize="1427" Version="780.25">
+		<Action Dst="%SapFrontEndDir%\SapGui\CalSync" Type="File">
+			<Src Hash="SHA-256:bf07e6a4ab22a30a924461135becdb414c917e9bfb4e1fe39d77bda1abd05b63" Timestamp="0x538C23FF442FD901">%SAPSrcDir%\SapGui\CalSync\dia2015a.cer</Src>
+		</Action>
+		<ExecuteAction Persistent="true">
+			<Exe DisplayText="Importing DIaLOGIKa certificates" SuppressWindow="true">%WinSysDir%\certutil.exe</Exe>
+			<Parameters>-addstore -f &quot;TrustedPublisher&quot; &quot;%SapFrontEndDir%\SapGui\CalSync\dia2015a.cer&quot;</Parameters>
+			<Wait TimeOut="6000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<Action Dst="%SapFrontEndDir%\SapGui\CalSync" Type="File">
+			<Src Hash="SHA-256:f09fa0e1baba4f6c31452a740619cfe5f6c8ff55a805b58eb49f3ac974b9bc41" Timestamp="0x770124FF442FD901">%SAPSrcDir%\SapGui\CalSync\dia2021b.cer</Src>
+		</Action>
+		<ExecuteAction Persistent="true">
+			<Exe DisplayText="Importing DIaLOGIKa certificates" SuppressWindow="true">%WinSysDir%\certutil.exe</Exe>
+			<Parameters>-addstore -f &quot;TrustedPublisher&quot; &quot;%SapFrontEndDir%\SapGui\CalSync\dia2021b.cer&quot;</Parameters>
+			<Wait TimeOut="6000">%ErrorLevel% = 0</Wait>
+		</ExecuteAction>
+		<MsiAction>
+			<MsiFile Hash="SHA-256:09d9c754db2575e917c9ad0a8e580076434085f8caa98a38e948a344296bacd2" ProductCode="{DE9C0356-0BC3-43C0-A1ED-39150DC3E748}" Timestamp="0x17A620FF442FD901">%SAPsrcDir%\sapgui\CalSync\CalSync.msi</MsiFile>
+			<MsiParameter Name="INSTALLDIR">C:\Program Files (x86)\SAP\FrontEnd\CalSync</MsiParameter>
+		</MsiAction>
+		<Action Dst="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\CALSYNC" Type="Registry">
+			<RegValue Name="DisplayName">Calendar Synchronisation for Microsoft Outlook</RegValue>
+			<RegValue Name="DisplayVersion">7.60 Compilation 1</RegValue>
+			<RegValue Name="DisplayIcon">&quot;%SapFrontEndDir%\sapgui\saplgpad.exe&quot;,0</RegValue>
+			<RegValue Name="Publisher">SAP SE</RegValue>
+			<RegValue Name="URLUpdateInfo">http://support.sap.com</RegValue>
+			<RegValue Name="ModifyPath">&quot;%SAPSetupDir%\setup\NwSapSetup.exe&quot;</RegValue>
+			<RegValue Name="UninstallString">&quot;%SAPSetupDir%\setup\NwSapSetup.exe&quot; /uninstall /product=&quot;CALSYNC&quot; /TitleComponent:&quot;CALSYNC&quot;</RegValue>
+		</Action>
+	</Component>
+</SapSetup>

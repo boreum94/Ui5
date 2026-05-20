@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 FEWUIMSG BG 1504 OK 
+<#001>UIMSG_YNA_DLG_REMEMBER    100 "Запомняне на моето решение"
+<#001>UIMSG_YNA_DLG_YES         100 "Да"
+<#001>UIMSG_YNA_DLG_NO          100 "Не"
+LGN_POP_DTF_TITLE               200 "Изчистване SAP Logon"
+LGN_POP_DTF_MESSAGE             200 "Желаете ли да изчистите директорията на документите %s?"

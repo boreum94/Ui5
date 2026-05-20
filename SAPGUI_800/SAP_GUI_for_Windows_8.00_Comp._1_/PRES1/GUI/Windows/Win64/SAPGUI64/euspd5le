@@ -1,0 +1,122 @@
+# @(#) $Id: //fes/800_REL/src/dwb/eusp/euspd5le#1 $ SAP
+#23456789012345678901234567890123456789012345678901234567890123456789012345
+.  
+.                          Dictionary/program fields
+.  
+. On this screen, you can reference table fields from the ABAP Dictionary
+. or fields from the generated version of the relevant program (module pool
+. or report).
+.  
+. You can copy fields from the ABAP Dictionary to the screen as input/
+. output fields (templates) and/or text fields (key words). Fields from a
+. program can of course only be used as input/output fields.
+.  
+.  
+. Selecting the table
+. -------------------
+. In the screen header line, you first specify the table name or field
+. name. You can specify field names generically, but not table names.
+.  
+. The pushbuttons Get from Dict. and Get from program allow you to search
+. for the table or field in the ABAP Dictionary or in the program.
+.  
+.  
+. Displaying the fields
+. ---------------------
+. The found fields are displayed in a tabular list containing the following
+. elements:
+.  
+. - Field name
+. - Short text (ABAP Dictionary fields only),
+. - Format and length of input/output template
+. - Length of 4 texts (short, medium, long and header - ABAP Dictionary 
+.   fields only)
+. - Currently selected text
+.  
+. If the field name is too long to be displayed in its entirety, you can
+. still view it in full by clicking on the field name. The same applies to
+. the short text and the field text.
+.  
+. Note: When searching for table fields in the list, you can enter the
+.       field name in the input field and choose Find in list.
+.       The system then shifts the list up/down until the field name
+.       beginning with the character string you entered becomes the
+.       first entry.
+.  
+.  
+. Selecting and copying fields
+. ----------------------------
+. To select and copy fields, you must be in change mode.
+.  
+. You can choose the field components you want for each line individually
+. by using the checkboxes and radio buttons. If you choose an input/output
+. field of the type CHAR with length 1, you can use one of the last three 
+. radio buttons Copy as text, Copy as checkbox, Copy as radio button to 
+. specify whether you want to copy a field as a text element, as a checkbox 
+. or as a radio button - if required, together with its text.
+.  
+. If the input/output field already exists on the screen, the relevant
+. checkbox is selected and no further input is possible. If one of the
+. field texts already exists on the screen, the relevant radio button is
+. set.
+.  
+. The selection column on the left allows you to select single lines or
+. blocks of lines for transfer to the screen. A red cross is displayed if
+. you have not chosen at least one field component on the line. As long as
+. any line is highlighted in this way, you cannot transfer any fields.
+.  
+. Fields which are
+.  
+. - blank (i.e. have no text),
+. - not allowed on screens or
+. - already exist on the screen (input/output field and text),
+.  
+. become inactive and cannot be selected for transfer to the screen. In
+. this case, the selection button shows a lock.
+.  
+. When you press Copy, the chosen field components are copied to the
+. screen. By clicking (and, if necessary, moving) the elements in the
+. fullscreen editor, you can define exactly where you want these fields to
+. be displayed. If you copy several fields, they are placed together as a
+. group. You must then place them accordingly.
+.  
+. If the system cannot place fields on the screen so that they do not
+. collide with each other, a message is displayed. You must then repeat the
+. transfer of these fields to another position in the fullscreen editor.
+.  
+. Note: In the "Create" palette of the fullscreen editor, you can use
+.       the reset key, to cancel the transfer of Dictionary/program
+.       fields before they are placed on the screen.
+.  
+.  
+. Sorting a table by field name
+. -----------------------------
+. You can select the column of the field name by clicking on the button
+. below the header. To start the sort, press the left button in the
+. application toolbar below the table.
+.  
+.  
+. Switching on checkboxes / radio buttons of a column
+. ---------------------------------------------------
+. You can switch on all checkboxes / radio buttons of a table column in a
+. single operation (checkboxes can also be switched off in the same way).
+. To do this, you select the appropriate column by clicking on the button
+. below the header. You then switch on (or off) using the pushbuttons in
+. the application toolbar. If no line is selected, the switching on (off)
+. process applies to the entire line.
+.  
+.  
+. Input focus and key navigation
+. -------------------------------
+. The input focus is indicated by a dotted rectangle. You can change the
+. focus either by clicking with the mouse or by pressing the appropriate
+. keys on your keyboard:
+.  
+. - "TAB" switches the focus to the next field on the right which is
+.    ready for input.
+. - "SHIFT + TAB" switches the focuse to the next field on the left which
+.    is ready for input.
+. - "CTRL + TAB" switches the focus to the top of the next group.
+. - "SHIFT + CTRL + TAB" switches the focus to the next element.
+.  
+. Within the table, you can also use the arrow keys.

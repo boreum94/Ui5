@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 TEXTEDIT RO 1404 OK 
+TEXTEDIT_HE_LANG_BUTTON         255 "Comutare layout tastaturã la ebraicã"
+TEXTEDIT_EN_LANG_BUTTON         255 "Comutare layout tastaturã la englezã"
+TEXTEDIT_DISABLE_LANG_BUTTON    255 "Dezactivare buton limbã"
+TEXTEDIT_ENABLE_LANG_BUTTON     255 "Activare buton limbã"
+TEXTEDIT_PROMPT_TEXT            255 "Introduce?i text aici..."

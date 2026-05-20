@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 OFFICEINTEGRATION NL 1100 OK 
+OI_LOADING_CUSTOM_MENU          080 "Bezig met laden van gebruikersspecifiek menu. Even geduld..."
+OI_FILE                         060 "Bestand"
+OI_SAVE                         060 "Opslaan"
+OI_SAVE_AS                      060 "Opslaan als"
+OI_PRINT_PREVIEW                080 "Afdrukvoorbeeld"
+OI_PROPERTIES                   060 "Eigenschappen"
+OI_PRINT                        060 "Afdrukken"

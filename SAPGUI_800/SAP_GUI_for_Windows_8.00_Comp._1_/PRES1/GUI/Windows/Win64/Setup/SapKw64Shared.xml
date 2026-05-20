@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapKwWksta.xml">
+	<Component BuildTime="0xB0EA44775C30D901" Guid="{CCA3BCF1-9CC1-45A4-8E48-3ACC532515A8}" Min_Compliant_Version="800.2" Name="$KW Core 64" Size="98" Version="800.4">
+		<Requires Guid="{BC20379A-C5F9-469D-ABAA-381AB0A01FD4}"/>
+		<ComFileAction Dst="%SapFrontEnd64Dir%\SapGui">
+			<File Hash="SHA-256:29d54ff7895d7f1ed446b520064cc0da95d2704c72fd524736692db999b4f016" Timestamp="0x7ABC8560452FD901">%SapSrcDir%\SapGui64\swutils.ini</File>
+		</ComFileAction>
+		<ComFileAction Dst="%SapFrontEnd64Dir%\SapGui">
+			<File FileVersion="8000.0.0.2" Hash="SHA-256:0e19780a713394fe55d7f134271337d57bf95a87edeac47a8018e12d89a1bed6" Timestamp="0x86C788725C30D901">%SapSrcDir%\SapGui64\swutils.dll</File>
+			<Clsid>{D1B5E041-450C-40BE-819C-F39F922B31B1}</Clsid>
+		</ComFileAction>
+	</Component>
+	<Component BuildTime="0xB0EA44775C30D901" Guid="{56CAF0E0-8AF4-4DB5-A670-1E105DF5F8C6}" Min_Compliant_Version="800.4" Name="$KW Translator 64" Size="1127" Version="800.8">
+		<Action Dst="%SapFrontEnd64Dir%\iwb\kwtranslator" Type="File">
+			<Src FileVersion="8000.0.0.8" Hash="SHA-256:205cb03ff2f1bec94fd788a261e09e0fa758397003b232bc3036e98ca2b5d933" Timestamp="0x65CCCE715C30D901">%SAPSrcDir%\iwb64\kwtranslator\KWTranslator.exe</Src>
+		</Action>
+		<Action Dst="%SapFrontEnd64Dir%\iwb\kwtranslator\de" Type="File">
+			<Src Hash="SHA-256:ccbc1765f1aef6c12f9eb618ad80847aa812f7d21d2acda450aa4c3de07ab1c9" Timestamp="0xF4560758452FD901">%SAPSrcDir%\iwb64\kwtranslator\de\KWTranslatorHelp.pdf</Src>
+		</Action>
+		<Action Dst="%SapFrontEnd64Dir%\iwb\kwtranslator\en" Type="File">
+			<Src Hash="SHA-256:6bb836c6aef18042f95d9393e90575d9158b770c988d36cd764167015b90f213" Timestamp="0x4B410858452FD901">%SAPSrcDir%\iwb64\kwtranslator\en\KWTranslatorHelp.pdf</Src>
+		</Action>
+		<Action Dst="ProgramFiles\SAP Front End\SAP Knowledge Warehouse\SAP KW Translator" Type="Shortcut">
+			<Src>&quot;%SapFrontEnd64Dir%\iwb\kwtranslator\KWTranslator.exe&quot;</Src>
+		</Action>
+		<Action Dst="HKCR\.kxf" Type="Registry">
+			<RegValue>KXFfile</RegValue>
+		</Action>
+		<Action Dst="HKCR\KXFfile" Type="Registry">
+			<RegValue>Knowledge Warehouse Exchange Format</RegValue>
+		</Action>
+		<Action Dst="HKCR\ITMfile\shell\Open" Type="Registry">
+			<RegValue>&amp;Open</RegValue>
+		</Action>
+		<Action Condition="%User_UI_LangId%=DE" Dst="HKCR\ITMfile\shell\Open" Type="Registry">
+			<RegValue>&amp;öffnen</RegValue>
+		</Action>
+		<Action Dst="HKCR\ITMfile\shell\Open\command" Type="Registry">
+			<RegValue>&quot;%SapFrontEnd64Dir%\iwb\kwtranslator\KWTranslator.exe&quot; &quot;%%1&quot;</RegValue>
+		</Action>
+	</Component>
+</SapSetup>

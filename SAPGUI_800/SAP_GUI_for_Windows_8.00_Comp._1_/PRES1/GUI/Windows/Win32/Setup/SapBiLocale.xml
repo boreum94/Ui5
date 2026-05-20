@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Locale" Version="800.1" ConnectedId="{986C96AA-FE9A-48ab-B384-6D418EFEC1DB}">
+        <!-- FolderPathPage -->
+        <String name="SapBiProductName">
+                <En>Business Explorer</En>
+                <De>Business Explorer</De>
+        </String>
+        <String Name="SapBiTargetDirPrompt">
+                <En>Select the target directory for the Business Explorer</En>
+                <De>W&#228;hlen Sie das Zielverzeichnis für den Business Explorer</De>
+        </String>
+        <String name="SapBiProductDescription">
+                <En>Business Intelligence Suite of SAP NetWeaver that provides tools for analysis, reporting and planning.</En>
+                <De>Business Intelligence Suite von SAP NetWeaver, die Werkzeuge für Analyse, Reporting und Planung zur Verfügung stellt</De>
+        </String>
+        <String Name="DscrSapBiDestDir">
+                <En>Business Explorer installation directory</En>
+                <De>Business Explorer Instalaltionsverzeichnis</De>
+        </String>
+        <String Name="strOLEDBForOlapProviderDescription">
+                <En>Front-End Add-On to enable OLE DB for OLAP clients to connect to SAP NetWeaver Business Intelligence (BI)</En>
+                <De>Frontend-Add-On, das Clients von OLE DB for OLAP eine Verbindung zu SAP NetWeaver Business Intelligence (BI) ermöglicht</De>
+        </String>
+		<String Name="strSAPBEXFailedConditionNET46">
+			<En><![CDATA[<a style="COLOR:red">Install the </a><a style="text-decoration:underline" target="blank" href="https://www.microsoft.com/en-US/download/details.aspx?id=48137">Microsoft .NET Framework 4.6</a><a style="COLOR:red"> first and then restart this installation.</a>]]></En>
+			<De><![CDATA[<a style="COLOR:red">Installieren Sie zunächst </a><a target="blank" href="https://www.microsoft.com/en-US/download/details.aspx?id=48137">Microsoft .NET Framework 4.6</a><a style="COLOR:red"> und starten Sie diese SAP Installation erneut.</a>]]></De>
+		</String>
+</SapSetup>

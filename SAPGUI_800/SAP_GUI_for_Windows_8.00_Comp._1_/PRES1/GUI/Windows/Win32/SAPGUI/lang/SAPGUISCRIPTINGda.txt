@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 SAPGUISCRIPTING DA 1100 OK 
+SCRIPTING_SCRIPTISOPENING       150 "Et script åbner forbindelse til følgende system: %s"
+SCRIPTING_SCRIPTNOTINST         150 "Script-understøttelse er ikke installeret"
+SCRIPTING_SCRIPTNOTENABLED      150 "Script-understøttelse inaktiveret af bruger"
+<#007>SCRIPTING_OK_BTN          016 "OK"
+<#007>SCRIPTING_CANCEL_BTN      016 "Afbryd"
+SCRIPTING_DO_NOT_SHOW_AGAIN     150 "Vis ikke popup, når et script er ved at tilgå en forbindelse"
+<#007>SCRIPTING_ALLOW_BTN       016 "Tillad"
+<#007>SCRIPTING_DENY_BTN        016 "Afvis"
+<#007>SCRIPTING_HELP_BTN        016 "Hjælp"

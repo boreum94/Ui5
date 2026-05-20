@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	This XML Schema document contains a set of rules to which an administrator settings XML document must conform.
+	Administrator can use this XML Schema in order to validate administrator settings XML document against it
+-->
+<xs:schema xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="NwbcOptions">
+  <xs:element name="NwbcOptions" msdata:IsDataSet="true" msdata:Locale="en-US">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="RuntimeConnections">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RuntimeConnection" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="Name" type="xs:string" minOccurs="0" msdata:Ordinal="1"/>
+                    <xs:element name="Url" type="httpURI" minOccurs="0" msdata:Ordinal="2"/>
+                    <xs:element name="Type" type="xs:string" minOccurs="0" msdata:Ordinal="0"/>
+                    <xs:element name="Client" type="xs:string" minOccurs="0" msdata:Ordinal="3"/>
+                    <xs:element name="Language" type="xs:string" minOccurs="0" msdata:Ordinal="4"/>
+                    <xs:element name="Comment" type="xs:string" minOccurs="0" msdata:Ordinal="5"/>
+                    <xs:element name="SaplogonDescr" type="xs:string" minOccurs="0" msdata:Ordinal="6"/>
+                    <xs:element name="User" type="xs:string" minOccurs="0" msdata:Ordinal="7"/>
+                    <xs:element name="ProxyUser" type="xs:string" minOccurs="0" msdata:Ordinal="8"/>
+                    <xs:element name="ProxyPassword" type="xs:string" minOccurs="0" msdata:Ordinal="9"/>
+                    <xs:element name="SncChoice" type="xs:string" minOccurs="0" msdata:Ordinal="10"/>
+                    <xs:element name="Description" type="xs:string" minOccurs="0" msdata:Ordinal="11"/>
+                    <xs:element name="IsReadOnly" type="xs:string" minOccurs="0" msdata:Ordinal="12"/>
+                  </xs:all>
+                  <xs:attribute name="Final">
+                    <xs:simpleType>
+                      <xs:restriction base="Boolean"/>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="Invisible">
+                    <xs:simpleType>
+                      <xs:restriction base="Boolean"/>
+                    </xs:simpleType>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Final">
+              <xs:simpleType>
+                <xs:restriction base="Boolean"/>
+              </xs:simpleType>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SearchProviderConnections">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SearchProviderConnection" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="Name" type="xs:string" minOccurs="0"/>
+                    <xs:element name="Mnemonic" type="xs:string" minOccurs="0"/>
+                    <xs:element name="Url" type="httpURI" minOccurs="0"/>
+                    <xs:element name="Type" type="xs:string" minOccurs="0"/>
+                    <xs:element name="IsReadOnly" type="xs:string" minOccurs="0"/>
+                  </xs:all>
+                  <xs:attribute name="Final">
+                    <xs:simpleType>
+                      <xs:restriction base="Boolean">
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Final">
+              <xs:simpleType>
+                <xs:restriction base="Boolean"/>
+              </xs:simpleType>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SidePanelConnections">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SidePanelConnection" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="Title" type="xs:string" minOccurs="0" msdata:Ordinal="0"/>
+                    <xs:element name="Url" type="httpURI" minOccurs="0" msdata:Ordinal="1"/>
+                    <xs:element name="Name" type="xs:string" minOccurs="0" msdata:Ordinal="3"/>
+                    <xs:element name="IsReadOnly" type="xs:string" minOccurs="0"/>
+                  </xs:all>
+                  <xs:attribute name="Final">
+                    <xs:simpleType>
+                      <xs:restriction base="Boolean">
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Final" type="Boolean">
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SingleOptions">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="Fontsize" nillable="true" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="FontSize">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="NavigationTabs" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="NwbcNavigationTabsSize">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="AllowReentranceTicketInExternalStartUrl" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="MixRemoteFavoritesIntoNavtree" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="MixRemoteFavoritesIntoMenutree" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="TaskbarTabPreview" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="AccessibilityMode" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="AutologonMode" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="LshapeRtl" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="UseSapMenuInsteadUserMenu" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShowTechnicalNames" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="WarnScript" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="WinguiCheck" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="TraceLevel" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="TraceLevelID">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Theme" nillable="true" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="ThemeID">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="CanvasFontSize" nillable="true" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="CanvasFontSizeID">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ActiveConnection" nillable="true" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute use="prohibited" name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="AllowTemporaryConnections" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="SapLogOnPadSorting" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="MaxWdaSessions" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:integer">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="IdleTimeout" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:integer">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShowFavoriteMenu" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShowViewMenu" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShowSettingsMenu" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShowWindowMenu" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShowHelpMenu" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="EditableShortCuts" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShowSapNwbcHelpMenuItem" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShowSupportReportMenuItem" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShowExtendedSupportFeaturesMenuItem" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShowToolsPropertyCollectorMenuItem" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="EnableStartUrlQuickLaunch" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="EnableStartApplicationQuickLaunch" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShowServerApplicationsQuickLaunch" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="EnableSearchQuickLaunch" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="EnableNavigationItemsQuickLaunch" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="EnableSapGuiOkCode" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="KeepSapGuiTheme" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShowSystemInfo" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShowSystemInfoInTabTitle" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShowTabsOnSeparateOneRow" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShowSecureLoginClientAttribute" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="AnimatedFocus" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="WindowManager" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="AnnounceDynamicSearchprovidersViaTrayballoons" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShowDataLossPopup" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShowSidePanelMenu" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ActivateHttpSecurityCheck" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="TaskbarTabPreviews" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="OpenSidepanelWithNewTab" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ShowWoCLinksOnIndexPage" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="AddOnlyStableNavigationItemsToRecents" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="UseWinHttpForProxyDetection" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="EntryPage" nillable="true" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="EntryPageID">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="DefaultConnectionBaseUrls" nillable="true" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="DefaultFioriLaunchpadUrls" nillable="true" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="DefaultSystemSelectorView" nillable="true" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="SystemSelectorView">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="DefaultSelectedWorkspaceGuid" nillable="true" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="SystemSelectorTableColumns" nillable="true" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="VisibilityAdminConnectionConfigurationFile" nillable="true" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Visibility">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="VisibilityUserConnectionConfigurationPath" nillable="true" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Visibility">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="OpenPopupInNewWindow" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="BackButtonAvailable" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="DefaultBrowserControl" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="CacheLocation" nillable="true" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="WebbrowserFeatures">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="EnableScriptUrlMitigation" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="EnableBrowserEmulation" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="Boolean">
+                      <xs:attribute name="Final" type="Boolean"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="Boolean">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="false"/>
+      <xs:enumeration value="False"/>
+      <xs:enumeration value="True"/>
+      <xs:enumeration value="true"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TraceLevelID">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Verbose"/>
+      <xs:enumeration value="Info"/>
+      <xs:enumeration value="Warning"/>
+      <xs:enumeration value="Error"/>
+	  <xs:enumeration value="Off"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ThemeID">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Standard"/>
+      <xs:enumeration value="StandardLight"/>
+      <xs:enumeration value="BlueCrystal"/>
+      <xs:enumeration value="HighContrast"/>
+      <xs:enumeration value="Belize"/>
+      <xs:enumeration value="BelizeHcb"/>
+      <xs:enumeration value="BelizeHcw"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CanvasFontSizeID">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Smallest"/>
+      <xs:enumeration value="Smaller"/>
+      <xs:enumeration value="Medium"/>
+      <xs:enumeration value="Larger"/>
+      <xs:enumeration value="Largest"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NwbcNavigationTabsSize">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Small"/>
+      <xs:enumeration value="Large"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FontSize">
+    <xs:restriction base="xs:double">
+      <xs:minInclusive value="50"/>
+      <xs:maxInclusive value="400"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="httpURI">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(http|https)://.*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EntryPageID">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FirstPinnedTab"/>
+      <xs:enumeration value="IndexPage"/>
+      <xs:enumeration value="NewTabPage"/>
+      <xs:enumeration value="FirstWorkcenterPage"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Visibility">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Hidden"/>
+      <xs:enumeration value="ReadOnly"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SystemSelectorView">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ListView"/>
+      <xs:enumeration value="ExplorerView"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR HE 1800 OK 
+PREVIOUS_YEAR                   255 "השנה הקודמת"
+PREVIOUS_MONTH                  255 "החודש הקודם"
+NEXT_YEAR                       255 "השנה הבאה"
+NEXT_MONTH                      255 "החודש הבא"
+WEEK_NUMBER                     255 "מספר שבוע"
+WEEK_NUM_STR                    255 "WN"
+CALENDAR_BTN                    255 "פתח/סגור נווט תאריכים"
+DT_PICKER                       255 "בחירת תאריך: שנה יום, חודש או שנה"

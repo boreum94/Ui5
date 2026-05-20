@@ -1,0 +1,175 @@
+<mvc:View controllerName="code.d22.exam2.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    >
+    <Page id="page" title="{i18n>title}">
+
+        <Panel
+            class="sapUiResponsiveMargin"
+            width="auto"
+            expandable="true"
+            expanded="true"
+        >
+            <headerToolbar>
+                <Toolbar>
+                    <Title text="{i18n>newProductPanelTitle}" />
+                    <ToolbarSpacer/>
+                    <Button 
+                        text="{i18n>addButtonText}"
+                        icon="sap-icon://add"
+                        press=".onAddPress"
+                        />
+                </Toolbar>
+            </headerToolbar>
+            <content>
+                <form:SimpleForm>
+                    <!-- 창고 -->
+                    <Label text="{i18n>labelStorage}"/>
+                    <!-- columns는 한 줄에 버튼을
+                    몇개씩 보이게 할 건지 정해준다. -->
+                    <RadioButtonGroup
+                        columns="2"
+                    >
+                        <buttons>
+                            <RadioButton 
+                                text="{i18n>citySeoul}"
+                                selected="{new>/Input/City/Seoul}"
+                            />
+                            <RadioButton 
+                                text="{i18n>cityBusan}"
+                                selected="{new>/Input/city/Busan}"
+                            />
+                        </buttons>
+                    </RadioButtonGroup>
+
+                    <!-- 제품명 -->
+                    <Label text="{i18n>labelProductName}" 
+                            labelFor="idProductNameInput"
+                    />
+                    <!-- 참고로 여기에 있는 constraints: 는 모델에 입력되는
+                    값이 정상적인지 확인하는거지 실제로 입력된 값이 있는지 없는지
+                    화면을 알 수는 없다. -->
+                    <Input
+                            value="{path: 'new>/Input/ProductName',
+                                    type: 'sap.ui.model.type.String',
+                                    constraints: { minLength: 1 }}"
+                            id="idProductNameInput"
+                            required="true"
+                            placeholder="{i18n>placeHolderProductName}"
+
+                    />
+                    <!-- 가격 -->
+                    <Label text="{i18n>labelPrice}" />
+                    <Input 
+                        value="{path: 'new>/Input/Price',
+                                type: 'sap.ui.model.type.Float',
+                                constraints: {minimum: 0}}"
+                    />
+                    <Input value="{new>/Input/Currency}"
+                            editable="false"
+                    />
+
+                    <!-- 수량 -->
+                    <Label text="{i18n>labelQuantity}" />
+                    <Input 
+                        value="{path: 'new>/Input/Quantity',
+                                type: 'sap.ui.model.type.Integer',
+                                constraints: {minimum: 0},
+                                formatOptions: {
+                                    groupingEnabled: true}}" 
+                    />
+                    <Input value="{new>/Input/Unit}" 
+                            editable="false"
+                    />
+                </form:SimpleForm>
+            </content>
+        </Panel>
+        <Panel
+            class="sapUiResponsiveMargin"
+            width="auto"
+            headerText=""
+        >
+            <!-- Storage별 정렬을 위해 items에 sorter설정, 여러개 선택할 수 있게
+            mode를 MultiSelect로 설정-->
+                <List 
+                    id="idList"
+                    class="sapUiResponsiveMargin"
+                    width="auto"
+                    items="{path:'/Products',
+                            sorter: {path: 'Storage', group: true}}" 
+                    mode="MultiSelect"  
+                >
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="{i18n>ListHeaderText}"/>
+                            <ToolbarSpacer/>
+                            <Text text="창고"/>
+                            <!-- 콤보 박스로 서울,부산,전체 중 하나 선택할 수 있음
+                            선택지가 바뀔 때마다 onComboBoxChange 함수 실행 -->
+                            <ComboBox
+                                id="idComboBox"
+                                selectedKey="A"
+                                selectionChange=".onComboBoxChange" >
+                                <items>
+                                    <core:Item key="S" text="서울"/>
+                                    <core:Item key="B" text="부산"/>
+                                    <core:Item key="A" text="전체"/>
+                                </items>
+                                
+                            </ComboBox>
+                            <!-- 여러개 선택 후 지우기 위한 버튼 -->
+                            <Button 
+                                text="{i18n>deleteButtonText}"
+                                icon="sap-icon://delete"
+                                press=".onButtonDeletePress"
+                            />
+                        </Toolbar>
+                    </headerToolbar>
+                    <items>
+                    <!-- 수량에 천단위 표시를 위해 type 설정 후 단위는 안 보이게 설정-->
+                        <ObjectListItem 
+                            title="{ProductName}"
+                            number="{
+                                parts: ['Quantity', 'Unit'],
+                                type: 'sap.ui.model.type.Unit',
+                                formatOptions: {showMeasure: false}    
+                            }"
+                            numberUnit="{Unit}"
+                        >
+
+
+                        <firstStatus>
+                            <!-- Text는 상태메시지를 띄우는 역할, state는 메세지의 색깔로
+                            상태를 표현하는 열할을 하는..듯? -->
+                            <ObjectStatus
+                                title="{i18n>ObjectStatusQuantity}"
+                                text="{ path: 'Quantity',
+                                        formatter: '.formatter.quantityText'}"
+                                state="{ path: 'Quantity',
+                                        formatter: '.formatter.quantityState'}"
+                            >
+                            
+                            </ObjectStatus> 
+                        </firstStatus>
+
+
+                        <attributes>
+                        <!-- 가격 은 Currency단위로 설정-->
+                            <ObjectAttribute title="창고" 
+                                            text="{Storage}" /> 
+                            <ObjectAttribute title="가격" 
+                                            text="{parts:[{path: 'Price'}, 
+                                                            {path: 'Currency'}],
+                                                type: 'sap.ui.model.type.Currency'
+                                            }"                
+                            />
+                        </attributes>
+                        </ObjectListItem>
+                    </items>
+                </List>
+            
+        </Panel>
+    </Page>
+</mvc:View>

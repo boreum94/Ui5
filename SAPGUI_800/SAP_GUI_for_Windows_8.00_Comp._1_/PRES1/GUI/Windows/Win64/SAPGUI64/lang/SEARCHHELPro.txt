@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 SEARCHHELP RO 1404 OK 
+SEARCH_HELP_FIND                080 "Cãutare (introducere)"
+SEARCH_HELP_CANCEL              080 "Anulare (F12)"
+F4HELP_BUTTON_TOOLTIP           050 "Câmp de selec?ie (valori de limitã)"
+SEARCH_HELP_SORTA               050 "(Click pentru sortare în ordine ascendentã)"
+SEARCH_HELP_SORTD               050 "(Click pentru sortare în ordine descendentã)"
+<#001>FEW_MENU_NEWMODE          032 "Creare sesiune"
+<#001>FEW_MENU_STOPMODE         032 "Oprire tranzacþie"

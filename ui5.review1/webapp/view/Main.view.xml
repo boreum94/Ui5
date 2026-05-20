@@ -1,0 +1,39 @@
+<mvc:View controllerName="code.t2.ui5.review1.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <!-- sap.m이 기본으로 등록되어있기 때문에 아래의 Page는 사실 sap.m.Page이다. -->
+    <Page id="page" title="{i18n>title}">
+        <!-- 아래의 Text도 sap.m.Text를 의미한다. -->
+        <Text text="Hello World!"></Text>
+
+        <!-- sap.m.Button을 의미한다. -->
+        <!-- Button의 경우 여러개를 만들면 한 줄에 여러 버튼이 생성되는데,
+        만야 한 줄에 하나의 버튼만 나오게 하고 싶으면 VBox 로 감싸면 된다 -->
+        <VBox >
+            <Button text="버튼입니다."></Button>
+        </VBox>
+
+        <!-- sap.m.Input을 의미한다. -->
+        <!-- Input의 경우 여러개를 만들어도 한 줄에 하나만 생성되는데,
+        만약 한 줄에 여러 Input 을 만들고 싶으면 HBox로 감싼다. --> 
+        <HBox >
+            <Input ></Input>    
+        </HBox>
+
+        <VBox >
+            <HBox >
+                <Text text="이름"></Text>
+                <Input ></Input>
+            </HBox>
+            <HBox >
+                <Text text="나이"></Text>
+                <Input ></Input>
+            </HBox>
+            <HBox >
+                <Text text="주소"></Text>
+                <Input ></Input>
+            </HBox>
+        </VBox>
+
+    </Page>
+</mvc:View>

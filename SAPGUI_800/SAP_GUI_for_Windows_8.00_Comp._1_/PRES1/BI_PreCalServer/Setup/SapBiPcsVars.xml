@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SapSetup Context="Variables" Version="800.1" ConnectedId="{EB645960-713B-425C-A926-61EB2A14EFD4}">
+    <Variable Name="Pre_BiPcs" Persistent="FALSE" DisplayInSapAdmin="false">
+      <Value>UNDEFINED</Value>
+      <Value Script="TRUE">
+        <![CDATA[
+            NwEngine.Context.Log.Write "Script: Checking 640 version and 710 First Customer Shipment of SAP PCS installed by SAPSetup"
+            strSapPcs640Key = "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\SAPPCS"
+            strSapPcs710FcsKey = "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{6B7E9CCA-5AFC-4936-9ADF-E450BE6EBE21}"
+            If Not NwEngine.Shell.RegKeyExist( strSapPcs640Key ) And Not NwEngine.Shell.RegKeyExist( strSapPcs710FcsKey ) Then
+                NwEngine.Variables.AppendDefaultValue "Pre_BiPcs", "FULFILLED"
+            End If
+        ]]>
+      </Value>
+    </Variable>
+</SapSetup>

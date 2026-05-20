@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 SAPGUISCRIPTING KO 8500 OK 
+SCRIPTING_SCRIPTISOPENING       150 "스크립트가 시스템에 대한 연결을 여는 중입니다(%s)."
+SCRIPTING_SCRIPTNOTINST         150 "스크립팅 지원이 설치되어 있지 않습니다."
+SCRIPTING_SCRIPTNOTENABLED      150 "사용자가 스크립팅 지원을 비활성화했습니다."
+<#007>SCRIPTING_OK_BTN          016 "확인"
+<#007>SCRIPTING_CANCEL_BTN      016 "취소"
+SCRIPTING_DO_NOT_SHOW_AGAIN     150 "스크립트에서 연결을 개시하는 경우 이 팝업을 표시하지 마십시오."
+<#007>SCRIPTING_ALLOW_BTN       016 "허용"
+<#007>SCRIPTING_DENY_BTN        016 "거부"
+<#007>SCRIPTING_HELP_BTN        016 "도움말"

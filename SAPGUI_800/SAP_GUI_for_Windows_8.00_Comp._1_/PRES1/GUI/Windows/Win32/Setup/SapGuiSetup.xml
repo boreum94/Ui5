@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapGuiWkstaUI.xml">
+	<SapSetupProduct BuildTime="0x90437C837B30D901" CmdLine="SAPGUI" Description="StrSapGuiDescription" Guid="{1460620D-C8BC-44c2-86EC-E632E0986B01}" MasterNode="true" Name="StrSapGui" Version="800.1984">
+		<ExcludesProduct Comment="SAP GUI 64 old GUID" ProductGuid="{00AAA0A0-16CF-4bbb-935B-83520EEE0CD9}"/>
+		<ExcludesProduct Comment="SAP GUI 64" ProductGuid="{1460620D-C8BC-44c2-86ED-000000000010}"/>
+		<Prerequisite>
+			<Condition>NOT(%WinType%=[Windows XP,Windows Server 2003,Windows Vista, Windows 7, Windows Server 2008, Windows Server 2012, Windows Server 2012 R2, Windows 8.1])</Condition>
+			<FailureText>strSapGuiInstOsNotSupported</FailureText>
+		</Prerequisite>
+		<Prerequisite>
+			<Condition>NOT(IsProductInstalled({00AAA0A0-16CF-4bbb-935B-83520EEE0CD9}))</Condition>
+			<FailureText>strSapGuiCannotCoexistWithSapGui64</FailureText>
+		</Prerequisite>
+		<Prerequisite>
+			<Condition>NOT(IsProductInstalled({1460620D-C8BC-44c2-86ED-000000000010}))</Condition>
+			<FailureText>strSapGuiCannotCoexistWithSapGui64</FailureText>
+		</Prerequisite>
+		<Succeeds Name="BW 3.50 Add-On for SAP GUI 7.20" ProductGuid="{14EC25B0-4462-4d40-98BB-A29B03C3A003}"/>
+		<Succeeds Name="Tweak-GUI for SAP GUI 7.10" ProductGuid="{14991593-3D7A-402e-97C9-C99B346B1A53}"/>
+		<Succeeds Name="Standard Regression Testing (START)" ProductGuid="{3E84E22B-ACF6-46f5-A465-73BCEF7B6965}"/>
+		<Succeeds Name="SAP JNet/JGantt" ProductGuid="{180B6E52-EB99-464e-B2A5-A5314A81EDAC}"/>
+		<Succeeds Name="Install SAP GUI Desktop Icon / Shortcuts even though NWBC is installed" ProductGuid="{146D3BB5-D3FC-4E61-88F4-CE0341A22F54}"/>
+		<UI>
+			<Page Type="FolderPath">
+				<PageVariable>SapFrontEndDir</PageVariable>
+				<WindowCaption>StrWindowCaption</WindowCaption>
+				<Title>StrSapGui</Title>
+				<SubTitle>StrSapGuiSelectTargetDir</SubTitle>
+				<BackBtnText>StrBtnBack</BackBtnText>
+				<NextBtnText>StrBtnNext</NextBtnText>
+				<BrowseBtnText>StrBtnBrowse</BrowseBtnText>
+				<CancelBtnText>StrBtnCancel</CancelBtnText>
+			</Page>
+		</UI>
+		<Folder Description="strSapGuiSuiteDescription" Name="SAP GUI Suite">
+			<IncludesProductPart Comment="SAP GUI" ProductGuid="{C0EB1513-8349-48ed-8119-EA89589F8EC7}"/>
+			<IncludesProductPart Comment="SAP Logon Pad" ProductGuid="{6DDDB634-2C1F-49ab-A615-16B29280B848}"/>
+			<IncludesProductPart Comment="SAP Logon" ProductGuid="{6BF4F23C-34ED-4DCB-BAE6-B715A951F086}"/>
+			<IncludesProductPart Comment="SAP GUI Scripting" ProductGuid="{50DC889A-CF86-463b-BC6B-95AEEC8590B9}"/>
+			<IncludesProductPart Comment="SAP GUI Documentation" ProductGuid="{CA125D08-7C66-4674-9CBD-6E654357E0FA}"/>
+			<IncludesProductPart Comment="GUI XT" ProductGuid="{443269E1-5C06-495d-8DB2-39A50828E245}"/>
+			<IncludesProductPart Comment="Unicode RFC Libraries" ProductGuid="{6191346E-F267-4ee3-9BA9-CF28C2ED22C4}"/>
+		</Folder>
+		<Folder Description="strR3AddonDescription" Name="R/3 Add-On">
+			<IncludesProductPart Comment="EH&amp;S WWI" ProductGuid="{44A9A0B3-E827-43ab-AC48-84550739C012}"/>
+			<IncludesProductPart Comment="Visual Configuration Tool" ProductGuid="{A223ED58-13F7-440d-BD1A-75FE386714A5}"/>
+		</Folder>
+		<Folder Description="strSCMAddOnDescription" Name="SCM Add-On">
+			<IncludesProductPart Comment="SCM Front-End" ProductGuid="{7F75AA43-6B9C-4b15-A1EB-12B45844D24B}"/>
+		</Folder>
+	</SapSetupProduct>
+	<SapSetupProductPart BuildTime="0x90437C837B30D901" Description="strSapGuiLogonPadDescription" Guid="{C0EB1513-8349-48ED-8119-EA89589F8EC7}" Name="SAP GUI" Version="800.10">
+		<RequiresComponent ComponentGuid="{0C0E1CCC-18AE-431D-BE18-9BB872C88E72}"/>
+		<RequiresComponent ComponentGuid="{2548BF37-8109-432D-9AA0-EE1EDADC860A}"/>
+		<RequiresComponent ComponentGuid="{C0C8FB32-58D0-418B-9B59-8C20CCB40362}"/>
+		<RequiresComponent ComponentGuid="{04DC8F4B-A28F-45DE-8C1F-EAE757E48516}"/>
+		<RequiresComponent ComponentGuid="{BB3D0A6C-B026-473A-952F-6752162AAB16}"/>
+		<RequiresComponent ComponentGuid="{E6F05800-C45B-4D4D-BC41-376D846C6A85}"/>
+		<RequiresComponent ComponentGuid="{BAFD927C-D8AB-4B66-8F7E-391EB90522F2}"/>
+		<RequiresComponent ComponentGuid="{4FA50AAA-25C2-4829-B605-D2F2E0FD0401}"/>
+		<RequiresComponent ComponentGuid="{D309D9D9-A47E-408F-B7A8-F1D578D5AFCA}"/>
+		<RequiresComponent ComponentGuid="{4ACD035E-11E3-4179-A15B-F0F547D97D74}"/>
+		<RequiresComponent ComponentGuid="{ECC6A3DB-26B0-4AAB-8158-51351D7E9241}"/>
+		<RequiresComponent ComponentGuid="{B6C2A075-C9EE-4CE1-9AF0-D9D47FA561D9}"/>
+		<RequiresComponent ComponentGuid="{0B6617DD-FA9B-4FE8-85E1-270480BDFD91}"/>
+		<RequiresComponent ComponentGuid="{14C7BED2-7A33-4A57-BA60-C929A391CE04}"/>
+		<RequiresComponent ComponentGuid="{E7A36482-6208-43C3-940D-83C7E4ADA37A}"/>
+		<RequiresComponent ComponentGuid="{21B43D24-E493-4351-B2BF-C690DF981FDC}"/>
+		<RequiresComponent ComponentGuid="{F4129236-5171-4CC1-99E7-CCD4A975FEE0}"/>
+		<RequiresComponent ComponentGuid="{3FA4FA8C-A7C7-452E-B959-71F030E75DAC}"/>
+		<RequiresComponent ComponentGuid="{E9B2668F-8254-46A8-B849-8BFCC826B119}"/>
+		<RequiresComponent ComponentGuid="{9EF7439F-8BD6-4E84-9B23-2713401EDA99}"/>
+		<RequiresComponent ComponentGuid="{3E8FAE8C-58D5-44DA-B350-3CF6114097E3}"/>
+		<RequiresComponent ComponentGuid="{6413CD93-F5DE-44F9-9DAE-A719CB5BE501}"/>
+		<RequiresComponent ComponentGuid="{88F42711-4FD9-489D-86B2-7E4915FAC7C9}"/>
+		<RequiresComponent ComponentGuid="{7EC16C45-6B54-407A-BFA9-CDC254878B3E}"/>
+		<RequiresComponent ComponentGuid="{CEA0812E-3E0D-4210-BF7C-CDAFF35C60D3}"/>
+		<RequiresComponent ComponentGuid="{C166D7A0-8FA9-4412-80F3-38E6B4857B65}"/>
+		<RequiresComponent ComponentGuid="{EF8480D1-C328-4232-AF4C-468C3F59F512}"/>
+		<RequiresComponent ComponentGuid="{03BA4571-4A57-497C-8948-6CC94E408B11}"/>
+		<RequiresComponent ComponentGuid="{348022FE-D77D-48BD-A7AF-85EB351BC4F8}"/>
+		<RequiresComponent ComponentGuid="{EDFB7260-642A-49B7-A569-899B24066800}"/>
+	</SapSetupProductPart>
+	<SapSetupProductPart BuildTime="0x90437C837B30D901" Description="strSapLogonPadDescription" Guid="{6DDDB634-2C1F-49AB-A615-16B29280B848}" Name="SAP Logon Pad" Version="800.2">
+		<RequiresProductPart OverrideName="Requires SAP GUI" ProductGuid="{C0EB1513-8349-48ED-8119-EA89589F8EC7}"/>
+		<RequiresComponent ComponentGuid="{029F8888-F002-4207-9B5D-7AC1EA2663EA}"/>
+	</SapSetupProductPart>
+	<SapSetupProductPart BuildTime="0x90437C837B30D901" Description="strSapLogonDescription" Guid="{6BF4F23C-34ED-4DCB-BAE6-B715A951F086}" Name="SAP Logon" Version="800.1">
+		<RequiresProductPart OverrideName="Requires SAP GUI" ProductGuid="{C0EB1513-8349-48ED-8119-EA89589F8EC7}"/>
+		<RequiresComponent ComponentGuid="{C0EB1513-8349-48ED-8119-EA89589F8EC7}"/>
+		<RequiresComponent ComponentGuid="{57B0292C-E286-4CEC-A47D-EE2AD6340A66}"/>
+		<RequiresComponent ComponentGuid="{71D0A02B-4F2B-4197-BF1C-8961F8C834E2}"/>
+		<RequiresComponent ComponentGuid="{597BAB82-701C-4C08-ABDF-F84242B410FA}"/>
+		<RequiresComponent ComponentGuid="{66467E17-9309-4965-92C1-AE3B6BCCD5F8}"/>
+	</SapSetupProductPart>
+	<SapSetupProductPart BuildTime="0x90437C837B30D901" Description="strSapGuiScriptingDescription" Guid="{50DC889A-CF86-463B-BC6B-95AEEC8590B9}" Name="SAP GUI Scripting" Version="800.2">
+		<RequiresComponent ComponentGuid="{2548BF37-8109-432D-9AA0-EE1EDADC860A}"/>
+		<RequiresComponent ComponentGuid="{3F61C01F-3797-4D74-BDE6-21073286FFE9}"/>
+	</SapSetupProductPart>
+	<SapSetupProductPart BuildTime="0x90437C837B30D901" Description="strSapGuiXTDescription" Guid="{443269E1-5C06-495D-8DB2-39A50828E245}" Name="GUI XT" Version="800.2">
+		<RequiresComponent ComponentGuid="{2548BF37-8109-432D-9AA0-EE1EDADC860A}"/>
+		<RequiresComponent ComponentGuid="{7B6F4DCD-79DC-401A-AE88-A7F225183956}"/>
+		<RequiresComponent ComponentGuid="{D0D4EF18-972D-46C4-8288-676B6B6F9C26}"/>
+	</SapSetupProductPart>
+	<SapSetupProductPart BuildTime="0x90437C837B30D901" Description="strUnicodeRFCLibsDescription" Guid="{6191346E-F267-4EE3-9BA9-CF28C2ED22C4}" Name="Unicode RFC Libraries" Version="800.1">
+		<RequiresComponent ComponentGuid="{2548BF37-8109-432D-9AA0-EE1EDADC860A}"/>
+		<RequiresComponent ComponentGuid="{12304B5A-A396-472F-A673-C27B00D2315C}"/>
+		<RequiresComponent ComponentGuid="{CE1BBBC8-40DF-4340-81F4-9EAEA4F15CFA}"/>
+	</SapSetupProductPart>
+	<SapSetupProductPart BuildTime="0x90437C837B30D901" Description="strEHSWWIDescription" Guid="{44A9A0B3-E827-43AB-AC48-84550739C012}" Name="EH&amp;S WWI" Version="800.2">
+		<RequiresProductPart OverrideName="Requires SAP GUI" ProductGuid="{C0EB1513-8349-48ED-8119-EA89589F8EC7}"/>
+		<RequiresComponent ComponentGuid="{BC20379A-C5F9-469D-ABAA-381AB0A01FD4}"/>
+		<RequiresComponent ComponentGuid="{74D8FEAD-68D7-4FBC-A758-2C2BBBAB4658}"/>
+	</SapSetupProductPart>
+	<SapSetupProductPart BuildTime="0x90437C837B30D901" Description="strVCTDescription" Guid="{A223ED58-13F7-440D-BD1A-75FE386714A5}" Name="Visual Configuration Tool" Version="800.3">
+		<RequiresProductPart OverrideName="Requires SAP GUI" ProductGuid="{C0EB1513-8349-48ED-8119-EA89589F8EC7}"/>
+		<RequiresComponent ComponentGuid="{1778950C-56B9-4339-AF4F-64C0EBBB4ECD}"/>
+		<Prerequisite>
+			<Condition>%DOTNETV4.5% = EXISTING</Condition>
+			<FailureText>&lt;p style=&quot;COLOR:red&quot;&gt;Visual Configuration Tool requires the .NET runtime 4.5 or later.&lt;/p&gt;</FailureText>
+		</Prerequisite>
+	</SapSetupProductPart>
+	<SapSetupProductPart BuildTime="0x90437C837B30D901" Guid="{7F75AA43-6B9C-4B15-A1EB-12B45844D24B}" Name="SCM Front-End" Version="800.1">
+		<RequiresProductPart OverrideName="Requires SAP GUI" ProductGuid="{C0EB1513-8349-48ED-8119-EA89589F8EC7}"/>
+		<RequiresComponent ComponentGuid="{71792B1A-E97D-4D5D-B3AE-32C245D630EE}"/>
+		<RequiresComponent ComponentGuid="{23B2DA68-7F1B-4ECC-BAE8-84C9B361C27F}"/>
+	</SapSetupProductPart>
+	<SapSetupProductPart BuildTime="0x90437C837B30D901" Description="strSapGuiDocumentationDescription" Guid="{CA125D08-7C66-4674-9CBD-6E654357E0FA}" Name="SAP GUI Documentation" Version="800.1">
+		<RequiresProductPart OverrideName="Requires SAP GUI" ProductGuid="{C0EB1513-8349-48ED-8119-EA89589F8EC7}"/>
+		<RequiresComponent ComponentGuid="{A82BC012-8FEA-4A17-92F2-E8B14CC45B17}"/>
+	</SapSetupProductPart>
+</SapSetup>

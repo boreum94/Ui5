@@ -1,0 +1,12 @@
+_SAPPCTXT_HEADER_               002 8000 GRIDVIEW EN 1100 OK 
+GRIDVIEW_MSGBOX_TITLE           080 "GridView"
+GRIDVIEW_MSGBOX_TEXT            128 "Could not start print job"
+GRIDVIEW_TOOLTIP_DESELECT_ALL   080 "Deselect All"
+GRIDVIEW_TOOLTIP_SELECT_ALL     080 "Select All"
+GRIDVIEW_TOOLTIP_TEXT_COLLAPSE  080 "Collapse Selection"
+GRIDVIEW_TOOLTIP_TEXT_EXPAND    080 "Expand Selection"
+GRIDVIEW_ENABLE_HISTORY         255 "Enable History"
+GRIDVIEW_DISABLE_HISTORY        255 "Disable History"
+GRIDVIEW_DEFAULT_SETTING        255 "Use Default Settings"
+GRIDVIEW_MSGBOX_TITLE2          080 "GridView"
+GRIDVIEW_MSGBOX_ERROR           128 "You cannot copy multiple selections"

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapKw_WkstaUI.xml">
+	<SapSetupProduct BuildTime="0xA08766A77D30D901" CmdLine="KW" Description="strKwAddOnForSapGuiDescription" Guid="{1460620D-C8BC-44c2-86EC-F00000000030}" Name="strKwAddOnOnlineEditingProductName" Version="800.7">
+		<Succeeds Name="KW64 old GUID" ProductGuid="{14EE8724-9171-4101-B0C5-B9B2B7F6A3DF}"/>
+		<ExcludesProduct Comment="SAP GUI 64" ProductGuid="{00AAA0A0-16CF-4bbb-935B-83520EEE0CD9}"/>
+		<Prerequisite>
+			<Condition>NOT(IsProductInstalled({14DBC6f1-2ABE-4236-8CE7-30B5E277B552}))</Condition>
+			<FailureText>StrKW32CannotCoexistWithKW64</FailureText>
+		</Prerequisite>
+		<Prerequisite>
+			<Condition>NOT(IsProductInstalled({00AAA0A0-16CF-4bbb-935B-83520EEE0CD9}))</Condition>
+			<FailureText>StrKW32CannotCoexistWithSapGui64</FailureText>
+		</Prerequisite>
+		<IncludesProductPart Comment="KW Online Editing" ProductGuid="{16E6B2EA-936C-4898-AB93-47CAA4F601CA}"/>
+		<IncludesProductPart Comment="KW Translator" ProductGuid="{B8B2D902-F6E4-4771-A26D-64C9FFD70085}"/>
+	</SapSetupProduct>
+	<SapSetupProductPart BuildTime="0xA08766A77D30D901" Description="strKwAddOnOnlineEditingDescription" Guid="{16E6B2EA-936C-4898-AB93-47CAA4F601CA}" Name="KW Online Editing" Version="800.3">
+		<RequiresProductPart ProductGuid="{C0EB1513-8349-48ED-8119-EA89589F8EC7}"/>
+		<RequiresComponent ComponentGuid="{3353F8CC-D6E1-4D08-99CD-4031DCB2A141}"/>
+		<RequiresComponent ComponentGuid="{D0D4EF18-972D-46C4-8288-676B6B6F9C26}"/>
+	</SapSetupProductPart>
+	<SapSetupProductPart BuildTime="0xA08766A77D30D901" Description="strKwAddOnTranslator" Guid="{B8B2D902-F6E4-4771-A26D-64C9FFD70085}" Name="KW Translator" Version="800.3">
+		<RequiresComponent ComponentGuid="{3353F8CC-D6E1-4D08-99CD-4031DCB2A141}"/>
+		<RequiresComponent ComponentGuid="{CBBFE91E-C59A-4AC3-B7ED-916C65F13745}"/>
+		<RequiresComponent ComponentGuid="{D0D4EF18-972D-46C4-8288-676B6B6F9C26}"/>
+		<Prerequisite>
+			<Condition>((%DotNetV4ClientProfile%=EXISTING) OR (%DotNetV4FullProfile%=EXISTING))</Condition>
+			<FailureText>Knowledge Warehouse Translator: &lt;a style=&quot;COLOR:red&quot;&gt;Requires Microsoft .Net Framework 4.&lt;a&gt;</FailureText>
+		</Prerequisite>
+	</SapSetupProductPart>
+</SapSetup>

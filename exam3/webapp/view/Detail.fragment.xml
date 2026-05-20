@@ -1,0 +1,87 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+>
+    <Dialog
+        id="idDialog"
+        title="{i18n>dialogTitle}"
+    >
+        <content>
+            <form:SimpleForm
+                layout="ResponsiveGridLayout"
+                columnsL="2"
+                columnsM="2"
+            >
+                <core:Title text="{i18n>generalInformation}"/>
+                <Label text="{i18n>columnEmployeeID}" />
+                <!-- 현재 경로의 EmployeeID에 접근하여 출력한다. -->
+                <Text text="{EmployeeID}"/>
+
+                <Label text="{i18n>columnTitleofCoutesy}" />
+                <Text text="{TitleOfCoutesy} {LastName}"/>
+
+                <Label text="{i18n>columnFirstName}" />
+                <Text text="{FirstName}"/>
+
+                <Label text="{i18n>columnTitle}" />
+                <Text text="{Title}"/>
+
+                <Label text="{i18n>columnHireDate}" />
+                <Text text="{ path: 'HireDate',
+                                type: 'sap.ui.model.type.Date',
+                                formatOptions: {
+                                    pattern: 'yyyy.MM.dd'
+                                    }}"/>
+
+                <Label text="{i18n>columnBirthDate}" />
+                <Text text="{path: 'BirthDate',
+                            type: 'sap.ui.model.type.Date',
+                            formatOptions: {
+                                pattern: 'yyyy.MM.dd'
+                                }}"/>
+
+                <core:Title text="{i18n>addressInformation}"/>
+
+                <Label text="{i18n>columnAddress}"/>
+                <Text text="{Address}"/>
+
+                <Label text="{i18n>columnCity>}"/>
+                <Text text="{City}"/>
+
+                <Label text="{i18n>columnRegion}"/>
+                <Text text="{Region}"/>
+
+                <Label text="{i18n>columnPostalCode}"/>
+                <Text text="{PostalCode}"/>
+
+                <Label text="{i18n>columnCountry}"/>
+                <Text text="{Country}"/>
+
+                <Label text="{i18n>columnHomePhone}"/>
+                <Text text="{HomePhone}"/>
+
+                <Label text="{i18n>columnExtention}"/>
+                <Text text="{Extension}"/>
+
+            </form:SimpleForm>
+            <!-- Note -->
+            <form:SimpleForm  
+                layout="ResponsiveGridLayout"
+                columnsL="1"
+                columnsM="1"
+            >
+                <core:Title text="{i18n>columnNotes}"/>
+                <Text text="{Notes}"/>
+
+            </form:SimpleForm>
+        </content>
+        <beginButton>
+            <Button 
+                text="{i18n>closeButtonText}"
+                type="Back"
+                press=".onCloseDialog"
+            />
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

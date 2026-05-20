@@ -1,0 +1,107 @@
+<mvc:View controllerName="code.d22.hw1c.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    >
+    <!-- 고객정보를 갖고있는 테이블을 생성한다. 
+    items=""에 해당 정보를 찾아갈 수 있는 경로를 넣었고, selectionChange는 선택한 
+    고객이 바뀔 때마다 onCustomerChange함수가 실행된다는 의미이다.-->
+    <Page id="page" title="{i18n>title}"> 
+        <!-- 나는 테이블 id는 구매목록 테이블에만 줬는데,
+        강사님은 왜 주셨을까 -->
+        <!-- SingleSelectLeft mode는 라디오 버튼을 구현한다.-->
+        <Table 
+            headerText="Customers"
+            growing="true"
+            growingThreshold="5"
+            class="sapUiResponsiveMargin"
+            width="auto"
+            items="{/Members}"
+            mode="SingleSelectLeft" 
+            selectionChange=".onCustomerChange"
+    
+            >
+            <!-- 열 이름 부여 -->
+            <columns>
+                <Column><header><Text text="{i18n>CustomerName}"/></header></Column>
+                <Column><header><Text text="{i18n>Birth}"/></header></Column>
+                <Column><header><Text text="{i18n>Gender}"/></header></Column>
+                <Column><header><Text text="{i18n>Phone}"/></header></Column>
+                <Column><header><Text text="{i18n>Address}"/></header></Column>
+                <Column><header><Text text="{i18n>Email}"/></header></Column>
+    
+            </columns>
+            <!-- 테이블에 입력될 데이터 주소들 -->
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <ObjectIdentifier title="{Name}"/>
+                        <Text text="{Birth}" />
+                        <Text text="{Gender}" />
+                        <Text text="{Phone}" />
+                        <Text text="{Address}" />
+                        <Text text="{Email}" />
+                        
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <!-- 고객을 선택했을 때 하단에 보여질 구매내역 테이블을 만들었다
+        컨트롤러에서 함수를 만들때 사용할 수 있도록 id를 부여했다
+        manifest.js에서 모델명을 지어줬다면 items="{모델명>경로이름}" 으로 작성함 -->
+        <Table 
+            id="purchaseList"
+            headerText="구매이력"
+            items="{_Purchases}"
+            growing="true"
+            growingThreshold="5"
+            class="sapUiResponsiveMargin"
+            width="auto"
+            >
+            <!-- 테이블 열 이름 -->
+            <columns>
+                <Column><header><Text text="제품명"/></header></Column>
+                <Column><header><Text text="종류"/></header></Column>
+                <Column><header><Text text="가격"/></header></Column>
+                <Column><header><Text text="통화"/></header></Column>
+                <Column><header><Text text="가게"/></header></Column>
+                <Column><header><Text text="구매일자"/></header></Column>
+                <Column><header><Text text="환불여부"/></header></Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <ObjectIdentifier title="{Product_name}" />
+                        <ObjectIdentifier title="{Type}" />
+
+                        <!-- 가격을 Currency로 설정하되 formatOptions의 showMeasure을 false로
+                        설정해서 통화가 나오지 않게 설정했다 -->
+                        <ObjectNumber number="{parts:[{path:'Price'},{path:'Currency'}],
+                                                type: 'sap.ui.model.type.Currency',
+                                                formatOptions: {showMeasure: false}}" />
+
+                        <ObjectIdentifier title="{Currency}" />
+                        <ObjectIdentifier title="{Store}" />
+
+                        <!-- 날짜 Type을 줬고, member.json모델의 날짜 입력 순서를 고려해서
+                        pattern을 yyyy-MM-dd로 설정하고 medium으로 스타일을 줬다 -->
+                        <ObjectIdentifier title="{path: 'Purchase_date',
+                                                    type: 'sap.ui.model.type.Date',
+                                                    formatOptions: {
+                                                        source: {
+                                                            pattern: 'yyyy-MM-dd'
+                                                            },
+                                                        style: 'medium'
+                                                    }}" />
+                                                    
+                        <!-- 환불여부를 아이콘으로 보여주기 위해 Expression Binding을 사용했다
+                        모델에 Returned 항목이 'O'이면 complete아이콘을, 아니면 decline 아이콘을
+                        보여준다. -->
+                        <core:Icon src="{=${Returned}=== 'O' ? 'sap-icon://complete' : 'sap-icon://decline'}"
+                                    tooltip="{= ${Returned}=== 'O' ? 'returned' : 'not returned'}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Page>
+</mvc:View>

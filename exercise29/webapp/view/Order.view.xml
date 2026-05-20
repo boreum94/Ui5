@@ -1,0 +1,46 @@
+<mvc:View controllerName="code.d22.exercise29.controller.Order"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+        <Panel
+            id="idPanel"
+            expandable="true"
+            expanded="true"
+            headerText="{i18n>panelTitle}"
+            class="sapUiResponsiveMargin"
+            width="auto"
+        >
+        <content>
+            
+            <List
+                id="idOrderList"
+                items="{/Orders}"
+                growing="true"
+                growingThreshold="10"
+                
+            >
+                <items>
+                    <ObjectListItem
+                        title="주문ID: {OrderID}"
+                        number="무게: {path: 'Freight', 
+                        type:'sap.ui.model.type.Float'}"
+                        numberUnit="KG"
+                        type="Navigation"
+                        press=".onItemPress"
+                    >
+                        <attributes>
+                            <ObjectAttribute title="고객ID" text="{CustomerID}" />
+                            <ObjectAttribute title="주문일자" text="{path: 'OrderDate', 
+                                                                    type:'sap.ui.model.type.Date',
+                                                                    formatOptions: {pattern: 'yyyy-MM-dd'} }"/>
+                        </attributes>
+                    </ObjectListItem>
+                </items>
+
+            </List>
+        </content>
+
+        </Panel>
+    </Page>
+</mvc:View>

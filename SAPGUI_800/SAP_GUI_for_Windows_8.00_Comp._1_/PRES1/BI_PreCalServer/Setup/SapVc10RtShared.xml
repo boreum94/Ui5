@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapVC10RtWksta.xml">
+	<Product BuildTime="0xC0CF12A2FB2AD901" CmdLine="$VC10RT" Guid="{F1561FC9-F0F9-487e-B8A4-BA87B116E95B}" Name="$VC10RT" ProdVersion="10.2" Visible="false">
+		<Contains Guid="{EB118682-0BFD-467c-8DC9-1E4435883D50}" Name="$VC10RT"/>
+	</Product>
+	<Component BuildTime="0xC0CF12A2FB2AD901" Guid="{EB118682-0BFD-467C-8DC9-1E4435883D50}" Min_Compliant_Version="2" Name="$VC10RT" Order="PreInstall" Size="8779" Version="10.2">
+		<Requires Guid="{34DF7CBB-1753-4582-815C-B21A590F06B5}"/>
+		<Action Condition="1=0" Dst="%TEMP%" Type="File">
+			<Src FileVersion="10.0.40219.325" Hash="SHA-256:67313b3d1bc86e83091e8de22981f14968f1a7fb12eb7ad467754c40cd94cc3d" Timestamp="0x00AFF4064FFED801">%SapSrcDir%\System\VC10\vc10redist_x86.exe</Src>
+		</Action>
+		<Action RunAt="Install,Update" Type="Script">
+			<Src><![CDATA[
+Sub includeFile(fSpec)
+                        Dim fso : Set fso = CreateObject("Scripting.FileSystemObject")
+                        Dim textObj : Set textObj = fso.OpenTextFile(fSpec)
+                        executeGlobal textObj.readAll()
+                    End Sub
+                
+                    Dim strFile, runtimeVersion, runtimeBitness, params
+                    runtimeVersion = "10"
+                    runtimeBitness = "x86"
+                    params = "/q /norestart"
+                    strFile = NwEngine.Variables.ResolveString("%SAPSetupDir%\Setup\VCRuntime.inc")
+                    
+                    includeFile(strFile)
+                    ExecuteVCInstall runtimeVersion, runtimeBitness, params
+			]]></Src>
+		</Action>
+	</Component>
+</SapSetup>

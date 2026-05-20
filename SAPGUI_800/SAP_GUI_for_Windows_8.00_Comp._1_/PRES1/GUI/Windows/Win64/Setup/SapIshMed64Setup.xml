@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapIshMed64WkstaUI.xml">
+	<SapSetupProduct BuildTime="0x907D26B05B30D901" CmdLine="GUIISHMED64" Description="StrIshMed64Description" Guid="{1460620D-C8BC-44c2-86ED-000000000040}" Name="StrIshMed64ProductName" Version="800.37">
+		<Succeeds Name="GUIISHMED64 old GUID" ProductGuid="{15A33E5C-4B56-4748-BA70-355A2FD1FECE}"/>
+		<ExcludesProduct Comment="i.s.h.med 32bit" ProductGuid="{15DBCF86-19BA-4d78-8062-77A93F06BF89}"/>
+		<ExcludesProduct Comment="SAP GUI" ProductGuid="{1460620D-C8BC-44c2-86EC-E632E0986B01}"/>
+		<Prerequisite>
+			<Condition>NOT(IsProductInstalled({15DBCF86-19BA-4d78-8062-77A93F06BF89}))</Condition>
+			<FailureText>StrIshMed64CannotCoexistWithIshMed</FailureText>
+		</Prerequisite>
+		<Prerequisite>
+			<Condition>NOT(IsProductInstalled({1460620D-C8BC-44c2-86EC-E632E0986B01}))</Condition>
+			<FailureText>StrIshMed64CannotCoexistWithSapGui32</FailureText>
+		</Prerequisite>
+		<Prerequisite>
+			<Condition>NOT ((%ISHMED64JAVA% = &quot;&quot;) OR (%ISHMED64JAVA% = &quot;UNDEFINED&quot;) OR (%ISHMED64JAVA% = &quot;bin\java.exe&quot;))</Condition>
+			<FailureText>StrFailedPreIshMed64</FailureText>
+		</Prerequisite>
+		<Prerequisite>
+			<Condition>%ISHMED64JAVABITNESS% = &quot;64&quot;</Condition>
+			<FailureText>StrFailedJavaBitness64</FailureText>
+		</Prerequisite>
+		<RequiresProductPart Name="requires SAP GUI 64" ProductGuid="{209FBC3B-1F7B-4796-AFE0-4034F9999F71}"/>
+		<IncludesProductPart Name="IshMed 64" ProductGuid="{0C2D81E5-2CF8-4b10-B5B2-830D2548B190}" Visible="FALSE"/>
+	</SapSetupProduct>
+	<SapSetupProductPart BuildTime="0x907D26B05B30D901" Guid="{0C2D81E5-2CF8-4B10-B5B2-830D2548B190}" Name="IshMed 64" Version="800.2">
+		<RequiresComponent ComponentGuid="{D0E85127-9A2E-4CB6-B338-38248C2EE47B}"/>
+		<RequiresComponent ComponentGuid="{06DC6CBF-3610-486D-8D4A-C7FAFE12C324}"/>
+		<RequiresComponent ComponentGuid="{51601A51-A727-4E33-84DC-C4FE7F99A601}"/>
+	</SapSetupProductPart>
+</SapSetup>

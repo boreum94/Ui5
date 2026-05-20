@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 SEARCHHELP BG 1504 OK 
+SEARCH_HELP_FIND                080 "Откриване (въвеждане)"
+SEARCH_HELP_CANCEL              080 "Отмяна (F12)"
+F4HELP_BUTTON_TOOLTIP           050 "Поле за избор (стойности на ограничение)"
+SEARCH_HELP_SORTA               050 "(Щракнете, за да сортирате във възходящ ред)"
+SEARCH_HELP_SORTD               050 "(Щракнете, за да сортирате във низходящ ред)"
+<#001>FEW_MENU_NEWMODE          032 "Създаване на сесия"
+<#001>FEW_MENU_STOPMODE         032 "Прекратяване на транзакция"

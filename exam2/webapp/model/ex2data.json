@@ -1,0 +1,40 @@
+{
+  "Products": [
+    {
+      "Storage": "서울",
+      "StorageCode": "S",
+      "ProductName": "사과",
+      "Price": 40000,
+      "Currency": "KRW",
+      "Quantity": 3000,
+      "Unit": "BOX"
+    },
+    {
+      "Storage": "서울",
+      "StorageCode": "S",
+      "ProductName": "배",
+      "Price": 50000,
+      "Currency": "KRW",
+      "Quantity": 800,
+      "Unit": "BOX"
+    },
+    {
+      "Storage": "부산",
+      "StorageCode": "B",
+      "ProductName": "사과",
+      "Price": 35000,
+      "Currency": "KRW",
+      "Quantity": 1000,
+      "Unit": "BOX"
+    },
+    {
+      "Storage": "부산",
+      "StorageCode": "B",
+      "ProductName": "배",
+      "Price": 45000,
+      "Currency": "KRW",
+      "Quantity": 2000,
+      "Unit": "BOX"
+    }
+  ]
+}

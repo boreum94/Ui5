@@ -1,0 +1,24 @@
+{
+  "generationParameters": {
+    "generationDate": "Wed Oct 29 2025 10:48:03 GMT+0900 (Korean Standard Time)",
+    "generatorPlatform": "Visual Studio Code",
+    "serviceType": "None",
+    "metadataFilename": "",
+    "serviceUrl": "N/A",
+    "appName": "exercise13",
+    "appTitle": "UX400 Unit10 Exercise 13",
+    "appDescription": "An SAP Fiori application.",
+    "appNamespace": "code.d22",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.120.38",
+    "enableCodeAssist": false,
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": false,
+    "generatorVersion": "1.19.3",
+    "template": "Basic",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}

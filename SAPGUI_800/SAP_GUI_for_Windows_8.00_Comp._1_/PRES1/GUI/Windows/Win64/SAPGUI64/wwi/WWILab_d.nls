@@ -1,0 +1,99 @@
+[MAIN_WINDOW]
+PRINTINFORMATION=Druck Information
+COPIES=Anzahl der Etiketten:
+FITLABEL=Etikettengröße anpassen
+PRINTER=Drucker:
+TRAY=Papierquelle:
+PROPERTIES=Eigen&schaften
+LABELINFORMATION=Etikettinformation
+INFORMATIONLASER=Laseretikett
+INFORMATIONDOT=Endlosetikett
+LABELPRODUCTS= Etikettenprodukt
+PRODUCTSNUMBER= Produktnummer:
+LABELPROPERTIES= Etiketteneigenschaften
+TYPE= Typ:
+HEIGHT=Höhe:
+WIDTH=Breite:
+PAGESIZE=Papiergröße:
+NEWLABEL= &Neues Etikett
+DETAIL=Detai&l
+PRINT=&Drucken
+PREVIEW=&Vorschau
+SETTINGS=&Einstellungen
+EXIT=&Beenden
+SHOWFITTINGLABELS=Nur passende Etiketten anzeigen
+LABELTEMPLATE=Etikettenvorlage
+DELETLABEL=Etiket&t löschen
+LABELNUMBERING=Nu&mmerierung
+LABELNUMSTART=Startwert
+LABELNUMSTEP=Schrittweite
+LABELNUMREPEAT=Wiederholungen
+P=hochformat
+L=quer
+ERROR_SELECT_BRAND=Bitte zuerst Label-Brand wählen!
+ERROR_WWILABELNOTFOUND1=WWILabel.DLL nicht gefunden in Pfad:
+ERROR_WWILABELNOTFOUND2=Soll das Label mit MS Word erzeugt werden?
+ERROR_LOAD_DLL=Fehler beim laden der WWILabel.DLL!
+ERROR_CREATE_FILE=Fehler beim Schreiben der Ausgabe-Datei! (WWILabel.DLL)
+
+[DETAIL_WINDOW]
+a = Oberer Rand:
+b = Seitenrand:
+c = Vertikalabstand:
+d = Horizontalabstand:
+e = Etikettenhöhe:
+f = Etikettenbreite:
+g = Etiketten in Spalte:
+h = Etiketten in Zeile:
+i = Seitenformat:
+j = Etikettenbezeichnung:
+k = Ok
+l = Vorschau
+m = Abbrechen
+n = Neues Etikett
+o = Detail
+TITLE=Etikettendetails
+ERROR_SIZE_NOT_ALLOWED_TO_BE_NULL_ONE=Darf nicht Null oder kleiner Null sein!
+ERROR_SIZE_NOT_ALLOWED_TO_BE_NULL_PL=Dürfen nicht Null oder kleiner Null sein!
+ERROR_EMPTY_LABEL_NAME=Das Textfeld für den Labelnamen darf nicht leer sein!
+ERROR_WRITE1=Fehler beim Schreiben von Label:
+ERROR_WRITE2=in Datei:
+ERROR_WRITE3=vermutlich ist die Datei schreibgeschützt
+
+
+[SETTINGS_WIN]
+UNIT_FRAME=Wählen Sie eine Einheit:
+LANGUAGE_FRAME=Wählen Sie eine Sprache:
+OPEN_FRAME= Öffnen:
+LABEL_FRAME=Wählen Sie eine Etiketten-Datei:
+ACTUAL_LABEL_FILE= Aktuelle Etiketten-Datei:
+SET_BUTTON=Übernehmen
+OK_BUTTON=&Ok
+CANCEL_BUTTON=&Abbrechen
+OPEN_LAST_LABEL=Das Programm mit den letzten Einstellungen öffnen
+TITLE= Einstellungen
+INFORMATION_BUTTON=&Über...
+INCH=Zoll
+CENTIMETERS=Zentimeter
+POINTS=Punkte
+GERMAN=Deutsch
+ENGLISH=Englisch
+FRANCE=Französisch
+USERSPECSETTING=Eigenen Pfad verwenden
+ERROR_NOFILESELECTED=Keine Label-Datei gewählt. Bitte Label-Datei wählen!
+DLL_CHECK_TEXT=WWILabel.DLL verwenden
+DLL_GROUPBOX_TEXT=Drucken:
+
+
+[PROGRESSBAR]
+TEXTPRINT=Starte Druck von
+TEXTPREVIEW=Starte Vorschau von
+LOAD=Lade...
+
+[MSGBOX]
+LABELSELECTED=Sie müssen erst ein Etikett auswählen!
+DELETLABEL=Sind Sie sicher,daß sie das Etikett löschen möchten?
+LABELEXISTS=Etikett existiert bereits! Wollen Sie es ersetzen?
+ENTERNAME=Sie müssen erst einen Namen für das neue Etikett eingeben!
+NOPRINTER=Bitte mindestens einen Drucker installieren
+WRONGVAR=ist eine ungültige Umgebungsvariable im benuterspezifischen Pfad!

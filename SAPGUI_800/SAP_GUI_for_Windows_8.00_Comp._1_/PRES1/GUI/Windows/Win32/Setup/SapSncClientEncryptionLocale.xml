@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE SapSetup SYSTEM "../Setup/ProductLocales.dtd">
+<SapSetup Context="Locale" Version="200.2" ConnectedId="{79A6F4C3-DB6B-4DF8-92A0-50B775326A91}">
+    <String Name="strChannelEncryptionProductName">
+        <En>SNC Client Encryption %varSapSncClientEncryptionVersion%</En>
+        <De>SNC Client Encryption %varSapSncClientEncryptionVersion%</De>
+    </String>
+    <String Name="strSapChannelEncryptionFolderPageSubTitle">
+        <En>Please select the target directory for SNC Client Encryption files</En>
+        <De>Bitte wählen Sie das Zielverzeichnis für die SNC Client Encryption Dateien aus</De>
+    </String>
+	<String Name="strChannelEncryptionProductDescription">
+		<En>SNC Client Encryption allows you to encrypt the communication between application server and client, and is part of your SAP NetWeaver Application Server license.</En>
+		<De>SNC Client Encryption ermöglicht es, die Kommunikation zwischen Applikationsserver und –client zu verschlüsseln, und ist in der Lizenz von SAP NetWeaver Application Server enthalten.</De>
+	</String>
+</SapSetup>

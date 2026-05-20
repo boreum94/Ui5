@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR EN 1100 OK 
+PREVIOUS_YEAR                   255 "Previous Year"
+PREVIOUS_MONTH                  255 "Previous Month"
+NEXT_YEAR                       255 "Next Year"
+NEXT_MONTH                      255 "Next Month"
+WEEK_NUMBER                     255 "Week Number"
+WEEK_NUM_STR                    255 "WN"
+CALENDAR_BTN                    255 "Open/Close Date Navigator"
+DT_PICKER                       255 "Date selection: Change day, month, or year"

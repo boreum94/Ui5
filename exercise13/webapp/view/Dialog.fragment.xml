@@ -1,0 +1,21 @@
+<core:FragmentDefinition 
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Dialog 
+        id="dialog"
+        title="Info"
+        type="Message"
+    >
+
+        <content>
+            <VBox>
+                <Text text="{customer>/Name} 고객님 가입을 환영합니다." />
+                <Text text="나이: {customer>/Age}" />
+                <Text text="우편번호: {customer>/Zipcode}"/>
+                <Text text="주소 {customer>/Address}"/>
+            </VBox>
+        </content>
+    </Dialog>
+
+</core:FragmentDefinition>

@@ -1,0 +1,281 @@
+# @(#) $Id: //fes/800_REL/src/dwb/eusp/eusplsle#1 $ SAP
+600 Screen Painter: Layout Editor
+601 Layout
+610 Program
+611 Screen no.
+612 Type
+613 Lines
+614 Columns
+615 Name
+616 Text
+617 Lg
+618 H
+619 L
+620 Cl
+622 active / inactive existing
+623 active
+624 inactive
+625 saved
+626 not saved
+627 generated
+628 changed
+629 modified
+631 Customizing
+632 Prototyping
+633 Class
+634 Class include
+635 Display
+636 Edit
+637 Modify
+638 Activate
+639 Version display
+# Labels for Table Control attributes
+641 Table type
+642 Input 
+643 Selection
+644 configbl
+645 Resizing
+646 vertical
+647 horizontal
+648 Separators
+#650 Selection
+651 Line Sel
+652 none
+653 single
+654 multiple
+655 Column Sel
+656 w/ SelColumn
+657 Fixed columns
+658 w/ ColHeads
+660 w/ Title
+
+661 Tabs
+662 top
+663 bottom
+#664 left
+#665 right
+
+666 w/ Scrollbars
+
+668 Lines min.
+669 Columns min.
+
+670 Create
+671 Reset
+
+675 Tab1
+676 Tab2
+
+680 <none>
+681 Text
+682 I/O field
+683 Checkbox
+684 Radio button
+685 Pushbutton
+686 Box
+687 Subscreen area
+688 Step loop
+689 Table control
+690 Radio button group
+692 Custom control
+693 Databound Control
+694 Tabstrip
+695 Table control (using wizard)
+696 Tabstrip (using wizard)
+697 Dialog help pushbutton
+699 Command field
+700 Screen Painter: Attributes
+701 Attributes
+703 Attributes
+705 Dict
+706 Program
+707 Display
+710 Head attributes
+711 Element type
+712 Name
+713 Text
+714 FctCode
+715 DefLg
+716 Height
+717 Line
+718 Column
+719 Groups
+720 FctType
+721 LoopTyp
+722 LoopDsp
+723 VisLg
+724 Icon name
+729 Dropdown
+
+730 Dict.attributes
+731 Format
+732 Internal type
+733 From Dict.
+734 Modified
+735 With foreign key check
+736 Upper/lower case
+737 With sign
+738 ConvRoutine
+739 Search help
+740 Reference field
+741 Parameter ID
+742 SET parameter
+743 GET parameter
+744 Modified
+745 Basic direction LTR
+746 No BIDI filtering
+747 Output style
+748 No input history
+749 AM/PM enabled
+
+750 Program attributes
+751 Input field
+752 Output field
+753 Required field
+754 Output field only
+755 Right-justified
+756 With leading zeros
+757 * entry
+758 Without reset
+759 Without template
+760 Possible entries
+761 Poss.entr.button
+762 Value list
+#767 HRef
+767 Input
+768 Control Composite
+769 Control Composer...
+770 Display attributes
+771 Fixed font
+772 Bright
+773 Invisible
+774 2D display
+775 as left label
+776 as right label
+777 dblclick sensitive
+778 Properties...
+779 Events...
+780 Screen Painter: Element list
+781 Element list
+785 Foreign key
+786 Upper/lower c.
+787 Switch
+788 SwitchId Selection
+789 Reaction
+791 Context Menu
+792 Context Menu Form
+793 Context Menu Method
+794 ON_CTMENU_
+795 ON_R_CLCK_
+798 Help
+799 Close
+800 Screen Painter: Dict./program fields
+801 Dict.fields
+802 Screen Painter: Class/Interface attributes
+803 Class attr.
+810 Table/field name
+811 Get from Dict.
+812 Get from program
+813 Class/Interface
+814 Get from class lib
+815 Get from ???
+816 Class/attribute name
+817 RFC-Destination
+820 Field name
+821 Format Length
+822 Table name
+823 Attribute name
+824 Class name
+825 Declaration type
+826 Visibility
+827 Read-only
+828 Type
+829 Reference field
+830 Description
+831 Mask
+832 Short text
+833 Medium text
+834 Long text
+835 Heading
+840 Mask
+841 Yes
+842 No
+850 Text
+851 Short
+852 Medium
+853 Long
+854 Heading
+855 None
+856 Headg
+860 Copy as
+861 Text
+862 ChkB
+863 RadB
+864 Switch on
+865 Switch off
+866 Do not convert
+891 Copy
+898 Help
+899 Close
+900 Screen Painter: Question
+901 Yes
+902 No
+903 Cancel
+910 Screen Painter
+911 Continue
+920 Screen Painter: General Help - Layout
+921 ScrP help
+922 Screen Painter: General help - Attributes
+923 Screen Painter: General help - Element list
+924 Screen Painter: General help - Dict./program fields
+929 Close
+930 Properties
+931 Property
+932 Comment
+933 Input
+934 Format
+935 Field name
+936 Lg
+937 Dict. type
+940 Events
+941 Event
+942 Comment
+943 FctCode
+944 FctType
+950 Screen Painter: Font sizes
+951 ScrP fonts
+952 ScrP font
+953 Screen font
+954 Large
+955 Medium
+956 Small
+958 Copy
+959 Close
+968 Copy
+969 Close
+691 Status icon
+725 I Lg
+726 Quick info
+727 With icon
+728 Scrollable
+729 Drop-down
+912 Screen Painter: Error message
+913 Screen Painter: Information
+914 Screen Painter: Warning
+960 Screen Painter: Icons
+961 ScrP icons
+962 Screen Painter: Icons for text field
+963 Screen Painter: Icons for pushbutton
+964 Screen Painter: Icons for checkbox/radio button
+965 Screen Painter: Icons for status icon
+967 Icon selection
+968 Copy
+969 Close
+970 Find
+971 Find string:
+972 Match case
+980 Databound Control
+981 Control Name
+982 Comment
+988 View with Icons
+989 List View

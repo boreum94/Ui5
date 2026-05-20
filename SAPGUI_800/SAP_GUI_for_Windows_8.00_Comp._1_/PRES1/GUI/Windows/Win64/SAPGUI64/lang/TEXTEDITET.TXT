@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 TEXTEDIT ET 1904 OK 
+TEXTEDIT_HE_LANG_BUTTON         255 "Vaheta klaviatuuri paigutus heebrea keelele"
+TEXTEDIT_EN_LANG_BUTTON         255 "Vaheta klaviatuuri paigutus inglise keelele"
+TEXTEDIT_DISABLE_LANG_BUTTON    255 "Keela keele nupp"
+TEXTEDIT_ENABLE_LANG_BUTTON     255 "Luba keele nupp"
+TEXTEDIT_PROMPT_TEXT            255 "Sisestage tekst siia..."

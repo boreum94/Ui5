@@ -1,0 +1,125 @@
+<mvc:View controllerName="code.d22.exercise33.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    >
+    <Page id="page" title="{i18n>title}">
+
+        <!-- 멤버 신규 입력 -->
+        <Panel>
+            <headerToolbar>
+                <Toolbar>
+                    <Title text="{i18n>newMemberPanelTitle}" />
+                    <ToolbarSpacer/>
+                    <Button 
+                        text="{i18n>addButtonText}" 
+                        icon="sap-icon://create"
+                        press=".onButtonAddPress"
+                        />
+                </Toolbar>
+            </headerToolbar>
+            <content>
+                <form:SimpleForm>
+                    <form:content>
+                        <!-- 1번째 이름 -->
+                        <Label 
+                            labelFor="idNameInput"
+                            text="{i18n>labelName}" />
+                        <Input 
+                            id="idNameInput"
+                            value="{path: '/Input/name',
+                                    type: 'sap.ui.model.type.String',
+                                    constraints: {minLength: 1}}"
+                            required="true" 
+                        />
+                        
+                        <!-- 2번째 성별 -->
+                        <Label text="{i18n>labelGender}" />
+                        <VBox>
+                            <ComboBox 
+                                id="idGenderComboBox"
+                                selectedKey="M"
+                                >
+                                <items>
+                                    <core:Item key="M" text="남자" />
+                                    <core:Item key="F" text="여자" />
+                                </items>
+                            </ComboBox>
+
+                        </VBox>
+                        <!-- 3번째 나이 -->
+                        <Label text="{i18n>labelAge}" />
+                        <Input value="{ path: '/Input/age',
+                                        type: 'sap.ui.model.type.Integer',
+                                        constraints: {
+                                            minimum: 1,
+                                            maximum: 999
+                                        }}" 
+                        />
+                        <!-- 4번째 주소 -->
+                        <Label text="{i18n>labelAddress}" />
+                        <Input value="{/Input/address}" />
+                        <!-- 5번째 소지금 -->
+                        <Label text="{i18n>labelCash}" />
+                        <Input value="{ path: '/Input/cash',
+                                        type: 'sap.ui.model.type.Integer',
+                                        constraints: {minimum: 0}}" />
+                        <Text text="{/Input/currency}" class="sapUiTinyMarginTopBottom"/>
+
+                    </form:content>
+                </form:SimpleForm>
+            </content>
+        </Panel>
+
+        <!-- 멤버 목록  -->
+        <Panel
+            headerText="{i18n>memberSilstPanelTitle}"
+            class="sapUiResponsiveMargin"
+            width="auto"
+        >
+            <Table
+                id="idMemberTable"
+                items="{/Members}" 
+                mode="SingleSelectLeft"   
+            >
+                <headerToolbar>
+                    <Toolbar>
+                        <ToolbarSpacer/>
+                        <Button 
+                            text="{i18n>deleteButtonText}"
+                            icon="sap-icon://delete"
+                            press=".onButtonDeletePress"
+                        />
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column><Text text="{i18n>labelName}"/></Column>
+                    <Column><Text text="{i18n>labelGender}"/></Column>
+                    <Column><Text text="{i18n>labelAge}"/></Column>
+                    <Column><Text text="{i18n>labelAddress}"/></Column>
+                    <Column><Text text="{i18n>labelCash}"/></Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <ObjectIdentifier title="{name}" />
+                            <Text text="{gender}"/>
+                            <Text text="{age}"/>
+                            <Text text="{address}"/>
+                            <ObjectNumber 
+                                number="{parts: ['cash','currency'],
+                                        type: 'sap.ui.model.type.Currency',
+                                        formatOptions: {
+                                            showMeasure: false
+                                        }}"
+                                unit="{currency}"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </Panel>
+    </Page>
+</mvc:View>

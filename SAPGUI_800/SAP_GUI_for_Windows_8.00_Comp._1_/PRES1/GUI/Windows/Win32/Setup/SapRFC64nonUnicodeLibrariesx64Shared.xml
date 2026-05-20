@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapRFC64nonUnicodeLibrariesx64Wksta.xml">&gt;
+	<Component Arch="X64" BuildTime="0x90437C837B30D901" Guid="{B3724393-335E-4F3E-9A82-087289DAF5FB}" Min_Compliant_Version="800.0" Name="RFC64 non-Unicode Libraries" Size="3980" Version="800.2033">
+		<Requires Guid="{BC20379A-C5F9-469D-ABAA-381AB0A01FD4}"/>
+		<Requires Guid="{1F498D3E-FC90-4FA5-B132-76B007F2392C}"/>
+		<ComFileAction Dst="%SapFrontEnd64Dir%\SAPGUI">
+			<File FileVersion="8000.1.0.99" Hash="SHA-256:b5485548726a7ac0dc21c306d56ba9d32ee70cb53bcc3c64ccdadb9748b0473e" Timestamp="0x61BA892B7B30D901">%SapSrcDir%\%varSapRFC64SrcDir%\wdtaocx.ocx</File>
+			<Clsid>{87D2850E-6B43-101C-92CE-10005AF5DF4D}</Clsid>
+			<Clsid>{87D2851D-6B43-101C-92CE-10005AF5DF4D}</Clsid>
+			<Clsid>{87D28539-6B43-101C-92CE-10005AF5DF4D}</Clsid>
+			<Clsid>{87D2853E-6B43-101C-92CE-10005AF5DF4D}</Clsid>
+			<Clsid>{87D28546-6B43-101C-92CE-10005AF5DF4D}</Clsid>
+			<Clsid>{C4EE5DC0-6C14-101C-92CE-10005AF5DF4D}</Clsid>
+			<Clsid>{C4EE5DC8-6C14-101C-92CE-10005AF5DF4D}</Clsid>
+			<Clsid>{8903A35C-C0DC-11CE-A69B-0000E8A49FA0}</Clsid>
+			<Clsid>{A7E372AA-CCF8-11CE-A69B-0000E8A49FA0}</Clsid>
+			<Clsid>{60FFF562-D8B1-11CE-896E-0000E8A49FA0}</Clsid>
+			<Clsid>{CBD62A01-1DBB-11CF-8985-0000E8A49FA0}</Clsid>
+			<Clsid>{252DF701-6121-11CF-924A-0000E8A49FA0}</Clsid>
+			<Clsid>{252DF703-6121-11CF-924A-0000E8A49FA0}</Clsid>
+			<Clsid>{AD31D7A9-B624-11D0-8854-0000E8215770}</Clsid>
+			<Clsid>{AD31D7AB-B624-11D0-8854-0000E8215770}</Clsid>
+		</ComFileAction>
+		<ComFileAction Dst="%SapFrontEnd64Dir%\SAPGUI">
+			<File FileVersion="8000.1.0.82" Hash="SHA-256:5b63129d96637495fa84be770a664fafadf81b3bd46167133fb02dc65b872ac7" Timestamp="0x8295252B7B30D901">%SapSrcDir%\%varSapRFC64SrcDir%\wdobapi.ocx</File>
+			<Clsid>{2E9A4698-F0EE-11CF-AC55-080009D213D2}</Clsid>
+			<Clsid>{BCC2432C-E8FB-11CE-9BDF-0000E8A5E1A9}</Clsid>
+		</ComFileAction>
+		<ComFileAction Dst="%SapFrontEnd64Dir%\SAPGUI">
+			<File FileVersion="8000.1.0.113" Hash="SHA-256:37c51c002ea72d37175efa1f4a592e9c21211df0bd6751c54fcb9541ed1f26a3" Timestamp="0xB4B7E62B7B30D901">%SapSrcDir%\%varSapRFC64SrcDir%\wdtfuncs.ocx</File>
+			<Clsid>{5B076C03-2F26-11CF-9AE5-0800096E19F4}</Clsid>
+			<Clsid>{695B9701-2F2C-11CF-9AE5-0800096E19F4}</Clsid>
+			<Clsid>{695B9703-2F2C-11CF-9AE5-0800096E19F4}</Clsid>
+			<Clsid>{695B9705-2F2C-11CF-9AE5-0800096E19F4}</Clsid>
+			<Clsid>{695B9707-2F2C-11CF-9AE5-0800096E19F4}</Clsid>
+			<Clsid>{695B970B-2F2C-11CF-9AE5-0800096E19F4}</Clsid>
+		</ComFileAction>
+		<Action Dst="%SapFrontEnd64Dir%\SAPGUI" Type="File">
+			<Src FileVersion="7530.1.14042.1" Hash="SHA-256:578e70db7b692dd16d867514078665919e27098dcba78ee6621aae3576ac0b53" Register="FALSE" Timestamp="0x27CCDF287B30D901">%SAPSrcDir%\SAPGUI64\convlib.dll</Src>
+		</Action>
+		<Action Dst="%SapFrontEnd64Dir%\SAPGUI" Type="File">
+			<Src FileVersion="1.0.961.33" Hash="SHA-256:8d819aee4fa0247a9a31b43d7cc83b4cf9177c4b78a7ca9682c04f737a608452" Register="FALSE" Timestamp="0xDA5A44DC452FD901">%SAPSrcDir%\%varSapRFC64SrcDir%\WebView2Loader.dll</Src>
+		</Action>
+		<Action Dst="%SapFrontEnd64Dir%\SAPGUI" Type="File">
+			<Src FileVersion="8000.1.0.356" Hash="SHA-256:9615e04495b17d790723b32142400963e209eb6304fa1ea4ebfd5701bc789e25" Register="FALSE" Timestamp="0x01B548297B30D901">%SapSrcDir%\%varSapRFC64SrcDir%\sapfewut.dll</Src>
+		</Action>
+		<ComFileAction Dst="%SapFrontEnd64Dir%\SAPGUI">
+			<File FileVersion="8000.1.0.35" Hash="SHA-256:8098e48469b09dd789dd0fae2835f16492bf637522a966a4907bb0c199eb8e1b" Timestamp="0x3778AA297B30D901">%SAPSrcDir%\SAPGUI64\sapfilecache.dll</File>
+		</ComFileAction>
+		<ComFileAction Dst="%SapFrontEnd64Dir%\SAPGUI">
+			<File FileVersion="8000.1.0.8" Hash="SHA-256:c97ebe2f370e23fca7e3b35cbbcf11fac34829bfef6e53bd81147b7ec9b2e0a3" Timestamp="0xB010622A7B30D901">%SAPSrcDir%\SAPGUI64\sapmime.dll</File>
+		</ComFileAction>
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\SAP\SAP Shared" Type="Registry">
+			<RegValue Name="RFCDestDir" Type="String">%SapFrontEnd64Dir%</RegValue>
+		</Action>
+		<ComFileAction Dst="%SapFrontEnd64Dir%\SAPGUI">
+			<File FileVersion="8000.1.0.155" Hash="SHA-256:49d2f3596690ef53e7ed4f9bceacda473bd1eaa5ecb74424c820b53263bdd146" Timestamp="0xEE74072A7B30D901">%SAPSrcDir%\SAPGUI64\saplgmgr2.dll</File>
+		</ComFileAction>
+	</Component>
+</SapSetup>

@@ -1,0 +1,12 @@
+_SAPPCTXT_HEADER_               002 8000 GRIDVIEW HU 1404 OK 
+GRIDVIEW_MSGBOX_TITLE           080 "Rácsnézet"
+GRIDVIEW_MSGBOX_TEXT            128 "A nyomtatási feladat elindítása nem sikerült"
+GRIDVIEW_TOOLTIP_DESELECT_ALL   080 "Összes kiválasztás megszüntetése"
+GRIDVIEW_TOOLTIP_SELECT_ALL     080 "Az összes kiválasztása"
+GRIDVIEW_TOOLTIP_TEXT_COLLAPSE  080 "Kiválasztás visszazárása"
+GRIDVIEW_TOOLTIP_TEXT_EXPAND    080 "Kiválasztás kibontása"
+GRIDVIEW_ENABLE_HISTORY         255 "Történet aktiválása"
+GRIDVIEW_DISABLE_HISTORY        255 "Történet deaktiválása"
+GRIDVIEW_DEFAULT_SETTING        255 "Standard beállítások használata"
+GRIDVIEW_MSGBOX_TITLE2          080 "Rácsnézet"
+GRIDVIEW_MSGBOX_ERROR           128 "Többszörös szelekciók nem másolhatók"

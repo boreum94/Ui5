@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Locale" Version="800.4" ConnectedId="{1460620D-C8BC-44c2-86ED-000000000030}">
+	<String Name="strKwAddOn64OnlineEditingProductName">
+		<En>KW Add-On for SAP GUI 8.00 64bit</En>
+		<De>KW Add-On für SAP GUI 8.00 64bit</De>
+	</String>
+	<String Name="strKwAddOnForSapGui64Description">
+		<En>Front-End Add-On for SAP Knowledge Warehouse for 64bit. This package contains components to create / edit / translate / display content.</En>
+		<De>Front-End Add-On für das SAP Knowledge Warehouse für 64bit. Dieses Paket beinhaltet die Komponenten zum Erstellen / Bearbeiten / Übersetzen / Anzeigen von Inhalten.</De>
+	</String>
+	<String Name="strKwAddOn64OnlineEditingDescription">
+		<En>Knowledge Warehouse Editing within SAP GUI for 64bit.</En>
+		<De>Knowledge Warehouse Editing in SAP GUI für 64bit.</De>
+	</String>
+	<String Name="strKwAddOn64Translator">
+		<En>Knowledge Warehouse Translator for 64bit: Translation tool to process translation packages offline.</En>
+		<De>Knowledge Warehouse Translator für 64bit: Übersetzungswerkzeug zur Offline-Bearbeitung von Übersetzungspaketen.</De>
+	</String>
+	<String Name="strKwAddOn64RequiresSapGuiDescription">
+		<En>requires SAP GUI</En>
+		<De>erfordert SAP GUI</De>
+	</String>
+	<String Name="StrFailedConditionKwTranslator64">
+		<En><![CDATA[Knowledge Warehouse Translator: <a style="COLOR:red">Requires Microsoft .Net Framework 4.<a>]]></En>
+		<De><![CDATA[Knowledge Warehouse Translator: <a style="COLOR:red">Benötigt Microsoft .Net Framework 4.<a>]]></De>
+	</String>
+	<String Name="StrKW64CannotCoexistWithKW32">
+		<En>KW Add-On for SAP GUI 8.00 64bit cannot be installed together with KW Add-On for SAP GUI 8.00 32bit.</En> 
+		<De>KW Add-On für SAP GUI 8.00 64bit kann nicht zusammen mit KW Add-On für SAP GUI 8.00 32bit installiert werden.</De>
+	</String>
+	<String Name="StrKW64CannotCoexistWithSapGui32">
+		<En>KW Add-On for SAP GUI 8.00 64bit cannot be installed together with SAP GUI for Windows 32bit.</En> 
+		<De>KW Add-On für SAP GUI 8.00 64bit kann nicht zusammen mit SAP GUI für Windows 32bit installiert werden.</De>
+	</String>
+</SapSetup>

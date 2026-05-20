@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapChannelEncryptionSetupWksta.xml">
+	<Component BuildTime="0xF0ACCF585C30D901" Guid="{59F01BBE-5656-476B-87DE-74BC7EEBA652}" Min_Compliant_Version="200.1" Name="SCE ARP" Update="Always" Version="200.3">
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\SAP Channel Encryption 2.0" Type="Registry">
+			<RegValue Name="DisplayName" Type="REG_SZ">SNC Client Encryption %varSapSncClientEncryptionVersion%</RegValue>
+			<RegValue Name="DisplayVersion" Type="REG_SZ">%varSapSncClientEncryptionARPVersion%</RegValue>
+			<RegValue Name="Publisher" Type="REG_SZ">SAP SE</RegValue>
+			<RegValue Name="URLUpdateInfo" Type="REG_SZ">http://service.sap.com</RegValue>
+			<RegValue Name="UninstallString" Type="REG_SZ">&quot;%SAPSetupDir%\setup\NwSapSetup.exe&quot; /Product=&quot;SCE&quot; /uninstall</RegValue>
+			<RegValue Name="InstallDate" Type="REG_SZ">%SAPChannelEncryptionInstallDate%</RegValue>
+		</Action>
+	</Component>
+	<Component BuildTime="0xF0ACCF585C30D901" Guid="{BFED64A5-7B35-4F9D-AAA1-17EDB1BF865D}" Min_Compliant_Version="200.1" Name="SCE Files" Size="9007" Version="200.8">
+		<Requires Guid="{608066B4-AF53-494F-ADFC-023EA3853DCB}"/>
+		<Action Condition="1=0" Dst="%varSapSncClientEncryptionDestDir%\cfg" Type="File">
+			<Src Hash="SHA-256:54dad2ff626cb59d1d033e281295f3f1caec20a4ccf6c22ca20d508b72078a81" Timestamp="0xF9F803B14E2FD901">%SAPsrcDir%\%varSapSncClientEncryptionSrcDir%\cfg\sce.version</Src>
+		</Action>
+		<Action Dst="%varSapSncClientEncryptionDestDir%\x86" Type="File">
+			<Src FileVersion="8.5.26.0" Hash="SHA-256:8156526bf23cced4620a6791ad0b3adad2522ff020c797e4b45d7e5f92be473f" Timestamp="0x5B6DFBB04E2FD901">%SAPsrcDir%\%varSapSncClientEncryptionSrcDir%\x86\sapsncencryption.dll</Src>
+			<Src Hash="SHA-256:6859e7f8d1f21b5aa5dbffa1d7d8adc714992ecb127245081f6f349e29d7ed52" Timestamp="0xF527F7B04E2FD901">%SAPsrcDir%\%varSapSncClientEncryptionSrcDir%\x86\SNC_CLIENT_ENCRYPTION_32BIT_VERSION.txt</Src>
+		</Action>
+		<Action Condition="&quot;%WOW64MODE%&quot; = &quot;TRUE&quot;" Dst="%varSapSncClientEncryptionDestDir%\x64" Type="File">
+			<Src FileVersion="8.5.26.0" Hash="SHA-256:1528a165f094b8c98564e3db8aabf5923649bae186ec0023d2a588b98ed492e0" Timestamp="0x890E03B14E2FD901">%SAPsrcDir%\%varSapSncClientEncryptionSrcDir%\x64\sapsncencryption.dll</Src>
+			<Src Hash="SHA-256:dd1073e037057e2e3ad8930a6618ff670127b9890429724f95fd2b4a549e73ba" Timestamp="0xAD09FCB04E2FD901">%SAPsrcDir%\%varSapSncClientEncryptionSrcDir%\x64\SNC_CLIENT_ENCRYPTION_64BIT_VERSION.txt</Src>
+		</Action>
+	</Component>
+	<Component BuildTime="0xF0ACCF585C30D901" Guid="{608066B4-AF53-494F-ADFC-023EA3853DCB}" Min_Compliant_Version="200.1" Name="SCE Environment Variable" Update="OnSameVersion" Version="200.1">
+		<Action RunAt="Install,Update" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+					
+					Sub WriteRegKey(regKey, regValue)
+						NwEngine.Context.Log.Write "SCE Script: Writing value '" & regValue & "' to registry key '" & regKey & "'."
+						If NwEngine.Shell.SetRegValue(regKey, "REG_SZ", regValue) Then
+							NwEngine.Context.Log.Write "SCE Script: Registry key '" & regKey & "' successfully set to '" & regValue & "'."
+						Else
+							NwEngine.Context.Log.Write "SCE Script: Could not write '" & regValue & "' to registry key '" & regKey & "'."
+						End If
+					End Sub
+					
+					Sub CheckAndSetVariable(envVar, bitness)
+						NwEngine.Context.Log.Write "SCE Script: Checking the value of environment variable " & envVar
+						Dim regKey, writeVar, dllName
+						dllName = "sapsncencryption.dll"
+						regKey = "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\" & envVar
+						If NwEngine.Shell.RegValueExist(regKey) Then
+							Dim regValue
+							regValue = NwEngine.Shell.GetRegValue(regKey)
+							If Right(regValue, Len(dllName)) = dllName Then
+								WriteRegKey regKey, NwEngine.Variables.GetValue("varSapSncClientEncryptionDestDir") & "\" & bitness & "\" & dllName
+							Else
+								NwEngine.Context.Log.Write "SCE Script: " & envVar & " is set to a different product (" & regValue & "), it won't be overwritten."
+							End If
+						Else
+							WriteRegKey regKey, NwEngine.Variables.GetValue("varSapSncClientEncryptionDestDir") & "\" & bitness & "\" & dllName
+						End If
+					End Sub
+					
+					NwEngine.Context.Log.Write "SCR Script: Checking if SNC_LIB/SNC_LIB_64 environment variable needs to be set/updated..."
+					Dim envVars(1), envVar
+					envVars(0) = Array("SNC_LIB",    "x86")
+					envVars(1) = Array("SNC_LIB_64", "x64")
+					
+					For Each envVar in envVars
+						If envVar(1) = "x86" Or (envVar(1) = "x64" And NwEngine.Variables.GetValue("WOW64MODE") = "true") Then
+							CheckAndSetVariable envVar(0), envVar(1)
+						End If
+					Next
+			]]></Src>
+		</Action>
+		<Action RunAt="Uninstall" Type="Script">
+			<Src><![CDATA[
+Option Explicit
+					
+					Sub WriteRegKey(regKey, regValue)
+						NwEngine.Context.Log.Write "SCE Script: Removing value '" & regKey & "'."
+						If NwEngine.Shell.DeleteRegValue(regKey) Then
+							NwEngine.Context.Log.Write "SCE Script: Registry key '" & regKey & "' successfully removed."
+						Else
+							NwEngine.Context.Log.Write "SCE Script: Could not remove registry key '" & regKey & "'."
+						End If
+					End Sub
+					
+					Sub CheckAndSetVariable(envVar, bitness)
+						NwEngine.Context.Log.Write "SCE Script: Checking the value of environment variable " & envVar
+						Dim regKey, writeVar, dllName
+						dllName = "sapsncencryption.dll"
+						regKey = "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\" & envVar
+						If NwEngine.Shell.RegValueExist(regKey) Then
+							Dim regValue
+							regValue = NwEngine.Shell.GetRegValue(regKey)
+							If Right(regValue, Len(dllName)) = dllName Then
+								WriteRegKey regKey, NwEngine.Variables.GetValue("varSapSncClientEncryptionDestDir") & "\" & bitness & "\" & dllName
+							Else
+								NwEngine.Context.Log.Write "SCE Script: " & envVar & " is set to a different product (" & regValue & "), it won't be removed."
+							End If
+						Else
+							NwEngine.Context.Log.Write "SCE Script: " & envVar & " doesn't exist in registry, nothing to remove."
+						End If
+					End Sub
+					
+					NwEngine.Context.Log.Write "SCR Script: Checking if SNC_LIB/SNC_LIB_64 environment variable needs to be removed..."
+					Dim envVars(1), envVar
+					envVars(0) = Array("SNC_LIB",    "x86")
+					envVars(1) = Array("SNC_LIB_64", "x64")
+					
+					For Each envVar in envVars
+						If envVar(1) = "x86" Or (envVar(1) = "x64" And NwEngine.Variables.GetValue("WOW64MODE") = "true") Then
+							CheckAndSetVariable envVar(0), envVar(1)
+						End If
+					Next
+			]]></Src>
+		</Action>
+	</Component>
+</SapSetup>

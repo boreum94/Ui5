@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 OFFICEINTEGRATION NO 1100 OK 
+OI_LOADING_CUSTOM_MENU          080 "Laster egendefinert meny. Vent litt..."
+OI_FILE                         060 "Fil"
+OI_SAVE                         060 "Lagre"
+OI_SAVE_AS                      060 "Lagre som"
+OI_PRINT_PREVIEW                080 "Forhåndsvisning"
+OI_PROPERTIES                   060 "Egenskaper"
+OI_PRINT                        060 "Skriv ut"

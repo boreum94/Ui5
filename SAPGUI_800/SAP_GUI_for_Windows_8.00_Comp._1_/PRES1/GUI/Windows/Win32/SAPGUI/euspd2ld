@@ -1,0 +1,40 @@
+# @(#) $Id: //fes/800_REL/src/dwb/eusp/euspd2ld#1 $ SAP
+#23456789012345678901234567890123456789012345678901234567890123456789012345
+.  
+.                               Attribute
+.  
+. In diesem Fenster können alle Attribute des momentan markierten Dynpro-
+. Elements angesehen und z.T. auch geändert werden.
+. Dazu gehören im Kopfteil:
+.  
+.                  - Grafischer Typ
+.                  - Name
+.                  - Text
+.                  - Icon-Name und Quick-Info
+.                  - Position
+.                  - Größe
+.                  - Gruppenzugehörigkeiten
+.                  - Funktionscode und -typ (nur bei Drucktasten)
+.  
+. Darunter kann jeweils eine der übrigen Attributklassen angezeigt werden: 
+.  
+.                  - Dictionary-Attribute
+.                  - Programmattribute
+.                  - Anzeigeattribute
+.  
+. bzw. spezielle Attributklassen für TabStrips, Subcreen-Bereiche und
+. Table Controls.
+.  
+. Je nach Elementtyp und momentanem Modus (Änderungs- oder Anzeigemodus) 
+. sind die Attribute änderbar oder nicht. Änderbare Texte sind durch einen 
+. dunkleren Hintergrund kenntlich gemacht. Nicht änderbare Ankreuzfelder
+. sind schwachleuchtend.
+.  
+. Während das Setzen eines Attribut-Ankreuzfeldes das jeweilige Attribut
+. sofort wirksam werden läßt, müssen Texteingaben z.B. des Namens oder
+. Elementtextes durch die RETURN-Taste abgeschlossen werden.
+. 
+. Hinweis: Sämtliche Elementattribute können auch in der Feldliste 
+.          angezeigt und ggf. geändert werden. In der Feldliste des 
+.          alphanumerischen Screen Painters findet man weitere 
+.          Hilfe-Informationen zu den einzelnen Attributen.

@@ -1,0 +1,44 @@
+<mvc:View controllerName="code.d22.metoringsy03.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <!-- sap.m.Panel, sap.m.List를 사용해 josn모델 데이터를 띄운다. 
+        items에 sap.m.ObjectListItem을 사용한다.  -->
+        <Panel >
+            <List 
+                headerText="{i18n>listTitle}" 
+                items="{
+                    path: '/Products',
+                    sorter: {path: 'Storage',
+                            group: true }
+                }" >
+                <items>
+                <!-- ObjectListItem에는 제품명과 수량, 단위를 띄운다. 
+                    numbeer는 수량을 'Quantity'에서 가져오고, 단위는 Unit에 있다고 명시 -->
+                    <ObjectListItem title="{ProductName}"
+                                    number="{
+                                        parts: ['Quantity', 'Unit'] ,
+                                        type: 'sap.ui.model.type.Unit' ,
+                                        formatOptions: {showMeasure: false}
+                                    }"
+                                    numberUnit="{Unit}" 
+                                    >
+                        <firstStatus>
+                            <ObjectStatus title="{i18n>statusTitle}" >
+                            </ObjectStatus>
+                        </firstStatus>
+                        <attributes>
+                            <ObjectAttribute title="창고" text="{Storage}" />
+                            <!-- 가격은 Unit의 showMeasure Option을 true로 줄 거기 때문에 굳이 적지 않아도 된다.  -->
+                            <ObjectAttribute title="가격" 
+                                            text="{
+                                                parts: ['Price', 'Currency'] ,
+                                                type: 'sap.ui.model.type.Currency'
+                                            }" />
+                        </attributes>
+                    </ObjectListItem>
+                </items>
+            </List>
+        </Panel>
+    </Page>
+</mvc:View>

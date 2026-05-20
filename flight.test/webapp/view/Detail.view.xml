@@ -1,0 +1,26 @@
+<mvc:View controllerName="code.d22.flight.test.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        id="idDetailPage"
+        title="{CarrierId} {i18n>detailTitle}"
+        showNavButton="true"
+        navButtonPress=".onNavPress"
+    >
+        <Table
+            items="{toConnections}"
+         >
+        <columns>
+            <Column ><Text text="항공사ID" /></Column>
+            <Column ><Text text="항공편번호" /></Column>
+        </columns>
+        <items>
+            <ColumnListItem >
+                <ObjectIdentifier title="{Carrid}" />
+                <ObjectIdentifier title="{Connid}" />
+            </ColumnListItem>
+        </items>
+        </Table>
+    </Page>
+</mvc:View>

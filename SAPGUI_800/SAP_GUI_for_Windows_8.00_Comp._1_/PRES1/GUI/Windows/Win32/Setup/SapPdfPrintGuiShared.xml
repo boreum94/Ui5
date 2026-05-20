@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapPdfPrintWksta.xml">
+	<Component BuildTime="0x90437C837B30D901" Guid="{025806AF-19A2-4A6E-8328-645866255995}" Min_Compliant_Version="800.1" Name="PdfPrint GUI ARP" Version="800.2">
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\SAPPdfPrintGUI" Type="Registry">
+			<RegValue Name="DisplayName">SAP PDFPRINT for SAP GUI 8.00</RegValue>
+			<RegValue Name="Publisher">SAP SE</RegValue>
+			<RegValue Name="URLUpdateInfo">http://service.sap.com</RegValue>
+			<RegValue Name="UninstallString">&quot;%SAPSetupDir%\setup\nwsapsetup.exe&quot; /product:&quot;PdfPrintGui&quot; /uninstall</RegValue>
+		</Action>
+	</Component>
+	<Component BuildTime="0x90437C837B30D901" Guid="{9F08B59E-9758-4892-811E-EF50F55DA999}" Min_Compliant_Version="800.1" Name="$PdfPrint GUI Files" Size="40465" Version="800.2071">
+		<Action Dst="%SapFrontEndDir%\SAPgui" Type="File">
+			<Src FileVersion="22.4.0.0" Hash="SHA-256:cd33d1ac49182aa700c3743fe6abab43d12a9044a1a04ad7842974d88fbc6164" Register="false" Timestamp="0xA2632E6B502FD901">%SAPsrcDir%\SAPgui\Aspose.Pdf.dll</Src>
+			<Src FileVersion="8000.1.8425.6339" Hash="SHA-256:9c40412f1500d5728629242060a206d0fa0ff1c929d6365a05b7fd34ac7318b1" Register="false" Timestamp="0xBE7E7ED07A30D901">%SAPsrcDir%\SAPgui\ACSWrapper.dll</Src>
+		</Action>
+	</Component>
+</SapSetup>

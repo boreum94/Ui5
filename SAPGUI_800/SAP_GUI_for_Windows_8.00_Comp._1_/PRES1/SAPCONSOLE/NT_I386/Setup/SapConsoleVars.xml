@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SapSetup Context="Variables" Version="3001">
+	<Variable Name="SapConsoleDestDir" ConnectedId="{E98BFCE2-7B78-4f73-A37B-BFEEC8136384}" Description="DscrSapConsoleDestDir">
+		<Value>%ProgramFiles%\SAP\Console</Value>
+	</Variable>
+</SapSetup>

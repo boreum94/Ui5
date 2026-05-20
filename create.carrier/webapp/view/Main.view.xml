@@ -1,0 +1,33 @@
+<mvc:View controllerName="code.d22.create.carrier.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form">
+    <Page id="page" title="{i18n>title}">
+
+        <content>
+            <form:SimpleForm
+                layout="ResponsiveGridLayout" >
+
+                <form:toolbar>
+                    <OverflowToolbar >
+                        <Title text="항공사 신규입력" />
+                        <ToolbarSpacer />
+                        <Button text="저장" press=".onSave" />
+                        <Button text="입력필드 초기화" press=".onClear" />
+                    </OverflowToolbar>
+                </form:toolbar>
+                <form:content>
+                    <Label text="항공사ID" />
+                    <Input value="{new>/data/Carrid}" />
+                    <Label text="항공사명" />
+                    <Input value="{new>/data/Carrname}" />
+                    <Label text="통화코드" />
+                    <Input value="{new>/data/Currcode}" />
+                    <Label text="홈페이지" />
+                    <Input value="{new>/data/Url}" />
+                </form:content>
+            </form:SimpleForm>
+        </content>
+
+    </Page>
+</mvc:View>

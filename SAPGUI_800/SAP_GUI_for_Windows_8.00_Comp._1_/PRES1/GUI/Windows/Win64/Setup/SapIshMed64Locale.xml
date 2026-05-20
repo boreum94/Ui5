@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SapSetup Context="Locale" Version="800.9" ConnectedId="{1460620D-C8BC-44c2-86ED-000000000040}">
+	<!-- FolderPathPage -->
+
+	<String Name="StrFailedPreIshMed64">
+		<En><![CDATA[<a style="COLOR:red">Please close SAPSetup and install SAPmachine JRE 11 or 17 first. The Sapmachine JDK is not supported. </a><a style="text-decoration:underline" target="blank" href="https://sap.github.io/SapMachine">Download here</a>. Please refer to note 2914933.]]></En>
+		<De><![CDATA[<a style="COLOR:red">Bitte beenden Sie SAPSetup und installieren Sie zuerst SAPmachine JRE 11 oder 17. Das Sapmachine JDK wird nicht unterstützt. </a><a target="blank" href="https://sap.github.io/SapMachine/">Hier herunterladen</a>. Beachten Sie bitte Hinweis 2914933.]]></De>
+	</String>
+
+	<String Name="StrIshMed64ProductName">
+		<En>i.s.h.med Planning Grid for 64bit</En> 
+		<De>i.s.h.med Plantafel für 64bit</De>
+	</String>
+
+	<String Name="StrIshMed64Description">
+		<En><![CDATA[The i.s.h.med planning grid for 64bit is the graphics-based tool for planning appointments in the clinical system i.s.h.med. This component contains the current planning grid version as of SAP ECC 6.0, Industry Extension Healthcare, Enhancement Package 4. Its installation requires a Java Runtime Environment to be installed on the machine. For more information, see SAP Note 1013957.]]></En>
+		<De><![CDATA[Die i.s.h.med Plantafel für 64bit ist das graphische Werkzeug des Klinischen Systems i.s.h.med, zum Planen von Besuchsterminen. Diese Komponente enthält die aktuelle Plantafelversion ab SAP ECC 6.0, Industry Extension Healthcare, Enhancement Package 4. Für die Installation muss auf dem Rechner ein Java Runtime Environment vorhanden sein. Beachten Sie dazu auch die Informationen im Hinweis 1013957.]]></De> 
+	</String>
+
+	<String Name="StrFailedJavaBitness64">
+		<En>i.s.h.med Planning Grid for 64bit requires a SAPmachine JRE 11 or 17. The Sapmachine JDK is not supported.</En> 
+		<De>i.s.h.med Plantafel für 64bit benötigt ein SAPmachine JRE 11 oder 17. Das Sapmachine JDK wird nicht unterstützt.</De>
+	</String>
+
+	<String Name="StrIshMed64CannotCoexistWithIshMed">
+		<En>i.s.h.med Planning Grid for 64bit cannot be installed together with i.s.h.med Planning Grid.</En> 
+		<De>i.s.h.med Plantafel für 64bit kann nicht zusammen mit i.s.h.med Plantafel installiert werden.</De>
+	</String>
+
+	<String Name="StrIshMed64CannotCoexistWithSapGui32">
+		<En>i.s.h.med Planning Grid for 64bit cannot be installed together with SAP GUI for Windows 32bit.</En> 
+		<De>i.s.h.med Plantafel für 64bit kann nicht zusammen mit SAP GUI für Windows 32bit installiert werden.</De>
+	</String>
+
+</SapSetup>

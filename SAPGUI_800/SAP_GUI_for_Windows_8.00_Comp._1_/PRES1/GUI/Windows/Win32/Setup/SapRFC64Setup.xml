@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapRFC64WkstaUI.xml">
+	<SapSetupProduct BuildTime="0x90437C837B30D901" CmdLine="RFC64" Description="strSapRFC64ProductDescription" Guid="{1460620D-C8BC-44c2-86EC-F00000000020}" Name="strSapRFC64ProductName" Version="800.5">
+		<Succeeds Name="RFC64 old GUID" ProductGuid="{D3FED532-4D66-4E30-8C4D-4D3B80ABF58C}"/>
+		<ExcludesProduct Comment="SAP GUI 64" ProductGuid="{00AAA0A0-16CF-4bbb-935B-83520EEE0CD9}"/>
+		<Prerequisite>
+			<Condition>&quot;%WOW64MODE%&quot;=&quot;TRUE&quot;</Condition>
+			<FailureText>strSapRFC64No64BitOS</FailureText>
+		</Prerequisite>
+		<UI>
+			<Page Type="FolderPath">
+				<PageVariable>SapFrontEnd64Dir</PageVariable>
+				<Title>strSapRFC64ProductName</Title>
+				<SubTitle>strSapRFC64SelectTargetDir</SubTitle>
+			</Page>
+		</UI>
+		<IncludesProductPart Comment="SAP 64Bit RFC Controls ProductPart" ProductGuid="{9163C004-B521-4d5c-AB52-2B7342128F07}" Visible="false"/>
+	</SapSetupProduct>
+	<SapSetupProductPart BuildTime="0x90437C837B30D901" Guid="{9163C004-B521-4D5C-AB52-2B7342128F07}" Name="SAP 64Bit RFC Controls ProductPart" Version="770.0">
+		<RequiresComponent ComponentGuid="{B36A9BED-33EA-411B-AB69-CE65648D55A6}"/>
+		<RequiresComponent ComponentGuid="{D242FBB8-B3EA-4E87-B2A4-4690BF6564CF}"/>
+		<RequiresComponent ComponentGuid="{B3724393-335E-4F3E-9A82-087289DAF5FB}"/>
+		<RequiresComponent ComponentGuid="{A8C630AF-2382-4BC9-AC65-3CBDFEFEDA41}"/>
+	</SapSetupProductPart>
+</SapSetup>

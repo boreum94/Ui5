@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE SapSetup SYSTEM "../Setup/ProductLocales.dtd">
+<SapSetup Context="Locale" Version="900.2" ConnectedId="{40D11884-3906-4e67-8A96-91035CA09814}">
+  <String name="SapWUSProductName">
+    <En>SAP Automatic Workstation Update</En>
+    <De>SAP Automatic Workstation Update</De>
+  </String>
+
+  <String name="SapWUSProductDescription">
+    <En>This service automatically updates your workstation when the installation server (source) is patched. This feature can only be configured by your administrator using NwSAPSetupAdmin on the Installation Server.</En>
+    <De>Dieser Dienst aktualisiert Ihre Workstation automatisch nachdem die Installationsquelle aktualisiert wurde. Dieses Feature kann nur von Ihrem Administrator auf dem Installationsserver mit NwSAPSetupAdmin konfiguriert werden.</De>
+  </String>
+</SapSetup>

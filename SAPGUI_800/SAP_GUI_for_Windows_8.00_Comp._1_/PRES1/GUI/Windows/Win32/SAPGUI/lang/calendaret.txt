@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR ET 1904 OK 
+PREVIOUS_YEAR                   255 "Eelmine aasta"
+PREVIOUS_MONTH                  255 "Eelmine kuu"
+NEXT_YEAR                       255 "Järgmine aasta"
+NEXT_MONTH                      255 "Järgmine kuu"
+WEEK_NUMBER                     255 "Nädala number"
+WEEK_NUM_STR                    255 "NN"
+CALENDAR_BTN                    255 "Ava/sule kuupäevanavigaator"
+DT_PICKER                       255 "Kuupäeva valimine: muuda päeva, kuud või aastat"

@@ -1,0 +1,158 @@
+
+:function StringSegmentCount
+:Synopsis Retrieves a count of segments in a string
+:Returns int The count of segments in the string
+:Param string/TheString The string that is delimited by some character or characters
+:Param string/Delimiter The delimiter
+
+:function TrimString
+:Param string/s String to trim
+:Returns string The string without all leading and trailing blanks
+:Synopsis Strips leading and trailing blanks from a string
+
+:function CompareStrings
+:Synopsis Case-sensitive comparison of two strings
+:Returns int TRUE if strings are equal, FALSE otherwise
+:Param string/s1 First string to compare
+:Param string/s2 Second string for comparison
+
+:function SetLocalOutputMode
+:Param int/iOutputMode The output mode to be set
+:Param int/iSwitch Switch given iOutputMode ON or OFF
+
+:function ResetLocalScreenEchoMode
+
+:function InitSAPUtils
+:Synopsis To initialize various settings of the SAP utilities
+
+:function ShouldItemSpeak
+:Returns int Returns 0 if the item should not be spoken.  Returns a non 0 value if the item should be spoken.
+:Synopsis Modified version of the ShouldItemSpeak function
+:Description This is the local version of the ShouldItemSpeak function. It is used to determine whether or not the user has specified that items spoken with a given Output Mode should be spoken in the current verbosity level.
+:Param int/iOutputMode The Output Mode of the item you wish to determine if it should be spoken.
+
+:function SetLocalTypingEchoMode
+:Param int/nMode No Description
+
+:function IsStandardManagedObject
+:Returns int TRUE, if the given object should be managed by standard routines
+:Synopsis Determine whether the given object should be manageable by standard Jaws handling
+:Param int/nType The object's type code
+
+:function SetLocalControlTypeMode
+:Param int/nMode Set this mode
+
+:function SetLocalGraphicsMode
+:Param int/nMode The desired mode
+
+:function LoadApplicationSettings
+:Returns int
+:Synopsis Loads the global application settings like verbosity options
+
+:function SaveApplicationSettings
+:Returns int
+:Synopsis Saves the application settings like verbosity options
+
+:script file
+
+:function ResetLocalGraphicsMode
+
+:function SetLocalScreenEchoMode
+:Param int/nMode No Description
+
+:function ResetLocalTypingEchoMode
+
+:function ResetLocalControlTypeMode
+
+:function GetSAPGUI
+:Returns object On success, a reference to the SAPGUI object is returned
+:Synopsis Get the SAPGUI automation server object
+:Description Gets the SAPGUI object from the Running Object Table
+
+:function IsSAPGUIActive
+:Returns int TRUE if the SAPGUI objectt is valid
+:Synopsis Test if the SAPGUI automation server object is valid
+
+:function ExitSAPGUI
+:Synopsis Free active SAPGUI automation server object
+
+:function GetSAPGUISession
+:Returns object The current GuiSession object
+:Synopsis Get the active session object
+:Description Determines the active session and returns a reference to it
+
+:function IsSAPGUISessionActive
+:Returns object TRUE if session object is valid
+:Synopsis Test if the active session object is valid
+
+:function ExitSAPGUISession
+:Synopsis Free currently active session object
+
+:function IsSAPGUISessionBusy
+:Returns int TRUE if SAPGUI session is still busy
+:Param int/nMaxTries Maximum number of checks until we give up
+:Param int/bUsePauses Use pauses between checks
+
+:function GetSAPGUIFrame
+:Returns object The current GuiFrameWindow object
+:Synopsis Get the GuiFrameWindow object of the active session
+:Description Determines the GuiFrameWindow object of the active session and returns a reference to it
+
+:function IsSAPGUIFrameActive
+:Returns object TRUE if GuiFrameWindow object is valid
+:Synopsis Test if the GuiFrameWindow object of the active session is valid
+
+:function ExitSAPGUIFrame
+:Synopsis Free currently active GuiFrameWindow object
+
+:function GetSAPGUIFocus
+:Returns object The focused SAPGUI object
+:Synopsis Get the currently focused GuiComponent
+:Description Tries to determine the currently focused SAPGUI object and returns a reference to it
+
+:function GuiShellIntegration
+:Param int/nShellIntegrationType Type of shell integration (or GUI_SI_UNKNOWN)
+:Optional
+:Param string/sGuiShellSubType GuiShell subtype ("OfficeIntegration"/"HTMLViewer")
+:Synopsis Handles the integration of application objects of GuiShell
+:Description Invokes the JAWS script files depending on the given embedded application object
+
+:function InvokeConfiguration
+:Param string/sNextConfiguration Switch to this configuration
+:Param string/sMessage Welcome message
+:Param string/sTutorMessage Welcome tutor message
+:Synopsis Switch between configurations
+
+:function StartConfiguration
+:Synopsis Wrapper to SwitchToConfiguration function
+
+:function SapSwitchBackConfiguration
+:Synopsis Switches back to SAP configuration if necessary
+
+:function NwbcExitIECanvas
+:Returns int No return description
+
+:script SapFocusChanged
+:Synopsis Called when focus changes
+
+:script SapEndRequest
+:Synopsis Called upon end of roundtrip
+
+:function SapProgressIndicator
+:param int/nPercentage percentage
+:param string/sText text
+:Returns void No return description
+:synopsis Invoked when a progress bar is present to indicate progress
+
+:script ProgressIndicator
+:synopsis Invoked when a progress bar is present to indicate progress
+
+:function AnnounceProgressIndicator
+:Returns void No return description
+:synopsis Helper function to announce progress indicator
+
+:script SapExitToOCF
+:Synopsis Used in SAP applications to move the focus to a special control called the Ok Code Field
+:Description This script can be triggered to move the focus to a special control in SAP applications
+:Category Navigation
+

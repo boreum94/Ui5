@@ -1,0 +1,116 @@
+<mvc:View controllerName="code.t2.ui5.review3.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:rowmodes="sap.ui.table.rowmodes"
+    >
+    <Page id="page" title="{i18n>title}">
+
+        <Panel 
+            id="idResponsivePanel"
+            headerText="Responsive Table(sap.m.Table) Panel"
+            expandable="true"
+            expanded="false"
+            class="sapUiResponsiveMargin"
+            width="auto"
+        >
+            <content>
+                <!-- 모델의 데이터를 가져오는데는 여러가지 방법이 있다.
+                현재 columns라는 Aggregation은 총 3개의 Column이라는 Aggregation을 갖고있다.
+                현재 items라는 Aggregation은 총 1개의 ColumnListItem이라는 Aggregation을 갖고있다 
+                Property에 Binding을 걸면 
+                Aggregation에 Binding을 걸면 모델이 갖고있는 데이터 행 수만큼 반복한다. 
+                그래서 우리는 items라는 Aggregation에게 경로를 주고 Binding 시킬것이다.
+                이때 growingThreshold를 주지 않으면 sap.m.Table은
+                과부하를 막기위해 자동으로 100개까지의 데이터만 나온다.
+                그래서 growing 속성을 true로 줘서 사용자에 의해 더 많은 항목이 로드될 수 있게 한다. -->
+
+                <Table 
+                    id="idTable"
+                    items="{/ZCDS_D22_Customer}"
+                    growing="true"
+                    growingThreshold="20"
+                    growingScrollToLoad="true"
+                    class="sapUiResponsiveMargin"
+                    width="auto"
+                    itemPress=".onTopTableItemPress"
+                    selectionChange=".onTopTableSelectionChange"
+                    mode="SingleSelectLeft"
+                >
+                    <columns>
+                        <Column >
+                            <Text text="{i18n>Id}"/>
+                        </Column>
+                        <Column >
+                            <Text text="{i18n>Name}"/>
+                        </Column>
+                        <Column >
+                            <Text text="{i18n>Age}"/>
+                        </Column>
+                        <Column >
+                            <Text text="{i18n>City}"/>
+                        </Column>
+                    </columns> 
+                    
+                    <items>
+                        <ColumnListItem type="Active" >
+                            <cells>
+                                <ObjectIdentifier title="{Id}"/>
+                                <Text text="{Name}"/>
+                                <Text text="{Age}"/>
+                                <Text text="{City}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>    
+                </Table>
+            </content>
+        </Panel>
+        <Panel 
+            id="idGridTablePanel"
+            headerText="Grid Layout(sap.ui.layout.Grid) Panel"
+            expandable="true"
+            expanded="false"
+            height="40%"
+            class="sapUiResponsiveMargin"
+            width="auto"
+        >
+            <content>
+                <t:Table 
+                    id="idGridTable"
+                    rows="{/ZCDS_D22_Customer}"
+                >
+                    <t:rowMode>
+                        <rowmodes:Auto></rowmodes:Auto>
+                    </t:rowMode>
+                    <t:columns>
+                        <t:Column>
+                            <Text text="{i18n>Id}" />
+                            <t:template>
+                                <ObjectIdentifier title="{Id}"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column>
+                            <Text text="{i18n>Name}" />
+                            <t:template>
+                                <Text text="{Name}"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column>
+                            <Text text="{i18n>Age}" />
+                            <t:template>
+                                <Text text="{Age}"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column>
+                            <Text text="{i18n>City}" />
+                            <t:template>
+                                <Text text="{City}"/>
+                            </t:template>
+                        </t:Column>
+                    </t:columns>
+                </t:Table>
+            </content>
+        </Panel>
+    
+    </Page>
+</mvc:View>

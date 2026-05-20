@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 SEARCHHELP NL 1100 OK 
+SEARCH_HELP_FIND                080 "Zoeken (Enter)"
+SEARCH_HELP_CANCEL              080 "Afbreken (F12)"
+F4HELP_BUTTON_TOOLTIP           050 "Selectieveld (grenswaarden)"
+SEARCH_HELP_SORTA               050 "(Klikken om oplopend te sorteren)"
+SEARCH_HELP_SORTD               050 "(Klikken om aflopend te sorteren)"
+<#001>FEW_MENU_NEWMODE          032 "Modus creëren"
+<#001>FEW_MENU_STOPMODE         032 "Transactie afbreken"

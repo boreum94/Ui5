@@ -1,0 +1,12 @@
+<mvc:View controllerName="code.d22.hw1b.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <!-- 누르면 onOpenDialog를 실행시키는 버튼 -->
+        <Button 
+            id="openFragment"
+            text="Click"
+            press=".onOpenDialog"
+            />
+    </Page>
+</mvc:View>

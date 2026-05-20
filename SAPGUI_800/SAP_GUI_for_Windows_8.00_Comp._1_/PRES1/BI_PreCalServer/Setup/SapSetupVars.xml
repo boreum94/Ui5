@@ -1,0 +1,3202 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE SapSetup SYSTEM "../Setup/ProductVars.dtd">
+<SapSetup Context='Variables' Version='900.42' ConnectedId='{30553299-1C5B-4863-9352-803E830F27A1}'>
+    <Variable Name='SapSetupDir' Persistent="true" DisplayInSapAdmin='false'>
+        <Value>%ProgramFiles%\SAP\SAPsetup</Value>
+    </Variable>
+    <Variable Name='CabFilesSrcDir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>%SapSrcDir%\CAB</Value>
+    </Variable>
+    <Variable Name="WindowsVersion" DisplayInSapAdmin="false" Persistent="false">
+        <Value>0.0.0.0</Value>
+        <Value Script="true">
+            <![CDATA[
+                Option Explicit
+                NwEngine.Context.Log.Write "Script: Retrieving Windows version..."
+                Dim ntoskrnl
+                If %WOW64MODE% = true Then
+                    ntoskrnl = NwEngine.Variables.ResolveString("%WINSYSDIR64%\ntoskrnl.exe")
+                Else
+                    ntoskrnl = NwEngine.Variables.ResolveString("%WINSYSDIR%\ntoskrnl.exe")
+                End If
+                NwEngine.Context.Log.Write "Script: Retrieving version information from " & ntoskrnl
+                Dim version : version = NwEngine.Shell.GetFileVersion(ntoskrnl)
+                NwEngine.Context.Log.Write "Script: Retrieved version: " & version
+                NwEngine.Variables.AppendDefaultValue "WindowsVersion", version
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='WinWordExist' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>NO</Value>
+        <Value Script='true'>
+            <![CDATA[
+                NWEngine.Context.Log.Write "Script: Checking for WinWord..."
+                If NWEngine.Shell.RegKeyExist("HKCR\Word.Document.8\shell\open\command") Then
+                    NWEngine.Variables.AppendDefaultValue "WinWordExist", "YES"
+                End If
+                NWEngine.Variables.Persistent( "WinWordExist" ) = vbFalse
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='CommonStartUpGroup' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>C:\UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+                szBuffer  = ""
+                szRegKey  = "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders"
+                szRegName = szRegKey & "\Common Startup"
+                If NwEngine.Shell.RegKeyExist( szRegKey ) Then
+                    szPath = NwEngine.Shell.GetRegValue( szRegName )
+                    NwEngine.Context.Log.Write "Startup folder = " & Chr(34) & szPath & Chr(34)
+                    iPos = InstrRev( szPath, "\" )
+                    szBuffer = mid( szPath, iPos + 1 )
+                End if
+                NWEngine.Variables.AppendDefaultValue "CommonStartUpGroup", szBuffer
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='JdkHome' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>C:\UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+                IsJdkMissing()
+
+                Function IsJdkMissing()
+                    IsJdkMissing = vbFalse ' default
+                    bJdkExists = vbFalse
+                    strJdkHome = ""
+                    strJavaExe = ""
+                    NWEngine.Context.Log.Write "Variables-Script: Checking for JDK HOME"
+                    If bSearchForJavaMinorVersion( "1.5.0" ) Then
+                        bJdkExists = vbTrue
+                    ElseIf bSearchForJavaHome( "1.5", "" ) Then
+                        bJdkExists = vbTrue
+                    ElseIf bSearchForJavaMinorVersion( "1.4.2" ) Then
+                        bJdkExists = vbTrue
+                    ElseIf bSearchForJavaMinorVersion( "1.4.1" ) Then
+                        bJdkExists = vbTrue
+                    ElseIf bSearchForJavaHome( "1.4", "" ) Then
+                        bJdkExists = vbTrue
+                    ElseIf bSearchForJavaMinorVersion( "1.3.1" ) Then
+                        bJdkExists = vbTrue
+                    ElseIf bSearchForJavaHome( "1.3", "" ) Then
+                        bJdkExists = vbTrue
+                    Else
+                        bJdkExists = vbFalse
+                    End If
+                    If Not bJdkExists Then
+                        NWEngine.Context.Log.WriteWarning "Variables-Script: JDK could not be detected!"
+                        IsJdkMissing = vbTrue
+                    End If
+                End Function
+
+                Function bSearchForJavaMinorVersion( szMajorVersion )
+                    bSearchForJavaMinorVersion = vbFalse
+                    iMinorVersion = 19
+                    Do While iMinorVersion > 0
+                        szMinorVersion = "0" & iMinorVersion
+                        If bSearchForJavaHome( szMajorVersion, szMinorVersion ) Then
+                            bSearchForJavaMinorVersion = vbTrue
+                            Exit Function
+                        Else
+                            iMinorVersion = iMinorVersion - 1
+                        End If
+                    Loop
+                    If bSearchForJavaHome( szMajorVersion, "" ) Then
+                        bSearchForJavaMinorVersion = vbTrue
+                    End If
+                End Function
+
+                Function bSearchForJavaHome( szMajorVersion, szMinorVersion )
+                    bSearchForJavaHome = vbFalse
+                    If szMajorVersion = "1.3" Then
+                        strVersionKey = "HKLM\SOFTWARE\JavaSoft\Java Development Kit\1.3"
+                    ElseIf szMajorVersion = "1.4" Then
+                        strVersionKey = "HKLM\SOFTWARE\JavaSoft\Java Development Kit\1.4"
+                    ElseIf szMajorVersion = "1.5" Then
+                        strVersionKey = "HKLM\SOFTWARE\JavaSoft\Java Development Kit\1.5"
+                    Else
+                        If szMinorVersion = "" Then
+                            strVersionKey = "HKLM\SOFTWARE\JavaSoft\Java Development Kit\" & szMajorVersion
+                        Else
+                            strVersionKey = "HKLM\SOFTWARE\JavaSoft\Java Development Kit\" & szMajorVersion & "_" & szMinorVersion
+                        End If
+                    End If
+                    strJavaHomeEntry = strVersionKey & "\JavaHome"
+                    If NWEngine.Shell.RegKeyExist( strVersionKey ) Then
+                        strJdkHome = NWEngine.Shell.GetRegValue( strJavaHomeEntry )
+                        If strJdkHome <> "" Then
+                            strJavaExe = strJdkHome & "\bin\java.exe"
+                            NWEngine.Context.Log.Write "Scriptlet : Searching for " & strJavaExe & " ..."
+                            If NWEngine.Shell.FileExist( strJavaExe ) Then
+                                NWEngine.Context.Log.Write "Scriptlet : Java Development Kit detected."
+                                bSearchForJavaHome = vbTrue
+                                NWEngine.Variables.AppendDefaultValue "JdkHome", strJdkHome
+                            End If
+                        End If
+                    End If
+                End Function
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='JreHome' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>C:\UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+                IsJreMissing()
+
+                Function IsJreMissing()
+                    IsJreMissing = vbFalse ' default
+                    bJreExists = vbFalse
+                    strJreHome = ""
+                    strJavaExe = ""
+                    NWEngine.Context.Log.Write "Variables-Script: Checking for Jre HOME"
+                    If bSearchForJavaMinorVersion( "1.5.0" ) Then
+                        bJreExists = vbTrue
+                    ElseIf bSearchForJavaHome( "1.5", "" ) Then
+                        bJreExists = vbTrue
+                    ElseIf bSearchForJavaMinorVersion( "1.4.2" ) Then
+                        bJreExists = vbTrue
+                    ElseIf bSearchForJavaMinorVersion( "1.4.1" ) Then
+                        bJreExists = vbTrue
+                    ElseIf bSearchForJavaHome( "1.4", "" ) Then
+                        bJreExists = vbTrue
+                    ElseIf bSearchForJavaMinorVersion( "1.3.1" ) Then
+                        bJreExists = vbTrue
+                    ElseIf bSearchForJavaHome( "1.3", "" ) Then
+                        bJreExists = vbTrue
+                    Else
+                        bJreExists = vbFalse
+                    End If
+                    If Not bJreExists Then
+                        NWEngine.Context.Log.WriteWarning "Variables-Script: JRE could not be detected!"
+                        IsJreMissing = vbTrue
+                    End If
+                End Function
+
+                Function bSearchForJavaMinorVersion( szMajorVersion )
+                    bSearchForJavaMinorVersion = vbFalse
+                    iMinorVersion = 19
+                    Do While iMinorVersion > 0
+                        szMinorVersion = "0" & iMinorVersion
+                        If bSearchForJavaHome( szMajorVersion, szMinorVersion ) Then
+                            bSearchForJavaMinorVersion = vbTrue
+                            Exit Function
+                        Else
+                            iMinorVersion = iMinorVersion - 1
+                        End If
+                    Loop
+                    If bSearchForJavaHome( szMajorVersion, "" ) Then
+                        bSearchForJavaMinorVersion = vbTrue
+                    End If
+                End Function
+
+                Function bSearchForJavaHome( szMajorVersion, szMinorVersion )
+                    bSearchForJavaHome = vbFalse
+                    If szMajorVersion = "1.3" Then
+                        strVersionKey = "HKLM\SOFTWARE\JavaSoft\Java Runtime Environment\1.3"
+                    ElseIf szMajorVersion = "1.4" Then
+                        strVersionKey = "HKLM\SOFTWARE\JavaSoft\Java Runtime Environment\1.4"
+                    ElseIf szMajorVersion = "1.5" Then
+                        strVersionKey = "HKLM\SOFTWARE\JavaSoft\Java Runtime Environment\1.5"
+                    Else
+                        If szMinorVersion = "" Then
+                            strVersionKey = "HKLM\SOFTWARE\JavaSoft\Java Runtime Environment\" & szMajorVersion
+                        Else
+                            strVersionKey = "HKLM\SOFTWARE\JavaSoft\Java Runtime Environment\" & szMajorVersion & "_" & szMinorVersion
+                        End If
+                    End If
+                    strJavaHomeEntry = strVersionKey & "\JavaHome"
+                    If NWEngine.Shell.RegKeyExist( strVersionKey ) Then
+                        strJreHome = NWEngine.Shell.GetRegValue( strJavaHomeEntry )
+                        If strJreHome <> "" Then
+                            strJavaExe = strJreHome & "\bin\java.exe"
+                            NWEngine.Context.Log.Write "Scriptlet : Searching for " & strJavaExe & " ..."
+                            If NWEngine.Shell.FileExist( strJavaExe ) Then
+                                NWEngine.Context.Log.Write "Scriptlet : Java Runtime Environment detected."
+                                bSearchForJavaHome = vbTrue
+                                NWEngine.Variables.AppendDefaultValue "JreHome", strJreHome
+                            End If
+                        End If
+                    End If
+                End Function
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='Jre6Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre6Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+                Option Explicit
+                NwEngine.Context.Log.Write "Script JRE6x86: Checking if Oracle JRE 1.6.0 (32 Bit) is installed"
+                If NwEngine.Shell.RegValueExist("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\Java6FamilyVersion") Then
+                    Dim szJre6Version
+                    szJre6Version = NwEngine.Shell.GetRegValue("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\Java6FamilyVersion")
+                    NwEngine.Context.Log.Write "Script JRE6x86: Found Oracle JRE in version " & szJre6Version
+                    Dim strUnderscorePos
+                    strUnderscorePos = InStrRev(szJre6Version, "_", -1, 1 )
+                    Dim strJavaUpdate
+                    If strUnderscorePos > 0 Then
+                        strJavaUpdate = Mid (szJre6Version, strUnderscorePos + 1 )
+                    Else
+                        strJavaUpdate = 0
+                    End If
+                    NwEngine.Context.Log.Write "Script JRE6x86: Found Update " & strJavaUpdate
+                    If NwEngine.Shell.RegKeyExist("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\" & szJre6Version) Then
+                        Dim strJre6Path
+                        strJre6Path = NwEngine.Shell.GetRegValue("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\" & szJre6Version & "\JavaHome")
+                        If NwEngine.Shell.FileExist(strJre6Path & "\bin\java.exe") Then
+                            NwEngine.Context.Log.Write "Script JRE7x86: Found JRE 6 in " & strJre6Path
+                            NwEngine.Variables.AppendDefaultValue "Jre6Home", strJre6Path
+                            Dim strJre6VersionWOUpdate
+                            If strUnderscorePos > 0 Then
+                                strJre6VersionWOUpdate = Left(szJre6Version, strUnderscorePos - 1)
+                            Else
+                                strJre6VersionWOUpdate = szJre6Version
+                            End If
+                        NwEngine.Variables.AppendDefaultValue "Jre6Version", strJre6VersionWOUpdate & "." & strJavaUpdate
+                        Else
+                            NwEngine.Context.Log.Write "Script JRE7x86: JRE 6 path '" & strJre6Path & "\bin\java.exe' could not be found!"
+                        End If
+                    Else
+                        NwEngine.Context.Log.Write "Script JRE6x86: Java6FamilyVersion is set to " & szJre6Version & ", but registry key HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\" & szJre6Version & " could not be found."
+                        NwEngine.Context.Log.Write "Script JRE6x86: Maybe your JRE 6 installation is defect"
+                    End If
+                Else
+                    NwEngine.Context.Log.Write "Script JRE6x86: Oracle JRE 1.6.0 is not installed!"
+                End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='Jre6x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre6x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+                Option Explicit
+                If %WOW64MODE% = true Then
+                    NwEngine.Context.Log.Write "Script JRE6x64: Checking if Oracle JRE 1.6.0 (64 Bit) is installed"
+                    NwEngine.Shell.Use64BitHive = vbTrue
+                    If NwEngine.Shell.RegValueExist("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\Java6FamilyVersion") Then
+                        Dim szJre6x64Version
+                        szJre6x64Version = NwEngine.Shell.GetRegValue("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\Java6FamilyVersion")
+                        NwEngine.Context.Log.Write "Script JRE6x64: Found Oracle JRE in version " & szJre6x64Version
+                        Dim strUnderscorePos
+                        strUnderscorePos = InStrRev(szJre6x64Version, "_", -1, 1 )
+                        Dim strJavaUpdate
+                        If strUnderscorePos > 0 Then
+                            strJavaUpdate = Mid (szJre6x64Version, strUnderscorePos + 1 )
+                        Else
+                            strJavaUpdate = 0
+                        End If
+                        NwEngine.Context.Log.Write "Script JRE6x64: Found Update " & strJavaUpdate
+                        If NwEngine.Shell.RegKeyExist("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\" & szJre6x64Version) Then
+                            Dim strJre6x64Path
+                            strJre6x64Path = NwEngine.Shell.GetRegValue("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\" & szJre6x64Version & "\JavaHome")
+                            If NwEngine.Shell.FileExist(strJre6x64Path & "\bin\java.exe") Then
+                                NwEngine.Context.Log.Write "Script JRE6x64: Found JRE 6 in " & strJre6x64Path
+                                NwEngine.Variables.AppendDefaultValue "Jre6x64Home", strJre6x64Path
+                                Dim strJre6x64VersionWOUpdate
+                                If strUnderscorePos > 0 Then
+                                    strJre6x64VersionWOUpdate = Left(szJre6x64Version, strUnderscorePos - 1)
+                                Else
+                                    strJre6x64VersionWOUpdate = szJre6x64Version
+                                End If
+                                NwEngine.Variables.AppendDefaultValue "Jre6x64Version", strJre6x64VersionWOUpdate & "." & strJavaUpdate
+                            Else
+                                NwEngine.Context.Log.Write "Script JRE6x64: JRE 6 path '" & strJre6x64Path & "\bin\java.exe' could not be found!"
+                            End If
+                        Else
+                            NwEngine.Context.Log.Write "Script JRE6x64: Java6FamilyVersion is set to " & szJre6x64Version & ", but registry key HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\" & szJre6x64Version & " could not be found."
+                            NwEngine.Context.Log.Write "Script JRE6x64: Maybe your JRE 6 x64 installation is defect"
+                        End If
+                    Else
+                        NwEngine.Context.Log.Write "Script JRE6x64: Oracle JRE 1.6.0 is not installed!"
+                    End If
+                    NwEngine.Shell.Use64BitHive = vbFalse
+                End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='Jre7Version' Persistent='false' DisplayInSapAdmin='false'>
+                <Value>0.0.0.0</Value>
+        </Variable>
+    <Variable Name='Jre7Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+                NwEngine.Context.Log.Write "Script JRE7x86: Checking if Oracle JRE 1.7.0 (32 Bit) is installed"
+                If NwEngine.Shell.RegValueExist("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\Java7FamilyVersion") Then
+                    szJre7Version = NwEngine.Shell.GetRegValue("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\Java7FamilyVersion")
+                    NwEngine.Context.Log.Write "Script JRE7x86: Found Oracle JRE in version " & szJre7Version
+                    strUnderscorePos = InStrRev(szJre7Version, "_", -1, 1 )
+                    If strUnderscorePos > 0 Then
+                        strJavaUpdate = Mid (szJre7Version, strUnderscorePos + 1 )
+                    Else
+                        strJavaUpdate = 0
+                    End If
+                    NwEngine.Context.Log.Write "Script JRE7x86: Found Update " & strJavaUpdate
+                    If NwEngine.Shell.RegKeyExist("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\" & szJre7Version) Then
+                        strJre7Path = NwEngine.Shell.GetRegValue("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\" & szJre7Version & "\JavaHome")
+                        If NwEngine.Shell.FileExist(strJre7Path & "\bin\java.exe") Then
+                            NwEngine.Context.Log.Write "Script JRE7x86: Found JRE 7 in " & strJre7Path
+                            NwEngine.Variables.AppendDefaultValue "Jre7Home", strJre7Path
+                            If strUnderscorePos > 0 Then
+                                strJre7VersionWOUpdate = Left(szJre7Version, strUnderscorePos - 1)
+                            Else
+                                strJre7VersionWOUpdate = szJre7Version
+                            End If
+                            NwEngine.Variables.AppendDefaultValue "Jre7Version", strJre7VersionWOUpdate & "." & strJavaUpdate
+                        Else
+                            NwEngine.Context.Log.Write "Script JRE7x86: JRE 7 path '" & strJre7Path & "\bin\java.exe' could not be found!"
+                        End If
+                    Else
+                        NwEngine.Context.Log.Write "Script JRE7x86: Java7FamilyVersion is set to " & szJre7Version & ", but registry key HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\" & szJre7Version & " could not be found."
+                        NwEngine.Context.Log.Write "Script JRE7x86: Maybe your JRE 7 installation is defect"
+                    End If
+                Else
+                    NwEngine.Context.Log.Write "Script JRE7x86: Oracle JRE 1.7.0 is not installed!"
+                End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='Jre7x64Version' Persistent='false' DisplayInSapAdmin='false'>
+                <Value>0.0.0.0</Value>
+        </Variable>
+    <Variable Name='Jre7x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+                If "%WOW64MODE%" = "true" Then
+                    NwEngine.Context.Log.Write "Script JRE7x64: Checking if Oracle JRE 1.7.0 (64 Bit) is installed"
+                    NwEngine.Shell.Use64BitHive = vbTrue
+                    If NwEngine.Shell.RegValueExist("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\Java7FamilyVersion") Then
+                        szJre7Version = NwEngine.Shell.GetRegValue("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\Java7FamilyVersion")
+                        NwEngine.Context.Log.Write "Script JRE7x64: Found Oracle JRE in version " & szJre7Version
+                        strUnderscorePos = InStrRev(szJre7Version, "_", -1, 1 )
+                        If strUnderscorePos > 0 Then
+                            strJavaUpdate = Mid (szJre7Version, strUnderscorePos + 1 )
+                        Else
+                            strJavaUpdate = 0
+                        End If
+                        NwEngine.Context.Log.Write "Script JRE7x64: Found Update " & strJavaUpdate
+                        If NwEngine.Shell.RegKeyExist("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\" & szJre7Version) Then
+                            strJre7Path = NwEngine.Shell.GetRegValue("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\" & szJre7Version & "\JavaHome")
+                            If NwEngine.Shell.FileExist(strJre7Path & "\bin\java.exe") Then
+                                NwEngine.Context.Log.Write "Script JRE7x64: Found JRE 7 in " & strJre7Path
+                                NwEngine.Variables.AppendDefaultValue "Jre7x64Home", strJre7Path
+                                If strUnderscorePos > 0 Then
+                                    strJre7VersionWOUpdate = Left(szJre7Version, strUnderscorePos - 1)
+                                Else
+                                    strJre7VersionWOUpdate = szJre7Version
+                                End If
+                                NwEngine.Variables.AppendDefaultValue "Jre7x64Version", strJre7VersionWOUpdate & "." & strJavaUpdate
+                            Else
+                                NwEngine.Context.Log.Write "Script JRE7x64: JRE 7 path '" & strJre7Path & "\bin\java.exe' could not be found!"
+                            End If
+                        Else
+                            NwEngine.Context.Log.Write "Script JRE7x64: Java7FamilyVersion is set to " & szJre7Version & ", but registry key HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\" & szJre7Version & " could not be found."
+                            NwEngine.Context.Log.Write "Script JRE7x64: Maybe your JRE 7 installation is defect"
+                        End If
+                    Else
+                        NwEngine.Context.Log.Write "Script JRE7x64: Oracle JRE 1.7.0 is not installed!"
+                    End If
+                    NwEngine.Shell.Use64BitHive = vbFalse
+                End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='Jre8Version' Persistent='false' DisplayInSapAdmin='false'>
+                <Value>0.0.0.0</Value>
+        </Variable>
+    <Variable Name='Jre8Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+                NwEngine.Context.Log.Write "Script JRE8x86: Checking if Oracle JRE 1.8.0 (32 Bit) is installed"
+                If NwEngine.Shell.RegKeyExist("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\1.8") Then
+                    For Each jre8Key in NwEngine.Shell.EnumRegKeys("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment")
+                        If Left(jre8Key, 5) = "1.8.0" Then
+                            szJre8Version = jre8Key
+                        End If
+                    Next
+                    NwEngine.Context.Log.Write "Script JRE8x86: Found Oracle JRE in version " & szJre8Version
+                    strUnderscorePos = InStrRev(szJre8Version, "_", -1, 1 )
+                    If strUnderscorePos > 0 Then
+                        strJavaUpdate = Mid (szJre8Version, strUnderscorePos + 1 )
+                    Else
+                        strJavaUpdate = 0
+                    End If
+                    NwEngine.Context.Log.Write "Script JRE8x86: Found Update " & strJavaUpdate
+                    If NwEngine.Shell.RegKeyExist("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\" & szJre8Version) Then
+                        strJre8Path = NwEngine.Shell.GetRegValue("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\" & szJre8Version & "\JavaHome")
+                        If NwEngine.Shell.FileExist(strJre8Path & "\bin\java.exe") Then
+                            NwEngine.Context.Log.Write "Script JRE8x86: Found JRE 8 in " & strJre8Path
+                            NwEngine.Variables.AppendDefaultValue "Jre8Home", strJre8Path
+                            If strUnderscorePos > 0 Then
+                                strJre8VersionWOUpdate = Left(szJre8Version, strUnderscorePos - 1)
+                            Else
+                                strJre8VersionWOUpdate = szJre8Version
+                            End If
+                            NwEngine.Variables.AppendDefaultValue "Jre8Version", strJre8VersionWOUpdate & "." & strJavaUpdate
+                        Else
+                            NwEngine.Context.Log.Write "Script JRE8x86: JRE 8 path '" & strJre8Path & "\bin\java.exe' could not be found!"
+                        End If
+                    Else
+                        NwEngine.Context.Log.Write "Script JRE8x86: Java8FamilyVersion is set to " & szJre8Version & ", but registry key HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\" & szJre8Version & " could not be found."
+                        NwEngine.Context.Log.Write "Script JRE8x86: Maybe your JRE 8 installation is defect"
+                    End If
+                Else
+                    NwEngine.Context.Log.Write "Script JRE8x86: Oracle JRE 1.8.0 is not installed!"
+                End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='Jre8x64Version' Persistent='false' DisplayInSapAdmin='false'>
+                <Value>0.0.0.0</Value>
+        </Variable>
+    <Variable Name='Jre8x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+                If "%WOW64MODE%" = "true" Then
+                    NwEngine.Context.Log.Write "Script JRE8x64: Checking if Oracle JRE 1.8.0 (64 Bit) is installed"
+                    NwEngine.Shell.Use64BitHive = vbTrue
+                    If NwEngine.Shell.RegKeyExist("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\1.8") Then
+                        For Each jre8Key in NwEngine.Shell.EnumRegKeys("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment")
+                            If Left(jre8Key, 5) = "1.8.0" Then
+                                szJre8Version = jre8Key
+                            End If
+                        Next
+                        NwEngine.Context.Log.Write "Script JRE8x64: Found Oracle JRE in version " & szJre8Version
+                        strUnderscorePos = InStrRev(szJre8Version, "_", -1, 1 )
+                        If strUnderscorePos > 0 Then
+                            strJavaUpdate = Mid (szJre8Version, strUnderscorePos + 1 )
+                        Else
+                            strJavaUpdate = 0
+                        End If
+                        NwEngine.Context.Log.Write "Script JRE8x64: Found Update " & strJavaUpdate
+                        If NwEngine.Shell.RegKeyExist("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\" & szJre8Version) Then
+                            strJre8Path = NwEngine.Shell.GetRegValue("HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\" & szJre8Version & "\JavaHome")
+                            If NwEngine.Shell.FileExist(strJre8Path & "\bin\java.exe") Then
+                                NwEngine.Context.Log.Write "Script JRE8x64: Found JRE 8 in " & strJre8Path
+                                NwEngine.Variables.AppendDefaultValue "Jre8x64Home", strJre8Path
+                                If strUnderscorePos > 0 Then
+                                    strJre8VersionWOUpdate = Left(szJre8Version, strUnderscorePos - 1)
+                                Else
+                                    strJre8VersionWOUpdate = szJre8Version
+                                End If
+                                NwEngine.Variables.AppendDefaultValue "Jre8x64Version", strJre8VersionWOUpdate & "." & strJavaUpdate
+                            Else
+                                NwEngine.Context.Log.Write "Script JRE8x64: JRE 8 path '" & strJre8Path & "\bin\java.exe' could not be found!"
+                            End If
+                        Else
+                            NwEngine.Context.Log.Write "Script JRE8x64: Java8FamilyVersion is set to " & szJre8Version & ", but registry key HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\" & szJre8Version & " could not be found."
+                            NwEngine.Context.Log.Write "Script JRE8x64: Maybe your JRE 8 installation is defect"
+                        End If
+                    Else
+                        NwEngine.Context.Log.Write "Script JRE8x64: Oracle JRE 1.8.0 is not installed!"
+                    End If
+                    NwEngine.Shell.Use64BitHive = vbFalse
+                End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='Jdk10x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre10x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk10x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre10x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk11x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre11x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk11x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre11x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk12x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre12x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk12x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre12x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk13x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre13x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk13x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre13x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk14x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre14x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk14x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre14x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk15x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre15x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk15x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre15x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk16x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre16x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk16x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre16x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk17x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre17x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk17x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre17x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk18x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre18x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk18x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre18x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk19x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre19x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk19x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre19x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk20x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre20x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk20x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre20x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk21x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre21x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk21x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre21x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk22x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre22x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk22x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre22x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk23x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre23x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk23x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre23x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk24x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre24x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk24x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre24x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk25x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre25x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk25x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre25x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk26x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre26x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk26x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre26x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk27x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre27x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk27x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre27x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk28x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre28x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk28x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre28x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk29x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre29x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk29x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre29x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk30x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre30x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk30x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre30x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jdk9x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jre9x64Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='Jdk9x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+    </Variable>
+    <Variable Name='Jre9x64Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0</Value>
+        <Value Script='true'>
+            <![CDATA[
+                Option Explicit
+
+                Function GetVersion(version)
+                    If Len(version) - Len(Replace(version, ".", "")) >= 3 Then
+                        GetVersion = version
+                    Else
+                        GetVersion = GetVersion(version & ".0")
+                    End If
+                End Function
+
+                If "%WOW64MODE%" = "true" Then
+                    NwEngine.Shell.Use64BitHive = vbTrue
+                    Dim JavaRKs(1), JavaRK, regKey
+                    JavaRKs(0) = "JDK"
+                    JavaRKs(1) = "JRE"
+                    regKey = "HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft"
+
+                    Dim JavaItems(43), JavaItem
+                    JavaItems( 0) = Array("JRE", "9", "0.0.0")
+                    JavaItems( 1) = Array("JRE", "10", "0.0.0")
+                    JavaItems( 2) = Array("JRE", "11", "0.0.0")
+                    JavaItems( 3) = Array("JRE", "12", "0.0.0")
+                    JavaItems( 4) = Array("JRE", "13", "0.0.0")
+                    JavaItems( 5) = Array("JRE", "14", "0.0.0")
+                    JavaItems( 6) = Array("JRE", "15", "0.0.0")
+                    JavaItems( 7) = Array("JRE", "16", "0.0.0")
+                    JavaItems( 8) = Array("JRE", "17", "0.0.0")
+                    JavaItems( 9) = Array("JRE", "18", "0.0.0")
+                    JavaItems(10) = Array("JRE", "19", "0.0.0")
+                    JavaItems(11) = Array("JRE", "20", "0.0.0")
+                    JavaItems(12) = Array("JRE", "21", "0.0.0")
+                    JavaItems(13) = Array("JRE", "22", "0.0.0")
+                    JavaItems(14) = Array("JRE", "23", "0.0.0")
+                    JavaItems(15) = Array("JRE", "24", "0.0.0")
+                    JavaItems(16) = Array("JRE", "25", "0.0.0")
+                    JavaItems(17) = Array("JRE", "26", "0.0.0")
+                    JavaItems(18) = Array("JRE", "27", "0.0.0")
+                    JavaItems(19) = Array("JRE", "28", "0.0.0")
+                    JavaItems(20) = Array("JRE", "29", "0.0.0")
+                    JavaItems(21) = Array("JRE", "30", "0.0.0")
+                    JavaItems(22) = Array("JDK", "9", "0.0.0")
+                    JavaItems(23) = Array("JDK", "10", "0.0.0")
+                    JavaItems(24) = Array("JDK", "11", "0.0.0")
+                    JavaItems(25) = Array("JDK", "12", "0.0.0")
+                    JavaItems(26) = Array("JDK", "13", "0.0.0")
+                    JavaItems(27) = Array("JDK", "14", "0.0.0")
+                    JavaItems(28) = Array("JDK", "15", "0.0.0")
+                    JavaItems(29) = Array("JDK", "16", "0.0.0")
+                    JavaItems(30) = Array("JDK", "17", "0.0.0")
+                    JavaItems(31) = Array("JDK", "18", "0.0.0")
+                    JavaItems(32) = Array("JDK", "19", "0.0.0")
+                    JavaItems(33) = Array("JDK", "20", "0.0.0")
+                    JavaItems(34) = Array("JDK", "21", "0.0.0")
+                    JavaItems(35) = Array("JDK", "22", "0.0.0")
+                    JavaItems(36) = Array("JDK", "23", "0.0.0")
+                    JavaItems(37) = Array("JDK", "24", "0.0.0")
+                    JavaItems(38) = Array("JDK", "25", "0.0.0")
+                    JavaItems(39) = Array("JDK", "26", "0.0.0")
+                    JavaItems(40) = Array("JDK", "27", "0.0.0")
+                    JavaItems(41) = Array("JDK", "28", "0.0.0")
+                    JavaItems(42) = Array("JDK", "29", "0.0.0")
+                    JavaItems(43) = Array("JDK", "30", "0.0.0")
+
+                    NwEngine.Context.Log.Write "Script Java_x64: Checking for installed Oracle JRE/JDK 9 or higher..."
+                    For JavaItem = 0 To UBound(JavaItems)
+                        If NwEngine.Shell.RegKeyExist(regKey & "\" & JavaItems(JavaItem)(0)) Then
+                            Dim javaVersionEntry
+                            For Each javaVersionEntry in NwEngine.Shell.EnumRegKeys(regKey & "\" & JavaItems(JavaItem)(0))
+                                If Left(javaVersionEntry, Len(JavaItems(JavaItem)(1))) = JavaItems(JavaItem)(1) Then
+                                    If NwEngine.DE.ConditionsHandler.Evaluate("FileVersion(" & GetVersion(javaVersionEntry) & ") > FileVersion(" & GetVersion(JavaItems(JavaItem)(2)) & ")") Then
+                                        NwEngine.Context.Log.Write "Script Java_x64: Found " & JavaItems(JavaItem)(0) & JavaItems(JavaItem)(1) & " in version " & javaVersionEntry
+                                        JavaItems(JavaItem)(2) = javaVersionEntry
+                                    End If
+                                End If
+                            Next
+                        End If
+                    Next
+                    For Each JavaItem in JavaItems
+                        If NwEngine.DE.ConditionsHandler.Evaluate("FileVersion(" & GetVersion(JavaItem(2)) & ") > FileVersion(0.0.0.0)") Then
+                            If NwEngine.Shell.RegValueExist(regKey & "\" & JavaItem(0) & "\" & JavaItem(2) & "\JavaHome") Then
+                                Dim JavaDir
+                                JavaDir = NwEngine.Shell.GetRegValue(regKey & "\" & JavaItem(0) & "\" & JavaItem(2) & "\JavaHome")
+                                NwEngine.Variables.AppendDefaultValue JavaItem(0) & JavaItem(1) & "x64Version", JavaItem(2)
+                                NwEngine.Variables.AppendDefaultValue JavaItem(0) & JavaItem(1) & "x64Home", JavaDir
+                                NwEngine.Context.Log.Write "Script Java_x64: Adding variable " & JavaItem(0) & JavaItem(1) & "x64Version with value " & JavaItem(2)
+                                NwEngine.Context.Log.Write "Script Java_x64: Adding variable " & JavaItem(0) & JavaItem(1) & "x64Home with value " & JavaDir
+                            End If
+                        End If
+                    Next
+
+                    NwEngine.Shell.Use64BitHive = vbFalse
+                End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='SAPJRE11Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE11Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE12Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE12Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE13Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE13Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE14Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE14Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE15Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE15Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE16Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE16Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE17Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE17Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE18Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE18Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE19Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE19Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE20Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE20Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE21Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE21Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE22Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE22Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE23Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE23Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE24Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE24Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE25Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE25Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE26Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE26Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE27Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE27Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE28Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE28Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE29Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE29Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJRE30Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJRE30Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK11Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK11Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK12Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK12Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK13Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK13Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK14Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK14Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK16Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK16Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK17Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK17Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK18Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK18Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK19Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK19Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK20Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK20Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK21Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK21Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK22Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK22Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK23Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK23Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK24Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK24Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK25Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK25Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK26Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK26Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK27Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK27Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK28Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK28Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK29Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK29Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK30Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK30Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='SAPJDK15Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='SAPJDK15Home' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+                Option Explicit
+
+                Function GetVersion(version)
+                    If Len(version) - Len(Replace(version, ".", "")) >= 3 Then
+                        GetVersion = version
+                    Else
+                        GetVersion = GetVersion(version & ".0")
+                    End If
+                End Function
+
+                If "%WOW64MODE%" = "true" Then
+                    NwEngine.Shell.Use64BitHive = vbTrue
+                    Dim JavaRKs(1), JavaRK, regKey
+                    JavaRKs(0) = "JDK"
+                    JavaRKs(1) = "JRE"
+                    regKey = "HKEY_LOCAL_MACHINE\SOFTWARE\SapMachine"
+
+                    Dim JavaItems(39), JavaItem
+                    JavaItems( 0) = Array("JRE", "11", "0.0.0")
+                    JavaItems( 1) = Array("JRE", "12", "0.0.0")
+                    JavaItems( 2) = Array("JRE", "13", "0.0.0")
+                    JavaItems( 3) = Array("JRE", "14", "0.0.0")
+                    JavaItems( 4) = Array("JRE", "15", "0.0.0")
+                    JavaItems( 5) = Array("JRE", "16", "0.0.0")
+                    JavaItems( 6) = Array("JRE", "17", "0.0.0")
+                    JavaItems( 7) = Array("JRE", "18", "0.0.0")
+                    JavaItems( 8) = Array("JRE", "19", "0.0.0")
+                    JavaItems( 9) = Array("JRE", "20", "0.0.0")
+                    JavaItems(10) = Array("JRE", "21", "0.0.0")
+                    JavaItems(11) = Array("JRE", "22", "0.0.0")
+                    JavaItems(12) = Array("JRE", "23", "0.0.0")
+                    JavaItems(13) = Array("JRE", "24", "0.0.0")
+                    JavaItems(14) = Array("JRE", "25", "0.0.0")
+                    JavaItems(15) = Array("JRE", "26", "0.0.0")
+                    JavaItems(16) = Array("JRE", "27", "0.0.0")
+                    JavaItems(17) = Array("JRE", "28", "0.0.0")
+                    JavaItems(18) = Array("JRE", "29", "0.0.0")
+                    JavaItems(19) = Array("JRE", "30", "0.0.0")
+                    JavaItems(20) = Array("JDK", "11", "0.0.0")
+                    JavaItems(21) = Array("JDK", "12", "0.0.0")
+                    JavaItems(22) = Array("JDK", "13", "0.0.0")
+                    JavaItems(23) = Array("JDK", "14", "0.0.0")
+                    JavaItems(24) = Array("JDK", "15", "0.0.0")
+                    JavaItems(25) = Array("JDK", "16", "0.0.0")
+                    JavaItems(26) = Array("JDK", "17", "0.0.0")
+                    JavaItems(27) = Array("JDK", "18", "0.0.0")
+                    JavaItems(28) = Array("JDK", "19", "0.0.0")
+                    JavaItems(29) = Array("JDK", "20", "0.0.0")
+                    JavaItems(30) = Array("JDK", "21", "0.0.0")
+                    JavaItems(31) = Array("JDK", "22", "0.0.0")
+                    JavaItems(32) = Array("JDK", "23", "0.0.0")
+                    JavaItems(33) = Array("JDK", "24", "0.0.0")
+                    JavaItems(34) = Array("JDK", "25", "0.0.0")
+                    JavaItems(35) = Array("JDK", "26", "0.0.0")
+                    JavaItems(36) = Array("JDK", "27", "0.0.0")
+                    JavaItems(37) = Array("JDK", "28", "0.0.0")
+                    JavaItems(38) = Array("JDK", "29", "0.0.0")
+                    JavaItems(39) = Array("JDK", "30", "0.0.0")
+
+                    NwEngine.Context.Log.Write "Script SapMachine: Checking for installed SapMachine JRE/JDK 11 or higher..."
+                    For JavaItem = 0 To UBound(JavaItems)
+                        If NwEngine.Shell.RegKeyExist(regKey & "\" & JavaItems(JavaItem)(0)) Then
+                            Dim javaVersionEntry
+                            For Each javaVersionEntry in NwEngine.Shell.EnumRegKeys(regKey & "\" & JavaItems(JavaItem)(0))
+                                If Left(javaVersionEntry, Len(JavaItems(JavaItem)(1))) = JavaItems(JavaItem)(1) Then
+                                    If NwEngine.DE.ConditionsHandler.Evaluate("FileVersion(" & GetVersion(javaVersionEntry) & ") > FileVersion(" & GetVersion(JavaItems(JavaItem)(2)) & ")") Then
+                                        NwEngine.Context.Log.Write "Script SapMachine: Found " & JavaItems(JavaItem)(0) & JavaItems(JavaItem)(1) & " in version " & javaVersionEntry
+                                        JavaItems(JavaItem)(2) = javaVersionEntry
+                                    End If
+                                End If
+                            Next
+                        End If
+                    Next
+                    For Each JavaItem in JavaItems
+                        If NwEngine.DE.ConditionsHandler.Evaluate("FileVersion(" & GetVersion(JavaItem(2)) & ") > FileVersion(0.0.0.0)") Then
+                            If NwEngine.Shell.RegValueExist(regKey & "\" & JavaItem(0) & "\" & JavaItem(2) & "\JavaHome") Then
+                                Dim JavaDir
+                                JavaDir = NwEngine.Shell.GetRegValue(regKey & "\" & JavaItem(0) & "\" & JavaItem(2) & "\JavaHome")
+                                NwEngine.Variables.AppendDefaultValue "SAP" & JavaItem(0) & JavaItem(1) & "Version", JavaItem(2)
+                                NwEngine.Variables.AppendDefaultValue "SAP" & JavaItem(0) & JavaItem(1) & "Home", JavaDir
+                                NwEngine.Context.Log.Write "Script SapMachine: Adding variable " & "SAP" & JavaItem(0) & JavaItem(1) & "Version with value " & JavaItem(2)
+                                NwEngine.Context.Log.Write "Script SapMachine: Adding variable " & "SAP" & JavaItem(0) & JavaItem(1) & "Home with value " & JavaDir
+                            End If
+                        End If
+                    Next
+
+                    NwEngine.Shell.Use64BitHive = vbFalse
+                End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='AcroReader6Dir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>C:\UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+                        NWEngine.Context.Log.Write "Script: Checking for Adobe Acrobat Reader 6.0"
+                        szAcroReader6Dir = ""
+                        If NWEngine.Shell.RegKeyExist("HKLM\SOFTWARE\Adobe\Acrobat Reader\6.0\InstallPath") Then
+                                szAcroReader6Dir = NWEngine.Shell.GetRegValue( "HKLM\SOFTWARE\Adobe\Acrobat Reader\6.0\InstallPath\" )
+                                NwEngine.Context.Log.Write "Script: Found Adobe Acrobat Reader 6.0 in " & szAcroReader6Dir
+                                NwEngine.Variables.AppendDefaultValue "AcroReader6Dir", szAcroReader6Dir
+                        End If
+      ]]>
+        </Value>
+    </Variable>
+    <Variable Name='Acro6Dir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>C:\UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+                        NWEngine.Context.Log.Write "Script: Checking for Adobe Acrobat 6.0"
+                        szAcro6Dir = ""
+                        If NWEngine.Shell.RegKeyExist( "HKLM\SOFTWARE\Adobe\Adobe Acrobat\6.0\InstallPath" ) Then
+                                szAcro6Dir = NWEngine.Shell.GetRegValue( "HKLM\SOFTWARE\Adobe\Adobe Acrobat\6.0\InstallPath\" )
+                                NwEngine.Context.Log.Write "Script: Found Adobe Acrobat 6.0 in " & szAcro6Dir
+                                NwEngine.Variables.AppendDefaultValue "Acro6Dir", szAcro6Dir
+                        End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='AcroReader7Dir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>C:\UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+                        NWEngine.Context.Log.Write "Script: Checking for Adobe Acrobat Reader 7.0"
+                        szAcroReader7Dir = ""
+                        If NWEngine.Shell.RegKeyExist("HKLM\SOFTWARE\Adobe\Acrobat Reader\7.0\InstallPath") Then
+                                szAcroReader7Dir = NWEngine.Shell.GetRegValue( "HKLM\SOFTWARE\Adobe\Acrobat Reader\7.0\InstallPath\" )
+                                NwEngine.Context.Log.Write "Script: Found Adobe Acrobat Reader 7.0 in " & szAcroReader7Dir
+                                NwEngine.Variables.AppendDefaultValue "AcroReader7Dir", szAcroReader7Dir
+                        End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='Acro7Dir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>C:\UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+                        NWEngine.Context.Log.Write "Script: Checking for Adobe Acrobat 7.0"
+                        szAcro7Dir = ""
+                        If NWEngine.Shell.RegKeyExist( "HKLM\SOFTWARE\Adobe\Adobe Acrobat\7.0\InstallPath" ) Then
+                                szAcro7Dir = NWEngine.Shell.GetRegValue( "HKLM\SOFTWARE\Adobe\Adobe Acrobat\7.0\InstallPath\" )
+                                NwEngine.Context.Log.Write "Script: Found Adobe Acrobat 7.0 in " & szAcro7Dir
+                                NwEngine.Variables.AppendDefaultValue "Acro7Dir", szAcro7Dir
+                        End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='AcroReader8Dir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>C:\UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+                        NWEngine.Context.Log.Write "Script: Checking for Adobe Acrobat Reader 8.0"
+                        szAcroReader8Dir = ""
+                        If NWEngine.Shell.RegKeyExist("HKLM\SOFTWARE\Adobe\Acrobat Reader\8.0\InstallPath") Then
+                                szAcroReader8Dir = NWEngine.Shell.GetRegValue( "HKLM\SOFTWARE\Adobe\Acrobat Reader\8.0\InstallPath\" )
+                                NwEngine.Context.Log.Write "Script: Found Adobe Acrobat Reader 8.0 in " & szAcroReader8Dir
+                                NwEngine.Variables.AppendDefaultValue "AcroReader8Dir", szAcroReader8Dir
+                        End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='Acro8Dir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>C:\UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+                        NWEngine.Context.Log.Write "Script: Checking for Adobe Acrobat 8.0"
+                        szAcro8Dir = ""
+                        If NWEngine.Shell.RegKeyExist( "HKLM\SOFTWARE\Adobe\Adobe Acrobat\8.0\InstallPath" ) Then
+                                szAcro8Dir = NWEngine.Shell.GetRegValue( "HKLM\SOFTWARE\Adobe\Adobe Acrobat\8.0\InstallPath\" )
+                                NwEngine.Context.Log.Write "Script: Found Adobe Acrobat 8.0 in " & szAcro8Dir
+                                NwEngine.Variables.AppendDefaultValue "Acro8Dir", szAcro8Dir
+                        End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='AcroReader9Dir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>C:\UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+                        NWEngine.Context.Log.Write "Script: Checking for Adobe Acrobat Reader 9.0"
+                        szAcroReader9Dir = ""
+                        If NWEngine.Shell.RegKeyExist("HKLM\SOFTWARE\Adobe\Acrobat Reader\9.0\InstallPath") Then
+                                szAcroReader9Dir = NWEngine.Shell.GetRegValue( "HKLM\SOFTWARE\Adobe\Acrobat Reader\9.0\InstallPath\" )
+                                NwEngine.Context.Log.Write "Script: Found Adobe Acrobat Reader 9.0 in " & szAcroReader9Dir
+                                NwEngine.Variables.AppendDefaultValue "AcroReader9Dir", szAcroReader9Dir
+                        End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='Acro9Dir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>C:\UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+                        NWEngine.Context.Log.Write "Script: Checking for Adobe Acrobat 9.0"
+                        szAcro9Dir = ""
+                        If NWEngine.Shell.RegKeyExist( "HKLM\SOFTWARE\Adobe\Adobe Acrobat\9.0\InstallPath" ) Then
+                                szAcro9Dir = NWEngine.Shell.GetRegValue( "HKLM\SOFTWARE\Adobe\Adobe Acrobat\9.0\InstallPath\" )
+                                NwEngine.Context.Log.Write "Script: Found Adobe Acrobat 9.0 in " & szAcro9Dir
+                                NwEngine.Variables.AppendDefaultValue "Acro9Dir", szAcro9Dir
+                        End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='AcroReader10Dir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>C:\UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+                        NWEngine.Context.Log.Write "Script: Checking for Adobe Acrobat Reader 10.0"
+                        szAcroReader10Dir = ""
+                        If NWEngine.Shell.RegKeyExist("HKLM\SOFTWARE\Adobe\Acrobat Reader\10.0\InstallPath") Then
+                                szAcroReader10Dir = NWEngine.Shell.GetRegValue( "HKLM\SOFTWARE\Adobe\Acrobat Reader\10.0\InstallPath\" )
+                                NwEngine.Context.Log.Write "Script: Found Adobe Acrobat Reader 10.0 in " & szAcroReader10Dir
+                                NwEngine.Variables.AppendDefaultValue "AcroReader10Dir", szAcroReader10Dir
+                        End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='Acro10Dir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>C:\UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+                        NWEngine.Context.Log.Write "Script: Checking for Adobe Acrobat 10.0"
+                        szAcro10Dir = ""
+                        If NWEngine.Shell.RegKeyExist( "HKLM\SOFTWARE\Adobe\Adobe Acrobat\10.0\InstallPath" ) Then
+                                szAcro10Dir = NWEngine.Shell.GetRegValue( "HKLM\SOFTWARE\Adobe\Adobe Acrobat\10.0\InstallPath\" )
+                                NwEngine.Context.Log.Write "Script: Found Adobe Acrobat 10.0 in " & szAcro10Dir
+                                NwEngine.Variables.AppendDefaultValue "Acro10Dir", szAcro10Dir
+                        End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='AcroReader11Dir' Persistent='false' DisplayInSapAdmin='false'>
+      <Value>C:\UNDEFINED</Value>
+      <Value Script='true'>
+        <![CDATA[
+                        NWEngine.Context.Log.Write "Script: Checking for Adobe Acrobat Reader 11.0"
+                        szAcroReader11Dir = ""
+                        If NWEngine.Shell.RegKeyExist("HKLM\SOFTWARE\Adobe\Acrobat Reader\11.0\InstallPath") Then
+                                szAcroReader11Dir = NWEngine.Shell.GetRegValue( "HKLM\SOFTWARE\Adobe\Acrobat Reader\11.0\InstallPath\" )
+                                NwEngine.Context.Log.Write "Script: Found Adobe Acrobat Reader 11.0 in " & szAcroReader11Dir
+                                NwEngine.Variables.AppendDefaultValue "AcroReader11Dir", szAcroReader11Dir
+                        End If
+        ]]>
+      </Value>
+    </Variable>
+    <Variable Name='Acro11Dir' Persistent='false' DisplayInSapAdmin='false'>
+      <Value>C:\UNDEFINED</Value>
+      <Value Script='true'>
+        <![CDATA[
+                        NWEngine.Context.Log.Write "Script: Checking for Adobe Acrobat 11.0"
+                        szAcro11Dir = ""
+                        If NWEngine.Shell.RegKeyExist( "HKLM\SOFTWARE\Adobe\Adobe Acrobat\11.0\InstallPath" ) Then
+                                szAcro11Dir = NWEngine.Shell.GetRegValue( "HKLM\SOFTWARE\Adobe\Adobe Acrobat\11.0\InstallPath\" )
+                                NwEngine.Context.Log.Write "Script: Found Adobe Acrobat 11.0 in " & szAcro11Dir
+                                NwEngine.Variables.AppendDefaultValue "Acro11Dir", szAcro11Dir
+                        End If
+        ]]>
+      </Value>
+    </Variable>
+    <Variable Name='AcroReader2015Dir' Persistent='false' DisplayInSapAdmin='false'>
+      <Value>C:\UNDEFINED</Value>
+      <Value Script='true'>
+        <![CDATA[
+                        NWEngine.Context.Log.Write "Script: Checking for Adobe Acrobat Reader 2015"
+                        szAcroReader12Dir = ""
+                        rem [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Adobe\Acrobat Reader\2015\InstallPath]
+                        rem @="C:\\Program Files (x86)\\Adobe\\Acrobat Reader 2015\\Reader"
+                        If NWEngine.Shell.RegKeyExist("HKLM\SOFTWARE\Adobe\Acrobat Reader\2015\InstallPath") Then
+                                szAcroReader12Dir = NWEngine.Shell.GetRegValue( "HKLM\SOFTWARE\Adobe\Acrobat Reader\2015\InstallPath\" )
+                                NwEngine.Context.Log.Write "Script: Found Adobe Acrobat Reader 2015 in " & szAcroReader12Dir
+                                NwEngine.Variables.AppendDefaultValue "AcroReader2015Dir", szAcroReader12Dir
+                        End If
+        ]]>
+      </Value>
+    </Variable>
+    <Variable Name='Acro2015Dir' Persistent='false' DisplayInSapAdmin='false'>
+      <Value>C:\UNDEFINED</Value>
+      <Value Script='true'>
+        <![CDATA[
+                        NWEngine.Context.Log.Write "Script: Checking for Adobe Acrobat 2015"
+                        szAcro12Dir = ""
+                        If NWEngine.Shell.RegKeyExist( "HKLM\SOFTWARE\Adobe\Adobe Acrobat\2015\InstallPath" ) Then
+                                szAcro12Dir = NWEngine.Shell.GetRegValue( "HKLM\SOFTWARE\Adobe\Adobe Acrobat\2015\InstallPath\" )
+                                NwEngine.Context.Log.Write "Script: Found Adobe Acrobat 2015 in " & szAcro12Dir
+                                NwEngine.Variables.AppendDefaultValue "Acro2015Dir", szAcro12Dir
+                        End If
+        ]]>
+      </Value>
+    </Variable>
+    <Variable Name='AcroReaderDCDir' Persistent='false' DisplayInSapAdmin='false'>
+      <Value>C:\UNDEFINED</Value>
+      <Value Script='true'>
+        <![CDATA[
+                        NWEngine.Context.Log.Write "Script: Checking for Adobe Acrobat Reader DC"
+                        szAcroReader12Dir = ""
+                        rem [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Adobe\Acrobat Reader\DC\InstallPath]
+                        rem @="C:\\Program Files (x86)\\Adobe\\Acrobat Reader DC\\Reader"
+                        If NWEngine.Shell.RegKeyExist("HKLM\SOFTWARE\Adobe\Acrobat Reader\DC\InstallPath") Then
+                                szAcroReader12Dir = NWEngine.Shell.GetRegValue( "HKLM\SOFTWARE\Adobe\Acrobat Reader\DC\InstallPath\" )
+                                NwEngine.Context.Log.Write "Script: Found Adobe Acrobat Reader DC in " & szAcroReader12Dir
+                                NwEngine.Variables.AppendDefaultValue "AcroReaderDCDir", szAcroReader12Dir
+                        End If
+        ]]>
+      </Value>
+    </Variable>
+    <Variable Name='AcroDCDir' Persistent='false' DisplayInSapAdmin='false'>
+      <Value>C:\UNDEFINED</Value>
+      <Value Script='true'>
+        <![CDATA[
+                        NWEngine.Context.Log.Write "Script: Checking for Adobe Acrobat DC"
+                        szAcro12Dir = ""
+                        If NWEngine.Shell.RegKeyExist( "HKLM\SOFTWARE\Adobe\Adobe Acrobat\DC\InstallPath" ) Then
+                                szAcro12Dir = NWEngine.Shell.GetRegValue( "HKLM\SOFTWARE\Adobe\Adobe Acrobat\DC\InstallPath\" )
+                                NwEngine.Context.Log.Write "Script: Found Adobe Acrobat DC in " & szAcro12Dir
+                                NwEngine.Variables.AppendDefaultValue "AcroDCDir", szAcro12Dir
+                        End If
+        ]]>
+      </Value>
+    </Variable>
+    <Variable Name='AcroReader2017Dir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>C:\UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+                        NWEngine.Context.Log.Write "Script: Checking for Adobe Acrobat Reader 2017"
+                        szAcroReader12Dir = ""
+                        rem [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Adobe\Acrobat Reader\2017\InstallPath]
+                        rem @="C:\\Program Files (x86)\\Adobe\\Acrobat Reader 2017\\Reader"
+                        If NWEngine.Shell.RegKeyExist("HKLM\SOFTWARE\Adobe\Acrobat Reader\2017\InstallPath") Then
+                                szAcroReader12Dir = NWEngine.Shell.GetRegValue( "HKLM\SOFTWARE\Adobe\Acrobat Reader\2017\InstallPath\" )
+                                NwEngine.Context.Log.Write "Script: Found Adobe Acrobat Reader 2017 in " & szAcroReader12Dir
+                                NwEngine.Variables.AppendDefaultValue "AcroReader2017Dir", szAcroReader12Dir
+                        End If
+        ]]>
+        </Value>
+    </Variable>
+    <Variable Name='Acro2017Dir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>C:\UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+                        NWEngine.Context.Log.Write "Script: Checking for Adobe Acrobat 2017"
+                        szAcro12Dir = ""
+                        If NWEngine.Shell.RegKeyExist( "HKLM\SOFTWARE\Adobe\Adobe Acrobat\2017\InstallPath" ) Then
+                                szAcro12Dir = NWEngine.Shell.GetRegValue( "HKLM\SOFTWARE\Adobe\Adobe Acrobat\2017\InstallPath\" )
+                                NwEngine.Context.Log.Write "Script: Found Adobe Acrobat 2017 in " & szAcro12Dir
+                                NwEngine.Variables.AppendDefaultValue "Acro2017Dir", szAcro12Dir
+                        End If
+        ]]>
+        </Value>
+    </Variable>
+    <Variable Name='DotNetV114322' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+NwEngine.Context.Log.Write "Script: Checking for .NET Framework Version 1.1 (v1.1.4322)"
+szRegKeyDotNetFramework = "HKLM\Software\Microsoft\NET Framework Setup\NDP\v1.1.4322"
+If NwEngine.Shell.RegKeyExist( szRegKeyDotNetFramework ) Then
+        NwEngine.Context.Log.Write "Script: .NET Framework Version 1.1 (v1.1.4322) exists."
+NwEngine.Variables.AppendDefaultValue "DotNetV114322", "EXISTING"
+End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='DotNetV2050727' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+NwEngine.Context.Log.Write "Script: Checking for .NET Framework Version 2.0 (v2.0.50727)"
+szRegKeyDotNetFramework = "HKLM\Software\Microsoft\NET Framework Setup\NDP\v2.0.50727"
+If NwEngine.Shell.RegKeyExist( szRegKeyDotNetFramework ) Then
+        NwEngine.Context.Log.Write "Script: .NET Framework Version 2.0 (v2.0.50727) exists."
+NwEngine.Variables.AppendDefaultValue "DotNetV2050727", "EXISTING"
+End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='DotNetV2050727x64' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+If "%WOW64MODE%" = "true" Then
+  NwEngine.Shell.Use64BitHive = vbTrue
+  NwEngine.Context.Log.Write "Script: Checking for .NET Framework Version 2.0 (v2.0.50727)"
+  szRegKeyDotNetFramework = "HKLM\Software\Microsoft\NET Framework Setup\NDP\v2.0.50727"
+  If NwEngine.Shell.RegKeyExist( szRegKeyDotNetFramework ) Then
+          NwEngine.Context.Log.Write "Script: .NET Framework Version 2.0 (v2.0.50727) exists."
+    NwEngine.Variables.AppendDefaultValue "DotNetV2050727x64", "EXISTING"
+  End If
+  NwEngine.Shell.Use64BitHive = vbFalse
+End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='DotNetV30' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+NwEngine.Context.Log.Write "Script: Checking for .NET Framework Version 3.0 (v3.0)"
+szRegKeyDotNetFramework = "HKLM\Software\Microsoft\NET Framework Setup\NDP\v3.0"
+If NwEngine.Shell.RegKeyExist( szRegKeyDotNetFramework ) Then
+        NwEngine.Context.Log.Write "Script: .NET Framework Version 3.0 (v3.0) exists."
+  NwEngine.Variables.AppendDefaultValue "DotNetV30", "EXISTING"
+End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='DotNetV30x64' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+If "%WOW64MODE%" = "true" Then
+  NwEngine.Shell.Use64BitHive = vbTrue
+  NwEngine.Context.Log.Write "Script: Checking for .NET Framework Version 3.0 (v3.0)"
+  szRegKeyDotNetFramework = "HKLM\Software\Microsoft\NET Framework Setup\NDP\v3.0"
+  If NwEngine.Shell.RegKeyExist( szRegKeyDotNetFramework ) Then
+          NwEngine.Context.Log.Write "Script: .NET Framework Version 3.0 (v3.0) exists."
+    NwEngine.Variables.AppendDefaultValue "DotNetV30", "EXISTING"
+  End If
+  NwEngine.Shell.Use64BitHive = vbFalse
+End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='DotNetV35' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+NwEngine.Context.Log.Write "Script: Checking for .NET Framework Version 3.5 (32 Bit)"
+szRegKeyDotNetFramework = "HKLM\Software\Microsoft\NET Framework Setup\NDP\v3.5"
+If NwEngine.Shell.RegKeyExist( szRegKeyDotNetFramework ) Then
+  szVersion = NwEngine.Shell.GetRegValue(szRegKeyDotNetFramework & "\Version")
+  NwEngine.Context.Log.Write "Script: .NET Framework Version 3.5 (32 Bit) exists in version " & szVersion & "."
+  NwEngine.Variables.AppendDefaultValue "DotNetV35", "EXISTING"
+End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='DotNetV35x64' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+If "%WOW64MODE%" = "true" Then
+  NwEngine.Shell.Use64BitHive = vbTrue
+  NwEngine.Context.Log.Write "Script: Checking for .NET Framework Version 3.5 (64 Bit)"
+  szRegKeyDotNetFramework = "HKLM\Software\Microsoft\NET Framework Setup\NDP\v3.5"
+  If NwEngine.Shell.RegKeyExist( szRegKeyDotNetFramework ) Then
+    szVersion = NwEngine.Shell.GetRegValue(szRegKeyDotNetFramework & "\Version")
+    NwEngine.Context.Log.Write "Script: .NET Framework Version 3.5 (64 Bit) exists in version " & szVersion & "."
+    NwEngine.Variables.AppendDefaultValue "DotNetV35x64", "EXISTING"
+  End If
+  NwEngine.Shell.Use64BitHive = vbFalse
+End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='DotNetV35SP1' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+        NwEngine.Context.Log.Write "Script: Checking for .NET Framework Version 3.5 (32 Bit)"
+        szRegKeyDotNetFramework = "HKLM\Software\Microsoft\NET Framework Setup\NDP\v3.5"
+        If NwEngine.Shell.RegKeyExist( szRegKeyDotNetFramework ) Then
+          szRegKeyDotNetFrameworkVersion = NwEngine.Shell.GetRegValue(szRegKeyDotNetFramework & "\Version")
+          szRegKeyDotNetFrameworkSP = NwEngine.Shell.GetRegValue(szRegKeyDotNetFramework & "\SP")
+          If szRegKeyDotNetFrameworkSP > 0 Then
+            NwEngine.Context.Log.Write "Script: .NET Framework Version 3.5 (32 Bit) is installed in Version " & szRegKeyDotNetFrameworkVersion & " with SP " & szRegKeyDotNetFrameworkSP
+            NwEngine.Variables.AppendDefaultValue "DotNetV35SP1", "EXISTING"
+          Else
+            NwEngine.Context.Log.Write "Script: Warning: .NET Framework is installed in Version " & szRegKeyDotNetFrameworkVersion & " without ServicePack"
+          End If
+        End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='DotNetV35SP1x64' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+                        If "%WOW64MODE%" = "true" Then
+                                NwEngine.Shell.Use64BitHive = vbTrue
+                                NwEngine.Context.Log.Write "Script: Checking for .NET Framework Version 3.5 (64 Bit)"
+                                szRegKeyDotNetFramework = "HKLM\Software\Microsoft\NET Framework Setup\NDP\v3.5"
+                                If NwEngine.Shell.RegKeyExist( szRegKeyDotNetFramework ) Then
+                                        szRegKeyDotNetFrameworkVersion = NwEngine.Shell.GetRegValue(szRegKeyDotNetFramework & "\Version")
+                                        szRegKeyDotNetFrameworkSP = NwEngine.Shell.GetRegValue(szRegKeyDotNetFramework & "\SP")
+                                        If szRegKeyDotNetFrameworkSP > 0 Then
+                                                NwEngine.Context.Log.Write "Script: .NET Framework Version 3.5 (64 Bit) is installed in Version " & szRegKeyDotNetFrameworkVersion & " with SP " & szRegKeyDotNetFrameworkSP
+                                                NwEngine.Variables.AppendDefaultValue "DotNetV35SP1x64", "EXISTING"
+                                        Else
+                                                NwEngine.Context.Log.Write "Script: Warning: .NET Framework is installed in Version " & szRegKeyDotNetFrameworkVersion & " without ServicePack"
+                                        End If
+                                End If
+                                NwEngine.Shell.Use64BitHive = vbFalse
+                        End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='DotNetV45ClientProfile' Persistent='false' DisplayInSapAdmin='false' Deprecated='true'>
+                <Value>UNDEFINED</Value>
+        </Variable>
+    <Variable Name='DotNetV4ClientProfile' Persistent='false' DisplayInSapAdmin='false' Deprecated='true'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+                        NwEngine.Context.Log.Write "Script: Checking for .NET Framework Version 4 and 4.5 Client Profile (32 Bit)"
+                        szRegKeyDotNetFramework = "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4\Client"
+                        If NwEngine.Shell.RegKeyExist( szRegKeyDotNetFramework ) Then
+                                szVersion = NwEngine.Shell.GetRegValue(szRegKeyDotNetFramework & "\Version")
+                                If NwEngine.DE.ConditionsHandler.Evaluate(szVersion & " > 4.5.0") Then
+                                        NwEngine.Context.Log.Write "Script: .NET Framework Version 4.5 Client Profile (32 Bit) exists in version " & szVersion & "."
+                                        NwEngine.Variables.AppendDefaultValue "DotNetV4ClientProfile", "EXISTING"
+                                        NwEngine.Variables.AppendDefaultValue "DotNetV45ClientProfile", "EXISTING"
+                                Else
+                                        NwEngine.Context.Log.Write "Script: .NET Framework Version 4 Client Profile (32 Bit) exists in version " & szVersion & "."
+                                        NwEngine.Variables.AppendDefaultValue "DotNetV4ClientProfile", "EXISTING"
+                                End If
+                        End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='DotNetV45ClientProfilex64' Persistent='false' DisplayInSapAdmin='false' Deprecated='true'>
+                <Value>UNDEFINED</Value>
+        </Variable>
+    <Variable Name='DotNetV4ClientProfilex64' Persistent='false' DisplayInSapAdmin='false' Deprecated='true'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+                        If "%WOW64MODE%" = "true" Then
+                                NwEngine.Shell.Use64BitHive = vbTrue
+                                NwEngine.Context.Log.Write "Script: Checking for .NET Framework Version 4 and 4.5 Client Profile (64 Bit)"
+                                szRegKeyDotNetFramework = "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4\Client"
+                                If NwEngine.Shell.RegKeyExist( szRegKeyDotNetFramework ) Then
+                                        szVersion = NwEngine.Shell.GetRegValue(szRegKeyDotNetFramework & "\Version")
+                                        If NwEngine.DE.ConditionsHandler.Evaluate(szVersion & " > 4.5.0") Then
+                                                NwEngine.Context.Log.Write "Script: .NET Framework Version 4.5 Client Profile (64 Bit) exists in version " & szVersion & "."
+                                                NwEngine.Variables.AppendDefaultValue "DotNetV4ClientProfilex64", "EXISTING"
+                                                NwEngine.Variables.AppendDefaultValue "DotNetV45ClientProfilex64", "EXISTING"
+                                        Else
+                                                NwEngine.Context.Log.Write "Script: .NET Framework Version 4 Client Profile (64 Bit) exists in version " & szVersion & "."
+                                                NwEngine.Variables.AppendDefaultValue "DotNetV4ClientProfilex64", "EXISTING"
+                                        End If
+                                End If
+                                NwEngine.Shell.Use64BitHive = vbFalse
+                        End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='DotNetV45FullProfile' Persistent='false' DisplayInSapAdmin='false' Deprecated='true'>
+                <Value>UNDEFINED</Value>
+        </Variable>
+    <Variable Name='DotNetV4FullProfile' Persistent='false' DisplayInSapAdmin='false' Deprecated='true'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+                        NwEngine.Context.Log.Write "Script: Checking for .NET Framework Version 4 and 4.5 Full Profile (32 Bit)"
+                        szRegKeyDotNetFramework = "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4\Full"
+                        If NwEngine.Shell.RegKeyExist( szRegKeyDotNetFramework ) Then
+                                szVersion = NwEngine.Shell.GetRegValue(szRegKeyDotNetFramework & "\Version")
+                                If NwEngine.DE.ConditionsHandler.Evaluate(szVersion & " > 4.5.0") Then
+                                        NwEngine.Context.Log.Write "Script: .NET Framework Version 4.5 Client Profile (32 Bit) exists in version " & szVersion & "."
+                                        NwEngine.Variables.AppendDefaultValue "DotNetV4FullProfile", "EXISTING"
+                                        NwEngine.Variables.AppendDefaultValue "DotNetV45FullProfile", "EXISTING"
+                                Else
+                                        NwEngine.Context.Log.Write "Script: .NET Framework Version 4 Client Profile (32 Bit) exists in version " & szVersion & "."
+                                        NwEngine.Variables.AppendDefaultValue "DotNetV4FullProfile", "EXISTING"
+                                End If
+                        End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='DotNetV45FullProfilex64' Persistent='false' DisplayInSapAdmin='false' Deprecated='true'>
+                <Value>UNDEFINED</Value>
+        </Variable>
+    <Variable Name='DotNetV4FullProfilex64' Persistent='false' DisplayInSapAdmin='false' Deprecated='true'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+                        If "%WOW64MODE%" = "true" Then
+                                NwEngine.Shell.Use64BitHive = vbTrue
+                                NwEngine.Context.Log.Write "Script: Checking for .NET Framework Version 4 and 4.5 Full Profile (64 Bit)"
+                                szRegKeyDotNetFramework = "HKLM\Software\Microsoft\NET Framework Setup\NDP\v4\Full"
+                                If NwEngine.Shell.RegKeyExist( szRegKeyDotNetFramework ) Then
+                                        szVersion = NwEngine.Shell.GetRegValue(szRegKeyDotNetFramework & "\Version")
+                                        If NwEngine.DE.ConditionsHandler.Evaluate(szVersion & " > 4.5.0") Then
+                                                NwEngine.Context.Log.Write "Script: .NET Framework Version 4.5 Client Profile (64 Bit) exists in version " & szVersion & "."
+                                                NwEngine.Variables.AppendDefaultValue "DotNetV4FullProfilex64", "EXISTING"
+                                                NwEngine.Variables.AppendDefaultValue "DotNetV45FullProfilex64", "EXISTING"
+                                        Else
+                                                NwEngine.Context.Log.Write "Script: .NET Framework Version 4 Client Profile (64 Bit) exists in version " & szVersion & "."
+                                                NwEngine.Variables.AppendDefaultValue "DotNetV4FullProfilex64", "EXISTING"
+                                        End If
+                                End If
+                                NwEngine.Shell.Use64BitHive = vbFalse
+                        End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='DotNetV4.0ClientProfile' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.0 Client Profile (32 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.0ClientProfilex64' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.0 Client Profile (64 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.0' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.0 (32 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.0x64' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.0 (64 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.0.1ClientProfile' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.0.1 Client Profile (32 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.0.1ClientProfilex64' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.0.1 Client Profile (64 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.0.1' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.0.1 (32 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.0.1x64' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.0.1 (64 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.0.2ClientProfile' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.0.2 Client Profile (32 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.0.2ClientProfilex64' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.0.2 Client Profile (64 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.0.2' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.0.2 (32 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.0.2x64' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.0.2 (64 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.0.3ClientProfile' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.0.3 Client Profile (32 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.0.3ClientProfilex64' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.0.3 Client Profile (64 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.0.3' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.0.3 (32 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.0.3x64' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.0.3 (64 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.5' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.5 (32 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.5x64' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.5 (64 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.5.1' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.5.1 (32 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.5.1x64' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.5.1 (64 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.5.2x64' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.5.2 (64 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.5.3' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.5.3 (32 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.5.3x64' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.5.3 (64 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.6' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.6 (32 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.6x64' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.6 (64 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.6.1' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.6.1 (32 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.6.1x64' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.6.1 (64 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.6.2' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.6.2 (32 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.6.2x64' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.6.2 (64 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.7' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.7 (32 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.7x64' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.7 (64 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.7.1' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.7.1 (32 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.7.1x64' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.7.1 (64 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.7.2' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.7.2 (32 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.7.2x64' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.7.2 (64 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.8' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.8 (32 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.8x64' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.8 (64 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='DotNetV4.5.2' Persistent='false' DisplayInSapAdmin='false' Description='Checks the existence of .NET Framework 4.5.2 (32 Bit)' Values='UNDEFINED|EXISTING'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+                Option Explicit
+
+                Sub CheckDotNetFramework(bitness)
+                    Dim dotNetRegKey, prefix, postfix
+                    dotNetRegKey = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319\SKUs"
+                    prefix = ".NETFramework,Version="
+                    postfix = ",Profile=Client"
+                    NwEngine.Context.Log.Write "Script: Checking for .NET Framework Version 4.x (" & bitness & " Bit)"
+                    If NwEngine.Shell.RegKeyExist(dotNetRegKey) Then
+                        Dim regKey
+                        For Each regKey in NwEngine.Shell.EnumRegKeys(dotNetRegKey)
+                            If Left(regKey, Len(prefix)) = prefix Then
+                                Dim temp, clientProfile
+                                clientProfile = ""
+                                temp = Replace(regKey, prefix, "")
+                                If Right(temp, Len(postfix)) = postfix Then
+                                    temp = Replace(temp, postfix, "")
+                                    clientProfile = "ClientProfile"
+                                End If
+
+                                NwEngine.Context.Log.Write "Script: Found .NET Framework " & temp & " (" & bitness & " Bit) " & clientProfile
+                                Dim varName
+                                varName = "DotNet" & temp & clientProfile
+                                If bitness = 64 Then
+                                    varName = varName & "x64"
+                                End If
+                                NwEngine.Variables.AppendDefaultValue varName, "EXISTING"
+                            End If
+                        Next
+                    Else
+                        NwEngine.Context.Log.Write "Script: No .NET Framework Version 4.x (" & bitness & " bit) is installed."
+                    End If
+                End Sub
+
+                CheckDotNetFramework(32)
+                If "%WOW64MODE%" = "true" Then
+                    NwEngine.Shell.Use64BitHive = vbTrue
+                    CheckDotNetFramework(64)
+                    NwEngine.Shell.Use64BitHive = vbFalse
+                Else
+                    NwEngine.Context.Log.Write "Script: Disabled 64 Bit checks for .NET Framework when running on a 32 Bit operating system."
+                End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='ProxyServer' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>ProxyName:ProxyPort</Value>
+        <Value Script='true'><![CDATA[
+NWEngine.Context.Log.Write "Script: Checking ProxyServer"
+strRegValue_ProxyServer = NwEngine.Shell.GetRegValue( "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ProxyServer" )
+NwEngine.Context.Log.Write "Script: Reading IE Proxy Server = " & strRegValue_ProxyServer
+If Not strRegValue_ProxyServer = "" Then
+NwEngine.Variables.AppendDefaultValue "ProxyServer", strRegValue_ProxyServer
+End If
+      ]]></Value>
+    </Variable>
+    <Variable Name='ProxyOverride' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'><![CDATA[
+NwEngine.Context.Log.Write "Script: Checking ProxyOverride"
+strRegValue_ProxyOverride = NwEngine.Shell.GetRegValue( "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ProxyOverride" )
+NwEngine.Context.Log.Write "Script: Reading IE Proxy Server = " & strRegValue_ProxyOverride
+If Not strRegValue_ProxyOverride = "" Then
+NwEngine.Variables.AppendDefaultValue "ProxyOverride", strRegValue_ProxyOverride
+End If
+      ]]></Value>
+    </Variable>
+
+    <Variable Name='MSProject2010Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSAccess2010Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSExcel2010Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSPowerPoint2010Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSPublisher2010Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSOutlook2010Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSWord2010Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSInfoPath2010Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSVisio2010Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSOneNote2010Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+
+    <Variable Name='MSO2007Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSProject2007Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSAccess2007Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSExcel2007Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSPowerPoint2007Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSPublisher2007Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSOutlook2007Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSWord2007Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSInfoPath2007Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSVisio2007Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSOneNote2007Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+
+    <Variable Name='MSO2003Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSProject2003Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSAccess2003Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSExcel2003Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSPowerPoint2003Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSPublisher2003Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSOutlook2003Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSWord2003Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSInfoPath2003Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSVisio2003Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSOneNote2003Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+
+    <Variable Name='MSProject2013Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSAccess2013Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSExcel2013Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSPowerPoint2013Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSPublisher2013Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSOutlook2013Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSWord2013Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSInfoPath2013Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSVisio2013Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSOneNote2013Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSSkype2013Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSO2013Is64Bit' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSO2013Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+
+    <Variable Name='MSProject2016Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSAccess2016Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSExcel2016Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSPowerPoint2016Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSPublisher2016Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSOutlook2016Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSWord2016Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSInfoPath2016Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSVisio2016Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSOneNote2016Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSSkype2016Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSO2016Is64Bit' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSO2016Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+
+    <Variable Name='MSO2007SP' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0</Value>
+    </Variable>
+    <Variable Name='MSOffice32Bit' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='MSOffice64Bit' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+
+    <Variable Name='MSO2010Is64Bit' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSO2010Exists' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+Option Explicit
+
+'----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+' Begin variable definitions
+'----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Dim officeArray(4)
+officeArray(0) = "MSO2010Exists"
+officeArray(1) = "MSO2007Exists"
+officeArray(2) = "MSO2003Exists"
+officeArray(3) = "MSO2013Exists"
+officeArray(4) = "MSO2016Exists"
+
+Dim officeCTR32Array(5)
+officeCTR32Array(0) = "{90150000-008C-0000-0000-0000000FF1CE}"
+officeCTR32Array(1) = "{90160000-008C-0000-0000-0000000FF1CE}"
+officeCTR32Array(2) = "{90160000-007E-0000-0000-0000000FF1CE}"
+officeCTR32Array(3) = "{90160000-008F-0000-0000-0000000FF1CE}"
+officeCTR32Array(4) = "{90160000-008C-0409-0000-0000000FF1CE}"
+officeCTR32Array(5) = "{90160000-008F-0000-1000-0000000FF1CE}"
+
+Dim officeCTR64Array(4)
+officeCTR64Array(0) = "{90150000-008C-0000-1000-0000000FF1CE}"
+officeCTR64Array(1) = "{90160000-008C-0000-1000-0000000FF1CE}"
+officeCTR64Array(2) = "{90160000-007E-0000-1000-0000000FF1CE}"
+officeCTR64Array(3) = "{90160000-008F-0000-1000-0000000FF1CE}"
+officeCTR64Array(4) = "{90160000-008C-0409-1000-0000000FF1CE}"
+
+'An array for all office products
+Dim officeProductArray(56)
+'----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+'Array element                 |Product Name (0)     |Product Variable (1)     |Regular Expression for product (2)                                                                       |32/64/   |Office
+'                                                                                                                                                                                         Both (3) |Version
+'----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+officeProductArray( 0) = Array("MS Office 2010",     "MSO2010Exists",          "^{9[0-25]140000-00((1[1234])|(2[fF])|(3[dD]))-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",               "Both",    "2010")
+officeProductArray( 1) = Array("MS Project 2010",    "MSProject2010Exists",    "^{9[0-25]140000-003[ABab]-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                   "Both",    "2010")
+officeProductArray( 2) = Array("MS Access 2010",     "MSAccess2010Exists",     "^{9[0-25]140000-0015-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2010")
+officeProductArray( 3) = Array("MS Excel 2010",      "MSExcel2010Exists",      "^{9[0-25]140000-0016-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2010")
+officeProductArray( 4) = Array("MS PowerPoint 2010", "MSPowerPoint2010Exists", "^{9[0-25]140000-0018-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2010")
+officeProductArray( 5) = Array("MS Publisher 2010",  "MSPublisher2010Exists",  "^{9[0-25]140000-0019-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2010")
+officeProductArray( 6) = Array("MS Outlook 2010",    "MSOutlook2010Exists",    "^{9[0-25]140000-001A-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2010")
+officeProductArray( 7) = Array("MS Word 2010",       "MSWord2010Exists",       "^{9[0-25]140000-001B-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2010")
+officeProductArray( 8) = Array("MS InfoPath 2010",   "MSInfoPath2010Exists",   "^{9[0-25]140000-0044-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2010")
+officeProductArray( 9) = Array("MS Visio 2010",      "MSVisio2010Exists",      "^{9[0-25]140000-0057-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2010")
+officeProductArray(10) = Array("MS OneNote 2010",    "MSOneNote2010Exists",    "^{9[0-25]140000-00A1-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2010")
+
+officeProductArray(11) = Array("MS Office 2007",     "MSO2007Exists",          "^{9[0-2]120000-00((1[1234])|(2[eEfF])|(3[0135])|([Cc][Aa]))-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$", "32",      "2007")
+officeProductArray(12) = Array("MS Project 2007",    "MSProject2007Exists",    "^{9[0-2]120000-003[ABab]-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                    "32",      "2007")
+officeProductArray(13) = Array("MS Access 2007",     "MSAccess2007Exists",     "^{9[0-2]120000-0015-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                         "32",      "2007")
+officeProductArray(14) = Array("MS Excel 2007",      "MSExcel2007Exists",      "^{9[0-2]120000-0016-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                         "32",      "2007")
+officeProductArray(15) = Array("MS PowerPoint 2007", "MSPowerPoint2007Exists", "^{9[0-2]120000-0018-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                         "32",      "2007")
+officeProductArray(16) = Array("MS Publisher 2007",  "MSPublisher2007Exists",  "^{9[0-2]120000-0019-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                         "32",      "2007")
+officeProductArray(17) = Array("MS Outlook 2007",    "MSOutlook2007Exists",    "^{9[0-2]120000-001A-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                         "32",      "2007")
+officeProductArray(18) = Array("MS Word 2007",       "MSWord2007Exists",       "^{9[0-2]120000-001B-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                         "32",      "2007")
+officeProductArray(19) = Array("MS InfoPath 2007",   "MSInfoPath2007Exists",   "^{9[0-2]120000-0044-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                         "32",      "2007")
+officeProductArray(20) = Array("MS Visio 2007",      "MSVisio2007Exists",      "^{9[0-2]120000-005[13]-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                      "32",      "2007")
+officeProductArray(21) = Array("MS OneNote 2007",    "MSOneNote2007Exists",    "^{9[0-2]120000-00A1-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                         "32",      "2007")
+
+officeProductArray(22) = Array("MS Office 2003",     "MSO2003Exists",          "^{9[0-2]((1[123])|([eE]3)|([Cc][Aa]))[0-9A-F][0-9A-F][0-9A-F][0-9A-F]-6000-11D3-8CFE-0150048383C9}$",    "32",      "2003")
+officeProductArray(23) = Array("MS Project 2003",    "MSProject2003Exists",    "^{9[0-2]3[ABab][0-9A-Fa-f]{4}-6000-11D3-8CFE-0150048383C9}$",                                            "32",      "2003")
+officeProductArray(24) = Array("MS Access 2003",     "MSAccess2003Exists",     "^{9[0-2]15[0-9A-Fa-f]{4}-6000-11D3-8CFE-0150048383C9}",                                                  "32",      "2003")
+officeProductArray(25) = Array("MS Excel 2003",      "MSExcel2003Exists",      "^{9[0-2]16[0-9A-Fa-f]{4}-6000-11D3-8CFE-0150048383C9}",                                                  "32",      "2003")
+officeProductArray(26) = Array("MS PowerPoint 2003", "MSPowerPoint2003Exists", "^{9[0-2]18[0-9A-Fa-f]{4}-6000-11D3-8CFE-0150048383C9}",                                                  "32",      "2003")
+officeProductArray(27) = Array("MS Publisher 2003",  "MSPublisher2003Exists",  "^{9[0-2]19[0-9A-Fa-f]{4}-6000-11D3-8CFE-0150048383C9}",                                                  "32",      "2003")
+officeProductArray(28) = Array("MS Outlook 2003",    "MSOutlook2003Exists",    "^{9[0-2]1A[0-9A-Fa-f]{4}-6000-11D3-8CFE-0150048383C9}",                                                  "32",      "2003")
+officeProductArray(29) = Array("MS Word 2003",       "MSWord2003Exists",       "^{9[0-2]1B[0-9A-Fa-f]{4}-6000-11D3-8CFE-0150048383C9}",                                                  "32",      "2003")
+officeProductArray(30) = Array("MS InfoPath 2003",   "MSInfoPath2003Exists",   "^{9[0-2]44[0-9A-Fa-f]{4}-6000-11D3-8CFE-0150048383C9}",                                                  "32",      "2003")
+officeProductArray(31) = Array("MS Visio 2003",      "MSVisio2003Exists",      "^{9[0-2]5[13][0-9A-Fa-f]{4}-6000-11D3-8CFE-0150048383C9}",                                               "32",      "2003")
+officeProductArray(32) = Array("MS OneNote 2003",    "MSOneNote2003Exists",    "^{9[0-2]A1[0-9A-Fa-f]{4}-6000-11D3-8CFE-0150048383C9}",                                                  "32",      "2003")
+
+officeProductArray(33) = Array("MS Office 2013",     "MSO2013Exists",          "^{9[0-25]150000-00((1[1234])|(2[fF])|(3[dD])|(8[cC]))-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",       "Both",    "2013")
+officeProductArray(34) = Array("MS Project 2013",    "MSProject2013Exists",    "^{9[0-25]150000-003[ABab]-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                   "Both",    "2013")
+officeProductArray(35) = Array("MS Access 2013",     "MSAccess2013Exists",     "^{9[0-25]150000-0015-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2013")
+officeProductArray(36) = Array("MS Excel 2013",      "MSExcel2013Exists",      "^{9[0-25]150000-0016-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2013")
+officeProductArray(37) = Array("MS PowerPoint 2013", "MSPowerPoint2013Exists", "^{9[0-25]150000-0018-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2013")
+officeProductArray(38) = Array("MS Publisher 2013",  "MSPublisher2013Exists",  "^{9[0-25]150000-0019-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2013")
+officeProductArray(39) = Array("MS Outlook 2013",    "MSOutlook2013Exists",    "^{9[0-25]150000-001A-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2013")
+officeProductArray(40) = Array("MS Word 2013",       "MSWord2013Exists",       "^{9[0-25]150000-001B-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2013")
+officeProductArray(41) = Array("MS InfoPath 2013",   "MSInfoPath2013Exists",   "^{9[0-25]150000-0044-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2013")
+officeProductArray(42) = Array("MS Visio 2013",      "MSVisio2013Exists",      "^{9[0-25]150000-005[13]-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                     "Both",    "2013")
+officeProductArray(43) = Array("MS OneNote 2013",    "MSOneNote2013Exists",    "^{9[0-25]150000-00A1-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2013")
+officeProductArray(44) = Array("MS Lync 2013",       "MSSkype2013Exists",      "^{9[0-25]150000-012B-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2013")
+
+officeProductArray(45) = Array("MS Office 2016",     "MSO2016Exists",          "^{9[0-25]160000-00((1[1234])|(2[fF])|(3[dD])|(6[eE])|(8[cC]))-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",       "Both",    "2016")
+officeProductArray(46) = Array("MS Project 2016",    "MSProject2016Exists",    "^{9[0-25]160000-003[ABab]-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                   "Both",    "2016")
+officeProductArray(47) = Array("MS Access 2016",     "MSAccess2016Exists",     "^{9[0-25]160000-0015-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2016")
+officeProductArray(48) = Array("MS Excel 2016",      "MSExcel2016Exists",      "^{9[0-25]160000-0016-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2016")
+officeProductArray(49) = Array("MS PowerPoint 2016", "MSPowerPoint2016Exists", "^{9[0-25]160000-0018-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2016")
+officeProductArray(50) = Array("MS Publisher 2016",  "MSPublisher2016Exists",  "^{9[0-25]160000-0019-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2016")
+officeProductArray(51) = Array("MS Outlook 2016",    "MSOutlook2016Exists",    "^{9[0-25]160000-001A-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2016")
+officeProductArray(52) = Array("MS Word 2016",       "MSWord2016Exists",       "^{9[0-25]160000-001B-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2016")
+officeProductArray(53) = Array("MS InfoPath 2016",   "MSInfoPath2016Exists",   "^{9[0-25]160000-0044-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2016")
+officeProductArray(54) = Array("MS Visio 2016",      "MSVisio2016Exists",      "^{9[0-25]160000-005[13]-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                     "Both",    "2016")
+officeProductArray(55) = Array("MS OneNote 2016",    "MSOneNote2016Exists",    "^{9[0-25]160000-00A1-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2016")
+officeProductArray(56) = Array("MS Skype 2016",      "MSSkype2016Exists",      "^{9[0-25]160000-012B-[0-9A-Fa-f]{4}-[0-1]000-[0-1]000000FF1CE}$",                                        "Both",    "2016")
+Dim firstRun
+firstRun = vbTrue
+
+Dim regExpObject
+Set regExpObject = CreateObject("VBScript.RegExp")
+
+
+'----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+' End variable definitions
+'----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+'----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+' Begin function definitions
+'----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Function IsGivenVariableAnOfficeVariable(varName)
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Entering Function IsGivenVariableAnOfficeVariable(varName=" & varName & ")"
+    Dim officeVariable
+    IsGivenVariableAnOfficeVariable = "False"
+    For Each officeVariable in officeArray
+        If officeVariable = varName Then
+            IsGivenVariableAnOfficeVariable = "True"
+            Exit For
+        End If
+    Next
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Entering Function IsGivenVariableAnOfficeVariable with " & IsGivenVariableAnOfficeVariable
+End Function
+
+Sub PrintInstalledOfficeParts(regExpString, officeVersion)
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Entering Sub PrintInstalledOfficeParts(regExpString=" & regExpString & ", officeVersion=" & officeVersion & ")"
+    Dim strVersionMajor, strVersionMinor, officeComponent, officeRegKey
+    strVersionMajor = NwEngine.Shell.GetRegValue("HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\" & regExpString & "\VersionMajor")
+    strVersionMinor = NwEngine.Shell.GetRegValue("HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\" & regExpString & "\VersionMinor")
+    If officeVersion = "2007" Then
+        Dim o2007versionRegKey
+        o2007versionRegKey = "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\" & regExpString & "\DisplayVersion"
+        If NwEngine.Shell.RegValueExist(o2007versionRegKey) Then
+            Dim szVersion
+            szVersion = NwEngine.Shell.GetRegValue(o2007versionRegKey)
+            Dim szVersionArray
+            szVersionArray = Split(szVersion, ".")
+            If szVersionArray(2) > 6600 Then
+                NwEngine.Context.Log.Write "OfficeScript: Found SP3 of Microsoft Office 2007"
+                NwEngine.Variables.AppendDefaultValue "MSO2007SP", "3"
+            Else
+                NwEngine.Context.Log.Write "OfficeScript: Version is too low, this is not SP3"
+            End If
+        Else
+            NwEngine.Context.Log.Write "Value HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\" & registryKey & "\DisplayVersion existiert nicht!"
+        End If
+    End If
+    officeRegKey = "HKLM\SOFTWARE\Microsoft\Office\" & strVersionMajor & "." & strVersionMinor
+    If NwEngine.Shell.RegKeyExist(officeRegKey) Then
+        For Each officeComponent In NwEngine.Shell.EnumRegKeys(officeRegKey)
+            If NwEngine.Variables.GetValue("MS" & officeComponent & officeVersion & "Exists") = "UNDEFINED" Then
+                NwEngine.Context.Log.Write "              - MS " & officeComponent & " " & officeVersion
+                NwEngine.Variables.AppendDefaultValue "MS" & officeComponent & officeVersion & "Exists", "TRUE"
+            End If
+        Next
+    Else
+        NwEngine.Context.Log.Write "OfficeScript: Registry key '" & officeRegKey & "' doesn't exist."
+    End If
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Leaving Sub PrintInstalledOfficeParts"
+End Sub
+
+Function ExecuteRegExp(registryKey, regExpString)
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Entering Function ExecuteRegExp(registryKey=" & registryKey & ", regExpString=" & regExpString & ")"
+    regExpObject.Pattern = regExpString
+    If regExpObject.Test(registryKey) Then
+        ExecuteRegExp = true
+        NwEngine.Context.Log.DebugWrite "OfficeScript: Leaving Function ExecuteRegExp with true."
+    Else
+        ExecuteRegExp = false
+        NwEngine.Context.Log.DebugWrite "OfficeScript: Leaving Function ExecuteRegExp with false."
+    End If
+End Function
+
+Sub CheckProduct(registryKey, counter, bits)
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Entering Sub CheckProduct(registryKey=" & registryKey & ", counter=" & counter & ", bits=" & bits & ")"
+    Dim officeProductArrayItem
+    For Each officeProductArrayItem in officeProductArray
+        Dim doExecute
+        doExecute = False
+        If bits = officeProductArrayItem(3) Or officeProductArrayItem(3) = "Both" Then
+                doExecute = True
+        End If
+        Dim strVarIsSet
+        strVarIsSet = NwEngine.Variables.GetValue(officeProductArrayItem(1))
+        If strVarIsSet = "UNDEFINED" Then
+            If doExecute And ExecuteRegExp(registryKey, officeProductArrayItem(2)) Then
+                Dim regValue
+                regValue = "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\" & registryKey
+                If NwEngine.Shell.GetRegValue(regValue & "\VersionMajor") <> "" _
+                        And NwEngine.Shell.GetRegValue(regValue & "\VersionMinor") <> "" Then
+                    counter = counter + 1
+                    NwEngine.Context.Log.Write "OfficeScript: Found " & officeProductArrayItem(0)
+                    NwEngine.Variables.AppendDefaultValue officeProductArrayItem(1), "TRUE"
+                    If officeProductArrayItem(1) = "MSOutlook2007Exists" Then
+                        Dim o2007versionRegKey
+                        o2007versionRegKey = regValue & "\DisplayVersion"
+                        If NwEngine.Shell.RegValueExist(o2007versionRegKey) Then
+                            Dim szVersion
+                            szVersion = NwEngine.Shell.GetRegValue(o2007versionRegKey)
+                            Dim szVersionArray
+                            szVersionArray = Split(szVersion, ".")
+                            If szVersionArray(2) > 6600 Then
+                                NwEngine.Context.Log.Write "OfficeScript: Found SP3 of Microsoft Office 2007"
+                                NwEngine.Variables.AppendDefaultValue "MSO2007SP", "3"
+                            Else
+                                NwEngine.Context.Log.Write "OfficeScript: Version is too low, this is not SP3"
+                           End If
+                        Else
+                            NwEngine.Context.Log.Write "Value HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\" & registryKey & "\DisplayVersion existiert nicht!"
+                        End If
+                    End If
+
+                    If officeProductArrayItem(3) = "Both" And NwEngine.Variables.GetValue("MSO" & officeProductArrayItem(4) & "Is64Bit") = "UNDEFINED" Then
+                        If bits = 64 Then
+                            NwEngine.Variables.AppendDefaultValue "MSO" & officeProductArrayItem(4) & "Is64Bit", "TRUE"
+                        Else
+                            NwEngine.Variables.AppendDefaultValue "MSO" & officeProductArrayItem(4) & "Is64Bit", "FALSE"
+                        End If
+                    End If
+
+                    If IsGivenVariableAnOfficeVariable(officeProductArrayItem(1)) = "True" Then
+                            PrintInstalledOfficeParts officeProductArrayItem(2), officeProductArrayItem(4)
+                    End If
+                End If
+            End If
+        End If
+    Next
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Leaving Sub CheckProduct"
+End Sub
+
+Sub LogInstalledProducts(bitness, counter)
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Entering Sub LogInstalledProducts(bitness=" & bitness & ", counter=" & counter & ")"
+    If counter > 0 Then
+        NwEngine.Context.Log.Write "OfficeScript: Found " & counter & " " & bitness & " Bit Office Product(s)"
+        NwEngine.Variables.AppendDefaultValue "MSOffice" & bitness & "Bit", "TRUE"
+    Else
+        NwEngine.Context.Log.Write "OfficeScript: No " & bitness & " Bit Office Products found"
+    End if
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Leaving Sub LogInstalledProducts"
+End Sub
+
+Function IsOffice365_64bit(o365ProductName)
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Entering Function IsOffice365_64bit(o365ProductName=" & o365ProductName & ")"
+    Dim productNameArray
+    Dim retCode
+    retCode = 0
+    If ExecuteRegExp(o365ProductName, "\.x86\.") Then
+        retCode = 1
+    ElseIf ExecuteRegExp(o365ProductName, "\.x64\.") Then
+        retCode = 2
+    End If
+    IsOffice365_64bit = retCode
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Leaving Function IsOffice365_64bit with " & IsOffice365_64bit
+End Function
+
+Sub CheckOfficeGuid(o365ProductKey, o365ProductName)
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Entering Sub CheckOfficeGuid(o365ProductKey=" & o365ProductKey & ", o365ProductName=" & o365ProductName & ")"
+    Dim officeArrayItemForO365
+    For Each officeArrayItemForO365 in officeProductArray
+        If ExecuteRegExp(o365ProductKey, officeArrayItemForO365(2)) Then
+            NwEngine.Context.Log.Write "OfficeScript: Found " & officeArrayItemForO365(0)
+            NwEngine.Variables.AppendDefaultValue officeArrayItemForO365(1), "TRUE"
+            If firstRun Then
+                Dim retCode
+                retCode = IsOffice365_64bit(o365ProductName)
+                If retCode = 1 Then
+                    NwEngine.Variables.AppendDefaultValue "MSO" & officeArrayItemForO365(4) & "Is64Bit", "FALSE"
+                    NwEngine.Variables.AppendDefaultValue "MSOFFICE32BIT", "TRUE"
+                    NwEngine.Variables.AppendDefaultValue "MSOFFICE64BIT", "FALSE"
+                    firstRun = vbFalse
+                ElseIf retCode = 2 Then
+                    NwEngine.Variables.AppendDefaultValue "MSO" & officeArrayItemForO365(4) & "Is64Bit", "TRUE"
+                    NwEngine.Variables.AppendDefaultValue "MSOFFICE32BIT", "FALSE"
+                    NwEngine.Variables.AppendDefaultValue "MSOFFICE64BIT", "TRUE"
+                    firstRun = vbFalse
+                End If
+            End If
+        End If
+    Next
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Leaving Sub CheckOfficeGuid"
+End Sub
+
+Function GetAttributeValue(nList, nName)
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Entering Function GetAttributeValue(nList(count)=" & nList.length & ", nName=" & nName & ")"
+    Dim i, node, retVal
+    i = 0
+    For Each node in nList
+        retVal = node.GetAttribute(nName)
+        GetAttributeValue = retVal
+        Exit For
+    Next
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Leaving Function GetAttributeValue with " & retVal
+End Function
+
+Function ReadGuidFromFile(xmlFile)
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Entering Function ReadGuidFromFile(xmlFile=" & xmlFile & ")"
+    Dim file
+    file = NwEngine.Variables.ResolveString(xmlFile)
+    If NwEngine.Shell.FileExist(xmlFile) Then
+        Dim xmlDoc, colNodes, guid
+        'NwEngine.Context.Log.Write "OfficeScript: Opening file '" & file & "'."
+        Set xmlDoc = CreateObject("Microsoft.XMLDOM")
+        xmlDoc.Async = "False"
+        xmlDoc.Load(file)
+        Set colNodes=xmlDoc.selectNodes ("/Package")
+        guid = GetAttributeValue(colNodes, "ProductCode")
+        'NwEngine.Context.Log.Write "OfficeScript: Retrieved GUID " & guid & " from '" & file & "'."
+        ReadGuidFromFile = guid
+        NwEngine.Context.Log.DebugWrite "OfficeScript: Leaving Function ReadGuidFromFile with " & guid
+    Else
+        NwEngine.Context.Log.Write "OfficeScript: File '" & xmlFile & "' doesn't exist."
+        NwEngine.Context.Log.DebugWrite "OfficeScript: Leaving Function ReadGuidFromFile without a guid."
+    End If
+End Function
+
+Function IsOfficeCTR(value, bitness)
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Entering Function IsOfficeCTR(value=" & value & ", bitness=" & bitness & ")"
+    Dim entry
+    If bitness = "32" Then
+        For Each entry in officeCTR32Array
+            If entry = value Then
+                IsOfficeCTR = vbTrue
+                Exit For
+            End If
+        Next
+    ElseIf bitness = "64" Then
+        For Each entry in officeCTR64Array
+            If entry = value Then
+                IsOfficeCTR = vbTrue
+                Exit For
+            End If
+        Next
+    End If
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Leaving Function IsOfficeCTR with " & IsOfficeCTR
+End Function
+
+Sub CollectCTROffice(registryValue, bitness)
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Entering Sub CollectCTROffice(registryValue=" & registryValue & ", bitness=" & bitness & ")"
+    NwEngine.Context.Log.Write "OfficeScript: Retrieving InstallSource from '" & registryValue & "' (" & bitness & " Hive)."
+    Dim folder
+    If Not NwEngine.Shell.RegValueExist(registryValue & "\InstallSource") Then
+        NwEngine.Context.Log.Write "OfficeScript: Registry value '" + registryValue & "\InstallSource' doesn't exist, exiting Sub."
+        Exit Sub
+    End If
+    folder = NwEngine.Shell.GetRegValue(registryValue & "\InstallSource")
+    If Trim(folder) = "" Then
+        NwEngine.Context.Log.Write "OfficeScript: Registry value '" + registryValue & "\InstallSource' is empty, no path given, exiting Sub."
+        Exit Sub
+    End If
+    NwEngine.Context.Log.Write "OfficeScript: Office CTR is installed in: " & folder
+    If Not NwEngine.Shell.DirectoryExist(folder) Then
+        NwEngine.Context.Log.Write "OfficeScript: Folder '" & folder & "' doesn't exist, cannot retrieve Office information, exiting Sub."
+        Exit Sub
+    End If
+    Dim objFSO, objFolder, colFiles, objFile
+    Set objFSO = CreateObject("Scripting.FileSystemObject")
+    Set objFolder = objFSO.GetFolder(folder)
+    Set colFiles = objFolder.Files
+    For Each objFile in colFiles
+        If Right(objFile.Name, 3) = "xml" Then
+            Dim guid
+            guid = ReadGuidFromFile(folder & objFile.Name)
+            'NwEngine.Context.Log.Write "OfficeScript: Found GUID: " & guid
+            If bitness = "32" Then
+                CheckOfficeGuid guid, ".x86."
+            Else
+                CheckOfficeGuid guid, ".x64."
+            End If
+        End If
+    Next
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Leaving Sub CollectCTROffice"
+End Sub
+
+'----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+' End function definitions
+'----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+NwEngine.Context.Log.Write "OfficeScript: Checking for 32 Bit Office Products..."
+Dim registryKey
+Dim count32BitProducts
+count32BitProducts = 0
+For Each registryKey in NwEngine.Shell.EnumRegKeys("HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall")
+    NwEngine.Context.Log.DebugWrite "OfficeScript: Current key is : " & registryKey
+    If (Right(registryKey, 12) = "000000FF1CE}" Or Right(registryKey, 13) = "0150048383C9}") Then
+        If IsOfficeCTR(registryKey, "32") Then
+            CollectCTROffice "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\" & registryKey, "32"
+        Else
+            CheckProduct registryKey, count32BitProducts, "32"
+        End If
+    End If
+Next
+LogInstalledProducts 32, count32BitProducts
+
+If "%WOW64MODE%" = "true" Then
+    NwEngine.Context.Log.Write "OfficeScript: Checking for 64 Bit Office Products..."
+    NwEngine.Shell.Use64BitHive = vbTrue
+    Dim count64BitProducts
+    count64BitProducts = 0
+    For Each registryKey in NwEngine.Shell.EnumRegKeys("HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall")
+        If Right(registryKey, 12) = "000000FF1CE}" Then
+            If IsOfficeCTR(registryKey, "64") Then
+                CollectCTROffice "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\" & registryKey, "64"
+            Else
+                CheckProduct registryKey, count64BitProducts, "64"
+            End If
+        End If
+    Next
+    NwEngine.Shell.Use64BitHive = vbFalse
+    LogInstalledProducts 64, count64BitProducts
+Else
+    NwEngine.Context.Log.Write "OfficeScript: Skipping 64 Bit Office Product checks, System is a 32 Bit OS"
+End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='SapSetupInstallDateTime' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0</Value>
+    </Variable>
+    <Variable Name='SapSetupInstallDate' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0</Value>
+        <Value Script='true'>
+            <![CDATA[
+                Dim dateTime : dateTime = Now()
+                NwEngine.Variables.AppendDefaultValue "SapSetupInstallDate", FormatDateTime(dateTime, 2)
+                NwEngine.Variables.AppendDefaultValue "SapSetupInstallDateTime", FormatDateTime(dateTime)
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='MSVisualStudio2005InstallDir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSVisualStudio2008InstallDir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSVisualStudio2010InstallDir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSVisualStudio2012InstallDir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSVisualStudio2015InstallDir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+    </Variable>
+    <Variable Name='MSVisualStudio2013InstallDir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+                Dim VSArray(5)
+                VSArray(0) = Array( "8.0", "2005")
+                VSArray(1) = Array( "9.0", "2008")
+                VSArray(2) = Array("10.0", "2010")
+                VSArray(3) = Array("11.0", "2012")
+                VSArray(4) = Array("12.0", "2013")
+                VSArray(5) = Array("14.0", "2015")
+                For Each VSVersion in VSArray
+                    NwEngine.Context.Log.Write "Script: Checking for MS Visual Studio " & VSVersion(1) & " InstallDir"
+                    szRegKey = "HKLM\Software\Microsoft\VisualStudio\" & VSVersion(0) & "\InstallDir"
+                    If NwEngine.Shell.RegValueExist(szRegKey) Then
+                        szInstallDir = NwEngine.Shell.GetRegValue(szRegKey)
+                        NwEngine.Context.Log.Write "Script: MS Visual Studio " & VSVersion(1) & " is installed in " & szInstallDir
+                        szVSVarName = "MSVisualStudio" & VSVersion(1) & "InstallDir"
+                        NwEngine.Variables.AppendDefaultValue szVSVarName, szInstallDir
+                    Else
+                        NwEngine.Context.Log.Write "Script: MS Visual Studio " & VSVersion(1) & " is not installed"
+                    End If
+                Next
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='MSVisualStudio2017InstallDir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+                Option Explicit
+
+                Dim regKey : regKey = "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\SxS\VS7"
+                Dim version : version = "15.0"
+                NwEngine.Context.Log.Write "Script: Checking if Visual Studio 2017 is installed..."
+                If NwEngine.Shell.RegValueExist(regKey & "\" & version) Then
+                    Dim path : path = NwEngine.Shell.GetRegValue(regKey & "\" & version)
+                    If NwEngine.Shell.DirectoryExist(path) Then
+                        NwEngine.Context.Log.Write "Script: Visual Studio 2017 found in folder " & path
+                        NwEngine.Variables.AppendDefaultValue "MSVisualStudio2017InstallDir", path
+                    Else
+                        NwEngine.Context.Log.Write "Script: Registry value exists, but is empty or path doesn't exist: " & path
+                    End If
+                Else
+                    NwEngine.Context.Log.Write "Script: Visual Studio 2017 is not installed."
+                End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='MSVisualStudio2019InstallDir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+                Option Explicit
+
+                Dim regKey : regKey = "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall"
+                Dim regexPattern : regexPattern = "Visual Studio [a-zA-Z]* 2019"
+                Dim regExpObject : Set regExpObject = CreateObject("VBScript.RegExp")
+                Dim installPath : installPath = ""
+                Dim registryValueValue : registryValueValue = ""
+                Dim registryKey : registryKey = ""
+
+                For Each registryKey in NwEngine.Shell.EnumRegKeys(regKey)
+                    If Not Left(registryKey, 1) = "{" Then
+                        Dim registryValueName : registryValueName = regKey & "\" & registryKey & "\DisplayName"
+                        If NwEngine.Shell.RegValueExist(registryValueName) Then
+                            registryValueValue = NwEngine.Shell.GetRegValue(registryValueName)
+                            If Len(registryValueValue) > 0 Then
+                                regExpObject.Pattern = regexPattern
+                                If regExpObject.Test(registryValueValue) Then
+                                    installPath = NwEngine.Shell.GetRegValue(regKey & "\" & registryKey & "\InstallLocation")
+                                    Exit For
+                                End If
+                            End If
+                        End If
+                    End If
+                Next
+                If Len(installPath) > 0 Then
+                    NwEngine.Context.Log.Write "Script: Found '" & registryValueValue & "' installed in folder '" & installPath & "'."
+                    NwEngine.Variables.AppendDefaultValue "MSVisualStudio2019InstallDir", installPath
+                Else
+                    NwEngine.Context.Log.Write "Script: Visual Studio 2019 is not installed."
+                End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='MSVisualStudio2022InstallDir' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+                Option Explicit
+
+                Dim regKey : regKey = "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall"
+                Dim regexPattern : regexPattern = "Visual Studio [a-zA-Z]* 2022"
+                Dim regExpObject : Set regExpObject = CreateObject("VBScript.RegExp")
+                Dim installPath : installPath = ""
+                Dim registryValueValue : registryValueValue = ""
+                Dim registryKey : registryKey = ""
+
+                For Each registryKey in NwEngine.Shell.EnumRegKeys(regKey)
+                    If Not Left(registryKey, 1) = "{" Then
+                        Dim registryValueName : registryValueName = regKey & "\" & registryKey & "\DisplayName"
+                        If NwEngine.Shell.RegValueExist(registryValueName) Then
+                            registryValueValue = NwEngine.Shell.GetRegValue(registryValueName)
+                            If Len(registryValueValue) > 0 Then
+                                regExpObject.Pattern = regexPattern
+                                If regExpObject.Test(registryValueValue) Then
+                                    installPath = NwEngine.Shell.GetRegValue(regKey & "\" & registryKey & "\InstallLocation")
+                                    Exit For
+                                End If
+                            End If
+                        End If
+                    End If
+                Next
+                If Len(installPath) > 0 Then
+                    NwEngine.Context.Log.Write "Script: Found '" & registryValueValue & "' installed in folder '" & installPath & "'."
+                    NwEngine.Variables.AppendDefaultValue "MSVisualStudio2022InstallDir", installPath
+                Else
+                    NwEngine.Context.Log.Write "Script: Visual Studio 2022 is not installed."
+                End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='SapNco30x86Installed' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+        <Value Script='true'>
+            <![CDATA[
+                NwEngine.Context.Log.Write "Script: Checking if SAP Netweaver .NET Connector 3.0 for .NET Framework 4.0 (x86) is installed."
+                szRegKey = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{E13EC585-D974-4BB0-940A-94C15D344705}"
+                If NwEngine.Shell.RegKeyExist(szRegKey) Then
+                    NwEngine.Context.Log.Write "Script: Found SAP Netweaver .NET Connector 3.0 for .NET Framework 4.0 (x86) is installed in version " + NwEngine.Shell.GetRegValue(szRegKey + "\DisplayVersion") + "."
+                    NwEngine.Variables.AppendDefaultValue "SapNco30x86Installed", "TRUE"
+                Else
+                    NwEngine.Context.Log.Write "Script: SAP Netweaver .NET Connector 3.0 for .NET Framework 4.0 (x86) could not be found!"
+                End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='SapNco30x64Installed' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+        <Value Script='true'>
+            <![CDATA[
+                NwEngine.Context.Log.Write "Script: Checking of SAP Netweaver .NET Connector 3.0 for .NET Framework 4.0 (x64) is installed."
+                If %WOW64MODE% = TRUE Then
+                    NwEngine.Shell.Use64BitHive = vbTrue
+                    szRegKey = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{8BB447A9-A3A3-4613-858F-26F77B12367A}"
+                    If NwEngine.Shell.RegKeyExist(szRegKey) Then
+                        NwEngine.Context.Log.Write "Script: Found SAP Netweaver .NET Connector 3.0 for .NET Framework 4.0 (x64) is installed in version " + NwEngine.Shell.GetRegValue(szRegKey + "\DisplayVersion") + "."
+                        NwEngine.Variables.AppendDefaultValue "SapNco30x64Installed", "TRUE"
+                    Else
+                        NwEngine.Context.Log.Write "Script: SAP Netweaver .NET Connector 3.0 for .NET Framework 4.0 (x64) could not be found!"
+                    End If
+                    NwEngine.Shell.Use64BitHive = vbFalse
+                Else
+                    NwEngine.Context.Log.Write "Script: Skipping check, this is not a 64 bit enabled operating system."
+                End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='MSVSTO2010Installed' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+        <Value Script='true'>
+            <![CDATA[
+                NwEngine.Context.Log.Write "Script: Checking if Microsoft Visual Studio 2010 Tools for Office Runtime is installed."
+                If NwEngine.Shell.RegValueExist("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VSTO Runtime Setup\v4\InstallerPath") Then
+                    VSTOInstaller = NwEngine.Shell.GetRegValue("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VSTO Runtime Setup\v4\InstallerPath")
+                    If %WOW64MODE% = TRUE Then
+                        NwEngine.Shell.Use64BitHive = vbTrue
+                    End If
+                    If NwEngine.Shell.FileExist(VSTOInstaller) Then
+                        NwEngine.Context.Log.Write "Script: Found VSTO at " + VSTOInstaller
+                        NwEngine.Variables.AppendDefaultValue "MSVSTO2010Installed", "TRUE"
+                    Else
+                        NwEngine.Context.Log.Write "Script: Could not find VSTOInstaller.exe at " + VSTOInstaller
+                    End If
+                    If %WOW64MODE% = TRUE Then
+                        NwEngine.Shell.Use64BitHive = vbFalse
+                    End If
+                Else
+                    NwEngine.Context.Log.Write "Script: Could not find VSTO!"
+                End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='MSVSTOR2010_Version' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='MSVSTOR2010_CLR35_Installed' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='MSVSTOR2010_CLR40_Installed' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+        <Value Script='true'>
+            <![CDATA[
+                NwEngine.Context.Log.Write "Script: Checking if Microsoft Visual Studio 2010 Tools for Office Runtime (Redistributable - Version 4.0) is installed."
+                strVSTORKey = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VSTO Runtime Setup\v4R"
+                If NwEngine.Shell.RegKeyExist(strVSTORkey) Then
+                    strVSTORVersion = NwEngine.Shell.GetRegValue(strVSTORkey & "\Version")
+                    If strVSTORVersion <> "" Then
+                        NwEngine.Context.Log.Write "Script: Microsoft Visual Studio 2010 Tools for Office Runtime (Redistributable - Version 4.0) is installed in version " & strVSTORVersion & "."
+                        NwEngine.Variables.AppendDefaultValue "MSVSTOR2010_Version", strVSTORVersion
+                        strVSTORFeature_CLR35 = NwEngine.Shell.GetRegValue(strVSTORkey & "\VSTORFeature_CLR35")
+                        If strVSTORFeature_CLR35 = "1" then
+                            NwEngine.Context.Log.Write "Script: Feature set for .NET Framework 3.5 is installed."
+                            NwEngine.Variables.AppendDefaultValue "MSVSTOR2010_CLR35_Installed", "TRUE"
+                        Else
+                            NwEngine.Context.Log.Write "Script: Feature set for .NET Framework 3.5 is NOT installed!"
+                        End If
+                        strVSTORFeature_CLR40 = NwEngine.Shell.GetRegValue(strVSTORkey & "\VSTORFeature_CLR40")
+                        If strVSTORFeature_CLR40 = "1" then
+                            NwEngine.Context.Log.Write "Script: Feature set for .NET Framework 4.0 is installed."
+                            NwEngine.Variables.AppendDefaultValue "MSVSTOR2010_CLR40_Installed", "TRUE"
+                        Else
+                            NwEngine.Context.Log.Write "Script: Feature set for .NET Framework 4.0 is NOT installed!"
+                        End If
+                    Else
+                        NwEngine.Context.Log.Write "Script: Microsoft Visual Studio 2010 Tools for Office Runtime (Redistributable - Version 4.0) has no version!"
+                    End If
+                Else
+                    NwEngine.Context.Log.Write "Script: Microsoft Visual Studio 2010 Tools for Office Runtime (Redistributable - Version 4.0) is NOT installed"
+                End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='IEVersion' Persistent='false' DisplayInSapAdmin='false'>
+    <Value>0.0.0.0</Value>
+    <Value Script='true'>
+      <![CDATA[
+        NwEngine.Context.Log.Write "Script: Reading version of Microsoft Internet Explorer"
+        szIEPath = NwEngine.Variables.ResolveString("%ProgramFiles%\Internet Explorer\iexplore.exe")
+        szIEVersion = NwEngine.Shell.GetFileVersion(szIEPath)
+        NwEngine.Context.Log.Write "Version of Microsoft Internet Explorer is " & szIEVersion
+        NwEngine.Variables.AppendDefaultValue "IEVersion", szIEVersion
+      ]]>
+    </Value>
+  </Variable>
+    <Variable Name='MSVSTO3.0SP1Installed' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='MSVSTO3.0Installed' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+        <Value Script='true'>
+            <![CDATA[
+                NwEngine.Context.Log.Write "Script: Checking if Microsoft VSTO 3.0 is already installed..."
+                If NwEngine.Shell.RegKeyExist("HKLM\Software\Microsoft\VSTO Runtime Setup\v9.0.21022") Then
+                    NwEngine.Context.Log.Write "Script: Found Microsoft VSTO 3.0"
+                    NwEngine.Variables.AppendDefaultValue "MSVSTO3.0Installed", "TRUE"
+                    If NwEngine.Shell.RegKeyExist("HKLM\Software\Microsoft\VSTO Runtime Setup\v9.0.30729") Then
+                        NwEngine.Context.Log.Write "Script: Found Microsoft VSTO 3.0 SP1"
+                        NwEngine.Variables.AppendDefaultValue "MSVSTO3.0SP1Installed", "TRUE"
+                    Else
+                        NwEngine.Context.Log.Write "Script: SP1 for Microsoft VSTO 3.0 not found"
+                    End If
+                Else
+                    NwEngine.Context.Log.Write "Script: Could not find Microsoft VSTO 3.0"
+                End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='UCRT_INSTALLED' Persistent='FALSE' DisplayInSapAdmin='FALSE'>
+        <Value>FALSE</Value>
+        <Value Script='TRUE'>
+            <![CDATA[
+                Option Explicit
+
+                NwEngine.Context.Log.Write "Script: Checking for installed Universal C Runtime (UCRT)..."
+                Dim ucrtVersion : ucrtVersion = "10.0.10240.16390"
+                If NwEngine.Variables.GetValue("WinType") = "Windows 10" Or NwEngine.Variables.GetValue("WinType") = "Windows Server" Or NwEngine.Variables.GetValue("WinType") = "Windows 11" Then
+                    NwEngine.Context.Log.Write "Script: Windows 10/Server 2016/Windows 11 detected, which has UCRT installed by default."
+                    NwEngine.Variables.AppendDefaultValue "UCRT_INSTALLED", "TRUE"
+                Else
+                    NwEngine.Context.Log.Write "Script: Checking if Ucrtbase.dll is installed in version " & ucrtVersion & " (or higher) on non Windows 10/11 OS"
+                    Dim ucrtPath : ucrtPath = "%WinSysDir%\Ucrtbase.dll"
+                    If NwEngine.Shell.FileExist(ucrtPath) Then
+                        Dim ucrtInstalledVersion : ucrtInstalledVersion = NwEngine.Shell.GetFileVersion(ucrtPath)
+                        NwEngine.Context.Log.Write "Script: Version of installed " & ucrtPath & ": " & ucrtInstalledVersion
+                        If NwEngine.DE.ConditionsHandler.Evaluate("FileVersion(" & ucrtInstalledVersion & ") >= FileVersion(" & ucrtVersion & ")") Then
+                            NwEngine.Context.Log.Write "Script: Installed version is greater or equal to " & ucrtVersion & ", Universal C Runtime is installed."
+                            NwEngine.Variables.AppendDefaultValue "UCRT_INSTALLED", "TRUE"
+                        Else
+                            NwEngine.Context.Log.Write "Script: Installed version of lower then " & ucrtVersion & ", this version is too old and cannot be used."
+                        End If
+                    Else
+                        NwEngine.Context.Log.Write "Script: " & ucrtPath & " doesn't exist, Universal C Runtime is not installed."
+                    End If
+                End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='Disable_VC_Runtimes_Installation' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>UNDEFINED</Value>
+        <Value Script='true'>
+            <![CDATA[
+                Option Explicit
+
+                NwEngine.Context.Log.Write "Script: Checking if parameter '/DisableRuntimeInstall' is supplied..."
+                Dim argCollection
+                Set argCollection = NwEngine.DE.CommandLineArguments
+                If argCollection.IsArgumentSupplied("DisableRuntimeInstall") Then
+                    NwEngine.Context.Log.Write "Script: Parameter /DisableRuntimeInstall is supplied, Visual C++ Runtimes won't be installed."
+                    NwEngine.Variables.AppendDefaultValue "Disable_VC_Runtimes_Installation", "TRUE"
+                Else
+                    NwEngine.Context.Log.Write "Script: Parameter /DisableRuntimeInstall is not supplied, Visual C++ Runtimes will be installed"
+                    NwEngine.Variables.AppendDefaultValue "Disable_VC_Runtimes_Installation", "FALSE"
+                End If
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='DOTNETCore.SDK.x64.5.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.SDK.x64.Version.5.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.ASPDOTNETCore.x64.5.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.ASPDOTNETCore.x64.Version.5.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.DesktopRuntime.x64.5.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.DesktopRuntime.x64.Version.5.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.Runtime.x64.5.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.Runtime.x64.Version.5.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.SDK.x64.6.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.SDK.x64.Version.6.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.ASPDOTNETCore.x64.6.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.ASPDOTNETCore.x64.Version.6.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.DesktopRuntime.x64.6.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.DesktopRuntime.x64.Version.6.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.Runtime.x64.6.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.Runtime.x64.Version.6.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.SDK.x64.7.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.SDK.x64.Version.7.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.ASPDOTNETCore.x64.7.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.ASPDOTNETCore.x64.Version.7.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.DesktopRuntime.x64.7.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.DesktopRuntime.x64.Version.7.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.Runtime.x64.7.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.Runtime.x64.Version.7.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.SDK.x64.3.1' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.SDK.x64.Version.3.1' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.ASPDOTNETCore.x64.3.1' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.ASPDOTNETCore.x64.Version.3.1' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.DesktopRuntime.x64.3.1' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.DesktopRuntime.x64.Version.3.1' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.Runtime.x64.3.1' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.Runtime.x64.Version.3.1' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.SDK.x86.5.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.SDK.x86.Version.5.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.ASPDOTNETCore.x86.5.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.ASPDOTNETCore.x86.Version.5.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.DesktopRuntime.x86.5.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.DesktopRuntime.x86.Version.5.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.Runtime.x86.5.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.Runtime.x86.Version.5.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.SDK.x86.6.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.SDK.x86.Version.6.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.ASPDOTNETCore.x86.6.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.ASPDOTNETCore.x86.Version.6.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.DesktopRuntime.x86.6.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.DesktopRuntime.x86.Version.6.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.Runtime.x86.6.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.Runtime.x86.Version.6.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.SDK.x86.7.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.SDK.x86.Version.7.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.ASPDOTNETCore.x86.7.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.ASPDOTNETCore.x86.Version.7.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.DesktopRuntime.x86.7.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.DesktopRuntime.x86.Version.7.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.Runtime.x86.7.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.Runtime.x86.Version.7.0' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.SDK.x86.3.1' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.SDK.x86.Version.3.1' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.ASPDOTNETCore.x86.3.1' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.ASPDOTNETCore.x86.Version.3.1' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.DesktopRuntime.x86.3.1' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.DesktopRuntime.x86.Version.3.1' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.Runtime.x86.3.1' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='DOTNETCore.Runtime.x86.Version.3.1' Persistent='false' DisplayInSapAdmin='false'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='DOTNETCoreScriptExecution' Persistent='FALSE' DisplayInSapAdmin='FALSE'>
+        <Value>FALSE</Value>
+        <Value Script='true'>
+            <![CDATA[
+                Option Explicit
+
+                NwEngine.Variables.AppendDefaultValue "DOTNETCoreScriptExecution", "FAILED"
+
+                Dim versionArray(3)
+                versionArray(0) = "3.1"
+                versionArray(1) = "5.0"
+                versionArray(2) = "6.0"
+                versionArray(3) = "7.0"
+
+                Dim archArray(1)
+                archArray(0) = "x86"
+                archArray(1) = "x64"
+
+                Dim nameRegKeyArray(2)
+                nameRegKeyArray(0) = Array("sdk", "DOTNETCore.SDK")
+                nameRegKeyArray(1) = Array("sharedfx\Microsoft.NETCore.App", "DOTNETCore.Runtime")
+                nameRegKeyArray(2) = Array("sharedfx\Microsoft.WindowsDesktop.App", "DOTNETCore.DesktopRuntime")
+
+                Dim arch, nameRegKey, regValue, version
+
+                NwEngine.Context.Log.Write "DOTNETCore Script: Checking for installed .NET Core versions"
+                Dim regKeyBase : regKeyBase = "HKEY_LOCAL_MACHINE\SOFTWARE\dotnet\Setup\InstalledVersions"
+                For Each arch in archArray
+                    For Each nameRegKey in nameRegKeyArray
+                        Dim fullNamedRegKey : fullNamedRegKey = regKeyBase & "\" & arch & "\" & nameRegKey(0)
+                        If NwEngine.Shell.RegKeyExist(fullNamedRegKey) Then
+                            For Each regValue in NwEngine.Shell.EnumRegValues(fullNamedRegKey)
+                                For Each version in versionArray
+                                    NwEngine.Context.Log.Write "DOTNETCore Script: Checking for " & nameRegKey(1) & " (" & arch & ") in version " & version & " in registry key " & fullNamedRegKey
+                                    If Left(regValue, Len(version)) = version Then
+                                        Dim varName : varName = nameRegKey(1) & "." & arch & "." & version
+                                        Dim varVerName : varVerName = nameRegKey(1) & "." & arch & ".Version." & version
+                                        NwEngine.Context.Log.Write "DOTNETCore Script: Set variable " & varName & " to TRUE"
+                                        NwEngine.Variables.AppendDefaultValue varName, "TRUE"
+                                        NwEngine.Context.Log.Write "DOTNETCore Script: Set variable " & varVerName &  " to " & regValue
+                                        NwEngine.Variables.AppendDefaultValue varVerName, regValue
+                                        Exit For
+                                    End If
+                                Next
+                            Next
+                        Else
+                            NwEngine.Context.Log.Write "DOTNETCore Script: Registry key " & fullNamedRegKey & " doesn't exist."
+                        End if
+                    Next
+                Next
+
+                NwEngine.Context.Log.Write "DOTNETCore Script: Checking for installed ASP.NET Core versions"
+                regKeyBase = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ASP.NET Core\Shared Framework"
+                For Each arch in archArray
+                    NwEngine.Context.Log.Write "DOTNETCore Script: Checking " & arch & " registry hive"
+                    If arch = "x64" Then
+                        NwEngine.Shell.Use64BitHive = vbTrue
+                    End If
+                    For Each version in versionArray
+                        Dim versionRegKey : versionRegKey = regKeyBase & "\v" & version
+                        NwEngine.Context.Log.Write "DOTNETCore Script: Checking registry key " & versionRegKey
+                        Dim regKey, highestVersion, versionToSave
+                        highestVersion = "0.0.0.0"
+                        If NwEngine.Shell.RegKeyExist(versionRegKey) Then
+                            For Each regKey in NwEngine.Shell.EnumRegKeys(versionRegKey)
+                                Dim currentVersion : currentVersion = NwEngine.Shell.GetRegValue(versionRegKey & "\" & regKey & "\Version")
+                                NwEngine.Context.Log.Write "DOTNETCore Script: Evaluating: FileVersion(" & currentVersion & ") > FileVersion(" & highestVersion & ")"
+                                If NwEngine.DE.ConditionsHandler.Evaluate("FileVersion(" & currentVersion & ") > FileVersion(" & highestVersion & ")") Then
+                                    highestVersion = currentVersion
+                                    If InStr(regKey, "preview") > 1 Then
+                                        versionToSave = regKey
+                                    Else
+                                        versionToSave = currentVersion
+                                    End If
+                                End If
+                            Next
+                            If Len(versionToSave) > 0 Then
+                                NwEngine.Context.Log.Write "DOTNETCore Script: Set variable DOTNETCore.ASPDOTNETCore." & arch & "." & version & " to TRUE"
+                                NwEngine.Variables.AppendDefaultValue "DOTNETCore.ASPDOTNETCore." & arch & "." & version, "TRUE"
+                                NwEngine.Context.Log.Write "DOTNETCore Script: Set variable DOTNETCore.ASPDOTNETCore." & arch & ".Version." & version & " to " & versionToSave
+                                NwEngine.Variables.AppendDefaultValue "DOTNETCore.ASPDOTNETCore." & arch & ".Version." & version, version
+                            End If
+                        End If
+                    Next
+                    If arch = "x64" Then
+                        NwEngine.Shell.Use64BitHive = vbFalse
+                    End If
+                Next
+
+                NwEngine.Variables.AppendDefaultValue "DOTNETCoreScriptExecution", "TRUE"
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='PowerShell5x86Version' Persistent='FALSE' DisplayInSapAdmin='FALSE'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='PowerShell5x86' Persistent='FALSE' DisplayInSapAdmin='FALSE'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='PowerShell5x64Version' Persistent='FALSE' DisplayInSapAdmin='FALSE'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='PowerShell5x64' Persistent='FALSE' DisplayInSapAdmin='FALSE'>
+        <Value>FALSE</Value>
+        <Value Script='TRUE'>
+            <![CDATA[
+                Option Explicit
+
+                Dim archArray(1)
+                archArray(0) = Array("x86", "32")
+                archArray(1) = Array("x64", "64")
+
+                Dim powerShellRegKey : powerShellRegKey = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine"
+                Dim arch, version
+
+                NwEngine.Context.Log.Write "PowerShell Script: Checking if Windows PowerShell 5 is installed..."
+                For Each arch in archArray
+                    If arch(0) = "x64" Then
+                        NwEngine.Shell.Use64BitHive = vbTrue
+                    End If
+                    NwEngine.Context.Log.Write "PowerShell Script: Checking if registry key '" & powerShellRegKey & "' (" & arch(1) & " Bit) exists..."
+                    If NwEngine.Shell.RegKeyExist(powerShellRegKey) Then
+                        NwEngine.Context.Log.Write "PowerShell Script: Registry key '" & powerShellRegKey & "' (" & arch(1) & " Bit) exists, retrieving Windows PowerShell version..."
+                        Dim powerShellVersionRegValue : powerShellVersionRegValue = powerShellRegKey & "\PowerShellVersion"
+                        If NwEngine.Shell.RegValueExist(powerShellVersionRegValue) Then
+                            Dim powerShellVersion : powerShellVersion = NwEngine.Shell.GetRegValue(powerShellVersionRegValue)
+                            If Len(powerShellVersion) > 0 Then
+                                NwEngine.Context.Log.Write "PowerShell Script: Windows PowerShell (" & arch(1) & " Bit) is installed in version " & powerShellVersion
+                                NwEngine.Variables.AppendDefaultValue "PowerShell5" & arch(0), "TRUE"
+                                NwEngine.Variables.AppendDefaultValue "PowerShell5" & arch(0) & "Version", powerShellVersion
+                            Else
+                                NwEngine.Context.Log.Write "PowerShell Script: Could not retrieve Windows PowerShell version."
+                            End If
+                        Else
+                            NwEngine.Context.Log.Write "PowerShell Script: Could not retrieve Windows PowerShell version, as registry value '" & powerShellVersionRegValue & "' (" & arch(1) & " Bit) doesn't exist."
+                        End If
+                    Else
+                        NwEngine.Context.Log.Write "PowerShell Script: Registry key '" & powerShellRegKey & "' (" & arch(1) & " Bit) doesn't exist."
+                    End If
+                    If arch(0) = "x64" Then
+                        NwEngine.Shell.Use64BitHive = vbFalse
+                    End If
+                Next
+            ]]>
+        </Value>
+    </Variable>
+    <Variable Name='PowerShellCore6x86' Persistent='FALSE' DisplayInSapAdmin='FALSE'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='PowerShellCore6x86Version' Persistent='FALSE' DisplayInSapAdmin='FALSE'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='PowerShellCore6x64' Persistent='FALSE' DisplayInSapAdmin='FALSE'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='PowerShellCore6x64Version' Persistent='FALSE' DisplayInSapAdmin='FALSE'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='PowerShellCore7x86' Persistent='FALSE' DisplayInSapAdmin='FALSE'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='PowerShellCore7x86Version' Persistent='FALSE' DisplayInSapAdmin='FALSE'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='PowerShellCore7x64' Persistent='FALSE' DisplayInSapAdmin='FALSE'>
+        <Value>FALSE</Value>
+    </Variable>
+    <Variable Name='PowerShellCore7x64Version' Persistent='FALSE' DisplayInSapAdmin='FALSE'>
+        <Value>0.0.0.0</Value>
+    </Variable>
+    <Variable Name='PowerShellCoreScriptExecution' Persistent='FALSE' DisplayInSapAdmin='FALSE'>
+        <Value>FALSE</Value>
+        <Value Script='TRUE'>
+            <![CDATA[
+                Option Explicit
+
+                NwEngine.Variables.AppendDefaultValue "PowerShellCoreScriptExecution", "FAILED"
+
+                Dim archArray(1)
+                archArray(0) = Array("x86", "32")
+                archArray(1) = Array("x64", "64")
+
+                Dim versionArray(1)
+                versionArray(0) = "6"
+                versionArray(1) = "7"
+
+                Dim version, arch, versionGuid
+
+                Dim powerShellCoreRegKey : powerShellCoreRegKey = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PowerShellCore\InstalledVersions"
+                NwEngine.Context.Log.Write "PowerShellCore Script: Checking if Microsoft PowerShell Core 6 or higher is installed..."
+                For Each arch in archArray
+                    If arch(0) = "x64" Then
+                        NwEngine.Shell.Use64BitHive = vbTrue
+                    End If
+                    For Each version in versionArray
+                        NwEngine.Context.Log.Write "PowerShellCore Script: Checking for Microsoft PowerShell Core " & version & " (" & arch(1) & " Bit)..."
+                        If NwEngine.Shell.RegKeyExist(powerShellCoreRegKey) Then
+                            For Each versionGuid in NwEngine.Shell.EnumRegKeys(powerShellCoreRegKey)
+                                Dim versionRegValuePath : versionRegValuePath = powerShellCoreRegKey & "\" & versionGuid & "\SemanticVersion"
+                                NwEngine.Context.Log.DebugWrite "PowerShellCore Script: Checking registry value " & versionRegValuePath
+                                Dim retrievedVersion : retrievedVersion = NwEngine.Shell.GetRegValue(versionRegValuePath)
+                                If Len(retrievedVersion) > 0 And Left(retrievedVersion, Len(version)) = version Then
+                                    NwEngine.Context.Log.Write "PowerShellCore Script: Found Microsoft PowerShell " & version & " (" & arch(1) & " Bit) in version " & retrievedVersion
+                                    NwEngine.Variables.AppendDefaultValue "PowerShellCore" & version & arch(0), "TRUE"
+                                    NwEngine.Variables.AppendDefaultValue "PowerShellCore" & version & arch(0) & "Version", retrievedVersion
+                                    Exit For
+                                End If
+                            Next
+                        Else
+                            NwEngine.Context.Log.Write "PowerShellCore Script: Registry key " & powerShellCoreRegKey & " doesn't exist."
+                        End If
+                    Next
+                    If arch(0) = "x64" Then
+                        NwEngine.Shell.Use64BitHive = vbFalse
+                    End If
+                Next
+                NwEngine.Variables.AppendDefaultValue "PowerShellCoreScriptExecution", "TRUE"
+            ]]>
+        </Value>
+    </Variable>
+</SapSetup>

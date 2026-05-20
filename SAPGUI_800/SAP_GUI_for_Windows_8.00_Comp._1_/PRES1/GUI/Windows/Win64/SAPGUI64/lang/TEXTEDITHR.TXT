@@ -1,0 +1,6 @@
+_SAPPCTXT_HEADER_               002 8000 TEXTEDIT HR 1404 OK 
+TEXTEDIT_HE_LANG_BUTTON         255 "Prebacite layout tipkovnice na hebrejski"
+TEXTEDIT_EN_LANG_BUTTON         255 "Prebacite layout tipkovnice na engleski"
+TEXTEDIT_DISABLE_LANG_BUTTON    255 "Gumb Deaktiviraj jezik"
+TEXTEDIT_ENABLE_LANG_BUTTON     255 "Gumb Aktiviraj jezik"
+TEXTEDIT_PROMPT_TEXT            255 "Ovdje unesite tekst..."

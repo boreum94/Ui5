@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 PLUGINFRAMEWORK SK 1404 OK 
+CP_SERVICE_MENUITEM             030 "Sluûby"
+MENU_ITEM_EXCEL                 030 "Excel"
+MENU_ITEM_SEARCH                030 "Hæadanie"
+MENU_ITEM_CONTEXTSEARCH         120 "Prehæadaù SAP Help Portal"
+MENU_ITEM_SPELLCHECK            030 "Kontrola pravopisu"
+MENU_ITEM_MAIL                  020 "Mail"
+MENU_ITEM_PRINT                 020 "TlaË"
+CP_TREE_PRINT                   060 "TlaË stromu"
+CP_SPELLCHECK_COMPLETE          128 "Kontrola pravopisu ukonËen·"

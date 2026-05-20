@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SapSetup Context="Init" WkstaDb="SapAXLSharedWksta.xml">
+	<Component BuildTime="0x40C0F8977C30D901" Condition="&quot;%SapAXLIs64Bit%&quot;=&quot;FALSE&quot;" Guid="{05C8FEF8-1EDF-43A6-95A5-8FFBC470B2EA}" Min_Compliant_Version="31.1" Name="AXL 3.1 ARP x86" Update="Always" Version="31.2">
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\SAP Interactive Excel" Type="Registry">
+			<RegValue Name="DisplayName" Type="REG_SZ">SAP Interactive Excel</RegValue>
+			<RegValue Name="DisplayVersion" Type="REG_SZ">%SapAXLVersion%</RegValue>
+			<RegValue Name="InstallDate" Type="REG_SZ">%SapSetupInstallDate%</RegValue>
+			<RegValue Name="Publisher" Type="REG_SZ">SAP SE</RegValue>
+			<RegValue Name="URLUpdateInfo" Type="REG_SZ">http://service.sap.com</RegValue>
+			<RegValue Name="UninstallString" Type="REG_SZ">&quot;%SAPSetupDir%\setup\NwSapSetup.exe&quot; /product:&quot;AXL&quot; /uninstall</RegValue>
+		</Action>
+	</Component>
+	<Component Arch="X64" BuildTime="0x40C0F8977C30D901" Condition="&quot;%SapAXLIs64Bit%&quot;=&quot;TRUE&quot;" Guid="{26963A80-9BC9-490D-B283-3FF3EC7C87F7}" Min_Compliant_Version="31.1" Name="AXL 3.1 ARP x64" Update="Always" Version="31.2">
+		<Action Dst="HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\SAP Interactive Excel" Type="Registry">
+			<RegValue Name="DisplayName" Type="REG_SZ">SAP Interactive Excel</RegValue>
+			<RegValue Name="DisplayVersion" Type="REG_SZ">%SapAXLVersion%</RegValue>
+			<RegValue Name="InstallDate" Type="REG_SZ">%SapSetupInstallDate%</RegValue>
+			<RegValue Name="Publisher" Type="REG_SZ">SAP SE</RegValue>
+			<RegValue Name="URLUpdateInfo" Type="REG_SZ">http://service.sap.com</RegValue>
+			<RegValue Name="UninstallString" Type="REG_SZ">&quot;%SAPSetupDir%\setup\NwSapSetup.exe&quot; /product:&quot;AXL&quot; /uninstall</RegValue>
+		</Action>
+	</Component>
+	<Component BuildTime="0x40C0F8977C30D901" Guid="{42840260-3354-4A10-A6BC-72E0789C8562}" Min_Compliant_Version="31.1" Name="AXL 3.1 Global Files" Size="12934" Version="31.1780">
+		<Requires Guid="{8E517890-8675-4F23-861F-45B568776C66}"/>
+		<Requires Guid="{0E3B3096-AD1F-48EA-938B-AE67A01B73C4}"/>
+		<Action Dst="%SapAXLDestDir%" Type="File">
+			<Src FileVersion="10.0.30319.1" Hash="SHA-256:8cb09317c326e9b0f83c337eae7ccdeaad3e45e5da3603e1ebc90c5a06ad1702" Register="true" Timestamp="0x0044040EFC23D801">%SapSrcDir%\AXL\Microsoft.Office.Tools.Common.v4.0.Utilities.dll</Src>
+			<Src FileVersion="10.0.30319.1" Hash="SHA-256:547c5496ce38a7c31a5a9a5e1f121c205c0fd82cd32d6558ad380875d16aac71" Register="true" Timestamp="0x2AB5060EFC23D801">%SapSrcDir%\AXL\Microsoft.Office.Tools.Excel.v4.0.Utilities.dll</Src>
+			<Src Hash="SHA-256:1c29d819d9a51113dd0066291f471bfc30b69fb611b815a904c5c8ba05e61b05" Register="true" Timestamp="0x42B443056930D901">%SapSrcDir%\AXL\SAPExcelWorkbook.xltm</Src>
+			<Src Hash="SHA-256:5fa23e389e74c64bd43e2a97911da779cf468e93a9f8fe36be27f107a0eb9d05" Register="true" Timestamp="0xA83162AB502FD901">%SapSrcDir%\AXL\SAPExcel Help.pdf</Src>
+			<Src FileVersion="3.0.8.22137" Hash="SHA-256:7a943fae0e8b72395cab3ec132b3dc99fcd0d5ec038379f8eea195c0101d38f0" Register="true" Timestamp="0x5F83E2887C30D901">%SapSrcDir%\AXL\SAPConsBase.dll</Src>
+			<Src FileVersion="3.0.8.22137" Hash="SHA-256:35017376c0443f797bbec0463a5676d880461a66d7af7dd1ecfbf0133c770266" Register="true" Timestamp="0x845E7E887C30D901">%SapSrcDir%\AXL\SAPConsAccess.dll</Src>
+			<Src FileVersion="3.0.8.22137" Hash="SHA-256:7183c75586ca55ae811e0698e1288b0f328a89290f6780574fbf0b608d9abc6a" Register="true" Timestamp="0xEAE09E897C30D901">%SapSrcDir%\AXL\SAPExcelWorkbook.dll</Src>
+			<Src Hash="SHA-256:8cfab24e77f809feca52a8d0e0c44ef038383bad988eced01cb73e65178c4a2a" Register="true" Timestamp="0x955C5C8F7C30D901">%SapSrcDir%\AXL\SAPExcelWorkbook.dll.manifest</Src>
+			<Src Hash="SHA-256:99501e701448c3397f2157bcff535ab17306723d30ae3d45ecdb4bd384b1cbb6" Register="true" Timestamp="0x129E01907C30D901">%SapSrcDir%\AXL\SAPExcelWorkbook.vsto</Src>
+			<Src Hash="SHA-256:0ef344fcb7a3278ad8de177d17042f10ec5a1a9936fac7b00cd8b8661de936cf" Register="true" Timestamp="0x3E5D41C1502FD901">%SapSrcDir%\AXL\SAPExcelWorkbook.xlsm</Src>
+			<Src FileVersion="1.0.2.21217" Hash="SHA-256:1853a1a8a8c806dbabcaa1dc676e096c6bffabee5e3b061754995100f6083021" Register="true" Timestamp="0x1254118A7C30D901">%SapSrcDir%\AXL\SAPExcelWorkbookConverter.exe</Src>
+			<Src FileVersion="2.5.5631.0" Hash="SHA-256:40f293a772b3017814557bfb6ffd0077c7b81dc4fdc1caa7498db64c38dcc25f" Timestamp="0x00291DE8E887CD01">%SapSrcDir%\AXL\DocumentFormat.OpenXml.dll</Src>
+		</Action>
+	</Component>
+	<Component BuildTime="0x40C0F8977C30D901" Condition="&quot;%SapAXLIs64Bit%&quot;=&quot;FALSE&quot;" Guid="{199F1A53-13E6-44DC-AC4D-E998CCC8DB0C}" Min_Compliant_Version="31.1" Name="AXL 3.1 32 bit Files" Size="94" Version="31.9">
+		<Requires Guid="{42840260-3354-4A10-A6BC-72E0789C8562}"/>
+		<Action Dst="%SapAXLDestDir%" Type="File">
+			<Src FileVersion="3.0.8.22137" Hash="SHA-256:581a3c7e0c939e128e4feb9d01f45207817871cfa8aad97893355ed90c6b4f3e" Register="true" Timestamp="0xF4803F897C30D901">%SapSrcDir%\AXL\SAPConsR3.dll</Src>
+		</Action>
+	</Component>
+	<Component Arch="X64" BuildTime="0x40C0F8977C30D901" Condition="&quot;%SapAXLIs64Bit%&quot;=&quot;TRUE&quot;" Guid="{16FCC04A-8D69-4EE4-9841-7212DFE8B18A}" Min_Compliant_Version="31.1" Name="AXL 3.1 64 bit Files" Size="94" Version="31.9">
+		<Requires Guid="{42840260-3354-4A10-A6BC-72E0789C8562}"/>
+		<Action Dst="%SapAXLDestDir%" Type="File">
+			<Src FileVersion="3.0.8.22137" Hash="SHA-256:581a3c7e0c939e128e4feb9d01f45207817871cfa8aad97893355ed90c6b4f3e" Register="true" Timestamp="0xF4803F897C30D901">%SapSrcDir%\AXL\SAPConsR3.dll</Src>
+		</Action>
+	</Component>
+	<Component BuildTime="0x40C0F8977C30D901" Guid="{4EE9DA6E-D0AF-4AFD-9B01-73451F195F3F}" Min_Compliant_Version="31.1" Name="AXL 3.1 Shortcut" Version="31.3">
+		<Requires Guid="{42840260-3354-4A10-A6BC-72E0789C8562}"/>
+		<Requires Guid="{199F1A53-13E6-44DC-AC4D-E998CCC8DB0C}"/>
+		<Requires Guid="{16FCC04A-8D69-4EE4-9841-7212DFE8B18A}"/>
+		<Requires Guid="{05C8FEF8-1EDF-43A6-95A5-8FFBC470B2EA}"/>
+		<Requires Guid="{26963A80-9BC9-490D-B283-3FF3EC7C87F7}"/>
+		<Action Dst="ProgramFiles\SAP Front End\SAP Interactive Excel 3.0" Type="Shortcut">
+			<Src>&quot;%SapAXLDestDir%\SAPExcelWorkbook.xltm&quot;</Src>
+		</Action>
+		<Action Dst="ProgramFiles\SAP Front End\SAP Interactive Excel 3.0 Documentation" Type="Shortcut">
+			<Src>&quot;%SapAXLDestDir%\SAPExcel Help.pdf&quot;</Src>
+		</Action>
+		<Action Dst="ProgramFiles\SAP Front End\SAP Interactive Excel Converter" Type="Shortcut">
+			<Src>&quot;%SapAXLDestDir%\SAPExcelWorkbookConverter.exe&quot;</Src>
+		</Action>
+	</Component>
+</SapSetup>

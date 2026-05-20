@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 PLUGINFRAMEWORK NL 1100 OK 
+CP_SERVICE_MENUITEM             030 "Services"
+MENU_ITEM_EXCEL                 030 "Microsoft Excel"
+MENU_ITEM_SEARCH                030 "Zoeken"
+MENU_ITEM_CONTEXTSEARCH         120 "SAP Help Portal doorzoeken"
+MENU_ITEM_SPELLCHECK            030 "Spellingcontrole"
+MENU_ITEM_MAIL                  020 "Mail"
+MENU_ITEM_PRINT                 020 "Afdrukken"
+CP_TREE_PRINT                   060 "Boomstructuur afdrukken"
+CP_SPELLCHECK_COMPLETE          128 "Spellingcontrole afgesloten"

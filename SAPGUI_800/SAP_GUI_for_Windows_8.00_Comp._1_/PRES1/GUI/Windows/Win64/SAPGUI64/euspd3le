@@ -1,0 +1,58 @@
+# @(#) $Id: //fes/800_REL/src/dwb/eusp/euspd3le#1 $ SAP
+.  
+.                        DDIC/program fields
+.  
+. This window allows you to use Data Dictionary table fields or (table)
+. fields from the generated version of the associated program (module pool
+. or report).
+.  
+. With Data Dictionary fields, you can use both input/output fields 
+. (templates) and/or texts (key words). With program fields, you can use 
+. only input/output fields.
+.  
+. In the window header line, you first specify the table or field name. You
+. can specify field names generically, but not table names.
+.  
+. The pushbuttons Get from Dict and Get from program trigger the search for
+. the table or field either in the Data Dictionary or in the program.
+.  
+. The list boxes display the found fields including the name, format,
+. length, and text. The text depends upon whether "Input/Output field" or 
+. "Text" has been selected:
+.  
+. - None:               Short text (comment); Data Dictionary fields only
+. - Input/output field: Input/output template (default with program fields).
+. - Text:               Short, medium or long text or header of data element
+.                       to which table field refers; Data Dictionary fields 
+.                       only.
+.  
+. By clicking and dragging in the lists, you can select single or several
+. consecutive entries.
+.  
+. Note: "Modified" selection (CTRL or SHIFT & mouse button) even allows
+.       you multiple selection with gaps.
+.  
+. After you have selected from the list and selected Transfer, the system
+. transfers to the screen those field components specified by the switch.
+.  
+. Fields which 
+.        - are blank (no text),
+.        - are not allowed on screens or
+.        - already exist on the screen,
+. have thin script. If the selection contains such fields, an error message
+. is displayed when you select Transfer and the fields are automatically
+. eliminated from the selection.
+. By selecting Transfer again, you can copy the remaining fields to the
+. screen.
+.  
+. By clicking on (and sometimes moving) them in the fullscreen editor, you
+. then determine where you want the selected fields to be located. If you
+. have selected several fields, they are located as a compact group and
+. must then be moved separately.
+.  
+. If collisions with other fields occur, an error message is displayed and
+. you must repeat the transfer, possibly in several steps.
+.  
+. Note: The Reset key in the Create palette of the fullscreen
+.       window allows you to cancel the transfer of Dict/program fields
+.       before locating takes place.

@@ -1,0 +1,9 @@
+_SAPPCTXT_HEADER_               002 8000 CALENDAR RU 1504 OK 
+PREVIOUS_YEAR                   255 "Предыдущий год"
+PREVIOUS_MONTH                  255 "Предыдущий месяц"
+NEXT_YEAR                       255 "Следующий год"
+NEXT_MONTH                      255 "Следующий месяц"
+WEEK_NUMBER                     255 "Номер недели"
+WEEK_NUM_STR                    255 "Нед."
+CALENDAR_BTN                    255 "Открыть/закрыть навигатор по датам"
+DT_PICKER                       255 "Выбор даты: изменить день, месяц или год"

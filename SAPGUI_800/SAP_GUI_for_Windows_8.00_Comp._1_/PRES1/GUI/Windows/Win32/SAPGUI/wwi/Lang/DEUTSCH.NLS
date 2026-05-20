@@ -1,0 +1,935 @@
+; WA070999: [Dialog_Error] 254
+; WA060300: [MsgBox] 187
+; WA250700: [Check] 005, 006
+
+[MsgBox]
+001=Ein Symbol kann nicht in ein Symbol oder in eine Phrase eingefügt werden.
+002=Einfügen in ein Symbol nicht möglich.
+003=Einfügemarke innerhalb eines Symbols positionieren.
+004=Falsche Position für F1.
+005=Rekursionstiefe bitte numerisch angeben.
+
+006=Eine Phrase kann nicht in ein Symbol oder in eine Phrase eingefügt werden.
+007=Ein Symbol oder eine Phrase kann nicht in eine Gruppendefinition eingefügt werden.
+008=Bitte setzen Sie die Textmarke innerhalb einer Wiederholungs- oder Leertextunterdrückungsgruppe, um diese zu bearbeiten.
+009=Bitte wählen Sie ein Symbol oder eine Phrase zur Bearbeitung.
+
+010=In der WWI.INI Datei sind keine Symbolbegrenzungszeichen eingetragen.
+011=Bitte ein Eingabefeld selektieren.
+012=Wollen Sie wirklich keine Phrase vor das erste Symbol setzen?
+013=Wollen Sie wirklich den markierten Text ersetzen?
+014=Der Wizard kann nicht in einer Tabelle gestartet werden
+015=Einstellungen wurden gespeichert.
+
+020=Hier kann keine Tabelle eingefügt werden.
+021=Bitte nicht mehr als eine Zelle markieren.
+025=Hier kann kein Positionsrahmen eingefügt werden.
+
+030=Bitte markieren Sie zuerst den betreffenden Text.
+031=Bitte geben Sie eine 'Wenn'-Bedingung an.
+032=Ausgewählter Operator wird nicht unterstützt.
+
+040=Sprach-Datei '' wurde nicht gefunden.
+041=In der WWI.INI Datei ist kein Pfad für die Symboldatei angegeben.
+042=Farbinformationen konnten nicht gespeichert werden.
+
+050=Synchronisierungsfehler zwischen Symboldatei und Wertedatei.
+051=Wertedatei '' wurde nicht gefunden.
+060=Inkonsistente Symbolstruktur.
+070=Farbeinstellungen konnten nicht in 'WWI.INI' gespeichert werden.
+
+080=Symbolname muß angegeben werden!
+081=Phrasen-ID muß angegeben werden!
+082=Bitte geben Sie eine Liste an!
+083=Bitte geben Sie eine Art an!
+084=Bitte geben Sie einen Typ an!
+085=Bitte geben Sie eine Methode an!
+086=Bitte geben Sie eine Maske an!
+087=Bitte geben Sie eine Aufbereitungsmethode an!
+088=Katalog muß angegeben werden!
+
+090=Datei '' wurde für andere WWI-Version erstellt!
+091=Wertedatei '' wurde nicht gefunden!
+092=Sie haben Ihr Dokument '' noch nicht gespeichert! Bitte speichern Sie das Dokument ab!
+093=Wertedatei '' ist bereits geöffnet!
+
+100=Der Wert für die minimale Schriftgröße muß kleiner oder gleich dem Wert für die maximale Schriftgröße sein!
+101=Ungültige Eingabe im Feld für maximale Schriftgröße!
+102=Ungültige Eingabe im Feld für minimale Schriftgröße!
+103=Cursor befindet sich nicht in einem Textfeld oder Positionsrahmen!
+
+111=Angegebenes Verzeichnis ist kein WWI-Anker!
+113=Bitte Diskette einlegen!
+114=Installationsdisketten wurden erstellt!
+115=Bitte eine weitere leere Diskette einlegen!
+
+120=Datei '' wurde nicht gefunden!
+121=Datei '' ist bereits geöffnet!
+122=Alle Befehlsnamen wurden in WWI.INI geschrieben
+
+130=Keine Schachtelung von bedingtem Text!
+131=Nicht alle Symbole im Textblock abgearbeitet!
+132=Zu viele bedingte Textblöcke abgearbeitet!
+133=Fehlerhafte Wiederholungsgruppenstruktur!
+134=
+135=Fehlerhafte Optimierungsgruppenstruktur!
+136=Spezial Wiederholungsgruppe nicht abgearbeitet!
+137=Fehlerhafte Spezial Wiederholungsgruppen Struktur!
+138=Synchronisationsfehler: Symbolname unterschiedlich!
+139=Wertedatei zu früh abgearbeitet!
+140=Fehler beim Dateilesen!
+141=Falsches Symbol im Dokument!
+142=Wertedatei noch nicht abgearbeitet
+143=Ende bedingter Textblock ohne Anfang bedingter Textblock!
+144=Gruppenende wurde nicht gefunden!
+145=Fehlerhafte Gruppenstruktur!
+146=Keine Schachtelung von Spezial Wiederholungsgruppen!
+147=Ende Spezial Wiederholungsgruppe gefunden, aber bedingter Textblock noch aktiv!'
+148=Ende Leertextunterdrückungsgruppe wurde nicht gefunden!
+149=Fehlerhafte Schachtelung von Optimierungsgruppen!
+150=Ende Optimierungsgruppe wurde nicht gefunden!
+151=Text konnte nicht an die Größe des Positionsrahmen angepaßt werden!
+152=Rahmenhöhe von Positionsrahmen ist nicht auf 'Genau' gesetzt!
+153=Dieser Barcodetyp '' wird nicht unterstützt!
+154=Symbol nicht gefunden! ''
+
+
+160=Dieses Dokument darf nur zusammen mit PP-EHS bearbeitet werden!
+161=Nicht unterstützter Parameter in R/3 Variable ''!
+162=Die Formatvorlage '' enthält das Zeichenformat  "Verborgen".   Dies ist nicht zugelassen!
+
+170=Bitte alle Mußfelder ausfüllen!
+
+180=Möchten Sie '' speichern?
+181='' hat Fehler! Trotzdem speichern?
+182='' wurde noch nicht überprüft! Trotzdem speichern?
+
+185=Das Dokument ist fehlerfrei!
+186=''. Das Dokument enthält Fehler! Korrektur durchführen?
+187=''. Das Dokument enthält Warnungen! Korrektur durchführen?
+188=Warnung: Das Dokument enthält eine Word Formatvorlage, die das Zeichenattribut "Ausgeblendet" trägt, dies kann Komplikationen verursachen. Bitte entfernen Sie das Attribut "Ausgeblendet" von folgenden Formatvorlagen: @
+
+190=Fehler beim Lesen der Datei!
+
+200=Dieser Symbol-Typ wird nicht unterstützt!
+
+210=Anzeige-Modus! Keine Bearbeitung möglich!
+211=Test-Modus! Keine Bearbeitung möglich!
+
+220=Sie haben keine Berechtigung, die Grundeinstellungen zu ändern!
+221=Die Ergebnisliste der Phrasensuche ist leer
+222=Bitte Stoffbewertungsart angeben
+223=Bitte Rekursionstiefe angeben
+224=Bitte Typ angeben
+225=Bitte User Exit angeben
+
+231=Bitte Kontrollsymbole für die Leertextunterdrückung angeben
+232=Suchergebnis ist leer
+
+500=Funktion nicht verfügbar mit EH&S Version älter als 2.20B
+512=Wert nicht im Definitionsbereich!
+
+600=Fehler bei RFC-Verbindung
+
+700=Bitte geben Sie eine ID an.
+701=Die ID darf nur max. 30 Zeichen lang sein.
+702=Cursor befindet sich nicht in einem Textfeld!
+
+800=Unbekanntes User-Exit-Makro: '@'
+801=AddIn '@' konnte nicht geladen werden
+
+[Error]
+001=falscher Dateiname
+002=Fehler Value-File Nr.
+003=Value-File nicht gefunden
+004=Value-File nicht verfügbar
+005=File bereits geöffnet
+006=Fehler beim Öffnen des Value-Files, Nr.
+
+100=weitere Werte im Value-File
+101=falsche WWI-Version
+
+110=Conditionierter Text nicht eingefügt
+111=nicht alle Symbole des cond. Textes aufgelöst
+112=zu viele cond. Textblöcke erzeugt
+113=falsche Struktur der NG
+114=falsche Struktur der RG
+115=falsche Struktur der OG
+116=SRG wurde nicht korrekt erzeugt
+117=Syncronisationsfehler: SymbolNamen unterschiedlich
+118=zu wenig Daten im Value-File
+119=Fehler beim Lesen der Daten
+120=Falsches Symbol
+
+122=falsche RG Struktur
+123=Ende CBlock ohne Begin CBlock
+124=kein Gruppenende gefunden
+125=falsche Gruppen Struktur
+126=keine Schachtelung (S)RG's
+127=ESG gefunden obwohl CBlock aktiv
+128=falsche SRG Structur
+129=Ende der Gruppe nicht gefunden
+130=Ende der NNG nicht gefunden
+131=falsche OG-Struktur
+132=Ende der OG nicht gefunden
+133=Fehler bei Schriftgradanpassung. Überprüfen Sie den Ankerpunkt des Pos-Rahmen
+
+500=Rufe Barcode Algorithmus
+
+; Interne Fehler bei der Interpretation der Dialogbeschreibungsdateien
+[Dialog_Error]
+200=Das Setzen des Wertes ist nicht möglich
+201=Das Abholen des Wertes ist nicht möglich
+202=Anlegen des Dialogelements '' ist nicht möglich
+203=Fehler beim Öffnen der Dialogbeschriebungsdatei
+204=Parameter zur Teilüberschrift nicht gefunden
+205=Fehler im Layout des Dialogs
+206=Fehler bei Speicherreservierung
+207=Datei '' kann nicht geöffnet werden
+208=Datei '' kann nicht geschrieben werden
+209=Datei '' kann nicht geschlossen werden
+210='' nicht gefunden
+211=Datei kann nicht gelesen werden
+212=Fehler in Zeilennummer ''
+213=$VERSION: Teil nicht gefunden
+214=$LAYOUT: Teil nicht gefunden
+215="Begin Dialog" nicht gefunden
+216=$VALUE: Teil nicht gefunden
+217=Teil nicht gefunden
+219=Archiv Exception
+220=Resource nicht gefunden
+221=Exception kann nicht behandelt werden
+
+222=Bitte passendes Objekt auswählen
+
+230=Bitte Listenelement auswählen
+231=Liste ist leer
+
+232=Routine '' in der DLL nicht gefunden
+
+233='' DLL nicht gefunden
+234=Letzter Listeneintrag erreicht
+235=Erster Listeneintrag erreicht
+236=Ungültiger Wert für Dialogelement ''
+237=Dialogelement '' in Evaluierungsliste nicht gefunden
+238=Werteteil ($VALUE) überprüfen
+239=Eingabeteil ($INPUT) überprüfen
+240=Korrekte Dialoggröße bei System-Schriftartgröße 96 dpi oder 120 dpi
+241=String für CONCAT Regel kann nicht interpretiert werden
+242=Ungleiche Klammeranzahl im Text
+243=Registry-Schlüssel '' kann nicht geöffnet werden
+244='' Schlüssel in Sprachdatei nicht gefunden
+245=Dialogelement '' ist nicht vorhanden
+246=Ausgabetext kann nicht generiert werden
+247=Das Leeren oder Füllen von Dialogelement '' ist nicht möglich
+248=Abhängigkeitsteil ($DEPENDANCES) überprüfen
+249=Ungültige Abhängigkeitsregel für Dialogelement ''
+250=Fehlender Schrägstrich, um Sektion und Schlüssel zu trennen
+251=Keine FILLEDBY-Regel im Werteteil für Dialogelement ''
+252=Fehlender Schrägstrich, um Anfang- und Endemarkierungen in Ausgabeteil zu trennen.
+253=Kann für Dialogelement '' nicht gesetzt werden
+254=Rückgabetext (Gruppenbeginn) ist zu lang. Max. '' Zeichen.
+
+[Menu]
+001=&WWI
+002=Grundeins&tellungen
+003=Cust&omize
+004=Anzeige&modus
+005=Wiede&rholungsgruppe einfügen
+006=&Leertextunterdrückung einfügen
+007=S&ymbol einfügen
+008=&Wizard
+009=Konditionierter Te&xt
+010=&Speichern
+011=Scan Symbols
+012=Resolve Symbols
+013=WWI &Version
+014=Schriftgradan&passung
+015=&Installationsdiskette
+016=&Vorlage überprüfen
+017=&Zurück zu R/3
+018=&Phrase einfügen
+019=&Gruppe bearbeiten
+020=Symbol oder Phrase b&earbeiten
+
+021=Anzeigemodus
+022=Wiederholungsgruppe einfügen
+023=Leertextunterdrückung einfügen
+024=Symbol einfügen
+025=Wizard
+026=Konditionierter Text
+027=Schriftgradanpassung
+028=Phrase einfügen
+029=Gruppe bearbeiten
+030=Textformat zurücksetzen
+031=Symbol Info F1
+032=Symbol oder Phrase bearbeiten
+
+033=Eti&ketten Wizard
+034=Serien&nummer einfügen
+
+040=Barcode...
+041=Komponenten
+042=Speichern
+043=Laden
+044=Löschen
+045=Serialisierung
+046=Numerisch...
+047=Numerisch Version 1
+
+[Makro]
+021=Anzeigemodus
+022=WiederholungsgruppeEinfügen
+023=LeertextunterdrückungEinfügen
+024=SymbolEinfügen
+025=Wizard
+026=KonditionierterText
+027=Schriftgradanpassung
+028=PhraseEinfügen
+029=GruppeBearbeiten
+030=SymbolPhraseBearbeiten
+
+[Description]
+002=Grundeinstellungen
+003=Dateipfade und Sprache einstellen
+010=Datei speichern und Symbole scannen
+011=Sucht Symbole im Text
+012=Symbole im Text auflösen
+013=Zeigt die Versionsnummer von WWI
+014=Paßt ein Text im Positionsrahmen optimal in den Rahmen ein
+015=Erstellt Installationsdisketten
+016=Vorlage überprüfen
+
+021=Steuerzeichen zeigen oder verbergen
+022=Fügt eine Wiederholungsgruppe ein
+023=Fügt eine Leertextunterdrückung ein
+024=Fügt ein Symbol ein
+025=Fügt eine Vorlage ein
+026=Fügt konditionierten Text ein
+
+027=Symbol Auswahl abgebrochen
+
+[Custm]
+001=Benutzereinstellungen
+002=Ausführungszeit berichten
+003=Resolving am Bildschirm zeigen
+004=WWI-Anker
+
+[DfNNG]
+001=nicht leer
+002=UND
+003=ODER
+
+020=Leertextunterdrückung
+021=Steuerungssymbole
+022=Symbol
+024=Dann
+025=&Hinzufügen
+026=&Löschen
+027=Markierter Text
+028=Verknüpfungsart
+029=Symbolbezeichnung
+030=EHS Symbols mit Prefix: 01=Symbol, 02=Parameter, 03=Label
+
+[PrnBV]
+000=Berichtsvorlage drucken
+001=Bitte auswählen
+002=Feldfunktionen drucken
+003=verborgenen Text drucken
+010=... drucken
+011=Druck wurde abgebrochen
+
+[Setup]
+000=WWI Einstellungen
+001=Farbeinstellungen
+002=Farbe ist Metainformation
+003=Label
+004=Symbol
+005=Grafik
+006=konditionierter Text
+007=Steuerungssymbole
+008=&Standard
+009=Global
+010=Nur Dokument
+011=Sprache
+012=Änderungsmarkierungen zeigen
+013=Allgemein
+014=Tabelle
+015=Trennzeichen
+016=Breite 1
+017=Breite Trenner
+018=Text Farbe
+019=Schattierung
+020=Rahmenart links
+021=Keiner
+022=Einfach
+023=Doppelt
+024=Transparent
+025=Einfarbig
+026=&Aktivieren
+
+050=Fehler
+051=Warnung
+052=Information
+
+060=Symbole werden gescannt
+
+
+[Check]
+000=Check
+001=Begriff
+002=Ändern
+003=Weiter prüfen
+004=Zurück zur Vorlage
+005=Fehler
+006=Warnung
+
+[InsSy]
+001=Symboleigenschaften
+002=Symboltyp
+003=Symboltyp
+005=Name
+006=Phrasen-ID
+007=&Mehrfachbewertung
+008=&Alle
+009=&Erstes
+011=Auflösungsmodus
+012=&keiner
+013=GPC
+014=IT
+015=NM
+016=&G (Grafik)
+017=&P (Phrase)
+018=&C (Code)
+019=&I
+020=&T
+021=T&yp
+022=A&rt
+023=&Liste
+024=&Methode
+025=&N
+026=&M
+027=Maske
+028=Aufbereitungsmeth.
+029=&Suchen
+030=Barcodes :
+031=&F (Datei einfügen)
+032=B
+033=&Wert zwingend
+
+040=Phrase
+041=Symbol
+042=Parameter
+043=Phrase
+
+050=Katalog
+
+[NotNull]
+001=Leertextunterdrückung
+002=&Hinzufügen
+003=&Löschen
+004=Verknüpfung
+005=&UND
+006=O&DER
+007=Symbol
+008=&Steuerungssymbole
+009=Symbole im &markierten Text	
+011=Mit ELSE-Zweig
+025=&Kopieren >>
+026=&Bearbeiten
+
+[DfRGr]
+001=Wiederholungsgruppe
+002=Textmodus
+003=Wiederholungsgruppe
+004=Spezial- Wiederholungsgruppe
+005=Typ der Wiederholungsgruppe
+006=&Hauptgruppe
+007=&Untergruppe
+008=&Gültigkeits-, Sprachraum
+009=&Diskrete Auflösung einer Mehrfachbewertung
+010=&Quellennachweise
+011=Rekursionstiefe
+; 012, 013 are used in 2.2 and 2.5 
+012=&Alphabetische Liste aller Quellen
+013=&nach Auftreten im Text gegliedert
+014=optimieren
+015=Zeilen Mehrfachbewertung
+016=A&lle
+017=Alle außer dem &Ersten
+018=Typ
+019=Stoffbewertungsart
+020=&Suchen
+021=User Exit
+022=&Name
+023=&Parameter
+; 024, 025 are used in 2.7
+024=Alphabetische Liste aller Quellen
+025=nach Auftreten im Text gegliedert
+026=Parameter&hierarchie
+027=K&eine Parameter
+028=Gültigkeitsraum&typ
+029=Gültigkeits&raum
+030=Zusammensetzung
+031=Rek. Zusammensetzung
+032=Freitexte
+033=Verwendung
+034=Transportklasse
+035=Gefahrauslöser
+036=Spr&ache
+037=<keiner>
+038=&Formula
+039=Standard Formula
+040=Formula
+041=Rekursive Formula
+042=Input Stoff
+043=Input Material
+044=Output Stoff
+045=Output Material
+046=Zusammensetzung
+047=Default Material
+048=Standard Alternative
+049=Rolle
+050=Tiefe
+051=Liste
+052=User Exit
+053=<alle>
+
+100=GCZ:GCZ;Schmelzpunkt:SchmelzPKT;SiedePunkt:SiedePkt
+101=POS:POS;POSD:POSD;Frei:FREI;Verw:VERW;TranspKl:CLASS
+102=Interne Texte:INT;Externe Texte:EXT
+
+[PhSrch]
+001=Phrasensuche
+002=&Phrasenkatalog
+003=&Filter
+004=&Suchen
+005=Phrasenschlüssel
+006=Symbol&name
+007=Phrasen&gruppe
+010=(keine)
+
+[WizGrp]
+001=Wizard-Optionen für Gruppen
+002=&Filter
+003=Mit Übersc&hrift
+004=Stoffbewertungsart
+005=&Löschen
+006=Nach &Oben
+007=Nach &Unten
+008=&Symbol
+009=&Phrase
+010=&Trennzeichen
+011=&Suchen
+012=Üb&erschrift
+013=Symbole (wenn angekreuzt mit Phrase)
+014=Anzuwendende Formatvorlagen
+015=Überschrift
+016=&Als Tabelle
+020=Standard
+021=Überschrift 1
+022=Überschrift 2
+
+
+[WizSym]
+001=Wizard-Optionen für Symbole
+002=Symboltyp
+003=Symboltyp
+005=Name
+006=Phrasen-ID
+007=&Mehrfachbewertung
+008=&Alle
+009=&Erstes
+011=Auflösungsmodus
+012=keine
+013=GPC
+014=IT
+015=NM
+016=G (Grafik)
+017=P (Phrase)
+018=C (Code)
+019=I
+020=T
+021=Typ
+022=Art
+023=Liste
+024=Methode
+025=N
+026=M
+027=Maske
+028=Aufbereitungsmeth.
+029=&Suchen
+030=Barcodes :
+031=F (Datei einfügen)
+
+040=Phrase
+041=Symbol
+042=Parameter
+
+130=M&it Phrase
+131=Phrase
+132=&Suchen
+134=&Filter
+135=P&hrase
+136=&Trennzeichen
+137=S&ymbol
+138=Leertextunter&drückung
+139=Anzuwendende Formatvorlagen
+
+
+[WizPhr]
+001= Wizard-Optionen für Überschriften
+002= &Filter
+004= Überschrift
+005= Forma&tvorlage
+006= &Suchen
+
+[SymbolLabel]
+001=SymbolLabel
+002=EHS Symbols with prefix 01=symbol,02=parameter,03=label	
+
+100=GCZ:GCZ;Melting point:SchmelzPKT;SiedePunkt:SiedePkt
+101=POS:POS;POSD:POSD;Frei:FREI;Verw:VERW
+102=Internal Texts:INT;External Texts:EXT
+
+[Color]
+000=Auto
+001=Schwarz
+002=Blau
+003=Zyan
+004=Grün
+005=Magenta
+006=Rot
+007=Gelb
+008=Weiß
+009=Dunkelblau
+010=Türkis
+011=Dunkelgrün
+012=Violett
+013=Dunkelrot
+014=Ocker
+015=Dunkelgrau
+016=Hellgrau
+
+[Templ]
+001=Eingabemuster
+002=Tabelle
+003=Intervall
+004=Art
+005=Eingabe
+006=Genauigkeit
+007=Untergrenze
+008=Trenner
+009=Obergrenze
+010=Exponent
+011=Mit Leertextunterdrückung
+012=Tabellentyp
+013=Symboleingabe
+014=Phrase
+015=Trenner
+016=Symbol
+017=F4
+
+020=Symbol
+021=Phrase
+022=Text
+
+023=Wert
+
+
+[PosFr]
+001=Textgröße im Positionsrahmen
+002=Minimal
+003=Maximal
+004=Schriftgröße in Punkten
+
+[MkDsk]
+001=Installationsdiketten erstellen
+002=WWI-Verzeichnis
+003=Ziellaufwerk auswählen
+
+[Save]
+001=WWI - EH&S
+002=Zurück mit Speichern
+003=Zurück ohne Speichern
+004=Überprüfen, speichern und zurück
+005='' wurde seit der letzten Änderung nicht überprüft !
+006='' hat Fehler !
+007='' hat Warnungen !
+
+[RTFError]
+2=Fehler beim Lesen der Datei '@'!
+5=Datei '@' konnte nicht geöffnet werden!
+6=Nicht genügend Arbeitsspeicher!
+7=Grafikdatei '@' nicht gefunden!
+8=Fehler beim Schreiben der Datei '@'!
+12=Falsche Versionsnummer '@' im Valuefile!
+13=Gruppenende ('@') stimmt nicht mit Gruppenanfang überein!
+14=Gruppenanfang ( '@') und Gruppenende sind in verschiedenen Tabellenspalte und schließen nicht die komplette Zeile ein.
+15=Konditionierter Text in Wiederholungsgruppe '@' ist nicht korrekt geklammert.
+
+20=Grafik '@' konnte nicht eingefügt werden!
+21=Datei '@' konnte nicht eingefügt werden!
+30=Include '@' konnte nicht aufgelöst werden!
+50=Gruppenende '@' wurde nicht gefunden!
+51=Unbekannter Symboltyp '@'!
+
+200=Funktion in DLL nicht vorhanden!
+
+300=Fehler im Valuefile aufgetreten! Symbol '@'
+301=Symboltyp im Valuefile stimmt mit Symboltyp im Layout '@' nicht überein!
+302=RTF-Wert im Valuefile ist ungültig: '@'
+303=Valuefile ist ungültig, möglicherweise ist die Unicodekonfiguration falsch, siehe Hinweis 733416
+
+501=Dynamischer Text gefunden!
+502=Link auf Grafik '@' wurde eingefügt
+
+601=Die Untergrenze für den Schriftgrad ist nicht gültig: '@'
+602=Die Obergrenze für den Schriftgrad ist nicht gültig: '@'
+603=Die Untergrenze und die Obergrenze für den Schriftgrad sind nicht gültig: '@'
+604=Text vor <100DYNTEXT> Symbol
+605=Das Textfeld "@" wird mit dem kleinsten angegebenen Schriftgrad formatiert. Weitere Verkleinerung ist notwendig.
+606=Das Textfeld "@" wird mit dem größten angegebenen Schriftgrad formatiert. Weitere Vergrößerung wäre möglich.
+607=Barcode-Bibliothek konnte nicht geladen werden
+608=Die folgenden Barcode-Parameter konnten nicht gesetzt werden: '@'. Es gelten Voreinstellungen.
+609=Barcode-Bitmap konnte nicht erzeugt werden.
+610=In einem Rahmen mit dynamischem Text befindet sich eine Grafik. Textanpassung nicht möglich
+611=In einem Rahmen mit dynamischem Text befindet sich ein Barcode. Textanpassung nicht möglich
+612=In einen Rahmen mit dynamischem Text wurde eine Grafik oder eine Datei eingefügt. Textanpassung nicht möglich
+613=Ungültiger Barcode-Parameter: '@'
+614=Ungültige Barcodedaten für Barcodetyp: '@'
+615=Berichtstyp '@' wird von GLM nicht unterstützt. Führen Sie den Etikettenassistent auf der Berichtsvorlage aus.
+616=Die Barcode-Bibliothek hat einen Fehler zurückgeliefert
+617=Dynamische Textanpassung möglicherweise falsch. Es wird kein Drucker-Gerätekontext verwendet.
+
+999=Allgemeiner Fehler aufgetreten!
+
+[ComponentWizard] 
+;Text for controls and forms
+001=Komponente speichern
+002=Gruppe:
+003=Komponente:
+004=Kommentar:
+005=Speichern
+006=Schließen
+011=Komponente laden
+012=Gruppenauswahl:
+013=Komponente:
+014=Kommentar:
+015=Laden
+016=Schließen
+021=Komponente löschen
+022=Gruppenauswahl:
+023=Komponente:
+024=Kommentar:
+025=Löschen
+026=Schließen
+027=Speichern einer WWI Komponente
+028=Laden einer WWI Komponente
+029=Löschen einer WWI Komponente
+030=Komponenten
+;Messages
+100=Ungültiger modus für den Komponentendialog aufgetreten.
+101=Der Komponentendialog kann nicht intitalisiert werden.
+102=Der Text für die Gruppe oder Komponentenbeschreibung fehlt!
+103=Die selektierte Objektkombination ist nicht erlaubt!
+104=Es trat ein interner Fehler während des Speichervorgangs auf.
+105=Der Komponentendialog für die Megrsprachigkeit kann nicht intitalisiert werden.
+106=Keine markierte Komponente gefunden.
+107=Fehler: Die markierte Komponente kann nicht gelöscht werden!
+108=Fehler: Die markierte Komponente kann nicht gespeichert werden!
+109=Fehler: Die markierte Komponente kann nicht geladen werden!
+110=Es ist keine Komponente für die Aktion ausgewählt!
+111=Der Gruppename muß definiert sein!
+112=Der Komponentenname muß definiert sein!
+
+[ADOConnection] 
+;Messages
+001=Verbindung zur wwi Datenbank kann nicht aufgebaut werden.
+002=Es ist ein Fehler während dem Verbindungsabbau aufgetreten.
+003=Datenbanktransaktion kann nicht geöffnet werden.
+004=Datenbanktransaktion kann nicht abgeschlossen werden.
+005=Datenbanktransaktion kann nichtrückgängig gemacht werden.
+006=Es ist ein Fehler während der Konfiguration der ADO OLEDB Verbindung aufgetreten.
+007=Daten können nicht aus der Datenbank gelesen werden.
+008=Daten können nicht aus der Datenbank gefiltert werden.
+009=Daten können nicht aus der Datenbank sortiert werden.
+010=Sql Kommando kan nicht ausgeführt werden.
+011=Fehler beim Aufbau einer Bedingung.
+012=Fehler beim initialisieren eines ADO data controls.
+
+[GENIFIXSNR]
+001=Seriennummerdefinition
+002=ID
+003=Nur maximale Seriennummer
+004=Definition
+005=OK
+006=Abbruch
+
+
+[Barcodes] 
+CODABAR=CodaBar
+CODE128=Code 128
+CODE128_A=Code 128 Zeichensatz A
+CODE128_B=Code 128 Zeichensatz B
+CODE128_USER=Code 128 Anwendermodus
+CODE39=Code 39
+CODE39_ASCII=Code 39 Ascii Modus
+CODE93=Code 93
+EAN128=EAN-128
+EAN13=EAN-13
+EAN8=EAN-8
+FIM=FIM
+ITF=Interleaved 2 of 5 (ITF)
+MSI=MSI Code
+UCC128=UCC-128
+UPC_A=UPC Version A
+UPC_E=UPC Version E
+UPC_E_USER=UPC Version E Anwendermodus
+USPN=US PostNet
+MC23=Maxi Code Mode 2 and 3
+MC4=Maxi Code Mode 4
+MC5=Maxi Code Mode 5
+MC6=Maxi Code Mode 6
+DM=DataMatrix
+PDF417=PDF417
+001=Barcode
+002=Typ
+003=Prüfziffer automatisch generieren
+004=OK
+005=Abbrechen
+006=Generierung zur Laufzeit
+007=Symbol
+008=Daten
+009=Beschreibung
+010=Beschreibung anzeigen
+011=Beschreibung entschpricht Daten
+012=Mehrzeilenmodus
+013=Rotation
+014=Linear
+015=Maßeinheit
+016=Breite des schmalen Strichs
+017=Höhe
+018=Breitenverhältnis
+019=Maxi Code
+020=Barcode Größe
+021=Data Matrix
+022=Schriftart:
+023=Schriftschnitt:
+024=Schriftgrad:
+025=Delimitor
+026=ECI
+027=Landeskennung
+028=Postalcode
+029=Service Klasse
+030=Anzahl Spalten
+031=Symbol Größe
+032=Modus
+033=ECC
+034=ECI Prefix
+035=Macro Code
+036=Symboldaten Größe
+037=Benutzerdef. Format X
+038=FNC1
+039=Initialisierung Reader
+040=Rechteck
+041=Gekürztes Format
+042=Anzahl Zeilen
+043=GLI Prefix
+044=GLI
+045=Höhenverhältnis
+046=Formatierung
+047=Font
+048=PDF417
+049=Inch
+050=Millimeter
+051=Kursiv
+052=Fett
+053=Unterstrichen
+054=F
+055=K
+056=U
+057=Links
+058=Zentriert
+059=Rechts
+060=Ungültiger Delimitor!
+061=Ungültiger ECI!
+062=Ungültige Landeskennung !
+063=Ungültige Service Klasse!
+064=Fixed Capacity & DimX
+065=Fixed Capacity & Match Frame
+066=Auto Capacity & Fixed
+067=Auto Capacity & Match Frame
+068=Ungültiger Anzeigemodus!
+069=Keine Fehlerkorrektur
+070=Fehlerkorrektur
+071=Ungültiger ECC!
+072=Ungültige Spalten Anzahl!
+073=Ungültiger ECI Prefix!
+074=Ungültiger ECI!
+075=Kein Makro einfügen
+076=Makro einfügen
+077=Ungültiger Makro Code!
+078=Ungültiges benutzerdefiniertes Format!
+079=Automatisch
+080=Ungültige Symboldaten Größe!
+081=Ungültige Rotation!
+082=Ungültige Zeilenanzahl!
+083=Fehlerkorrektur Level
+084=Ungültiger GLI!
+085=Ungültiger GLI Prefix!
+086=Ungültiges Höhenverhältnis!
+087=Ungültige Maßeinheit!
+088=Ungültige Strichbreite!
+089=Ungültige Strichhöhe!
+090=Ungültiges Breitenverhältnis!
+091=Datensymbol
+092=Parametersymbol
+093=Ungültiges WWI Symbol!
+094=Ungültiger Symbolname!
+095=Ungültige Daten!
+096=Ungültige Barcode Größe!
+097=Ungültige Symbol Größe!
+098=Phrasensymbol
+099=Ungültiger Schriftgrad!
+100=Ungültige Schriftart!
+101=Vordergrund Farbe
+102=Hintergrund Farbe
+103=Schwarz
+104=Blau
+105=Grün
+106=Cyan
+107=Rot
+108=Magenta
+109=Gelb
+110=Weiß
+111=Ungültige Postleitzahl!
+112=Keine Barcodes gesetzt!
+113=Untergrenze erreicht!
+114=Obergrenze erreicht!
+115=ID
+116=ID
+117=Bitte geben Sie eine ID an.
+118=Die ID darf nur max. 30 Zeichen lang sein.
+
+[TreeDlgLabel]
+Label= Symbolbaum
+
+[Buttons]
+001=OK
+002=Abbrechen
+
+[LABELWIZARD]
+001=Dokument muß leer sein, um den WWI Etiketten Wizard aufzurufen
+002=Zentimeter
+003=Zoll
+004=Punkte
+005=Pica
+006=Ungültige Größe für Etiketten Vorlage
+007=Dokumentgröße wurde angepaßt (Breite / Höhe):
+008=WWI Etiketten Wizard
+009=Breite
+010=Höhe
+011=Etikettenvorlage anlegen
+
+

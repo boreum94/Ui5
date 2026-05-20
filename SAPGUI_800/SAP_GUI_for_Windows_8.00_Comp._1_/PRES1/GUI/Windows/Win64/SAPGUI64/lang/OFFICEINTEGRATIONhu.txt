@@ -1,0 +1,8 @@
+_SAPPCTXT_HEADER_               002 8000 OFFICEINTEGRATION HU 1404 OK 
+OI_LOADING_CUSTOM_MENU          080 "Egyéni menü betöltése. Kis türelmet..."
+OI_FILE                         060 "Fájl"
+OI_SAVE                         060 "Mentés"
+OI_SAVE_AS                      060 "Mentés másként"
+OI_PRINT_PREVIEW                080 "Nyomtatási kép"
+OI_PROPERTIES                   060 "Tulajdonságok"
+OI_PRINT                        060 "Nyomtatás"

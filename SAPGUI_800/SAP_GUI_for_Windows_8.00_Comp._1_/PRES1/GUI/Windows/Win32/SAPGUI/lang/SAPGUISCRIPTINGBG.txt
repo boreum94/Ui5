@@ -1,0 +1,10 @@
+_SAPPCTXT_HEADER_               002 8000 SAPGUISCRIPTING BG 1504 OK 
+SCRIPTING_SCRIPTISOPENING       150 "Скрипт отваря връзка към система: %s"
+SCRIPTING_SCRIPTNOTINST         150 "Поддръжка скриптинг не е инсталирана"
+SCRIPTING_SCRIPTNOTENABLED      150 "Поддръжка скриптинг е дезактивирана от потребителя"
+<#007>SCRIPTING_OK_BTN          016 "OK"
+<#007>SCRIPTING_CANCEL_BTN      016 "Отказ"
+SCRIPTING_DO_NOT_SHOW_AGAIN     150 "Да не се показва този диалогов прозорец когато скрипт отваря връзка"
+<#007>SCRIPTING_ALLOW_BTN       016 "Позволяване"
+<#007>SCRIPTING_DENY_BTN        016 "Отказване"
+<#007>SCRIPTING_HELP_BTN        016 "Помощ"
