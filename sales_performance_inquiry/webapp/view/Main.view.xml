@@ -1,6 +1,388 @@
-<mvc:View controllerName="node.t2.salesperformanceinquiry.controller.Main"
+<mvc:View
+    controllerName="node.t2.salesperformanceinquiry.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-    </Page>
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:table="sap.ui.table"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    displayBlock="true">
+
+    <f:DynamicPage
+        id="page"
+        headerExpanded="true"
+        toggleHeaderOnTitleClick="false">
+
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="판매실적 조회" level="H1"/>
+                </f:heading>
+
+                <f:expandedContent>
+                    <ObjectStatus
+                        text="분기별 판매건수 / KPI / 제품별 월별 수량"
+                        state="Information"/>
+                </f:expandedContent>
+
+                <f:actions>
+                    <Button
+                        text="조회"
+                        type="Emphasized"
+                        icon="sap-icon://search"
+                        press=".onSearch"/>
+
+                    <Button
+                        text="초기화"
+                        type="Transparent"
+                        icon="sap-icon://reset"
+                        press=".onReset"/>
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:header>
+            <f:DynamicPageHeader>
+                <HBox wrap="Wrap" renderType="Bare">
+
+                    <VBox class="sapUiSmallMarginEnd sapUiTinyMarginBottom">
+                        <Label text="연도"/>
+                        <Select
+                            width="10rem"
+                            selectedKey="{view>/filter/year}">
+                            <core:Item key="2026" text="2026"/>
+                            <core:Item key="2025" text="2025"/>
+                            <core:Item key="" text="전체"/>
+                        </Select>
+                    </VBox>
+
+                    <VBox class="sapUiSmallMarginEnd sapUiTinyMarginBottom">
+                        <Label text="카테고리"/>
+                        <Select
+                            width="12rem"
+                            selectedKey="{view>/filter/itemCategory}">
+                            <core:Item key="" text="전체"/>
+                            <core:Item key="MTS" text="MTS"/>
+                            <core:Item key="MTO" text="MTO"/>
+                            <core:Item key="REN" text="렌탈"/>
+                        </Select>
+                    </VBox>
+
+                    <VBox class="sapUiSmallMarginEnd sapUiTinyMarginBottom">
+                        <Label text="제품"/>
+                        <Input
+                            width="16rem"
+                            value="{view>/filter/materialKeyword}"
+                            placeholder="제품코드 또는 제품명"/>
+                    </VBox>
+
+                </HBox>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <VBox class="sapUiContentPadding">
+
+                <layout:Grid
+                    defaultSpan="XL3 L3 M6 S12"
+                    hSpacing="1"
+                    vSpacing="1"
+                    class="sapUiSmallMarginBottom">
+
+                    <GenericTile header="총 매출" subheader="선택 연도 기준">
+                        <TileContent footer="{view>/kpi/currency}">
+                            <NumericContent
+                                icon="sap-icon://money-bills"
+                                value="{view>/kpi/totalYearAmt}"
+                                scale="원"
+                                valueColor="Good"/>
+                        </TileContent>
+                    </GenericTile>
+
+                    <GenericTile header="총 판매건수" subheader="선택 연도 기준">
+                        <TileContent footer="건">
+                            <NumericContent
+                                icon="sap-icon://sales-order"
+                                value="{view>/kpi/totalSalesCount}"
+                                valueColor="Good"/>
+                        </TileContent>
+                    </GenericTile>
+
+                    <GenericTile header="전체 YoY 성장률" subheader="전년 대비">
+                        <TileContent footer="%">
+                            <NumericContent
+                                icon="sap-icon://line-chart"
+                                value="{view>/kpi/ttlYoyGrowthPct}"
+                                scale="%"
+                                valueColor="Critical"/>
+                        </TileContent>
+                    </GenericTile>
+
+                    <GenericTile header="최고 점유 카테고리" subheader="매출 점유율 기준">
+                        <TileContent footer="{view>/kpi/bestCategoryShare}">
+                            <NumericContent
+                                icon="sap-icon://pie-chart"
+                                value="{view>/kpi/bestCategory}"
+                                valueColor="Neutral"/>
+                        </TileContent>
+                    </GenericTile>
+
+                </layout:Grid>
+
+                <IconTabBar expandable="false" class="sapUiResponsiveContentPadding">
+
+                    <items>
+
+                        <IconTabFilter
+                            key="quarter"
+                            text="분기별 판매건수"
+                            icon="sap-icon://bar-chart">
+
+                            <VBox>
+
+                                <Panel class="sapUiSmallMarginBottom">
+                                    <headerToolbar>
+                                        <OverflowToolbar>
+                                            <Title text="분기별 판매건수 차트"/>
+                                        </OverflowToolbar>
+                                    </headerToolbar>
+
+                                    <viz:VizFrame
+                                        id="quarterChart"
+                                        width="100%"
+                                        height="20rem"
+                                        vizType="column">
+
+                                        <viz:dataset>
+                                            <viz.data:FlattenedDataset data="{view>/quarterChart}">
+                                                <viz.data:dimensions>
+                                                    <viz.data:DimensionDefinition
+                                                        name="분기"
+                                                        value="{view>Label}"/>
+                                                </viz.data:dimensions>
+                                                <viz.data:measures>
+                                                    <viz.data:MeasureDefinition
+                                                        name="판매건수"
+                                                        value="{view>Salescount}"/>
+                                                </viz.data:measures>
+                                            </viz.data:FlattenedDataset>
+                                        </viz:dataset>
+
+                                        <viz:feeds>
+                                            <viz.feeds:FeedItem
+                                                uid="valueAxis"
+                                                type="Measure"
+                                                values="판매건수"/>
+                                            <viz.feeds:FeedItem
+                                                uid="categoryAxis"
+                                                type="Dimension"
+                                                values="분기"/>
+                                        </viz:feeds>
+                                    </viz:VizFrame>
+                                </Panel>
+
+                                <Panel>
+                                    <headerToolbar>
+                                        <OverflowToolbar>
+                                            <Title text="연도별 분기 판매건수"/>
+                                            <ToolbarSpacer/>
+                                            <ObjectStatus text="단위: 건" state="Information"/>
+                                        </OverflowToolbar>
+                                    </headerToolbar>
+
+                                    <table:Table
+                                        rows="{view>/quarterTable}"
+                                        selectionMode="None"
+                                        visibleRowCountMode="Auto"
+                                        minAutoRowCount="4"
+                                        alternateRowColors="true"
+                                        width="100%">
+
+                                        <table:columns>
+
+                                            <table:Column width="8rem" hAlign="Center">
+                                                <Label text="연도"/>
+                                                <table:template>
+                                                    <ObjectIdentifier title="{view>Syear}"/>
+                                                </table:template>
+                                            </table:Column>
+
+                                            <table:Column width="8rem" hAlign="Center">
+                                                <Label text="1분기"/>
+                                                <table:template>
+                                                    <ObjectNumber number="{view>Q1}" unit="건"/>
+                                                </table:template>
+                                            </table:Column>
+
+                                            <table:Column width="8rem" hAlign="Center">
+                                                <Label text="2분기"/>
+                                                <table:template>
+                                                    <ObjectNumber number="{view>Q2}" unit="건"/>
+                                                </table:template>
+                                            </table:Column>
+
+                                            <table:Column width="8rem" hAlign="Center">
+                                                <Label text="3분기"/>
+                                                <table:template>
+                                                    <ObjectNumber number="{view>Q3}" unit="건"/>
+                                                </table:template>
+                                            </table:Column>
+
+                                            <table:Column width="8rem" hAlign="Center">
+                                                <Label text="4분기"/>
+                                                <table:template>
+                                                    <ObjectNumber number="{view>Q4}" unit="건"/>
+                                                </table:template>
+                                            </table:Column>
+
+                                        </table:columns>
+                                    </table:Table>
+                                </Panel>
+
+                            </VBox>
+                        </IconTabFilter>
+
+                        <IconTabFilter
+                            key="kpi"
+                            text="카테고리 KPI"
+                            icon="sap-icon://business-objects-experience">
+
+                            <table:Table
+                                rows="{view>/categoryKpi}"
+                                selectionMode="None"
+                                visibleRowCountMode="Auto"
+                                minAutoRowCount="5"
+                                alternateRowColors="true"
+                                width="100%">
+
+                                <table:columns>
+
+                                    <table:Column width="10rem">
+                                        <Label text="연도"/>
+                                        <table:template>
+                                            <Text text="{view>Syear}"/>
+                                        </table:template>
+                                    </table:Column>
+
+                                    <table:Column width="12rem">
+                                        <Label text="카테고리"/>
+                                        <table:template>
+                                            <ObjectIdentifier
+                                                title="{view>Categoryname}"
+                                                text="{view>Itemcategory}"/>
+                                        </table:template>
+                                    </table:Column>
+
+                                    <table:Column width="12rem" hAlign="End">
+                                        <Label text="당해 매출"/>
+                                        <table:template>
+                                            <ObjectNumber
+                                                number="{view>Currentyearamt}"
+                                                unit="{view>Currency}"/>
+                                        </table:template>
+                                    </table:Column>
+
+                                    <table:Column width="10rem" hAlign="End">
+                                        <Label text="YoY 성장률"/>
+                                        <table:template>
+                                            <ObjectNumber
+                                                number="{view>Yoygrowthpct}"
+                                                unit="%"/>
+                                        </table:template>
+                                    </table:Column>
+
+                                    <table:Column width="10rem" hAlign="End">
+                                        <Label text="점유율"/>
+                                        <table:template>
+                                            <ObjectNumber
+                                                number="{view>Sharepct}"
+                                                unit="%"/>
+                                        </table:template>
+                                    </table:Column>
+
+                                    <table:Column width="10rem" hAlign="End">
+                                        <Label text="판매건수"/>
+                                        <table:template>
+                                            <ObjectNumber
+                                                number="{view>Categorysalescount}"
+                                                unit="건"/>
+                                        </table:template>
+                                    </table:Column>
+
+                                </table:columns>
+                            </table:Table>
+                        </IconTabFilter>
+
+                        <IconTabFilter
+                            key="material"
+                            text="제품 월별 판매수량"
+                            icon="sap-icon://product">
+
+                            <table:Table
+                                rows="{view>/materialSales}"
+                                selectionMode="None"
+                                visibleRowCountMode="Auto"
+                                minAutoRowCount="8"
+                                alternateRowColors="true"
+                                width="100%">
+
+                                <table:columns>
+
+                                    <table:Column width="12rem">
+                                        <Label text="제품코드"/>
+                                        <table:template>
+                                            <Text text="{view>Materialcd}"/>
+                                        </table:template>
+                                    </table:Column>
+
+                                    <table:Column width="16rem">
+                                        <Label text="제품명"/>
+                                        <table:template>
+                                            <ObjectIdentifier title="{view>Materialnm}"/>
+                                        </table:template>
+                                    </table:Column>
+
+                                    <table:Column width="8rem">
+                                        <Label text="카테고리"/>
+                                        <table:template>
+                                            <Text text="{view>Itemcategory}"/>
+                                        </table:template>
+                                    </table:Column>
+
+                                    <table:Column width="8rem" hAlign="Center">
+                                        <Label text="연도"/>
+                                        <table:template>
+                                            <Text text="{view>Year}"/>
+                                        </table:template>
+                                    </table:Column>
+
+                                    <table:Column width="8rem" hAlign="Center">
+                                        <Label text="월"/>
+                                        <table:template>
+                                            <Text text="{view>Month}"/>
+                                        </table:template>
+                                    </table:Column>
+
+                                    <table:Column width="10rem" hAlign="End">
+                                        <Label text="판매수량"/>
+                                        <table:template>
+                                            <ObjectNumber
+                                                number="{view>SumQty}"
+                                                unit="{view>Unit}"/>
+                                        </table:template>
+                                    </table:Column>
+
+                                </table:columns>
+                            </table:Table>
+                        </IconTabFilter>
+
+                    </items>
+                </IconTabBar>
+
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
 </mvc:View>
