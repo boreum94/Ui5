@@ -1,6 +1,281 @@
+<!-- sap.ui.table = Grid Table -->
+<!-- sap.ui.layout = Object Layout -->
 <mvc:View controllerName="node.t2.salesperformanceinquiry.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"  
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+
+    <Page id="page" title="판매실적 조회">
+
+        <!-- ===== 연도 선택 ===== -->
+        <headerContent>
+            <Label text="연도 선택" class="sapUiSmallMarginEnd"/>
+            <Select id="yearSelect" width="9rem" change=".onYearChange"/>
+        </headerContent>
+
+        <content>
+
+            <!-- ================================================ -->
+            <!-- 섹션1: 분기별 판매건수 Grid Table                -->
+            <!-- ================================================ -->
+            <Panel class="sapUiResponsiveMargin" expandable="false">
+                <!-- rows에 데이터의 기본 경로를 준다. -->
+                <!-- selectionMode를 None으로 줘서 행선택 기능을 끈다 -->
+                <t:Table
+                    id="quarterSalesTable"
+                    rows="{pivotModel>/rows}"
+                    visibleRowCount="{pivotModel>/length}"
+                    selectionMode="None">
+                    <t:extension>
+                        <OverflowToolbar style="Clear">
+                            <!-- 멀티플라벨의 제목 같은 것 -->
+                            <Title text="분기별 판매건수"/>
+                        </OverflowToolbar>
+                    </t:extension>
+                    <t:columns>
+                        <!-- 여기서 headerSpan이 바로 멀티라벨?의 하위라벨을 결정한다 -->
+                        <t:Column headerSpan="5,1">
+                            <t:multiLabels>
+                                <Label text="분기별 판매건수" textAlign="Center" width="100%"/>
+                                <Label text="연도"                   textAlign="Center" width="100%"/>
+                            </t:multiLabels>
+                            <t:template><Text text="{pivotModel>Syear}"/></t:template>
+                        </t:Column>
+                        <!-- 아래 컬럼들은 위에서 결정한 '연도'별 분기를 나타내는 필드명이 된다 -->
+                        <t:Column >
+                            <t:multiLabels>
+                                <Label visible="false"/>
+                                <Label text="1분기" textAlign="Center" width="100%"/>
+                            </t:multiLabels>
+                            <t:template><Text text="{pivotModel>Q1}"/></t:template>
+                        </t:Column>
+                        <t:Column >
+                            <t:multiLabels>
+                                <Label visible="false"/>
+                                <Label text="2분기" textAlign="Center" width="100%"/>
+                            </t:multiLabels>
+                            <t:template><Text text="{pivotModel>Q2}"/></t:template>
+                        </t:Column>
+                        <t:Column >
+                            <t:multiLabels>
+                                <Label visible="false"/>
+                                <Label text="3분기" textAlign="Center" width="100%"/>
+                            </t:multiLabels>
+                            <t:template><Text text="{pivotModel>Q3}"/></t:template>
+                        </t:Column>
+                        <t:Column >
+                            <t:multiLabels>
+                                <Label visible="false"/>
+                                <Label text="4분기" textAlign="Center" width="auto"/>
+                            </t:multiLabels>
+                            <t:template><Text text="{pivotModel>Q4}"/></t:template>
+                        </t:Column>
+                    </t:columns>
+                </t:Table>
+            </Panel>
+
+            <!-- 섹션2: KPI - 판매건수 -->
+            <Panel class="sapUiResponsiveMargin" expandable="false">
+                <content>
+
+                    <!-- HBox로 왼쪽/오른쪽 박스를 나란히 배치 -->
+                    <HBox width="100%" alignItems="Start">
+
+                        <!-- 왼쪽 박스: 전체 판매건수 요약 + 카테고리별 판매건수 -->
+                        <Panel width="50%" class="sapUiTinyMargin" expandable="false">
+                            <content>
+                                <!-- 전체 판매건수 요약 -->
+                                <HBox alignItems="Center" class="sapUiSmallMargin">
+                                    <Label text="{kpiModel>/selectedYear} 년도 전체 판매 건수"
+                                        class="sapUiSmallMarginEnd" design="Bold"/>
+                                    <Text text="{kpiModel>/totals/Ttlsalescount} 건"/>
+                                </HBox>
+                                <!-- 카테고리별 판매건수 -->
+                                <Table items="{kpiModel>/categories}" 
+                                        noDataText="데이터 없음"
+                                        width="auto">
+                                    <headerToolbar>
+                                        <OverflowToolbar style="Clear">
+                                            <Title text="카테고리별 판매 건수" level="H4"/>
+                                        </OverflowToolbar>
+                                    </headerToolbar>
+                                    <columns>
+                                        <Column><Text text="카테고리"/></Column>
+                                        <Column hAlign="End"><Text text="판매 건수"/></Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem>
+                                            <cells>
+                                                <Text text="{Categoryname}"/>
+                                                <Text text="{Categorysalescount} 건"/>
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </content>
+                        </Panel>
+
+            <!-- 오른쪽 박스: 카테고리별 점유율 -->
+            <Panel width="50%" class="sapUiResponsiveMargin" expandable="false">
+                <content>
+                    <!-- 카테고리별 점유율 -->
+                    <Table items="{kpiModel>/categories}" 
+                            noDataText="데이터 없음"
+                            width="auto">
+                        <headerToolbar>
+                            <OverflowToolbar style="Clear">
+                                <Title text="카테고리별 매출액 점유율" level="H4"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column><Text text="카테고리"/></Column>
+                            <Column hAlign="End"><Text text="점유율 (%)"/></Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{Categoryname}"/>
+                                    <Text text="{Sharepct} %"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </content>
+            </Panel>
+
+        </HBox>
+    </content>
+</Panel>
+
+            <!-- ================================================ -->
+            <!-- 섹션3: 매출 비교                                -->
+            <!-- ================================================ -->
+            <Panel headerText="매출 비교" class="sapUiResponsiveMargin" expandable="false">
+                <content>
+
+                    <!-- 전년도 / 기준년도 전체 매출 -->
+                    <Table noDataText="데이터 없음" class="sapUiSmallMarginBottom">
+                        <columns>
+                            <Column width="15rem"><Text text="구분"/></Column>
+                            <Column hAlign="End"><Text text="금액 (KRW)"/></Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="전년도 전체 매출"/>
+                                    <Text text="{kpiModel>/totals/Ttlprevyearamt} KRW"/>
+                                </cells>
+                            </ColumnListItem>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="기준년도 전체 매출"/>
+                                    <Text text="{kpiModel>/totals/Ttlyearamt} KRW"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+
+                    <l:Grid defaultSpan="L6 M6 S12">
+                        <l:content>
+
+                            <!-- 카테고리별 매출액 (전체 행 포함) -->
+                            <Table items="{kpiModel>/categoriesWithTotal}" noDataText="데이터 없음">
+                                <headerToolbar>
+                                    <OverflowToolbar style="Clear">
+                                        <Title text="카테고리별 매출액" level="H4"/>
+                                    </OverflowToolbar>
+                                </headerToolbar>
+                                <columns>
+                                    <Column><Text text="카테고리"/></Column>
+                                    <Column hAlign="End"><Text text="매출액 (KRW)"/></Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{Categoryname}"/>
+                                            <Text text="{Currentyearamt} KRW"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+
+                            <!-- 카테고리별 성장률 (전체 행 포함) -->
+                            <Table items="{kpiModel>/categoriesWithTotal}" noDataText="데이터 없음">
+                                <headerToolbar>
+                                    <OverflowToolbar style="Clear">
+                                        <Title text="카테고리별 성장률" level="H4"/>
+                                    </OverflowToolbar>
+                                </headerToolbar>
+                                <columns>
+                                    <Column><Text text="카테고리"/></Column>
+                                    <Column hAlign="End"><Text text="성장률 (%)"/></Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{Categoryname}"/>
+                                            <Text text="{Yoygrowthpct} %"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+
+                        </l:content>
+                    </l:Grid>
+                </content>
+            </Panel>
+
+            <!-- ================================================ -->
+            <!-- 섹션4: 자재별 판매수량                           -->
+            <!-- ================================================ -->
+            <Panel headerText="자재별 판매수량" class="sapUiResponsiveMargin" expandable="false">
+                <t:Table
+                    id="materialTable"
+                    rows="{materialModel>/rows}"
+                    visibleRowCount="10"
+                    selectionMode="None">
+                    <t:columns>
+                        <t:Column width="14rem" headerSpan="5,1">
+                            <t:multiLabels>
+                                <Label text="자재별 판매수량" textAlign="Center" width="100%"/>
+                                <Label text="자재명"          textAlign="Center" width="100%"/>
+                            </t:multiLabels>
+                            <t:template><Text text="{materialModel>MaterialNm}"/></t:template>
+                        </t:Column>
+                        <t:Column width="7rem">
+                            <t:multiLabels>
+                                <Label visible="false"/>
+                                <Label text="1분기" textAlign="Center" width="100%"/>
+                            </t:multiLabels>
+                            <t:template><Text text="{materialModel>Q1}"/></t:template>
+                        </t:Column>
+                        <t:Column width="7rem">
+                            <t:multiLabels>
+                                <Label visible="false"/>
+                                <Label text="2분기" textAlign="Center" width="100%"/>
+                            </t:multiLabels>
+                            <t:template><Text text="{materialModel>Q2}"/></t:template>
+                        </t:Column>
+                        <t:Column width="7rem">
+                            <t:multiLabels>
+                                <Label visible="false"/>
+                                <Label text="3분기" textAlign="Center" width="100%"/>
+                            </t:multiLabels>
+                            <t:template><Text text="{materialModel>Q3}"/></t:template>
+                        </t:Column>
+                        <t:Column width="7rem">
+                            <t:multiLabels>
+                                <Label visible="false"/>
+                                <Label text="4분기" textAlign="Center" width="100%"/>
+                            </t:multiLabels>
+                            <t:template><Text text="{materialModel>Q4}"/></t:template>
+                        </t:Column>
+                    </t:columns>
+                </t:Table>
+            </Panel>
+
+        </content>
     </Page>
 </mvc:View>
