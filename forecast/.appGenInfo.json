@@ -1,0 +1,24 @@
+{
+  "generationParameters": {
+    "generationDate": "Mon May 25 2026 16:50:30 GMT+0900 (한국 표준시)",
+    "generatorPlatform": "Visual Studio Code",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "http://61.97.134.36:8000/sap/opu/odata/sap/ZGWD2SD0003_SRV",
+    "appName": "forecast",
+    "appTitle": "[SD] 판매 수요 예측 업로드 프로그램",
+    "appDescription": "An SAP Fiori application.",
+    "appNamespace": "code.t2",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.120.23",
+    "enableCodeAssist": false,
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.19.3",
+    "template": "Basic V2",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}

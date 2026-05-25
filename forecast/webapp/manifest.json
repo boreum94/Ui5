@@ -1,0 +1,140 @@
+{
+  "_version": "1.60.0",
+  "sap.app": {
+    "id": "code.t2.forecast",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.19.3",
+      "toolsId": "06f68bb1-8985-4b1b-9ae9-77f6ebd307f5"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZGWD2SD0003_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.120.38",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ui.layout": {},
+        "sap.ui.table": {},
+        "sap.ui.unified": {},
+        "sap.viz": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "code.t2.forecast.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "useBatch": true
+        }
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "type": "View",
+        "viewType": "XML",
+        "viewPath": "code.t2.forecast.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "async": true,
+        "bypassed": {
+          "target": "main"
+        }
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "main",
+          "target": "main"
+        },
+        {
+          "pattern": "upload",
+          "name": "upload",
+          "target": "upload"
+        },
+        {
+          "pattern": "preview",
+          "name": "preview",
+          "target": "preview"
+        },
+        {
+            "pattern": "detail/{forcastCd}/{forcastYear}",
+            "name": "detail",
+            "target": "detail"
+        }
+      ],
+      "targets": {
+        "main": {
+          "viewName": "Main",
+          "viewId": "Main"
+        },
+        "upload": {
+          "viewName": "Upload",
+          "viewId": "Upload"
+        },
+        "preview": {
+          "viewName": "Preview",
+          "viewId": "Preview"
+        },
+        "detail": {
+          "viewName": "Detail",
+          "viewId": "Detail"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "code.t2.forecast.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}

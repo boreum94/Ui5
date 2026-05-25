@@ -1,0 +1,216 @@
+<mvc:View
+    controllerName="code.t2.forecast.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:fb="sap.ui.comp.filterbar"
+    displayBlock="true">
+
+    <Page
+        id="mainPage"
+        title="[SD] 판매 수요 예측 관리"
+        busy="{main>/busy}"
+        busyIndicatorDelay="0">
+
+        <headerContent>
+            <Button
+                text="신규 업로드"
+                icon="sap-icon://add-document"
+                type="Emphasized"
+                press=".onNewUpload"/>
+        </headerContent>
+
+        <content>
+            <VBox class="sapUiContentPadding">
+
+                <MessageStrip
+                    text="저장된 판매예측 문서를 조회하거나 신규 Excel 업로드를 시작할 수 있습니다. 확정 문서는 연도와 판매유형별 후속 계획의 기준 문서입니다."
+                    type="Information"
+                    showIcon="true"
+                    showCloseButton="false"
+                    class="sapUiSmallMarginBottom"/>
+
+                <fb:FilterBar
+                    id="forecastFilterBar"
+                    header="조회 조건"
+                    useToolbar="false"
+                    filterBarExpanded="true"
+                    showGoOnFB="true"
+                    showRestoreOnFB="true"
+                    showClearOnFB="false"
+                    showFilterConfiguration="false"
+                    search=".onSearch"
+                    reset=".onReset"
+                    class="sapUiSmallMarginBottom">
+
+                    <fb:filterGroupItems>
+
+                        <fb:FilterGroupItem
+                            groupName="Basic"
+                            name="ForcastYear"
+                            label="예측 연도"
+                            visibleInFilterBar="true">
+
+                            <fb:control>
+                                <Input
+                                    value="{main>/filters/ForcastYear}"
+                                    maxLength="4"
+                                    width="12rem"
+                                    placeholder="예: 2026"
+                                    submit=".onSearch"/>
+                            </fb:control>
+
+                        </fb:FilterGroupItem>
+
+                        <fb:FilterGroupItem
+                            groupName="Basic"
+                            name="ForcastType"
+                            label="판매예측 유형"
+                            visibleInFilterBar="true">
+
+                            <fb:control>
+                                <Select
+                                    selectedKey="{main>/filters/ForcastType}"
+                                    width="12rem">
+
+                                    <items>
+                                        <core:Item key="" text="전체"/>
+                                        <core:Item key="G" text="일반판매"/>
+                                        <core:Item key="R" text="렌탈"/>
+                                    </items>
+
+                                </Select>
+                            </fb:control>
+
+                        </fb:FilterGroupItem>
+
+                        <fb:FilterGroupItem
+                            groupName="Basic"
+                            name="Status"
+                            label="문서 상태"
+                            visibleInFilterBar="true">
+
+                            <fb:control>
+                                <Select
+                                    selectedKey="{main>/filters/Status}"
+                                    width="12rem">
+
+                                    <items>
+                                        <core:Item key="" text="전체"/>
+                                        <core:Item key="D" text="저장"/>
+                                        <core:Item key="C" text="확정"/>
+                                        <core:Item key="X" text="취소"/>
+                                    </items>
+
+                                </Select>
+                            </fb:control>
+
+                        </fb:FilterGroupItem>
+
+                    </fb:filterGroupItems>
+
+                </fb:FilterBar>
+
+                <Panel headerText="저장된 판매예측 목록">
+
+                    <content>
+                        <OverflowToolbar>
+                            <Title
+                                text="{= '조회 결과 ' + ${main>/resultCount} + '건' }"
+                                level="H4"/>
+
+                            <ToolbarSpacer/>
+
+                            <ObjectStatus
+                                text="확정 문서 우선 표시"
+                                state="Success"
+                                icon="sap-icon://accept"
+                                class="sapUiTinyMarginEnd"/>
+
+                            <Button
+                                text="새로고침"
+                                icon="sap-icon://refresh"
+                                type="Transparent"
+                                press=".onSearch"/>
+                        </OverflowToolbar>
+
+                        <Table
+                            items="{main>/headers}"
+                            noDataText="조회된 판매예측 문서가 없습니다."
+                            growing="true"
+                            growingThreshold="10"
+                            inset="false">
+
+                            <columns>
+                                <Column width="12rem">
+                                    <Text text="판매예측 코드"/>
+                                </Column>
+
+                                <Column width="8rem">
+                                    <Text text="예측 연도"/>
+                                </Column>
+
+                                <Column width="10rem">
+                                    <Text text="판매예측 유형"/>
+                                </Column>
+
+                                <Column width="9rem">
+                                    <Text text="버전"/>
+                                </Column>
+
+                                <Column>
+                                    <Text text="업로드 파일명"/>
+                                </Column>
+
+                                <Column
+                                    width="9rem"
+                                    hAlign="End">
+
+                                    <Text text="성장률"/>
+                                </Column>
+
+                                <Column width="8rem">
+                                    <Text text="상태"/>
+                                </Column>
+                            </columns>
+
+                            <items>
+                                <ColumnListItem
+                                    type="Navigation"
+                                    highlight="{= ${main>Status} === 'C' ? 'Success' : (${main>Status} === 'X' ? 'Error' : 'None') }"
+                                    press=".onPlanPress">
+
+                                    <cells>
+                                        <ObjectIdentifier
+                                            title="{main>ForcastCd}"/>
+
+                                        <Text text="{main>ForcastYear}"/>
+
+                                        <ObjectStatus
+                                            text="{path: 'main>ForcastType', formatter: '.formatForcastType'}"
+                                            state="{path: 'main>ForcastType', formatter: '.formatForcastTypeState'}"/>
+
+                                        <Text text="{main>ForcastVersion}"/>
+
+                                        <Text
+                                            text="{main>UploadFileNm}"
+                                            wrapping="false"/>
+
+                                        <ObjectNumber
+                                            number="{path: 'main>AchvRate', formatter: '.formatPercent'}"/>
+
+                                        <ObjectStatus
+                                            text="{path: 'main>Status', formatter: '.formatStatus'}"
+                                            state="{path: 'main>Status', formatter: '.formatStatusState'}"
+                                            icon="{= ${main>Status} === 'C' ? 'sap-icon://accept' : '' }"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </content>
+                </Panel>
+
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

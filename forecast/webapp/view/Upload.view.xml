@@ -1,0 +1,159 @@
+<mvc:View
+    controllerName="code.t2.forecast.controller.Upload"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:u="sap.ui.unified"
+    displayBlock="true">
+
+    <Page
+        id="uploadPage"
+        title="신규 판매예측 업로드"
+        showNavButton="true"
+        navButtonPress=".onBack"
+        busy="{upload>/busy}"
+        busyIndicatorDelay="0">
+
+        <content>
+            <VBox class="sapUiContentPadding">
+
+                <MessageStrip
+                    text="{upload>/statusText}"
+                    type="{upload>/statusType}"
+                    showIcon="true"
+                    showCloseButton="false"
+                    class="sapUiSmallMarginBottom"/>
+
+                <Panel
+                    headerText="Step 1. Excel 전체 양식 다운로드"
+                    class="sapUiSmallMarginBottom">
+
+                    <content>
+                        <VBox class="sapUiSmallMargin">
+
+                            <Text
+                                text="최신 자재마스터 기준의 전체 Excel 양식을 내려받습니다. 판매유형은 Excel HEADER 시트에서 일반판매 또는 렌탈로 선택합니다."
+                                wrapping="true"
+                                class="sapUiSmallMarginBottom"/>
+
+                            <Button
+                                text="전체 양식 다운로드"
+                                icon="sap-icon://excel-attachment"
+                                type="Emphasized"
+                                press=".onDownloadTemplate"/>
+                        </VBox>
+                    </content>
+                </Panel>
+
+                <Panel
+                    headerText="Step 2. 작성 완료 파일 선택"
+                    class="sapUiSmallMarginBottom">
+
+                    <content>
+                        <VBox class="sapUiSmallMargin">
+
+                            <Text
+                                text="Excel 작성이 완료되면 파일을 선택하고 검증 및 미리보기 화면으로 이동하세요."
+                                wrapping="true"
+                                class="sapUiSmallMarginBottom"/>
+
+                            <HBox
+                                wrap="Wrap"
+                                alignItems="Center">
+
+                                <u:FileUploader
+                                    id="fileUploader"
+                                    name="forecastFile"
+                                    width="26rem"
+                                    fileType="xlsx"
+                                    sameFilenameAllowed="true"
+                                    placeholder="작성 완료한 .xlsx 파일을 선택하세요."
+                                    buttonText="파일 선택"
+                                    change=".onFileSelected"
+                                    class="sapUiTinyMarginEnd sapUiTinyMarginBottom"/>
+
+                                <Button
+                                    text="선택 취소"
+                                    icon="sap-icon://decline"
+                                    visible="{upload>/fileSelected}"
+                                    type="Transparent"
+                                    press=".onClearFile"
+                                    class="sapUiTinyMarginBottom"/>
+                            </HBox>
+
+                            <HBox
+                                visible="{upload>/fileSelected}"
+                                wrap="Wrap"
+                                class="sapUiSmallMarginTop sapUiSmallMarginBottom">
+
+                                <ObjectStatus
+                                    title="파일명"
+                                    text="{upload>/selectedFileName}"
+                                    icon="sap-icon://attachment"
+                                    state="Information"
+                                    class="sapUiMediumMarginEnd"/>
+
+                                <ObjectStatus
+                                    title="파일 크기"
+                                    text="{upload>/selectedFileSize}"
+                                    state="None"/>
+                            </HBox>
+
+                            <Button
+                                text="검증 및 미리보기"
+                                icon="sap-icon://inspect"
+                                type="Emphasized"
+                                enabled="{upload>/fileSelected}"
+                                press=".onValidateAndPreview"/>
+                        </VBox>
+                    </content>
+                </Panel>
+
+                <Panel
+                    headerText="다운로드 양식 포함 자재 현황"
+                    visible="{upload>/templateCreated}">
+
+                    <content>
+                        <Table
+                            items="{upload>/templateSummary}"
+                            inset="false"
+                            class="sapUiSmallMargin">
+
+                            <columns>
+                                <Column width="12rem">
+                                    <Text text="구분"/>
+                                </Column>
+
+                                <Column>
+                                    <Text text="조건"/>
+                                </Column>
+
+                                <Column
+                                    width="8rem"
+                                    hAlign="End">
+                                    <Text text="건수"/>
+                                </Column>
+                            </columns>
+
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <ObjectIdentifier title="{upload>category}"/>
+
+                                        <Text
+                                            text="{upload>description}"
+                                            wrapping="true"/>
+
+                                        <ObjectNumber
+                                            number="{upload>count}"
+                                            unit="건"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </content>
+                </Panel>
+
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

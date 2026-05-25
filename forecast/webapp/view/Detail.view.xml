@@ -1,0 +1,507 @@
+<mvc:View
+    controllerName="code.t2.forecast.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    xmlns:l="sap.ui.layout"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:vizData="sap.viz.ui5.data"
+    xmlns:vizFeeds="sap.viz.ui5.controls.common.feeds"
+    displayBlock="true">
+
+    <Page
+        id="detailPage"
+        title="[SD] 판매 수요 예측 상세"
+        showNavButton="true"
+        navButtonPress=".onBack"
+        busy="{detail>/busy}"
+        busyIndicatorDelay="0">
+
+        <headerContent>
+            <Button
+                text="판매예측 확정"
+                icon="sap-icon://accept"
+                type="Accept"
+                visible="{= ${detail>/header/Status} === 'D' }"
+                enabled="{= !${detail>/busy} }"
+                press=".onConfirmForecast"/>
+
+            <Button
+                text="판매예측 취소"
+                icon="sap-icon://decline"
+                type="Reject"
+                visible="{= ${detail>/header/Status} === 'D' || ${detail>/header/Status} === 'C' }"
+                enabled="{= !${detail>/busy} }"
+                press=".onCancelForecast"/>
+
+            <Button
+                text="신규 업로드"
+                icon="sap-icon://add-document"
+                type="Emphasized"
+                enabled="{= !${detail>/busy} }"
+                press=".onNewUpload"/>
+        </headerContent>
+
+        <content>
+            <VBox class="sapUiContentPadding">
+
+                <MessageStrip
+                    visible="{= ${detail>/header/Status} === 'D' }"
+                    text="저장 상태의 판매예측입니다. 월별 수요와 제품별 구성을 검토한 후 확정하세요."
+                    type="Information"
+                    showIcon="true"
+                    showCloseButton="false"
+                    class="sapUiSmallMarginBottom"/>
+
+                <MessageStrip
+                    visible="{= ${detail>/header/Status} === 'C' }"
+                    text="확정된 판매예측입니다. 해당 연도와 판매유형의 기준 수요예측 문서로 사용됩니다."
+                    type="Success"
+                    showIcon="true"
+                    showCloseButton="false"
+                    class="sapUiSmallMarginBottom"/>
+
+                <ObjectHeader
+                    title="{detail>/header/ForcastCd}"
+                    intro="판매 수요 예측 문서"
+                    number="{detail>/header/ForcastVersion}"
+                    numberUnit="Version"
+                    responsive="true"
+                    class="sapUiSmallMarginBottom">
+
+                    <statuses>
+                        <ObjectStatus
+                            text="{path: 'detail>/header/ForcastType', formatter: '.formatForcastType'}"
+                            state="{path: 'detail>/header/ForcastType', formatter: '.formatForcastTypeState'}"
+                            icon="sap-icon://sales-order"/>
+
+                        <ObjectStatus
+                            text="{path: 'detail>/header/Status', formatter: '.formatStatus'}"
+                            state="{path: 'detail>/header/Status', formatter: '.formatStatusState'}"
+                            icon="{= ${detail>/header/Status} === 'C' ? 'sap-icon://accept' : '' }"/>
+                    </statuses>
+
+                    <attributes>
+                        <ObjectAttribute
+                            title="예측 연도"
+                            text="{detail>/header/ForcastYear}"/>
+
+                        <ObjectAttribute
+                            title="업로드 파일"
+                            text="{detail>/header/UploadFileNm}"/>
+
+                        <ObjectAttribute
+                            title="목표 판매성장률"
+                            text="{path: 'detail>/header/AchvRate', formatter: '.formatPercent'}"/>
+
+                        <ObjectAttribute
+                            title="비고"
+                            text="{detail>/header/Remark}"/>
+                    </attributes>
+                </ObjectHeader>
+
+                <Panel
+                    headerText="핵심 요약"
+                    class="sapUiSmallMarginBottom">
+
+                    <content>
+                        <HBox
+                            wrap="Wrap"
+                            class="sapUiSmallMargin">
+
+                            <GenericTile
+                                header="예측 제품 수"
+                                subheader="저장된 완제품"
+                                class="sapUiTinyMarginEnd sapUiTinyMarginBottom">
+
+                                <tileContent>
+                                    <TileContent unit="건">
+                                        <content>
+                                            <NumericContent
+                                                value="{detail>/summary/itemCount}"
+                                                icon="sap-icon://product"
+                                                valueColor="Neutral"/>
+                                        </content>
+                                    </TileContent>
+                                </tileContent>
+                            </GenericTile>
+
+                            <GenericTile
+                                header="연간 예측수량"
+                                subheader="전체 제품 합계"
+                                class="sapUiTinyMarginEnd sapUiTinyMarginBottom">
+
+                                <tileContent>
+                                    <TileContent unit="EA">
+                                        <content>
+                                            <NumericContent
+                                                value="{path: 'detail>/summary/annualTotal', formatter: '.formatKpiValue'}"
+                                                scale="{path: 'detail>/summary/annualTotal', formatter: '.formatKpiScale'}"
+                                                icon="sap-icon://line-chart"
+                                                valueColor="Good"/>
+                                        </content>
+                                    </TileContent>
+                                </tileContent>
+                            </GenericTile>
+
+                            <GenericTile
+                                header="월평균 예측수량"
+                                subheader="연간 합계 ÷ 12"
+                                class="sapUiTinyMarginEnd sapUiTinyMarginBottom">
+
+                                <tileContent>
+                                    <TileContent unit="EA">
+                                        <content>
+                                            <NumericContent
+                                                value="{path: 'detail>/summary/monthlyAverage', formatter: '.formatKpiValue'}"
+                                                scale="{path: 'detail>/summary/monthlyAverage', formatter: '.formatKpiScale'}"
+                                                icon="sap-icon://calendar"
+                                                valueColor="Neutral"/>
+                                        </content>
+                                    </TileContent>
+                                </tileContent>
+                            </GenericTile>
+
+                            <GenericTile
+                                header="최대 수요 월"
+                                subheader="{detail>/summary/peakMonth}"
+                                class="sapUiTinyMarginEnd sapUiTinyMarginBottom">
+
+                                <tileContent>
+                                    <TileContent unit="EA">
+                                        <content>
+                                            <NumericContent
+                                                value="{path: 'detail>/summary/peakMonthQty', formatter: '.formatKpiValue'}"
+                                                scale="{path: 'detail>/summary/peakMonthQty', formatter: '.formatKpiScale'}"
+                                                icon="sap-icon://business-objects-experience"
+                                                valueColor="Critical"/>
+                                        </content>
+                                    </TileContent>
+                                </tileContent>
+                            </GenericTile>
+
+                        </HBox>
+                    </content>
+                </Panel>
+
+                <l:Grid
+                    defaultSpan="XL12 L12 M12 S12"
+                    hSpacing="1"
+                    vSpacing="1"
+                    class="sapUiSmallMarginBottom">
+
+                    <Panel headerText="월별 판매예측 추이">
+
+                        <layoutData>
+                            <l:GridData span="XL7 L7 M12 S12"/>
+                        </layoutData>
+
+                        <content>
+                            <VBox class="sapUiSmallMargin">
+
+                                <Text
+                                    text="전체 제품의 월별 계획수량 합계를 기준으로 연간 수요 흐름을 확인합니다."
+                                    wrapping="true"
+                                    class="sapUiTinyMarginBottom"/>
+
+                                <viz:VizFrame
+                                    id="monthlyForecastChart"
+                                    vizType="line"
+                                    uiConfig="{applicationSet:'fiori'}"
+                                    width="100%"
+                                    height="22rem">
+
+                                    <viz:dataset>
+                                        <vizData:FlattenedDataset
+                                            data="{detail>/monthlyChart}">
+
+                                            <vizData:dimensions>
+                                                <vizData:DimensionDefinition
+                                                    name="월"
+                                                    value="{detail>Month}"/>
+                                            </vizData:dimensions>
+
+                                            <vizData:measures>
+                                                <vizData:MeasureDefinition
+                                                    name="예측수량"
+                                                    value="{detail>PlanQty}"/>
+                                            </vizData:measures>
+
+                                        </vizData:FlattenedDataset>
+                                    </viz:dataset>
+
+                                    <viz:feeds>
+                                        <vizFeeds:FeedItem
+                                            uid="categoryAxis"
+                                            type="Dimension"
+                                            values="월"/>
+
+                                        <vizFeeds:FeedItem
+                                            uid="valueAxis"
+                                            type="Measure"
+                                            values="예측수량"/>
+                                    </viz:feeds>
+
+                                </viz:VizFrame>
+                            </VBox>
+                        </content>
+                    </Panel>
+
+                    <Panel headerText="제품별 연간 예측수량 Top 5">
+
+                        <layoutData>
+                            <l:GridData span="XL5 L5 M12 S12"/>
+                        </layoutData>
+
+                        <content>
+                            <VBox class="sapUiSmallMargin">
+
+                                <ObjectStatus
+                                    title="최대 예측수량 제품"
+                                    text="{detail>/summary/topMaterialCd}"
+                                    state="Information"
+                                    icon="sap-icon://favorite"
+                                    class="sapUiTinyMarginBottom"/>
+
+                                <viz:VizFrame
+                                    id="productAnnualChart"
+                                    vizType="bar"
+                                    uiConfig="{applicationSet:'fiori'}"
+                                    width="100%"
+                                    height="22rem">
+
+                                    <viz:dataset>
+                                        <vizData:FlattenedDataset
+                                            data="{detail>/productChart}">
+
+                                            <vizData:dimensions>
+                                                <vizData:DimensionDefinition
+                                                    name="자재코드"
+                                                    value="{detail>MaterialCd}"/>
+                                            </vizData:dimensions>
+
+                                            <vizData:measures>
+                                                <vizData:MeasureDefinition
+                                                    name="연간수량"
+                                                    value="{detail>AnnualQty}"/>
+                                            </vizData:measures>
+
+                                        </vizData:FlattenedDataset>
+                                    </viz:dataset>
+
+                                    <viz:feeds>
+                                        <vizFeeds:FeedItem
+                                            uid="categoryAxis"
+                                            type="Dimension"
+                                            values="자재코드"/>
+
+                                        <vizFeeds:FeedItem
+                                            uid="valueAxis"
+                                            type="Measure"
+                                            values="연간수량"/>
+                                    </viz:feeds>
+
+                                </viz:VizFrame>
+                            </VBox>
+                        </content>
+                    </Panel>
+
+                </l:Grid>
+
+                <Panel
+                    headerText="제품별 예측수량 구성"
+                    class="sapUiSmallMarginBottom">
+
+                    <content>
+                        <Table
+                            items="{detail>/items}"
+                            growing="true"
+                            growingThreshold="10"
+                            noDataText="저장된 아이템이 없습니다."
+                            inset="false">
+
+                            <columns>
+                                <Column width="7rem">
+                                    <Text text="아이템"/>
+                                </Column>
+
+                                <Column width="14rem">
+                                    <Text text="자재코드"/>
+                                </Column>
+
+                                <Column width="7rem">
+                                    <Text text="단위"/>
+                                </Column>
+
+                                <Column
+                                    width="14rem"
+                                    hAlign="End">
+
+                                    <Text text="연간 예측수량"/>
+                                </Column>
+
+                                <Column width="18rem">
+                                    <Text text="전체 대비 구성비"/>
+                                </Column>
+
+                                <Column>
+                                    <Text text="비고"/>
+                                </Column>
+                            </columns>
+
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Text text="{detail>ForcastItemCd}"/>
+
+                                        <ObjectIdentifier
+                                            title="{detail>MaterialCd}"/>
+
+                                        <Text text="{detail>Unit}"/>
+
+                                        <ObjectNumber
+                                            number="{path: 'detail>AnnualQty', formatter: '.formatQuantity'}"
+                                            unit="EA"/>
+
+                                        <ProgressIndicator
+                                            percentValue="{detail>AnnualShare}"
+                                            displayValue="{detail>AnnualShareText}"
+                                            state="Information"
+                                            width="100%"/>
+
+                                        <Text
+                                            text="{detail>Remark}"
+                                            wrapping="true"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </content>
+                </Panel>
+
+                <Panel
+                    headerText="월별 계획수량 상세"
+                    expandable="true"
+                    expanded="false"
+                    class="sapUiSmallMarginBottom">
+
+                    <content>
+                        <table:Table
+                            rows="{detail>/items}"
+                            visibleRowCount="7"
+                            selectionMode="None"
+                            width="100%">
+
+                            <table:columns>
+                                <table:Column width="12rem">
+                                    <Label text="자재코드"/>
+
+                                    <table:template>
+                                        <Text text="{detail>MaterialCd}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="1월"/>
+
+                                    <table:template>
+                                        <Text text="{path: 'detail>January', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="2월"/>
+
+                                    <table:template>
+                                        <Text text="{path: 'detail>Feburary', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="3월"/>
+
+                                    <table:template>
+                                        <Text text="{path: 'detail>March', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="4월"/>
+
+                                    <table:template>
+                                        <Text text="{path: 'detail>April', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="5월"/>
+
+                                    <table:template>
+                                        <Text text="{path: 'detail>May', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="6월"/>
+
+                                    <table:template>
+                                        <Text text="{path: 'detail>June', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="7월"/>
+
+                                    <table:template>
+                                        <Text text="{path: 'detail>July', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="8월"/>
+
+                                    <table:template>
+                                        <Text text="{path: 'detail>August', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="9월"/>
+
+                                    <table:template>
+                                        <Text text="{path: 'detail>September', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="10월"/>
+
+                                    <table:template>
+                                        <Text text="{path: 'detail>October', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="11월"/>
+
+                                    <table:template>
+                                        <Text text="{path: 'detail>November', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="12월"/>
+
+                                    <table:template>
+                                        <Text text="{path: 'detail>December', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+                            </table:columns>
+                        </table:Table>
+                    </content>
+                </Panel>
+
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>
