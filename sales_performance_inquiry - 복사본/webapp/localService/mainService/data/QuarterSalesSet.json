@@ -1,0 +1,14 @@
+[
+    { "Syear": "2026", "Quarter": "1", "Salescount": 245 },
+    { "Syear": "2026", "Quarter": "2", "Salescount": 312 },
+    { "Syear": "2026", "Quarter": "3", "Salescount": 188 },
+    { "Syear": "2026", "Quarter": "4", "Salescount": 97 },
+    { "Syear": "2025", "Quarter": "1", "Salescount": 198 },
+    { "Syear": "2025", "Quarter": "2", "Salescount": 276 },
+    { "Syear": "2025", "Quarter": "3", "Salescount": 325 },
+    { "Syear": "2025", "Quarter": "4", "Salescount": 289 },
+    { "Syear": "2024", "Quarter": "1", "Salescount": 162 },
+    { "Syear": "2024", "Quarter": "2", "Salescount": 231 },
+    { "Syear": "2024", "Quarter": "3", "Salescount": 278 },
+    { "Syear": "2024", "Quarter": "4", "Salescount": 244 }
+]

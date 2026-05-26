@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: code.d22.ui5.deploy.test
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://61.97.134.36:8000
+          client: '100'
+        app:
+          name: ZUI5_D22_001
+          description: SAPUI5 Deploy 연습
+          package: ZPD2
+          transport: EFXK902217
+        exclude:
+          - /test/

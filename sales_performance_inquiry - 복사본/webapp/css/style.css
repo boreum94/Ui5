@@ -1,0 +1,16 @@
+/* KPI 타일 높이 균일화 */
+.sapMGT {
+    min-height: 8rem;
+}
+
+/* 테이블 헤더 상단 여백 */
+.sapUiTableColHdrCnt {
+    padding-top: 0.25rem;
+}
+
+/* 카테고리 KPI 탭 차트 패널 */
+.sapUiContentPadding .sapMPanel {
+    box-shadow: none;
+    border: 1px solid var(--sapList_BorderColor);
+    border-radius: 0.5rem;
+}
