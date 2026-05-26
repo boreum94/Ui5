@@ -1,7 +1,7 @@
 {
   "_version": "1.60.0",
   "sap.app": {
-    "id": "node.t2.salesperformanceinquiry",
+    "id": "code.t2.forecast",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -13,11 +13,11 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:basic",
       "version": "1.19.3",
-      "toolsId": "614a43a2-8c84-463e-87d8-23e417d37ed3"
+      "toolsId": "06f68bb1-8985-4b1b-9ae9-77f6ebd307f5"
     },
     "dataSources": {
       "mainService": {
-        "uri": "/sap/opu/odata/sap/ZGWD2SD0002_SRV/",
+        "uri": "/sap/opu/odata/sap/ZGWD2SD0003_SRV/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -44,19 +44,15 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": false,
+    "flexEnabled": true,
     "dependencies": {
-      "minUI5Version": "1.120.23",
+      "minUI5Version": "1.120.38",
       "libs": {
         "sap.m": {},
-<<<<<<< HEAD
-        "sap.f": {},
-=======
->>>>>>> 1ec2a7af898f487a2986b5ee166c4f509317fc13
         "sap.ui.core": {},
         "sap.ui.layout": {},
         "sap.ui.table": {},
-        "sap.f": {},
+        "sap.ui.unified": {},
         "sap.viz": {}
       }
     },
@@ -68,52 +64,74 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "node.t2.salesperformanceinquiry.i18n.i18n"
+          "bundleName": "code.t2.forecast.i18n.i18n"
         }
       },
       "": {
         "dataSource": "mainService",
         "preload": true,
-        "settings": {}
-      }
-    },
-    "resources": {
-      "css": [
-        {
-          "uri": "css/style.css"
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "useBatch": true
         }
-      ]
+      }
     },
     "routing": {
       "config": {
         "routerClass": "sap.m.routing.Router",
-        "controlAggregation": "pages",
-        "controlId": "app",
-        "transition": "slide",
         "type": "View",
         "viewType": "XML",
-        "path": "node.t2.salesperformanceinquiry.view",
+        "viewPath": "code.t2.forecast.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
         "async": true,
-        "viewPath": "node.t2.salesperformanceinquiry.view"
+        "bypassed": {
+          "target": "main"
+        }
       },
       "routes": [
         {
-          "name": "RouteMain",
-          "pattern": ":?query:",
-          "target": [
-            "TargetMain"
-          ]
+          "pattern": "",
+          "name": "main",
+          "target": "main"
+        },
+        {
+          "pattern": "upload",
+          "name": "upload",
+          "target": "upload"
+        },
+        {
+          "pattern": "preview",
+          "name": "preview",
+          "target": "preview"
+        },
+        {
+            "pattern": "detail/{forcastCd}/{forcastYear}",
+            "name": "detail",
+            "target": "detail"
         }
       ],
       "targets": {
-        "TargetMain": {
-          "id": "Main",
-          "name": "Main"
+        "main": {
+          "viewName": "Main",
+          "viewId": "Main"
+        },
+        "upload": {
+          "viewName": "Upload",
+          "viewId": "Upload"
+        },
+        "preview": {
+          "viewName": "Preview",
+          "viewId": "Preview"
+        },
+        "detail": {
+          "viewName": "Detail",
+          "viewId": "Detail"
         }
       }
     },
     "rootView": {
-      "viewName": "node.t2.salesperformanceinquiry.view.App",
+      "viewName": "code.t2.forecast.view.App",
       "type": "XML",
       "id": "App",
       "async": true

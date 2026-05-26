@@ -63,20 +63,13 @@
                         <Label text="카테고리"/>
                         <Select
                             width="12rem"
-                            selectedKey="{view>/filter/itemCategory}">
+                            selectedKey="{view>/filter/itemCategory}"
+                            change=".onCategoryChange">
                             <core:Item key="" text="전체"/>
-                            <core:Item key="MTS" text="MTS"/>
-                            <core:Item key="MTO" text="MTO"/>
-                            <core:Item key="REN" text="렌탈"/>
+                            <core:Item key="S" text="일반판매"/>
+                            <core:Item key="R" text="렌탈"/>
+                            <core:Item key="O" text="MTO"/>
                         </Select>
-                    </VBox>
-
-                    <VBox class="sapUiSmallMarginEnd sapUiTinyMarginBottom">
-                        <Label text="제품"/>
-                        <Input
-                            width="16rem"
-                            value="{view>/filter/materialKeyword}"
-                            placeholder="제품코드 또는 제품명"/>
                     </VBox>
 
                 </HBox>
@@ -94,11 +87,11 @@
 
                     <GenericTile header="총 매출" subheader="선택 연도 기준">
                         <TileContent footer="{view>/kpi/currency}">
-                            <NumericContent
-                                icon="sap-icon://money-bills"
-                                value="{view>/kpi/totalYearAmt}"
-                                scale="원"
-                                valueColor="Good"/>
+                            <ObjectNumber
+                                number="{path: 'view>/kpi/totalYearAmt', formatter: '.formatAmount'}"
+                                unit="{view>/kpi/currency}"
+                                emphasized="true"
+                                state="Success"/>
                         </TileContent>
                     </GenericTile>
 
@@ -123,16 +116,17 @@
 
                     <GenericTile header="최고 점유 카테고리" subheader="매출 점유율 기준">
                         <TileContent footer="{view>/kpi/bestCategoryShare}">
-                            <NumericContent
-                                icon="sap-icon://pie-chart"
-                                value="{view>/kpi/bestCategory}"
-                                valueColor="Neutral"/>
+                            <ObjectIdentifier
+                                title="{view>/kpi/bestCategory}"/>
                         </TileContent>
                     </GenericTile>
 
                 </layout:Grid>
 
-                <IconTabBar expandable="false" class="sapUiResponsiveContentPadding">
+                <IconTabBar
+                    id="mainIconTabBar"
+                    expandable="false"
+                    class="sapUiResponsiveContentPadding">
 
                     <items>
 
@@ -184,7 +178,9 @@
                                     </viz:VizFrame>
                                 </Panel>
 
-                                <Panel>
+                                <Panel
+                                    width="auto"
+                                    class="sapUiResponsiveMargin">
                                     <headerToolbar>
                                         <OverflowToolbar>
                                             <Title text="연도별 분기 판매건수"/>
@@ -196,43 +192,60 @@
                                     <table:Table
                                         rows="{view>/quarterTable}"
                                         selectionMode="None"
-                                        visibleRowCountMode="Auto"
-                                        minAutoRowCount="4"
                                         alternateRowColors="true"
-                                        width="100%">
+                                            
+                                        width="auto">
 
                                         <table:columns>
 
-                                            <table:Column width="8rem" hAlign="Center">
-                                                <Label text="연도"/>
+                                            <table:Column hAlign="Center">
+                                                <table:multiLabels>
+                                                    <Label text=""/>
+                                                    <Label text="연도" width="100%" textAlign="Center"/>
+                                                </table:multiLabels>
                                                 <table:template>
                                                     <ObjectIdentifier title="{view>Syear}"/>
                                                 </table:template>
                                             </table:Column>
 
-                                            <table:Column width="8rem" hAlign="Center">
-                                                <Label text="1분기"/>
+                                            <table:Column
+                                                id="colQ1"
+                                                hAlign="Center"
+                                                headerSpan="4">
+                                                <table:multiLabels>
+                                                    <Label text="분기별 판매건수" width="100%" textAlign="Center"/>
+                                                    <Label text="1분기" width="100%" textAlign="Center"/>
+                                                </table:multiLabels>
                                                 <table:template>
                                                     <ObjectNumber number="{view>Q1}" unit="건"/>
                                                 </table:template>
                                             </table:Column>
 
-                                            <table:Column width="8rem" hAlign="Center">
-                                                <Label text="2분기"/>
+                                            <table:Column hAlign="Center">
+                                                <table:multiLabels>
+                                                    <Label text=""/>
+                                                    <Label text="2분기" width="100%" textAlign="Center"/>
+                                                </table:multiLabels>
                                                 <table:template>
                                                     <ObjectNumber number="{view>Q2}" unit="건"/>
                                                 </table:template>
                                             </table:Column>
 
-                                            <table:Column width="8rem" hAlign="Center">
-                                                <Label text="3분기"/>
+                                            <table:Column hAlign="Center">
+                                                <table:multiLabels>
+                                                    <Label text=""/>
+                                                    <Label text="3분기" width="100%" textAlign="Center"/>
+                                                </table:multiLabels>
                                                 <table:template>
                                                     <ObjectNumber number="{view>Q3}" unit="건"/>
                                                 </table:template>
                                             </table:Column>
 
-                                            <table:Column width="8rem" hAlign="Center">
-                                                <Label text="4분기"/>
+                                            <table:Column hAlign="Center">
+                                                <table:multiLabels>
+                                                    <Label text=""/>
+                                                    <Label text="4분기" width="100%" textAlign="Center"/>
+                                                </table:multiLabels>
                                                 <table:template>
                                                     <ObjectNumber number="{view>Q4}" unit="건"/>
                                                 </table:template>
@@ -253,21 +266,20 @@
                             <table:Table
                                 rows="{view>/categoryKpi}"
                                 selectionMode="None"
-                                visibleRowCountMode="Auto"
-                                minAutoRowCount="5"
+                                
                                 alternateRowColors="true"
                                 width="100%">
 
                                 <table:columns>
 
-                                    <table:Column width="10rem">
+                                    <table:Column>
                                         <Label text="연도"/>
                                         <table:template>
                                             <Text text="{view>Syear}"/>
                                         </table:template>
                                     </table:Column>
 
-                                    <table:Column width="12rem">
+                                    <table:Column>
                                         <Label text="카테고리"/>
                                         <table:template>
                                             <ObjectIdentifier
@@ -276,7 +288,7 @@
                                         </table:template>
                                     </table:Column>
 
-                                    <table:Column width="12rem" hAlign="End">
+                                    <table:Column hAlign="End">
                                         <Label text="당해 매출"/>
                                         <table:template>
                                             <ObjectNumber
@@ -285,7 +297,7 @@
                                         </table:template>
                                     </table:Column>
 
-                                    <table:Column width="10rem" hAlign="End">
+                                    <table:Column hAlign="End">
                                         <Label text="YoY 성장률"/>
                                         <table:template>
                                             <ObjectNumber
@@ -294,7 +306,7 @@
                                         </table:template>
                                     </table:Column>
 
-                                    <table:Column width="10rem" hAlign="End">
+                                    <table:Column hAlign="End">
                                         <Label text="점유율"/>
                                         <table:template>
                                             <ObjectNumber
@@ -303,7 +315,7 @@
                                         </table:template>
                                     </table:Column>
 
-                                    <table:Column width="10rem" hAlign="End">
+                                    <table:Column hAlign="End">
                                         <Label text="판매건수"/>
                                         <table:template>
                                             <ObjectNumber
@@ -319,54 +331,53 @@
                         <IconTabFilter
                             key="material"
                             text="제품 월별 판매수량"
-                            icon="sap-icon://product">
+                            icon="sap-icon://product"
+                            visible="{= ${view>/filter/itemCategory} === '' || ${view>/filter/itemCategory} === 'S' || ${view>/filter/itemCategory} === 'R' }">
 
                             <table:Table
                                 rows="{view>/materialSales}"
                                 selectionMode="None"
-                                visibleRowCountMode="Auto"
-                                minAutoRowCount="8"
                                 alternateRowColors="true"
                                 width="100%">
 
                                 <table:columns>
 
-                                    <table:Column width="12rem">
+                                    <table:Column>
                                         <Label text="제품코드"/>
                                         <table:template>
                                             <Text text="{view>Materialcd}"/>
                                         </table:template>
                                     </table:Column>
 
-                                    <table:Column width="16rem">
+                                    <table:Column>
                                         <Label text="제품명"/>
                                         <table:template>
                                             <ObjectIdentifier title="{view>Materialnm}"/>
                                         </table:template>
                                     </table:Column>
 
-                                    <table:Column width="8rem">
+                                    <table:Column>
                                         <Label text="카테고리"/>
                                         <table:template>
                                             <Text text="{view>Itemcategory}"/>
                                         </table:template>
                                     </table:Column>
 
-                                    <table:Column width="8rem" hAlign="Center">
+                                    <table:Column hAlign="Center">
                                         <Label text="연도"/>
                                         <table:template>
                                             <Text text="{view>Year}"/>
                                         </table:template>
                                     </table:Column>
 
-                                    <table:Column width="8rem" hAlign="Center">
+                                    <table:Column hAlign="Center">
                                         <Label text="월"/>
                                         <table:template>
                                             <Text text="{view>Month}"/>
                                         </table:template>
                                     </table:Column>
 
-                                    <table:Column width="10rem" hAlign="End">
+                                    <table:Column hAlign="End">
                                         <Label text="판매수량"/>
                                         <table:template>
                                             <ObjectNumber

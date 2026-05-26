@@ -1027,10 +1027,17 @@
             }
         },
         {
+<<<<<<< HEAD
             "name": "Start ui5.deploy.test",
             "type": "node",
             "request": "launch",
             "cwd": "${workspaceFolder}/ui5.deploy.test",
+=======
+            "name": "Start forecast",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/forecast",
+>>>>>>> 1ec2a7af898f487a2986b5ee166c4f509317fc13
             "runtimeExecutable": "npx",
             "windows": {
                 "runtimeExecutable": "npx.cmd"
@@ -1052,10 +1059,17 @@
             }
         },
         {
+<<<<<<< HEAD
             "name": "Start ui5.deploy.test Local",
             "type": "node",
             "request": "launch",
             "cwd": "${workspaceFolder}/ui5.deploy.test",
+=======
+            "name": "Start forecast Local",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/forecast",
+>>>>>>> 1ec2a7af898f487a2986b5ee166c4f509317fc13
             "runtimeExecutable": "npx",
             "windows": {
                 "runtimeExecutable": "npx.cmd"
@@ -1078,10 +1092,17 @@
             }
         },
         {
+<<<<<<< HEAD
             "name": "Start ui5.deploy.test Mock",
             "type": "node",
             "request": "launch",
             "cwd": "${workspaceFolder}/ui5.deploy.test",
+=======
+            "name": "Start forecast Mock",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/forecast",
+>>>>>>> 1ec2a7af898f487a2986b5ee166c4f509317fc13
             "runtimeExecutable": "npx",
             "windows": {
                 "runtimeExecutable": "npx.cmd"

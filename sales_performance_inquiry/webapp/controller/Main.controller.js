@@ -12,8 +12,7 @@ sap.ui.define([
             var oViewModel = new JSONModel({
                 filter: {
                     year: "2026",
-                    itemCategory: "",
-                    materialKeyword: ""
+                    itemCategory: ""
                 },
                 kpi: {
                     totalYearAmt: 0,
@@ -31,6 +30,7 @@ sap.ui.define([
 
             this.getView().setModel(oViewModel, "view");
 
+            this._setChartProperties();
             this._loadData();
         },
 
@@ -43,17 +43,46 @@ sap.ui.define([
 
             oViewModel.setProperty("/filter", {
                 year: "2026",
-                itemCategory: "",
-                materialKeyword: ""
+                itemCategory: ""
             });
 
+            var oIconTabBar = this.byId("mainIconTabBar");
+
+            if (oIconTabBar) {
+                oIconTabBar.setSelectedKey("quarter");
+            }
+
             this._loadData();
+        },
+
+        onCategoryChange: function () {
+            var sItemCategory = this.getView().getModel("view").getProperty("/filter/itemCategory");
+
+            if (sItemCategory !== "" && sItemCategory !== "S" && sItemCategory !== "R") {
+                var oIconTabBar = this.byId("mainIconTabBar");
+
+                if (oIconTabBar && oIconTabBar.getSelectedKey() === "material") {
+                    oIconTabBar.setSelectedKey("quarter");
+                }
+            }
         },
 
         _loadData: function () {
             this._readQuarterSales();
             this._readKpiSummary();
             this._readMaterialSales();
+        },
+
+        _setChartProperties: function () {
+            var oQuarterChart = this.byId("quarterChart");
+
+            if (oQuarterChart) {
+                oQuarterChart.setVizProperties({
+                    title: {
+                        visible: false
+                    }
+                });
+            }
         },
 
         _getYearFilter: function (sPropertyName) {
@@ -66,6 +95,12 @@ sap.ui.define([
             return [
                 new Filter(sPropertyName, FilterOperator.EQ, sYear)
             ];
+        },
+
+        formatAmount: function (vValue) {
+            var nValue = Number(vValue || 0);
+
+            return nValue.toLocaleString("ko-KR");
         },
 
         _readQuarterSales: function () {
@@ -128,6 +163,15 @@ sap.ui.define([
                     var aResult = oData.results || [];
 
                     if (aResult.length === 0) {
+                        oViewModel.setProperty("/kpi", {
+                            totalYearAmt: 0,
+                            totalSalesCount: 0,
+                            ttlYoyGrowthPct: 0,
+                            currency: "KRW",
+                            bestCategory: "-",
+                            bestCategoryShare: "-"
+                        });
+
                         oViewModel.setProperty("/categoryKpi", []);
                         return;
                     }
@@ -165,17 +209,19 @@ sap.ui.define([
             var aFilters = this._getYearFilter("Year");
 
             var sItemCategory = oViewModel.getProperty("/filter/itemCategory");
-            var sMaterialKeyword = oViewModel.getProperty("/filter/materialKeyword");
 
             if (sItemCategory) {
-                aFilters.push(new Filter("Itemcategory", FilterOperator.EQ, sItemCategory));
-            }
+                if (sItemCategory !== "S" && sItemCategory !== "R") {
+                    oViewModel.setProperty("/materialSales", []);
+                    return;
+                }
 
-            if (sMaterialKeyword) {
+                aFilters.push(new Filter("Itemcategory", FilterOperator.EQ, sItemCategory));
+            } else {
                 aFilters.push(new Filter({
                     filters: [
-                        new Filter("Materialcd", FilterOperator.Contains, sMaterialKeyword),
-                        new Filter("Materialnm", FilterOperator.Contains, sMaterialKeyword)
+                        new Filter("Itemcategory", FilterOperator.EQ, "S"),
+                        new Filter("Itemcategory", FilterOperator.EQ, "R")
                     ],
                     and: false
                 }));

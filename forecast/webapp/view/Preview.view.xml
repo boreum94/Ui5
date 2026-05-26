@@ -1,0 +1,402 @@
+<mvc:View
+    controllerName="code.t2.forecast.controller.Preview"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:table="sap.ui.table"
+    displayBlock="true">
+
+    <Page
+        id="previewPage"
+        title="판매예측 업로드 미리보기"
+        showNavButton="true"
+        navButtonPress=".onBack"
+        busy="{previewPage>/saving}"
+        busyIndicatorDelay="0">
+
+        <content>
+            <VBox class="sapUiContentPadding">
+
+                <MessageStrip
+                    visible="{appState>/preview/data/isValid}"
+                    text="검증이 완료되었습니다. 판매예측 코드와 버전은 저장 시 자동 생성됩니다."
+                    type="Success"
+                    showIcon="true"
+                    showCloseButton="false"
+                    class="sapUiSmallMarginBottom"/>
+
+                <VBox visible="{appState>/preview/data/hasErrors}">
+                    <MessageStrip
+                        text="검증 오류가 있습니다. 오류 내용을 확인하고 Excel 파일을 수정한 뒤 다시 업로드하세요."
+                        type="Error"
+                        showIcon="true"
+                        showCloseButton="false"
+                        class="sapUiSmallMarginBottom"/>
+
+                    <Panel
+                        headerText="검증 오류 목록"
+                        class="sapUiSmallMarginBottom">
+
+                        <content>
+                            <List
+                                items="{appState>/preview/data/messages}"
+                                showSeparators="Inner">
+
+                                <CustomListItem>
+                                    <HBox
+                                        alignItems="Center"
+                                        wrap="Wrap"
+                                        class="sapUiTinyMargin">
+
+                                        <ObjectStatus
+                                            text="{appState>scopeText}"
+                                            state="Error"
+                                            icon="sap-icon://error"
+                                            class="sapUiSmallMarginEnd"/>
+
+                                        <Text
+                                            text="{appState>message}"
+                                            wrapping="true"/>
+                                    </HBox>
+                                </CustomListItem>
+                            </List>
+                        </content>
+                    </Panel>
+                </VBox>
+
+                <Panel
+                    headerText="HEADER 기본정보"
+                    class="sapUiSmallMarginBottom">
+
+                    <content>
+                        <form:SimpleForm
+                            editable="false"
+                            layout="ResponsiveGridLayout"
+                            labelSpanXL="3"
+                            labelSpanL="3"
+                            labelSpanM="4"
+                            labelSpanS="12"
+                            columnsXL="2"
+                            columnsL="2"
+                            columnsM="1"
+                            singleContainerFullSize="false"
+                            class="sapUiSmallMargin">
+
+                            <Label text="예측 연도"/>
+                            <Text text="{appState>/preview/data/header/ForcastYear}"/>
+
+                            <Label text="버전"/>
+                            <ObjectStatus
+                                text="{appState>/preview/data/header/ForcastVersionText}"
+                                state="Information"
+                                icon="sap-icon://synchronize"/>
+
+                            <Label text="판매예측 유형"/>
+                            <ObjectStatus
+                                text="{appState>/preview/data/header/ForcastTypeText}"
+                                state="Information"/>
+
+                            <Label text="목표 판매성장률"/>
+                            <Text
+                                text="{path: 'appState>/preview/data/header/AchvRate', formatter: '.formatPercent'}"/>
+
+                            <Label text="업로드 파일명"/>
+                            <Text text="{appState>/preview/data/header/UploadFileNm}"/>
+
+                            <Label text="비고"/>
+                            <Text
+                                text="{appState>/preview/data/header/Remark}"
+                                wrapping="true"/>
+
+                        </form:SimpleForm>
+                    </content>
+                </Panel>
+
+                <Panel
+                    headerText="업로드 요약"
+                    class="sapUiSmallMarginBottom">
+
+                    <content>
+                        <HBox
+                            wrap="Wrap"
+                            class="sapUiSmallMargin">
+
+                            <GenericTile
+                                header="업로드 아이템"
+                                subheader="입력 제품 수"
+                                class="sapUiTinyMarginEnd sapUiTinyMarginBottom">
+                                <tileContent>
+                                    <TileContent unit="건">
+                                        <content>
+                                            <NumericContent
+                                                value="{appState>/preview/data/summary/itemCount}"
+                                                icon="sap-icon://product"/>
+                                        </content>
+                                    </TileContent>
+                                </tileContent>
+                            </GenericTile>
+
+                            <GenericTile
+                                header="연간 예측수량"
+                                subheader="전체 계획 합계"
+                                class="sapUiTinyMarginEnd sapUiTinyMarginBottom">
+                                <tileContent>
+                                    <TileContent unit="EA">
+                                        <content>
+                                            <NumericContent
+                                                value="{path: 'appState>/preview/data/summary/annualTotal', formatter: '.formatKpiValue'}"
+                                                scale="{path: 'appState>/preview/data/summary/annualTotal', formatter: '.formatKpiScale'}"
+                                                icon="sap-icon://line-chart"/>
+                                        </content>
+                                    </TileContent>
+                                </tileContent>
+                            </GenericTile>
+
+                            <GenericTile
+                                header="월평균 예측수량"
+                                subheader="12개월 평균"
+                                class="sapUiTinyMarginEnd sapUiTinyMarginBottom">
+                                <tileContent>
+                                    <TileContent unit="EA">
+                                        <content>
+                                            <NumericContent
+                                                value="{path: 'appState>/preview/data/summary/monthlyAverage', formatter: '.formatKpiValue'}"
+                                                scale="{path: 'appState>/preview/data/summary/monthlyAverage', formatter: '.formatKpiScale'}"
+                                                icon="sap-icon://calendar"/>
+                                        </content>
+                                    </TileContent>
+                                </tileContent>
+                            </GenericTile>
+
+                            <GenericTile
+                                header="검증 오류"
+                                subheader="저장 가능 여부"
+                                class="sapUiTinyMarginEnd sapUiTinyMarginBottom">
+                                <tileContent>
+                                    <TileContent unit="건">
+                                        <content>
+                                            <NumericContent
+                                                value="{appState>/preview/data/summary/errorCount}"
+                                                icon="sap-icon://message-error"
+                                                valueColor="{= ${appState>/preview/data/summary/errorCount} === 0 ? 'Good' : 'Error' }"/>
+                                        </content>
+                                    </TileContent>
+                                </tileContent>
+                            </GenericTile>
+
+                        </HBox>
+                    </content>
+                </Panel>
+
+                <Panel
+                    headerText="아이템 검증 결과"
+                    class="sapUiSmallMarginBottom">
+
+                    <content>
+                        <Table
+                            items="{appState>/preview/data/items}"
+                            growing="true"
+                            growingThreshold="10"
+                            inset="false">
+
+                            <columns>
+                                <Column width="4rem">
+                                    <Text text="행"/>
+                                </Column>
+
+                                <Column width="12rem">
+                                    <Text text="자재코드"/>
+                                </Column>
+
+                                <Column>
+                                    <Text text="자재명"/>
+                                </Column>
+
+                                <Column width="6rem">
+                                    <Text text="단위"/>
+                                </Column>
+
+                                <Column
+                                    width="12rem"
+                                    hAlign="End">
+                                    <Text text="연간 수량"/>
+                                </Column>
+
+                                <Column
+                                    width="12rem"
+                                    hAlign="End">
+                                    <Text text="월별 합계"/>
+                                </Column>
+
+                                <Column width="24rem">
+                                    <Text text="검증 결과"/>
+                                </Column>
+                            </columns>
+
+                            <items>
+                                <ColumnListItem
+                                    highlight="{appState>ValidationState}">
+
+                                    <cells>
+                                        <Text text="{appState>ExcelRowNo}"/>
+
+                                        <ObjectIdentifier
+                                            title="{appState>MaterialCd}"/>
+
+                                        <Text
+                                            text="{appState>MaterialNm}"
+                                            wrapping="true"/>
+
+                                        <Text text="{appState>Unit}"/>
+
+                                        <ObjectNumber
+                                            number="{path: 'appState>AnnualQty', formatter: '.formatQuantity'}"
+                                            unit="EA"/>
+
+                                        <ObjectNumber
+                                            number="{path: 'appState>MonthlyTotal', formatter: '.formatQuantity'}"
+                                            unit="EA"/>
+
+                                        <ObjectStatus
+                                            text="{appState>ValidationText}"
+                                            state="{appState>ValidationState}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </content>
+                </Panel>
+
+                <Panel
+                    headerText="월별 수량 상세"
+                    expandable="true"
+                    expanded="false"
+                    class="sapUiSmallMarginBottom">
+
+                    <content>
+                        <table:Table
+                            rows="{appState>/preview/data/items}"
+                            visibleRowCount="6"
+                            selectionMode="None"
+                            width="100%">
+
+                            <table:columns>
+                                <table:Column width="11rem">
+                                    <Label text="자재코드"/>
+                                    <table:template>
+                                        <Text text="{appState>MaterialCd}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="1월"/>
+                                    <table:template>
+                                        <Text text="{path: 'appState>January', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="2월"/>
+                                    <table:template>
+                                        <Text text="{path: 'appState>Feburary', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="3월"/>
+                                    <table:template>
+                                        <Text text="{path: 'appState>March', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="4월"/>
+                                    <table:template>
+                                        <Text text="{path: 'appState>April', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="5월"/>
+                                    <table:template>
+                                        <Text text="{path: 'appState>May', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="6월"/>
+                                    <table:template>
+                                        <Text text="{path: 'appState>June', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="7월"/>
+                                    <table:template>
+                                        <Text text="{path: 'appState>July', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="8월"/>
+                                    <table:template>
+                                        <Text text="{path: 'appState>August', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="9월"/>
+                                    <table:template>
+                                        <Text text="{path: 'appState>September', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="10월"/>
+                                    <table:template>
+                                        <Text text="{path: 'appState>October', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="11월"/>
+                                    <table:template>
+                                        <Text text="{path: 'appState>November', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+
+                                <table:Column width="8rem">
+                                    <Label text="12월"/>
+                                    <table:template>
+                                        <Text text="{path: 'appState>December', formatter: '.formatQuantity'}"/>
+                                    </table:template>
+                                </table:Column>
+                            </table:columns>
+                        </table:Table>
+                    </content>
+                </Panel>
+
+            </VBox>
+        </content>
+
+        <footer>
+            <OverflowToolbar>
+                <Button
+                    text="취소"
+                    icon="sap-icon://decline"
+                    type="Transparent"
+                    enabled="{= !${previewPage>/saving} }"
+                    press=".onCancel"/>
+
+                <ToolbarSpacer/>
+
+                <Button
+                    text="저장"
+                    icon="sap-icon://save"
+                    type="Emphasized"
+                    enabled="{= ${appState>/preview/data/isValid} &amp;&amp; !${previewPage>/saving} }"
+                    press=".onSave"/>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

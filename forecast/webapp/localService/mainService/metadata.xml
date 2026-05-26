@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGWD2SD0003_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="PlanHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ForcastCd"/>
+                    <PropertyRef Name="ForcastYear"/>
+                </Key>
+                <Property Name="ForcastCd" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="판매예측 코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ForcastType" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="판매예측 유형" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ForcastYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="문서 연도" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ForcastVersion" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="버전" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UploadFileNm" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="파일명" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="문서상태" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AchvRate" Type="Edm.Decimal" Precision="5" Scale="2" sap:unicode="false" sap:label="목표 판매성장율" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Remark" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="메모" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreateBy" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="생성자" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreateByNm" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="이름" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreateAt" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="[CL4] 생성시간" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreateOn" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="생성일" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LastChangedBy" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="수정자" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LastChangedByNm" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="최종 수정자 이름" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LastChangedAt" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="변경시간" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LastChangedOn" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="변경일" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="toItems" Relationship="ZGWD2SD0003_SRV.PlanHeader_PlanItems" FromRole="FromRole_PlanHeader_PlanItems" ToRole="ToRole_PlanHeader_PlanItems"/>
+            </EntityType>
+            <EntityType Name="PlanItem" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ForcastCd"/>
+                    <PropertyRef Name="ForcastYear"/>
+                    <PropertyRef Name="ForcastItemCd"/>
+                </Key>
+                <Property Name="ForcastCd" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="판매예측 코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ForcastYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="문서 연도" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ForcastItemCd" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="아이템 순번" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialCd" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="자재코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AnnualQty" Type="Edm.Decimal" Precision="13" Scale="0" sap:unicode="false" sap:unit="Unit" sap:label="연간 계획 수량" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Unit" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="단위" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="January" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:unit="Unit" sap:label="현재 월배분" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Feburary" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:unit="Unit" sap:label="현재 월배분" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="March" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:unit="Unit" sap:label="현재 월배분" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="April" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:unit="Unit" sap:label="현재 월배분" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="May" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:unit="Unit" sap:label="현재 월배분" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="June" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:unit="Unit" sap:label="현재 월배분" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="July" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:unit="Unit" sap:label="현재 월배분" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="August" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:unit="Unit" sap:label="현재 월배분" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="September" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:unit="Unit" sap:label="현재 월배분" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="October" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:unit="Unit" sap:label="현재 월배분" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="November" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:unit="Unit" sap:label="현재 월배분" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="December" Type="Edm.Decimal" Precision="13" Scale="3" sap:unicode="false" sap:unit="Unit" sap:label="현재 월배분" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Remark" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="메모" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreateBy" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="생성자" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreateByNm" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="이름" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreateAt" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="[CL4] 생성시간" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreateOn" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="생성일" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LastChangedBy" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="수정자" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LastChangedByNm" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="최종 수정자 이름" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LastChangedAt" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="변경시간" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LastChangedOn" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="변경일" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="toHeader" Relationship="ZGWD2SD0003_SRV.PlanHeader_PlanItems" FromRole="ToRole_PlanHeader_PlanItems" ToRole="FromRole_PlanHeader_PlanItems"/>
+            </EntityType>
+            <Association Name="PlanHeader_PlanItems" sap:content-version="1">
+                <End Type="ZGWD2SD0003_SRV.PlanHeader" Multiplicity="1" Role="FromRole_PlanHeader_PlanItems"/>
+                <End Type="ZGWD2SD0003_SRV.PlanItem" Multiplicity="*" Role="ToRole_PlanHeader_PlanItems"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_PlanHeader_PlanItems">
+                        <PropertyRef Name="ForcastYear"/>
+                        <PropertyRef Name="ForcastCd"/>
+                    </Principal>
+                    <Dependent Role="ToRole_PlanHeader_PlanItems">
+                        <PropertyRef Name="ForcastYear"/>
+                        <PropertyRef Name="ForcastCd"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZGWD2SD0003_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="PlanHeaderSet" EntityType="ZGWD2SD0003_SRV.PlanHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="PlanItemSet" EntityType="ZGWD2SD0003_SRV.PlanItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="PlanHeader_PlanItemsSet" Association="ZGWD2SD0003_SRV.PlanHeader_PlanItems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PlanHeaderSet" Role="FromRole_PlanHeader_PlanItems"/>
+                    <End EntitySet="PlanItemSet" Role="ToRole_PlanHeader_PlanItems"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <atom:link rel="self" href="http://61.97.134.36:8000/sap/opu/odata/sap/ZGWD2SD0003_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://61.97.134.36:8000/sap/opu/odata/sap/ZGWD2SD0003_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
