@@ -1,1 +1,9 @@
 /* Enter your custom styles here */
+
+.salesIconTabBar .sapMITBHead {
+    padding-left: 2rem;
+}
+
+.salesIconTabBar .sapMITBFilter .sapMITBText {
+    max-width: none;
+}

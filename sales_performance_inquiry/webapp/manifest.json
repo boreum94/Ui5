@@ -49,10 +49,6 @@
       "minUI5Version": "1.120.23",
       "libs": {
         "sap.m": {},
-<<<<<<< HEAD
-        "sap.f": {},
-=======
->>>>>>> 1ec2a7af898f487a2986b5ee166c4f509317fc13
         "sap.ui.core": {},
         "sap.ui.layout": {},
         "sap.ui.table": {},

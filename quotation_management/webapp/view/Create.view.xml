@@ -1,0 +1,167 @@
+<mvc:View
+    controllerName="node.t2.quotationmanagement.controller.Create"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core">
+
+    <f:DynamicPage
+        id="createDynamicPage"
+        toggleHeaderOnTitleClick="false">
+
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="신규 견적 생성"/>
+                </f:heading>
+                <f:actions>
+                    <Button
+                        text="저장"
+                        type="Emphasized"
+                        icon="sap-icon://save"
+                        press=".onCreateQuotation"/>
+                </f:actions>
+                <f:navigationActions>
+                    <Button
+                        icon="sap-icon://nav-back"
+                        type="Transparent"
+                        press=".onNavBack"/>
+                </f:navigationActions>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:content>
+            <VBox class="sapUiSmallMargin">
+
+                <Panel headerText="기본 정보">
+                    <content>
+                        <VBox>
+                            <Label text="견적유형"/>
+                            <RadioButtonGroup
+                                id="rbgQuotDocTy"
+                                columns="2"
+                                selectedIndex="{create>/header/QuotDocTyIndex}">
+                                <buttons>
+                                    <RadioButton text="MTS"/>
+                                    <RadioButton text="MTO"/>
+                                </buttons>
+                            </RadioButtonGroup>
+
+                            <Label text="고객" class="sapUiSmallMarginTop"/>
+                            <Input
+                                value="{create>/header/SoldTo}"
+                                placeholder="고객번호 입력"
+                                showValueHelp="true"/>
+
+                            <Label text="문서일자" class="sapUiSmallMarginTop"/>
+                            <DatePicker
+                                value="{create>/header/DocDate}"
+                                valueFormat="yyyy-MM-dd"
+                                displayFormat="yyyy-MM-dd"/>
+
+                            <Label text="요청납기일" class="sapUiSmallMarginTop"/>
+                            <DatePicker
+                                value="{create>/header/ReqDueDate}"
+                                valueFormat="yyyy-MM-dd"
+                                displayFormat="yyyy-MM-dd"/>
+
+                            <Label text="지급조건" class="sapUiSmallMarginTop"/>
+                            <Input
+                                value="{create>/header/PaymentCd}"
+                                placeholder="예: CA30"/>
+
+                            <Label text="주문사유" class="sapUiSmallMarginTop"/>
+                            <TextArea
+                                value="{create>/header/OrderReason}"
+                                rows="4"
+                                maxLength="200"
+                                placeholder="주문사유를 입력하세요."/>
+                        </VBox>
+                    </content>
+                </Panel>
+
+                <Panel
+                    headerText="Item 입력"
+                    class="sapUiSmallMarginTop">
+                    <content>
+                        <Table
+                            id="createItemTable"
+                            items="{create>/items}">
+
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title text="견적 Item"/>
+                                    <ToolbarSpacer/>
+                                    <Button
+                                        text="행 추가"
+                                        icon="sap-icon://add"
+                                        press=".onAddItem"/>
+                                </Toolbar>
+                            </headerToolbar>
+
+                            <columns>
+                                <Column width="4rem">
+                                    <Text text="No."/>
+                                </Column>
+                                <Column>
+                                    <Text text="자재/Config"/>
+                                </Column>
+                                <Column width="6rem">
+                                    <Text text="등급"/>
+                                </Column>
+                                <Column width="7rem">
+                                    <Text text="수량"/>
+                                </Column>
+                                <Column width="5rem">
+                                    <Text text="단위"/>
+                                </Column>
+                                <Column width="9rem">
+                                    <Text text="Target Margin(%)"/>
+                                </Column>
+                                <Column width="4rem">
+                                    <Text text="삭제"/>
+                                </Column>
+                            </columns>
+
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Text text="{create>ItemCd}"/>
+                                        <Input value="{create>MaterialCd}" placeholder="자재코드"/>
+                                        <Select selectedKey="{create>CurrentGrade}">
+                                            <core:Item key="N" text="N"/>
+                                            <core:Item key="A" text="A"/>
+                                            <core:Item key="B" text="B"/>
+                                        </Select>
+                                        <Input value="{create>ReqQty}" type="Number"/>
+                                        <Input value="{create>Unit}" width="4rem"/>
+                                        <Input value="{create>TargetMargin}" type="Number"/>
+                                        <Button
+                                            icon="sap-icon://delete"
+                                            type="Transparent"
+                                            press=".onDeleteItem"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </content>
+                </Panel>
+
+                <Toolbar class="sapUiSmallMarginTop">
+                    <ToolbarSpacer/>
+                    <Button
+                        text="초기화"
+                        icon="sap-icon://reset"
+                        press=".onReset"/>
+                    <Button
+                        text="저장"
+                        type="Emphasized"
+                        icon="sap-icon://save"
+                        press=".onCreateQuotation"/>
+                </Toolbar>
+
+            </VBox>
+        </f:content>
+
+    </f:DynamicPage>
+</mvc:View>

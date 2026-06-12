@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGWD2SD0005_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="QuotationItem" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="QuotCd"/>
+                    <PropertyRef Name="ItemCd"/>
+                </Key>
+                <Property Name="QuotCd" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="견적 번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ItemCd" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="아이템 번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CustItemCd" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="고객 아이템 번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RefConfigCd" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="주문상품견적번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RefRntPlanCd" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="렌탈플랜코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialCd" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="자재코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialNm" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="자재코드명" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ModelNm" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="모델명" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CurrentGrade" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="자산등급" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqQty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="0" sap:unicode="false" sap:unit="Unit" sap:label="고객 요청 수량" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Unit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="단위" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="TargetMargin" Type="Edm.Decimal" Nullable="false" Precision="5" Scale="2" sap:unicode="false" sap:label="목표 마진율" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GrossAmt" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:unicode="false" sap:unit="Currency" sap:label="수량반영 총 금액" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DiscountAmt" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:unicode="false" sap:unit="Currency" sap:label="수량반영 할인액" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NetAmt" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:unicode="false" sap:unit="Currency" sap:label="할인 후 총금액" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IndividualAmt" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:unicode="false" sap:unit="Currency" sap:label="최종 단가" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="통화코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="RejReason" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="거절사유" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ToHeader" Relationship="ZGWD2SD0005_SRV.QuotationHeaderToItem" FromRole="ToRole_QuotationHeaderToItem" ToRole="FromRole_QuotationHeaderToItem"/>
+            </EntityType>
+            <EntityType Name="QuotationHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="QuotCd"/>
+                </Key>
+                <Property Name="QuotCd" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="견적 번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QuotDocTy" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="아이템 카테고리" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CustPoCd" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:label="고객PO번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="문서일자" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RefDoc" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="선행문서" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RefDocTy" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="선행문서 타입" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SoldTo" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="고객번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Role" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="역할" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CustomerNm" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="고객사명" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ContactNm" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="담당자명" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ContactPhone" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="담당자 연락처" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CustomerEmail" Type="Edm.String" Nullable="false" MaxLength="241" sap:unicode="false" sap:label="이메일" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TtlAmount" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:unicode="false" sap:unit="Currency" sap:label="총 금액" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="통화코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="ReqDueDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="요청납기일" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OrderReason" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="주문사유" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ValidFrom" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="유효시작일" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ValidTo" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="유효 종료일" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaymentCd" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="지급조건코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaymentNm" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="지급조건명" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QuotStatus" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="견적 상태" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ToItems" Relationship="ZGWD2SD0005_SRV.QuotationHeaderToItem" FromRole="FromRole_QuotationHeaderToItem" ToRole="ToRole_QuotationHeaderToItem"/>
+            </EntityType>
+            <ComplexType Name="SendQuotationResult">
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="100" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ResultCode" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QuotCd" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <Association Name="QuotationHeaderToItem" sap:content-version="1">
+                <End Type="ZGWD2SD0005_SRV.QuotationHeader" Multiplicity="1" Role="FromRole_QuotationHeaderToItem"/>
+                <End Type="ZGWD2SD0005_SRV.QuotationItem" Multiplicity="*" Role="ToRole_QuotationHeaderToItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_QuotationHeaderToItem">
+                        <PropertyRef Name="QuotCd"/>
+                    </Principal>
+                    <Dependent Role="ToRole_QuotationHeaderToItem">
+                        <PropertyRef Name="QuotCd"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZGWD2SD0005_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="QuotationItemSet" EntityType="ZGWD2SD0005_SRV.QuotationItem" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="QuotationHeaderSet" EntityType="ZGWD2SD0005_SRV.QuotationHeader" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="QuotationHeaderToItemSet" Association="ZGWD2SD0005_SRV.QuotationHeaderToItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="QuotationHeaderSet" Role="FromRole_QuotationHeaderToItem"/>
+                    <End EntitySet="QuotationItemSet" Role="ToRole_QuotationHeaderToItem"/>
+                </AssociationSet>
+                <FunctionImport Name="SendQuotation" ReturnType="ZGWD2SD0005_SRV.SendQuotationResult" m:HttpMethod="POST">
+                    <Parameter Name="QuotCd" Type="Edm.String" Mode="In" MaxLength="10"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <atom:link rel="self" href="http://61.97.134.36:8000/sap/opu/odata/sap/ZGWD2SD0005_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://61.97.134.36:8000/sap/opu/odata/sap/ZGWD2SD0005_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

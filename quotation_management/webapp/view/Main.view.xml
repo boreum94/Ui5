@@ -1,0 +1,205 @@
+<mvc:View
+    controllerName="node.t2.quotationmanagement.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:core="sap.ui.core">
+
+    <f:DynamicPage
+        id="mainDynamicPage"
+        toggleHeaderOnTitleClick="false">
+
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="견적 목록"/>
+                </f:heading>
+                <f:actions>
+                    <Button
+                        text="신규 견적"
+                        type="Emphasized"
+                        icon="sap-icon://add"
+                        press=".onNavCreate"/>
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:header>
+            <f:DynamicPageHeader>
+                <fb:FilterBar
+                    id="filterBar"
+                    useToolbar="false"
+                    search=".onSearch"
+                    clear=".onClearFilter">
+
+                    <fb:filterGroupItems>
+
+                        <fb:FilterGroupItem
+                            groupName="Basic"
+                            name="DocDateFrom"
+                            label="문서일자 From"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <DatePicker
+                                    id="dpDocDateFrom"
+                                    valueFormat="yyyy-MM-dd"
+                                    displayFormat="yyyy-MM-dd"/>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <fb:FilterGroupItem
+                            groupName="Basic"
+                            name="DocDateTo"
+                            label="문서일자 To"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <DatePicker
+                                    id="dpDocDateTo"
+                                    valueFormat="yyyy-MM-dd"
+                                    displayFormat="yyyy-MM-dd"/>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <fb:FilterGroupItem
+                            groupName="Basic"
+                            name="QuotDocTy"
+                            label="견적유형"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select id="selQuotDocTy">
+                                    <core:Item key="" text="전체"/>
+                                    <core:Item key="S" text="MTS"/>
+                                    <core:Item key="O" text="MTO"/>
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <fb:FilterGroupItem
+                            groupName="Basic"
+                            name="SoldTo"
+                            label="고객"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <SearchField
+                                    id="sfSoldTo"
+                                    placeholder="고객번호 또는 고객명"
+                                    search=".onSearch"/>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <fb:FilterGroupItem
+                            groupName="Basic"
+                            name="QuotStatus"
+                            label="상태"
+                            visibleInFilterBar="true">
+                            <fb:control>
+                                <Select id="selQuotStatus">
+                                    <core:Item key="" text="전체"/>
+                                    <core:Item key="C" text="작성완료"/>
+                                    <core:Item key="O" text="오더전환"/>
+                                </Select>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                    </fb:filterGroupItems>
+                </fb:FilterBar>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <VBox class="sapUiSmallMargin">
+
+                <Toolbar>
+                    <Title text="견적 목록"/>
+                    <ToolbarSpacer/>
+                    <Button
+                        text="조회"
+                        type="Emphasized"
+                        icon="sap-icon://search"
+                        press=".onSearch"/>
+                    <Button
+                        text="초기화"
+                        icon="sap-icon://reset"
+                        press=".onClearFilter"/>
+                </Toolbar>
+
+                <Table
+                    id="quotationTable"
+                    mode="SingleSelectMaster"
+                    growing="true"
+                    growingScrollToLoad="true"
+                    items="{ path: '/QuotationHeaderSet' }"
+                    class="sapUiSmallMarginTop">
+
+                    <columns>
+                        <Column width="9rem">
+                            <Text text="견적번호"/>
+                        </Column>
+                        <Column width="5rem">
+                            <Text text="유형"/>
+                        </Column>
+                        <Column width="8rem">
+                            <Text text="고객번호"/>
+                        </Column>
+                        <Column>
+                            <Text text="고객명"/>
+                        </Column>
+                        <Column width="8rem">
+                            <Text text="문서일자"/>
+                        </Column>
+                        <Column width="8rem">
+                            <Text text="요청납기일"/>
+                        </Column>
+                        <Column hAlign="End" width="9rem">
+                            <Text text="총금액"/>
+                        </Column>
+                        <Column width="5rem">
+                            <Text text="통화"/>
+                        </Column>
+                        <Column width="7rem">
+                            <Text text="상태"/>
+                        </Column>
+                        <Column width="3rem"/>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem
+                            type="Navigation"
+                            press=".onNavDetail">
+                            <cells>
+                                <ObjectIdentifier title="{QuotCd}"/>
+                                <Text text="{QuotDocTy}"/>
+                                <Text text="{SoldTo}"/>
+                                <Text text="{CustomerNm}"/>
+                                <Text text="{
+                                    path: 'DocDate',
+                                    type: 'sap.ui.model.type.Date',
+                                    formatOptions: { pattern: 'yyyy-MM-dd' }
+                                }"/>
+                                <Text text="{
+                                    path: 'ReqDueDate',
+                                    type: 'sap.ui.model.type.Date',
+                                    formatOptions: { pattern: 'yyyy-MM-dd' }
+                                }"/>
+                                <ObjectNumber
+                                    number="{TtlAmount}"
+                                    unit="{Currency}"/>
+                                <Text text="{Currency}"/>
+                                <ObjectStatus
+                                    text="{path: 'QuotStatus', formatter: '.formatStatusText'}"
+                                    state="{path: 'QuotStatus', formatter: '.formatStatusState'}"/>
+                                <Button
+                                    icon="sap-icon://navigation-right-arrow"
+                                    type="Transparent"
+                                    press=".onNavDetail"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+
+            </VBox>
+        </f:content>
+
+    </f:DynamicPage>
+</mvc:View>
