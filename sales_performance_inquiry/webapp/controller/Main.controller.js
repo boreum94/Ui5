@@ -25,7 +25,11 @@ sap.ui.define([
                 quarterTable: [],
                 quarterChart: [],
                 categoryKpi: [],
-                materialSales: []
+                materialSales: [],
+                customerBizMonthOrder: [],
+                customerBizPattern: [],
+                customerBizChart: []
+
             });
 
             this.getView().setModel(oViewModel, "view");
@@ -71,15 +75,30 @@ sap.ui.define([
             this._readQuarterSales();
             this._readKpiSummary();
             this._readMaterialSales();
+            this._readCustomerBizMonthOrder();
         },
 
         _setChartProperties: function () {
             var oQuarterChart = this.byId("quarterChart");
+            var oCustomerBizChart = this.byId("customerBizChart");
 
             if (oQuarterChart) {
                 oQuarterChart.setVizProperties({
                     title: {
                         visible: false
+                    }
+                });
+            }
+
+            if (oCustomerBizChart) {
+                oCustomerBizChart.setVizProperties({
+                    title: {
+                        visible: false
+                    },
+                    plotArea: {
+                        dataLabel: {
+                            visible: true
+                        }
                     }
                 });
             }
@@ -101,6 +120,28 @@ sap.ui.define([
             var nValue = Number(vValue || 0);
 
             return nValue.toLocaleString("ko-KR");
+        },
+        formatBizTypeName: function (sBiztype) {
+            var mBizType = {
+                "10": "숙박업",
+                "20": "정부기관",
+                "30": "기숙사",
+                "40": "공유오피스",
+                "50": "복지시설",
+                "60": "프랜차이즈"
+            };
+
+            return mBizType[sBiztype] || sBiztype || "-";
+        },
+
+        formatMonth: function (sMonth) {
+            var iMonth = Number(sMonth);
+
+            if (!iMonth) {
+                return sMonth;
+            }
+
+            return iMonth + "월";
         },
 
         _readQuarterSales: function () {
@@ -133,9 +174,17 @@ sap.ui.define([
                         mYear[sYear]["Q" + sQuarter] = iSalesCount;
 
                         aChart.push({
-                            Label: sYear + "년 " + sQuarter + "분기",
+                            Quarter: sQuarter + "분기",
+                            Year: sYear + "년",
                             Salescount: iSalesCount
                         });
+                    });
+
+                    aChart.sort(function (a, b) {
+                        if (a.Quarter !== b.Quarter) {
+                            return a.Quarter.localeCompare(b.Quarter);
+                        }
+                        return a.Year.localeCompare(b.Year);
                     });
 
                     oViewModel.setProperty("/quarterTable", Object.values(mYear));

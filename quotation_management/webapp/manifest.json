@@ -80,55 +80,33 @@
       ]
     },
     "routing": {
-      "config": {
-        "routerClass": "sap.m.routing.Router",
-        "controlAggregation": "pages",
-        "controlId": "app",
-        "transition": "slide",
-        "type": "View",
-        "viewType": "XML",
-        "path": "node.t2.quotationmanagement.view",
-        "async": true,
-        "viewPath": "node.t2.quotationmanagement.view"
-      },
-      "routes": [
-        {
-          "name": "RouteMain",
-          "pattern": ":?query:",
-          "target": [
-            "TargetMain"
-          ]
-        },
-        {
-          "name": "RouteDetail",
-          "pattern": "detail/{QuotCd}",
-          "target": [
-            "TargetDetail"
-          ]
-        },
-        {
-          "name": "RouteCreate",
-          "pattern": "create",
-          "target": [
-            "TargetCreate"
-          ]
-        }
-      ],
-      "targets": {
-        "TargetMain": {
-          "id": "Main",
-          "name": "Main"
-        },
-        "TargetDetail": {
-          "id": "Detail",
-          "name": "Detail"
-        },
-        "TargetCreate": {
-          "id": "Create",
-          "name": "Create"
-        }
-      }
-    },
+  "config": {
+    "routerClass": "sap.m.routing.Router",
+    "controlAggregation": "pages",
+    "controlId": "app",
+    "transition": "slide",
+    "type": "View",
+    "viewType": "XML",
+    "path": "node.t2.quotationmanagement.view",
+    "async": true,
+    "viewPath": "node.t2.quotationmanagement.view"
+  },
+  "routes": [
+    {
+      "name": "RouteMain",
+      "pattern": ":?query:",
+      "target": [
+        "TargetMain"
+      ]
+    }
+  ],
+  "targets": {
+    "TargetMain": {
+      "id": "Main",
+      "name": "Main"
+    }
+  }
+},
     "rootView": {
       "viewName": "node.t2.quotationmanagement.view.App",
       "type": "XML",

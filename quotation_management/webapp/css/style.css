@@ -1,1 +1,13 @@
-/* Enter your custom styles here */
+html,
+body,
+#content,
+.sapUiBody,
+.sapMPage,
+.appView,
+.appFcl {
+    height: 100%;
+}
+
+.appView {
+    display: block;
+}

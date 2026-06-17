@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
 
-specVersion: "3.1"
+specVersion: "4.0"
 metadata:
-  name: code.t2.forecast
+  name: node.t2.quotationmanagement
 type: application
 builder:
   resources:
@@ -17,8 +17,8 @@ builder:
           url: http://61.97.134.36:8000
           client: '100'
         app:
-          name: ZD22_SAP_UI5_02
-          description: '[SD] 판매 수요 예측 업로드 프로그램'
+          name: ZUI5_D22_002
+          description: '[SD] 견적서 생성 및 송출'
           package: ZPD2SD_01
           transport: EFXK902465
         exclude:
