@@ -3,6 +3,7 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
+    "sap/ui/model/Sorter",
     "sap/m/MessageBox",
     "sap/m/MessageToast",
     "sap/m/BusyDialog",
@@ -11,9 +12,10 @@ sap.ui.define([
     "sap/m/Text",
     "sap/m/ColumnListItem"
 ], function (
-    Controller,JSONModel,Filter,FilterOperator,MessageBox,MessageToast,BusyDialog,
-    TableSelectDialog,Column,Text,ColumnListItem) 
-    { "use strict";
+    Controller, JSONModel, Filter, FilterOperator,Sorter, MessageBox, MessageToast, BusyDialog,
+    TableSelectDialog, Column, Text, ColumnListItem
+) {
+    "use strict";
 
     return Controller.extend("node.t2.quotationmanagement.controller.Main", {
         onInit: function () {
@@ -21,7 +23,9 @@ sap.ui.define([
                 selected: {},
                 items: [],
                 createItems: [],
-                createQuotDocTy: "S"
+                createQuotDocTy: "S",
+                createTotalAmount: 0,
+                createCurrency: "KRW"   
             });
 
             this.getView().setModel(oViewModel, "view");
@@ -35,18 +39,28 @@ sap.ui.define([
         onSearch: function () {
             var aFilters = [];
 
-            var sDocDateFrom = this.byId("dpDocDateFrom").getValue();
-            var sDocDateTo = this.byId("dpDocDateTo").getValue();
+            var oDocDateFrom = this.byId("dpDocDateFrom").getDateValue();
+            var oDocDateTo = this.byId("dpDocDateTo").getDateValue();
             var sQuotDocTy = this.byId("selQuotDocTy").getSelectedKey();
             var sSoldTo = this.byId("sfSoldTo").getValue();
             var sQuotStatus = this.byId("selQuotStatus").getSelectedKey();
 
-            if (sDocDateFrom && sDocDateTo) {
-                aFilters.push(new Filter("DocDate", FilterOperator.BT, new Date(sDocDateFrom), new Date(sDocDateTo)));
-            } else if (sDocDateFrom) {
-                aFilters.push(new Filter("DocDate", FilterOperator.GE, new Date(sDocDateFrom)));
-            } else if (sDocDateTo) {
-                aFilters.push(new Filter("DocDate", FilterOperator.LE, new Date(sDocDateTo)));
+            // 문서일자 From
+            if (oDocDateFrom) {
+                oDocDateFrom.setHours(0, 0, 0, 0);
+            }
+
+            // 문서일자 To
+            if (oDocDateTo) {
+                oDocDateTo.setHours(23, 59, 59, 999);
+            }
+
+            if (oDocDateFrom && oDocDateTo) {
+                aFilters.push(new Filter("DocDate", FilterOperator.BT, oDocDateFrom, oDocDateTo));
+            } else if (oDocDateFrom) {
+                aFilters.push(new Filter("DocDate", FilterOperator.GE, oDocDateFrom));
+            } else if (oDocDateTo) {
+                aFilters.push(new Filter("DocDate", FilterOperator.LE, oDocDateTo));
             }
 
             if (sQuotDocTy) {
@@ -70,7 +84,11 @@ sap.ui.define([
             var oBinding = this.byId("quotationTable").getBinding("items");
 
             if (oBinding) {
+                // 조회조건 적용
                 oBinding.filter(aFilters);
+
+                // 견적번호 기준 내림차순 정렬
+                oBinding.sort(new Sorter("QuotCd", true));
             }
         },
 
@@ -85,6 +103,7 @@ sap.ui.define([
 
             if (oBinding) {
                 oBinding.filter([]);
+                oBinding.sort(new Sorter("QuotCd", true));
             }
         },
 
@@ -218,10 +237,12 @@ sap.ui.define([
                 }.bind(this)
             });
         },
+
         // 견적 상세 화면에서 목록으로 돌아가는 버튼 핸들러
         onBackToList: function () {
             this.byId("fcl").setLayout("OneColumn");
         },
+
         // 문서일자 기본값을 오늘로 설정하는 헬퍼 함수
         _getToday: function () {
             var oDate = new Date();
@@ -231,6 +252,7 @@ sap.ui.define([
 
             return sYear + "-" + sMonth + "-" + sDay;
         },
+
         _toODataDate: function (sDate) {
             if (!sDate) {
                 return null;
@@ -238,6 +260,7 @@ sap.ui.define([
 
             return new Date(sDate + "T00:00:00");
         },
+
         // 견적유형 라디오 버튼에서 선택된 값을 기반으로 견적 유형 코드 반환하는 헬퍼 함수
         _getCreateQuotDocTy: function () {
             var iSelectedIndex = this.byId("rbgQuotDocTy").getSelectedIndex();
@@ -249,6 +272,7 @@ sap.ui.define([
 
             return "S";
         },
+
         // 신규 견적유형 변경 시 화면 제어용 값 세팅
         onChangeCreateQuotDocTy: function () {
             var sQuotDocTy = this._getCreateQuotDocTy();
@@ -268,16 +292,16 @@ sap.ui.define([
         onValueHelpSoldTo: function () {
             if (!this._oSoldToValueHelpDialog) {
                 this._oSoldToValueHelpDialog = new TableSelectDialog({
-                title: "고객 선택",
-                noDataText: "조회된 고객이 없습니다.",
-                contentWidth: "45rem",
-                contentHeight: "25rem",
-                search: this.onSearchSoldToValueHelp.bind(this),
-                confirm: this.onConfirmSoldToValueHelp.bind(this),
-                cancel: function () {
-                    // 취소 시 별도 처리 없음
-                }
-            });
+                    title: "고객 선택",
+                    noDataText: "조회된 고객이 없습니다.",
+                    contentWidth: "45rem",
+                    contentHeight: "25rem",
+                    search: this.onSearchSoldToValueHelp.bind(this),
+                    confirm: this.onConfirmSoldToValueHelp.bind(this),
+                    cancel: function () {
+                        // 취소 시 별도 처리 없음
+                    }
+                });
 
                 this._oSoldToValueHelpDialog.addColumn(new Column({
                     header: new Text({ text: "고객코드" })
@@ -345,6 +369,7 @@ sap.ui.define([
 
             this.byId("inpSoldTo").setValue(oCustomer.CustomerCd);
         },
+
         // 자재코드 Value Help
         onValueHelpCreateMaterial: function (oEvent) {
             this._oMaterialValueHelpInput = oEvent.getSource();
@@ -429,6 +454,8 @@ sap.ui.define([
             var oViewModel = this.getView().getModel("view");
 
             oViewModel.setProperty(sPath + "/MaterialCd", oMaterial.MaterialCd);
+
+            this._calculateCreateQuotationAmount();
         },
 
         // Config 코드 Value Help
@@ -523,185 +550,8 @@ sap.ui.define([
             // Config 선택 시 스펙 코드와 자재코드를 함께 세팅
             oViewModel.setProperty(sPath + "/RefConfigCd", oConfig.ConfigCd);
             oViewModel.setProperty(sPath + "/MaterialCd", oConfig.MaterialCd);
-        },
 
-        // 자재코드 Value Help
-        onValueHelpCreateMaterial: function (oEvent) {
-            this._oMaterialValueHelpInput = oEvent.getSource();
-
-            if (!this._oMaterialValueHelpDialog) {
-                this._oMaterialValueHelpDialog = new TableSelectDialog({
-                    title: "자재 선택",
-                    noDataText: "조회된 자재가 없습니다.",
-                    contentWidth: "45rem",
-                    contentHeight: "25rem",
-                    search: this.onSearchCreateMaterialValueHelp.bind(this),
-                    confirm: this.onConfirmCreateMaterialValueHelp.bind(this),
-                    cancel: function () {
-                        // 취소 시 별도 처리 없음
-                    }
-                });
-
-                this._oMaterialValueHelpDialog.addColumn(new Column({
-                    header: new Text({ text: "자재코드" })
-                }));
-
-                this._oMaterialValueHelpDialog.addColumn(new Column({
-                    header: new Text({ text: "자재명" })
-                }));
-
-                this._oMaterialValueHelpDialog.bindAggregation("items", {
-                    path: "/MaterialVHSet",
-                    template: new ColumnListItem({
-                        cells: [
-                            new Text({ text: "{MaterialCd}" }),
-                            new Text({ text: "{MaterialNm}" })
-                        ]
-                    })
-                });
-
-                this.getView().addDependent(this._oMaterialValueHelpDialog);
-            }
-
-            this._oMaterialValueHelpDialog.open();
-        },
-
-        // 자재코드 Value Help 검색
-        onSearchCreateMaterialValueHelp: function (oEvent) {
-            var sValue = oEvent.getParameter("value");
-            var aFilters = [];
-
-            if (sValue) {
-                aFilters.push(new Filter({
-                    filters: [
-                        new Filter("MaterialCd", FilterOperator.Contains, sValue),
-                        new Filter("MaterialNm", FilterOperator.Contains, sValue)
-                    ],
-                    and: false
-                }));
-            }
-
-            oEvent.getSource().getBinding("items").filter(aFilters);
-        },
-
-        // 자재코드 Value Help 선택
-        onConfirmCreateMaterialValueHelp: function (oEvent) {
-            var oSelectedItem = oEvent.getParameter("selectedItem");
-
-            if (!oSelectedItem || !this._oMaterialValueHelpInput) {
-                return;
-            }
-
-            var oContext = oSelectedItem.getBindingContext();
-
-            if (!oContext) {
-                return;
-            }
-
-            var oMaterial = oContext.getObject();
-            var oItemContext = this._oMaterialValueHelpInput.getBindingContext("view");
-
-            if (!oItemContext) {
-                return;
-            }
-
-            var sPath = oItemContext.getPath();
-            var oViewModel = this.getView().getModel("view");
-
-            oViewModel.setProperty(sPath + "/MaterialCd", oMaterial.MaterialCd);
-        },
-        // Config 코드 Value Help
-        onValueHelpCreateConfig: function (oEvent) {
-        this._oConfigValueHelpInput = oEvent.getSource();
-
-        if (!this._oConfigValueHelpDialog) {
-            this._oConfigValueHelpDialog = new TableSelectDialog({
-                title: "Config 선택",
-                noDataText: "조회된 Config가 없습니다.",
-                contentWidth: "50rem",
-                contentHeight: "25rem",
-                search: this.onSearchCreateConfigValueHelp.bind(this),
-                confirm: this.onConfirmCreateConfigValueHelp.bind(this),
-                cancel: function () {
-                    // 취소 시 별도 처리 없음
-                }
-            });
-
-            this._oConfigValueHelpDialog.addColumn(new Column({
-                header: new Text({ text: "Config 코드" })
-            }));
-
-            this._oConfigValueHelpDialog.addColumn(new Column({
-                header: new Text({ text: "자재코드" })
-            }));
-
-            this._oConfigValueHelpDialog.addColumn(new Column({
-                header: new Text({ text: "자재명" })
-            }));
-
-            this._oConfigValueHelpDialog.bindAggregation("items", {
-                path: "/ConfigVHSet",
-                template: new ColumnListItem({
-                    cells: [
-                        new Text({ text: "{ConfigCd}" }),
-                        new Text({ text: "{MaterialCd}" }),
-                        new Text({ text: "{MaterialNm}" })
-                    ]
-                })
-            });
-
-            this.getView().addDependent(this._oConfigValueHelpDialog);
-        }
-
-        this._oConfigValueHelpDialog.open();
-        },
-
-        // Config 코드 Value Help 검색
-        onSearchCreateConfigValueHelp: function (oEvent) {
-            var sValue = oEvent.getParameter("value");
-            var aFilters = [];
-
-            if (sValue) {
-                aFilters.push(new Filter({
-                    filters: [
-                        new Filter("ConfigCd", FilterOperator.Contains, sValue),
-                        new Filter("MaterialCd", FilterOperator.Contains, sValue),
-                        new Filter("MaterialNm", FilterOperator.Contains, sValue)
-                    ],
-                    and: false
-                }));
-            }
-
-            oEvent.getSource().getBinding("items").filter(aFilters);
-        },
-
-        // Config 코드 Value Help 선택
-        onConfirmCreateConfigValueHelp: function (oEvent) {
-            var oSelectedItem = oEvent.getParameter("selectedItem");
-
-            if (!oSelectedItem || !this._oConfigValueHelpInput) {
-                return;
-            }
-
-            var oContext = oSelectedItem.getBindingContext();
-
-            if (!oContext) {
-                return;
-            }
-
-            var oConfig = oContext.getObject();
-            var oItemContext = this._oConfigValueHelpInput.getBindingContext("view");
-
-            if (!oItemContext) {
-                return;
-            }
-
-            var sPath = oItemContext.getPath();
-            var oViewModel = this.getView().getModel("view");
-
-            // Config 선택 시 스펙 코드와 자재코드를 함께 세팅
-            oViewModel.setProperty(sPath + "/RefConfigCd", oConfig.ConfigCd);
-            oViewModel.setProperty(sPath + "/MaterialCd", oConfig.MaterialCd);
+            this._calculateCreateQuotationAmount();
         },
 
         onOpenCreate: function () {
@@ -723,15 +573,15 @@ sap.ui.define([
         },
 
         onCloseCreate: function () {
-        var oFcl = this.byId("fcl");
+            var oFcl = this.byId("fcl");
 
-        if (!oFcl) {
-            MessageBox.error("Flexible Column Layout을 찾을 수 없습니다.");
-            return;
-        }
+            if (!oFcl) {
+                MessageBox.error("Flexible Column Layout을 찾을 수 없습니다.");
+                return;
+            }
 
-        // 다시 견적 목록 + 견적 상세 화면으로 복귀
-        oFcl.setLayout("TwoColumnsMidExpanded");
+            // 다시 견적 목록 + 견적 상세 화면으로 복귀
+            oFcl.setLayout("TwoColumnsMidExpanded");
         },
 
         // 신규 견적 Item 기본 행 생성 함수
@@ -868,6 +718,7 @@ sap.ui.define([
                 aPayloadItems.push({
                     QuotCd: "",
                     ItemCd: oItem.ItemNo,
+
                     // 고객품목코드
                     CustItemCd: oItem.CustItemCd,
 
@@ -882,6 +733,7 @@ sap.ui.define([
                     CurrentGrade: sQuotDocTy === "O" ? "N" : oItem.CurrentGrade,
                     ReqQty: oItem.ReqQty,
                     Unit: oItem.Unit || "EA",
+
                     // MTS는 0, MTO는 입력한 마진율 전달
                     TargetMargin: sQuotDocTy === "O" ? (oItem.TargetMargin || "0.00") : "0.00"
                 });
@@ -900,13 +752,10 @@ sap.ui.define([
                 Currency: "KRW",
                 QuotStatus: "C",
 
-
                 // Header → Item Navigation Property 이름
                 // QuotationItemSet은 EntitySet이름이다. 
                 // QuotationHeader 안에 들어갈 수 있는 Navigaion Property이름은 ToItems다. 
                 ToItems: aPayloadItems
-
-
             };
 
             this._oBusyDialog.open();
@@ -926,37 +775,37 @@ sap.ui.define([
                 }.bind(this),
 
                 error: function (oError) {
-                this._oBusyDialog.close();
+                    this._oBusyDialog.close();
 
-                var sMessage = "견적 생성 중 오류가 발생했습니다.";
+                    var sMessage = "견적 생성 중 오류가 발생했습니다.";
 
-                console.error("CREATE ERROR", oError);
+                    console.error("CREATE ERROR", oError);
 
-                if (oError.responseText) {
-                    console.error("CREATE ERROR responseText", oError.responseText);
-                }
-
-                try {
-                    var oResponse = JSON.parse(oError.responseText);
-
-                    if (oResponse.error && oResponse.error.message && oResponse.error.message.value) {
-                        sMessage = oResponse.error.message.value;
-                    } else if (
-                        oResponse.error &&
-                        oResponse.error.innererror &&
-                        oResponse.error.innererror.errordetails &&
-                        oResponse.error.innererror.errordetails.length > 0
-                    ) {
-                        sMessage = oResponse.error.innererror.errordetails[0].message;
+                    if (oError.responseText) {
+                        console.error("CREATE ERROR responseText", oError.responseText);
                     }
-                } catch (e) {
-                    if (oError.message) {
-                        sMessage = oError.message;
-                    }
-                }
 
-                MessageBox.error(sMessage);
-            }.bind(this)
+                    try {
+                        var oResponse = JSON.parse(oError.responseText);
+
+                        if (oResponse.error && oResponse.error.message && oResponse.error.message.value) {
+                            sMessage = oResponse.error.message.value;
+                        } else if (
+                            oResponse.error &&
+                            oResponse.error.innererror &&
+                            oResponse.error.innererror.errordetails &&
+                            oResponse.error.innererror.errordetails.length > 0
+                        ) {
+                            sMessage = oResponse.error.innererror.errordetails[0].message;
+                        }
+                    } catch (e) {
+                        if (oError.message) {
+                            sMessage = oError.message;
+                        }
+                    }
+
+                    MessageBox.error(sMessage);
+                }.bind(this)
             });
         },
 
@@ -974,6 +823,18 @@ sap.ui.define([
                     return sStatus || "";
             }
         },
+        formatQuotDocTyText: function (sQuotDocTy) {
+            switch (sQuotDocTy) {
+                case "S":
+                    return "일반제품";
+                case "O":
+                    return "주문제작";
+                case "R":
+                    return "렌탈";
+                default:
+                    return sQuotDocTy || "";
+            }
+        },
 
         formatStatusState: function (sStatus) {
             switch (sStatus) {
@@ -989,6 +850,7 @@ sap.ui.define([
                     return "None";
             }
         },
+
         formatAmount: function (vAmount) {
             if (vAmount === null || vAmount === undefined || vAmount === "") {
                 return "0";
@@ -1004,6 +866,39 @@ sap.ui.define([
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 2
             });
-        }
+        },
+        onChangeCreateItemPrice: function () {
+            this._calculateCreateQuotationAmount();
+        },
+
+        _calculateCreateQuotationAmount: function () {
+            var oViewModel = this.getView().getModel("view");
+            var aCreateItems = oViewModel.getProperty("/createItems") || [];
+
+            /*
+            * 현재는 Backend 계산 API가 아직 없기 때문에
+            * 화면 오류 방지용으로 총금액을 0으로 유지한다.
+            * 실제 금액 계산은 추후 Backend의 견적금액 시뮬레이션 API와 연결해야 한다.
+            */
+
+            oViewModel.setProperty("/createTotalAmount", 0);
+            oViewModel.setProperty("/createCurrency", "KRW");
+
+            for (var i = 0; i < aCreateItems.length; i++) {
+                aCreateItems[i].IndividualAmt = 0;
+                aCreateItems[i].NetAmt = 0;
+                aCreateItems[i].Currency = "KRW";
+            }
+
+            oViewModel.setProperty("/createItems", aCreateItems);
+        },
+
+        onAfterRendering: function () {
+            var oBinding = this.byId("quotationTable").getBinding("items");
+
+            if (oBinding) {
+                oBinding.sort(new Sorter("QuotCd", true));
+            }
+        },
     });
 });

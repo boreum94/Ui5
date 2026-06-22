@@ -118,32 +118,44 @@
                         </Toolbar>
 
                         <Table
-                            id="quotationTable"
-                            mode="SingleSelectMaster"
-                            growing="true"
-                            growingScrollToLoad="true"
-                            itemPress=".onSelectQuotation"
-                            selectionChange=".onSelectQuotation"
-                            items="{ path: '/QuotationHeaderSet' }"
-                            class="sapUiSmallMarginTop">
+                        id="quotationTable"
+                        mode="SingleSelectMaster"
+                        growing="true"
+                        growingScrollToLoad="true"
+                        fixedLayout="true"
+                        itemPress=".onSelectQuotation"
+                        selectionChange=".onSelectQuotation"
+                        items="{
+                            path: '/QuotationHeaderSet',
+                            sorter: {
+                                path: 'QuotCd',
+                                descending: true
+                            }
+                        }"
+                        class="sapUiSmallMarginTop">
 
                             <columns>
-                                <Column width="8rem">
+                                <Column width="9rem">
                                     <Text text="견적번호"/>
                                 </Column>
-                                <Column width="4rem">
+
+                                <Column width="8rem">
                                     <Text text="유형"/>
                                 </Column>
-                                <Column>
+
+                                <Column width="18rem">
                                     <Text text="고객명"/>
                                 </Column>
-                                <Column width="8rem">
+
+                                <Column width="10rem">
                                     <Text text="문서일자"/>
                                 </Column>
-                                <Column hAlign="End">
+
+                                <Column width="13rem" hAlign="End">
                                     <Text text="총금액"/>
                                 </Column>
-                                <Column width="6rem">
+
+                                <Column width="8rem">
                                     <Text text="상태"/>
                                 </Column>
                             </columns>
@@ -152,11 +164,19 @@
                                 <ColumnListItem type="Navigation">
 
                                     <cells>
-                                        <ObjectIdentifier title="{QuotCd}"/>
-                                        <Text text="{QuotDocTy}"/>
-                                        <Text text="{CustomerNm}"/>
+                                    <ObjectIdentifier title="{QuotCd}"/>
 
-                                        <Text text="{
+                                    <Text
+                                        text="{path: 'QuotDocTy', formatter: '.formatQuotDocTyText'}"
+                                        wrapping="false"/>
+
+                                    <Text
+                                        text="{CustomerNm}"
+                                        wrapping="false"/>
+
+                                    <Text
+                                        wrapping="false"
+                                        text="{
                                             path: 'DocDate',
                                             type: 'sap.ui.model.type.Date',
                                             formatOptions: {
@@ -164,14 +184,14 @@
                                             }
                                         }"/>
 
-                                        <ObjectNumber
+                                    <ObjectNumber
                                         number="{path: 'TtlAmount', formatter: '.formatAmount'}"
                                         unit="{Currency}"/>
 
-                                        <ObjectStatus
-                                            text="{path: 'QuotStatus', formatter: '.formatStatusText'}"
-                                            state="{path: 'QuotStatus', formatter: '.formatStatusState'}"/>
-                                    </cells>
+                                    <ObjectStatus
+                                        text="{path: 'QuotStatus', formatter: '.formatStatusText'}"
+                                        state="{path: 'QuotStatus', formatter: '.formatStatusState'}"/>
+                                </cells>
                                 </ColumnListItem>
                             </items>
                         </Table>
@@ -217,7 +237,7 @@
                                         <Text text="{view>/selected/QuotCd}"/>
 
                                         <Label text="견적유형" class="sapUiSmallMarginTop"/>
-                                        <Text text="{view>/selected/QuotDocTy}"/>
+                                        <Text text="{path: 'view>/selected/QuotDocTy', formatter: '.formatQuotDocTyText'}"/>
 
                                         <Label text="고객" class="sapUiSmallMarginTop"/>
                                         <Text text="{view>/selected/CustomerNm}"/>
@@ -542,23 +562,27 @@
                                                     value="{view>CurrentGrade}"
                                                     maxLength="1"
                                                     placeholder="A"
-                                                    editable="{= ${view>/createQuotDocTy} !== 'O' }"/>
+                                                    editable="{= ${view>/createQuotDocTy} !== 'O' }"
+                                                    change=".onChangeCreateItemPrice"/>
 
                                                 <Input
                                                     value="{view>ReqQty}"
                                                     type="Number"
-                                                    placeholder="1"/>
+                                                    placeholder="1"
+                                                    change=".onChangeCreateItemPrice"/>
 
                                                 <Input
                                                     value="{view>Unit}"
                                                     maxLength="3"
-                                                    placeholder="EA"/>
+                                                    placeholder="EA"
+                                                    change=".onChangeCreateItemPrice"/>
 
                                                 <Input
                                                     value="{view>TargetMargin}"
                                                     type="Number"
                                                     placeholder="10.00"
-                                                    visible="{= ${view>/createQuotDocTy} === 'O' }"/>
+                                                    visible="{= ${view>/createQuotDocTy} === 'O' }"
+                                                    change=".onChangeCreateItemPrice"/>
                                             </cells>
                                         </ColumnListItem>
                                     </items>
@@ -569,9 +593,9 @@
                         <Toolbar class="sapUiSmallMarginTop">
                             <ToolbarSpacer/>
                             <ObjectNumber
-                                number="0"
-                                unit="KRW"
-                                emphasized="true"/>
+                            number="{path: 'view>/createTotalAmount', formatter: '.formatAmount'}"
+                            unit="{view>/createCurrency}"
+                            emphasized="true"/>
                             <Button
                                 text="저장"
                                 type="Emphasized"
