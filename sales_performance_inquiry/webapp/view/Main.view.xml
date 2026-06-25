@@ -24,7 +24,7 @@
 
                 <f:expandedContent>
                     <ObjectStatus
-                        text="분기별 판매건수 / KPI / 제품별 월별 수량"
+                        text="분기/월별 판매건수 / KPI / 제품별 월별 수량"
                         state="Information"/>
                 </f:expandedContent>
 
@@ -149,8 +149,8 @@
 
                         <IconTabFilter
                             key="quarter"
-                            text="분기별 판매건수"
-                            icon="sap-icon://bar-chart">
+                            text="분기/월별 판매건수"
+                            icon="sap-icon://line-chart">
 
                             <VBox>
 
@@ -159,7 +159,11 @@
                                     width="auto">
                                     <headerToolbar>
                                         <OverflowToolbar>
-                                            <Title text="연도별 분기 판매건수 비교 차트"/>
+                                            <Title text="분기/월별 판매건수 추이"/>
+                                            <ToolbarSpacer/>
+                                            <ObjectStatus
+                                                text="월 단위 판매건수를 분기 기준으로 표시"
+                                                state="Information"/>
                                         </OverflowToolbar>
                                     </headerToolbar>
 
@@ -167,18 +171,19 @@
                                         id="quarterChart"
                                         width="100%"
                                         height="20rem"
-                                        vizType="column">
+                                        vizType="line">
 
                                         <viz:dataset>
-                                            <viz.data:FlattenedDataset data="{view>/quarterChart}">
+                                            <viz.data:FlattenedDataset data="{view>/quarterMonthChart}">
                                                 <viz.data:dimensions>
                                                     <viz.data:DimensionDefinition
-                                                        name="분기"
-                                                        value="{view>Quarter}"/>
+                                                        name="기간"
+                                                        value="{view>Label}"/>
                                                     <viz.data:DimensionDefinition
                                                         name="연도"
-                                                        value="{view>Year}"/>
+                                                        value="{view>Syear}"/>
                                                 </viz.data:dimensions>
+
                                                 <viz.data:measures>
                                                     <viz.data:MeasureDefinition
                                                         name="판매건수"
@@ -195,7 +200,7 @@
                                             <viz.feeds:FeedItem
                                                 uid="categoryAxis"
                                                 type="Dimension"
-                                                values="분기"/>
+                                                values="기간"/>
                                             <viz.feeds:FeedItem
                                                 uid="color"
                                                 type="Dimension"
@@ -205,74 +210,83 @@
                                 </Panel>
 
                                 <Panel
-                                    class="sapUiResponsiveMargin"
-                                    width="auto">
+                                    class="quarterMonthPanel"
+                                    width="100%">
                                     <headerToolbar>
                                         <OverflowToolbar>
-                                            <Title text="연도별 분기 판매건수"/>
+                                            <Title text="연도별 분기/월별 판매건수"/>
                                             <ToolbarSpacer/>
+                                            <ObjectStatus text="1분기" state="Information"/>
+                                            <ObjectStatus text="2분기" state="Success"/>
+                                            <ObjectStatus text="3분기" state="Warning"/>
+                                            <ObjectStatus text="4분기" state="Error"/>
                                             <ObjectStatus text="단위: 건" state="Information"/>
                                         </OverflowToolbar>
                                     </headerToolbar>
 
                                     <table:Table
-                                        rows="{view>/quarterTable}"
+                                        id="quarterMonthTable"
+                                        class="quarterMonthDataTable"
+                                        rows="{view>/quarterMonthTable}"
                                         selectionMode="None"
-                                        alternateRowColors="true"
-                                        width="auto">
+                                        alternateRowColors="false"
+                                        width="100%"
+                                        visibleRowCount="12"
+                                        visibleRowCountMode="Fixed"
+                                        rowHeight="48"
+                                        columnHeaderHeight="46"
+                                        enableBusyIndicator="true"
+                                        enableColumnReordering="false"
+                                        rowsUpdated=".onQuarterMonthRowsUpdated">
 
                                         <table:columns>
 
-                                            <table:Column hAlign="Center">
-                                                <table:multiLabels>
-                                                    <Label text=""/>
-                                                    <Label text="연도" width="100%" textAlign="Center"/>
-                                                </table:multiLabels>
+                                            <table:Column
+                                                hAlign="Center"
+                                                width="14rem">
+                                                <Label text="연도"/>
                                                 <table:template>
                                                     <ObjectIdentifier title="{view>Syear}"/>
                                                 </table:template>
                                             </table:Column>
 
                                             <table:Column
-                                                id="colQ1"
                                                 hAlign="Center"
-                                                headerSpan="4">
-                                                <table:multiLabels>
-                                                    <Label text="분기별 판매건수" width="100%" textAlign="Center"/>
-                                                    <Label text="1분기" width="100%" textAlign="Center"/>
-                                                </table:multiLabels>
+                                                width="14rem">
+                                                <Label text="분기"/>
                                                 <table:template>
-                                                    <ObjectNumber number="{view>Q1}" unit="건"/>
+                                                    <ObjectStatus
+                                                        text="{view>QuarterText}"
+                                                        state="{view>QuarterState}"/>
                                                 </table:template>
                                             </table:Column>
 
-                                            <table:Column hAlign="Center">
-                                                <table:multiLabels>
-                                                    <Label text=""/>
-                                                    <Label text="2분기" width="100%" textAlign="Center"/>
-                                                </table:multiLabels>
+                                            <table:Column
+                                                hAlign="Center"
+                                                width="14rem">
+                                                <Label text="월"/>
                                                 <table:template>
-                                                    <ObjectNumber number="{view>Q2}" unit="건"/>
+                                                    <Text text="{view>MonthText}"/>
                                                 </table:template>
                                             </table:Column>
 
-                                            <table:Column hAlign="Center">
-                                                <table:multiLabels>
-                                                    <Label text=""/>
-                                                    <Label text="3분기" width="100%" textAlign="Center"/>
-                                                </table:multiLabels>
+                                            <table:Column
+                                                hAlign="End"
+                                                width="16rem">
+                                                <Label text="판매건수"/>
                                                 <table:template>
-                                                    <ObjectNumber number="{view>Q3}" unit="건"/>
+                                                    <ObjectNumber
+                                                        number="{view>Salescount}"
+                                                        unit="건"
+                                                        emphasized="true"/>
                                                 </table:template>
                                             </table:Column>
 
-                                            <table:Column hAlign="Center">
-                                                <table:multiLabels>
-                                                    <Label text=""/>
-                                                    <Label text="4분기" width="100%" textAlign="Center"/>
-                                                </table:multiLabels>
+                                            <table:Column
+                                                width="24rem">
+                                                <Label text="기간"/>
                                                 <table:template>
-                                                    <ObjectNumber number="{view>Q4}" unit="건"/>
+                                                    <Text text="{view>Label}"/>
                                                 </table:template>
                                             </table:Column>
 
@@ -288,73 +302,217 @@
                             text="카테고리 KPI"
                             icon="sap-icon://business-objects-experience">
 
-                            <Panel
-                                class="sapUiResponsiveMargin"
-                                width="auto">
+                            <VBox>
 
-                                <table:Table
-                                    rows="{view>/categoryKpi}"
-                                    selectionMode="None"
-                                    alternateRowColors="true"
-                                    width="100%">
+                                <layout:Grid
+                                    defaultSpan="XL6 L6 M12 S12"
+                                    hSpacing="1"
+                                    vSpacing="1"
+                                    class="sapUiResponsiveMargin">
 
-                                    <table:columns>
+                                    <Panel width="100%">
+                                        <headerToolbar>
+                                            <OverflowToolbar>
+                                                <Title text="카테고리별 매출 비교"/>
+                                                <ToolbarSpacer/>
+                                                <ObjectStatus text="선택 연도 기준" state="Information"/>
+                                            </OverflowToolbar>
+                                        </headerToolbar>
 
-                                        <table:Column>
-                                            <Label text="연도"/>
-                                            <table:template>
-                                                <Text text="{view>Syear}"/>
-                                            </table:template>
-                                        </table:Column>
+                                        <viz:VizFrame
+                                            id="categoryRevenueChart"
+                                            width="100%"
+                                            height="22rem"
+                                            vizType="column">
 
-                                        <table:Column>
-                                            <Label text="카테고리"/>
-                                            <table:template>
-                                                <ObjectIdentifier
-                                                    title="{view>Categoryname}"
-                                                    text="{view>Itemcategory}"/>
-                                            </table:template>
-                                        </table:Column>
+                                            <viz:dataset>
+                                                <viz.data:FlattenedDataset data="{view>/categoryRevenueChart}">
+                                                    <viz.data:dimensions>
+                                                        <viz.data:DimensionDefinition
+                                                            name="카테고리"
+                                                            value="{view>Category}"/>
+                                                    </viz.data:dimensions>
 
-                                        <table:Column hAlign="End">
-                                            <Label text="당해 매출"/>
-                                            <table:template>
-                                                <ObjectNumber
-                                                    number="{view>Currentyearamt}"
-                                                    unit="{view>Currency}"/>
-                                            </table:template>
-                                        </table:Column>
+                                                    <viz.data:measures>
+                                                        <viz.data:MeasureDefinition
+                                                            name="매출액"
+                                                            value="{view>Currentyearamt}"/>
+                                                    </viz.data:measures>
+                                                </viz.data:FlattenedDataset>
+                                            </viz:dataset>
 
-                                        <table:Column hAlign="End">
-                                            <Label text="YoY 성장률"/>
-                                            <table:template>
-                                                <ObjectNumber
-                                                    number="{view>Yoygrowthpct}"
-                                                    unit="%"/>
-                                            </table:template>
-                                        </table:Column>
+                                            <viz:feeds>
+                                                <viz.feeds:FeedItem
+                                                    uid="valueAxis"
+                                                    type="Measure"
+                                                    values="매출액"/>
+                                                <viz.feeds:FeedItem
+                                                    uid="categoryAxis"
+                                                    type="Dimension"
+                                                    values="카테고리"/>
+                                            </viz:feeds>
+                                        </viz:VizFrame>
+                                    </Panel>
 
-                                        <table:Column hAlign="End">
-                                            <Label text="점유율"/>
-                                            <table:template>
-                                                <ObjectNumber
-                                                    number="{view>Sharepct}"
-                                                    unit="%"/>
-                                            </table:template>
-                                        </table:Column>
+                                    <Panel width="100%">
+                                        <headerToolbar>
+                                            <OverflowToolbar>
+                                                <Title text="카테고리별 매출 점유율"/>
+                                                <ToolbarSpacer/>
+                                                <ObjectStatus text="전체 매출 대비 비중" state="Information"/>
+                                            </OverflowToolbar>
+                                        </headerToolbar>
 
-                                        <table:Column hAlign="End">
-                                            <Label text="판매건수"/>
-                                            <table:template>
-                                                <ObjectNumber
-                                                    number="{view>Categorysalescount}"
-                                                    unit="건"/>
-                                            </table:template>
-                                        </table:Column>
+                                        <viz:VizFrame
+                                            id="categoryShareChart"
+                                            width="100%"
+                                            height="22rem"
+                                            vizType="donut">
 
-                                    </table:columns>
-                                </table:Table>
-                            </Panel>
+                                            <viz:dataset>
+                                                <viz.data:FlattenedDataset data="{view>/categoryShareChart}">
+                                                    <viz.data:dimensions>
+                                                        <viz.data:DimensionDefinition
+                                                            name="카테고리"
+                                                            value="{view>Category}"/>
+                                                    </viz.data:dimensions>
+
+                                                    <viz.data:measures>
+                                                        <viz.data:MeasureDefinition
+                                                            name="점유율"
+                                                            value="{view>Sharepct}"/>
+                                                    </viz.data:measures>
+                                                </viz.data:FlattenedDataset>
+                                            </viz:dataset>
+
+                                            <viz:feeds>
+                                                <viz.feeds:FeedItem
+                                                    uid="size"
+                                                    type="Measure"
+                                                    values="점유율"/>
+                                                <viz.feeds:FeedItem
+                                                    uid="color"
+                                                    type="Dimension"
+                                                    values="카테고리"/>
+                                            </viz:feeds>
+                                        </viz:VizFrame>
+                                    </Panel>
+
+                                </layout:Grid>
+
+                                <Panel
+                                    class="sapUiResponsiveMargin"
+                                    width="auto">
+                                    <headerToolbar>
+                                        <OverflowToolbar>
+                                            <Title text="카테고리별 YoY 성장률"/>
+                                            <ToolbarSpacer/>
+                                            <ObjectStatus text="전년 대비 성장률" state="Information"/>
+                                        </OverflowToolbar>
+                                    </headerToolbar>
+
+                                    <FlexBox
+                                        wrap="Wrap"
+                                        alignItems="Start"
+                                        items="{view>/categoryGrowthCards}">
+
+                                        <items>
+                                            <GenericTile
+                                                header="{view>Category}"
+                                                subheader="YoY 성장률"
+                                                class="sapUiTinyMargin"
+                                                width="15rem">
+                                                <TileContent footer="{view>Sharepct}% 점유">
+                                                    <NumericContent
+                                                        icon="sap-icon://line-chart"
+                                                        value="{view>Yoygrowthpct}"
+                                                        scale="%"
+                                                        valueColor="{view>ValueColor}"/>
+                                                </TileContent>
+                                            </GenericTile>
+                                        </items>
+                                    </FlexBox>
+                                </Panel>
+
+                                <Panel
+                                    class="sapUiResponsiveMargin"
+                                    width="auto"
+                                    expandable="true"
+                                    expanded="false">
+                                    <headerToolbar>
+                                        <OverflowToolbar>
+                                            <Title text="카테고리 KPI 상세"/>
+                                            <ToolbarSpacer/>
+                                            <ObjectStatus text="상세 데이터" state="Information"/>
+                                        </OverflowToolbar>
+                                    </headerToolbar>
+
+                                    <table:Table
+                                        rows="{view>/categoryKpi}"
+                                        selectionMode="None"
+                                        alternateRowColors="true"
+                                        width="100%"
+                                        visibleRowCount="6">
+
+                                        <table:columns>
+
+                                            <table:Column>
+                                                <Label text="연도"/>
+                                                <table:template>
+                                                    <Text text="{view>Syear}"/>
+                                                </table:template>
+                                            </table:Column>
+
+                                            <table:Column>
+                                                <Label text="카테고리"/>
+                                                <table:template>
+                                                    <ObjectIdentifier
+                                                        title="{view>Categoryname}"
+                                                        text="{view>Itemcategory}"/>
+                                                </table:template>
+                                            </table:Column>
+
+                                            <table:Column hAlign="End">
+                                                <Label text="당해 매출"/>
+                                                <table:template>
+                                                    <ObjectNumber
+                                                        number="{path: 'view>Currentyearamt', formatter: '.formatAmount'}"
+                                                        unit="{view>Currency}"/>
+                                                </table:template>
+                                            </table:Column>
+
+                                            <table:Column hAlign="End">
+                                                <Label text="YoY 성장률"/>
+                                                <table:template>
+                                                    <ObjectNumber
+                                                        number="{view>Yoygrowthpct}"
+                                                        unit="%"/>
+                                                </table:template>
+                                            </table:Column>
+
+                                            <table:Column hAlign="End">
+                                                <Label text="점유율"/>
+                                                <table:template>
+                                                    <ObjectNumber
+                                                        number="{view>Sharepct}"
+                                                        unit="%"/>
+                                                </table:template>
+                                            </table:Column>
+
+                                            <table:Column hAlign="End">
+                                                <Label text="판매건수"/>
+                                                <table:template>
+                                                    <ObjectNumber
+                                                        number="{view>Categorysalescount}"
+                                                        unit="건"/>
+                                                </table:template>
+                                            </table:Column>
+
+                                        </table:columns>
+                                    </table:Table>
+                                </Panel>
+
+                            </VBox>
                         </IconTabFilter>
 
                         <IconTabFilter
@@ -363,65 +521,171 @@
                             icon="sap-icon://product"
                             visible="{= ${view>/filter/itemCategory} === '' || ${view>/filter/itemCategory} === 'S' || ${view>/filter/itemCategory} === 'R' }">
 
-                            <Panel
-                                class="sapUiResponsiveMargin"
-                                width="auto">
+                            <VBox>
 
-                                <table:Table
-                                    rows="{view>/materialSales}"
-                                    selectionMode="None"
-                                    alternateRowColors="true"
-                                    width="100%">
+                                <Panel
+                                    class="sapUiResponsiveMargin"
+                                    width="auto">
+                                    <headerToolbar>
+                                        <OverflowToolbar>
+                                            <Title text="월별 전체 판매수량 추이"/>
+                                            <ToolbarSpacer/>
+                                            <ObjectStatus text="제품 수요 흐름" state="Information"/>
+                                        </OverflowToolbar>
+                                    </headerToolbar>
 
-                                    <table:columns>
+                                    <viz:VizFrame
+                                        id="materialMonthChart"
+                                        width="100%"
+                                        height="22rem"
+                                        vizType="line">
 
-                                        <table:Column>
-                                            <Label text="제품코드"/>
-                                            <table:template>
-                                                <Text text="{view>Materialcd}"/>
-                                            </table:template>
-                                        </table:Column>
+                                        <viz:dataset>
+                                            <viz.data:FlattenedDataset data="{view>/materialMonthChart}">
+                                                <viz.data:dimensions>
+                                                    <viz.data:DimensionDefinition
+                                                        name="월"
+                                                        value="{view>Label}"/>
+                                                </viz.data:dimensions>
 
-                                        <table:Column>
-                                            <Label text="제품명"/>
-                                            <table:template>
-                                                <ObjectIdentifier title="{view>Materialnm}"/>
-                                            </table:template>
-                                        </table:Column>
+                                                <viz.data:measures>
+                                                    <viz.data:MeasureDefinition
+                                                        name="판매수량"
+                                                        value="{view>SumQty}"/>
+                                                </viz.data:measures>
+                                            </viz.data:FlattenedDataset>
+                                        </viz:dataset>
 
-                                        <table:Column>
-                                            <Label text="카테고리"/>
-                                            <table:template>
-                                                <Text text="{view>Itemcategory}"/>
-                                            </table:template>
-                                        </table:Column>
+                                        <viz:feeds>
+                                            <viz.feeds:FeedItem
+                                                uid="valueAxis"
+                                                type="Measure"
+                                                values="판매수량"/>
+                                            <viz.feeds:FeedItem
+                                                uid="categoryAxis"
+                                                type="Dimension"
+                                                values="월"/>
+                                        </viz:feeds>
+                                    </viz:VizFrame>
+                                </Panel>
 
-                                        <table:Column hAlign="Center">
-                                            <Label text="연도"/>
-                                            <table:template>
-                                                <Text text="{view>Year}"/>
-                                            </table:template>
-                                        </table:Column>
+                                <Panel
+                                    class="sapUiResponsiveMargin"
+                                    width="auto">
+                                    <headerToolbar>
+                                        <OverflowToolbar>
+                                            <Title text="TOP 5 제품 판매수량"/>
+                                            <ToolbarSpacer/>
+                                            <ObjectStatus text="선택 조건 기준" state="Information"/>
+                                        </OverflowToolbar>
+                                    </headerToolbar>
 
-                                        <table:Column hAlign="Center">
-                                            <Label text="월"/>
-                                            <table:template>
-                                                <Text text="{view>Month}"/>
-                                            </table:template>
-                                        </table:Column>
+                                    <viz:VizFrame
+                                        id="materialTopChart"
+                                        width="100%"
+                                        height="24rem"
+                                        vizType="bar">
 
-                                        <table:Column hAlign="End">
-                                            <Label text="판매수량"/>
-                                            <table:template>
-                                                <ObjectNumber
-                                                    number="{view>SumQty}"
-                                                    unit="{view>Unit}"/>
-                                            </table:template>
-                                        </table:Column>
+                                        <viz:dataset>
+                                            <viz.data:FlattenedDataset data="{view>/materialTopChart}">
+                                                <viz.data:dimensions>
+                                                    <viz.data:DimensionDefinition
+                                                        name="제품"
+                                                        value="{view>Materialnm}"/>
+                                                </viz.data:dimensions>
 
-                                    </table:columns>
-                                </table:Table>
-                            </Panel>
+                                                <viz.data:measures>
+                                                    <viz.data:MeasureDefinition
+                                                        name="판매수량"
+                                                        value="{view>TotalQty}"/>
+                                                </viz.data:measures>
+                                            </viz.data:FlattenedDataset>
+                                        </viz:dataset>
+
+                                        <viz:feeds>
+                                            <viz.feeds:FeedItem
+                                                uid="valueAxis"
+                                                type="Measure"
+                                                values="판매수량"/>
+                                            <viz.feeds:FeedItem
+                                                uid="categoryAxis"
+                                                type="Dimension"
+                                                values="제품"/>
+                                        </viz:feeds>
+                                    </viz:VizFrame>
+                                </Panel>
+
+                                <Panel
+                                    class="sapUiResponsiveMargin"
+                                    width="auto"
+                                    expandable="true"
+                                    expanded="false">
+                                    <headerToolbar>
+                                        <OverflowToolbar>
+                                            <Title text="제품 월별 판매수량 상세"/>
+                                            <ToolbarSpacer/>
+                                            <ObjectStatus text="상세 데이터" state="Information"/>
+                                        </OverflowToolbar>
+                                    </headerToolbar>
+
+                                    <table:Table
+                                        rows="{view>/materialSales}"
+                                        selectionMode="None"
+                                        alternateRowColors="true"
+                                        width="100%"
+                                        visibleRowCount="8">
+
+                                        <table:columns>
+
+                                            <table:Column>
+                                                <Label text="제품코드"/>
+                                                <table:template>
+                                                    <Text text="{view>Materialcd}"/>
+                                                </table:template>
+                                            </table:Column>
+
+                                            <table:Column>
+                                                <Label text="제품명"/>
+                                                <table:template>
+                                                    <ObjectIdentifier title="{view>Materialnm}"/>
+                                                </table:template>
+                                            </table:Column>
+
+                                            <table:Column>
+                                                <Label text="카테고리"/>
+                                                <table:template>
+                                                    <Text text="{view>Itemcategory}"/>
+                                                </table:template>
+                                            </table:Column>
+
+                                            <table:Column hAlign="Center">
+                                                <Label text="연도"/>
+                                                <table:template>
+                                                    <Text text="{view>Year}"/>
+                                                </table:template>
+                                            </table:Column>
+
+                                            <table:Column hAlign="Center">
+                                                <Label text="월"/>
+                                                <table:template>
+                                                    <Text text="{view>Month}"/>
+                                                </table:template>
+                                            </table:Column>
+
+                                            <table:Column hAlign="End">
+                                                <Label text="판매수량"/>
+                                                <table:template>
+                                                    <ObjectNumber
+                                                        number="{view>SumQty}"
+                                                        unit="{view>Unit}"/>
+                                                </table:template>
+                                            </table:Column>
+
+                                        </table:columns>
+                                    </table:Table>
+                                </Panel>
+
+                            </VBox>
                         </IconTabFilter>
 
                     </items>

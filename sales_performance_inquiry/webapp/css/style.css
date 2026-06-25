@@ -1,9 +1,82 @@
-/* Enter your custom styles here */
-
-.salesIconTabBar .sapMITBHead {
-    padding-left: 2rem;
+.quarterMonthPanel {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
-.salesIconTabBar .sapMITBFilter .sapMITBText {
-    max-width: none;
+.quarterMonthPanel .sapMPanelContent {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.quarterMonthDataTable,
+.quarterMonthPanel .sapUiTable {
+    width: 100% !important;
+}
+
+.quarterMonthPanel .sapUiTableCnt {
+    width: 100% !important;
+}
+
+.quarterMonthPanel .sapUiTableColHdrCnt {
+    background-color: #F7F9FC !important;
+}
+
+.quarterMonthPanel .sapUiTableCol {
+    background-color: #F7F9FC !important;
+}
+
+.quarterMonthPanel .sapUiTableCell,
+.quarterMonthPanel .sapUiTableRowHdr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+/* 1분기 - 파스텔 블루 */
+.quarterRowQ1 .sapUiTableCell,
+.quarterRowQ1 .sapUiTableCellInner,
+.quarterRowQ1 .sapUiTableRowHdr {
+    background-color: #EAF4FF !important;
+}
+
+/* 2분기 - 파스텔 그린 */
+.quarterRowQ2 .sapUiTableCell,
+.quarterRowQ2 .sapUiTableCellInner,
+.quarterRowQ2 .sapUiTableRowHdr {
+    background-color: #ECF8EF !important;
+}
+
+/* 3분기 - 파스텔 옐로우 */
+.quarterRowQ3 .sapUiTableCell,
+.quarterRowQ3 .sapUiTableCellInner,
+.quarterRowQ3 .sapUiTableRowHdr {
+    background-color: #FFF8E5 !important;
+}
+
+/* 4분기 - 파스텔 핑크 */
+.quarterRowQ4 .sapUiTableCell,
+.quarterRowQ4 .sapUiTableCellInner,
+.quarterRowQ4 .sapUiTableRowHdr {
+    background-color: #FFF0F4 !important;
+}
+
+.quarterRowQ1:hover .sapUiTableCell,
+.quarterRowQ1:hover .sapUiTableCellInner,
+.quarterRowQ2:hover .sapUiTableCell,
+.quarterRowQ2:hover .sapUiTableCellInner,
+.quarterRowQ3:hover .sapUiTableCell,
+.quarterRowQ3:hover .sapUiTableCellInner,
+.quarterRowQ4:hover .sapUiTableCell,
+.quarterRowQ4:hover .sapUiTableCellInner {
+    background-color: #E8EEF7 !important;
+}
+
+.quarterMonthPanel .sapMText,
+.quarterMonthPanel .sapMObjStatusText,
+.quarterMonthPanel .sapMObjectNumberText,
+.quarterMonthPanel .sapMObjectNumberUnit {
+    font-size: 0.95rem !important;
+}
+
+.quarterMonthPanel .sapMObjectNumberText {
+    font-weight: 600 !important;
 }

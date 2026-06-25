@@ -22,20 +22,33 @@ sap.ui.define([
                     bestCategory: "-",
                     bestCategoryShare: "-"
                 },
+
                 quarterTable: [],
                 quarterChart: [],
+                quarterMonthChart: [],
+                quarterMonthTable: [],
+
                 categoryKpi: [],
+                categoryRevenueChart: [],
+                categoryShareChart: [],
+                categoryGrowthCards: [],
+
                 materialSales: [],
+                materialMonthChart: [],
+                materialTopChart: [],
+
                 customerBizMonthOrder: [],
                 customerBizPattern: [],
                 customerBizChart: []
-
             });
 
             this.getView().setModel(oViewModel, "view");
 
-            this._setChartProperties();
             this._loadData();
+        },
+
+        onAfterRendering: function () {
+            this._setChartProperties();
         },
 
         onSearch: function () {
@@ -73,25 +86,30 @@ sap.ui.define([
 
         _loadData: function () {
             this._readQuarterSales();
+            this._readQuarterMonthSales();
             this._readKpiSummary();
             this._readMaterialSales();
             this._readCustomerBizMonthOrder();
         },
 
         _setChartProperties: function () {
-            var oQuarterChart = this.byId("quarterChart");
-            var oCustomerBizChart = this.byId("customerBizChart");
+            var aChartIds = [
+                "quarterChart",
+                "categoryRevenueChart",
+                "categoryShareChart",
+                "materialMonthChart",
+                "materialTopChart",
+                "customerBizChart"
+            ];
 
-            if (oQuarterChart) {
-                oQuarterChart.setVizProperties({
-                    title: {
-                        visible: false
-                    }
-                });
-            }
+            aChartIds.forEach(function (sChartId) {
+                var oChart = this.byId(sChartId);
 
-            if (oCustomerBizChart) {
-                oCustomerBizChart.setVizProperties({
+                if (!oChart) {
+                    return;
+                }
+
+                oChart.setVizProperties({
                     title: {
                         visible: false
                     },
@@ -99,9 +117,12 @@ sap.ui.define([
                         dataLabel: {
                             visible: true
                         }
+                    },
+                    legend: {
+                        visible: true
                     }
                 });
-            }
+            }, this);
         },
 
         _getYearFilter: function (sPropertyName) {
@@ -121,6 +142,7 @@ sap.ui.define([
 
             return nValue.toLocaleString("ko-KR");
         },
+
         formatBizTypeName: function (sBiztype) {
             var mBizType = {
                 "10": "숙박업",
@@ -142,6 +164,26 @@ sap.ui.define([
             }
 
             return iMonth + "월";
+        },
+
+        _getQuarterState: function (sQuarter) {
+            if (sQuarter === "1") {
+                return "Information";
+            }
+
+            if (sQuarter === "2") {
+                return "Success";
+            }
+
+            if (sQuarter === "3") {
+                return "Warning";
+            }
+
+            if (sQuarter === "4") {
+                return "Error";
+            }
+
+            return "None";
         },
 
         _readQuarterSales: function () {
@@ -184,6 +226,7 @@ sap.ui.define([
                         if (a.Quarter !== b.Quarter) {
                             return a.Quarter.localeCompare(b.Quarter);
                         }
+
                         return a.Year.localeCompare(b.Year);
                     });
 
@@ -192,6 +235,50 @@ sap.ui.define([
                 },
                 error: function () {
                     MessageToast.show("분기별 판매건수 조회 중 오류가 발생했습니다.");
+                }
+            });
+        },
+
+        _readQuarterMonthSales: function () {
+            var oODataModel = this.getOwnerComponent().getModel();
+            var oViewModel = this.getView().getModel("view");
+            var aFilters = this._getYearFilter("Syear");
+
+            oODataModel.read("/QuarterMonthSalesSet", {
+                filters: aFilters,
+                success: function (oData) {
+                    var aResult = oData.results || [];
+
+                    aResult.sort(function (a, b) {
+                        if (a.Syear !== b.Syear) {
+                            return Number(a.Syear) - Number(b.Syear);
+                        }
+
+                        return Number(a.Smonth) - Number(b.Smonth);
+                    });
+
+                    var aChart = aResult.map(function (oRow) {
+                        var sQuarter = String(oRow.Quarter || "");
+                        var sQuarterText = sQuarter + "분기";
+                        var sMonthText = Number(oRow.Smonth) + "월";
+
+                        return {
+                            Label: sQuarterText + " " + sMonthText,
+                            Syear: oRow.Syear,
+                            Quarter: sQuarter,
+                            QuarterText: sQuarterText,
+                            QuarterState: this._getQuarterState(sQuarter),
+                            Smonth: oRow.Smonth,
+                            MonthText: sMonthText,
+                            Salescount: Number(oRow.Salescount || 0)
+                        };
+                    }, this);
+
+                    oViewModel.setProperty("/quarterMonthChart", aChart);
+                    oViewModel.setProperty("/quarterMonthTable", aChart);
+                }.bind(this),
+                error: function () {
+                    MessageToast.show("분기/월별 판매건수 조회 중 오류가 발생했습니다.");
                 }
             });
         },
@@ -222,6 +309,9 @@ sap.ui.define([
                         });
 
                         oViewModel.setProperty("/categoryKpi", []);
+                        oViewModel.setProperty("/categoryRevenueChart", []);
+                        oViewModel.setProperty("/categoryShareChart", []);
+                        oViewModel.setProperty("/categoryGrowthCards", []);
                         return;
                     }
 
@@ -245,7 +335,10 @@ sap.ui.define([
                     });
 
                     oViewModel.setProperty("/categoryKpi", aResult);
-                },
+                    oViewModel.setProperty("/categoryRevenueChart", this._makeCategoryRevenueChart(aResult));
+                    oViewModel.setProperty("/categoryShareChart", this._makeCategoryShareChart(aResult));
+                    oViewModel.setProperty("/categoryGrowthCards", this._makeCategoryGrowthCards(aResult));
+                }.bind(this),
                 error: function () {
                     MessageToast.show("KPI 요약 조회 중 오류가 발생했습니다.");
                 }
@@ -262,6 +355,8 @@ sap.ui.define([
             if (sItemCategory) {
                 if (sItemCategory !== "S" && sItemCategory !== "R") {
                     oViewModel.setProperty("/materialSales", []);
+                    oViewModel.setProperty("/materialMonthChart", []);
+                    oViewModel.setProperty("/materialTopChart", []);
                     return;
                 }
 
@@ -279,10 +374,311 @@ sap.ui.define([
             oODataModel.read("/MaterialSalesSet", {
                 filters: aFilters,
                 success: function (oData) {
-                    oViewModel.setProperty("/materialSales", oData.results || []);
-                },
+                    var aResult = oData.results || [];
+
+                    oViewModel.setProperty("/materialSales", aResult);
+                    oViewModel.setProperty("/materialMonthChart", this._makeMaterialMonthChart(aResult));
+                    oViewModel.setProperty("/materialTopChart", this._makeMaterialTopChart(aResult, 5));
+                }.bind(this),
                 error: function () {
                     MessageToast.show("제품별 월별 판매수량 조회 중 오류가 발생했습니다.");
+                }
+            });
+        },
+
+        _makeCategoryRevenueChart: function (aRows) {
+            return aRows.map(function (oRow) {
+                return {
+                    Category: oRow.Categoryname || oRow.Itemcategory || "-",
+                    Itemcategory: oRow.Itemcategory,
+                    Currentyearamt: Number(oRow.Currentyearamt || 0),
+                    Currency: oRow.Currency || "KRW"
+                };
+            });
+        },
+
+        _makeCategoryShareChart: function (aRows) {
+            return aRows.map(function (oRow) {
+                return {
+                    Category: oRow.Categoryname || oRow.Itemcategory || "-",
+                    Sharepct: Number(oRow.Sharepct || 0)
+                };
+            });
+        },
+
+        _makeCategoryGrowthCards: function (aRows) {
+            return aRows.map(function (oRow) {
+                var nGrowth = Number(oRow.Yoygrowthpct || 0);
+                var sState = "None";
+                var sValueColor = "Neutral";
+
+                if (nGrowth > 0) {
+                    sState = "Success";
+                    sValueColor = "Good";
+                } else if (nGrowth < 0) {
+                    sState = "Error";
+                    sValueColor = "Error";
+                } else {
+                    sState = "Warning";
+                    sValueColor = "Neutral";
+                }
+
+                return {
+                    Category: oRow.Categoryname || oRow.Itemcategory || "-",
+                    Itemcategory: oRow.Itemcategory,
+                    Yoygrowthpct: nGrowth,
+                    Sharepct: Number(oRow.Sharepct || 0),
+                    Categorysalescount: Number(oRow.Categorysalescount || 0),
+                    State: sState,
+                    ValueColor: sValueColor
+                };
+            });
+        },
+
+        _makeMaterialMonthChart: function (aRows) {
+            var mMonth = {};
+            var aChart = [];
+
+            aRows.forEach(function (oRow) {
+                var sYear = oRow.Year || "";
+                var sMonth = oRow.Month || "";
+                var sKey = sYear + "_" + sMonth;
+                var nQty = Number(oRow.SumQty || 0);
+
+                if (!mMonth[sKey]) {
+                    mMonth[sKey] = {
+                        Year: sYear,
+                        Month: sMonth,
+                        MonthNo: Number(sMonth || 0),
+                        Label: sYear + "년 " + Number(sMonth || 0) + "월",
+                        SumQty: 0,
+                        Unit: oRow.Unit || ""
+                    };
+                }
+
+                mMonth[sKey].SumQty += nQty;
+            });
+
+            aChart = Object.keys(mMonth).map(function (sKey) {
+                return mMonth[sKey];
+            });
+
+            aChart.sort(function (a, b) {
+                if (a.Year !== b.Year) {
+                    return Number(a.Year) - Number(b.Year);
+                }
+
+                return Number(a.MonthNo) - Number(b.MonthNo);
+            });
+
+            return aChart;
+        },
+
+        _makeMaterialTopChart: function (aRows, iLimit) {
+            var mMaterial = {};
+            var aChart = [];
+
+            aRows.forEach(function (oRow) {
+                var sMaterialCd = oRow.Materialcd || "";
+                var sMaterialNm = oRow.Materialnm || sMaterialCd || "-";
+                var sKey = sMaterialCd + "_" + sMaterialNm;
+                var nQty = Number(oRow.SumQty || 0);
+
+                if (!mMaterial[sKey]) {
+                    mMaterial[sKey] = {
+                        Materialcd: sMaterialCd,
+                        Materialnm: sMaterialNm,
+                        TotalQty: 0,
+                        Unit: oRow.Unit || ""
+                    };
+                }
+
+                mMaterial[sKey].TotalQty += nQty;
+            });
+
+            aChart = Object.keys(mMaterial).map(function (sKey) {
+                return mMaterial[sKey];
+            });
+
+            aChart.sort(function (a, b) {
+                return Number(b.TotalQty || 0) - Number(a.TotalQty || 0);
+            });
+
+            return aChart.slice(0, iLimit || 5);
+        },
+
+        _readCustomerBizMonthOrder: function () {
+            var oODataModel = this.getOwnerComponent().getModel();
+            var oViewModel = this.getView().getModel("view");
+            var aFilters = this._getYearFilter("Syear");
+
+            oODataModel.read("/CustomerBizMonthOrderSet", {
+                filters: aFilters,
+                success: function (oData) {
+                    var aResult = oData.results || [];
+
+                    aResult = this._calculateBizMonthPattern(aResult);
+
+                    oViewModel.setProperty("/customerBizMonthOrder", aResult);
+                    oViewModel.setProperty("/customerBizPattern", this._makeBizPatternSummary(aResult));
+                    oViewModel.setProperty("/customerBizChart", this._makeBizMonthChart(aResult));
+                }.bind(this),
+                error: function () {
+                    MessageToast.show("고객 사업부문별 월별 주문 분석 조회 중 오류가 발생했습니다.");
+                }
+            });
+        },
+
+        _calculateBizMonthPattern: function (aRows) {
+            var mBiz = {};
+
+            aRows.forEach(function (oRow) {
+                var sBiztype = oRow.Biztype;
+                var iOrdercount = Number(oRow.Ordercount || 0);
+
+                if (!mBiz[sBiztype]) {
+                    mBiz[sBiztype] = {
+                        totalOrdercount: 0,
+                        rows: []
+                    };
+                }
+
+                mBiz[sBiztype].totalOrdercount += iOrdercount;
+                mBiz[sBiztype].rows.push(oRow);
+            });
+
+            Object.keys(mBiz).forEach(function (sBiztype) {
+                var oBiz = mBiz[sBiztype];
+
+                var nMonthlyAvg = oBiz.totalOrdercount / 12;
+
+                var nMaxOrdercount = Math.max.apply(null, oBiz.rows.map(function (oRow) {
+                    return Number(oRow.Ordercount || 0);
+                }));
+
+                var nMinOrdercount = Math.min.apply(null, oBiz.rows.map(function (oRow) {
+                    return Number(oRow.Ordercount || 0);
+                }));
+
+                oBiz.rows.forEach(function (oRow) {
+                    var iOrdercount = Number(oRow.Ordercount || 0);
+                    var nOrderIntensity = nMonthlyAvg === 0 ? 0 : iOrdercount / nMonthlyAvg;
+
+                    oRow.BiztypeText = this.formatBizTypeName(oRow.Biztype);
+                    oRow.MonthText = this.formatMonth(oRow.Smonth);
+                    oRow.MonthlyAvgOrdercount = Number(nMonthlyAvg.toFixed(1));
+                    oRow.OrderIntensity = Number(nOrderIntensity.toFixed(2));
+                    oRow.OrderIntensityText = "평균 대비 " + nOrderIntensity.toFixed(1) + "배";
+                    oRow.IsPeakMonth = iOrdercount === nMaxOrdercount;
+                    oRow.IsLowMonth = iOrdercount === nMinOrdercount;
+
+                    if (nOrderIntensity >= 1.3) {
+                        oRow.PatternType = "주문 집중월";
+                    } else if (nOrderIntensity <= 0.7) {
+                        oRow.PatternType = "주문 저조월";
+                    } else {
+                        oRow.PatternType = "일반월";
+                    }
+
+                    oRow.AnalysisText =
+                        oRow.BiztypeText + " 고객군은 " +
+                        oRow.MonthText + "에 주문 " +
+                        iOrdercount + "건이 발생했으며, " +
+                        oRow.OrderIntensityText + " 수준입니다.";
+                }, this);
+            }, this);
+
+            return aRows;
+        },
+
+        _makeBizPatternSummary: function (aRows) {
+            var mBiz = {};
+            var aSummary = [];
+
+            aRows.forEach(function (oRow) {
+                var sBiztype = oRow.Biztype;
+
+                if (!mBiz[sBiztype]) {
+                    mBiz[sBiztype] = {
+                        Biztype: sBiztype,
+                        BiztypeText: oRow.BiztypeText,
+                        PeakMonthText: "",
+                        PeakOrdercount: 0,
+                        LowMonthText: "",
+                        LowOrdercount: null,
+                        TotalOrdercount: 0,
+                        TotalNetamount: 0,
+                        Currency: oRow.Currency
+                    };
+                }
+
+                mBiz[sBiztype].TotalOrdercount += Number(oRow.Ordercount || 0);
+                mBiz[sBiztype].TotalNetamount += Number(oRow.Netamount || 0);
+
+                if (Number(oRow.Ordercount || 0) > mBiz[sBiztype].PeakOrdercount) {
+                    mBiz[sBiztype].PeakMonthText = oRow.MonthText;
+                    mBiz[sBiztype].PeakOrdercount = Number(oRow.Ordercount || 0);
+                }
+
+                if (mBiz[sBiztype].LowOrdercount === null ||
+                    Number(oRow.Ordercount || 0) < mBiz[sBiztype].LowOrdercount) {
+                    mBiz[sBiztype].LowMonthText = oRow.MonthText;
+                    mBiz[sBiztype].LowOrdercount = Number(oRow.Ordercount || 0);
+                }
+            });
+
+            Object.keys(mBiz).forEach(function (sBiztype) {
+                var oSummary = mBiz[sBiztype];
+
+                oSummary.AnalysisText =
+                    oSummary.BiztypeText + " 고객군은 " +
+                    oSummary.PeakMonthText + "에 주문이 가장 많았고, " +
+                    oSummary.LowMonthText + "에 주문이 가장 적었습니다.";
+
+                aSummary.push(oSummary);
+            });
+
+            return aSummary;
+        },
+
+        _makeBizMonthChart: function (aRows) {
+            return aRows.map(function (oRow) {
+                return {
+                    Biztype: oRow.Biztype,
+                    BiztypeText: oRow.BiztypeText,
+                    MonthText: oRow.MonthText,
+                    Ordercount: Number(oRow.Ordercount || 0),
+                    Netamount: Number(oRow.Netamount || 0)
+                };
+            });
+        },
+
+        onQuarterMonthRowsUpdated: function (oEvent) {
+            var oTable = oEvent.getSource();
+            var aRows = oTable.getRows();
+
+            aRows.forEach(function (oRow) {
+                var oContext = oRow.getBindingContext("view");
+
+                oRow.$().removeClass(
+                    "quarterRowQ1 quarterRowQ2 quarterRowQ3 quarterRowQ4"
+                );
+
+                if (!oContext) {
+                    return;
+                }
+
+                var oData = oContext.getObject();
+                var sQuarter = String(oData.Quarter || "");
+
+                if (sQuarter === "1") {
+                    oRow.$().addClass("quarterRowQ1");
+                } else if (sQuarter === "2") {
+                    oRow.$().addClass("quarterRowQ2");
+                } else if (sQuarter === "3") {
+                    oRow.$().addClass("quarterRowQ3");
+                } else if (sQuarter === "4") {
+                    oRow.$().addClass("quarterRowQ4");
                 }
             });
         }

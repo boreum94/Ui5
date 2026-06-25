@@ -20,6 +20,6 @@ builder:
           name: ZUI5_D22_002
           description: '[SD] 견적서 생성 및 송출'
           package: ZPD2SD_01
-          transport: EFXK902465
+          transport:  EFXK902531
         exclude:
           - /test/
