@@ -5,7 +5,6 @@
     xmlns:f="sap.f"
     xmlns:core="sap.ui.core">
 
-    <!-- lyaout에 어떤 값이 들어가냐에 따라 맨 처음 페이지를 몇 개 보여줄건지 정해진다 -->
     <f:FlexibleColumnLayout
         id="fcl"
         layout="OneColumn">
@@ -19,14 +18,12 @@
                 <content>
                     <VBox class="sapUiSmallMargin">
 
-                        <!-- 견적 목록 조회조건 -->
                         <Panel
                             class="sapUiNoContentPadding"
                             backgroundDesign="Solid">
                             <content>
                                 <VBox class="sapUiSmallMargin">
 
-                                    <!-- 1행: 문서일자 조건 -->
                                     <HBox
                                         renderType="Bare"
                                         alignItems="End">
@@ -55,7 +52,6 @@
                                         </VBox>
                                     </HBox>
 
-                                    <!-- 2행: 견적유형 / 고객 / 상태 / 버튼 -->
                                     <HBox
                                         renderType="Bare"
                                         alignItems="End"
@@ -159,16 +155,32 @@
                                     <Text text="고객명"/>
                                 </Column>
 
-                                <Column width="10rem">
-                                    <Text text="문서일자"/>
+                                <Column
+                                    width="15rem"
+                                    hAlign="End">
+                                    <HBox
+                                        width="100%"
+                                        justifyContent="End"
+                                        class="quotationListTotalAmountHeader">
+                                        <Text text="총금액"/>
+                                    </HBox>
                                 </Column>
 
-                                <Column width="13rem" hAlign="End">
-                                    <Text text="총금액"/>
+                                <Column width="12rem">
+                                    <HBox
+                                        width="100%"
+                                        justifyContent="Start"
+                                        class="quotationListUseStatusHeader">
+                                        <Text text="사용상태"/>
+                                    </HBox>
                                 </Column>
 
                                 <Column width="8rem">
                                     <Text text="상태"/>
+                                </Column>
+
+                                <Column width="10rem">
+                                    <Text text="문서일자"/>
                                 </Column>
                             </columns>
 
@@ -185,6 +197,48 @@
                                             text="{CustomerNm}"
                                             wrapping="false"/>
 
+                                        <HBox
+                                            justifyContent="End"
+                                            class="quotationListTotalAmountCell">
+                                            <ObjectNumber
+                                                number="{path: 'TtlAmount', formatter: '.formatAmount'}"
+                                                unit="{Currency}"
+                                                class="quotationListTotalAmount"/>
+                                        </HBox>
+
+                                        <ObjectStatus
+                                            text="{
+                                                parts: [
+                                                    { path: 'ReqDueDate' },
+                                                    { path: 'ValidFrom' },
+                                                    { path: 'ValidTo' }
+                                                ],
+                                                formatter: '.formatQuotationUseStatusText'
+                                            }"
+                                            state="{
+                                                parts: [
+                                                    { path: 'ReqDueDate' },
+                                                    { path: 'ValidFrom' },
+                                                    { path: 'ValidTo' }
+                                                ],
+                                                formatter: '.formatQuotationUseStatusState'
+                                            }"
+                                            icon="{
+                                                parts: [
+                                                    { path: 'ReqDueDate' },
+                                                    { path: 'ValidFrom' },
+                                                    { path: 'ValidTo' }
+                                                ],
+                                                formatter: '.formatQuotationUseStatusIcon'
+                                            }"
+                                            class="quotationListUseStatus"/>
+
+                                        <ObjectStatus
+                                            text="{path: 'QuotStatus', formatter: '.formatStatusText'}"
+                                            state="{path: 'QuotStatus', formatter: '.formatStatusState'}"
+                                            inverted="{= ${QuotStatus} === 'A' }"
+                                            class="quotationListStatus"/>
+
                                         <Text
                                             wrapping="false"
                                             text="{
@@ -194,14 +248,6 @@
                                                     pattern: 'yyyy-MM-dd'
                                                 }
                                             }"/>
-
-                                        <ObjectNumber
-                                            number="{path: 'TtlAmount', formatter: '.formatAmount'}"
-                                            unit="{Currency}"/>
-
-                                        <ObjectStatus
-                                            text="{path: 'QuotStatus', formatter: '.formatStatusText'}"
-                                            state="{path: 'QuotStatus', formatter: '.formatStatusState'}"/>
                                     </cells>
                                 </ColumnListItem>
                             </items>
@@ -233,7 +279,13 @@
                         text="견적 송출"
                         type="Emphasized"
                         icon="sap-icon://paper-plane"
-                        enabled="{= !!${view>/selected/QuotCd} }"
+                        enabled="{
+                            parts: [
+                                { path: 'view>/selected/QuotCd' },
+                                { path: 'view>/selected/ValidFrom' }
+                            ],
+                            formatter: '.formatSendQuotationEnabled'
+                        }"
                         press=".onSendQuotation"/>
                 </headerContent>
 
@@ -388,13 +440,10 @@
                         <Panel headerText="기본 정보">
                             <content>
                                 <VBox>
-                                    <!-- 아래 박스 안의 라벨들은 헤더 입력필드 -->
 
-                                    <!-- 1행: 견적유형 / 고객코드 / 고객 PO 번호 -->
                                     <HBox renderType="Bare">
                                         <VBox width="33%" class="sapUiSmallMarginEnd">
                                             <Label text="견적유형"/>
-                                            <!-- QUOT_DOC_TY(주문유형) 라디오버튼 -->
                                             <RadioButtonGroup
                                                 id="rbgQuotDocTy"
                                                 columns="2"
@@ -426,7 +475,6 @@
                                         </VBox>
                                     </HBox>
 
-                                    <!-- 2행: 요청납기일 / 유효시작일 / 유효종료일 -->
                                     <HBox
                                         renderType="Bare"
                                         class="sapUiSmallMarginTop">
@@ -436,7 +484,8 @@
                                                 id="dpCreateReqDueDate"
                                                 width="100%"
                                                 valueFormat="yyyy-MM-dd"
-                                                displayFormat="yyyy-MM-dd"/>
+                                                displayFormat="yyyy-MM-dd"
+                                                change=".onChangeCreateReqDueDate"/>
                                         </VBox>
 
                                         <VBox width="33%" class="sapUiSmallMarginEnd">
@@ -458,7 +507,6 @@
                                         </VBox>
                                     </HBox>
 
-                                    <!-- 3행: 지급조건 / 문서일자 / 빈 영역 -->
                                     <HBox
                                         renderType="Bare"
                                         class="sapUiSmallMarginTop">
@@ -482,148 +530,15 @@
                                                 editable="false"/>
                                         </VBox>
 
-                                        <VBox width="33%">
-                                            <!-- 3열 정렬용 빈 영역 -->
-                                        </VBox>
+                                        <VBox width="33%"/>
                                     </HBox>
                                 </VBox>
                             </content>
                         </Panel>
 
-                        <Panel
-                            headerText="Item 입력"
-                            class="sapUiSmallMarginTop">
-
-                            <content>
-                                <Table
-                                    id="createItemTable"
-                                    mode="MultiSelect"
-                                    includeItemInSelection="true"
-                                    items="{view>/createItems}">
-
-                                    <headerToolbar>
-                                        <Toolbar>
-                                            <Button
-                                                text="행 추가"
-                                                icon="sap-icon://add"
-                                                press=".onAddCreateItem"/>
-                                            <Button
-                                                text="행 삭제"
-                                                icon="sap-icon://delete"
-                                                type="Reject"
-                                                press=".onDeleteCreateItem"/>
-                                            <Button
-                                                text="초기화"
-                                                icon="sap-icon://reset"
-                                                press=".onResetCreate"/>
-                                        </Toolbar>
-                                    </headerToolbar>
-
-                                    <columns>
-                                        <Column width="4rem">
-                                            <Text text="No."/>
-                                        </Column>
-
-                                        <Column width="8rem">
-                                            <Text text="외부 참조 코드"/>
-                                        </Column>
-
-                                        <Column>
-                                            <Text text="자재코드"/>
-                                        </Column>
-
-                                        <Column visible="{= ${view>/createQuotDocTy} === 'O' }">
-                                            <Text text="스펙 코드"/>
-                                        </Column>
-
-                                        <Column width="6rem">
-                                            <Text text="등급"/>
-                                        </Column>
-
-                                        <Column width="7rem">
-                                            <Text text="수량"/>
-                                        </Column>
-
-                                        <Column width="5rem">
-                                            <Text text="단위"/>
-                                        </Column>
-
-                                        <Column
-                                            width="9rem"
-                                            visible="{= ${view>/createQuotDocTy} === 'O' }">
-                                            <Text text="마진율(%)"/>
-                                        </Column>
-                                    </columns>
-
-                                    <items>
-                                        <ColumnListItem>
-                                            <cells>
-                                                <Text text="{view>ItemNo}"/>
-
-                                                <Input
-                                                    value="{view>CustItemCd}"
-                                                    placeholder="외부 참조 코드"/>
-
-                                                <!-- 아이템 입력필드 -->
-                                                <Input
-                                                    value="{view>MaterialCd}"
-                                                    placeholder="자재코드 입력"
-                                                    showValueHelp="true"
-                                                    valueHelpRequest=".onValueHelpCreateMaterial"
-                                                    change=".onChangeCreateItemPrice"/>
-
-                                                <Input
-                                                    value="{view>RefConfigCd}"
-                                                    placeholder="스펙 코드 입력"
-                                                    showValueHelp="true"
-                                                    valueHelpRequest=".onValueHelpCreateConfig"
-                                                    visible="{= ${view>/createQuotDocTy} === 'O' }"
-                                                    change=".onChangeCreateItemPrice"/>
-
-                                                <Input
-                                                    value="{view>CurrentGrade}"
-                                                    maxLength="1"
-                                                    placeholder="A"
-                                                    editable="{= ${view>/createQuotDocTy} !== 'O' }"
-                                                    change=".onChangeCreateItemPrice"/>
-
-                                                <Input
-                                                    value="{view>ReqQty}"
-                                                    type="Number"
-                                                    placeholder="1"
-                                                    change=".onChangeCreateItemPrice"/>
-
-                                                <Input
-                                                    value="{view>Unit}"
-                                                    maxLength="3"
-                                                    placeholder="EA"
-                                                    change=".onChangeCreateItemPrice"/>
-
-                                                <Input
-                                                    value="{view>TargetMargin}"
-                                                    type="Number"
-                                                    placeholder="10.00"
-                                                    visible="{= ${view>/createQuotDocTy} === 'O' }"
-                                                    change=".onChangeCreateItemPrice"/>
-                                            </cells>
-                                        </ColumnListItem>
-                                    </items>
-                                </Table>
-                            </content>
-                        </Panel>
-
-                        <Toolbar class="sapUiSmallMarginTop">
-                            <ToolbarSpacer/>
-                            <ObjectNumber
-                                number="{path: 'view>/createTotalAmount', formatter: '.formatAmount'}"
-                                unit="{view>/createCurrency}"
-                                emphasized="true"/>
-                            <Button
-                                text="저장"
-                                type="Emphasized"
-                                icon="sap-icon://save"
-                                press=".onCreateQuotation"/>
-                        </Toolbar>
+                        <core:Fragment
+                            fragmentName="node.t2.quotationmanagement.view.fragment.CreateItemSection"
+                            type="XML"/>
 
                     </VBox>
                 </content>
@@ -631,4 +546,10 @@
         </f:endColumnPages>
 
     </f:FlexibleColumnLayout>
+
+    <mvc:dependents>
+        <core:Fragment
+            fragmentName="node.t2.quotationmanagement.view.fragment.PriceConditionDialog"
+            type="XML"/>
+    </mvc:dependents>
 </mvc:View>

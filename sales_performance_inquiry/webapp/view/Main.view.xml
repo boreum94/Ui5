@@ -55,7 +55,6 @@
                             selectedKey="{view>/filter/year}">
                             <core:Item key="2026" text="2026"/>
                             <core:Item key="2025" text="2025"/>
-                            <core:Item key="" text="전체"/>
                         </Select>
                     </VBox>
 
@@ -90,10 +89,10 @@
                         subheader="선택 연도 기준"
                         class="sapUiResponsiveMargin"
                         width="100%">
-                        <TileContent footer="{view>/kpi/currency}">
+                        <TileContent footer="KRW">
                             <ObjectNumber
                                 number="{path: 'view>/kpi/totalYearAmt', formatter: '.formatAmount'}"
-                                unit="{view>/kpi/currency}"
+                                unit="KRW"
                                 emphasized="true"
                                 state="Success"/>
                         </TileContent>

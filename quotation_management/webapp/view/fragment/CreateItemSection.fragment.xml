@@ -1,0 +1,175 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Panel
+        headerText="Item 입력"
+        class="sapUiSmallMarginTop">
+
+        <content>
+            <Table
+                id="createItemTable"
+                mode="MultiSelect"
+                includeItemInSelection="true"
+                fixedLayout="false"
+                items="{view>/createItems}">
+
+                <headerToolbar>
+                    <Toolbar>
+                        <Button
+                            text="행 추가"
+                            icon="sap-icon://add"
+                            press=".onAddCreateItem"/>
+
+                        <Button
+                            text="행 삭제"
+                            icon="sap-icon://delete"
+                            type="Reject"
+                            press=".onDeleteCreateItem"/>
+
+                        <Button
+                            text="초기화"
+                            icon="sap-icon://reset"
+                            press=".onResetCreate"/>
+                    </Toolbar>
+                </headerToolbar>
+
+                <columns>
+                    <Column width="4rem">
+                        <Text text="No."/>
+                    </Column>
+
+                    <Column width="8rem">
+                        <Text text="외부 참조 코드"/>
+                    </Column>
+
+                    <Column width="15rem">
+                        <Text text="자재코드"/>
+                    </Column>
+
+                    <Column
+                        width="12rem"
+                        visible="{= ${view>/createQuotDocTy} === 'O' }">
+                        <Text text="스펙 코드"/>
+                    </Column>
+
+                    <Column width="10rem">
+                        <Text text="등급"/>
+                    </Column>
+
+                    <Column width="7rem">
+                        <Text text="수량"/>
+                    </Column>
+
+                    <Column width="5rem">
+                        <Text text="단위"/>
+                    </Column>
+
+                    <Column
+                        width="9rem"
+                        visible="{= ${view>/createQuotDocTy} === 'O' }">
+                        <Text text="마진율(%)"/>
+                    </Column>
+
+                    <Column
+                        width="13rem"
+                        hAlign="End">
+                        <Text text="최종금액"/>
+                    </Column>
+
+                    <Column
+                        width="8rem"
+                        hAlign="Center">
+                        <Text text="가격조건"/>
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{view>ItemNo}"/>
+
+                            <Input
+                                value="{view>CustItemCd}"
+                                placeholder="외부 참조 코드"/>
+
+                            <Input
+                                value="{view>MaterialCd}"
+                                placeholder="{= ${view>/createQuotDocTy} === 'O' ? '스펙코드 입력 시 자동 입력' : '자재코드 입력' }"
+                                showValueHelp="{= ${view>/createQuotDocTy} !== 'O' }"
+                                editable="{= ${view>/createQuotDocTy} !== 'O' }"
+                                valueHelpRequest=".onValueHelpCreateMaterial"
+                                change=".onChangeCreateItemPrice"/>
+
+                            <Input
+                                value="{view>RefConfigCd}"
+                                placeholder="스펙 코드 입력"
+                                showValueHelp="true"
+                                valueHelpRequest=".onValueHelpCreateConfig"
+                                visible="{= ${view>/createQuotDocTy} === 'O' }"
+                                change=".onChangeCreateConfigCd"/>
+
+                            <Select
+                                selectedKey="{view>CurrentGrade}"
+                                width="100%"
+                                enabled="{= ${view>/createQuotDocTy} !== 'O' }"
+                                change=".onChangeCreateItemPrice">
+                                <core:Item key="N" text="N - 새상품"/>
+                                <core:Item key="A" text="A - 품질 : 상"/>
+                                <core:Item key="B" text="B - 품질 : 중"/>
+                                <core:Item key="C" text="C - 품질 : 하"/>
+                            </Select>
+
+                            <Input
+                                value="{view>ReqQty}"
+                                type="Number"
+                                placeholder="1"
+                                change=".onChangeCreateItemPrice"/>
+
+                            <Input
+                                value="{view>Unit}"
+                                maxLength="3"
+                                placeholder="EA"
+                                change=".onChangeCreateItemPrice"/>
+
+                            <Input
+                                value="{view>TargetMargin}"
+                                type="Number"
+                                placeholder="10.00"
+                                visible="{= ${view>/createQuotDocTy} === 'O' }"
+                                change=".onChangeCreateItemPrice"/>
+
+                            <ObjectNumber
+                                number="{path: 'view>NetAmt', formatter: '.formatAmount'}"
+                                unit="{view>Currency}"/>
+
+                            <Button
+                                text="상세"
+                                type="Transparent"
+                                icon="sap-icon://detail-view"
+                                enabled="{= !!${view>MaterialCd} }"
+                                press=".onOpenCreatePriceConditionDetail"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Panel>
+
+    <Toolbar class="sapUiSmallMarginTop">
+        <ToolbarSpacer/>
+
+        <Label text="총 견적금액"/>
+
+        <ObjectNumber
+            number="{path: 'view>/createTotalAmount', formatter: '.formatAmount'}"
+            unit="{view>/createCurrency}"
+            emphasized="true"/>
+
+        <Button
+            text="저장"
+            type="Emphasized"
+            icon="sap-icon://save"
+            press=".onCreateQuotation"/>
+    </Toolbar>
+</core:FragmentDefinition>

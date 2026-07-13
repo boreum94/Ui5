@@ -1,0 +1,289 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Dialog
+        id="priceConditionDialog"
+        title="가격조건 상세"
+        contentWidth="92rem"
+        contentHeight="44rem"
+        draggable="true"
+        resizable="true"
+        stretchOnPhone="true"
+        class="priceConditionDialog">
+
+        <content>
+            <VBox class="pcDialogRoot">
+
+                <!-- 상단 요약 영역 -->
+                <Panel
+                    backgroundDesign="Transparent"
+                    class="pcSummaryPanel">
+
+                    <content>
+                        <HBox
+                            wrap="Wrap"
+                            alignItems="Stretch"
+                            justifyContent="SpaceBetween"
+                            class="pcSummaryWrap">
+
+                            <VBox class="pcSummaryCard pcSummaryCardItem">
+                                <Label
+                                    text="Item 번호"
+                                    class="pcSummaryLabel"/>
+
+                                <ObjectIdentifier
+                                    title="{view>/selectedConditionItemNo}"
+                                    text="가격조건 적용 대상 품목"
+                                    class="pcSummaryObject"/>
+                            </VBox>
+
+                            <VBox class="pcSummaryCard pcSummaryCardAmount">
+                                <Label
+                                    text="최종금액"
+                                    class="pcSummaryLabel"/>
+
+                                <ObjectNumber
+                                    number="{
+                                        path: 'view>/selectedConditionNetAmt',
+                                        formatter: '.formatAmount'
+                                    }"
+                                    unit="{view>/selectedConditionCurrency}"
+                                    emphasized="true"
+                                    class="pcFinalAmount"/>
+                            </VBox>
+
+                            <VBox class="pcSummaryCard pcSummaryCardCurrency">
+                                <Label
+                                    text="통화"
+                                    class="pcSummaryLabel"/>
+
+                                <ObjectStatus
+                                    text="{view>/selectedConditionCurrency}"
+                                    state="Information"
+                                    class="pcCurrencyStatus"/>
+                            </VBox>
+
+                        </HBox>
+                    </content>
+                </Panel>
+
+                <!-- 가격조건 목록 -->
+                <Panel
+                    backgroundDesign="Solid"
+                    class="pcTablePanel">
+
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title
+                                text="가격 산정 근거"
+                                level="H3"/>
+
+                            <ToolbarSpacer/>
+
+                            <ObjectStatus
+                                text="견적 생성 전 확인"
+                                state="Information"/>
+                        </Toolbar>
+                    </headerToolbar>
+
+                    <content>
+                        <Table
+                            id="priceConditionTable"
+                            items="{view>/selectedPriceConditions}"
+                            fixedLayout="false"
+                            growing="true"
+                            growingScrollToLoad="true"
+                            noDataText="적용된 가격조건이 없습니다."
+                            class="pcConditionTable">
+
+                            <columns>
+                                <Column
+                                    width="7rem"
+                                    hAlign="Center">
+                                    <Text text="조건유형"/>
+                                </Column>
+
+                                <Column
+                                    width="18rem"
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true">
+                                    <Text text="조건명"/>
+                                </Column>
+
+                                <Column
+                                    width="11rem"
+                                    hAlign="End"
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true">
+                                    <Text text="조건값"/>
+                                </Column>
+
+                                <Column
+                                    width="12rem"
+                                    hAlign="End"
+                                    minScreenWidth="Desktop"
+                                    demandPopin="true">
+                                    <Text text="기준금액"/>
+                                </Column>
+
+                                <Column
+                                    width="12rem"
+                                    hAlign="End"
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true">
+                                    <Text text="적용금액"/>
+                                </Column>
+
+                                <Column
+                                    width="12rem"
+                                    hAlign="End"
+                                    minScreenWidth="Desktop"
+                                    demandPopin="true">
+                                    <Text text="적용 후 금액"/>
+                                </Column>
+
+                                <Column
+                                    width="20rem"
+                                    minScreenWidth="Desktop"
+                                    demandPopin="true">
+                                    <Text text="적용 설명"/>
+                                </Column>
+                            </columns>
+
+                            <items>
+                                <ColumnListItem
+                                    type="Inactive"
+                                    class="pcConditionRow">
+
+                                    <cells>
+                                        <!-- 조건유형 -->
+                                        <VBox
+                                            alignItems="Center"
+                                            class="pcTypeCell">
+
+                                            <ObjectStatus
+                                                text="{view>ConditionType}"
+                                                state="{
+                                                    path: 'view>ConditionType',
+                                                    formatter: '.formatConditionState'
+                                                }"
+                                                class="pcTypeBadge"/>
+
+                                            <Text
+                                                text="{view>CondSeq}"
+                                                class="pcCondSeqText"/>
+                                        </VBox>
+
+                                        <!-- 조건명 -->
+                                        <VBox class="pcNameCell">
+                                            <Text
+                                                text="{view>ConditionNm}"
+                                                wrapping="true"
+                                                class="pcConditionName"/>
+
+                                            <Text
+                                                text="{view>PriceCondNo}"
+                                                wrapping="false"
+                                                class="pcConditionSubText"/>
+                                        </VBox>
+
+                                        <!-- 조건값 -->
+                                        <VBox
+                                            alignItems="End"
+                                            class="pcAmountCell">
+
+                                            <ObjectNumber
+                                                number="{
+                                                    parts: [
+                                                        { path: 'view>ConditionAmt' },
+                                                        { path: 'view>ConditionUnit' }
+                                                    ],
+                                                    formatter: '.formatConditionValue'
+                                                }"
+                                                emphasized="false"/>
+
+                                            <Text
+                                                text="{view>ConditionUnit}"
+                                                class="pcConditionSubText"/>
+                                        </VBox>
+
+                                        <!-- 기준금액 -->
+                                        <VBox
+                                            alignItems="End"
+                                            class="pcAmountCell">
+
+                                            <ObjectNumber
+                                                number="{
+                                                    path: 'view>BaseAmt',
+                                                    formatter: '.formatAmount'
+                                                }"
+                                                unit="{view>Currency}"
+                                                emphasized="false"/>
+                                        </VBox>
+
+                                        <!-- 적용금액 -->
+                                        <VBox
+                                            alignItems="End"
+                                            class="pcAmountCell">
+
+                                            <ObjectStatus
+                                                text="{
+                                                    path: 'view>AppliedAmt',
+                                                    formatter: '.formatAmount'
+                                                }"
+                                                state="{= ${view>AppliedAmt} &lt; 0 ? 'Error' : 'Success' }"
+                                                class="pcAppliedAmount"/>
+
+                                            <ObjectStatus
+                                                text="할인"
+                                                state="Error"
+                                                visible="{= ${view>AppliedAmt} &lt; 0 }"
+                                                class="pcDiscountFlag"/>
+                                        </VBox>
+
+                                        <!-- 적용 후 금액 -->
+                                        <VBox
+                                            alignItems="End"
+                                            class="pcAmountCell">
+
+                                            <ObjectNumber
+                                                number="{
+                                                    path: 'view>AfterAmt',
+                                                    formatter: '.formatAmount'
+                                                }"
+                                                unit="{view>Currency}"
+                                                emphasized="true"
+                                                class="pcAfterAmount"/>
+                                        </VBox>
+
+                                        <!-- 적용 설명 -->
+                                        <VBox class="pcDescCell">
+                                            <Text
+                                                text="{view>ApplyDesc}"
+                                                wrapping="true"
+                                                class="pcApplyDesc"/>
+
+                                            <HBox
+                                                wrap="Wrap"
+                                                class="pcMetaInfo">
+
+                                            </HBox>
+                                        </VBox>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </content>
+                </Panel>
+            </VBox>
+        </content>
+
+        <endButton>
+            <Button
+                text="닫기"
+                type="Emphasized"
+                press=".onClosePriceConditionDialog"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

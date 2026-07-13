@@ -11,3 +11,370 @@ body,
 .appView {
     display: block;
 }
+
+/* =========================================================
+   Quotation List
+   ========================================================= */
+
+/* 견적 목록 - 총금액 컬럼 우측 정렬 및 사용상태와 간격 확보 */
+.quotationListTotalAmount {
+    display: block;
+    width: 100%;
+    padding-right: 1.75rem;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+/* 견적 목록 - 사용상태가 총금액과 너무 붙지 않도록 좌측 여백 */
+.quotationListUseStatus {
+    display: inline-block;
+    padding-left: 0.75rem;
+    white-space: nowrap;
+}
+
+/* ObjectStatus 아이콘/텍스트 간격 보정 */
+.quotationListUseStatus .sapMObjStatusIcon {
+    margin-right: 0.25rem;
+}
+
+/* 견적 목록 금액 텍스트 강조 */
+.quotationListTotalAmount .sapMObjectNumberText {
+    font-weight: 700;
+}
+
+/* 견적 목록 통화 단위 간격 */
+.quotationListTotalAmount .sapMObjectNumberUnit {
+    margin-left: 0.25rem;
+}
+
+/* =========================================================
+   Price Condition Dialog
+   ========================================================= */
+
+.priceConditionDialog .sapMDialogScroll {
+    background-color: #f7f9fb;
+}
+
+.pcDialogRoot {
+    padding: 1rem;
+    gap: 1rem;
+    background-color: #f7f9fb;
+}
+
+.pcSummaryPanel {
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.pcSummaryPanel .sapMPanelContent {
+    padding: 0 !important;
+    border-bottom: none !important;
+}
+
+.pcSummaryWrap {
+    gap: 1rem;
+    width: 100%;
+}
+
+.pcSummaryCard {
+    min-height: 5.25rem;
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    background: #ffffff;
+    border: 1px solid #dde5ee;
+    box-shadow: 0 0.125rem 0.5rem rgba(34, 54, 73, 0.08);
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+.pcSummaryCardItem {
+    flex: 1 1 18rem;
+}
+
+.pcSummaryCardAmount {
+    flex: 2 1 28rem;
+    min-width: 24rem;
+    overflow: visible;
+}
+
+.pcSummaryCardCurrency {
+    flex: 1 1 10rem;
+}
+
+.pcSummaryLabel {
+    font-size: 0.75rem;
+    color: #556b82;
+    margin-bottom: 0.35rem;
+}
+
+.pcSummaryObject .sapMObjectIdentifierTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+/* 최종금액 ObjectNumber 잘림 방지 */
+.pcFinalAmount.sapMObjectNumber {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    max-width: none;
+    width: 100%;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+.pcFinalAmount .sapMObjectNumberText {
+    font-size: 1.65rem;
+    font-weight: 700;
+    line-height: 2.1rem;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+.pcFinalAmount .sapMObjectNumberUnit {
+    font-size: 0.95rem;
+    line-height: 1.4rem;
+    margin-left: 0.5rem;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+.pcCurrencyStatus {
+    margin-top: 0.35rem;
+}
+
+.pcTablePanel {
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid #dde5ee;
+    box-shadow: 0 0.125rem 0.5rem rgba(34, 54, 73, 0.08);
+}
+
+.pcTablePanel .sapMPanelContent {
+    padding: 0 !important;
+}
+
+.pcConditionTable {
+    background-color: #ffffff;
+}
+
+.pcConditionTable .sapMListTblHeaderCell {
+    background-color: #f2f6fa;
+    border-bottom: 1px solid #d9e2ec;
+}
+
+.pcConditionTable .sapMColumnHeader {
+    font-weight: 700;
+    color: #22364a;
+}
+
+.pcConditionRow .sapMListTblCell {
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+    vertical-align: middle;
+}
+
+.pcConditionRow:hover {
+    background-color: #f7fbff;
+}
+
+.pcTypeCell {
+    gap: 0.25rem;
+}
+
+.pcTypeBadge {
+    min-width: 2.75rem;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.pcCondSeqText {
+    font-size: 0.75rem;
+    color: #6a7d90;
+}
+
+.pcNameCell {
+    gap: 0.25rem;
+}
+
+.pcConditionName {
+    font-weight: 700;
+    color: #22364a;
+}
+
+.pcConditionSubText {
+    font-size: 0.75rem;
+    color: #6a7d90;
+}
+
+.pcAmountCell {
+    gap: 0.25rem;
+}
+
+.pcAppliedAmount {
+    font-weight: 700;
+}
+
+.pcDiscountFlag {
+    padding: 0.1rem 0.45rem;
+    border-radius: 999px;
+    background-color: #fff1f1;
+}
+
+.pcAfterAmount .sapMObjectNumberText {
+    font-weight: 700;
+}
+
+.pcDescCell {
+    gap: 0.35rem;
+}
+
+.pcApplyDesc {
+    color: #22364a;
+}
+
+.pcMetaInfo {
+    gap: 0.25rem;
+}
+
+.pcMetaLabel {
+    font-size: 0.75rem;
+    color: #6a7d90;
+    font-weight: 700;
+}
+
+.pcMetaText {
+    font-size: 0.75rem;
+    color: #6a7d90;
+}
+
+/* =========================================================
+   Price Condition Dialog - Final Amount Only Summary
+   이 클래스를 쓰는 Fragment라면 아래 CSS도 적용됨
+   ========================================================= */
+
+.pcFinalOnlyCard {
+    width: 100%;
+    min-height: 6.5rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem;
+    background: #ffffff;
+    border: 1px solid #dde5ee;
+    box-shadow: 0 0.125rem 0.5rem rgba(34, 54, 73, 0.08);
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+.pcFinalOnlyAmount.sapMObjectNumber {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: none;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+.pcFinalOnlyAmount .sapMObjectNumberText {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 2.5rem;
+    color: #1d2d3e;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+.pcFinalOnlyAmount .sapMObjectNumberUnit {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-left: 0.6rem;
+    color: #3f5161;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+.pcFinalOnlyDesc {
+    margin-top: 0.35rem;
+    font-size: 0.8rem;
+    color: #6a7d90;
+}
+
+/* =========================================================
+   Create Item Section
+   ========================================================= */
+
+.createItemFinalAmount .sapMObjectNumberText {
+    font-weight: 700;
+}
+
+.createItemFinalAmount .sapMObjectNumberUnit {
+    margin-left: 0.25rem;
+}
+
+/* 견적 목록 - 총금액/사용상태 헤더 간격 조정 */
+.quotationListTotalAmountHeader {
+    padding-right: 1.75rem;
+    box-sizing: border-box;
+}
+
+.quotationListUseStatusHeader {
+    padding-left: 0.75rem;
+    box-sizing: border-box;
+}
+
+/* 견적 목록 - 상태 필드 */
+.quotationListStatus {
+    min-width: 5.5rem;
+    white-space: nowrap;
+}
+
+.quotationListStatus .sapMObjStatusText {
+    font-weight: 600;
+}
+
+.quotationListStatus .sapMObjStatusIcon {
+    margin-right: 0.25rem;
+}
+
+/* 견적 목록 - 오더전환 상태 단일 배지 */
+.quotationOrderConvertedBadge {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #e5f0ff;
+    border: 1px solid #b8d4ff;
+    white-space: nowrap;
+}
+
+.quotationOrderConvertedIcon {
+    margin-right: 0.25rem;
+    color: #0a6ed1;
+    font-size: 0.875rem;
+}
+
+.quotationOrderConvertedText {
+    color: #0a6ed1;
+    font-weight: 700;
+    font-size: 0.8125rem;
+}
+
+/* 일반 상태 */
+.quotationListStatus {
+    white-space: nowrap;
+}
+
+.quotationListStatus .sapMObjStatusText {
+    font-weight: 600;
+}
+
+/* 견적 목록 - 상태 필드 */
+.quotationListStatus {
+    min-width: 5.5rem;
+    white-space: nowrap;
+}
+
+.quotationListStatus .sapMObjStatusText {
+    font-weight: 700;
+}

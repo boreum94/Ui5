@@ -20,6 +20,6 @@ builder:
           name: ZD22_SAP_UI5
           description: '[SD] 판매 실적 조회 프로그램'
           package: ZPD2SD_01
-          transport: EFXK902366
+          transport: EFXK902531
         exclude:
           - /test/

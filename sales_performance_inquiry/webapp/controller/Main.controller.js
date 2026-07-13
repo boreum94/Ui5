@@ -63,6 +63,15 @@ sap.ui.define([
                 itemCategory: ""
             });
 
+            oViewModel.setProperty("/kpi", {
+                totalYearAmt: 0,
+                totalSalesCount: 0,
+                ttlYoyGrowthPct: 0,
+                currency: "KRW",
+                bestCategory: "-",
+                bestCategoryShare: "-"
+            });
+
             var oIconTabBar = this.byId("mainIconTabBar");
 
             if (oIconTabBar) {
@@ -137,10 +146,34 @@ sap.ui.define([
             ];
         },
 
-        formatAmount: function (vValue) {
+        _isTotalCategoryRow: function (oRow) {
+            var sItemCategory = String(oRow.Itemcategory || "").trim().toUpperCase();
+            var sCategoryName = String(oRow.Categoryname || "").trim();
+
+            return sItemCategory === "" ||
+                sItemCategory === "ALL" ||
+                sItemCategory === "TOT" ||
+                sItemCategory === "TTL" ||
+                sItemCategory === "SUM" ||
+                sCategoryName === "전체" ||
+                sCategoryName === "합계" ||
+                sCategoryName === "총계";
+        },
+
+        _toNumber: function (vValue) {
             var nValue = Number(vValue || 0);
 
-            return nValue.toLocaleString("ko-KR");
+            if (isNaN(nValue)) {
+                return 0;
+            }
+
+            return nValue;
+        },
+
+        formatAmount: function (vValue) {
+            var nValue = this._toNumber(vValue);
+
+            return Math.round(nValue).toLocaleString("ko-KR");
         },
 
         formatBizTypeName: function (sBiztype) {
@@ -289,6 +322,8 @@ sap.ui.define([
             var aFilters = this._getYearFilter("Syear");
             var sItemCategory = oViewModel.getProperty("/filter/itemCategory");
 
+            aFilters.push(new Filter("Currency", FilterOperator.EQ, "KRW"));
+
             if (sItemCategory) {
                 aFilters.push(new Filter("Itemcategory", FilterOperator.EQ, sItemCategory));
             }
@@ -297,6 +332,30 @@ sap.ui.define([
                 filters: aFilters,
                 success: function (oData) {
                     var aResult = oData.results || [];
+
+                    aResult = aResult.filter(function (oRow) {
+                        return !this._isTotalCategoryRow(oRow);
+                    }, this);
+
+                    aResult = aResult.map(function (oRow) {
+                        return {
+                            Syear: oRow.Syear,
+                            Yearnum: this._toNumber(oRow.Yearnum),
+                            Prevyearnum: this._toNumber(oRow.Prevyearnum),
+                            Itemcategory: oRow.Itemcategory,
+                            Categoryname: oRow.Categoryname,
+                            Currency: "KRW",
+                            Currentyearamt: this._toNumber(oRow.Currentyearamt),
+                            Prevyearamt: this._toNumber(oRow.Prevyearamt),
+                            Yoygrowthpct: this._toNumber(oRow.Yoygrowthpct),
+                            Ttlyearamt: this._toNumber(oRow.Ttlyearamt),
+                            Ttlprevyearamt: this._toNumber(oRow.Ttlprevyearamt),
+                            Ttlyoygrowthpct: this._toNumber(oRow.Ttlyoygrowthpct),
+                            Sharepct: this._toNumber(oRow.Sharepct),
+                            Categorysalescount: this._toNumber(oRow.Categorysalescount),
+                            Ttlsalescount: this._toNumber(oRow.Ttlsalescount)
+                        };
+                    }, this);
 
                     if (aResult.length === 0) {
                         oViewModel.setProperty("/kpi", {
@@ -316,7 +375,7 @@ sap.ui.define([
                     }
 
                     aResult.sort(function (a, b) {
-                        return Number(b.Yearnum) - Number(a.Yearnum);
+                        return Number(b.Yearnum || 0) - Number(a.Yearnum || 0);
                     });
 
                     var oBase = aResult[0];
@@ -329,7 +388,7 @@ sap.ui.define([
                         totalYearAmt: Number(oBase.Ttlyearamt || 0),
                         totalSalesCount: Number(oBase.Ttlsalescount || 0),
                         ttlYoyGrowthPct: Number(oBase.Ttlyoygrowthpct || 0),
-                        currency: oBase.Currency || "KRW",
+                        currency: "KRW",
                         bestCategory: oBestCategory.Categoryname || oBestCategory.Itemcategory || "-",
                         bestCategoryShare: Number(oBestCategory.Sharepct || 0) + "%"
                     });
@@ -391,24 +450,24 @@ sap.ui.define([
                 return {
                     Category: oRow.Categoryname || oRow.Itemcategory || "-",
                     Itemcategory: oRow.Itemcategory,
-                    Currentyearamt: Number(oRow.Currentyearamt || 0),
-                    Currency: oRow.Currency || "KRW"
+                    Currentyearamt: this._toNumber(oRow.Currentyearamt),
+                    Currency: "KRW"
                 };
-            });
+            }, this);
         },
 
         _makeCategoryShareChart: function (aRows) {
             return aRows.map(function (oRow) {
                 return {
                     Category: oRow.Categoryname || oRow.Itemcategory || "-",
-                    Sharepct: Number(oRow.Sharepct || 0)
+                    Sharepct: this._toNumber(oRow.Sharepct)
                 };
-            });
+            }, this);
         },
 
         _makeCategoryGrowthCards: function (aRows) {
             return aRows.map(function (oRow) {
-                var nGrowth = Number(oRow.Yoygrowthpct || 0);
+                var nGrowth = this._toNumber(oRow.Yoygrowthpct);
                 var sState = "None";
                 var sValueColor = "Neutral";
 
@@ -427,12 +486,12 @@ sap.ui.define([
                     Category: oRow.Categoryname || oRow.Itemcategory || "-",
                     Itemcategory: oRow.Itemcategory,
                     Yoygrowthpct: nGrowth,
-                    Sharepct: Number(oRow.Sharepct || 0),
-                    Categorysalescount: Number(oRow.Categorysalescount || 0),
+                    Sharepct: this._toNumber(oRow.Sharepct),
+                    Categorysalescount: this._toNumber(oRow.Categorysalescount),
                     State: sState,
                     ValueColor: sValueColor
                 };
-            });
+            }, this);
         },
 
         _makeMaterialMonthChart: function (aRows) {
@@ -443,7 +502,7 @@ sap.ui.define([
                 var sYear = oRow.Year || "";
                 var sMonth = oRow.Month || "";
                 var sKey = sYear + "_" + sMonth;
-                var nQty = Number(oRow.SumQty || 0);
+                var nQty = this._toNumber(oRow.SumQty);
 
                 if (!mMonth[sKey]) {
                     mMonth[sKey] = {
@@ -457,7 +516,7 @@ sap.ui.define([
                 }
 
                 mMonth[sKey].SumQty += nQty;
-            });
+            }, this);
 
             aChart = Object.keys(mMonth).map(function (sKey) {
                 return mMonth[sKey];
@@ -482,7 +541,7 @@ sap.ui.define([
                 var sMaterialCd = oRow.Materialcd || "";
                 var sMaterialNm = oRow.Materialnm || sMaterialCd || "-";
                 var sKey = sMaterialCd + "_" + sMaterialNm;
-                var nQty = Number(oRow.SumQty || 0);
+                var nQty = this._toNumber(oRow.SumQty);
 
                 if (!mMaterial[sKey]) {
                     mMaterial[sKey] = {
@@ -494,7 +553,7 @@ sap.ui.define([
                 }
 
                 mMaterial[sKey].TotalQty += nQty;
-            });
+            }, this);
 
             aChart = Object.keys(mMaterial).map(function (sKey) {
                 return mMaterial[sKey];
@@ -512,10 +571,22 @@ sap.ui.define([
             var oViewModel = this.getView().getModel("view");
             var aFilters = this._getYearFilter("Syear");
 
+            aFilters.push(new Filter("Currency", FilterOperator.EQ, "KRW"));
+
             oODataModel.read("/CustomerBizMonthOrderSet", {
                 filters: aFilters,
                 success: function (oData) {
                     var aResult = oData.results || [];
+
+                    aResult = aResult.map(function (oRow) {
+                        return Object.assign({}, oRow, {
+                            Currency: "KRW",
+                            Ordercount: this._toNumber(oRow.Ordercount),
+                            Customercount: this._toNumber(oRow.Customercount),
+                            Orderitemcount: this._toNumber(oRow.Orderitemcount),
+                            Netamount: this._toNumber(oRow.Netamount)
+                        });
+                    }, this);
 
                     aResult = this._calculateBizMonthPattern(aResult);
 
@@ -534,7 +605,7 @@ sap.ui.define([
 
             aRows.forEach(function (oRow) {
                 var sBiztype = oRow.Biztype;
-                var iOrdercount = Number(oRow.Ordercount || 0);
+                var iOrdercount = this._toNumber(oRow.Ordercount);
 
                 if (!mBiz[sBiztype]) {
                     mBiz[sBiztype] = {
@@ -545,7 +616,7 @@ sap.ui.define([
 
                 mBiz[sBiztype].totalOrdercount += iOrdercount;
                 mBiz[sBiztype].rows.push(oRow);
-            });
+            }, this);
 
             Object.keys(mBiz).forEach(function (sBiztype) {
                 var oBiz = mBiz[sBiztype];
@@ -553,24 +624,25 @@ sap.ui.define([
                 var nMonthlyAvg = oBiz.totalOrdercount / 12;
 
                 var nMaxOrdercount = Math.max.apply(null, oBiz.rows.map(function (oRow) {
-                    return Number(oRow.Ordercount || 0);
-                }));
+                    return this._toNumber(oRow.Ordercount);
+                }, this));
 
                 var nMinOrdercount = Math.min.apply(null, oBiz.rows.map(function (oRow) {
-                    return Number(oRow.Ordercount || 0);
-                }));
+                    return this._toNumber(oRow.Ordercount);
+                }, this));
 
                 oBiz.rows.forEach(function (oRow) {
-                    var iOrdercount = Number(oRow.Ordercount || 0);
+                    var iOrdercount = this._toNumber(oRow.Ordercount);
                     var nOrderIntensity = nMonthlyAvg === 0 ? 0 : iOrdercount / nMonthlyAvg;
 
-                    oRow.BiztypeText = this.formatBizTypeName(oRow.Biztype);
+                    oRow.BiztypeText = oRow.Biztypename || this.formatBizTypeName(oRow.Biztype);
                     oRow.MonthText = this.formatMonth(oRow.Smonth);
                     oRow.MonthlyAvgOrdercount = Number(nMonthlyAvg.toFixed(1));
                     oRow.OrderIntensity = Number(nOrderIntensity.toFixed(2));
                     oRow.OrderIntensityText = "평균 대비 " + nOrderIntensity.toFixed(1) + "배";
                     oRow.IsPeakMonth = iOrdercount === nMaxOrdercount;
                     oRow.IsLowMonth = iOrdercount === nMinOrdercount;
+                    oRow.Currency = "KRW";
 
                     if (nOrderIntensity >= 1.3) {
                         oRow.PatternType = "주문 집중월";
@@ -608,24 +680,24 @@ sap.ui.define([
                         LowOrdercount: null,
                         TotalOrdercount: 0,
                         TotalNetamount: 0,
-                        Currency: oRow.Currency
+                        Currency: "KRW"
                     };
                 }
 
-                mBiz[sBiztype].TotalOrdercount += Number(oRow.Ordercount || 0);
-                mBiz[sBiztype].TotalNetamount += Number(oRow.Netamount || 0);
+                mBiz[sBiztype].TotalOrdercount += this._toNumber(oRow.Ordercount);
+                mBiz[sBiztype].TotalNetamount += this._toNumber(oRow.Netamount);
 
-                if (Number(oRow.Ordercount || 0) > mBiz[sBiztype].PeakOrdercount) {
+                if (this._toNumber(oRow.Ordercount) > mBiz[sBiztype].PeakOrdercount) {
                     mBiz[sBiztype].PeakMonthText = oRow.MonthText;
-                    mBiz[sBiztype].PeakOrdercount = Number(oRow.Ordercount || 0);
+                    mBiz[sBiztype].PeakOrdercount = this._toNumber(oRow.Ordercount);
                 }
 
                 if (mBiz[sBiztype].LowOrdercount === null ||
-                    Number(oRow.Ordercount || 0) < mBiz[sBiztype].LowOrdercount) {
+                    this._toNumber(oRow.Ordercount) < mBiz[sBiztype].LowOrdercount) {
                     mBiz[sBiztype].LowMonthText = oRow.MonthText;
-                    mBiz[sBiztype].LowOrdercount = Number(oRow.Ordercount || 0);
+                    mBiz[sBiztype].LowOrdercount = this._toNumber(oRow.Ordercount);
                 }
-            });
+            }, this);
 
             Object.keys(mBiz).forEach(function (sBiztype) {
                 var oSummary = mBiz[sBiztype];
@@ -647,10 +719,11 @@ sap.ui.define([
                     Biztype: oRow.Biztype,
                     BiztypeText: oRow.BiztypeText,
                     MonthText: oRow.MonthText,
-                    Ordercount: Number(oRow.Ordercount || 0),
-                    Netamount: Number(oRow.Netamount || 0)
+                    Ordercount: this._toNumber(oRow.Ordercount),
+                    Netamount: this._toNumber(oRow.Netamount),
+                    Currency: "KRW"
                 };
-            });
+            }, this);
         },
 
         onQuarterMonthRowsUpdated: function (oEvent) {

@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+        <HBox width="100%" >
+            <Input id="flightDateFrom" placeholder="From" name="F"
+                change=".extension.code.d22.project1.ext.controller.ListReportMap.onFilterChange"/>
+            <Input id="flightDateTo" placeholder="To" name="T"
+                change=".extension.code.d22.project1.ext.controller.ListReportMap.onFilterChange"/>
+        </HBox>
+</core:FragmentDefinition>
